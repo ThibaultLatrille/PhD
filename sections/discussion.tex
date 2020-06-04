@@ -1,0 +1,222 @@
+\chapter{Discussion}
+
+\section{Inferring demography with divergence and polymorphism data}
+
+Less sensitive to assumption of no epistasis and static fitness landscape.
+The first strategy is to augment information about interspecies conservation with information about genetic polymorphism.
+\subsection{Model assumptions and definition}
+\subsubsection{Assumptions}
+\begin{itemize}
+	\setlength\itemsep{-0.25em}
+	\item Known species tree and gene tree, meaning no paralogs and/or horizontal transfers.
+	\item No epistasis, meaning independence between sites.
+	\item Each sites is assigned a fitness profile, meaning different site of the sequence can share the same fitness profile.
+	\item Inside each fitness profile, the fitness of each amino-acids is estimated.
+	\item $\Ne$, $u$ and $\tau$ are correlated Brownian processes, giving each branch of the tree different $\Ne$, $u$ and $\tau$ estimates.
+\end{itemize}
+\subsubsection{Wright-Fisher process for a single site}
+The Wright-Fisher process describe the change in frequency of single polymorphic site with two alleles in a population over time.
+The model makes the following assumptions:
+\begin{itemize}
+	\setlength\itemsep{-0.2em}
+	\item Non-overlapping generations
+	\item Constant population size in each generation
+	\item Random mating
+\end{itemize}
+Consider a population of $\Ne$ diploid individuals that has a single polymorphic site with two alleles, one ancestral (fitness = $1$) and one derived (fitness = $1+\selcoef$).
+Assuming no dominance and no recurrent mutation, the probability, that there are $j$ copies of the derived allele present at generation $G+1$ (denoted $X_{G+1}$) given i copies of the derived allele present at generation $G$ (denoted $X_{G}$) is given by the following binomial calculation:
+\begin{equation}
+p\left( X_{G+1} = j |X_{G} = i, \Ne, \selcoef \right)  =  \binom{2 \Ne}{j} \left( \dfrac{x(1+\selcoef)}{x(1+\selcoef) + (1-x)} \right)^j \left(1 - \dfrac{x(1+\selcoef)}{x(1+\selcoef) + (1-x)} \right)^{2 \Ne -j}, 
+\end{equation}
+where $x = i / 2 \Ne$ is the derived allele frequency in generation $G$.\\
+In this discrete framework, it has been shown to be extremely difficult to explicitly derive formulas for several quantities of evolutionary interest.
+However, as the size of the population approaches infinity (i.e.
+$ \Ne \rightarrow \infty$), and assuming that the scaled selection pressure ($\Ne \selcoef $) remain constant, the discrete Markov process given above can be closely approximated by a continuous-time, continuous-space diffusion process.\\
+Under the assumption of no recurrent mutation, the derived allele with initial frequency $p$, goes either extinct ($x=0$) or fixed ($x=1$) after a long time.
+It is possible to determine the probability of fixation ($p_{\mathrm{fix}}$), by using the Kolmogorov backward equation.
+\begin{equation}
+p_{\mathrm{fix}}(p, \scaledselcoef ) = \dfrac{1 - \e^{-\scaledselcoef p }}{1 - \e^{-\scaledselcoef}}\text{, where } \scaledselcoef=4\Ne \selcoef 
+\end{equation}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$p_{\mathrm{fix}}(p, \scaledselcoef )$},
+	xlabel={Initial population frequency ($p$)},
+	domain=0:1,
+	cycle list name=colors,
+	samples=100,
+	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{(1 - exp(-12 * x)) / (1 - exp(- 12))};
+	\addplot{(1 - exp(-4 * x)) / (1 - exp(- 4))};
+	\addplot{x};
+	\addplot{(1 - exp(4 * x)) / (1 - exp(4))};
+	\addplot{(1 - exp(12 * x)) / (1 - exp(12))};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\textbf{}}
+\end{figure}
+$g(x, \scaledselcoef) \der x $ is the expected time for which the population frequency of the derived allele, at the site, is in the range $(x, x+\der x)$ before eventual absorption:
+\begin{align}
+g(x, \scaledselcoef) & \approx  \dfrac{2 \left[ 1 - \e^{-\scaledselcoef (1-x)}\right]}{(1 - \e^{-\scaledselcoef})x(1-x)}
+\end{align}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$g(x, \scaledselcoef)$},
+	xlabel={frequency of the derived allele ($x$)},
+	domain=0.05:0.95,
+	cycle list name=colors,
+	samples=100,
+	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{2 * (1 - exp(-12 * (1-x))) / ((1 - exp(-12))*x*(1-x))};
+	\addplot{2 * (1 - exp(-4 * (1-x))) / ((1 - exp(-4))*x*(1-x))};
+	\addplot{2 / x};
+	\addplot{2 * (1 - exp(4 * (1-x))) / ((1 - exp(4))*x*(1-x))};
+	\addplot{2 * (1 - exp(12 * (1-x))) / ((1 - exp(12))*x*(1-x))};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\textbf{}}
+\end{figure}
+\subsubsection{Poisson random fields in Mutation-Selection framework }
+S. Sawyer and D. Hartl expanded the modeling of site evolution to multiple sites.
+The model makes the following assumptions: 
+\begin{itemize}
+	\setlength\itemsep{-0.2em}
+	\item Mutations arise at Poisson times (rate $u$ per site per generation)
+	\item Each mutation occurs at a new site (infinite sites, irreversible)
+	\item Each mutant follows an independent Wright-Fisher process (no linkage)
+\end{itemize}
+In a sample of size $\samples$, the expected number of sites with $k$ (which ranges from $1$ to $\samples-1$) copies of the derived allele is defined as a function of $g(x)$:
+\begin{align}
+G(\copies, \samples, \theta, \scaledselcoef) & = 2 \Ne u \int_{0}^{1} g(x, \scaledselcoef)  \binom{\samples}{\copies} x^{\copies} (1-x)^{\samples-\copies} \der x \nonumber \\
+& = \theta \int_{0}^{1} \dfrac{1 - \e^{-\scaledselcoef (1-x)}}{(1 - \e^{-\scaledselcoef})x(1-x)} \binom{\samples}{\copies} x^{\copies} (1-x)^{\samples-\copies} \der x\text{, where } \theta=4\Ne u \nonumber \\
+& = \binom{\samples}{\copies} \dfrac{\theta }{1 - \e^{-\scaledselcoef}} \int_{0}^{1} \left( 1 - \e^{-\scaledselcoef (1-x)} \right) x^{\copies-1} (1-x)^{\samples-\copies-1} \der x
+\end{align}
+In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$). Thus the coefficient ($\scaledselcoef=4\Ne \selcoef $) associated to a mutation is a function of the amino-acids encoded by the ancestral ($\ci$) and derived ($\cj$) codon. Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
+\begin{align}
+\scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) &= 4 \Ne (f_\cj\siteexp-f_\ci\siteexp) \nonumber \\
+& = \scaledfit_\cj\siteexp-\scaledfit_\ci\siteexp
+\end{align}
+Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$) codon is a function of the nucleotide changes between the codons. If the codons are not neighbor, meaning a single mutation is not sufficient to jump from $\ci$) to $\cj$, the mutation rate is equal to $0$. If the codons are neighbors, the mutation rate is given by the nucleotide rate matrix ($ \bm{u} $). Altogether, the scaled mutation rate $\theta_{\itoj}$ from $\ci$ to $\cj$ is:
+\begin{equation}
+\theta_{\itoj}(\Ne, u, \Mutmatrix) = 4 \Ne u \mutmatrix_{\itoj}
+\end{equation}
+If a site is polymorphic and the ancestral ($\ci$) and derived ($\cj$) codons are neighbors, the probability of observing $\copies$ copies ($\samples \geq \copies > 0$) of the derived codon ($\cj$), in a sample of size $\samples$, at site $\site$, is given by:
+\begin{equation}
+P(\ci=\samples-\copies,\cj=\copies \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp)  =  G\left(\copies, \samples, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
+\end{equation}
+Moreover the probability that a site is monomorphic is given by:
+\begin{equation}
+P(\ci= \samples \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp)  = 1 - \sum_{\cj \in \Ni} \sum_{\copies=1}^{\samples}  G\left(\copies, \samples, \theta_{\itoj}(\Ne, u, \Mutmatrix),  \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right)
+\end{equation}
+And all other probabilities equal to $0.0$.
+
+
+\section{Complexity}
+
+\subsection{Epistasis}
+
+\subsection{$\omega_A$}
+
+
+\section{The art of modeling}
+I believe analytical models, computational simulations and inference models are complementary, but more importantly they are necessary to each others. 
+Theoretical modeling allow to understand the principles, simulations allow to verify the soundness.
+Inference allow to extract and test the theoretical results using empirical data.
+Simulations have a dual role, testing the robustness of both inference procedures and theoretical results, outside of their comfort zone and assumptions.
+However, this assume we are confident enough to write reproducible computations, as such the next section is dedicated to my experience and take away.
+
+\subsection{Reproducible computations}
+First, I stand firmly on the ground that data, codes and scripts should be rendered open-access of any published and peer reviewed paper.
+Practically, the availability of the data and source code should simply be enforced upon submission to journal, which is currently not the case for many, even in bio-informatics and genomics fields.
+This strong stance is not as to make scientist publish less, though it is a positive side-effect such as to be able to keep up with the literature.
+On the contrary, is to avoid the bloating of what is called a technical debt, or research debt.
+It encourages peer collaboration, both helping the team or person whom made the code available, and the community as a whole.
+A straightforward way is to provide a git repository with the advantage that collaboration is facilitated trough web hosted repository such as GitLab or GitHub.
+
+Test reproducing the results should also be made available, many tools are available to this aim.
+When only python code is necessary for the reproductibility, anaconda/conda provides a straightforward environment to configure the necessary libraries with their versions. 
+Jupyter notebooks also provide a 
+For more complex environment, requiring compiling source code a more general environment is either a Docker or Singularity for example, but any containers implementing system-level virtualization is very helpful.
+These tools are emerging in the community 
+
+
+Workflow management system (Nexflow, Snakemake, etc) allowing to create reproducible and scalable data analyses.
+Peer-coding sessions, continuous integration pipeline are valuable to use to increase the reliability of code generation.
+ 
+\subsection{Bayesian statistics}
+Knowing that maximum likelihood and Bayesian statistics are often opposed to each others and fiercely defended by their tenant I would gladly give my opinion on the matter, since I made the . 
+Bayesian statistics seems personally a more comfortable inference framework than maximum likelihood for several reasons. 
+First you do not need to care for local optimum which might freeze the program.
+Second and most importantly, it gives the confidence interval, meaning how much certainty is available given the data on a estimate.
+A corollary is that over parametrization is not an issue. 
+Lasso or penalized-likelihood methods are not required.
+The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical prior distribution, which are more meaningful.
+Moreover, it gives a simple, thought extensive method to test for the repeatability and soundness of the code (cf prior distribution must match the rank).
+Finally, the sampling method of 
+
+\section{Reflecting on the mutation-selection-drift equilibrium}
+In this section, I'll develop reflections on apparent similarities and analogies between the mutation-selection-drift process and other processes present in a variety of scientific fields, displaying the same underlying mechanism and emerging properties, though with different name and aspiration.
+Such attempts requires to boil down the mutation-selection-drift mechanism into its core components, while at the same time rephrasing the description using lexicography outside of population-genetic such as to open new perceiving angles.
+
+At the bottom, mutation is a process creating diversity, changing and moving the current viable state to a novel and unknown position, fundamentally allowing exploration of the state space.
+On the other hand, selection is the criteria on which a new state is deemed a disrupting innovation or a nonviable alteration, and allow to determine which changes to exploit and which to filter out and discard based on its fitness.
+Fundamentally, reducing the diversity created by the mutation process is the very essence of selection.
+Finally, drift arbitrate between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
+
+I argue that this creation and reduction process is found at the core of several research disciplines, while the link between them is scarcely made \cite{Baeck1994, Eiben1998}. 
+
+\subsubsection{Metropolis-Hasting sampling}
+Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
+However, the Metropolis-Hasting procedure based on a Monte Carlo Markov chain can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density \cite{Hastings1970}.
+This stochastic procedure which is based on three steps bears many similarities with the mutation-selection-drift process:
+\begin{itemize}
+	\item Generate a stochastic candidate from the current state, analogous to the mutation.
+	\item Calculate the acceptance ratio as the ratio of the two densities, analogous to the selection coefficient of the mutated state.
+	\item Stochastic acceptance or rejection based on the acceptance ratio, a process analogous to drift. 
+\end{itemize}
+Inherently, is Metropolis-Hasting procedure is based on creating and subsequently reducing diversity, which allows to obtain a random sequence of samples from any distribution with a straightforward recipe, and is a critical tools in statistic and statistical physics.
+
+\subsubsection{The exploration-exploitation dilemma}
+Many mathematical, engineering and day-life problems are not about sampling a state space, but rather finding the optimal and best state given a criteria or a function to maximize.
+Naturally, we would prefer deterministic (strictly reproducible) rather than stochastic optimizing strategies to be in searching the optimal state.
+Unfortunately, whenever the state space is too large, often due to the curse of dimensionality, a greedy or heuristic search of an optimal state can performs atrociously \cite{Bellman1966}.
+In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithm.
+Inherently, they are based on two arms, one arm is stochastically creating diversity and exploring the state space, while the other arm is filtering the explored states and thus reducing the diversity.
+
+In the constrained case of a finite number of time or attempt to find the best score overall, the problem is best described by the example of the multi-armed problem. The name comes from imagining a gambler at a row of slot machines (sometimes known as "one-armed bandits"), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of lever pulls.
+The gambler faces a dilemma at each trial, between "exploitation" of the machine that has the highest expected payoff and "exploration" to get more information about the expected payoffs of the other machines. 
+The need to obtain new knowledge and the need to use that knowledge to improve performance is trade-off that need to be balanced to obtain an optimal performance.
+As an example application of the exploration-exploitation procedure is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017 and out-compete Ke Jie, the world n°1 ranked player at the time \cite{Silver2017, Silver2018}.
+AlphaGo has often been publicized and hyped in various media outlets that this feat was possible due to machine learning, more specifically due to convolutionnal neural networks. However, it is more scarcely mentioned that AlphaGo neural networks is combined with an exploration-exploitation algorithm, or more specifically Monte Carlo tree search. 
+In practice, the neural network is used as a criteria to measure the advantage of a board configuration,
+but the different moves and path probed and trimmed is done via an exploration-exploitation procedure. 
+As twist of fate, stochastic gradient descend (mentioned above), is a central algorithm to make the convolutionnal neural networks converge.
+
+\subsubsection{In finance, economics, psychology and neurology}
+Historically, there as been many bridges and crossover between economics and evolution.
+For example game theory had originally been developed to model economic actors behavior and strategies \cite{Neumann1947}, while latter being incorporated into evolutionary biology to explain the emergence of altruistic behaviours in Darwinian evolution, the conundrum of the existence of the peacock's tail and other such biological encumbrances \cite{Smith1973, Smith1982}.
+They are also analogous explanation between absolute and relative fitness \cite{Masel2016}.
+
+The exploration-exploitation dilemma can be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, or the effects of old age on knowledge acquisition in humans.
+Of course, scientific research endeavor is also a exploration-exploitation dilemma, which in my personal feeling is externally pressured to pursue the exploitation at the risk of being 
+Create and reduce, explore and exploit, mutate and select are different name that encompass the used when the sampling state is too large to be explored.
+I argue that scientific fields studying and leveraging this pervasive process can gain knowledge with each others by interacting. 
+As an example, I believe the methods developed in reinforcement learning, such as Monte Carlo tree search can help devise efficient inference procedure in molecular evolution. 
+% As a side note, it appears that drift and selection are actually confounded, they are both on the side of exploitation, not on exploration.
+% Sex and mutation are both generating new states and are part of the more general exploration facet.
+% This explains why sex is favored in fluctuating environments.

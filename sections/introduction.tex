@@ -1,0 +1,146 @@
+\chapter{Introduction}
+\label{sec:intro}
+
+\section{Evolution of protein-coding sequences}
+Phylogenetic reconstruction seeks to infer past evolutionary history of life on Earth.
+However, phylogeneticists are constrained to solely access present-day populations and extinct fossils.
+One approach to circumvent this limitation is to study the evolution of molecular sequences backward in time, based on present-day molecular sequences.
+In this molecular framework, evolution is generally seen as a stochastic process, and the interplay between point mutations and the selection of these mutations leads to substitutions in sequences over time.
+Thus, molecular evolutionary biologists design substitution models of the sequences, and compute how likely they would observe the present-day molecular sequences, given a past-history scenario and a model of substitutions.\\
+One major assumption of substitution models is independence between sites, meaning that any position of the sequence has its own independent evolutionary process and a substitution at one position does not affect the substitution process at other positions.
+The motivation for this assumption is rooted in computational complexity rather than biological meaning, and crucially constrains the modeling process.\\
+Under the site-independence assumption, the modeling approach essentially depends on the nature of the sequence under study.
+For example, non-coding DNA sequences are subject to very different evolutionary forces compared to protein-coding DNA sequences, and must be addressed differently.
+This review will focus on substitution models designed to address solely protein-coding DNA sequences.
+In such coding DNA sequences the mutation process occurs at the DNA level, but selection process occurs at the protein level in first approximation.
+Thus studying protein coding DNA sequences at the nucleotide level has a major shortcoming of not taking into account the true underlying selection process, which can lead to false conclusions in the phylogenetic reconstruction.\\
+One simple approach to resolve this conflict is to study the evolutionary history of the protein instead of the DNA sequence, meaning translating nucleotide sequences into amino-acid sequences, and design a model at the amino-acid level.
+Equally, amino-acid substitution models have also the major shortcoming of not taking into account that the mutation process occurs at the nucleotide level.
+Indeed, when studying sequences at the amino-acid level, the degeneracy of the genetic code leads to loss of information present in the mutated DNA sequences, since the 61 codons are converted to the 20 amino-acids.\\
+
+For protein-coding sequences, both DNA and amino-acid substitution models fail to take into account either the selection or the mutation process.
+These shortcomings are both addressed by codon models, basically combining the best of both models by studying nucleotides in triplets instead of independently.
+In a codon substitution model, a mutation of a nucleotide in a triplet will either be synonymous, meaning not changing the translated amino-acid, or non-synonymous, meaning the translated amino-acid will be different.
+The degeneracy of the genetic code is thus an advantage when one devises a model at the codon level in DNA sequences.
+One can identify the interplay between mutations acting at the DNA level, and positive or negative selection acting at the protein level.
+Thus, codon substitution models are crucial for a better modeling of the underlying evolution of protein-coding DNA sequences, and consequently allow a better reconstruction of mutation, selection and demography.
+
+\section{Polymorphism}
+For each new generation, the simulation is decomposed in three steps
+steps, performed in the following order:
+
+\begin{itemize}
+	\setlength\itemsep{-0.25em}
+	\item  Mutation and creation of new haplotypes: the number of new mutation is drawn from a
+	Poisson distribution. Each new haplotype replaces a randomly chosen resident
+	haplotype;
+	\item Drift and selection: the new generation of 2$\Ne$ haploid copies is drawn from a multinomial
+	distribution. The probability of drawing allele $i$ is equal to it's frequency $x_i$ multiplied by
+	its relative fitness $w_i / w$
+	\item Extinction and fixation: 
+\end{itemize}
+
+\subsection{Fitness landscape and the distribution of fitness effects}
+In Wilson \textit{et. al.}, the fitness effect of a mutation is drawn from a fitness distribution that is solely function of $\Ne$, meaning ${p_{\mathrm{fix}}}$ is independent from the current sequence state.
+On the other hand, in the mutation-selection model proposed, the distribution of fitness effects is a function of the current state.
+If the current state if the optimum with the greatest fitness, then all mutations proposed are negatively selected.\\
+In such model, the path taken by the sequence is a Markov chain, and $\Ne$ can be seen as an intensive parameter controlling the peakness of the fitness landscape. With high $\Ne$ the fitness landscape is sharper and the visited sequences by the Markov chain is close to the optimum, since most mutations will be strongly deleterious and not reach fixation. In contrary, with low $\Ne$ the fitness landscape is flatter and Markov chain moves away from the optimum.
+Under the assumptions of infinite sites, the distribution of fitness effect of substitutions ( mutations that reached fixation) is symmetrical.
+\begin{figure}[thbp]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$p(\scaledselcoef \ | \ \Ne)$},
+	xlabel={$\scaledselcoef$},
+	cycle list name=colors,
+	domain=-5:5,
+	samples=100,
+	legend entries={high $\Ne$, low $\Ne$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{ exp(- x*x / 2)};
+	\addplot{ exp(- x*x / 8) / 2 };
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\textbf{Distribution of fitness effects.}}
+\end{figure}
+
+\section{Divergence of molecular sequences}
+Substitution in a codon site is the result of the interplay between mutation and selection.
+More precisely the rate of substitution from codon $\ci$ to $\cj$, denoted $\submatrix_{\itoj}$, is equal to the rate of mutation ($\mu_{\itoj}$) multiplied by the probability of fixation of the mutation $p_{\mathrm{fix}}(\itoj)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
+\begin{align}
+{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj}  p_{\mathrm{fix}}}(\itoj) \\
+\end{align}
+\begin{figure}[thbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/MutSel-proba_fixation.pdf}
+\end{figure}
+The mutation rate from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the codon, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the codons. The codon mutation rate is then given by the mutation matrix ${\mutmatrix_{\nucitoj}}$. Altogether, the mutation rate from codon $\ci$ to $\cj$ is:
+\begin{equation}
+\begin{dcases}
+\mu_{\itoj} & = 0 \text{ if } \cj \notin \Ni \\
+\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ if } \cj \in \Ni
+\end{dcases}
+\end{equation}
+In the case of synonymous mutations ($\cj \in \NiSyn $), the probability of fixation is independent of the original and target codon, and equal $1/2 \Ne$. Finally ${\submatrix_{\itoj}}$ simplifies to: 
+\begin{align}
+{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj}  p_{\mathrm{fix}}}(\itoj) \nonumber \\
+{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj} \dfrac{1}{2\Ne}} \nonumber \\
+{\submatrix_{\itoj}} & { =  \mu_{\itoj} } \nonumber \\
+{\submatrix_{\itoj}} & { =  \mu \mutmatrix_{\nucitoj} }\text{, since } \NiSyn \subset \Ni \
+\end{align}
+In the case of non-synonymous mutations ($\cj \in \NiNonSyn $), the probability of fixation depends on the difference of fitness between the amino-acid encoded by the codons:
+\begin{align}
+{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj} p_{\mathrm{fix}}}(\itoj) \nonumber \\
+& { = 2 \Ne \mu_{\itoj} }  \dfrac{2({\fitj - \fiti})}{{1 - \e^{4\Ne(\fiti - \fitj)} }} \nonumber \\
+& { = \mu \mutmatrix_{\nucitoj} }  \dfrac{{\scaledfitj - \scaledfiti}}{{1 - \e^{\scaledfiti - \scaledfitj} }}\text{, where } \scaledfiti = 4\Ne \fiti
+\end{align}
+We can note that if the difference of fitness tends to $0$, the substitution rate equal the mutation rate:
+\begin{align}
+\lim_{\scaledfiti \to \scaledfitj} {\submatrix_{\itoj}} & { = \mu \mutmatrix_{\nucitoj} }  \dfrac{{\scaledfitj - \scaledfiti}}{{1 - (1  + (\scaledfiti - \scaledfitj)) }} \nonumber \\
+& { =  \mu \mutmatrix_{\nucitoj} } 
+\end{align}
+
+\begin{figure}[thbp]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$\submatrix_{\itoj}$},
+	xlabel={Scaled selection coefficient ($\scaledfitj - \scaledfiti$)},
+	cycle list name=colors,
+	domain=-5:5,
+	samples=100,
+	legend entries={$\mu \mutmatrix_{\nucitoj}=2.0$, $\mu \mutmatrix_{\nucitoj}=1.0$, $\mu \mutmatrix_{\nucitoj}=0.5$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{ 2.0 * x / (1 - exp(- x))};
+	\addplot{ x / (1 - exp(- x))};
+	\addplot{ 0.5 * x / (1 - exp(- x))};
+	\addplot[black]{1.0};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\textbf{Substitution rate as a function of the selection coefficient.}}
+\end{figure}
+
+In mutation-selection codon models, the probability of reaching fixation is different for any non-synonymous mutation.
+More specifically, it will depend on the original amino-acid preference and the mutated amino-acid preference encoded by the codon.
+From a dynamical perspective, a mutation on a codon with high preference (of the encoded amino-acid) will have a low probability of fixation, since the mutated codon will have a lower preference, and thus at equilibrium this low probability of fixation of the codon is compensated by a high frequency of the codon.
+Essentially, at equilibrium the codon frequencies only fluctuate at the mutation-selection balance, and all the mutations are neutral on average, but slightly deleterious or advantageous, hence the name nearly-neutral models.\\
+For evolutionary biologists, the assumption of equal amino-acid preference is equivalent to have a flat fitness landscape for all amino-acids, with neither a peak nor a valley.
+In contrast, in nearly-neutral models, the amino-acids have a fitness landscape fixed in time, but that is not flat.
+The difficulty and complexity of nearly-neutral models are to estimate the underlying amino-acid fitness landscape.
+Moreover, nearly-neutral models consider multiplicative fitness across sites.
+
+By modeling the population as a single sequence, we model a trajectory along a changing fitness landscape.
+For each codon site, we compute the substitution rate to the $9$ neighboring codons (see equation 1)  
+The time to the next substitution is exponentially distributed with parameter equal to the total rate.
+
+\section{Selection of protein coding}

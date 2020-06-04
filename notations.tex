@@ -1,0 +1,117 @@
+\newglossaryentry{latex}{
+	name={\ensuremath{\pi}},
+	description={Is a mark up language specially suited for scientific documents}
+}
+
+\newcommand{\der}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\dnds}{dNdS}
+\newcommand{\indice}{l}
+\newcommand{\indiceexp}{^{(\indice)}}
+% Time, effective population size and mutation rate.
+\newcommand{\Ne}{N}
+% DNA
+\newcommand{\SetNuc}{\Omega_{\mathrm{N}}}
+\newcommand{\mutmatrix}{R}
+\newcommand{\Mutmatrix}{\bm{\mutmatrix}_{4\times4}}
+\newcommand{\exchan}{\rho}
+\newcommand{\Exchan}{\bm{\exchan}_{6\times1}}
+\newcommand{\mutequi}{\sigma}
+\newcommand{\Mutequi}{\bm{\mutequi}_{4\times1}}
+% Codons
+\newcommand{\SetCodon}{\Omega_{\mathrm{C}}}
+\newcommand{\ci}{{i}}
+\newcommand{\cj}{{j}}
+\newcommand{\itoj}{\ci, \cj}
+\newcommand{\nucitoj}{\mathcal{M}(\itoj)}
+\newcommand{\submatrix}{Q}
+\newcommand{\Submatrix}{\bm{\submatrix}_{61\times61}}
+\newcommand{\subequi}{\pi}
+\newcommand{\Subequi}{\bm{\subequi}_{61\times1}}
+\newcommand{\probmatrix}{P}
+\newcommand{\Probmatrix}{\bm{\probmatrix}_{61\times61}}
+% Amino-acids
+\newcommand{\SetAa}{\Omega_{\mathrm{A}}}
+\newcommand{\aminoacid}{\text{A}}
+\newcommand{\aai}{\mathcal{A}(\ci)}
+\newcommand{\aaj}{\mathcal{A}(\cj)}
+\newcommand{\Ni}{\mathcal{N}_{\mathrm{eighbors}}\left(\ci\right)}
+\newcommand{\NiNonSyn}{\mathcal{N}_{\mathrm{onSyn}}\left(\ci\right)}
+\newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
+\newcommand{\fit}{f}
+\newcommand{\Fit}{\bm{\fit}_{20\times1}}
+\newcommand{\fiti}{\fit_{\aai}}
+\newcommand{\fitj}{\fit_{\aaj}}
+\newcommand{\scaledfit}{F}
+\newcommand{\ScaledFit}{\bm{\scaledfit}_{20\times1}}
+\newcommand{\scaledfiti}{\scaledfit_{\aai}}
+\newcommand{\scaledfitj}{\scaledfit_{\aaj}}
+\newcommand{\selcoef}{{\delta_{\fit}}}
+\newcommand{\scaledselcoef}{{\Delta \scaledfit}}
+% Tree
+\newcommand{\Tree}{\mathcal{T}}
+\newcommand{\node}{\text{v}}
+\newcommand{\taxon}{\node}
+\newcommand{\Settaxon}{1 \leq \taxon \leq \Ntaxa}
+\newcommand{\Ntaxa}{P}
+\newcommand{\treeroot}{0}
+\newcommand{\treerootexp}{^{(\treeroot)}}
+\newcommand{\branch}{\text{w}}
+\newcommand{\branchexp}{^{(\branch)}}
+\newcommand{\Nbranch}{2 \Ntaxa - 2}
+\newcommand{\Setbranch}{1 \leq \branch \leq 2 \Ntaxa - 2}
+\newcommand{\up}{\branch^{\uparrow}}
+\newcommand{\down}{\node}
+\newcommand{\nodeexp}{^{(\node)}}
+\newcommand{\Nnode}{2 \Ntaxa - 2}
+\newcommand{\Ninternal}{\Ntaxa - 2}
+\newcommand{\Setnode}{\treeroot \leq \node \leq 2 \Ntaxa - 2}
+\newcommand{\Setnodenoroot}{1 \leq \node \leq 2 \Ntaxa - 2}
+\newcommand{\Setinternal}{\Ntaxa + 1 \leq \node \leq 2 \Ntaxa - 2}
+\newcommand{\branchnode}{\mathcal{W}}
+\newcommand{\age}{T}
+\newcommand{\branchtime}{\Delta \age}
+\newcommand{\branchlength}{L}
+% Alignment
+\newcommand{\data}{{\color{PINK}{D}}}
+\newcommand{\Data}{\bm{\data}}
+\newcommand{\site}{\text{s}}
+\newcommand{\siteexp}{^{(\site)}}
+\newcommand{\Nsite}{\text{N}_{\site}}
+\newcommand{\Setsite}{1 \leq \site \leq \Nsite}
+\newcommand{\branchsiteexp}{^{(\branch, \site)}}
+\newcommand{\treerootsiteexp}{^{(\treeroot, \site)}}
+\newcommand{\taxonsiteexp}{^{(\taxon, \site)}}
+% Categories
+\newcommand{\cat}{\text{k}}
+\newcommand{\catVar}{\mathcal{K}}
+\newcommand{\catexp}{^{(\cat)}}
+\newcommand{\Ncat}{\text{N}_{\cat}}
+\newcommand{\Setcat}{1 \leq \cat \leq \Ncat}
+\newcommand{\catsite}{\catVar^{\left(\site\right)}}
+\newcommand{\branchcatexp}{^{(\branch, \cat)}}
+\newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
+% Polymorphism
+\newcommand{\copies}{\text{n}}
+\newcommand{\samples}{\text{N}_{\copies}}
+% Random variables
+\newcommand{\pruning}{\psi}
+\newcommand{\uniform}{0, 1}
+\newcommand{\Identitymatrix}{\bm{I}_{2\times2}}
+\newcommand{\brownian}{\bm{B}_{2\times1}}
+\newcommand{\contrast}{\bm{C}_{2\times1}}
+\newcommand{\Covariancematrix}{\bm{\varSigma}_{2\times2}}
+\newcommand{\covariancedf}{q}
+\newcommand{\covariancekappa}{\kappa}
+\newcommand{\Scattermatrix}{\bm{A}_{2\times2}}
+\newcommand{\Multivariate}{\bm{Z}_{2\times1}}
+\newcommand{\base}{\varPi}
+\newcommand{\Base}{\bm{\base}_{20\times1}}
+\newcommand{\baseconc}{\alpha}
+\newcommand{\Basecenter}{\bm{\gamma}_{20\times1}}
+\newcommand{\stickbreaking}{\varOmega}
+\newcommand{\StickBreaking}{\bm{\stickbreaking}_{\Ncat\times1}}
+\newcommand{\stick}{\varPhi}
+\newcommand{\stickbreakinghyper}{\beta}
+% Mapping
+\newcommand{\history}{\mathcal{H}}

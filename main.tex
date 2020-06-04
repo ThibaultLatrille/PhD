@@ -1,0 +1,94 @@
+\documentclass[oneside, colophon, english]{phduio}
+\usepackage{phdstyle}
+\usepackage{amsfonts,amsmath,mathtools}
+\usepackage{bm}
+\usepackage{listings, enumerate}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{pgfplots, pgf, tikz}
+\usetikzlibrary{arrows,automata}
+%\usepgfplotslibrary{colormaps}
+\definecolor{RED}{HTML}{EB6231}
+\definecolor{YELLOW}{HTML}{E29D26}
+\definecolor{BLUE}{HTML}{5D80B4}
+\definecolor{LIGHTGREEN}{HTML}{6ABD9B}
+\definecolor{GREEN}{HTML}{8FB03E}
+\definecolor{PURPLE}{HTML}{BE1E2D}
+\definecolor{BROWN}{HTML}{A97C50}
+\definecolor{PINK}{HTML}{DA1C5C}
+\pgfplotsset{every axis/.append style={line width=1pt}}
+\pgfplotscreateplotcyclelist{colors}{RED\\YELLOW\\BLUE\\LIGHTGREEN\\GREEN\\}
+
+\usepackage[toc]{glossaries}
+\makeglossaries
+\include{notations}
+
+\renewcommand{\contentsname}{Table of contents}
+\author{Thibault Latrille}
+\title{}
+\department{}
+\affiliation{Université de Lyon \and ENS de Lyon}
+
+\includeonly
+{	
+	sections/frontpage,
+    sections/dedication,
+    sections/abstract,
+    sections/abstract_fr,
+    sections/acknowledgement,
+    sections/notations,
+    sections/preamble,
+    sections/papers,
+    sections/introduction,
+    sections/paperI,
+    sections/paperII,
+    sections/paperIII,
+    sections/discussion,
+    sections/conclusion,
+    sections/appendixA,
+}
+
+\begin{document}
+
+	\frontmatter        % Folios in Roman numerals, unnumbered chapters.
+	
+	\include{sections/frontpage}
+    \include{sections/dedication}
+    \include{sections/abstract}
+    \include{sections/abstract_fr}
+    \include{sections/acknowledgement}
+
+    \cleartorecto
+    \tableofcontents
+    \cleartorecto
+    \listoffigures      
+    \cleartorecto
+    \listoftables
+    \cleartorecto
+	\printglossaries
+	
+    \mainmatter         % Folios in Arabic numerals, numbered chapters.
+
+	\include{sections/preamble}
+    \include{sections/introduction}
+
+    %\paper              % "Chapter" is renamed "Paper"
+    %\paperpage          % Similar to \part*{Papers}, but appears in TOC
+    \numberofpapers{3}  % Specify size of thumb indices
+
+    \include{sections/paperI}
+    \include{sections/paperII}
+    \include{sections/paperIII}
+
+    \include{sections/discussion}
+    \include{sections/conclusion}
+	
+    % \appendix           % "Chapter" is renamed "Appendix"
+    % \appendixpage       % Similar to \part*{Appendices}, but appears in TOC
+    % \include{sections/appendixA}
+    
+    \backmatter         % Folios in Arabic numerals, unnumbered chapters.
+   	\bibliographystyle{natbib}
+	\bibliography{references}
+
+\end{document}
