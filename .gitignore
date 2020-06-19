@@ -6,7 +6,8 @@
 
 *~
 .idea/
-Template-*/
+figures/
+Template-*
 *.aux
 *.log
 *.synctex.gz
@@ -27,4 +28,13 @@ Template-*/
 *.lot
 *.nlo
 *.ptc
-figures/
+*.acn
+*.acr
+*.alg
+*.brf
+*.glsdefs
+*.maf
+*.mtc
+*.mtc*
+*.nav
+*.snm

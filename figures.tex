@@ -1,0 +1,117 @@
+\documentclass{beamer}
+
+\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{xfrac, nicefrac}
+\usepackage{pgfplots, pgf,tikz}
+\usepgfplotslibrary{fillbetween}
+\usebackgroundtemplate{\tikz\node[opacity=0]{};}
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\usefonttheme{serif}
+
+\include{notations}
+\pgfplotsset{every axis/.append style={line width=1pt}}
+\pgfplotscreateplotcyclelist{colors}{LIGHTGREEN\\YELLOW\\RED\\GREEN\\BLUE\\}
+
+\begin{document}
+	
+\begin{frame}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$p(\scaledselcoef \ | \ \Ne)$},
+	xlabel={$\scaledselcoef$},
+	cycle list name=colors,
+	domain=-5:5,
+	samples=100,
+	legend entries={high $\Ne$, low $\Ne$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{ exp(- x*x / 2)};
+	\addplot{ exp(- x*x / 8) / 2 };
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$\submatrix_{\itoj}$},
+	xlabel={Scaled selection coefficient ($\scaledfitj - \scaledfiti$)},
+	cycle list name=colors,
+	domain=-5:5,
+	samples=100,
+	legend entries={$\mu \mutmatrix_{\nucitoj}=2.0$, $\mu \mutmatrix_{\nucitoj}=1.0$, $\mu \mutmatrix_{\nucitoj}=0.5$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{ 2.0 * x / (1 - exp(- x))};
+	\addplot{ x / (1 - exp(- x))};
+	\addplot{ 0.5 * x / (1 - exp(- x))};
+	\addplot[black]{1.0};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$p_{\mathrm{fix}}(p, \scaledselcoef )$},
+	xlabel={Initial population frequency ($p$)},
+	domain=0:1,
+	cycle list name=colors,
+	samples=100,
+	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{(1 - exp(-12 * x)) / (1 - exp(- 12))};
+	\addplot{(1 - exp(-4 * x)) / (1 - exp(- 4))};
+	\addplot{x};
+	\addplot{(1 - exp(4 * x)) / (1 - exp(4))};
+	\addplot{(1 - exp(12 * x)) / (1 - exp(12))};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel={$g(x, \scaledselcoef)$},
+	xlabel={frequency of the derived allele ($x$)},
+	domain=0.05:0.95,
+	cycle list name=colors,
+	samples=100,
+	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{2 * (1 - exp(-12 * (1-x))) / ((1 - exp(-12))*x*(1-x))};
+	\addplot{2 * (1 - exp(-4 * (1-x))) / ((1 - exp(-4))*x*(1-x))};
+	\addplot{2 / x};
+	\addplot{2 * (1 - exp(4 * (1-x))) / ((1 - exp(4))*x*(1-x))};
+	\addplot{2 * (1 - exp(12 * (1-x))) / ((1 - exp(12))*x*(1-x))};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\end{document}

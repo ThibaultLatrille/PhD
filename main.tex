@@ -1,13 +1,60 @@
-\documentclass[oneside, colophon, english]{phduio}
-\usepackage{phdstyle}
-\usepackage{amsfonts,amsmath,mathtools}
-\usepackage{bm}
-\usepackage{listings, enumerate}
-\usepackage{float}
-\usepackage{xcolor}
-\usepackage{pgfplots, pgf, tikz}
-\usetikzlibrary{arrows,automata}
-%\usepgfplotslibrary{colormaps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+% Modified by Maud Gautier (https://github.com/MaudGautier), 2019
+% Modified by Thibault Latrille (https://github.com/ThibaultLatrille), 2020
+%
+% This version Copyright (c) 2020 Thibault Latrille
+%
+% Broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+
+%%%%% CHOOSE PAGE LAYOUT
+%\documentclass[a4paper,openright,twoside]{thesis}
+\documentclass[a4paper,oneside,nobind]{thesis}
+% Caption
+\usepackage[labelfont=bf]{caption}
+\usepackage{subcaption}
+
+% Turn figure
+\usepackage{rotating}
+\usepackage{floatpag}
+
+% Center figures larger than textwidth
+\usepackage[export]{adjustbox}[2011/08/13]
+
+% To add blank lines
+\usepackage{parselines} 
+% To add a blank figure
+\usepackage{todonotes}
+
+% To keep old font size even if not the case in cover page
+\makeatletter
+\newcommand{\savefont}{\xdef\oldfontsize{\f@size}\xdef\oldblskip{\f@baselineskip}}
+\newcommand{\backtoppevfont}{\fontsize{\oldfontsize}{\oldblskip}\selectfont}
+\makeatother
+
+% spacing lines
+\usepackage{setspace}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+%%%%% SELECT YOUR DRAFT OPTIONS
+% Three options going on here; use in any combination.  But remember to turn the first two off before
+% generating a PDF to send to the printer!
+
+% This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
+% \fancyfoot[C]{\color{PURPLEDARKsection} \emph{DRAFT Printed on \today}}
+
+% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
+% paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
+% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+% \correctionstrue
+
+% Define colors
+\usepackage{xcolor, colortbl}
 \definecolor{RED}{HTML}{EB6231}
 \definecolor{YELLOW}{HTML}{E29D26}
 \definecolor{BLUE}{HTML}{5D80B4}
@@ -16,79 +63,279 @@
 \definecolor{PURPLE}{HTML}{BE1E2D}
 \definecolor{BROWN}{HTML}{A97C50}
 \definecolor{PINK}{HTML}{DA1C5C}
+\definecolor{PURPLEDARK}{cmyk}{0, 0.5, 0, 0.7}
+\definecolor{PURPLELIGHT}{cmyk}{0, 0.12, 0, 0.2}
+\definecolor{PURPLEGREY}{cmyk}{0, 0.5, 0, 0.55}
+\definecolor{GREYDARK}{cmyk}{0, 0, 0, 0.92}
+\definecolor{BLUELINK}{HTML}{0645AD}
+\definecolor{DARKBLUELINK}{HTML}{0B0080}
+\definecolor{LIGHTBLUELINK}{HTML}{3366BB}
+\definecolor{PURPLELINK}{HTML}{663366}
+
+
+%%%%% BIBLIOGRAPHY SETUP
+\usepackage{natbib} % add [numbers] if I want to count them
+\newcommand*{\bibtitle}{References}
+
+% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
+%\numberwithin{equation}{subsection}
+
+% refs and backref
+\usepackage{usebib}
+\usepackage{backref}
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+	linkcolor=GREYDARK,
+	citecolor=DARKBLUELINK,
+	urlcolor=BLUELINK
+} % Color citation links in purple
+\renewcommand*{\backrefsep}{,~}%
+\renewcommand*{\backreftwosep}{,~}% ', and~'
+\renewcommand*{\backreflastsep}{,~}% ' and~'
+
+% Deal with backreferences in bibliography
+\newcommand{\mapolicebackref}[1]{\hspace*{\fill} \mbox{\textit {\small #1}}}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 \mapolicebackref{Not cited}
+\or \mapolicebackref{Cited at page #2}
+    \else \mapolicebackref{Cited at pages #2}
+\fi
+}
+%\bibinput{references}
+% Misc
+\usepackage{amsfonts,amsmath,mathtools}
+\usepackage{bm}
+\usepackage{listings, enumerate, enumitem}
+\usepackage{pgfplots, pgf, tikz}
+\usetikzlibrary{arrows,automata,calc}
 \pgfplotsset{every axis/.append style={line width=1pt}}
 \pgfplotscreateplotcyclelist{colors}{RED\\YELLOW\\BLUE\\LIGHTGREEN\\GREEN\\}
-
-\usepackage[toc]{glossaries}
+\usepackage{titlesec}
+\usepackage[toc, acronym]{glossaries}
 \makeglossaries
 \include{notations}
+% make part like a chapter
+\titleclass{\part}{top} 
+\titleformat{\part}
+[display]
+{\centering\fontsize{36}{0}}
+{\color{GREYDARK} \bfseries \centering \fontsize{36}{0}{\partname} \thepart}
+{36pt}
+{\color{GREYDARK} \bfseries \centering \fontsize{36}{0}}[\titlepagedecoration]
 
-\renewcommand{\contentsname}{Table of contents}
-\author{Thibault Latrille}
-\title{}
-\department{}
-\affiliation{Université de Lyon \and ENS de Lyon}
+% Epigraphs
+\usepackage{epigraph}
+\renewcommand\epigraphflush{flushright}
+\renewcommand\epigraphsize{\normalsize}
+\setlength\epigraphwidth{0.7\textwidth}
 
-\includeonly
-{	
-	sections/frontpage,
-    sections/dedication,
-    sections/abstract,
-    sections/abstract_fr,
-    sections/acknowledgement,
-    sections/notations,
-    sections/preamble,
-    sections/papers,
-    sections/introduction,
-    sections/paperI,
-    sections/paperII,
-    sections/paperIII,
-    sections/discussion,
-    sections/conclusion,
-    sections/appendixA,
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+
+%%%%% PAGE DECORATION AND FORMATTING
+
+% Decorate title pages (for parts)
+\newcommand\titlepagedecoration{%
+\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+
+\coordinate (aux1) at ([yshift=-15pt]current page.north east);
+\coordinate (aux2) at ([yshift=-410pt]current page.north east);
+\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
+\coordinate (aux4) at ([yshift=-150pt]current page.north east);
+
+\begin{scope}[opacity=0.75,BLUE,line width=12pt,rounded corners=12pt]
+\draw
+  (aux1) -- coordinate (a)
+  ++(225:5) --
+  ++(-45:5.1) coordinate (b);
+\draw[shorten <= -10pt]
+  (aux3) --
+  (a) --
+  (aux1);
+\draw[opacity=0.5,YELLOW,shorten <= -10pt]
+  (b) --
+  ++(225:2.2) --
+  ++(-45:2.2);
+\end{scope}
+\draw[opacity=0.75,RED,line width=8pt,rounded corners=8pt,shorten <= -10pt]
+  (aux4) --
+  ++(225:0.8) --
+  ++(-45:0.8);
+\begin{scope}[opacity=0.75,LIGHTGREEN,line width=6pt,rounded corners=8pt]
+\draw[shorten <= -10pt]
+  (aux2) --
+  ++(225:3) coordinate[pos=0.45] (c) --
+  ++(-45:3.1);
+\draw
+  (aux2) --
+  (c) --
+  ++(135:2.5) --
+  ++(45:2.5) --
+  ++(-45:2.5) coordinate[pos=0.3] (d);   
+\draw 
+  (d) -- +(45:1);
+\end{scope}
+\end{tikzpicture}%
 }
+% Modify chapter color
+\colorlet{chaptergrey}{PURPLELIGHT}
+\renewcommand*\sectfont{\bfseries\color{PURPLEDARK}}
 
+% Format titles
+\titleformat{\section}
+{\color{GREYDARK}\normalfont\Large\bfseries}
+{\color{GREYDARK}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{GREYDARK}\normalfont\large\bfseries}
+{\color{GREYDARK}\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{GREYDARK}\normalfont\bfseries}
+{\color{GREYDARK}\thesubsubsection}{1em}{}
+
+% Titles for toc
+\usepackage{titletoc}
+\usepackage{minitoc}
+
+% If uncommented, then rules in tables are in purple
+% \makeatletter
+% \arrayrulecolor{PURPLEDARKsection}
+% \def\mtc@bottom@rule{%
+%   \ifx\mtc@rule\relax\relax\else
+%       \vskip -2.5ex
+%         \color{PURPLEDARKsection}\rule[2.4\p@]{\columnwidth}{.4\p@}\vspace*{2.6\p@}\fi}
+% \makeatother
+%
+\renewcommand*\rhead{\textcolor{RED}}
+% Change appendix title page (+ some modif in ociamthesis.cls to remove from toc + added in toc via adding doubleclearpage and phantomsection and line toc when calling \startappendices — see below)
+\makeatletter
+\renewcommand{\@chap@pppage}{}
+\makeatother
+
+%%%%% ADD YOUR PERSONAL MACROS
+% To make text superscripts shortcuts
+\renewcommand{\th}{\textsuperscript{th}}
+\newcommand{\nd}{\textsuperscript{nd}}
+\renewcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
+\include{sections/frontpage}
+%%%%% CHOOSE YOUR LINE SPACING HERE
+\setlength{\textbaselineskip}{1.2em}
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+\setlength{\frontmatterbaselineskip}{1.2em}
+% Leave this line alone; it gets things started for the real document.
+\setlength{\baselineskip}{\textbaselineskip}
 
-	\frontmatter        % Folios in Roman numerals, unnumbered chapters.
-	
-	\include{sections/frontpage}
-    \include{sections/dedication}
-    \include{sections/abstract}
-    \include{sections/abstract_fr}
-    \include{sections/acknowledgement}
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% The level that gets a number:
+\setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+\setcounter{tocdepth}{2}
 
-    \cleartorecto
-    \tableofcontents
-    \cleartorecto
-    \listoffigures      
-    \cleartorecto
-    \listoftables
-    \cleartorecto
-	\printglossaries
-	
-    \mainmatter         % Folios in Arabic numerals, numbered chapters.
+%%%%% DEDICATION
+\begin{dedication}
+	\thispagestyle{empty}
+	\begin{center}
+		\includegraphics[width=\textwidth, page=1] {figures/preface.pdf}
+	\end{center} 
+\end{dedication}
 
-	\include{sections/preamble}
-    \include{sections/introduction}
+%%%% EPIGRAPH
+\begin{alwayssingle}
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\makebox[\textwidth][r] {
+		\begin{minipage}[t]{8cm}
+			\emph{}\\
+			\hfill \slshape{L'humanité est constamment aux prises avec deux processus contradictoires dont l'un tend à instaurer l'unification, tandis que l'autre vise à maintenir ou à rétablir la diversification.}\\
+			\hfill \qauthor{Claude Lévi-Strauss.}
+		\end{minipage}
+	}
 
-    %\paper              % "Chapter" is renamed "Paper"
-    %\paperpage          % Similar to \part*{Papers}, but appears in TOC
-    \numberofpapers{3}  % Specify size of thumb indices
+	\vspace*{\fill}
+	\vspace*{\fill} 
+\end{alwayssingle}
 
-    \include{sections/paperI}
-    \include{sections/paperII}
-    \include{sections/paperIII}
 
-    \include{sections/discussion}
-    \include{sections/conclusion}
-	
-    % \appendix           % "Chapter" is renamed "Appendix"
-    % \appendixpage       % Similar to \part*{Appendices}, but appears in TOC
-    % \include{sections/appendixA}
-    
-    \backmatter         % Folios in Arabic numerals, unnumbered chapters.
-   	\bibliographystyle{natbib}
-	\bibliography{references}
+% %%%%% ABSTRACT SEPARATE
+% % This is used to create the separate, one-page abstract that you are required to hand into the Exam
+% % Schools.  You can comment it out to generate a PDF for printing or whatnot.
+% \begin{abstractseparate}
+%     \input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
+% \end{abstractseparate}
+%
+% \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
+\begin{alwayssingle}
+\begingroup
+	\pagenumbering{gobble}% Turn off page numbering for abstract and acknowlegements
+\input{sections/abstract}
+\endgroup
+\end{alwayssingle}
+% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
+% keeping with most typesetting conventions.
 
+%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+\input{sections/acknowledgement}
+
+\fancyhf{} % clear the header and footers
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+\fancyhead[LO]{\emph{\leftmark}} 
+\fancyhead[RE]{\emph{\rightmark}} 
+
+\begin{romanpages}
+%%%%% MINI TABLES
+\dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+\flushbottom
+% This is where the whole-document ToC appears:
+\tableofcontents
+\listoffigures
+\mtcaddchapter
+% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
+\listoftables
+\mtcaddchapter
+%%%%% LIST OF ABBREVIATIONS
+\end{romanpages}
+\include{sections/glossary}
+%%%% CHAPTERS
+\pagenumbering{arabic} 
+\flushbottom
+\include{sections/preamble}
+
+\part{Introduction}
+\label{part:intro}
+\include{sections/intro}
+\include{sections/intro_selection}
+\include{sections/intro_inference}
+%\part{Objectives of the thesis}
+%\label{part:objectives}
+%\include{sections/paperI}
+\part{Results}
+\label{part:results}
+\include{sections/mut-bias}
+\part{Discussion}
+\label{part:discussion}
+\include{sections/discussion}
+\include{sections/conclusion}
+
+%% APPENDICES %% 
+\cleardoublepage\phantomsection
+\startappendices
+\part*{Appendices}
+%%%%% REFERENCES
+
+\bibliographystyle{natbib}
+\bibliography{biblio/references, biblio/introduction, biblio/adaptapop}
 \end{document}
+

@@ -1,22 +1,54 @@
-\thispagestyle{empty}
-\vspace*{\stretch{1}}
-
-
 \begin{center}
-	\LARGE \textbf{Modeling the articulation of adaptive and neutral mechanisms in the evolution of protein coding DNA sequences}
+	\LARGE
+	\textbf{Modeling the articulation of adaptive and neutral mechanisms in the evolution of protein coding DNA sequences}
 \end{center}
+\endgroup
+\begingroup
+\setlength{\parskip}{0.5em}
 
 \section*{Abstract}
-Selection in protein-coding sequences can be detected based on multiple sequence alignments using phylogenetic codon models.
-Mechanistic approaches, grounded on population-genetics first principles, explicitly formalize the interplay between mutation, selection and random drift, and return an estimate of the amino-acid fitness landscape.
-However, these recently developed models rely on the assumption of constant effective population size.
-We propose an extended mutation-selection model reconstructing site-dependent fitness landscape, long-term trends in effective population size and mutation rate along the phylogeny, from an alignment of DNA coding sequences.
-Independently, ancestral life-history traits are reconstructed along the phylogeny from observation in present-day species.
-Together, we estimate the correlation between reconstructed life-history traits, mutation rate and effective population size, intrinsically including phylogenetic inertia.
-Our framework has been tested against simulated data, and in empirical data in mammals and primates.
-Finally, our work also points to important theoretical questions about how coding sequences respond to changes in effective population size and to fluctuating selection.\\
+Molecular evolution aims to characterize the mechanisms at work in the evolution of sequences.
+These evolutionary mechanisms, which can be adaptive or neutral, simultaneously shape the coding sequences for proteins.
+Understanding the respective roles of adaptation and the other evolutionary forces at work in the evolution of the proteome, characterizing the adaptation acting on individual proteins and identifying the variation of these forces are major challenges and bear many applications in biology.
+This dissertation seek to 
 
 \textbf{keywords: }{Phylogenetic, codon models, mutation-selection models, population genetic, population size, mutation rate, life history traits.}
 
-\vspace*{\stretch{3}}
 \newpage
+\section*{Résumé en français}
+
+La sélection dans des séquences codant pour des protéines peut être détectée sur la base d'alignements de séquences multiples à l'aide de modèles de codons phylogénétiques.
+Les approches mécanistes, fondées sur les premiers principes de la génétique des populations, officialisent explicitement l'interaction entre la mutation, la sélection et la dérive aléatoire, et renvoient une estimation du paysage de la condition physique des acides aminés.
+Cependant, ces modèles récemment développés reposent sur l'hypothèse d'une taille de population effective constante.
+Nous proposons un modèle de sélection de mutation étendu reconstruisant le paysage de remise en forme dépendant du site, les tendances à long terme de la taille effective de la population et le taux de mutation le long de la phylogénie, à partir d'un alignement des séquences codantes de l'ADN.
+Indépendamment, les traits ancestraux du cycle biologique sont reconstruits le long de la phylogénie à partir de l'observation chez les espèces actuelles.
+Ensemble, nous estimons la corrélation entre les traits d'histoire de vie reconstruits, le taux de mutation et la taille effective de la population, y compris intrinsèquement l'inertie phylogénétique.
+Notre cadre a été testé par rapport à des données simulées et à des données empiriques chez les mammifères et les primates.
+Enfin, nos travaux soulèvent également d'importantes questions théoriques sur la façon dont les séquences de codage répondent aux changements de la taille effective de la population et à la sélection fluctuante.
+
+\section*{Résumé étendu en français}
+
+La phylogénie moléculaire cherche à inférer l’histoire évolutive du vivant à partir des séquences génétiques actuelles.
+L'évolution moléculaire, quant à elle, vise à caractériser les mécanismes à l’œuvre dans l'évolution des séquences.
+Ces mécanismes évolutifs, pouvant être adaptatifs ou neutres, façonnent simultanément les séquences codantes pour protéines.
+Comprendre les rôles respectifs de l'adaptation et des autres forces évolutives à l’œuvre dans l'évolution du protéome, caractériser l'adaptation agissant sur les protéines individuelles et identifier les gènes sous sélection positive sont des enjeux majeurs et porteurs de nombreuses applications en biologie. \\
+
+Les méthodes phylogénétiques actuelles, en se basant sur des données d'alignement entre espèces, comme les modèles à codons (Goldman \& Yang, 1994) permettent d'estimer l'intensité de la sélection en se basant sur le ratio des taux de substitutions synonymes et non-synonymes.
+Par ailleurs les données de polymorphisme au sein d'une population permettent aussi d'estimer l'intensité de la sélection (McDonald \& Kreitman, 1991).
+Cependant, sous leurs formes actuelles, ces méthodes présentent de nombreuses limitations.
+En particulier, elles n'articulent pas correctement les différentes forces évolutives en jeu : pression mutationnnelle, sélection, dérive génétique et enfin la conversion génique biaisée vers GC (gBGC).\\
+
+La gBGC est un biais de réparation de l'ADN conduisant à l'enrichissement des séquences en paires G-C au niveau des points de recombinaison (Duret et Galtier, 2009).
+La gBGC résulte en un biais de ségrégation et de fixation en faveur des bases G et C, pouvant mimer la sélection positive.
+Pour cette raison, la gBGC représente un effet confondant majeur dans la caractérisation des effets sélectifs agissant sur les protéines.
+Il s'agit d'une force encore mal connue, mais dont l’impact semble être significatif dans de nombreuses espèces (Ratnakumar\textit{ et al}, 2010). \\
+
+Une nouvelle génération de modèles à codons ont été proposés ces dernière années et sont développés entre autre dans le laboratoire d'accueil (Nicolas Lartillot, en collaboration avec Nicolas Rodrigue).
+Ces modèles, dits mécanistes, sont potentiellement plus sensibles pour la détection de l'adaptation.
+Par ailleurs, ils permettent une articulation plus fine et plus logique des forces évolutives en jeu, et de ce fait, sont susceptible de mieux gérer les effets confondants mentionnés plus haut.
+Toutefois, sous leur forme actuelle, ces modèles ne sont pas encore suffisamment développés.
+En particulier, ils n'incluent pas la gBGC.
+De plus, ils s’appuient sur des modèles trop simples et probablement inadéquats des paysages sélectifs agissant sur les protéines en faisant l'hypothèse d’indépendance des différents sites de la séquence.
+Le projet de cette thèse vise à examiner les faiblesses des modèles mécanistes actuels, et cherche à combler leurs lacunes théoriques selon deux axes en particuliers.
+Le premier axe de la thèse consiste à inclure la force de gBGC dans ces modèles mécanistes.
+Le second axe de la thèse consiste en l'étude plus fine de l’hypothèse d’indépendance des différents sites de la séquence, hypothèse faite par les modèles à codons.
