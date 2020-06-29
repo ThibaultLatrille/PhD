@@ -15,16 +15,16 @@
 %%%%% CHOOSE PAGE LAYOUT
 %\documentclass[a4paper,openright,twoside]{thesis}
 \documentclass[a4paper,oneside,nobind]{thesis}
+
 % Caption
-\usepackage[labelfont=bf]{caption}
-\usepackage{subcaption}
-
-% Turn figure
-\usepackage{rotating}
-\usepackage{floatpag}
-
-% Center figures larger than textwidth
-\usepackage[export]{adjustbox}[2011/08/13]
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage{float}
+\usepackage{tabularx}
+\makeatletter
+\newcommand\cellwidth{\TX@col@width}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+%\usepackage{floatpag}
 
 % To add blank lines
 \usepackage{parselines} 
@@ -38,6 +38,9 @@
 \makeatother
 
 % spacing lines
+\usepackage{hhline}
+\usepackage{multirow}
+\setlength{\arrayrulewidth}{1.4pt}
 \usepackage{setspace}
 \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 
@@ -72,10 +75,17 @@
 \definecolor{LIGHTBLUELINK}{HTML}{3366BB}
 \definecolor{PURPLELINK}{HTML}{663366}
 
+\definecolor{Nonpolar}{HTML}{E29D26}
+\definecolor{Acidic}{HTML}{EB6231}
+\definecolor{Basic}{HTML}{5D80B4}
+\definecolor{Polar}{HTML}{6ABD9B}
+\definecolor{Stop}{HTML}{6ABD9B}
+
 
 %%%%% BIBLIOGRAPHY SETUP
 \usepackage{natbib} % add [numbers] if I want to count them
 \newcommand*{\bibtitle}{References}
+\pdfinclusioncopyfonts=1
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
 %\numberwithin{equation}{subsection}
@@ -136,6 +146,7 @@
 
 % Decorate title pages (for parts)
 \newcommand\titlepagedecoration{%
+\thispagestyle{empty}
 \begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
 
 \coordinate (aux1) at ([yshift=-15pt]current page.north east);
@@ -281,16 +292,6 @@
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \input{sections/acknowledgement}
 
-\fancyhf{} % clear the header and footers
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
-\renewcommand{\headrulewidth}{0pt}
-\cfoot{\thepage}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
-\fancyhead[LO]{\emph{\leftmark}} 
-\fancyhead[RE]{\emph{\rightmark}} 
-
 \begin{romanpages}
 %%%%% MINI TABLES
 \dominitoc % include a mini table of contents
@@ -300,27 +301,31 @@
 \flushbottom
 % This is where the whole-document ToC appears:
 \tableofcontents
-\listoffigures
-\mtcaddchapter
-% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
-\listoftables
-\mtcaddchapter
-%%%%% LIST OF ABBREVIATIONS
-\end{romanpages}
 \include{sections/glossary}
+\end{romanpages}
+
 %%%% CHAPTERS
 \pagenumbering{arabic} 
 \flushbottom
 \include{sections/preamble}
+
+\fancyhf{} % clear the header and footers
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\headrulewidth}{1pt}
+\cfoot{\thepage}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+\fancyhead[LO]{\emph{\leftmark}} 
+\fancyhead[RE]{\emph{\rightmark}} 
 
 \part{Introduction}
 \label{part:intro}
 \include{sections/intro}
 \include{sections/intro_selection}
 \include{sections/intro_inference}
-%\part{Objectives of the thesis}
-%\label{part:objectives}
-%\include{sections/paperI}
+\include{sections/intro_goal}
+
 \part{Results}
 \label{part:results}
 \include{sections/mut-bias}
@@ -336,6 +341,6 @@
 %%%%% REFERENCES
 
 \bibliographystyle{natbib}
-\bibliography{biblio/references, biblio/introduction, biblio/adaptapop}
+\bibliography{biblio/references, biblio/introduction, biblio/adaptapop, biblio/Backup-Aevol}
 \end{document}
 

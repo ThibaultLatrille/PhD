@@ -149,9 +149,9 @@
 %This is to help prevent too many figures on their own pages.  I got it from:
 % http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#captfont
 
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\textfraction}{0.1}
-\renewcommand{\floatpagefraction}{0.75}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\textfraction}{0.1}
+%\renewcommand{\floatpagefraction}{0.75}
 
 
 % JEM: VERSE, QUOTATION, and QUOTE must be single-spaced.
@@ -181,7 +181,7 @@
 	% Used for inserting the Bibliography, List of Figures, indices, etc into the table of contents.
 
 % JEM: Allow flexible spacing after figures, to reduce other stretching
-\setlength{\textfloatsep}{20pt plus15pt minus4pt}
+\setlength{\textfloatsep}{0pt plus0pt minus0pt}
 
 % JEM: Fix paragraph spacing within quotes for multi-par quotes
 \renewenvironment{savequote}[1][10cm]{%
@@ -241,7 +241,10 @@
 
 
 % JEM: adjust start-of-chapter spacing
-\renewcommand{\chapterheadstartvskip}{\vspace*{40pt}}
+\renewcommand{\chapterheadstartvskip}{
+	\thispagestyle{empty}
+	\vspace*{40pt}
+}
 \renewcommand{\chapterheadendvskip}{\vspace{30pt}}
 
 

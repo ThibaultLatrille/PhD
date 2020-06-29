@@ -13,7 +13,7 @@
 \newcommand{\indice}{l}
 \newcommand{\indiceexp}{^{(\indice)}}
 % Time, effective population size and mutation rate.
-\newcommand{\Ne}{N}
+\newcommand{\Ne}{N_{\textrm{e}}}
 % \acrshort{DNA}
 \newcommand{\SetNuc}{\Omega_{\mathrm{N}}}
 \newcommand{\SetWeak}{\Omega_{\mathrm{W}}}
@@ -29,13 +29,14 @@
 \newcommand{\ci}{{i}}
 \newcommand{\cj}{{j}}
 \newcommand{\itoj}{\ci, \cj}
+\newcommand{\jtoi}{\cj, \ci}
 \newcommand{\nucitoj}{\mathcal{M}(\itoj)}
 \newcommand{\submatrix}{Q}
-\newcommand{\Submatrix}{\bm{\submatrix}_{61\times61}}
+\newcommand{\Submatrix}{\bm{\submatrix}}
 \newcommand{\subequi}{\pi}
-\newcommand{\Subequi}{\bm{\subequi}_{61\times1}}
+\newcommand{\Subequi}{\bm{\subequi}}
 \newcommand{\probmatrix}{P}
-\newcommand{\Probmatrix}{\bm{\probmatrix}_{61\times61}}
+\newcommand{\Probmatrix}{\bm{\probmatrix}}
 % Amino-acids
 \newcommand{\SetAa}{\Omega_{\mathrm{A}}}
 \newcommand{\Neighbor}{\mathcal{V}}
@@ -74,75 +75,78 @@
 \newcommand{\scaledselcoef}{{\Delta \scaledfit}}
 % Tree
 \newcommand{\Tree}{\mathcal{T}}
-\newcommand{\node}{\text{v}}
+\newcommand{\node}{\text{n}}
 \newcommand{\taxon}{\node}
 \newcommand{\Settaxon}{1 \leq \taxon \leq \Ntaxa}
 \newcommand{\Ntaxa}{P}
 \newcommand{\treeroot}{0}
 \newcommand{\treerootexp}{^{(\treeroot)}}
-\newcommand{\branch}{\text{w}}
+\newcommand{\branch}{\text{b}}
 \newcommand{\branchexp}{^{(\branch)}}
 \newcommand{\Nbranch}{2 \Ntaxa - 2}
-\newcommand{\Setbranch}{1 \leq \branch \leq 2 \Ntaxa - 2}
-\newcommand{\up}{\branch^{\uparrow}}
-\newcommand{\down}{\node}
+\newcommand{\Setbranch}{\branch \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\nodeUp}{\branch^{\uparrow}}
+\newcommand{\nodeDown}{\branch^{\downarrow}}
 \newcommand{\nodeexp}{^{(\node)}}
 \newcommand{\Nnode}{2 \Ntaxa - 2}
 \newcommand{\Ninternal}{\Ntaxa - 2}
-\newcommand{\Setnode}{\treeroot \leq \node \leq 2 \Ntaxa - 2}
-\newcommand{\Setnodenoroot}{1 \leq \node \leq 2 \Ntaxa - 2}
-\newcommand{\Setinternal}{\Ntaxa + 1 \leq \node \leq 2 \Ntaxa - 2}
+\newcommand{\Setnode}{\node \in \{\treeroot, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setnodenoroot}{\node \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setinternal}{\node \in \{\Ntaxa + 1, \hdots, 2 \Ntaxa - 2\}}
 \newcommand{\branchnode}{\mathcal{W}}
+\newcommand{\uniform}{0, 1}
 \newcommand{\age}{T}
 \newcommand{\branchtime}{\Delta \age}
 \newcommand{\branchlength}{L}
 % Alignment
-\newcommand{\data}{{\color{PINK}{D}}}
+\newcommand{\data}{D}
 \newcommand{\Data}{\bm{\data}}
 \newcommand{\site}{\text{s}}
 \newcommand{\siteexp}{^{(\site)}}
-\newcommand{\Nsite}{\text{N}_{\site}}
-\newcommand{\Setsite}{1 \leq \site \leq \Nsite}
+\newcommand{\Nsite}{S}
+\newcommand{\Setsite}{\site \in \{1, \hdots, \Nsite\} }
 \newcommand{\branchsiteexp}{^{(\branch, \site)}}
 \newcommand{\treerootsiteexp}{^{(\treeroot, \site)}}
 \newcommand{\taxonsiteexp}{^{(\taxon, \site)}}
 % Categories
 \newcommand{\cat}{\text{k}}
-\newcommand{\catVar}{\mathcal{K}}
 \newcommand{\catexp}{^{(\cat)}}
-\newcommand{\Ncat}{\text{N}_{\cat}}
-\newcommand{\Setcat}{1 \leq \cat \leq \Ncat}
-\newcommand{\catsite}{\catVar^{\left(\site\right)}}
+\newcommand{\Ncat}{\text{K}}
+\newcommand{\catInterval}{\{1, \hdots, \Ncat\}}
+\newcommand{\Setcat}{\cat \in \catInterval }
 \newcommand{\branchcatexp}{^{(\branch, \cat)}}
 \newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
-% Polymorphism
-\newcommand{\copies}{\text{n}}
-\newcommand{\samples}{\text{N}_{\copies}}
-% Random variables
-\newcommand{\pruning}{\psi}
-\newcommand{\uniform}{0, 1}
-\newcommand{\Identitymatrix}{\bm{I}_{2\times2}}
-\newcommand{\brownian}{\bm{B}_{2\times1}}
-\newcommand{\contrast}{\bm{C}_{2\times1}}
-\newcommand{\Covariancematrix}{\bm{\varSigma}_{2\times2}}
+\newcommand{\base}{G}
+\newcommand{\Base}{\bm{\base}}
+\newcommand{\baseconc}{\alpha}
+\newcommand{\Basecenter}{\bm{\gamma}}
+\newcommand{\catVar}{\kappa}
+\newcommand{\catsite}{\catVar\left(\site\right)}
+\newcommand{\catmultivar}{m}
+\newcommand{\catMultiVar}{\bm{\catmultivar}}
+\newcommand{\stickbreaking}{\theta}
+\newcommand{\StickBreaking}{\bm{\stickbreaking}}
+\newcommand{\stick}{\phi}
+\newcommand{\stickbreakinghyper}{\beta}
+% Traits
+\newcommand{\traiti}{a}
+\newcommand{\traitj}{b}
+\newcommand{\Ntrait}{L}
+\newcommand{\traitInterval}{\{1, \hdots, \Ntrait\}}
+\newcommand{\lhtInterval}{\{3, \hdots, \Ntrait\}}
+\newcommand{\Settrait}{\traiti \in \traitInterval}
+\newcommand{\contrast}{\bm{C}}
+\newcommand{\Covariancematrix}{\Sigma}
+\newcommand{\CovarianceMatrix}{\bm{\Covariancematrix}}
+\newcommand{\Precisionmatrix}{\Omega}
+\newcommand{\PrecisionMatrix}{\bm{\Precisionmatrix}}
+\newcommand{\Identitymatrix}{\bm{I}}
+\newcommand{\brownian}{B}
+\newcommand{\Brownian}{\bm{\brownian}}
 \newcommand{\covariancedf}{q}
 \newcommand{\covariancekappa}{\kappa}
-\newcommand{\Scattermatrix}{\bm{A}_{2\times2}}
-\newcommand{\Multivariate}{\bm{Z}_{2\times1}}
-\newcommand{\base}{\varPi}
-\newcommand{\Base}{\bm{\base}_{20\times1}}
-\newcommand{\baseconc}{\alpha}
-\newcommand{\Basecenter}{\bm{\gamma}_{20\times1}}
-\newcommand{\stickbreaking}{\varOmega}
-\newcommand{\StickBreaking}{\bm{\stickbreaking}_{\Ncat\times1}}
-\newcommand{\stick}{\varPhi}
-\newcommand{\stickbreakinghyper}{\beta}
-% Mapping
-\newcommand{\history}{\mathcal{H}}
-\newcommand{\sn}{{\color{BLUE}{S}}}
-\newcommand{\s}{{\color{LIGHTGREEN}{S_0^{k}}}}
-\newcommand{\si}{{\color{PINK}{S_1^{k}}}}
-\newcommand{\sii}{{\color{PINK}{S_2^{k}}}}
-\newcommand{\siii}{{\color{PINK}{S_3^{k}}}}
-\newcommand{\siiii}{{\color{PINK}{S_4^{k}}}}
-\newcommand{\siiiii}{{\color{LIGHTGREEN}{S_5^{k}}}}
+\newcommand{\Scattermatrix}{\bm{A}}
+% Random variables
+\newcommand{\pruning}{\psi}
+\newcommand{\Multivariate}{\bm{Z}}
+\newcommand{\subhistory}{\mathcal{H}}

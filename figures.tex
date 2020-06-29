@@ -1,4 +1,5 @@
-\documentclass{beamer}
+\documentclass[aspectratio=32]{beamer}
+\geometry{margin=0pt,right=40pt, nohead, nofoot}
 
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
 \usepackage{lmodern}
@@ -19,13 +20,140 @@
 	
 \begin{frame}
 	\centering
+	\begin{tikzpicture}[
+	declare function={
+		f(\x,\k)= \x*(1+\k*(1+\x))/(1 + 2*\x*\k);
+	},]
+	\begin{axis}[
+	width=\textwidth,
+	height=0.75\textwidth,
+	ylabel={$p'$},
+	xlabel={$p$},
+	domain=0:1,
+	ymin=0.0, ymax=1.0,
+	cycle list name=colors,
+	samples=200,
+	legend entries={$s=0.2$, $ s=0.1$, $s=0$, $s=-0.1$, $s=-0.2$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{f(\x, 0.2)};
+	\addplot{f(\x, 0.1)};
+	\addplot{f(\x, 0)};
+	\addplot{f(\x, -0.1)};
+	\addplot{f(\x, -0.2)};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\centering
 	\begin{tikzpicture}
 	\begin{axis}[
-	ylabel={$p(\scaledselcoef \ | \ \Ne)$},
-	xlabel={$\scaledselcoef$},
+	width=\textwidth,
+	height=0.75\textwidth,
+	ylabel={$R_{\mathrm{fix}}(S)$},
+	xlabel={Scaled selection coefficient ($S=4 \Ne s$)},
+	cycle list name=colors,
+	domain=-20:20,
+	samples=200,
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot[line width=1.5pt, black]{ x / (1 - exp(- x))};
+	\addplot[black, dashed, line width=1.0pt]{1.0};
+	\addplot[name path=A, line width=0pt] coordinates {(-20, 0) (-20, 20)};
+	\addplot[name path=B, dashed, YELLOW, line width=0.5pt] coordinates {(-4, 0) (-4, 20)};
+	\addplot[black, dashed, line width=1.0pt] coordinates {(0, 0) (0, 20)};
+	\addplot[name path=C, dashed, YELLOW, line width=0.5pt] coordinates {(4, 0) (4, 20)};
+	\addplot[name path=D, line width=0pt] coordinates {(20, 0) (20, 20)};
+	\addplot[fill=RED, opacity=0.2] fill between[ of = A and B];
+	\addplot[fill=YELLOW, opacity=0.2] fill between[ of = B and C];
+	\addplot[fill=GREEN, opacity=0.2] fill between[ of = C and D];
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\begin{tikzpicture}[
+	declare function={
+		f(\x,\k)= (1 - exp(-\k * \x)) / (1 - exp(- \k));
+	},]
+	\begin{axis}[
+	width=\textwidth,
+	height=0.75\textwidth,
+	ylabel={$P_{\mathrm{fix}}(s, \Ne, p)$},
+	xlabel={Initial population frequency ($p$)},
+	domain=0:1,
+	cycle list name=colors,
+	samples=200,
+	legend entries={$S=12$, $ S=4$, $S=0$, $S=-4$, $S=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{f(\x, 12)};
+	\addplot{f(\x, 4)};
+	\addplot{x};
+	\addplot{f(\x, -4)};
+	\addplot{f(\x, -12)};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+	\centering
+	\begin{tikzpicture}[
+	declare function={
+		f(\x,\k)= 2 * (1 - exp(-\k * (1-\x))) / ((1 - exp(- \k))*\x*(1-\x));
+	},]
+	\begin{axis}[
+	width=\textwidth,
+	height=0.75\textwidth,
+	ylabel={$g(x, S)$},
+	xlabel={frequency of the derived allele ($x$)},
+	domain=0.05:0.95,
+	cycle list name=colors,
+	samples=200,
+	legend entries={$S=12$, $ S=4$, $S=0$, $S=-4$, $S=-12$},
+	legend cell align=left,
+	minor tick num=2,
+	axis x line=bottom,
+	axis y line=left,
+	legend style={at={(0.1,0.9)},anchor=north west}
+	]
+	\addplot{f(\x, 12)};
+	\addplot{f(\x, 4)};
+	\addplot{2 / x};
+	\addplot{f(\x, -4)};
+	\addplot{f(\x, -12)};
+	\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+
+
+\begin{frame}
+\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=\textwidth,
+	height=0.75\textwidth,
+	ylabel={$p(S)$},
+	xlabel={$S$},
 	cycle list name=colors,
 	domain=-5:5,
-	samples=100,
+	samples=200,
 	legend entries={high $\Ne$, low $\Ne$},
 	legend cell align=left,
 	minor tick num=2,
@@ -35,81 +163,6 @@
 	]
 	\addplot{ exp(- x*x / 2)};
 	\addplot{ exp(- x*x / 8) / 2 };
-	\end{axis}
-	\end{tikzpicture}
-\end{frame}
-
-\begin{frame}
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	ylabel={$\submatrix_{\itoj}$},
-	xlabel={Scaled selection coefficient ($\scaledfitj - \scaledfiti$)},
-	cycle list name=colors,
-	domain=-5:5,
-	samples=100,
-	legend entries={$\mu \mutmatrix_{\nucitoj}=2.0$, $\mu \mutmatrix_{\nucitoj}=1.0$, $\mu \mutmatrix_{\nucitoj}=0.5$},
-	legend cell align=left,
-	minor tick num=2,
-	axis x line=bottom,
-	axis y line=left,
-	legend style={at={(0.1,0.9)},anchor=north west}
-	]
-	\addplot{ 2.0 * x / (1 - exp(- x))};
-	\addplot{ x / (1 - exp(- x))};
-	\addplot{ 0.5 * x / (1 - exp(- x))};
-	\addplot[black]{1.0};
-	\end{axis}
-	\end{tikzpicture}
-\end{frame}
-
-\begin{frame}
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	ylabel={$p_{\mathrm{fix}}(p, \scaledselcoef )$},
-	xlabel={Initial population frequency ($p$)},
-	domain=0:1,
-	cycle list name=colors,
-	samples=100,
-	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
-	legend cell align=left,
-	minor tick num=2,
-	axis x line=bottom,
-	axis y line=left,
-	legend style={at={(0.1,0.9)},anchor=north west}
-	]
-	\addplot{(1 - exp(-12 * x)) / (1 - exp(- 12))};
-	\addplot{(1 - exp(-4 * x)) / (1 - exp(- 4))};
-	\addplot{x};
-	\addplot{(1 - exp(4 * x)) / (1 - exp(4))};
-	\addplot{(1 - exp(12 * x)) / (1 - exp(12))};
-	\end{axis}
-	\end{tikzpicture}
-\end{frame}
-
-
-\begin{frame}
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	ylabel={$g(x, \scaledselcoef)$},
-	xlabel={frequency of the derived allele ($x$)},
-	domain=0.05:0.95,
-	cycle list name=colors,
-	samples=100,
-	legend entries={$\scaledselcoef=12$, $ \scaledselcoef=4$, $\scaledselcoef=0$, $\scaledselcoef=-4$, $\scaledselcoef=-12$},
-	legend cell align=left,
-	minor tick num=2,
-	axis x line=bottom,
-	axis y line=left,
-	legend style={at={(0.1,0.9)},anchor=north west}
-	]
-	\addplot{2 * (1 - exp(-12 * (1-x))) / ((1 - exp(-12))*x*(1-x))};
-	\addplot{2 * (1 - exp(-4 * (1-x))) / ((1 - exp(-4))*x*(1-x))};
-	\addplot{2 / x};
-	\addplot{2 * (1 - exp(4 * (1-x))) / ((1 - exp(4))*x*(1-x))};
-	\addplot{2 * (1 - exp(12 * (1-x))) / ((1 - exp(12))*x*(1-x))};
 	\end{axis}
 	\end{tikzpicture}
 \end{frame}
