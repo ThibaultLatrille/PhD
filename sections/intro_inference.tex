@@ -2,7 +2,7 @@
 \minitoc
 \label{sec:phylo_bayes}
 
-\section{Probability of the data}
+\section{Likelihood}
 
 Evolutionary biologists commonly rely on models of sequence change that assume changes at one sequence position have no impact on whether other positions will change. The \gls{likelihood} of the nucleotides or amino acids in an individual column of a multiple sequence alignment can be determined with the pruning algorithm of Felsenstein. This assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns. This independence assumption is simplistic, throwing away biological information, and can be shown statistically to be problematic, but permits computationally convenient likelihood-based inference.
 
@@ -23,6 +23,18 @@ The probability of transition between codons for a given branch $\branch$ and si
 \Probmatrix\branchsiteexp = \e^{\branchlength\branchexp \Submatrix\branchsiteexp}
 \end{equation}
 which are the matrices necessary to compute the \gls{likelihood} of the data ($D$) given the parameters of the model using the pruning algorithm.
+
+\subsection{Equilibrium frequencies}
+
+Verify on Wikipedia
+
+\begin{equation}
+\pi\branchsiteexp = \Submatrix\branchsiteexp \pi\branchsiteexp
+\end{equation}
+
+\begin{equation}
+\pi\branchsiteexp = \Probmatrix\branchsiteexp 
+\end{equation}
 
 \subsection{Probability of transitions for a tree}
 
@@ -48,7 +60,7 @@ It will take the example of a illustrative tree given in figure \ref{fig:tree}.
 		(5) edge [] node [above] {$\branchlength^{(4)}$} (4);
 		\end{tikzpicture}
 	\end{center}
-	\caption{Directed acyclic graph of dependencies between variables}{Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black. Dotted {\color{BLUE}{blue}} line denotes a drawing from a random distribution, and black solid lines denote a function.}
+	\caption[Directed acyclic graph of Bayesian network]{Directed acyclic graph of dependencies between variables. Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black. Dotted {\color{BLUE}{blue}} line denotes a drawing from a random distribution, and black solid lines denote a function.}
 	\label{fig:tree}%
 \end{figure}
 

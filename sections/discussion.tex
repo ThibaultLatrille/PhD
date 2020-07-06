@@ -110,38 +110,59 @@ From a modeling and inference perspective, accounting for epistasis is challengi
 
 
 \section{Reproducible science}
-I believe analytical models, computational simulations and inference models are complementary, but more importantly they are necessary to each others. 
+I argue that analytical models, computational simulations and inference models are complementary, but more importantly they are necessary to each others. 
 Theoretical modeling allow to understand the principles, simulations allow to verify the soundness.
 Inference allow to extract and test the theoretical results using empirical data.
 Simulations have a dual role, testing the robustness of both inference procedures and theoretical results, outside of their comfort zone and assumptions.
-However, this assume we are confident enough to write reproducible computations, as such the next section is dedicated to my experience and take away.
+However, this assume we are confident enough to write reproducible computations, as such the next section is dedicated to my personal experience and take away.
 
 \subsection{Reproducible computations}
 First, I stand firmly on the ground that data, codes and scripts should be rendered open-access of any published and peer reviewed paper.
-Practically, the availability of the data and source code should simply be enforced upon submission to journal, which is currently not the case for many, even in bio-informatics and genomics fields.
-This strong stance is not as to make scientist publish less, though it is a positive side-effect such as to be able to keep up with the literature.
-On the contrary, is to avoid the bloating of what is called a technical debt, or research debt.
+Practically, the availability of the data and source code should simply be enforced upon submission to journal, which is currently not the case for all journals, even in bio-informatics and genomics fields.
+It is true that such enforcement bears the consequence to weight more burden on scientists upon publishing.
+However, it avoids the bloating of technical debt, or research debt where we build on the ground of a dangerous and possibly shaky basement.
 It encourages peer collaboration, both helping the team or person whom made the code available, and the community as a whole.
-A straightforward way is to provide a git repository with the advantage that collaboration is facilitated trough web hosted repository such as GitLab or GitHub.
+A straightforward way is to provide a \textit{git} versioned repository, with the advantage that collaboration is facilitated trough web hosted repository such as GitLab (hosted by institutions) or GitHub (hosted by Microsoft).
 
-Test reproducing the results should also be made available, many tools are available to this aim \citet{Wilson2014,Darriba2018}.
-When only python code is necessary for the reproductibility, anaconda/conda provides a straightforward environment to configure the necessary libraries with their versions. 
-Jupyter notebooks also provide a 
-For more complex environment, requiring compiling source code a more general environment is either a Docker or Singularity for example, but any containers implementing system-level virtualization is very helpful.
-These tools are emerging in the community.
+Nonetheless, code availability is a necessary condition, but not the sole requirement of reproducible research.
+Specific instructions to reproduce the results should also be made available, where many tools are available to this aim \citet{Wilson2014,Darriba2018}.
+The first step necessary to reproduce a code is to have the required environment, meaning the necessary libraries and dependencies of the code and scripts.
+For script and code written in Python, the package manager anaconda (or conda) provides a straightforward environment to configure the necessary libraries with their versions. 
+More complex environment requiring code compilation or system-level packages can leverage containerization technology such as Docker or Singularity for example, but any other containers implementing system-level virtualization is very helpful to provide the necessary libraries.
+Once the environment is specified, the documentation can be made available as a README with the necessary instructions.
+More generally, notebooks such as \textbf{Jupyter Notebook}, \textbf{RMarkdown} or \textbf{org-mode} to name a few also provide an environment knitting together code and instructions, allowing to follow step-by-step experiments, analysis and results, in a similar fashion as laboratory notebook which are strictly required in wet labs.
+It is important to note that notebooks can run code from a variety of languages (C++, Haskell, Java, Julia, Python, Wolfram Language, Matlab, Ruby, ...).
+These tools are emerging in the community, as well as Workflow management system (Nexflow, Snakemake, etc) allowing to create reproducible and scalable data analyses running on computing clusters.
 
+Using this range of tools helps other scientists which might want to understand, test or build upon published works. 
+Moreover, they are also very helpful for the person or team implementing them since a more rigorous and reproducible environment allows to more easily track down bugs and test programs under different conditions or dataset\footnote{Notebooks are very useful to present work and data analysis, but should not be used during development since they often offers poor integration with debugger and code inspection tools, enforce awkward software design patterns, and often result in bloated versioned repository.}. 
+During the development period, continuous integration pipelines are valuable to increase the reliability of code generation, which should be used whether working alone or inside team, but is of course more critical for collaborative code where one cannot control all the code written.
+Collaborative coding practices such as peer-coding sessions is really useful to implement critical code at the core of the program under development.
+I argue that the efficiency peer-coding sessions is provided by dividing the tasks into a group focused in the detailed implementation while the others a free to focus on edge cases and the overall implication of different implementations. 
+Moreover, peer-coding sessions provides a convenient and structured place for learning good practices, for expanding its technical knowledge while pruning bad habits.
+An other remarkable practice is to write two independent version of the program, using if possible different algorithm and languages but with the same functionality, but most importantly by a different person.
+Then testing the program against each others on the same conditions and dataset should result in the same outcome\footnote{An extreme version is adversarial coding (or chaos engineering), where the goal is to find conditions on which the adversary program fails.}.
+Such model of reproducible computing experiment and analysis is laborious and demanding, but I argue this is the definition of reproducibility we collectively should aim for, namely where one can independently reproduce the same experiment, and if reproducibility fails one can run the code with different conditions to pinpoint the failing code (which might actually be in both versions).
+Personally, having practiced this method I strongly believe it pervasively reduces our research debt that we might inadvertently burden other with whenever not realizing the program is bugged, and ultimately save us time on debugging and research conduction.
+Finally, explaining to others our choices of algorithms, implementation and data structure requires us to express intelligibly our mental ideas and therefor better understand them, while gaining from others insight and algorithmic expertise.
 
-Workflow management system (Nexflow, Snakemake, etc) allowing to create reproducible and scalable data analyses.
-Peer-coding sessions, continuous integration pipeline are valuable to use to increase the reliability of code generation.
- 
 \subsection{Bayesian statistics}
-Knowing that maximum likelihood and Bayesian statistics are often opposed to each others and fiercely defended by their tenant I would gladly give my opinion on the matter, since I made the . 
+Knowingly that maximum likelihood and Bayesian statistics are often opposed to each others and sometimes fiercely defended by their tenant, using one of them implicitly put someone in the position to argument their choice. 
 Bayesian statistics seems personally a more comfortable inference framework than maximum likelihood for several reasons. 
-First you do not need to care for local optimum which might freeze the program.
-Second and most importantly, it gives the confidence interval, meaning how much certainty is available given the data on a estimate.
-A corollary is that over parametrization is not an issue. 
-Lasso or penalized-likelihood methods are not required.
-The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical prior distribution, which are more meaningful.
-Moreover, it gives a simple, thought extensive method to test for the repeatability and soundness of the code (cf prior distribution must match the rank).
-Finally, the sampling method of 
+Firstly, you technically are not required to devise procedure necessary to evades local optimums.
+Second and most importantly, Bayesian statistics output not a single statistic but a confidence interval, meaning how much certainty is available given the data.
+Posterior and prior can be thus presented next to each others and differences between the two is due to signal extracted from the data.
+A corollary is that over parametrization is not such a drastic issue as in maximum likelihood inference, since in a case where there is only limited extractable signal from the data this will reflect in the confidence interval.
+In the worst possible case of over parametrization, namely that of confounded parameters and the model is exactly the same for different set of parameters, the confidence interval will expand but confounded parameters can be identified afterward through parameters correlation in their joint posterior distribution.
+The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical prior distribution.
+However, over-parameterized models is still a misappropriate use of computing resource, which results in a greater environmental cost.
+
+Relationship between prior and posterior allows for a simple, thought extensive method to test for the repeatability and soundness of the inference code with regard to simulations.
+
+For a given parameter  can be draw from the prior distribution, simulations run with this specific parameters, and for each simulation an inference result in an average posterior estimate.
+
+
+
+
+
 

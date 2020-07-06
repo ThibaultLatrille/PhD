@@ -4,9 +4,12 @@
 \label{sec:intro}
 
 From the discovery of evolution to today knowledge, the understanding of the mechanisms from which the diversity of life and complexity emerges has seen dramatic changes, and revolution.
-One such revolution is called molecular evolution, a recent scientific fields, emerging at the crossroad of evolutionary biology which had seen tremendous theoretical development in the nineteenth and twentieth century, and molecular biology  which recruited advances in chemistry and had seen many technical revolutions.
-Molecular evolution borrows strength from the amount of empirical data available from molecular biology, and the predictive power of evolutionary biology.
-In molecular evolution, the pattern of sequences distribution in different population and organism is seen as a window to understand evolutionary mechanisms shaping organisms and their ancestral lineages, while at the same time shining light on cellular and molecular processes allowing organism to live and reproduce.
+One such revolution is called molecular evolution, a recent scientific fields, emerging at the crossroad of evolutionary biology which had seen tremendous theoretical development in the nineteenth and twentieth century, and molecular biology which recruited advances in chemistry and had seen many technical revolutions.
+Being both empirical and theoretical biology, molecular evolution borrows strength from the amount of empirical data available in molecular biology, and the predictive power of evolutionary biology.
+From the difference of molecular sequences observable between individuals of the same population, or difference of sequences between species, we can wonder what are the processes generating such diversity?
+What are the forces governing such evolutionary mechanisms?
+Can we quantify the relative strength of these forces, shaping both nowadays populations but also ancient and sometimes extinct lineages?
+In a nutshell, molecular evolution leverages the patterns of sequences distribution carried by individuals in order to uncover evolutionary mechanisms shaping organisms evolution and their ancestral lineages, while at the same time shining light on cellular and molecular processes allowing organism to live and reproduce.
 
 \section{Historical perspective}
 
@@ -73,8 +76,11 @@ Tomoko Ohta later incorporated weakly selected mutation into the \gls{nearly-neu
 As of today, it is widely accepted that both \gls{drift} and natural selection participate in the evolution of genomes: the controversy is no longer strictly dichotomous but rather concerns the quantitative contributions of adaptive and of non-adaptive evolutionary processes, and their articulation.
 
 \section{Population-genetics of sequences}
-Population-genetic is a theoretical frameworks, entailed with its assumptions and limitations.
-This section recall the Wright-Fisher model of sequence evolution and its assumptions, such as to derive the probability of fixation of a mutant \gls{allele}, as well as the expected number of copies of the derived \gls{allele} we should observe.
+In molecular evolution, available sequences are leveraged to reconstruct ancestral lineages and unveils evolutionary mechanisms generating this diversity of sequences, or in other words, we are reconstructing ancestral path undertaken by organisms using available knowledge today.
+But ultimately, such effort to infer mechanisms backward in time requires a theoretical model that generate diversity forward in time, where we can play this model forward and derive how likely such model would generate the pattern of sequence distribution we observe.
+One such predictive theoretical framework is population-genetic, entailed with its assumptions and limitations.
+This section thus recall the Wright-Fisher model of sequence evolution and its assumptions, such as to relate parameters of evolution such as mutation, selection and drift to observable patterns in molecular sequences such as the probability of fixation of a mutant \gls{allele}, as well as the expected number of copies of the derived \gls{allele} we should observe.
+These relationships between underlying evolutionary forces and patterns of sequence evolution will subsequently be leveraged and recruited in the next section to derive models of sequence substitutions parameterized by mutation, selection and drift.
 Although the mathematical proof for such results are out of the scope of this manuscript, model definitions and assumptions are stated. 
 Such effort is meant to clearly define the models and its parametrization from the ground up. 
 
@@ -243,22 +249,22 @@ Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian f
 
 \section{Mutation-selection process}
 The previous section recalled the Wright-Fisher process of evolution inside a population, relating selection and drift to the diversity of sequences, which empirically requires gene sequences for at least several individuals.
-However, modeling sequence evolution between different species along lineages is a different endeavor, where species are often simplified wit a single representative sequence, collapsing the intra-specific diversity of sequences.
+However, modeling sequence evolution between different species along lineages is a different endeavor, where species are often simplified with a single representative sequence, collapsing the intra-specific diversity of sequences.
 Under this simplification, the inter-specific variability and evolutionary trajectory of sequences is described by the past history of point substitutions along lineages.
 Such substitutions along lineages can nonetheless be decomposed into two mechanisms, their origination through mutation and their final fate of fixation, a modeling approach broadly known as origin-fixation \citep{McCandlish2014}.
-Most importantly this decomposition of \gls{substitution} into mutation and fixation is able to conciliate population genetics and inter-specific protein evolution, where the \gls{substitution} history is related to parameter of evolution (mutation, selection and drift) through the fixation probability for an \gls{allele} approximated.
+Most importantly this decomposition of \gls{substitution} into mutation and fixation is able to conciliate population genetics and inter-specific protein evolution, where the \gls{substitution} history is parameterized by mutation, selection and drift.
 Under the field of phylogenetic, the origin-fixation framework is more commonly known as mutation-selection, where fixation of an \gls{allele} encompass natural selection and origination correspond to mutation, a convention we will use hereafter.
 However, a more general mathematical description of the mutation-selection framework recruiting tools from statistical physics can be found in \citet{Sella2005, Mustonen2009}.
 
-Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier states visited in the history of a lineage.
-This Markovian process is valid if the mutation rate is sufficiently low, such that the event of a new mutations reaching fixation do so before the next one occurs. 
+Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier sequences visited in the history of a lineage.
+This continuous-time Markovian process is valid if the mutation rate is sufficiently low, such that the event of a new mutations reaching fixation do so before the next one occurs. 
 Since the rate of \gls{substitution} is equal to $u$ and that each \gls{allele} reaching fixation are segregating for an average of $4 \Ne$ generations \citep{Kimura1969}, this assumption is broadly applicable whenever the product of population size and mutation rate per generation for the sequence is lower than $1$ ($4 \Ne u \ll 1$).
 More strictly, the model would require not only that new mutations reaching fixation do so before the next \gls{substitution} occurs, but before any mutation occurs, even the one that ultimately become extinct.
 Since at each generation during the process an average of $2\Ne$ of mutations are produced, the point \gls{substitution} is valid under the condition that $8\Ne^2 u \ll 1$.
 In practice, the assumptions that $4 \Ne u \ll 1$ is a sufficient condition for the process to be well approximated.
 Throughout this development, it is important to note that $u$ is the mutation rate for the whole sequence under consideration.
 
-For large sequence this approximation is not usually valid, and the sequence is then decomposed into each individual sites, forming a collection of independently evolving Markov chains.
+For large sequence this approximation is not usually valid, and the sequence is then decomposed into each individual sites, forming a collection of independently evolving continuous-time Markov chains.
 For such decomposition to be valid, these models have to assume free \gls{recombination} between sites.
 In addition, these models assume by definition the absence of epistasis since the selection coefficient at each site must be independent of the alleles present at other sites. 
 The mutation rate $u$ in the condition then refers to the mutation rate for each independent site, rather than the total mutation rate over the collection as a whole.
@@ -271,6 +277,8 @@ For example, \citet{Halpern1998} construct a model for the evolution of coding s
 \end{figure}
 
 \subsection{Substitution rate}
+The continuous-time Markov chain is defined by the instantaneous rate at which pair of states are transitioning.
+Given the current state of the process is allele $A$, the rate of transition to other states can derived with population-genetics equations derived above.
 At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutant have a probability $P_{\mathrm{fix}}$ to result in a \gls{substitution}.
 Altogether, the rate of \gls{substitution} from \gls{allele} $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $P_{\mathrm{fix}}(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
 \begin{align}
@@ -279,7 +287,7 @@ Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(s_{A \to B}, \Ne) \\
 It is important to note that the \gls{substitution} rate and mutation rate are in the same unit, such that this equation is valid whether the rate is measured in unit of time or generation.
 As a convention, mutation rate measured in unit of generation is denoted $u$, and denoted $\mu$ when measured in unit of time. As a consequence, $\submatrix$ is measured in unit of time in our equation.
 
-In the case of \gls{neutral} mutations, the probability of fixation is independent of the original and target sequence, and equal $1/2 \Ne$. Finally $Q_{A \to B}$ simplifies to: 
+In the case of \gls{neutral} mutations, the probability of fixation is independent of the original and target sequence, and equal $1/2 \Ne$. Finally the substitution rate $Q_{A \to B}$ simplifies to: 
 \begin{align}
 Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(0, \Ne) \\
 Q_{A \to B} & = 2 \Ne \mu_{A \to B} \dfrac{1}{2\Ne} \\
@@ -289,7 +297,7 @@ In the case of selected mutations, the probability of fixation depends on the di
 \begin{align}
 Q_{A \to B} & = 2 \Ne \mu_{A \to B} P_{\mathrm{fix}}(s_{A \to B}, \Ne) \\
 			& = 2 \Ne \mu_{A \to B}  \dfrac{2(f_{B} - f_{A})}{1 - \e^{4\Ne(f_{A} - f_{B})} } \\
-			& = \mu_{A \to B} \dfrac{F_{B} - F_{A}}{1 - \e^{F_{A} - F_{B}} }\text{, where } F = 4\Ne f
+			& = \mu_{A \to B} \dfrac{F_{B} - F_{A}}{1 - \e^{F_{A} - F_{B}} }\text{, where } F = 4\Ne f \label{eq:sub-transion-rates}
 \end{align}
 
 It is important to note that if the difference of log-fitness tends to $0$, the \gls{substitution} rate equal the mutation rate:
@@ -298,34 +306,85 @@ It is important to note that if the difference of log-fitness tends to $0$, the 
 & =  \mu_{A \to B} 
 \end{align}
 
-Taken together, the \gls{substitution} rate which generates the \gls{substitution} history and ultimately the inter-specific diversity is parameterized solely by mutation, selection and drift.
+
+Taken together, the transition rates which generates the \gls{substitution} history and ultimately the inter-specific diversity is parameterized solely by mutation, selection and drift.
 Consequently, from a particular history of substitutions, one can theoretically estimate the parameter of selection, mutation and drift.
 
-\subsection{Steady state at equilibrium}
+\subsection{Reversibility of the process}
 
-A realization of the \gls{mc} for a long period of time results in given proportion of the time for which the \gls{mc} is in a specific states, where this proportion depends of the states fitnesses, the mutationnal process and $\Ne$.
-Due to the ergodicity of the stochastic process, averaging over time is equivalent to determining the statistical equilibrium, given we can derive the probabilities of transitions between states of the \gls{mc}.
-The mutation-selection \gls{substitution} process described by a \gls{mc} thus define a stationary distribution, and is time-reversible. 
-More preciselyr, the probability $\pi_{A}$ to find the population in state $i$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of sequence $i$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
-\begin{align}
-\pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B}\sigma_{B} \e^{F_{B}}},\\
-\pi_{A} & = \sigma_{A}\e^{F_{A}} \mathcal{Z}^{-1}.
-\end{align}
-Where $\sigma_{A}$ is the stationary distribution of the mutational process alone which is also reversible and satisfy the detail balance:
-\begin{align}
-\sigma_{A} \mu_{A \to B} & = \sigma_{B} \mu_{B \to A}
-\end{align}
-At equilibrium, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature.}.
+The continuous-time Markov chain, defined by the transition rates between all possible alleles (equations \ref{eq:sub-transion-rates}) is irreducible, meaning it is always possible to go from any allele to any other possible allele, possibly in several substitutions.
+Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive transition rate is matched by a stricly positive transition for the reverse substitution.
+More precisely, the substitution rate between two alleles is null only if the underlying mutation rate is null, in which case the transition rate for the reverse mutation is also null, hence the transition rate for the reverse substitution is also null.
 
-One can verify that Markov process of substitutions is reversible and the detailed balanced is satisfied:
-\begin{align}
-\pi_{A} Q_{A \to B} & = \sigma_{A} \e^{F_{A}} \mathcal{Z}^{-1}  \mu_{A \to B} \dfrac{F_{B} - F_{A}}{1 - \e^{F_{A} - F_{B}} } \\
-					& = \sigma_{A} \mu_{A \to B} \mathcal{Z}^{-1} \dfrac{F_{B} - F_{A}}{\e^{-F_{A}} - \e^{ - F_{B}} }\\
-					& = \sigma_{B} \mu_{B \to A} \mathcal{Z}^{-1} \e^{F_{B}} \dfrac{F_{B} - F_{A}}{\e^{F_{B}-F_{A}} - 1 }\\
-					& = \sigma_{B} \e^{F_{B}} \mathcal{Z}^{-1}  \mu_{B \to A} \dfrac{F_{A} - F_{B}}{ 1 - \e^{F_{B}-F_{A}}}\\
-					& = \pi_{B}  Q_{B \to A}\\
-\end{align}
+Moreover, for an irreducible, positive recurrent and aperiodic continuous-time Markov chain, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
+Kolmogorov's criterion implies that the product of transition rates through any closed loop is the same whenever the traversing is done forward or in reverse.
+As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the transitions rate must satisfies the equality:
+\begin{equation}
+Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
+\end{equation}
 
+\begin{figure}[htb!]
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',auto,node distance=1.2cm and 1.6cm,semithick]
+		\tikzstyle{every state}=[]
+		
+		\node[] (0) {};
+		\node[state] (A) [above=of 0] {$A$};
+		\node[state] (B) [below left=of 0] {$B$};
+		\node[state] (C) [below right=of 0] {$C$};
+		
+		\path[->]
+		(A) edge [BLUE,bend right=45] node [left] {$Q_{A \to B}$} (B)
+		(B) edge [BLUE,bend right=45] node [below] {$Q_{B \to C}$} (C)
+		(C) edge [BLUE,bend right=45] node [right] {$Q_{C \to A}$} (A)
+		(B) edge [RED,bend right=15] node [left] {$Q_{B \to A}$} (A)
+		(C) edge [RED,bend right=15] node [below] {$Q_{C \to B}$} (B)
+		(A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
+		\end{tikzpicture}
+	\end{center}
+	\caption[Kolmogorov's criterion]{The continuous-time Markov chain is reversible if the process fulfills Kolmogorov's criterion, such that the product of transition rate for a closed loop is equal whether traversed in one sens (blue arrows) or the other (red arrows).}
+	\label{fig:reversible-circuit}%
+\end{figure}
+
+From transition rates of the substitution process (\ref{eq:sub-transion-rates}), Kolmogorov's criterion can be derived as:
+\begin{align}
+\dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}
+={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}
+	 \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})} \notag \\
+	 &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
+={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
+&\ \times \dfrac{\e^{F_{A}}( \e^{-F_{A}} - \e^{ - F_{C}} )\e^{F_{C}}( \e^{-F_{C}} - \e^{ - F_{B}} )\e^{F_{B}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\e^{F_{A}}( \e^{-F_{A}} - \e^{ - F_{B}} )\e^{F_{B}}( \e^{-F_{B}} - \e^{ - F_{C}} )\e^{F_{C}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\
+={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}.
+\end{align}
+As a result, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
+\begin{equation}
+\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A},
+\end{equation}
+This example can be generalized for any close loop, such that the reversibility of the substitution process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
+
+\subsection{Stationary distribution}
+
+A realization of the \gls{mc} for a long period of time results in a given proportion of the time for which the process is fixed for a specific allele, where this proportion depends of the allele fitnesses, the mutational process and $\Ne$.
+Because the continuous-time \gls{mc} is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\bm{\pi}$ where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time. 
+
+Moreover, under the condition that the \gls{mc} is time-reversible, the detailed balanced for the stationary distribution is satisfied:
+\begin{align}
+\dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{Q_{B \to A}}{Q_{A \to B}} \\
+& = \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{F_{A}-F_{B}}{ 1 - \e^{F_{B}-F_{B}}}  \dfrac{1 - \e^{F_{A} - F_{B}} }{F_{B} - F_{A}}\\
+& = - \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{ \e^{F_{A}}(\e^{-F_{A}} - \e^{- F_{B}}) }{ \e^{F_{B}}(\e^{-F_{B}} - \e^{- F_{A}})}  \\
+& = \dfrac{\mu_{B \to A}}{\mu_{A \to B}} \dfrac{\e^{F_{A}}}{\e^{F_{B}}} \\
+\end{align}
+Under the assumption that the mutational process is also reversible, the detailed balanced for the stationary distribution of the mutation process ($\backref{\sigma}$) is satisfied:
+\begin{align}
+\dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}} 
+\end{align}
+Altogether, the probability $\pi_{A}$ to find the population in allele $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $A$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
+\begin{align}
+\dfrac{\pi_{A}}{\pi_{B}} &  \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}}, \\ 
+\iff \pi_{A} = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} },
+\end{align}
+where the denominator is a normalizying constant such that the sum of probabilities equal to $1$.
+In analogy to thermodynamic systems, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature.}.
 
 \subsection{Relative \gls{substitution} rate} 
 
@@ -334,7 +393,7 @@ One quantity of interest is the \gls{substitution} rate of selected mutations re
 From its definition, $\omega=1$ for genes or sites under \gls{neutral} evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences. 
 First, $\omega>1$ is interpreted as a signal of adaptive recurrent evolution, where selection coefficient are on average positive.
-On the other hand, $\omega<1$ is a signal of underlying purifying selection, such that the sequence is constrained and mutations proposed are on average a negatively selected.
+On the other hand, $\omega<1$ is a signal of underlying purifying selection, such that the sequence is constrained and mutations proposed have on average a negatively selection coefficient.
 Together, in the case of a mutation-selection point \gls{substitution} process, $\omega$ is defined as:
 \begin{equation}
 \omega = \dfrac{ \sum_{A} \pi_{A} \sum_{B} Q_{A \to B}}{\sum_{A} \pi_{A}  \sum_{B} \mu_{A \to B}},
@@ -411,9 +470,13 @@ This explains why sex is favored in fluctuating environments.
 
 I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there as been many crossover between economics and evolution in the context of game theory.\footnote{Game theory had originally been developed to model economic actors behavior and strategies \citep{VonNeumann1947}, while latter being emerging as the framework of evolutionary dynamics, which explains the emergence of altruistic behaviours in Darwinian evolution \citep{Smith1973, Smith1982, Nowak2006}.}.
 
-%As an example of such insight from exploration-exploitation dilemma is on the understanding of relationship between mutation rate and chromosome size.
-%It has been observed that organism with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant (Drake's rule).
-%A resolution of this conundrum is that between generation, the genetical diversity of offsprings must balance the trade-off between being the same of their parents, or innovative.
-%This trade off between exploration and exploitation seems to be shared by many organisms.
+As an example of such insight from exploration-exploitation dilemma is on the understanding of relationship between mutation rate and chromosome size.
+It has been observed that organism with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant \cite{Drake1991}.
+An explanation for this pervasive negative correlation between mutation rate and genome size invoke the drift barrier hypothesis, where the correlation is inherently due to an underlying changes of genetic drift \citep{Lynch2016a}.
+The drift barrier hypothesis posits the selection operates to minimize the mutation rate, with the efficiency of such improvement eventually being overcome by random genetic drift, such that population with higher population size have smaller mutation rate. 
+On the other hand, higher population size induces stronger purifying selection which reduce genome size by expelling transposable elements.
+Altogether, both high mutation rate and smaller genome are consequences of higher population size.
+An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offsprings must balance the trade-off between exploration of new genotype and the reliable transmission of the current one.
+The genetic difference between parents and offsprings is the product of mutation rate and genome size, such that individuals whom are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations \citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
 
 

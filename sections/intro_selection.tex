@@ -2,29 +2,39 @@
 \minitoc
 \label{sec:selection}
 The first chapter recalled the framework of molecular evolution, and how the evolutionary trajectory of sequences is defined in terms of mutation, selection and drift. 
-This parametrization required a given selection coefficient associated to mutation, or required the fitness of each \gls{allele} to be defined.
+This parametrization required a given selection coefficient associated to mutation, or required the fitness of each particular sequence to be defined.
 However, this introduction remained so far elusive on the relationship between sequence and fitness.
-This chapter, on the other hand, solely focus on the mapping from sequence to fitness; in the special case of protein coding \acrshort{DNA} sequence.
+This chapter, on the other hand, solely focus on the mapping from sequence to fitness, in the special case of protein coding \acrshort{DNA} sequence.
 It will seek to clarify the relationship between protein sequence, protein thermodynamic, protein function, and organismal fitness, such as to derive the selective pressures shaping proteins coding \acrshort{DNA} sequences.
 It is also important to emphasize whether they are general principles, or do this relationship between sequence and fitness depends on the specific protein, organism, and environment.
 
-\section{Protein coding \acrshort{DNA} sequences}
+\section{Protein coding DNA sequences}
 
 Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyses chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, and so on.
 This variety of roles is accomplished by a variety of three-dimensional shapes.
 A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids.
 Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus. 
-In practice, proteins size can range from fewer than 20 to more than 5000 amino acids, although an average protein is about 350 amino acids long.
+In practice, proteins size can range from fewer than $20$ to more than $5000$ amino acids, although an average protein is about 350 amino acids long.
+Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories.
+Charged amino-acids can be either positively charged and therefore basic, or negatively charged amino acids which are reciprocally acidic.
+Non charged amino-acids can be however be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
+Consequently, polar amino acids are called hydrophilic, and are often found on the outer surface of folded proteins.
+Also, non charged amino-acids can have a uniform charge distribution, and do not form hydrogen bonds with water.
+Reciprocally, these non polar amino-acids are called hydrophobic and tend to be found in the core of folded proteins.
 
-Protein are synthesized from mRNA, which translate 4 letter alphabet to the 20 letter alphabet of proteins.
-Because there is not a one-to-one correspondence between the two alphabets, amino acids are encoded by consecutive sequences of 3 nucleotides, codons, yielding $4^3=64$ possible permutations, more than sufficient to encode the 20 different amino acids.
-Only 61 of the 64 codons are used to encode amino acids, the remaining 3 stop codons signaling termination the protein.
-There is a necessary redundancy in the code, since there are 61 possible codons and only 20 amino acids.
-Thus, amino acids \footnote{With the notable expection of methionine and tryptophan} are encoded by synonymous codons, which are interchangeable in the sense of producing the same amino acid. 
-Translation between \gls{codon} and amino-acid occurs due to transfer \acrshort{RNA} (\acrshort{tRNA}), where each \gls{codon} has its specific \acrshort{tRNA}.
-Each of the 61 \acrshort{tRNA} contains an anticodon, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}. 
-On the other hand, each of the 61 \acrshort{tRNA} structure complexes uniquely with one the $20$ amino acid.
-Altogether, \acrshort{tRNA} translate from \gls{codon} to amino-acid, according the genetic code given in table \ref{table:genetic_code}, which is used almost universally by all organisms.
+Because the $20$ letter alphabet of proteins is different to the $4$ letter alphabet of nucleic acid (DNA and RNA), there is not a one-to-one correspondence between the two alphabets.
+Instead, amino acids are encoded by codons, a consecutive sequences of 3 nucleotides, yielding $4^3=64$ possible permutations, more than sufficient to encode the 20 different amino acids.
+Also, three stop codons signals termination of the protein, such that 61 of the 64 codons are used to encode amino acids.
+Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}), where codons binds to \acrshort{tRNA}.
+More precisely, each \acrshort{tRNA} contains an anticodon on one end, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}, using canonical Watson-Crick base pairing (A-T and G-C).
+On the other end, each of the 61 \acrshort{tRNA} structure complexes uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase.
+However, the number of tRNA in the cell is not exactly 61, and can be either lower or greater.
+In many species, different tRNAs carrying the same anticodon could display varying efficiency in translation, adding a layer of regulation to the process of protein synthesis.
+opposingly, 
+Altogether, \acrshort{tRNA} along with aminoacyl-tRNA synthetase form the machinery necessary translating \gls{codon} into amino-acid, according the DNA genetic code given in table \ref{table:genetic_code}, which is used almost universally by all organisms.
+
+Since there are 61 coding codons and only 20 amino acids, there is a necessary redundancy in the code.
+Thus, amino acids \footnote{With the notable exception of methionine and tryptophan} are encoded by synonymous codons, which are interchangeable in the sense of producing the same amino acid. 
 
 \begin{table}[h]
 	\resizebox{\columnwidth}{!}{%
@@ -35,9 +45,9 @@ Altogether, \acrshort{tRNA} translate from \gls{codon} to amino-acid, according 
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
 			& TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar} & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)} & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)} & C \\
 			\hhline{|~|-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
-			& TTA & \cellcolor{Nonpolar} & TCA & \cellcolor{Polar} & TAA & Stop (Ochre) & TGA & Stop (Opal) & A \\
+			& TTA & \cellcolor{Nonpolar} & TCA & \cellcolor{Polar} & TAA & \cellcolor{Stop} Stop (Ochre) & TGA &  \cellcolor{Stop} Stop (Opal) & A \\
 			\hhline{|~|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
-			& TTG & \cellcolor{Nonpolar} & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)} & TAG & Stop (Amber) & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W) & G \\
+			& TTG & \cellcolor{Nonpolar} & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)} & TAG & \cellcolor{Stop} Stop (Amber) & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W) & G \\
 			\hhline{|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|-|-|-|-|}
 			\multirow{4}{*}{C} & CTT & \cellcolor{Nonpolar} & CCT & \cellcolor{Nonpolar} & CAT & \cellcolor{Basic} & CGT & \cellcolor{Basic} & T \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
@@ -64,24 +74,70 @@ Altogether, \acrshort{tRNA} translate from \gls{codon} to amino-acid, according 
 			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & G \\
 			\hline
 	\end{tabular}}
-	\caption[The Genetic Code]{}
+	\caption[The Genetic Code]{Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}). Polar in green (\textcolor{Polar}{\ding{110}}). Basic in blue (\textcolor{Basic}{\ding{110}}). Acidic in red (\textcolor{Acidic}{\ding{110}})}
 	\label{table:genetic_code}
 \end{table}
 
-Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories.
-Charged amino-acids can be positively charged and therefore basic, while negatively charged amino acids are reciprocally acidic.
-Non charged amino-acids can be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
-Consequently, polar amino acids are called hydrophilic, and are often found on the outer surface of folded proteins.
-Also, non charged amino-acids can have a uniform charge distribution, and do not form hydrogen bonds with water.
-Reciprocally, these non polar amino-acids are called hydrophobic and tend to be found in the core of folded proteins.
+\begin{center}
+	\begin{minipage}{0.48\linewidth}
+		\includegraphics[width=\linewidth]{figures/gt-codon-tab20b.pdf}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{figures/gt-aa-tab20b.pdf}
+	\end{minipage}
+	\captionof{figure}[Graphs of codon and amino-acid transitions]{
+		Colors represent the color of the encoded amino-acid.
+		Left Panel: Graph of all $263$ one nucleotide transitions between the $61$ codons. $67$ transitions are synonymous (in black) while $196$ are non-synonymous. 
+		Right Panel: Graph of $75$ transitions between the $20$ aminoa-acids. The size of the amino-acids represent the number of codons and the weight of the edges represent the number of one nucleotide transitions between the underlying codons. Not all amino-acid can reach each others since the fully connected graph would comprised $190$ transitions.
+	}
+\end{center}
 
-Studying protein coding \acrshort{DNA} sequences at the nucleotide level, while disregarding the biochemical properties of amino-acids, is a major shortcoming , which can lead to false conclusions.
+\subsection{Codon substitution models}
+Studying protein coding \acrshort{DNA} sequences at the nucleotide level, while disregarding the biochemical properties of amino-acids, is a major shortcoming, which can lead to false conclusions.
 One approach to resolve this conflict is to study the evolutionary history of the protein instead of the \acrshort{DNA} sequence, meaning translating nucleotide sequences into amino-acid sequences, and designing models at the amino-acid level.
 However, amino-acid models have also the major shortcoming of not taking into account that the mutation process occurs at the nucleotide level.
 These shortcomings are both addressed by \gls{codon} models, where the complexity of the genetic code is seen as an asset rather than an encumbrance.
 Indeed the redundancy in the genetic code can be leveraged to disentangle mutation and selection in protein coding \acrshort{DNA} sequences, under the approximation that selection occurs at the protein level in first approximation, while the mutation process occurs at the \acrshort{DNA} level.
 The genetic code allows to split mutations into \gls{neutral} and selected mutations, where a mutation of a nucleotide in a triplet will either be synonymous, meaning not changing the translated amino-acid, or non-synonymous, meaning the translated amino-acid will be different.
 The degeneracy of the genetic code is thus an advantage when one devises a model at the \gls{codon} level in \acrshort{DNA} sequences.
+
+The mutation rate from \gls{codon} $\ci$ to $\cj$ depends on the underlying nucleotide change between the \gls{codon}, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the codons. The \gls{codon} mutation rate is then given by the mutation matrix ${\mutmatrix_{\nucitoj}}$. Altogether, the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
+\begin{equation}
+\begin{dcases}
+\mu_{\itoj} & = 0 \text{if $\ci$ and $\cj$ are one mutation away,} \\
+\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ else }
+\end{dcases}
+\end{equation}
+
+The phylogeny-based method models the \gls{substitution} rate at the \gls{codon} level. Synonymous and non-synonymous mutations are treated differently. The rate of non-synonymous substitutions over the rate of synonymous substitutions (denoted $\omega=d_N/d_S$) is estimated as a parameter of the model \citep{Muse1994,Goldman1994}. Assuming synonymous mutations are \gls{neutral}, an $\omega>1$ signals an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution. Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, means the protein is under purifying selection. However, in practice, protein are typically under a mix of adaptation and purifying selection, thus typically leading to an $\omega<1$ even in the presence of positive selection. More sophisticated methods have been proposed. In particular, site-models trying to detect specific site of the sequence with an $\omega>1$, have been developed \citep{Yang2001, kosiol_patterns_2008}.
+
+
+In the case of synonymous mutations ($\cj \in \NiSyn $), the probability of fixation is independent of the original and target \gls{codon}, and equal $1/2 \Ne$. Finally ${\submatrix_{\itoj}}$ simplifies to: 
+\begin{equation}
+\submatrix_{\itoj} & =  \mu \mutmatrix_{\nucitoj}
+\end{equation}
+In the case of non-synonymous mutations ($\cj \in \NiNonSyn $), the probability of fixation depends on the difference of fitness between the amino-acid encoded by the codons:
+\begin{align}
+\submatrix_{\itoj} & =  \omega \mu \mutmatrix_{\nucitoj}
+\end{align}
+Altogether, the $61$-by-$61$ codon substitution matrix is defined entirely by the mutation matrix and  
+\begin{equation}
+\begin{dcases}
+\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+\submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
+\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+\submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
+\end{dcases}
+\label{eq:codon-models}
+\end{equation}
+where the mutation rate between codon $\ci$ and $\cj$ is given by:
+\begin{equation}
+\begin{dcases}
+\mu_{\itoj} & = 0 \text{ if } \cj \notin \Ni \\
+\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ if } \cj \in \Ni
+\end{dcases}
+\end{equation}
 One can identify the interplay between mutations acting at the \acrshort{DNA} level, and positive or negative selection acting at the protein level.
 Thus, \gls{codon} \gls{substitution} models are crucial for a better modeling of the underlying evolution of protein-coding \acrshort{DNA} sequences, and consequently allow a better reconstruction of mutation, selection and demography.
 
@@ -135,9 +191,6 @@ cell cycle stages. In multicellular organisms, mRNA concentration data used are 
 .
 vary among tissues
 
-
-
-
 \subsection{Substitution rate across phyla}
 Comparative approaches have also been used to understand the targets of selection in proteins. Proteins of intracellular bacteria are estimated to be less stable with respect to misfolding (and possibly aggregation) than orthologous proteins of free living relatives. This can be interpreted as reduced selection due to the population size reductions (bottle-necks) that occur during transmission from host to host.
 
@@ -160,19 +213,16 @@ They are a generic representation of fitness, easily parameterized and inherentl
 
 \section{Amino-acid propensities}
 
-In contrast, mutation-selection models assume that the protein-coding sequence (CDS) is at mutation-selection balance under a fixed fitness landscape, which is itself characterized by a fitness vector over the $20$ amino-acid at each site \citep{Yang2008, Halpern1998, Rodrigue2010}. Mathematically, the rate of non-synonymous \gls{substitution} from \gls{codon} $a$ to \gls{codon} $b$ ($q_{a \mapsto b}^{(i)}$) at the $i^{\mathrm{th}}$ site of the sequence is equal to the rate of mutation at site $i$ ($\mu_{a \mapsto b}^{(i)}$) multiplied by the probability of fixation of the mutation ($p_{a \mapsto b}^{(i)}$) \citep{kimura_neutral_1983}. Crucially, the probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated \gls{codon} ($f_b^{(i)}$) and the fitness of the amino-acid encoded by the original \gls{codon} ($f_a^{(i)}$) of site $i$ \citep{wright_evolution_1931, fisher_genetical_1930}. Altogether, the rate of \gls{substitution} from \gls{codon} $a$ to $b$ at a given site $i$ is:
+In contrast, mutation-selection models assume that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, which is itself characterized by a fitness vector over the $20$ amino-acid at each site \citep{Yang2008, Halpern1998, Rodrigue2010}. Crucially, the probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated \gls{codon} ($f_b^{(i)}$) and the fitness of the amino-acid encoded by the original \gls{codon} ($f_a^{(i)}$) of site $i$. Altogether, the rate of \gls{substitution} from \gls{codon} $a$ to $b$ at a given site $i$ is:
 \begin{equation}
-q_{a \mapsto b}^{(i)} = \mu_{a \mapsto b}^{(i)} \dfrac{\mathrm{ln}(f_b^{(i)} / f_a^{(i)})}{1 - f_b^{(i)} / f_a^{(i)}}.
+\begin{dcases}
+\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+\submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
+\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+\submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
+\end{dcases}
+\label{eq:propensities-models}
 \end{equation}
-
-Fitting the mutation-selection model on a sequence alignment leads, via equation (1), to an estimation of the mutation rate matrix ($\mu^{(i)}$) as well as the fitness landscape of the protein ($f^{(i)}$) at each site $i$ of the sequence. From these parameters, one can compute $\omega_{0}^{(i)}$, the site-specific predicted rate of non-synonymous over \gls{synonymous} at the mutation-selection balance: 
-\begin{equation}
-\omega_{0}^{(i)} = \sum_{a \in  \mathcal{C}} \pi_a^{(i)}  \dfrac{\sum_{b \in  \mathcal{N}_a} q_{a \mapsto b}^{(i)}}{\sum_{b \in \mathcal{S}_a} q_{a \mapsto b}^{(i)}},
-\end{equation}
-where $\mathcal{C}$ is the set all the possible codons ($61$ by discarding stop codons), $\pi_a$ is the equilibrium frequency of \gls{codon} $a$ at site $i$, and $\mathcal{N}_a$ (respectively $\mathcal{S}_a$) is the set of codons that are non-synonymous (respectively synonymous) to $a$  \citep{spielman_relationship_2015, rodrigue_site-heterogeneous_2014}. In a second step, the average over site is calculated, giving estimates of $\omega_0$ for each protein-coding sequences (see figure \ref{fig:codon_model}, right panel). \\
-
-Under the assumption that the protein is under a \textit{nearly-neutral} regime,  the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (site-model) should be the same. But if this assumption is violated, and the protein is under adaptation then $\omega > \omega_0$.
-
 
 In mutation-selection \gls{codon} models, the probability of reaching fixation is different for any non-synonymous mutation.
 More specifically, it will depend on the original amino-acid preference and the mutated amino-acid preference encoded by the \gls{codon}.
@@ -183,48 +233,17 @@ In contrast, in \gls{nearly-neutral} models, the amino-acids have a fitness land
 The difficulty and complexity of \gls{nearly-neutral} models are to estimate the underlying amino-acid fitness landscape.
 Moreover, \gls{nearly-neutral} models consider multiplicative fitness across sites.
 
-By modeling the population as a single sequence, we model a trajectory along a changing fitness landscape.
-For each \gls{codon} site, we compute the \gls{substitution} rate to the $9$ neighboring codons (see equation 1)  
-The time to the next \gls{substitution} is exponentially distributed with parameter equal to the total rate.
 
-\citep{Halpern1998} 
+Fitting the mutation-selection model on a sequence alignment leads, via equation (\ref{eq:propensities-models}), to an estimation of the nucleotide mutation rate matrix as well as the fitness landscape of the protein at each site $i$ of the sequence. 
 
-Substitution in a \gls{codon} site is the result of the interplay between mutation and selection.
-More precisely the rate of \gls{substitution} from \gls{codon} $\ci$ to $\cj$, denoted $\submatrix_{\itoj}$, is equal to the rate of mutation ($\mu_{\itoj}$) multiplied by the probability of fixation of the mutation $P_{\mathrm{fix}}(\itoj)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
-\begin{align}
-{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj}  P_{\mathrm{fix}}}(\itoj) \\
-\end{align}
-
-The mutation rate from \gls{codon} $\ci$ to $\cj$ depends on the underlying nucleotide change between the \gls{codon}, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the codons. The \gls{codon} mutation rate is then given by the mutation matrix ${\mutmatrix_{\nucitoj}}$. Altogether, the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
+\subsection{Non-synonymous relative \gls{substitution} rate}
+From these parameters, one can compute $\omega$, the site-specific predicted rate of non-synonymous over \gls{synonymous} at the mutation-selection balance: 
 \begin{equation}
-\begin{dcases}
-\mu_{\itoj} & = 0 \text{ if } \cj \notin \Ni \\
-\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ if } \cj \in \Ni
-\end{dcases}
+\omega = \dfrac{ \sum_{i} \pi_{i} \sum_{j \neq i } Q_{\itoj}}{\sum_{i} \pi_{i} \sum_{j \neq i } \mu_{\itoj}},
 \end{equation}
-In the case of synonymous mutations ($\cj \in \NiSyn $), the probability of fixation is independent of the original and target \gls{codon}, and equal $1/2 \Ne$. Finally ${\submatrix_{\itoj}}$ simplifies to: 
-\begin{align}
-{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj}  P_{\mathrm{fix}}}(\itoj) \nonumber \\
-{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj} \dfrac{1}{2\Ne}} \nonumber \\
-{\submatrix_{\itoj}} & { =  \mu_{\itoj} } \nonumber \\
-{\submatrix_{\itoj}} & { =  \mu \mutmatrix_{\nucitoj} }\text{, since } \NiSyn \subset \Ni \
-\end{align}
-In the case of non-synonymous mutations ($\cj \in \NiNonSyn $), the probability of fixation depends on the difference of fitness between the amino-acid encoded by the codons:
-\begin{align}
-{\submatrix_{\itoj}} & { = 2 \Ne \mu_{\itoj} P_{\mathrm{fix}}}(\itoj) \nonumber \\
-& { = 2 \Ne \mu_{\itoj} }  \dfrac{2({\fitj - \fiti})}{{1 - \e^{4\Ne(\fiti - \fitj)} }} \nonumber \\
-& { = \mu \mutmatrix_{\nucitoj} }  \dfrac{{\scaledfitj - \scaledfiti}}{{1 - \e^{\scaledfiti - \scaledfitj} }}\text{, where } \scaledfiti = 4\Ne \fiti
-\end{align}
-We can note that if the difference of fitness tends to $0$, the \gls{substitution} rate equal the mutation rate:
-\begin{align}
-\lim_{\scaledfiti \to \scaledfitj} {\submatrix_{\itoj}} & { = \mu \mutmatrix_{\nucitoj} }  \dfrac{{\scaledfitj - \scaledfiti}}{{1 - (1  + (\scaledfiti - \scaledfitj)) }} \nonumber \\
-& { =  \mu \mutmatrix_{\nucitoj} } 
-\end{align}
+where $\mathcal{C}$ is the set all the possible codons ($61$ by discarding stop codons), $\pi_a$ is the equilibrium frequency of \gls{codon} $a$ at site $i$, and $\mathcal{N}_a$ (respectively $\mathcal{S}_a$) is the set of codons that are non-synonymous (respectively synonymous) to $a$  \citep{spielman_relationship_2015, rodrigue_site-heterogeneous_2014}. In a second step, the average over site is calculated, giving estimates of $\omega_0$ for each protein-coding sequences (see figure \ref{fig:codon_model}, right panel). \\
 
-The phylogeny-based method models the \gls{substitution} rate at the \gls{codon} level. Synonymous and non-synonymous mutations are treated differently. The rate of non-synonymous substitutions over the rate of synonymous substitutions (denoted $\omega=d_N/d_S$) is estimated as a parameter of the model \citep{Muse1994,Goldman1994}. Assuming synonymous mutations are \gls{neutral}, an $\omega>1$ signals an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution. Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, means the protein is under purifying selection. However, in practice, protein are typically under a mix of adaptation and purifying selection, thus typically leading to an $\omega<1$ even in the presence of positive selection. More sophisticated methods have been proposed. In particular, site-models trying to detect specific site of the sequence with an $\omega>1$, have been developed \citep{Yang2001, kosiol_patterns_2008}.
-However these models potentially miss a substantial fraction of adaptation and do not quantify the rate of adaptation.  \\
-
-
+Under the assumption that the protein is under a nearly-neutral regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (site-model) should be the same. But if this assumption is violated, and the protein is under adaptation then $\omega > \omega_0$.
 
 Relative Evolutionary Rates in Proteins Are Largely Insensitive to the Substitution Model \citep{Spielman2018}.
 

@@ -6,7 +6,8 @@
 
 *~
 .idea/
-figures/
+*.pdf
+*.jpg
 Template-*
 *.aux
 *.log
