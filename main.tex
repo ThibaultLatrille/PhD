@@ -19,16 +19,9 @@
 % Caption
 \usepackage[font=footnotesize,labelfont=bf]{caption}
 \usepackage{float}
-\usepackage{tabularx}
-\makeatletter
-\newcommand\cellwidth{\TX@col@width}
-%\floatstyle{boxed} 
-%\restylefloat{figure}
-%\usepackage{floatpag}
 
-% To add blank lines
+
 \usepackage{parselines} 
-% To add a blank figure
 \usepackage{todonotes}
 
 % To keep old font size even if not the case in cover page
@@ -38,9 +31,6 @@
 \makeatother
 
 % spacing lines
-\usepackage{hhline}
-\usepackage{multirow}
-\setlength{\arrayrulewidth}{1.4pt}
 \usepackage{setspace}
 \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 
@@ -57,7 +47,8 @@
 % \correctionstrue
 
 % Define colors
-\usepackage{xcolor, colortbl}
+\usepackage{colortbl}
+\usepackage{pifont}
 \definecolor{RED}{HTML}{EB6231}
 \definecolor{YELLOW}{HTML}{E29D26}
 \definecolor{BLUE}{HTML}{5D80B4}
@@ -75,17 +66,15 @@
 \definecolor{LIGHTBLUELINK}{HTML}{3366BB}
 \definecolor{PURPLELINK}{HTML}{663366}
 
-\definecolor{Nonpolar}{HTML}{E29D26}
-\definecolor{Acidic}{HTML}{EB6231}
-\definecolor{Basic}{HTML}{5D80B4}
-\definecolor{Polar}{HTML}{6ABD9B}
-\definecolor{Stop}{HTML}{6ABD9B}
-
+\definecolor{Nonpolar}{HTML}{fef1d2}
+\definecolor{Polar}{HTML}{a9fdd8}
+\definecolor{Basic}{HTML}{d7f8ff}
+\definecolor{Acidic}{HTML}{feceea}
+\definecolor{Stop}{HTML}{D0D0D0}
 
 %%%%% BIBLIOGRAPHY SETUP
 \usepackage{natbib} % add [numbers] if I want to count them
 \newcommand*{\bibtitle}{References}
-\pdfinclusioncopyfonts=1
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
 %\numberwithin{equation}{subsection}
@@ -93,7 +82,6 @@
 % refs and backref
 \usepackage{usebib}
 \usepackage{backref}
-\usepackage{hyperref}
 \hypersetup{colorlinks,
 	linkcolor=GREYDARK,
 	citecolor=DARKBLUELINK,
@@ -117,10 +105,9 @@
 \usepackage{amsfonts,amsmath,mathtools}
 \usepackage{bm}
 \usepackage{listings, enumerate, enumitem}
-\usepackage{pgfplots, pgf, tikz}
+\usepackage{tikz}
+\pdfinclusioncopyfonts=1
 \usetikzlibrary{arrows,automata,calc}
-\pgfplotsset{every axis/.append style={line width=1pt}}
-\pgfplotscreateplotcyclelist{colors}{RED\\YELLOW\\BLUE\\LIGHTGREEN\\GREEN\\}
 \usepackage{titlesec}
 \usepackage[toc, acronym]{glossaries}
 \makeglossaries
@@ -207,7 +194,7 @@
 
 % Titles for toc
 \usepackage{titletoc}
-\usepackage{minitoc}
+
 
 % If uncommented, then rules in tables are in purple
 % \makeatletter
@@ -230,6 +217,9 @@
 \newcommand{\nd}{\textsuperscript{nd}}
 \renewcommand{\st}{\textsuperscript{st}}
 \newcommand{\rd}{\textsuperscript{rd}}
+\usepackage{pgfplots, pgf, tikz}
+\usepackage{graphicx}
+\usepackage{pdfpages}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -329,7 +319,8 @@
 \part{Results}
 \label{part:results}
 \include{sections/mut-bias}
-\part{Discussion}
+
+\part{Conclusion}
 \label{part:discussion}
 \include{sections/discussion}
 \include{sections/conclusion}

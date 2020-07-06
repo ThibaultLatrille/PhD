@@ -48,7 +48,6 @@
 \fi
 
 \usepackage{xcolor}
-\usepackage{graphicx} 
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
 
@@ -67,23 +66,21 @@
 \fi}
 \usepackage{microtype}
 \usepackage{nicefrac}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{amsmath, amssymb}
 \usepackage{textcomp}
-
 \usepackage{longtable} 
 	% Allows tables to span multiple pages (this package must be called before hyperref)
-\usepackage[font=small,labelfont=bf]{caption} 
-	% Nicer captions
+\usepackage{tabularx}
+\makeatletter
+\newcommand\cellwidth{\TX@col@width}
+\usepackage{hhline}
+\setlength{\arrayrulewidth}{1.4pt}
 \usepackage{multicol,multirow,array} 
 	% Used to make multiple columns for the indices and for creating columns that span multiple rows in tables
 \usepackage{rotating} 
 	% To allow tables in landscape mode
 \usepackage{booktabs} 
 	% For better looking tables
-\usepackage{pdfpages} 
-	% Allows multi-page pdfs to be inserted as graphics
-\usepackage{xfrac}
 
 % JEM the following package allows changing spacing in lists (for acknowledgements)
 \usepackage{enumitem}
@@ -97,7 +94,7 @@
 \usepackage{notoccite} 
 	% To format the bibliography	
 
-\usepackage[colorlinks=false,pdfpagelabels]{hyperref} 
+\usepackage[colorlinks=false,pdfpagelabels,pagebackref=true]{hyperref} 
 	% for linking between references, figures, TOC, etc in the pdf document
 
 \usepackage[nohints,tight]{minitoc}
