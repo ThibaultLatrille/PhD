@@ -95,7 +95,7 @@ And if the node $\node$ is a node with no descendant, meaning $\Settaxon$:
 \end{dcases}
 \end{equation}
 
-\section{Maximum \gls{likelihood} estimation}
+\section{Maximum {likelihood} estimation}
 
 Given the likelihood of the data, the ML estimate is simply the value of parameter that maximize this probability.
 
@@ -139,7 +139,7 @@ A Bayesian network, Bayes network, belief network, decision network, Bayes(ian) 
 		\node[state] (Ne) [above right=of Q] {$\omega\siteexp$};
 		
 		\path 
-		(Q) edge [dashed] node [above right] {Eq.~\ref{eq:Probmatrix}} (P)
+		(Q) edge [dashed] node [above right] {} (P)
 		(BL) edge [dashed] node [] {} (P)
 		(Ne) edge [dashed] node {} (Q)
 		(R) edge [dashed] node {} (Q);

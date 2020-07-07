@@ -44,7 +44,7 @@ And all other probabilities equal to $0.0$.
 
 \section{Adaptation}
 
-
+\subsection{Proportion of adaptive mutations}
 In population-based method, one of the most widely used test for adaptation was proposed by McDonald and Kreitman \citet{McDonald1991}. This method uses the substitutions (mutations that reach fixation) between two close species and polymorphism (sites with at least two alleles) inside on population. Under a neutral regime, deleterious mutations are assumed to occur, but are quickly removed by selection, and the ratio of non-synonymous substitutions over synonymous substitutions ($d_N/d_S$) is expected to be lower than one, since none of non-synonymous deleterious mutations will reach fixation. Also the ratio of non-synonymous polymorphism over synonymous polymorphism ($p_N/p_S$) is also expected to be lower than one, since the non-synonymous deleterious mutations will be removed quickly from the population. Most importantly, in the absence of advantageous mutations, these two ratio are expected to be the same ($d_N/d_S=p_N/p_S$). If advantageous mutations occur, then they are fixed rapidly in the population, thus contributing solely to divergence but not to polymorphism, leading to an overall $d_N/d_S$ greater than $p_N/p_S$ \citet{smith_adaptive_2002, kimura_neutral_1983}. In the end, the method can therefore leads to a decomposition in the total rate rate of evolution ($d_N/d_S$) into two components: respectively neutral ($p_N/p_S$) and adaptive ($d_N/d_S-p_N/p_S$). This method is however plagued by the presence of moderately deleterious non-synonymous mutations, which can segregate at substantial frequency in the population without reaching fixation, thus contributing solely to polymorphism, and not to divergence, potentially resulting on an under-estimation of the rate of adaptive evolution \citet{eyre-walker_quantifying_2002}. Subsequent developments have tried to correct for this effect be relying on an explicit \textit{nearly-neutral model}, so as to derive the expected value of $d_N/d_S$ and $p_N/p_S$ in the absence of adaptation. The observed deviation of $d_N/d_S$ compared to this null expectation then provides an estimate of the rate of adaptation \citet{eyre-walker_estimating_2009, galtier_adaptive_2016}.
 
 \begin{figure}[thbp]
@@ -54,16 +54,19 @@ In population-based method, one of the most widely used test for adaptation was 
 	\caption{Detecting adaptive evolution in coding sequences from inter- and intra-specific data}
 \end{figure}
 
+\subsection{Adaptive substitution rate}
 The population- and phylogeny-based method work over very different time scales.
 For that reason, they might be capturing different signals: isolated events of adaptation along a particular lineage for population-based method, versus long-term evolutionary Red-Queen for phylogeny based methods. On the other hand, the two signals might be correlated. This represent a unique opportunity to confound these two types of approaches on non-overlapping data frames. Accordingly, the goal of this study is to set-up a pipeline for gathering divergence and polymorphism data for coding genes across species. As a proof of concept, I analyzed 1,355 protein-coding sequences (CDS) orthologs in mammals, and conducted two separate analysis on these CDS. First, alignments in placentals (except \textit{Homo sapiens} and \textit{Pan troglodytes}) were used to run classical site-models and mutation-selection models. The method estimated the rate of adaptation in each CDS, and extracted CDS with a rate of adaptation significantly high. Secondly, the population-based method was conducted using polymorphism available in \textit{Homo sapiens} and divergence to \textit{Pan troglodytes}. The pipeline then testes if the group of sequences detected with a high rate of adaption in the phylogeny-based method also display a high rate of adaptation in the population-based method.
 
 Finally, I investigated whether the phylogeny-based and the population-based methods give congruent results in terms of detection of adaptive evolution. 
-To do so, $\omega_A^{MK}$ was computed on the concatenate of the $27$ candidates CDS inferred, by the phylogeny-based method, to have a high rate of adaptation. The result was compared to the empirical distribution of $\omega_A^{MK}$ over random sets of $27$ CDS (see figure \ref{fig:omega_snp}, panel A).
+To do so, $\omega_A^{MK}$ was computed on the concatenate of the $27$ candidates CDS inferred, by the phylogeny-based method, to have a high rate of adaptation. The result was compared to the empirical distribution of $\omega_A^{MK}$ over random sets of $27$ CDS.
 The average rate of adaptation over the $27$ candidates, such as estimated by Mc-Donald and Kreitman (see methods), is higher than the average rate of adaptation over random samples. However, the deviation is not significant ($p_{\mathrm{value}}=0.119$).\\
 
-Similarly, using the site-frequency spectra of SNPs, $\omega_A^{DFEM}$ was computed in the same set of candidates by concatenating the $27$ site-frequency-spectrum (see figure \ref{fig:omega_snp}, panel C). And compared it to the empirical null distribution of $\omega_A^{DFEM}$ over random sets of $27$ CDS (see figure \ref{fig:omega_snp}, panel D).
+Similarly, using the site-frequency spectra of SNPs, $\omega_A^{DFEM}$ was computed in the same set of candidates by concatenating the $27$ site-frequency-spectrum. And compared it to the empirical null distribution of $\omega_A^{DFEM}$ over random sets of $27$ CDS.
 The average rate of adaptation over the $27$ candidates, such as estimated using the GammaExpo model (see methods), is higher than the average rate of adaptation over random samples. In this case, the deviation is marginally significant ($p_{\mathrm{value}}=0.036$), 
 meaning that modeling change in population size and the distribution of fitness effects of mutations leads to more congruence between phylogeny- and population-based methods, suggesting that the two methods are at least partially congruent in their detection of adaptation.
+
+\subsection{Confronting inter and intra specific inference}
 
 This study is the first medium-scale application of the phylogenetic mutation-selection method for detecting adaptation. The approach required some changes compared to the original method. More specifically, a two-step procedure was derived and deemed more reliable than the one-step \citet{lartillot_phylobayes_2013}. This approach seems to give sensible results. Its application on mammalian CDS suggests that most proteins are under \textit{nearly-neutral} regime and a few candidate proteins are under strong adaptation. The protein under adaptation also showed significant increase in ontology terms related to immune processes. In practice, there could be some background adaption in proteins categorized here as being in a \textit{nearly-neutral} regime, which might not have been detected due to lack of power of the statistical test. Further work is also needed to compare with classical codon models. Here, $27$ CDS were detected out of $1,355$. In Kosiol \textit{et al} \citet{kosiol_patterns_2008}, $400$ CDS were detected out of $16,529$ using codon site-model, suggesting that the mutation-selection model has somewhat a lower, although comparable, sensitivity compared to site-model. Ultimately, I should first scale-up the analysis to the whole dataset of $11,256$ CDS, instead of the $1,355$ CDS used because of time and computation constrains. Indeed, phylogeny-based method is computationally intensive, and requires a well resolved species tree, hence the limitation to mammals in this study. Moreover it crucially depends on the quality of the alignments, as was observed in preliminary study, and paralogs identified as orthologs or alignment problems can easily falsify the results.\\
 
@@ -74,9 +77,9 @@ The set of CDS detected to be under adaptation in phylogeny-based methods showed
 Altogether, this preliminary study suggest that the integration between population and phylogeny-based methods raises theoretical and practical issues. I suggest that further investigating these methodological integration will provide biological understanding of the evolutionary constrain of protein-coding sequences. \\
 
 
-\section{Complexity}
+\section{Epistasis in molecular evolution}
 
-\subsection{Epistasis}
+\subsection{Definition of epistasis}
 
 Yet another classification of epistasis, which is helpful in the context of protein evolution,
 is specific epistasis and non-specific epistasis (56) (Figure 1). Specific epistasis is structural in origin and results from direct physical interaction of spatially close residues in a protein’s 3D structure. Mutations occurring at spatially proximate sites will have non-additive contributions to the biophysical properties of proteins such as stability, activity, dynamics, or binding with partner proteins (57). Specific epistasis may also arise through long-range allosteric effects of mutations that are spatially far apart as in the case of O2 affinity in mammalian and avian Hemoglobin(40; 34). If the biophysical properties determine organismal fitness, as recently shown in examples of viral and bacterial evolution (28; 8), the non-additivity at the level of proteins translates to non- additivity at the level of fitness. As a consequence, the rate and patterns of substitution in one site may be correlated with that of another spatially close site (58; 39; 36; 46; 19).
@@ -99,14 +102,14 @@ tein structure have been shown to fit data better than the corresponding models 
 41. Rodrigue N, Philippe H, Lartillot N (2006) Assessing site-interdependent phylogenetic models of sequence evolution. Mol Biol Evol 23:1762–1775.
 42. Rodrigue N, Kleinman CL, Philippe H, Lartillot N (2009) Computational methods for evaluating phyloge- netic models of coding sequence evolution with de- pendence between codons. Mol Biol Evol 26: 1663–1676
 
+\subsection{Epistasis and rate of evolution}
+
 Previous studies have argued that models of molecular evolution should consider the importance epistasis for its role in speciation, in modulating the rate of adaptation, and many other factors \citet{Goldstein2017, Miller2018}.
 We argue that epistasis also has an important role in the response of $\omega$ to changes in $\Ne$, both in terms of susceptibility and dynamic of the response.
 Fundamentally, we argue that any model modeling fitness at the site level (without epistasis) implies a slow dynamic and a strong susceptibility, and adding epistasis to the model imply a faster dynamic and a weaker susceptibility.
 Intuitively, this effect originates in the fact that each site is to adapt independently to changes in $\Ne$ leading to overall a slow response (substitutions must affect all sites), and a strong susceptibility since each site will change its position in the fitness landscape.
 Taking into account epistasis, the burden of adapting to changes in $\Ne$ is shared by more sites, such that all of them don't have to adapt. 
 From a modeling and inference perspective, accounting for epistasis is challenging both in terms of parametrization and computational complexity \citet{Rodrigue2005, Manhart2014}. 
-
-\subsection{$\omega_A$}
 
 
 \section{Reproducible science}

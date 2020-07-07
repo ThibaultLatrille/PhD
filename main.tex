@@ -16,213 +16,20 @@
 %\documentclass[a4paper,openright,twoside]{thesis}
 \documentclass[a4paper,oneside,nobind]{thesis}
 
-% Caption
-\usepackage[font=footnotesize,labelfont=bf]{caption}
-\usepackage{float}
-
-
-\usepackage{parselines} 
-\usepackage{todonotes}
-
-% To keep old font size even if not the case in cover page
-\makeatletter
-\newcommand{\savefont}{\xdef\oldfontsize{\f@size}\xdef\oldblskip{\f@baselineskip}}
-\newcommand{\backtoppevfont}{\fontsize{\oldfontsize}{\oldblskip}\selectfont}
-\makeatother
-
-% spacing lines
-\usepackage{setspace}
-\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
-
-%%%%% SELECT YOUR DRAFT OPTIONS
-% Three options going on here; use in any combination.  But remember to turn the first two off before
-% generating a PDF to send to the printer!
-
-% This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-% \fancyfoot[C]{\color{PURPLEDARKsection} \emph{DRAFT Printed on \today}}
-
-% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
-% paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
-% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-% \correctionstrue
-
-% Define colors
-\usepackage{colortbl}
-\usepackage{pifont}
-\definecolor{RED}{HTML}{EB6231}
-\definecolor{YELLOW}{HTML}{E29D26}
-\definecolor{BLUE}{HTML}{5D80B4}
-\definecolor{LIGHTGREEN}{HTML}{6ABD9B}
-\definecolor{GREEN}{HTML}{8FB03E}
-\definecolor{PURPLE}{HTML}{BE1E2D}
-\definecolor{BROWN}{HTML}{A97C50}
-\definecolor{PINK}{HTML}{DA1C5C}
-\definecolor{PURPLEDARK}{cmyk}{0, 0.5, 0, 0.7}
-\definecolor{PURPLELIGHT}{cmyk}{0, 0.12, 0, 0.2}
-\definecolor{PURPLEGREY}{cmyk}{0, 0.5, 0, 0.55}
-\definecolor{GREYDARK}{cmyk}{0, 0, 0, 0.92}
-\definecolor{BLUELINK}{HTML}{0645AD}
-\definecolor{DARKBLUELINK}{HTML}{0B0080}
-\definecolor{LIGHTBLUELINK}{HTML}{3366BB}
-\definecolor{PURPLELINK}{HTML}{663366}
-
 \definecolor{Nonpolar}{HTML}{fef1d2}
 \definecolor{Polar}{HTML}{a9fdd8}
 \definecolor{Basic}{HTML}{d7f8ff}
 \definecolor{Acidic}{HTML}{feceea}
 \definecolor{Stop}{HTML}{D0D0D0}
 
-%%%%% BIBLIOGRAPHY SETUP
-\usepackage{natbib} % add [numbers] if I want to count them
-\newcommand*{\bibtitle}{References}
 
-% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
-%\numberwithin{equation}{subsection}
-
-% refs and backref
-\usepackage{usebib}
-\usepackage{backref}
-\hypersetup{colorlinks,
-	linkcolor=GREYDARK,
-	citecolor=DARKBLUELINK,
-	urlcolor=BLUELINK
-} % Color citation links in purple
-\renewcommand*{\backrefsep}{,~}%
-\renewcommand*{\backreftwosep}{,~}% ', and~'
-\renewcommand*{\backreflastsep}{,~}% ' and~'
-
-% Deal with backreferences in bibliography
-\newcommand{\mapolicebackref}[1]{\hspace*{\fill} \mbox{\textit {\small #1}}}
-\renewcommand*{\backref}[1]{}
-\renewcommand*{\backrefalt}[4]{%
-\ifcase #1 \mapolicebackref{Not cited}
-\or \mapolicebackref{Cited at page #2}
-    \else \mapolicebackref{Cited at pages #2}
-\fi
-}
-%\bibinput{references}
-% Misc
-\usepackage{amsfonts,amsmath,mathtools}
-\usepackage{bm}
-\usepackage{listings, enumerate, enumitem}
-\usepackage{tikz}
-\pdfinclusioncopyfonts=1
-\usetikzlibrary{arrows,automata,calc}
-\usepackage{titlesec}
-\usepackage[toc, acronym]{glossaries}
-\makeglossaries
 \include{notations}
 % make part like a chapter
-\titleclass{\part}{top} 
-\titleformat{\part}
-[display]
-{\centering\fontsize{36}{0}}
-{\color{GREYDARK} \bfseries \centering \fontsize{36}{0}{\partname} \thepart}
-{36pt}
-{\color{GREYDARK} \bfseries \centering \fontsize{36}{0}}[\titlepagedecoration]
-
-% Epigraphs
-\usepackage{epigraph}
-\renewcommand\epigraphflush{flushright}
-\renewcommand\epigraphsize{\normalsize}
-\setlength\epigraphwidth{0.7\textwidth}
-
-\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
-
-%%%%% PAGE DECORATION AND FORMATTING
-
-% Decorate title pages (for parts)
-\newcommand\titlepagedecoration{%
-\thispagestyle{empty}
-\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
-
-\coordinate (aux1) at ([yshift=-15pt]current page.north east);
-\coordinate (aux2) at ([yshift=-410pt]current page.north east);
-\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
-\coordinate (aux4) at ([yshift=-150pt]current page.north east);
-
-\begin{scope}[opacity=0.75,BLUE,line width=12pt,rounded corners=12pt]
-\draw
-  (aux1) -- coordinate (a)
-  ++(225:5) --
-  ++(-45:5.1) coordinate (b);
-\draw[shorten <= -10pt]
-  (aux3) --
-  (a) --
-  (aux1);
-\draw[opacity=0.5,YELLOW,shorten <= -10pt]
-  (b) --
-  ++(225:2.2) --
-  ++(-45:2.2);
-\end{scope}
-\draw[opacity=0.75,RED,line width=8pt,rounded corners=8pt,shorten <= -10pt]
-  (aux4) --
-  ++(225:0.8) --
-  ++(-45:0.8);
-\begin{scope}[opacity=0.75,LIGHTGREEN,line width=6pt,rounded corners=8pt]
-\draw[shorten <= -10pt]
-  (aux2) --
-  ++(225:3) coordinate[pos=0.45] (c) --
-  ++(-45:3.1);
-\draw
-  (aux2) --
-  (c) --
-  ++(135:2.5) --
-  ++(45:2.5) --
-  ++(-45:2.5) coordinate[pos=0.3] (d);   
-\draw 
-  (d) -- +(45:1);
-\end{scope}
-\end{tikzpicture}%
-}
-% Modify chapter color
-\colorlet{chaptergrey}{PURPLELIGHT}
-\renewcommand*\sectfont{\bfseries\color{PURPLEDARK}}
-
-% Format titles
-\titleformat{\section}
-{\color{GREYDARK}\normalfont\Large\bfseries}
-{\color{GREYDARK}\thesection}{1em}{}
-
-\titleformat{\subsection}
-{\color{GREYDARK}\normalfont\large\bfseries}
-{\color{GREYDARK}\thesubsection}{1em}{}
-
-\titleformat{\subsubsection}
-{\color{GREYDARK}\normalfont\bfseries}
-{\color{GREYDARK}\thesubsubsection}{1em}{}
-
-% Titles for toc
-\usepackage{titletoc}
-
-
-% If uncommented, then rules in tables are in purple
-% \makeatletter
-% \arrayrulecolor{PURPLEDARKsection}
-% \def\mtc@bottom@rule{%
-%   \ifx\mtc@rule\relax\relax\else
-%       \vskip -2.5ex
-%         \color{PURPLEDARKsection}\rule[2.4\p@]{\columnwidth}{.4\p@}\vspace*{2.6\p@}\fi}
-% \makeatother
-%
-\renewcommand*\rhead{\textcolor{RED}}
-% Change appendix title page (+ some modif in ociamthesis.cls to remove from toc + added in toc via adding doubleclearpage and phantomsection and line toc when calling \startappendices — see below)
-\makeatletter
-\renewcommand{\@chap@pppage}{}
-\makeatother
-
-%%%%% ADD YOUR PERSONAL MACROS
-% To make text superscripts shortcuts
-\renewcommand{\th}{\textsuperscript{th}}
-\newcommand{\nd}{\textsuperscript{nd}}
-\renewcommand{\st}{\textsuperscript{st}}
-\newcommand{\rd}{\textsuperscript{rd}}
-\usepackage{pgfplots, pgf, tikz}
-\usepackage{graphicx}
-\usepackage{pdfpages}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
+\pagenumbering{gobble}
+\hypersetup{pageanchor=false}
 \include{sections/frontpage}
 %%%%% CHOOSE YOUR LINE SPACING HERE
 \setlength{\textbaselineskip}{1.2em}
@@ -272,7 +79,6 @@
 % \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
 \begin{alwayssingle}
 \begingroup
-	\pagenumbering{gobble}% Turn off page numbering for abstract and acknowlegements
 \input{sections/abstract}
 \endgroup
 \end{alwayssingle}
@@ -281,7 +87,7 @@
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \input{sections/acknowledgement}
-
+\hypersetup{pageanchor=true}
 \begin{romanpages}
 %%%%% MINI TABLES
 \dominitoc % include a mini table of contents
@@ -299,15 +105,7 @@
 \flushbottom
 \include{sections/preamble}
 
-\fancyhf{} % clear the header and footers
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
-\renewcommand{\headrulewidth}{1pt}
-\cfoot{\thepage}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
-\fancyhead[LO]{\emph{\leftmark}} 
-\fancyhead[RE]{\emph{\rightmark}} 
+\pagestyle{fancybook}
 
 \part{Introduction}
 \label{part:intro}
@@ -326,12 +124,9 @@
 \include{sections/conclusion}
 
 %% APPENDICES %% 
-\cleardoublepage\phantomsection
-\startappendices
 \part*{Appendices}
 %%%%% REFERENCES
-
 \bibliographystyle{natbib}
-\bibliography{biblio/references, biblio/introduction, biblio/adaptapop, biblio/Backup-Aevol}
+\bibliography{biblio/references, biblio/introduction, biblio/adaptapop}
 \end{document}
 

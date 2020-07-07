@@ -15,7 +15,7 @@ In a nutshell, molecular evolution leverages the patterns of sequences distribut
 
 This section will recall theoretical frameworks, assumptions and limitations on which molecular evolution is based.
 It will emphasis the milestones and their respective contribution, while doing its best to highlight the undertaken paths which have been forgotten with time.
-It is a modest attempt neither exhaustive nor accurate, imprinted with ideology of our current society on how we perceive and interpret past discoveries.
+It is a modest attempt neither exhaustive nor accurate, imprinted with ideology of our current society on how we perceive and interpret past discoveries. 
 Moreover, this introduction will highlight a few names, while the bulk of the rigorous assessment and develpoment of molecular evolution has been done by unmentioned and sometimes forgotten scientists.
 
 \subsection{Population-genetic}
@@ -358,7 +358,7 @@ From transition rates of the substitution process (\ref{eq:sub-transion-rates}),
 \end{align}
 As a result, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
 \begin{equation}
-\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A},
+\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}.
 \end{equation}
 This example can be generalized for any close loop, such that the reversibility of the substitution process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
 
@@ -380,13 +380,13 @@ Under the assumption that the mutational process is also reversible, the detaile
 \end{align}
 Altogether, the probability $\pi_{A}$ to find the population in allele $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $A$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
 \begin{align}
-\dfrac{\pi_{A}}{\pi_{B}} &  \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}}, \\ 
-\iff \pi_{A} = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} },
+\dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum_{A}\pi_{A} = 1, \\ 
+\iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} },
 \end{align}
-where the denominator is a normalizying constant such that the sum of probabilities equal to $1$.
-In analogy to thermodynamic systems, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature.}.
+where the denominator is a normalizing constant such that the sum of probabilities equal to $1$.
+In analogy to thermodynamic systems, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of genetic drift.}.
 
-\subsection{Relative \gls{substitution} rate} 
+\subsection{Relative {substitution} rate} 
 
 Probabilities of the stationary distribution allows to calculate all observable quantities of interest, such as mean fitness and mean \gls{substitution} rate, using standard probability theory.
 One quantity of interest is the \gls{substitution} rate of selected mutations relative to that of \gls{neutral} mutations, called $\omega$.

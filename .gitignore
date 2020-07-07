@@ -13,7 +13,6 @@ Template-*
 *.log
 *.synctex.gz
 *.swp
-*.pdf
 *.out
 *.toc
 *.soc
