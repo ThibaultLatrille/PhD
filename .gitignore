@@ -6,10 +6,11 @@
 
 *~
 .idea/
-*.pdf
-*.jpg
+main.pdf
 Template-*
 Backup*.bib
+backup
+*.jpg
 *.aux
 *.log
 *.synctex.gz
