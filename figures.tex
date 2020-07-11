@@ -55,21 +55,22 @@
 	\begin{axis}[
 	width=\textwidth,
 	height=0.75\textwidth,
-	ylabel={$R_{\mathrm{fix}}(S)$},
+	ylabel={Relative fixation probability},
 	xlabel={Scaled selection coefficient ($S=4 \Ne s$)},
 	cycle list name=colors,
 	domain=-20:20,
 	samples=200,
+	legend entries={$\frac{P_{\mathrm{fix}}(s, \Ne)}{P_{\mathrm{fix}}(0, \Ne)} = \frac{S}{1 - \e^{-S}}$,$|s| = \sfrac{1}{\Ne}$ (drift barrier)},
 	legend cell align=left,
 	minor tick num=2,
 	axis x line=bottom,
 	axis y line=left,
 	legend style={at={(0.1,0.9)},anchor=north west}
 	]
-	\addplot[line width=1.5pt, black]{ x / (1 - exp(- x))};
-	\addplot[black, dashed, line width=1.0pt]{1.0};
-	\addplot[name path=A, line width=0pt] coordinates {(-20, 0) (-20, 20)};
+	\addplot[line width=1.5pt, BLUE]{ x / (1 - exp(- x))};
 	\addplot[name path=B, dashed, YELLOW, line width=0.5pt] coordinates {(-4, 0) (-4, 20)};
+	\addplot[name path=A, line width=0pt] coordinates {(-20, 0) (-20, 20)};
+	\addplot[black, dashed, line width=1.0pt]{1.0};
 	\addplot[black, dashed, line width=1.0pt] coordinates {(0, 0) (0, 20)};
 	\addplot[name path=C, dashed, YELLOW, line width=0.5pt] coordinates {(4, 0) (4, 20)};
 	\addplot[name path=D, line width=0pt] coordinates {(20, 0) (20, 20)};

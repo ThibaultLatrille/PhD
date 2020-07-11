@@ -373,12 +373,14 @@
 {\color{GREYDARK}\normalfont\bfseries}
 {\color{GREYDARK}\thesubsubsection}{1em}{}
 
-
 \usepackage[colorlinks=false,pagebackref=true]{hyperref} 
 % for linking between references, figures, TOC, etc in the pdf document
 \hypersetup{colorlinks,
-	linkcolor=GREYDARK,
+	linkcolor=DARKBLUELINK,
+	anchorcolor=DARKBLUELINK,
 	citecolor=DARKBLUELINK,
+	filecolor=DARKBLUELINK,
+	menucolor=DARKBLUELINK,
 	urlcolor=BLUELINK
 } % Color citation links in purple
 \PassOptionsToPackage{unicode}{hyperref}
@@ -386,6 +388,7 @@
 
 %%%%% Glossary
 \usepackage[toc, acronym]{glossaries}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
 \makeglossaries
 
 %%%%% BIBLIOGRAPHY SETUP
@@ -406,3 +409,5 @@
 	\else \mapolicebackref{Cited at pages #2}
 	\fi
 }
+
+

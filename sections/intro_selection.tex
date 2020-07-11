@@ -1,21 +1,30 @@
 \chapter{Selection in protein coding {DNA} sequences}
-\minitoc
+{
+	\hypersetup{linkcolor=GREYDARK}
+	\minitoc
+}
 \label{sec:selection}
-The first chapter recalled the framework of molecular evolution, and how the evolutionary trajectory of sequences is defined in terms of mutation, selection and drift. 
-This parametrization required a given selection coefficient associated to mutation, or required the fitness of each particular sequence to be defined.
-However, this introduction remained so far elusive on the relationship between sequence and fitness.
-This chapter, on the other hand, solely focus on the mapping from sequence to fitness, in the special case of protein coding \acrshort{DNA} sequence.
+Evolutionary trajectory of sequences depends on the forces of mutation, selection and drift, which acts conjointly such that each one of them must be well studied and understood.
+However, the previous chapter remained so far elusive on selection, and did not yet question what determines the strength of selection.
+More precisely, molecular evolution requires either a given selection coefficient associated to mutation, or that the fitness of each particular sequence to be defined.
+In other word, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein coding \acrshort{DNA} sequence.
 It will seek to clarify the relationship between protein sequence, protein thermodynamic, protein function, and organismal fitness, such as to derive the selective pressures shaping proteins coding \acrshort{DNA} sequences.
 It is also important to emphasize whether they are general principles, or do this relationship between sequence and fitness depends on the specific protein, organism, and environment.
+To this aims, this chapter will first present the genetic code and phylogenetic codons models, which can quantify the strength of selection acting on protein.
+Application of these phylogenetic models to empirical DNA alignment provides insight on the variation of selection between genes, between sites of the same protein, or between branches of the phylogenetic tree.
+Subsequently, given the results on empirical data, refinements of codon models leveraging pitfalls are presented.
+Finally, physico-chemical constrains of proteins and thermodynamics models of protein selection are reviewed.
 
 \section{Protein coding DNA sequences}
 
 Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyses chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, and so on.
 This variety of roles is accomplished by a variety of three-dimensional shapes.
 A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids.
-Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus. 
+Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus.
+
 In practice, proteins size can range from fewer than $20$ to more than $5000$ amino acids, although an average protein is about 350 amino acids long.
-Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories.
+
+Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories determining their solubility and acidity (classification is given in table \ref{table:genetic_code}).
 Charged amino-acids can be either basic (positively charged) or acidic (negatively charged).
 On the other hand, non charged amino-acids can however be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
 Consequently, polar amino acids are called hydrophilic, and are often found on the outer surface of folded proteins.
@@ -27,55 +36,46 @@ Reciprocally, these non polar amino-acids are called hydrophobic and tend to be 
 Because the $20$ letter alphabet of proteins is different to the $4$ letter alphabet of nucleic acid (DNA and RNA), there is not a one-to-one correspondence between the two alphabets.
 Instead, amino acids are encoded by codons, a consecutive sequences of 3 nucleotides, yielding $4^3=64$ possible permutations, more than sufficient to encode the 20 different amino acids.
 Moreover, three stop codons signals termination of the protein, such that 61 of the 64 codons are used to encode amino acids.
-Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
-More precisely, codons binds to \acrshort{tRNA} \acrshort{tRNA} trough an anticodon, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}, using canonical Watson-Crick base pairing (A-T and G-C).
-On the other end, \acrshort{tRNA} structure complexes uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase.
+Since there are 61 coding codons and only 20 amino acids, there is a necessary redundancy in the code.
+Thus, amino-acids are encoded by synonymous codons, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan.
+Altogether, the DNA genetic code translating codon to amino-acids, which is used almost universally by all organisms is given in table \ref{table:genetic_code}.
 
-However, there is not a one-to-one correspondence between codon and \acrshort{tRNA}, such that the number of tRNA in the cell is not exactly $61$.
-On one hand, different tRNAs can carry the same anticodon but could display varying efficiency in translation, adding a layer of regulation to the process of protein synthesis.
-On the other hand, some tRNA can pair with codons due to non standard pairing, due to geometrical relaxation.
-More precisely, the first two bases in the codon bond strongly to the anticodon of the tRNA, while the third base can be subject to non standard pairing, only between U or G, the pairing is less specific and in fact two bases can be interchangeably recognized by the tRNA.
-Due to the specificity inherent in the first two nucleotides of the codon, if one amino acid is coded for by multiple anticodons and those anticodons differ in either the second or third position (first or second position in the codon) then a different tRNA is required for that anticodon.
-The minimum requirement to satisfy all possible $61$ codons is $31$ tRNAs for the amino acids and one initiation codon.
-Altogether, \acrshort{tRNA} along with aminoacyl-tRNA synthetase constitute the machinery necessary for translating \gls{codon} into amino-acid, according the DNA genetic code given in table \ref{table:genetic_code}, which is used almost universally by all organisms.
-
-
-\begin{table}[h]
+\begin{table}[H]
 	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c|l|c|l|c|l|c|l|c|c|}
+		\begin{tabular}{|c||l|c|l|c|l|c|l|c||c|}
 			\hline
-			& \multicolumn{2}{c|}{T} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{G} & \\ \hline \hline
-			\multirow{4}{*}{T} & TTT & \cellcolor{Nonpolar} & TCT & \cellcolor{Polar} & TAT & \cellcolor{Polar} & TGT & \cellcolor{Polar} & T \\
+			& \multicolumn{2}{c|}{\textbf{T}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c|}{\textbf{G}} & \\ \hline \hline
+			\multirow{4}{*}{\textbf{T}} & TTT & \cellcolor{Nonpolar} & TCT & \cellcolor{Polar} & TAT & \cellcolor{Polar} & TGT & \cellcolor{Polar} & \textbf{T} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar} & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)} & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)} & C \\
-			\hhline{|~|-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
-			& TTA & \cellcolor{Nonpolar} & TCA & \cellcolor{Polar} & TAA & \cellcolor{Stop} Stop (Ochre) & TGA & \cellcolor{Stop} Stop (Opal) & A \\
-			\hhline{|~|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
-			& TTG & \cellcolor{Nonpolar} & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)} & TAG & \cellcolor{Stop} Stop (Amber) & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W) & G \\
-			\hhline{|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|-|-|-|-|}
-			\multirow{4}{*}{C} & CTT & \cellcolor{Nonpolar} & CCT & \cellcolor{Nonpolar} & CAT & \cellcolor{Basic} & CGT & \cellcolor{Basic} & T \\
+			& TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar} & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)} & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)} & \textbf{C} \\
+			\hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+			& TTA & \cellcolor{Nonpolar} & TCA & \cellcolor{Polar} & TAA & \cellcolor{Stop} Stop (Ochre) & TGA & \cellcolor{Stop} Stop (Opal) & \textbf{A} \\
+			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+			& TTG & \cellcolor{Nonpolar} & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)} & TAG & \cellcolor{Stop} Stop (Amber) & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W) & \textbf{G} \\
+			\hhline{|-||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|-|-|-||-|}
+			\multirow{4}{*}{\textbf{C}} & CTT & \cellcolor{Nonpolar} & CCT & \cellcolor{Nonpolar} & CAT & \cellcolor{Basic} & CGT & \cellcolor{Basic} & \textbf{T} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& CTC & \cellcolor{Nonpolar} & CCC & \cellcolor{Nonpolar} & CAC & \cellcolor{Basic} \multirow{-2}{*}{Histidine (His/H)} & CGC & \cellcolor{Basic} & C \\
-			\hhline{|~|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|}
-			& CTA & \cellcolor{Nonpolar} & CCA & \cellcolor{Nonpolar} & CAA & \cellcolor{Polar} & CGA & \cellcolor{Basic} & A \\
+			& CTC & \cellcolor{Nonpolar} & CCC & \cellcolor{Nonpolar} & CAC & \cellcolor{Basic} \multirow{-2}{*}{Histidine (His/H)} & CGC & \cellcolor{Basic} & \textbf{C} \\
+			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
+			& CTA & \cellcolor{Nonpolar} & CCA & \cellcolor{Nonpolar} & CAA & \cellcolor{Polar} & CGA & \cellcolor{Basic} & \textbf{A} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& CTG & \cellcolor{Nonpolar} \multirow{-6}{*}{Leucine (Leu/L)} & CCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Proline (Pro/P)} & CAG & \cellcolor{Polar} \multirow{-2}{*}{Glutamine (Gln/Q)} & CGG & \cellcolor{Basic} \multirow{-4}{*}{Arginine (Arg/R)} & G \\
-			\hline
-			\multirow{4}{*}{A} & ATT & \cellcolor{Nonpolar} & ACT & \cellcolor{Polar} & AAT & \cellcolor{Polar} & AGT & \cellcolor{Polar} & T \\
+			& CTG & \cellcolor{Nonpolar} \multirow{-6}{*}{Leucine (Leu/L)} & CCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Proline (Pro/P)} & CAG & \cellcolor{Polar} \multirow{-2}{*}{Glutamine (Gln/Q)} & CGG & \cellcolor{Basic} \multirow{-4}{*}{Arginine (Arg/R)} & \textbf{G} \\
+			\hhline{|-||-|-|-|-|-|-|-|-||-|}
+			\multirow{4}{*}{\textbf{A}} & ATT & \cellcolor{Nonpolar} & ACT & \cellcolor{Polar} & AAT & \cellcolor{Polar} & AGT & \cellcolor{Polar} & \textbf{T} \\
 			\cline{2-2} \cline{4-4}\cline{6-6} \cline{8-8} \cline{10-10}
-			& ATC & \cellcolor{Nonpolar} & ACC & \cellcolor{Polar} & AAC & \cellcolor{Polar} \multirow{-2}{*}{Asparagine (Asn/N)} & AGC & \cellcolor{Polar} \multirow{-2}{*}{Serine (Ser/S)} & C \\
-			\hhline{|~|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-|-|}
-			& ATA & \cellcolor{Nonpolar} \multirow{-3}{*}{Isoleucine (Ile/I)} & ACA & \cellcolor{Polar} & AAA & \cellcolor{Basic} & AGA & \cellcolor{Basic} & A \\
-			\hhline{|~|-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|}
-			& ATG & \cellcolor{Nonpolar} Methionine (Met/M) & ACG & \cellcolor{Polar} \multirow{-4}{*}{Threonine (Thr/T)} & AAG & \cellcolor{Basic} \multirow{-2}{*}{Lysine (Lys/K)} & AGG & \cellcolor{Basic} \multirow{-2}{*}{Arginine (Arg/R)} & G \\
-			\hline
-			\multirow{4}{*}{G} & GTT & \cellcolor{Nonpolar} & GCT & \cellcolor{Nonpolar} & GAT & \cellcolor{Acidic} & GGT & \cellcolor{Nonpolar} & T \\
+			& ATC & \cellcolor{Nonpolar} & ACC & \cellcolor{Polar} & AAC & \cellcolor{Polar} \multirow{-2}{*}{Asparagine (Asn/N)} & AGC & \cellcolor{Polar} \multirow{-2}{*}{Serine (Ser/S)} & \textbf{C} \\
+			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+			& ATA & \cellcolor{Nonpolar} \multirow{-3}{*}{Isoleucine (Ile/I)} & ACA & \cellcolor{Polar} & AAA & \cellcolor{Basic} & AGA & \cellcolor{Basic} & \textbf{A} \\
+			\hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
+			& ATG & \cellcolor{Nonpolar} Methionine (Met/M) & ACG & \cellcolor{Polar} \multirow{-4}{*}{Threonine (Thr/T)} & AAG & \cellcolor{Basic} \multirow{-2}{*}{Lysine (Lys/K)} & AGG & \cellcolor{Basic} \multirow{-2}{*}{Arginine (Arg/R)} & \textbf{G} \\
+			\hhline{|-||-|-|-|-|-|-|-|-||-|}
+			\multirow{4}{*}{\textbf{G}} & GTT & \cellcolor{Nonpolar} & GCT & \cellcolor{Nonpolar} & GAT & \cellcolor{Acidic} & GGT & \cellcolor{Nonpolar} & \textbf{T} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& GTC & \cellcolor{Nonpolar} & GCC & \cellcolor{Nonpolar} & GAC & \cellcolor{Acidic} \multirow{-2}{*}{Aspartic acid (Asp/D)} & GGC & \cellcolor{Nonpolar} & C \\
-			\hhline{|~|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|}
-			& GTA & \cellcolor{Nonpolar} & GCA & \cellcolor{Nonpolar} & GAA & \cellcolor{Acidic} & GGA & \cellcolor{Nonpolar} & A \\
+			& GTC & \cellcolor{Nonpolar} & GCC & \cellcolor{Nonpolar} & GAC & \cellcolor{Acidic} \multirow{-2}{*}{Aspartic acid (Asp/D)} & GGC & \cellcolor{Nonpolar} & \textbf{C} \\
+			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}||-|}
+			& GTA & \cellcolor{Nonpolar} & GCA & \cellcolor{Nonpolar} & GAA & \cellcolor{Acidic} & GGA & \cellcolor{Nonpolar} & \textbf{A} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & G \\
+			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & \textbf{G} \\
 			\hline
 	\end{tabular}}
 	\caption[The Genetic Code]{
@@ -83,17 +83,36 @@ Altogether, \acrshort{tRNA} along with aminoacyl-tRNA synthetase constitute the 
 		Amino-acids are represent into $4$ categories based on the electrochemical properties.
 		Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
 		Stop codons are represented in black (\textcolor{Stop}{\ding{110}}).
-		The synonymous codons encoding for the same amino-acid are usually different by their third codon position, the wooble base. 
+		The synonymous codons encoding for the same amino-acid are usually different by their third codon position, the wooble base.
 	}
 	\label{table:genetic_code}
 \end{table}
 
-Since there are 61 coding codons and only 20 amino acids, there is a necessary redundancy in the code.
-Thus, amino acids \footnote{With the notable exception of methionine and tryptophan} are encoded by synonymous codons, which are interchangeable in the sense of producing the same amino acid.
-Because mutation are at the nucleotide level and effect only one base, any codon can have at most $9$ possible transitions to another codons (see figure \ref{fig:graph-codons-aa}, right panel).
-Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous transition between the underlying codons (see figure \ref{fig:graph-codons-aa}, right panel), such that if for example these two amino-acids are high fitness, they would need to pass trough a fitness valley. 
+Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
+More precisely, codons binds to \acrshort{tRNA} \acrshort{tRNA} trough an anticodon, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}.
+On the other end, \acrshort{tRNA} structure complexes uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase \citep{Rich1976}.
+As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating codons into amino-acids .
+However, there is not a one-to-one correspondence between the $61$ codons and \acrshort{tRNA} genes.
+First, the set of unique sequence of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$ \citep{Goodenbour2006}.
+This subset of anticodon sequences necessary to binds all $61$ codons is due to non canonical base pairing\footnote{Canonical base pairing are A-U and G-C, where Thymin (T) is replaced by uracil (U) in RNA}.
+More precisely, the first two positions in the codon bond strongly to the anticodon of the tRNA (second and third positions), while the third base of the codon can be subject to non standard pairing with the first base of the anticodon.
+If the anticodon contains a Guanine at first position, codons with either U or C at the third position can bounds to this anticodon, and this phenomenon explains why there is not any non-synonymous transition from only U to C at third position, and why synonymous codons end with T or C.
+Also, if the anticodon contains an Inosine at first position, codons with either C, U or A at the third position can bounds to this anticodon, such that for example Leucine encoded by three codon (AUU, AUC, AUA) can be bounded by the unique anticodon IAU.
+Altogether, non-standard pairing explains why the number of unique anticodons is lower than the number of possible codons, and also explains some part of the structure of the genetic code.
 
-\begin{figure}[htb!]
+Secondly, tRNA genes with the same amino-acid and anticodon, which are called isoacceptor tRNA, may vary in other parts of the tRNAs than the anticodon region and the amino-acid binding site.
+
+Effectively, many genes can codes for the same isoacceptor tRNA, where each gene can display varying efficiency and errors in translation, adding a layer of regulation to the process of protein synthesis \citep{Lowe1997,Chan2008,Juhling2008,Lin2019}.
+As a result, codons can be more frequently represented than other synonymous codons in some genes, an effect named codon usage bias.
+For genes that are expressed at high levels, the codon use is biased in favor of the codons that have an high tRNA concentration in the cell, ultimately increasing the expression rate and decreasing the rate of mistranslation by reducing the time of occupancy of an open site.
+Thus, at a fine-grained molecular scope, a synonymous change can influence mRNA stability, splicing process and protein-folding during translation \citep{Plotkin2011, Rak2018}.
+However in the scope of this manuscript, such selection between synonymous codons will not be considered, and selection for proteins will be framed at the amino-acid level in first approximation, and mutation at the nucleotide level.
+
+Because mutations are at the nucleotide level and effect only one base, any codon can have at most $9$ possible transitions to another codons (see figure \ref{fig:graph-codons-aa}, right panel).
+Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous transition between the underlying codons (see figure \ref{fig:graph-codons-aa}, right panel), such that if for example these two amino-acids imply a high fitness, they would need to pass trough a fitness valley.
+
+
+\begin{figure}[H]
 	\begin{center}
 		\begin{minipage}{0.48\linewidth}
 			\includegraphics[width=\linewidth, page=1]{figures/gt-codon-tab20b.pdf}
@@ -108,216 +127,305 @@ Moreover, it is possible that some pairs of amino-acids are not accessible throu
 		Graphs of possible one nucleotide transition between codon (left panel) and between amino-acid (right panel).
 		Nodes corresponds to codons (left panel) and amino-acid (right panel), and node's color represent the encoded amino-acid.
 		Additionanly, for amino-acids the size of nodes represent the number of underlying codons.
-		An edge between two codons corresponds to a one nucleotide transition, such that a codon can have at most $9$ possible transitions. 
+		An edge between two codons corresponds to a one nucleotide transition, such that a codon can have at most $9$ possible transitions.
+
 		Similarly, en edge between two amino-acids correspond to a one nucleotide non-synonymous transition between the underlying codons, and the weight of the edges represent the number such possible transitions.
 		Non-synonymous transition are represented in colored gradient, while synonymous transitions are depicted in black.
 		The graph of the $61$ codons contains $263$ transitions, $67$ of them are syonymous while $196$ are non-synonymous.
 		The radius of the graph is three, such that the most distant amino-acids are at most three transition away.
 		Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for Serine where a transition for (TCT, TCG, TCC,	TCA) to (AGT, AGC) requires passing trought another amino-acid, hence a least two non-synonymous transitions.
-		From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous transitions. 
-		The graph is not fully connected and do not form a clique, and the radius of the graph is also three, because a transition from Methione to Tyrosine requires at least three non-synonymous transitions. 
+		From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous transitions.
+
+		The graph is not fully connected and do not form a clique, and the radius of the graph is also three, because a transition from Methione to Tyrosine requires at least three non-synonymous transitions.
+
 		Altogether, for all the possible $190$ pairs of amino-acids, $114$ pairs requires at least two non-synonymous transitions, and one pair (M-Y) requires at least three non-synonymous transitions.
 	}
 \end{figure}
+
 \subsection{Codon substitution models}
-Studying evolution of protein coding \acrshort{DNA} sequences at the nucleotide level, while disregarding the biochemical properties of amino-acids is a major shortcoming not taking into account.
-Conversely, studying the evolutionary history of the protein instead of the \acrshort{DNA} sequence, meaning translating nucleotide sequences into amino-acid sequences, and designing models at the amino-acid level also has the major shortcoming of not taking into account that the mutation process occurs at the nucleotide level.
+Under the approximation that selection occurs for protein, designing substitution models at the amino-acid level has the major shortcoming of not taking into account that the underlying mutation process occurs at the nucleotide level.
+Conversely, studying evolution of protein coding \acrshort{DNA} sequences only at the nucleotide level, while disregarding the genetic code neglects the consequences that nucleotide variation can have onto protein sequence.
 These shortcomings are both addressed by \gls{codon} models, where the complexity of the genetic code is seen as an asset rather than an encumbrance.
 Indeed the redundancy in the genetic code can be leveraged to disentangle mutation and selection in protein coding \acrshort{DNA} sequences, under the approximation that selection occurs at the protein level in first approximation, while the mutation process occurs at the \acrshort{DNA} level.
-The genetic code allows to split mutations into \gls{neutral} and selected mutations, where synonymous mutattion is deemed neutral, meaning not changing the translated amino-acid, or non-synonymous, meaning the translated amino-acid will be different.
-The degeneracy of the genetic code is thus an advantage when one devises a model at the \gls{codon} level in \acrshort{DNA} sequences.
+The genetic code allows to split mutations into synonymous and non-synonymous mutations, where synonymous mutations are deemed neutral, and non-synonymous mutations are considered under selection \citep{Muse1994,Goldman1994}.
 
-The mutation rate from \gls{codon} $\ci$ to $\cj$ depends on the underlying nucleotide change between the \gls{codon}, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the codons. The \gls{codon} mutation rate is then given by the mutation matrix ${\mutmatrix_{\nucitoj}}$. Altogether, the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
-\begin{equation}
-\begin{dcases}
-\mu_{\itoj} & = 0 \text{if $\ci$ and $\cj$ are one mutation away,} \\
-\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ else }
-\end{dcases}
-\end{equation}
-
+Following the formalism of codon models pioneered by \citet{Muse1994}, the $4 \times 4$ mutation matrix $\Mutmatrix$ at the nucleotide level is defined as:
 \begin{equation}
 \label{eq:mutrates}
 \Mutmatrix = \begin{pmatrix}
-- & {\exchan_{AC} \mutequi_C} & {\exchan_{AG}\mutequi_G} & {\exchan_{AT}\mutequi_T} \\ 
-{\exchan_{AC}\mutequi_A} & - & {\exchan_{CG}\mutequi_G} & {\exchan_{CT}\mutequi_T} \\ 
-{\exchan_{AG}\mutequi_A} & {\exchan_{CG}\mutequi_C} & - & {\exchan_{GT}\mutequi_T} \\ 
-{\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & - 
+- & {\mutmatrix_{AC}} & 		{\mutmatrix_{AG}} & 		{\mutmatrix_{AT}} \\
+{\mutmatrix_{AC}} & - &  {\mutmatrix_{CG}} &		{\mutmatrix_{CT}} \\
+{\mutmatrix_{AG}} & 		{\mutmatrix_{CG}} & - &  {\mutmatrix_{GT}} \\
+{\mutmatrix_{AT}} & 		{\mutmatrix_{CT}} & 		{\mutmatrix_{GT}} & -
 \end{pmatrix},
 \end{equation}
-
-The phylogeny-based method models the \gls{substitution} rate at the \gls{codon} level. Synonymous and non-synonymous mutations are treated differently. The rate of non-synonymous substitutions over the rate of synonymous substitutions (denoted $\omega=d_N/d_S$) is estimated as a parameter of the model \citep{Muse1994,Goldman1994}. Assuming synonymous mutations are \gls{neutral}, an $\omega>1$ signals an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution. Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, means the protein is under purifying selection. However, in practice, protein are typically under a mix of adaptation and purifying selection, thus typically leading to an $\omega<1$ even in the presence of positive selection. More sophisticated methods have been proposed. In particular, site-models trying to detect specific site of the sequence with an $\omega>1$, have been developed \citep{Yang2001, kosiol_patterns_2008}.
-
-
-In the case of synonymous mutations ($\cj \in \NiSyn $), the probability of fixation is independent of the original and target \gls{codon}, and equal $1/2 \Ne$. Finally ${\submatrix_{\itoj}}$ simplifies to: 
+Grouping nucleotides into codons, mutation rate from \gls{codon} $\ci$ to $\cj$ thus depends on the underlying nucleotide change between the \gls{codon}, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the codons and the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
 \begin{equation}
-\submatrix_{\itoj} = \mu \mutmatrix_{\nucitoj}
+\mu_{\itoj} = 
+\begin{dcases}
+ \mutmatrix_{\nucitoj}  \text{ if $\ci$ and $\cj$ are one mutation away,} \\
+ 0 \text{ else.}
+\end{dcases}
 \end{equation}
-In the case of non-synonymous mutations ($\cj \in \NiNonSyn $), the probability of fixation depends on the difference of fitness between the amino-acid encoded by the codons:
+
+At the codon level, synonymous mutations are deemed neutral and the rate of synonymous substitutions ${\submatrix_{\itoj}}$ is equal to the mutation rate: 
 \begin{align}
-\submatrix_{\itoj} & = \omega \mu \mutmatrix_{\nucitoj}
+\submatrix_{\itoj} & = \mu_{\itoj} \\
+				   & = \mutmatrix_{\nucitoj}
 \end{align}
-Altogether, the $61$-by-$61$ codon substitution matrix is defined entirely by the mutation matrix and 
+
+Conversely, non-synonymous mutations are considered under selection, where their probability of fixation is stretched by a factor $\omega$, and their substitution rate is:
+\begin{align}
+\submatrix_{\itoj}  & = \omega \mu_{\itoj} \\
+					& = \omega \mutmatrix_{\nucitoj}.
+\end{align}
+All non-synonymous mutations are considered equivalent, and $\omega$ encompass the average strength of selection exercised on them.
+Most importantly, $\omega>1$ is absorbing the signals of an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution.
+Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, means the protein is under purifying selection.
+
+
+Because of this definition, $\omega$ identifies with the rate of non-synonymous substitutions over the rate of synonymous substitutions, termed $\dnds$.
+
+Throughout this manuscript, the term $\dnds=\bar{\omega}$ will be used to identify the estimation of $\omega$ from protein coding DNA sequence alignment under the original model of \citet{Muse1994}.
+To note, $\omega$ can also be parameterized as function of the average scaled selection coefficient:
+\begin{align}
+\omega  & = \dfrac{S}{1 - \e^{-S}} \text{, where }\\
+& \Rightarrow	\begin{dcases}
+	S > 0 \iff \omega > 1 \\
+	S = 0 \iff \omega = 1 \\
+	S < 0 \iff \omega < 1
+	\end{dcases}
+\end{align}
+
+Altogether, the $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entirely by the mutation matrix ($\Mutmatrix$), $\omega$ and the genetic code:
 \begin{equation}
 \begin{dcases}
-\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
-\submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
+\submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
+\submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
 \submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
 \end{dcases}
 \label{eq:codon-models}
 \end{equation}
-where the mutation rate between codon $\ci$ and $\cj$ is given by:
-\begin{equation}
-\begin{dcases}
-\mu_{\itoj} & = 0 \text{ if } \cj \notin \Ni \\
-\mu_{\itoj} & = \mu \mutmatrix_{\nucitoj} \text{ if } \cj \in \Ni
-\end{dcases}
-\end{equation}
-One can identify the interplay between mutations acting at the \acrshort{DNA} level, and positive or negative selection acting at the protein level.
-Thus, \gls{codon} \gls{substitution} models are crucial for a better modeling of the underlying evolution of protein-coding \acrshort{DNA} sequences, and consequently allow a better reconstruction of mutation, selection and demography.
 
-\section{Insight from empirical data}
+It is important to note that under this model, the equilibrium frequencies of all codons are equal, and depends only on the equilibrium frequencies of nucleotides ($\sigma_{A}, \sigma_{C}, \sigma_{G}, \sigma_{T}$):
+\begin{align}
+\pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{\sum_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]} } \\
+ & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{(1 - \sigma_{T}\sigma_{A}\sigma_{A} - \sigma_{T}\sigma_{A}\sigma_{G} - \sigma_{T}\sigma_{G}\sigma_{A} )},
+\end{align}
+where $\ci[1]$ denotes the nucleotide at position $1$ of codon $i$.
 
-This section review the empirical evidence available, which will be important to keep in mind when the different models of selection will be 
+Moreover, the relative substitution rate at equilibrium $\langle \nu \rangle$ defined by equation \ref{eq:relative-sub-rate}, if restricted to the subset of non-synonymous substitutions, identifies to $\omega$:
+\begin{align}
+\langle \nu \rangle & = \dfrac{ \sum_{\ci} \pi_{\ci} \sum_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum_{\ci} \pi_{\ci}  \sum_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+					& = \dfrac{ \sum_{\ci} \pi_{\ci} \sum_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum_{\ci} \pi_{\ci}  \sum_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+					& = \omega \dfrac{ \sum_{\ci} \pi_{\ci} \sum_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum_{\ci} \pi_{\ci}  \sum_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+					& = \omega, 
+\end{align}
+where $\NonSyn_{\ci}$ is the set of non-synonymous codons neighbors to codon $\ci$.
+This identity seems so far trivial and unnecessary, but will bear importance later when comparing this phenomenological model to mechanistic models of codon substitutions.
 
-Classical \gls{codon} models estimate a parameter $\dnds$, namely the ratio of the non-synonymous over the \gls{synonymous} rates \citep{Muse1994,Goldman1994}. In the so-called site-models, $\dnds$ is allowed to vary across sites, either via a finite mixture \citep{Yang2001}, an infinite mixture \citep{Huelsenbeck2006}, or as random effects from a parametric distribution \citep{lartillot_phylobayes_2013}. 
-The fact that is far lower than 1 express the fact that proteins are mostly under a regime of purifying selection.
 
-\subsection{Substitution rate across genes}
+\section{Empirical relative rate of non-synonymous substitutions}
+Models of codon substitutions can be to applied to protein coding DNA sequences alignment to estimates the ratio of non-synonymous over synonymous substitution rates ($\dnds=\hat{\omega}$).
+More precisely, these models can provides estimates of $\dnds$ for the whole gene, for a specific site or for a specific branch of the tree, and whether the sequence evolves under positive or negative selection.
+However, in practice, protein are typically under a mix of adaptation and purifying selection, thus typically leading to an $\dnds<1$ even in the presence of positive selection.
+Most importantly to the scope of this manuscript, they codon models proved to be very valuable to quantify and asses the selective constrains imposed on protein coding sequences.
 
-However, even for those proteins of comparable expression levels, their ERs still span several orders of magni- tude (Drummond and Wilke, 2008). Abundance likewise cannot account for the quasi log-normal distribution of the ER among genes in a genome, a fact observed from bacteria, yeast, worm, fly, mouse, and humans (Lobkovsky et al., 2010). These observations suggest that abundance, although a major deter- minant of ER, is not its only causal variable.
-Lobkovsky, A.E., Wolf, Y.I., and Koonin, E.V. (2010). Universal distribution of protein evolution rates as a consequence of protein folding physics. Proc. Natl. Acad. Sci. USA 107, 2983–2988
+Importantly, different implementations of phylogenetic codon models have been proposed, which parameterize the mutation matrix and the codon frequencies in different way \cite{Muse1994, Goldman1994}, ultimately leading to variable fits of the data and different estimation of $\dnds$ on the same dataset. 
+However, and fortunately, estimation of $\dnds$ has been proved to be largely insensitive to the underlying codon models \citep{Spielman2018}, such that empirical estimation of $\dnds$ using different methods leads to comparable results.
 
-The increased availability of genomic data for species across the tree of life prompted an extensive search for the major determinants of the protein \gls{substitution} rate. Surprisingly, the functional importance of a protein, widely thought to approximate the level of functional constraint, has only a minor role, whereas protein expression level is found to be a major determinant9 \citep{Zhang2015}
+\subsection{Variation across genes}
 
+The increased availability of genomic data together with advancement of computing resources and algorithm prompted an extensive search for the major determining factor of a gene $\dnds$.
+Surprisingly, the functional importance of a protein, widely thought to approximate the level of functional constraint, has only a minor role, whereas protein expression level (mRNA concentraion) is found to be a major determinant \citep{Zhang2015}.
+Most importantly, this relationship is negative such that genes with high expression level are under stronger purifying selection, or lower $\dnds$ at the level of the gene \citep{Duret2000, Drummond2005a, Zhang2015}.
+In unicellular organisms, the mRNA concentration of a gene varies across cell cycle stages and environments, but most studies used data collected from the mid-log phase of growth under rich media, which presumably reflect average concentrations across cell cycle stages.
+In multicellular organisms, mRNA concentration data used are typically from the whole organism or are averaged from several examined tissues.
 Because of the strong correlation between mRNA and protein concentrations, the negative correlation between protein concentration and evolutionary rate is also strong.
-Drummond et al. showed that the correlation with \gls{substitution} rate is weaker for protein concentration than for mRNA concentration.
-However, it is unclear whether this disparity is genuine or whether it simply reflects different qualities of proteomic and transcriptomic data.
 
-\subsection{Substitution rate across sites}
+However, even for those proteins of comparable expression levels, their $\dnds$ still span several orders of magnitude \citep{Drummond2008}.
+Abundance likewise cannot account for the quasi log-normal distribution of $\dnds$ among genes in a genome, a fact observed from bacteria, yeast, worm, fly, mouse, and humans.
+These observations suggest that protein abundance, although a major determinant of $\dnds$, is not its only causal variable.
+
+\subsection{Variation across sites}
+
+Appart from variation across genes, the strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that the parameter $\dnds$ should not be estimated globally over the entire sequence, but should be varying.
+In so-called site-specific phylogenetic codon models, $\dnds$ is allowed to vary across sites, either via a finite mixture \citep{Yang2001}, an infinite mixture \citep{Huelsenbeck2006}, or as random effects from a parametric distribution \citep{Lartillot2013}.
+Site-specific models had been developed to detect specific site of the sequence under positive recurrent selection \citep{kosiol_patterns_2008}, with a $\dnds>1$, but also proved to be very valuable models to correlate selective pressure and bio-chemical properties.
+
+Similarly to search for the determining factors of $\dnds$ at the gene level, extensive search had been conducted at the site level, within a protein.
+The major determinant of site-specific $\dnds$ proved to be relative solvent accessibility, where site wit higher solvent accessibility display a lower $\dnds$ \citep{Ramsey2011}.
+It was later shown that the number of native inter-residue contacts formed by a protein site, which is negatively correlated with the solvent accessibility, is a stronger predictor of site-specific $\dnds$ \cite{Yeh2013}.
+Altogether, $\dnds$ changes dramatically between exposed and buried sites in such a way that buried sites tend to evolve more slowly than exposed sites \citep{Echave2016}.
+Moreover, this relationship obtained between with phylogenetic codon models can be matched with experiment correlating allelic diversity within population to site properties.
+In this context, relative solvent accessibility was also found to be a major determinant of adaptive evolution, with most adaptive mutations occurring at the surface of proteins \cite{Moutinho2019}.
+
+The observations that surface residues of globular proteins undergo \gls{substitution} more rapidly than those in the core,
+This is generally attributed to the fact that natural selection imposes stronger constraints on buried sites.
 It is well known that amino acid residues located inside a protein structure (that is, core residues) have more central roles than surface residues in protein folding stability.
-However, surface residues show an E–R anticorrelation as strong as that of core residues, suggesting that selective pressures other than misfolding avoidance might also be present, especially on surface residues.
 
-Yang et al. showed that the E–R anticorrelation is only moerately weakened by the removal of amino acids that stabilize protein folding and that the impact of this removal on the E–R anticorrelation is smaller when amino acids are removed from protein surfaces than from protein cores. 
+Finally, it is important to keep in mind that selection differs in a way that depends on the specific source and target amino-acid involved in the transition.
+As a consequence, a single parameter of selection (here $\dnds$) can not disentangle the specific importance of amino-acid chemical properties (polarity, volume, charge, and so on) since all non-synonymous transitions are considered equivalent in classical phylogenetic codon models \citep{Dutheil2008}.
 
-linear relationship between evolutionary rate and RSA reflects a selection pressure on the amino acid level. \citep{Ramsey2011}
+\subsection{Variation across branches}
 
-Causes of evolutionary rate variation among protein sites \citep{Echave2016}
+Beside variation across genes and site, the strength of selection is not typically homogeneous along the phylogenetic tree, and it has also been recognized that the parameter $\dnds$ should be varying along the tree \citep{Yang1998}.
+The motivation was to allow for $\dnds$ to be estimated only on a subset of the phylogeny, based on biological assumption.
+For example, such models can detect an adaptive process ongoing during the divergence of one lineage, which can allow for the detection of the proteins responsible for speciation \citep{Yang2001, Zhang2004}.
+Moreover, without prior knowledge on biological divergence, branches can get clustered together based on their substitution rate  \citep{Dutheil2012a}.
+However, substitution rate is a continuous traits, and should evolve smoothly along the phylogeny, such that abrupt shifts are penalized \citep{Huelsenbeck2003,Seo2004}.
+I this modeling approach, substitution rate of given branch is log-normally distributed around the value of its parent branch, where the standard deviation is proportional to the branch size (in unit of time) \citep{Lartillot2011, Brevet2019}.
+In other words, substitution rate as a log-Brownian motion along the phylogeny, where the process splits at every node of the tree. 
 
-The strength of selection is not typically homogeneous along the sequence.
-For example, exposed sites are under lower selective pressure than buried sites \citep{Echave2016}.
-In fact, selection differs in a way that depends on the local physico-chemical requirements \citep{Goldstein2016,Goldstein2017,Weber2019}.
+Similarly to search for the determining factors of $\dnds$ at the gene and site level, traits that can vary between species, either environmental variables or life-history traits, have been investigated as factor determining $\dnds$ along the phylogeny \citep{Felsenstein1985,Romiguier2014}.
+Subsequently, integrative inference methods combining molecular sequences and lineage specific quantitative traits have also found that $\dnds$ correlates positively with traits such as longevity and body mass \citep{Lartillot2011, Figuet2017}.
+Since lineage with a large body size and extended longevity typically correspond to low $\Ne$ \citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\dnds$ and $\Ne$, thus confirming the theoretical prediction of the nearly-neutral theory of evolution.
+However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated \citep{Nabholz2013, Lanfear2014, Figuet2016}.
 
-Models must generally conform to observed properties of proteins, such as the observations that surface residues of globular proteins undergo \gls{substitution} more rapidly than those in the core,
+Naturally, both these space (site-specific) and time (branch-specific) refinements mentioned above where combined in so called branch-site models \citep{Yang2002, Zhang2004, Pond2011}.
+The fine-grained tunning of site-branch models increased statistical power by seeking short and strong episodes of adaptive selection on a background of purifying selection.
+However, in the case of Red-Queen processes ongoing on the protein, the episodes detected by branch-site models would merely be a small fraction of the underlying adaptation.
+Indeed the overall tree is under adaptive process and one cannot contrast a branch to the rest of the tree.
 
-In a recent work, we have shown that stability-constrained models that take into
-account negative design for destabilizing misfolded conformations (Berezovsky, Zeldovich \& Shakhnovich, 2007; Noivirt-Brik, Horovitz \& Unger, 2009; Minning, Porto \& Bastolla, 2013) predict that both the \gls{substitution} rate and the entropy are maximal not at exposed sites with few contacts, as observed, but at sites where the number of contacts is intermediate, which can accomodate both hydrophobic and polar amino acids and are predicted to be extremaly tolerant to mutations (Jimenez, Arenas \& Bastolla, 2018). On the other hand, when stability with respect to misfolding is neglected, stability-constrained models predict that the variability is maximal at exposed sites with few contacts (Scherrer, Meyer \& Wilke, 2012; Echave, Jackson \& Wilke, 2015), but these kinds of models overestimate both the tolerance to mutations and the average hydrophobicity at almost all positions (Jimenez, Arenas \& Bastolla, 2018) and they score much worse than models that consider misfolding in \gls{likelihood} calculations (Arenas, Sanchez-Cobos \& Bastolla, 2015), so that models that consider misfolding have to be preferred. In contrast, structure-constrained models correctly predict that the variability is inversely related with the number of native contacts (Huang et al., 2014). These results support the view that the structural effect of mutations cannot be neglected, in particular at sites with intermediate numbers of contacts that are extremely tolerant to mutations under the point of view of the stability.
-
-The evolutionary variability of a protein site is strongly influenced by the structural properties ofthe site in the native state ofthe protein (Echave, Spielman \& Wilke, 2016). In particular, the \gls{substitution} rate changes dramatically between exposed and buried sites in such a way that buried sites tend to evolve more slowly than exposed sites. This is generally attributed to the fact that natural selection imposes stronger constraints on buried sites (Franzosa \& Xia, 2009). It was later shown that the number of native inter-residue contacts formed by a protein site, which is negatively correlated with the solvent accessibility, is a stronger predictor of the \gls{substitution} rate (Yeh et al., 2014)
-
-Acknowledging the flaws of the initial \gls{codon} models, It has been rapidly recognized that the parameter $\omega$ should not be estimated globally over the entire sequence [8]. The codons need to be separated into a finite number of different categories, with each category having its own $\omega$. In such so called sites models, the number of categories is specified before the analysis, and the category each \gls{codon} falls into is estimated by maximum \gls{likelihood} in so called finite \gls{mixture} (see box 1) [8–10]. In finite mixture models, the number of categories that increase the goodness of fit of the model can be asserted by the use of Akaike Information Criterion (AIC, see box 1). Using AIC, the computations usually estimate a number of categories tending to infinite, ultimately suggesting that each \gls{codon} of the sequence should have its own $\omega$ [11]. In the Bayesian framework (see box 1), in contrast to maximum \gls{likelihood}, the number of categories can be a variable. The flexibility of the computation mainly done by Markov Chain Monte Carlo (MCMC, see box 1) allows one to draw $\omega$ from an infinite mixture, usually using a \gls{Dirichlet-process} (see box 1), giving a \gls{posterior} distribution of the parameter $\omega$ [12,13]. 
-
-\subsection{Substitution rate across branches}
-
-
-The E–R anticorrelation exists in all three domains of life, especially when gene
-expression levels are measured by the more accurate \acrshort{RNA} sequencing method instead of the earlier microar- ray method (FIG. 1). In unicellular organisms, the mRNA concentration of a gene varies across cell cycle stages and environments, but most studies used data collected from the mid-log phase of growth under rich media, which presumably reflect average concentrations across
-cell cycle stages. In multicellular organisms, mRNA concentration data used are typically from the whole organism or are averaged from several examined tissues. Although the E–R anticorrelation tends to be present regardless of the tissue in which gene expressions are measured, the magnitude of the anticorrelation does
-.
-vary among tissues
-
-\subsection{Substitution rate across phyla}
-Comparative approaches have also been used to understand the targets of selection in proteins. Proteins of intracellular bacteria are estimated to be less stable with respect to misfolding (and possibly aggregation) than orthologous proteins of free living relatives. This can be interpreted as reduced selection due to the population size reductions (bottle-necks) that occur during transmission from host to host.
-
-Bastolla U, Moya A, Viguera E, van Ham RCHJ (2004) Genomic determinants of protein folding thermodynamics in prokaryotic organisms. J Mol Biol 343: 1451–1466.
-
-\subsection{Mutagenesis experiments}
-
-`
 \section{Distribution of fitness effects}
 
 The selection coefficient are drawn from a distribution, known as distribution of fitness effects
 \citep{Welch2008}
 
-In Wilson \textit{et. al.}, the fitness effect of a mutation is drawn from a fitness distribution that is solely function of $\Ne$, meaning ${P_{\mathrm{fix}}}$ is independent from the current sequence state.
+In Wilson \textit{et.
+al.}, the fitness effect of a mutation is drawn from a fitness distribution that is solely function of $\Ne$, meaning ${P_{\mathrm{fix}}}$ is independent from the current sequence state.
 On the other hand, in the mutation-selection model proposed, the distribution of fitness effects is a function of the current state.
 
 This modeling 
 Because its a distribution of fitness effects and not a fitness landscape, features of evolutionary trajectory such as transient positive selection is not represented.
-They are a generic representation of fitness, easily parameterized and inherently taking into account phenomenon such as epistasis. 
+They are a generic representation of fitness, easily parameterized and inherently taking into account phenomenon such as epistasis.
+
 
 \section{Amino-acid propensities}
+Mathematically, the lack of sensitivity of models seeking deviation from neutrality can be tracked to the assumption that $\dnds$ is considered is independent of the amino-acid under consideration \citep{Rodrigue2008a}.
+This assumption of a single parameter $\omega$ is equivalent to saying the probability of reaching fixation is the same for any non-synonymous mutation, regardless of the original and mutated amino-acid encoded by the codon.
+This is a very strong assumption for studying evolution of protein-coding sequences, since amino-acid have different biochemical properties.
 
-In contrast, mutation-selection models assume that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, which is itself characterized by a fitness vector over the $20$ amino-acid at each site \citep{Yang2008, Halpern1998, Rodrigue2010}. Crucially, the probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated \gls{codon} ($f_b^{(i)}$) and the fitness of the amino-acid encoded by the original \gls{codon} ($f_a^{(i)}$) of site $i$. Altogether, the rate of \gls{substitution} from \gls{codon} $a$ to $b$ at a given site $i$ is:
+In contrast, mutation-selection models assume that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, which is itself characterized by a fitness vector over the $20$ amino-acid at each site \citep{Yang2008, Halpern1998, Rodrigue2010}.
+Crucially, the probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated \gls{codon} ($\fitj$) and the fitness of the amino-acid encoded by the original \gls{codon} ($\fiti$), where $\aai$ denotes the amino-acid encoded by codon $i$.
+The rate of \gls{substitution} from \gls{codon} $\ci$ to $\cj$ is derived from equation \ref{eq:sub-transion-rates}:
+\begin{align}
+\submatrix_{\itoj}  & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}, \\
+& = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }.
+\end{align}
+
+Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon models is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
 \begin{equation}
 \begin{dcases}
 \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
 \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-syonymous} \\
 \submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
 \end{dcases}
 \label{eq:propensities-models}
 \end{equation}
+Moreover, because the process is time-reversible (see previous chapter), from equation \ref{eq:equilibrium-mut-sel}, the stationary distribution equals:
+\begin{align}
+\pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}\e^{\Fiti}}{\sum_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]}\Fitj }
+\end{align}
 
-In mutation-selection \gls{codon} models, the probability of reaching fixation is different for any non-synonymous mutation.
-More specifically, it will depend on the original amino-acid preference and the mutated amino-acid preference encoded by the \gls{codon}.
 From a dynamical perspective, a mutation on a \gls{codon} with high preference (of the encoded amino-acid) will have a low probability of fixation, since the mutated \gls{codon} will have a lower preference, and thus at equilibrium this low probability of fixation of the \gls{codon} is compensated by a high frequency of the \gls{codon}.
-Essentially, at equilibrium the \gls{codon} frequencies only fluctuate at the mutation-selection balance, and all the mutations are \gls{neutral} on average, but slightly deleterious or advantageous, hence the name \gls{nearly-neutral} models.\\
+Essentially, at equilibrium the \gls{codon} frequencies only fluctuate at the mutation-selection balance, and all the mutations are \gls{neutral} on average, but slightly deleterious or advantageous, hence the name \gls{nearly-neutral} models \citep{Ohta1973, Ohta1992, Rodrigue2016}.
+
 For evolutionary biologists, the assumption of equal amino-acid preference is equivalent to have a flat fitness landscape for all amino-acids, with neither a peak nor a valley.
 In contrast, in \gls{nearly-neutral} models, the amino-acids have a fitness landscape fixed in time, but that is not flat.
-The difficulty and complexity of \gls{nearly-neutral} models are to estimate the underlying amino-acid fitness landscape.
-Moreover, \gls{nearly-neutral} models consider multiplicative fitness across sites.
+The difficulty and complexity of \gls{nearly-neutral} models are to estimate the underlying amino-acid fitness landscape \citep{Halpern1998}.
+Moreover, \gls{nearly-neutral} models consider multiplicative fitness (additive log-fitness) across sites.
 
+A first approximation of nearly-neutral models is that all the positions of the sequence share the same amino-acid preferences.
+But it has been rapidly recognized that each site in the codon sequence should have its own independent codon preferences.
+Site-specific amino-acid preferences have been estimated either by maximum likelihood \citep{Tamuri2012,Tamuri2014}, by experimental means \citep{Bloom2017}, or in a Bayesian context have been estimated using non-parametric
+prior distribution with Dirichlet process \citep{Rodrigue2010, Rodrigue2014}.
 
-Fitting the mutation-selection model on a sequence alignment leads, via equation (\ref{eq:propensities-models}), to an estimation of the nucleotide mutation rate matrix as well as the fitness landscape of the protein at each site $i$ of the sequence. 
+Fitting the mutation-selection model on a sequence alignment leads, via equation (\ref{eq:propensities-models}), to an estimation of the nucleotide mutation rate matrix as well as the fitness landscape of the protein at each site of the sequence.
 
 \subsection{Non-synonymous relative {substitution} rate}
+Nearly-neutral models display the important feature of genuinely accounting for purifying selection.
+Indeed \citet{Spielman2015} showed mathematically that if the underlying process is nearly-neutral substitution, the $\dnds$ estimated by the model seeking deviation from neutrality will always be lower than $1$.
+In other word, classical codon substitution model will interpreted a nearly-neutral model as purifying selection ($\dnds$<1).
+
 From these parameters, one can compute $\omega$, the site-specific predicted rate of non-synonymous over \gls{synonymous} at the mutation-selection balance: 
 \begin{equation}
-\omega = \dfrac{ \sum_{i} \pi_{i} \sum_{j \neq i } Q_{\itoj}}{\sum_{i} \pi_{i} \sum_{j \neq i } \mu_{\itoj}},
+\langle \omega \rangle = \dfrac{ \sum_{i} \pi_{i} \sum_{j \neq i }  \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum_{i} \pi_{i} \sum_{j \neq i } \mu_{\itoj}},
 \end{equation}
-where $\mathcal{C}$ is the set all the possible codons ($61$ by discarding stop codons), $\pi_a$ is the equilibrium frequency of \gls{codon} $a$ at site $i$, and $\mathcal{N}_a$ (respectively $\mathcal{S}_a$) is the set of codons that are non-synonymous (respectively synonymous) to $a$ \citep{spielman_relationship_2015, rodrigue_site-heterogeneous_2014}. In a second step, the average over site is calculated, giving estimates of $\omega_0$ for each protein-coding sequences. \\
 
-Under the assumption that the protein is under a nearly-neutral regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (site-model) should be the same. But if this assumption is violated, and the protein is under adaptation then $\omega > \omega_0$.
-
-Relative Evolutionary Rates in Proteins Are Largely Insensitive to the Substitution Model \citep{Spielman2018}.
-
-Physicochemical Amino Acid Properties Better Describe Substitution Rates in Large Populations \citep{Weber2019}.
 
 A new parameter-rich structure-aware mechanistic model for amino acid \gls{substitution} during evolution \citep{Chi2018}.
 
-
 Site-Specific Amino Acid Preferences Are Mostly Conserved in Two Closely Related Protein Homologs \citep{Doud2015}
+
+\subsection{Relationship to classical models}
+Even thought classical codon models have less parameters than mechanistic codon model, it is important to realize they are not nested, such that is impossible to find a given set of parameters for which the two models are equivalent.
+They are inherently different, mechanistic models assume a fixed fitness landscape, while classical models assume a fixed selective effect.
+The difference is better highlighted in the case of reverse mutations, where a negative selection coefficient of a mutation is always matched by a positive selection coefficient for the reverse mutation in mechanistic codon models.
+However in classical codon models, a negative selection coefficient is matched by an also negative selection coefficient for the reverse mutation.
+
+However, under the assumption that the protein is under a nearly-neutral regime, the predicted $\langle \omega \rangle$ (mutation-selection model)  and the estimated $\dnds$ (classical-model) should be the same \citep{Spielman2015, Spielman2016}.
+The mechanistic model of amino-acids propensities is based on nearly-neutral assumption, which can be broken in two ways.
+Firstly, if amino-acids are under a fluctuating fitness landscape, which is known as a Red-Queen process.
+In this case, by definition, the protein sequence is tracking a constantly moving fitness optimum.
+Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since substitutions are accepted preferentially if they are in the direction of this target, substitutions are on average adaptive.
+In other word, at the moment of a substitution the target amino-acid as a high relative fitness, which can only then decreases trough time.
+Thus breaking the assumption of time independence of amino-acid preferences leads to $\dnds \geq \langle \omega \rangle$.
+
+Secondly, the nearly-neutral assumption can also be broken if there is no independence between sites, a phenomenon known as epistasis between sites.
+Unfortunately, one consequence of epistatic interactions is that even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time \citep{Gong2014, Lunzer2010, Mccandlish2013}.
+This effect leads to entrenchment such that instead of lagging behind a moving target, the current amino-acids reinforce its relative fitness.
+In other word, at the moment of a substitution the target amino-acid has a nearly equal relative fitness, which can only increases with time \cite{Goldstein2016, Goldstein2017}.
+Thus, breaking the assumption of independence between sites leads to $\dnds \leq \omega$ \citep{Rodrigue2016}.
+To summarize, a departure from near-neutrality with a $\dnds \geq \omega$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
+On the other hand, a $\dnds \leq \omega$ is a signature of epistatic interaction between amino-acids.
+But one shortcoming of nearly-neutral codon substitution models is that if one does not get a statistical departure from near-neutrality ($\dnds = \omega$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be untied.
 
 \section{Protein biophysics}
 
-\subsection{Misfolding}
+The ability of a protein to performs its function depends on the stability of its 3-dimensional folding structure, but also on its ability to bind ligands and interact or no with other protein, both in terms of kinetic and stability.
+Altogether, thermodynamics and kinetic of protein are expected to be related to its function, hence to selective constrains \citep{Bastolla2017}.
+This section review the main relationship between protein biophysics and selection.
 
-Decrease the $\Delta G$ of folded state, while at the same time not decreasing $\Delta G$ of unfolded states.
-An ideal positive design \gls{substitution} stabilizes N without affecting M, while an ideal negative design \gls{substitution} destabilizes M without affecting N (green arrows). However, substitutions that (de)stabilize N, for instance by increasing (decreasing) the hydrophobicity, generally have a similar effect on M, which mitigates the beneficial effect on fitness (white arrows). In consequence, the combination of both positive and negative design is often necessary to ensure sufficient fitness (transparent arrow)
+\subsection{Stability constrains}
 
-Protein stability correlates well with fitness, as nicely demonstrated by a recent study of nearly 1000 mutations in beta-lactamase TEM-1 \citep{Jacquier2013}, or illustrated by the successful use of functional assays to identify stabilizing mutations \citep{Araya2012}. Since
+First, a large body of evidence indicates that the stability of globular proteins is a target of natural selection \citep{Sikosek2014}.
+The stability of a protein is determined by the Gibbs free energy of its folded states, in comparison to the free energy of the unfolded states.
+Similarly to the mutation-selection Markov process defined in the previous chapter, it is possible to derive the equilibrium distribution of states, where fitness is analogous to the opposite of free energy (less energetic state are more stable) and population size to inverse temperature.
+As a result, probabilities of observing a given state is given by Boltzmann equation:
+\begin{align}
+	p(G_F) = \dfrac{\e^{- G_F / T}}{\mathcal{Z}}
+\end{align}
+In this context, mutations of the proteins stabilizes the protein only if the decrease the free energy of the folded, more than they decrease the free energy of unfolded states.
+For example, a transition to an amino-acid that decrease by the same amount the free energy of both folded and unfolded states will have no impact on the stability of the protein.
+Theoretically, the stability of a protein can be computed with biophysical of protein, by modeling the atomic structure and the potential energy of contact between residues, computed using Schrodinger's equation and atomic orbitals.
+On the other extreme, some models more crudely approximates the structure and dynamic of protein by 2-dimensional lattice models with regular pavement. 
+In between these two extremes, many models can approximate with various degrees of liberties and parametrization the relationship from sequence to stability.
+Broadly, transition from hydrophobic to hydrophilic amino-acids at the surface of protein results in increase stability, and conversely for the protein core.
 
-ProtASR: An Evolutionary Framework for Ancestral Protein Reconstruction with Selection on Folding Stability \citep{Arenas2017}.
+If the relationship from protein sequence to protein stability is within reach and can be obtained with various degrees of approximations, relationship from stability to fitness is more elusive and difficult to apprehend.
+It is known the protein stability correlates well with fitness, as demonstrated by a study of nearly 1000 mutations in beta-lactamase TEM-1 \citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations \citep{Araya2012}.
+However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that result in purifying selection for destabilizing mutations.
+Stability-constrained models that take into account negative design for destabilizing misfolded conformations.
+At partial answer can be obtained by realizing that  \citep{Berezovsky2007, Noivirt-Brik2009, Minning2013} predict that both the substitution rate and the entropy are maximal not at exposed sites with few contacts, as observed, but at sites where the number of contacts is intermediate, which can accomodate both hydrophobic and polar amino acids and are predicted to be extremely tolerant to mutations \citep{Jimenez2018}.
+On the other hand, when stability with respect to misfolding is not considered, stability-constrained models predict that the variability is maximal at exposed sites with few contacts \cite{Scherrer2012,Echave2015}, but these kinds of models overestimate both the tolerance to mutations and the average hydrophobicity at almost all positions \citep{Jimenez2018} and they score much worse than models that consider misfolding in \gls{likelihood} calculations \citep{Arenas2015a, Arenas2017}, so that models that consider misfolding have to be preferred.
+These results support the view that the structural effect of mutations cannot be neglected, in particular at sites with intermediate numbers of contacts that are extremely tolerant to mutations under the point of view of the stability.
+Starting from an optimal sequence, mostly destabilizing mutations will occur, but they may reach fixation and accumulate until selection coefficients against new deleterious mutations is too strong, at which point the protein will reach a point of equilibrium called marginal stability \citep{Taverna2002, Bloom2007}.
 
-Note the analogy between this formula and the Boltzmann distribution with energy equal to and temperature equal. This explicit formula holds when the mutation process is unbiased, so that all sequences are equally probable under the mutation model. 
+Importantly, theoretical models also based on protein stability have been invoked to explain this negative correlation between $\dnds$ and expression level \citep{Wilke2006, Drummond2008}, such that selection against protein misfolding induces abundant proteins to evolve to greater stability, where the protein is more constrained and evolve slowly \citep{Serohijos2012}.
 
-\subsection{Aggregation}
+\subsection{Aggregation avoidance}
 
-The misinteraction avoidance hypoth- esis predicts that, compared with lowly expressed pro- teins, highly expressed proteins disfavour residues that promote misinteraction, exhibit a lower misinteraction probability per molecule and have higher conservation for misinteraction-avoiding residues. These predictions were tested and supported by experimental studies in yeast11
-, Escherichia coli 51 and humans51 . Yang et al.11
+So far, proteins have been seen as independent machinery of the cells, however within the cramped intra-cellular space, proteins are not independent entities but are interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions \citep{Yang2012, Zhang2013}.
+In non-specific interactions at the protein surface, stabilizing amino-acids are hydrophilic and destabilizing amino-acids are hydrophobic, sticking to hydrophobic residues in other proteins \citep{Dixit2013,Manhart2015}.
 
-Variation of the adaptive \gls{substitution} rate between species and within genomes \citep{Moutinho2019}.
+The misinteraction avoidance hypothesis predicts that, compared with lowly expressed proteins, highly expressed proteins disfavour residues that promote misinteraction, exhibit a lower misinteraction probability per molecule and have higher conservation for misinteraction-avoiding residues.
 
 
 \subsection{functional dynamics}
 
-
-For instance, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost. Empir- ically, residues at functional sites are rarely optimal for stability, so that their mutation is often less destabilizing [9], while mutations that create new functions tend to be more destabilizing than average [8,10].
-Protein
-
-A large body of evidence indicates that the stability of globular proteins is a target of natural selection [4?], \citep{Sikosek2014} 
- 
-for example, aggregation, folding kinetics, or functional dynamics \citep{Bastolla2017}
-
+For instance, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
+Empirically, residues at functional sites are rarely optimal for stability, so that their mutation is often less destabilizing [9], while mutations that create new functions tend to be more destabilizing than average [8,10].
 folding stability, folding specificity, binding affinity and specificity for ligands, the evolution of new binding sites on protein surfaces, protein dynamics, intrinsic disorder, and protein aggregation \citep{Chi2016}

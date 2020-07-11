@@ -45,12 +45,12 @@
 \setcounter{tocdepth}{2}
 
 %%%%% DEDICATION
-\begin{dedication}
-	\thispagestyle{empty}
-	\begin{center}
-		\includegraphics[width=\textwidth, page=1] {figures/preface.pdf}
-	\end{center} 
-\end{dedication}
+%\begin{dedication}
+%	\thispagestyle{empty}
+%	\begin{center}
+%		\includegraphics[width=\textwidth, page=1] {figures/preface.pdf}
+%	\end{center} 
+%\end{dedication}
 
 %%%% EPIGRAPH
 \begin{alwayssingle}
@@ -77,16 +77,14 @@
 % \end{abstractseparate}
 %
 % \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
-\begin{alwayssingle}
-\begingroup
-\input{sections/abstract}
-\endgroup
-\end{alwayssingle}
-% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
-% keeping with most typesetting conventions.
+%\begin{alwayssingle}
+%\begingroup
+%\input{sections/abstract}
+%\endgroup
+%\end{alwayssingle}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
-\input{sections/acknowledgement}
+%\input{sections/acknowledgement}
 \hypersetup{pageanchor=true}
 \begin{romanpages}
 %%%%% MINI TABLES
@@ -96,8 +94,20 @@
 % This aligns the bottom of the text of each page.  It generally makes things look better.
 \flushbottom
 % This is where the whole-document ToC appears:
-\tableofcontents
-\include{sections/glossary}
+{
+	\setlength{\baselineskip}{\frontmatterbaselineskip}
+	\hypersetup{linkcolor=GREYDARK}
+	\tableofcontents
+	\listoffigures
+	\mtcaddchapter
+	\listoftables
+	\mtcaddchapter
+}
+{
+	\setlength{\baselineskip}{\frontmatterbaselineskip}
+	\include{sections/glossary}
+}
+
 \end{romanpages}
 
 %%%% CHAPTERS
@@ -108,6 +118,8 @@
 \pagestyle{fancybook}
 
 \part{Introduction}
+\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+
 \label{part:intro}
 \include{sections/intro}
 \include{sections/intro_selection}
@@ -121,12 +133,12 @@
 \part{Conclusion}
 \label{part:discussion}
 \include{sections/discussion}
-\include{sections/conclusion}
+%\include{sections/conclusion}
 
 %% APPENDICES %% 
 \part*{Appendices}
 %%%%% REFERENCES
 \bibliographystyle{natbib}
-\bibliography{biblio/references, biblio/introduction, biblio/adaptapop}
+\bibliography{biblio/references, biblio/introduction}
 \end{document}
 

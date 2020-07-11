@@ -1,6 +1,10 @@
 \thispagestyle{empty}
 \chapter{Molecular evolution}
-\minitoc
+{
+	\hypersetup{linkcolor=GREYDARK}
+	\minitoc
+}
+
 \label{sec:intro}
 
 From the discovery of evolution to today knowledge, the understanding of the mechanisms from which the diversity of life and complexity emerges has seen dramatic changes, and revolution.
@@ -30,7 +34,7 @@ On the other hand, biometricians claimed that variation was continuous, which me
 Statistician Ronald A.\ Fisher reconciled both theories, first by proving mathematically that mutiple discrete loci could result in a continuous variation \citep{fisher1919xv}.
 Secondly, \citet{fisher1930genetical, haldane1932causes} proved that natural selection could change \gls{allele} frequencies in a population. 
 Fisher and Haldane hence articulated selection on continuous traits with discrete underlying genetic inheritance, completed by the work of \citet{wright1932roles} on combinations of interacting genes.
-Altogether, they laid the foundations of population genetics, a discipline which basically integrated Mendelism, Darwinism and biometry, easing the debate between continous and gradual evolution\footnote{This debate was later revived by the paleontologists \citet*{Gould1972}, and as of today it is admitted that both macroevolutive patterns of ponctual and gradual changes can be found.}.
+Altogether, they laid the foundations of population genetics, a discipline which basically integrated Mendelism, Darwinism and biometry, easing the debate between continous and gradual evolution\footnote{This debate was revived by paleontologists \citet*{Gould1972}. As of today it is admitted that both macroevolutive patterns of ponctual and gradual changes can be found.}.
 
 The emergence of this new field of study was the first step towards the development of a unified theory of evolution named the ‘modern synthesis’ \citep{huxley1942evolution}, defined on the basis that natural selection acts on the heritable variation supplied by mutations \citep{mayr1959where,stebbins1966processes,dobzhansky1974chance}.
 
@@ -57,7 +61,7 @@ During the cell cycle, the \acrshort{DNA} double strand is split into its two se
 
 Once understood that molecular structure of \acrshort{DNA} and its role has a support of heredity, the guest to understand the transfer of information between \acrshort{DNA} and protein \cite{Crick1958} resulted in the determination of the genetic code, the translation table from triplet of nucleotides (\gls{codon}) to amino-acids, and of the central dogma of molecular biology detailing the process of protein synthesis \cite{Crick1970}.
 Proteins are synthesized in a two-step process called gene expression.
-First, an messenger ribonucleic acid (mRNA) transcript is synthesized from \acrshort{DNA}, containing the same information since \acrshort{RNA} is also formed by 4 bases\footnote{Thymin (T) is replaced by uracil (U), though the three other bases are the same.}. 
+First, an messenger ribonucleic acid (mRNA) transcript is synthesized from \acrshort{DNA}, containing the same information since \acrshort{RNA} is also formed by 4 bases, where Thymin (T) is replaced by uracil (U), though the three other bases are the same. 
 Second, mRNA is matured and spliced to form a mature \acrshort{RNA}, which is read and interpreted by ribosomes to synthesize a protein in a process called translation. 
 More broadly, the central dogma of molecular biology states that the determination of sequence from nucleic acid to nucleic acid, or from nucleic acid to protein may be possible, but transfer from protein to protein, or from protein to nucleic acid is impossible.
 It is worth noting that each protein is encoded by its \acrshort{DNA} sequence, although the same \acrshort{DNA} sequence can produce many different proteins through a process called alternative splicing.
@@ -66,13 +70,20 @@ As the support of heredity, \acrshort{DNA} gained a central role in evolutionary
 
 \subsection{Neutral theory}
 
-Previously to the discovery of \acrshort{DNA}, Wright introduced concept of adaptive landscapes according to which \gls{drift} and inbreeding could push small populations away from adaptive peaks into a fitness valley \citep{wright1932roles}. 
-As such, the relative contributions of \gls{neutral} forces such as \gls{drift} and adaptive forces such as natural selection became a major subject of debate between Wright and Fisher \citep{plutynski2007drift}.
+Although an unifying theory, population-genetics remained rather theoretical for some time because it deals with the concept of gene frequencies and has no direct way to connect unambiguously to conventional dataset obtained at the phenotypic level.
+With the advent of molecular genetics, it became possible to study the variability of nucleic and protein sequences within a species, as well as in related organism such as to estimate the rate at which allelic genes are substituted.
 
-Subsequently to the discovery of \acrshort{DNA} and from basis of population genetics, Motoo Kimura proposed the \gls{neutral} theory of molecular evolution \citep{kimura1968evolutionary,kimura1991neutral,kimura1986dna}.
+From protein sequences in related species, it was then observed that a given protein rate of substitution is about the same in many diverse lineages, where the substitutions seemed to be random rather than having a specific pattern.
+Additionally, from DNA sequences in related species, it was observed that the overall rate of DNA substitutions is very high, of least one nucleotide base per genome every two years in a mammalian lineage.
+On the other hand, from the variability of protein sequences in the same population, electrophoretic methods suddenly unveiled a wealth of genetic variability, such that the proteins produced by a large fraction of the genes in diverse organisms were found to be polymorphic, and in many cases the protein polymorphism had no visible phenotypic effects and no obvious correlation.
+Altogether, these observation lead Motoo Kimura to propose the \gls{neutral} theory of molecular evolution \citep{kimura1968evolutionary,kimura1991neutral,kimura1986dna}.
 Neutral theory claimed that most mutations are adaptively \gls{neutral} and thus become fixed in populations through the cumulative effect of \gls{drift}.
-Tomoko Ohta later incorporated weakly selected mutation into the \gls{nearly-neutral} theory \citep{ohta1973slightly}, such that selection effect in the order of inverse population size are negligible.
+Tomoko Ohta later incorporated weakly selected mutation into the \gls{nearly-neutral} theory \citep{ohta1973slightly}, such that selection effect in the order of inverse population size are negligible and behaves neutrally.
+Altogther, that many protein polymorphisms must be selectively neutral or nearly so and must be maintained in a population by the balance between mutational input and random extinction, and as a consequence, the majority of the nucleotide substitutions in the course of evolution must be the result of the random fixation of neutral or nearly-neutral mutants rather than the result of positive Darwinian selection.
 
+Selectionists maintain that for a mutant allele to spread through a species it must have some selective advantage, although they admit that an allele that is itself neutral may occasionally be carried along by "hitchhiking" on a gene that is selected for and with which it is closely linked, and may thus reach a high frequency.
+Neutralists, on the other hand, contend that some mutants can spread through a population on their own without having any selective advantage. If a mutant is selectively equivalent to preexisting alleles, its fate is left to chance.
+Its frequency fluctuates, increasing or decreasing fortuitously over time, because only a relatively small number of gametes are "sampled," out of the vast number of male and female gametes produced in each generation, and are therefore represented in individuals of the next generation.
 As of today, it is widely accepted that both \gls{drift} and natural selection participate in the evolution of genomes: the controversy is no longer strictly dichotomous but rather concerns the quantitative contributions of adaptive and of non-adaptive evolutionary processes, and their articulation.
 
 \section{Population-genetics of sequences}
@@ -92,17 +103,16 @@ Selection is assumed to occurs between the zygotic and the adult stage, called p
 More precisely, the ability to survive and produce offspring that eventually become reproductive, a measure called absolute Wrightian fitnesses of the $3$ different possible genotypes are shown in table \ref{table:fitnesses} as a function of the selection coefficient.
 
 \begin{table}[H]
-	\begin{center}
-		\begin{tabular}{|l|ccc|}
-			\hline
-			Genotype & $AA$ & $AB$ & $BB$ \\
-			\hline
-			Absolute Wrightian fitness ($W$) & $1+2s$ & $1+s$ & $1$ \\
-			Hardy-Weinberg frequency & $p^2$ & $2p(1-p)$ & $(1-p)^2$ \\
-			Relative Wrightian fitness & $\dfrac{1+2s}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ \\
-			\hline
-		\end{tabular}
-	\end{center}
+	\centering
+	\begin{tabular}{|l|ccc|}
+		\hline
+		\textbf{Genotype} & $\bm{AA}$ & $\bm{AB}$ & $\bm{BB}$ \\
+		\hline\hline
+		Absolute Wrightian fitness ($W$) & $1+2s$ & $1+s$ & $1$ \\
+		\hline Hardy-Weinberg frequency & $p^2$ & $2p(1-p)$ & $(1-p)^2$ \\
+		\hline Relative Wrightian fitness & $\dfrac{1+2s}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ \\
+		\hline
+	\end{tabular}
 	\caption[Fitnesses of the different genotypes]{Fitnesses of the different genotypes}\label{table:fitnesses}
 \end{table}
 
@@ -162,11 +172,11 @@ Because it is a single mutant the derived \gls{allele} initial frequency is $p =
 \end{align}
 The special case of a \gls{neutral} \gls{allele} can be obtained by taking the limit when $s$ goes to $0$.
 \begin{align}
-P_{\mathrm{fix}}(0, \Ne) & = \dfrac{1}{2 \Ne} \\
+P_{\mathrm{fix}}(0, \Ne) & = \dfrac{1}{2 \Ne}
 \end{align}
 Altogether, the fixation probability of a selected \gls{allele} relative to a \gls{neutral} \gls{allele} is solely dependent on the scaled selection coefficient:
 \begin{align}
-R_{\mathrm{fix}}(S) & = \dfrac{P_{\mathrm{fix}}(s, \Ne)}{P_{\mathrm{fix}}(0, \Ne)} \\
+\dfrac{P_{\mathrm{fix}}(s, \Ne)}{P_{\mathrm{fix}}(0, \Ne)} & \simeq 2 \Ne \dfrac{2s}{1 - \e^{-S}} \\
 & \simeq  \dfrac{S}{1 - \e^{-S}}
 \end{align}
 \begin{figure}[H]
@@ -228,21 +238,20 @@ s & = \dfrac{W_{B} - W_{A}}{W_{A}}, \\
 Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian fitness, or simply log-fitness ($f$).
 
 \begin{table}[H]
-	\begin{center}
-		\begin{tabular}{|l|c|c|c|}
-			\hline
-			Parameter & Symbol & Range \\
-			\hline
-			Effective population size & $\Ne$ & $ [10^2, 10^6]$ \\
-			Absolute Wrightian fitness & $W$ & $ \simeq 1 $ \\
-			Relative fitness & $f=\ln(W)$ & $ \ll 1 $ \\
-			Selection coefficient & $s$ & $ |s| \ll 1 $ \\
-			Scaled selection coefficient & $S=4 \Ne s$ & Finite (negative or positive) \\
-			Mutation rate per generation & $u$ & $[10^{-10}, 10^{-7}]$ per site \\
-			Scaled mutation rate & $\theta = 4 \Ne u$ & $[10^{-8}, 10^{-1}]$ per site \\
-			\hline
-		\end{tabular}
-	\end{center}
+	\centering
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Parameter} & \textbf{Symbol} & \textbf{Range} \\
+		\hline \hline
+		Effective population size & $\Ne$ & $ [10^2, 10^6]$ \\
+		\hline Absolute Wrightian fitness & $W$ & $ \simeq 1 $ \\
+		\hline Relative fitness & $f=\ln(W)$ & $ \ll 1 $ \\
+		\hline Selection coefficient & $s$ & $ |s| \ll 1 $ \\
+		\hline Scaled selection coefficient & $S=4 \Ne s$ & Finite (negative or positive) \\
+		\hline Mutation rate per generation & $u$ & $[10^{-10}, 10^{-7}]$ per site \\
+		\hline Scaled mutation rate & $\theta = 4 \Ne u$ & $[10^{-8}, 10^{-1}]$ per site \\
+		\hline
+	\end{tabular}
 	\caption[Parameter of population-genetics]{Parameter of population-genetics}\label{table:params-popgen}
 \end{table}
 
@@ -253,7 +262,8 @@ However, modeling sequence evolution between different species along lineages is
 Under this simplification, the inter-specific variability and evolutionary trajectory of sequences is described by the past history of point substitutions along lineages.
 Such substitutions along lineages can nonetheless be decomposed into two mechanisms, their origination through mutation and their final fate of fixation, a modeling approach broadly known as origin-fixation \citep{McCandlish2014}.
 Most importantly this decomposition of \gls{substitution} into mutation and fixation is able to conciliate population genetics and inter-specific protein evolution, where the \gls{substitution} history is parameterized by mutation, selection and drift.
-Under the field of phylogenetic, the origin-fixation framework is more commonly known as mutation-selection, where fixation of an \gls{allele} encompass natural selection and origination correspond to mutation, a convention we will use hereafter.
+Under the field of phylogenetic, the origin-fixation framework is more commonly known as mutation-selection, where fixation of an \gls{allele} encompass the confounded effect of natural selection and drift, moreover origination correspond to mutation.
+Since the scope of this manuscript emanates from phylogenetic, I will use the convention mutation-selection hereafter.
 However, a more general mathematical description of the mutation-selection framework recruiting tools from statistical physics can be found in \citet{Sella2005, Mustonen2009}.
 
 Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier sequences visited in the history of a lineage.
@@ -270,7 +280,7 @@ In addition, these models assume by definition the absence of epistasis since th
 The mutation rate $u$ in the condition then refers to the mutation rate for each independent site, rather than the total mutation rate over the collection as a whole.
 For example, \citet{Halpern1998} construct a model for the evolution of coding sequences where each \gls{codon} site is modeled as an independent \gls{mc}. 
 
-\begin{figure}[thbp]
+\begin{figure}[thbp!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/point-process.pdf}
 	\caption[Mutation-selection point substitutions]{Mutation-selection point substitutions models. The trajectory of alleles inside a population is collapsed into a single point \gls{substitution} process. This approximation is valid under low mutation rate such that a mutation originate uniquely whenever the gene is monomorphic (with a single allele).}
@@ -381,40 +391,42 @@ Under the assumption that the mutational process is also reversible, the detaile
 Altogether, the probability $\pi_{A}$ to find the population in allele $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $A$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
 \begin{align}
 \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum_{A}\pi_{A} = 1, \\ 
-\iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} },
+\iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
 \end{align}
 where the denominator is a normalizing constant such that the sum of probabilities equal to $1$.
 In analogy to thermodynamic systems, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of genetic drift.}.
 
-\subsection{Relative {substitution} rate} 
+\subsection{Equilibrium substitution rate over mutation rate} 
 
-Probabilities of the stationary distribution allows to calculate all observable quantities of interest, such as mean fitness and mean \gls{substitution} rate, using standard probability theory.
-One quantity of interest is the \gls{substitution} rate of selected mutations relative to that of \gls{neutral} mutations, called $\omega$.
-From its definition, $\omega=1$ for genes or sites under \gls{neutral} evolution.
+Probabilities of the stationary distribution allows to calculate all observable quantities of interest, such as mean fitness, mean mutation and \gls{substitution} rates, using standard probability theory.
+One quantity of interest is the \gls{substitution} rate of selected mutations relative to that of \gls{neutral} mutations, called $\langle \nu \rangle$.
+From its definition, $\langle \nu \rangle=1$ for genes or sites under \gls{neutral} evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences. 
-First, $\omega>1$ is interpreted as a signal of adaptive recurrent evolution, where selection coefficient are on average positive.
-On the other hand, $\omega<1$ is a signal of underlying purifying selection, such that the sequence is constrained and mutations proposed have on average a negatively selection coefficient.
-Together, in the case of a mutation-selection point \gls{substitution} process, $\omega$ is defined as:
+First, $\langle \nu \rangle>1$ is interpreted as a signal of adaptive recurrent evolution, where selection coefficient are on average positive.
+On the other hand, $\langle \nu \rangle<1$ is a signal of underlying purifying selection, such that the sequence is constrained and mutations proposed have on average a negatively selection coefficient.
+Together, in the case of a mutation-selection point \gls{substitution} process, $\langle \nu \rangle$ is defined as:
 \begin{equation}
-\omega = \dfrac{ \sum_{A} \pi_{A} \sum_{B} Q_{A \to B}}{\sum_{A} \pi_{A}  \sum_{B} \mu_{A \to B}},
+\label{eq:relative-sub-rate}
+\langle \nu \rangle = \dfrac{ \sum_{A} \pi_{A} \sum_{B} Q_{A \to B}}{\sum_{A} \pi_{A}  \sum_{B} \mu_{A \to B}},
 \end{equation}
-It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result in $\omega \leq 1$. 
+where the notation $\langle . \rangle$ denotes the statistical average.
+It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result in $\langle \nu \rangle \leq 1$ \citep{Mustonen2009}. 
 
 \begin{table}[H]
-	\begin{center}
+	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|l|c|c|c|}
 			\hline
-			Parameter & Symbol & Range \\
-			\hline
+			\textbf{Parameter} & \textbf{Symbol} & \textbf{Range} \\
+			\hline\hline
 			Scaled fitness & $F=4 \Ne f$ & finite, positive or negative \\
-			Mutation rate per time & $\mu$ & $[10^{-11}, 10^{-8}]$ per site per year \\
-			Substitution rate per time & $Q$ & $[10^{-11}, 10^{-8}]$ per site per year \\
-			Equilibrium frequency & $\Pi$ & $[0, 1]$ \\
-			Equilibrium frequency under mutation & $\sigma$ & $[0, 1]$ \\
-			Relative \gls{substitution} rate & $\omega$ & $[0, 1]$ for purifying selection\\
+			\hline Mutation rate per time & $\mu$ & $[10^{-11}, 10^{-8}]$ per site per year \\
+			\hline Substitution rate per time & $Q$ & $[10^{-11}, 10^{-8}]$ per site per year \\
+			\hline Equilibrium frequency & $\pi$ & $[0, 1]$ \\
+			\hline Equilibrium frequency under mutation & $\sigma$ & $[0, 1]$ \\
+			\hline Equilibrium substitution rate & \multirow{2}{*}{ $\langle \nu \rangle$} & \multirow{2}{*}{$[0, 1]$ for purifying selection} \\
+			over mutation rate & & \\
 			\hline
-		\end{tabular}
-	\end{center}
+		\end{tabular}}
 	\caption[Parameter of mutation-selection processes]{Parameter of mutation-selection processes}\label{table:params-mutsel}
 \end{table}
 

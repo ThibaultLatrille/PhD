@@ -9,7 +9,7 @@
 
 \newcommand{\der}{\mathrm{d}}
 \newcommand{\e}{\mathrm{e}}
-\newcommand{\dnds}{dNdS}
+\newcommand{\dnds}{d_N / d_S}
 \newcommand{\indice}{l}
 \newcommand{\indiceexp}{^{(\indice)}}
 % Time, effective population size and mutation rate.
@@ -19,11 +19,11 @@
 \newcommand{\SetWeak}{\Omega_{\mathrm{W}}}
 \newcommand{\SetStrong}{\Omega_{\mathrm{S}}}
 \newcommand{\mutmatrix}{R}
-\newcommand{\Mutmatrix}{\bm{\mutmatrix}_{4\times4}}
+\newcommand{\Mutmatrix}{\bm{\mutmatrix}}
 \newcommand{\exchan}{\rho}
-\newcommand{\Exchan}{\bm{\exchan}_{6\times1}}
+\newcommand{\Exchan}{\bm{\exchan}}
 \newcommand{\mutequi}{\sigma}
-\newcommand{\Mutequi}{\bm{\mutequi}_{4\times1}}
+\newcommand{\Mutequi}{\bm{\mutequi}}
 % Codons
 \newcommand{\SetCodon}{\Omega_{\mathrm{C}}}
 \newcommand{\ci}{{i}}
@@ -64,17 +64,20 @@
 \newcommand{\NiNonSyn}{\mathcal{N}_{\mathrm{onSyn}}\left(\ci\right)}
 \newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
 \newcommand{\fit}{f}
-\newcommand{\Fit}{\bm{\fit}_{20\times1}}
+\newcommand{\Fit}{\bm{\fit}}
 \newcommand{\fiti}{\fit_{\aai}}
 \newcommand{\fitj}{\fit_{\aaj}}
+\newcommand{\Fiti}{F_{\aai}}
+\newcommand{\Fitj}{F_{\aaj}}
 \newcommand{\scaledfit}{F}
-\newcommand{\ScaledFit}{\bm{\scaledfit}_{20\times1}}
+\newcommand{\ScaledFit}{\bm{\scaledfit}}
 \newcommand{\scaledfiti}{\scaledfit_{\aai}}
 \newcommand{\scaledfitj}{\scaledfit_{\aaj}}
 \newcommand{\selcoef}{{\delta_{\fit}}}
 \newcommand{\scaledselcoef}{{\Delta \scaledfit}}
 % Tree
 \newcommand{\Tree}{\mathcal{T}}
+\newcommand{\state}{\mathcal{S}}
 \newcommand{\node}{\text{n}}
 \newcommand{\taxon}{\node}
 \newcommand{\Settaxon}{1 \leq \taxon \leq \Ntaxa}
