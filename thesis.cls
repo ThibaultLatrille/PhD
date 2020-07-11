@@ -30,6 +30,8 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 
+\interfootnotelinepenalty=10000
+
 \setlength{\parskip}{0pt plus 1pt}
 \setlength{\parfillskip}{0pt plus .7\textwidth}
 
@@ -202,9 +204,9 @@
 \usepackage{bm}
 \usepackage{listings, enumerate, enumitem}
 
-\usepackage{textcomp}
-\usepackage{longtable} 
-\usepackage{tabularx}
+\usepackage{tabu}
+\tabulinesep=1.2mm
+
 \makeatletter
 \newcommand\cellwidth{\TX@col@width}
 \usepackage{hhline}

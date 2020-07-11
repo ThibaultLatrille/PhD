@@ -4,47 +4,47 @@
 	\minitoc
 }
 \label{sec:phylo_bayes}
-In the previous chapter treated how to construct of model 
-Our interest lies in that given a set of observed protein-coding DNA sequences in different species or lineages, we seek to estimates the underlying parameters of evolution.
+The previous chapter treated how substitution rates are defined and parameterized, but not how these parameters are inferred and estimated.
+Given a set of observed protein-coding DNA sequences in different species or lineages, the goal is to estimates the underlying parameters of evolution.
 However, models of substitutions presented so far are not sufficient to fulfills this endeavor, but instead can be used to generate a random trajectory of protein-coding DNA sequence evolution.
-Indeed, given parameters of evolution, simulations using the substitution matrix developed in the previous chapter, when run along a phylogenetic tree, can give us a likely representative sequence for each extant species (at the tip of the tree), producing an alignment. 
+Indeed, given parameters of evolution, simulations using the substitution rates between codons, when run along a phylogenetic tree, can give us a likely representative protein coding DNA sequence for each extant species (at the tip of the tree), producing an alignment. 
 Moreover by running several random simulations, one can expect to obtain representative and likely set of alignments.
 Unfortunately, even with huge amount of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by a given set of parameters.
-Deriving this the probability of observing a specific alignment given the parameters is thus first theoretical question to answer, which is the focus of the first section.
+Deriving this probability of observing a specific alignment given the parameters is thus the first theoretical question to answer, which is the focus of the first section.
 With this analytical probability obtained, it is then possible the derive for different sets of parameters their respective probability of generating the observed alignment.
-The next endeavor is thus to reverse the question, and instead of having the probability of the alignement given the parameters, we seek to derive the probability of the parameters given the alignment.
+The next endeavor is thus to reverse the question, and instead of having the probability of the alignement given the parameters, the goal is to derive the probability of the parameters given the alignment.
 This subsequent endeavor is thus the focus of the second section, recalling theoretical and computational implementation of Bayesian inference, in the context of phylogenetic codon models.
 
 \section{Likelihood of the data}
 
-For a data set of protein-coding \acrshort{DNA} sequences, the goal is to determine the probability of the observed sequence data at the tips of the tree conditional upon the evolutionary model, the tree, and values of parameters in the model.
+For a dataset of protein-coding \acrshort{DNA} sequences, the goal is to determine the probability of the observed sequence data at the tips of the tree conditional upon the evolutionary model, the tree, and values of parameters in the model.
 The challenge is that only the data for the extant species are observed whereas the sequence at the root of the tree and the subsequent evolutionary events are not directly observed.
-In other words, we need to integrate other all possible trajectories leading to the observed alignment, weighted by their respective probabilities.
+In other words, all possible trajectories leading to the observed alignment must be integrated, weighted by their respective probabilities.
 
-Throughout this development, we will be assuming that the tree topology ($\tau$) is considered know and fixed.
-This restriction emanates that the purpose of this is work is not to infer the topology, but the parameters of evolution.
+Throughout this development, the tree topology ($\tau$) is considered know and fixed.
+This restriction emanates that the scope of this is work is not to infer the topology, but the parameters of evolution.
 Moreover, the development does not delves into the details of how alignment are obtained, and thus assume that they are correct.
 However it has been shown that outputs of different sequence alignment methods tend to produce different results that are not consistent.
-The main determining factor of alignment accuracy is evolutionary divergence, such that if alignment are restricted to orthologs from closely related taxa, or to slow-evolving genes, alignment errors become decreasingly likely and may not cause significant encumbrance.
-Finally, and not the least, we rely on models of sequence change that assume changes at one sequence position have no impact on whether other positions will change.
+The main determining factor of alignment accuracy is evolutionary divergence, such that if alignment are restricted to orthologs from closely related taxa, or to slow-evolving genes, alignment errors become scarce and may not cause significant encumbrance.
+Finally, and not the least, models of sequence change will assume that changes at one sequence position have no impact on whether other positions will change.
 This assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns. 
 This independence assumption is simplistic, throwing away biological information, and can be shown statistically to be problematic, but permits computationally convenient likelihood-based inference.
 
 The section is divided into first integrating over all trajectory over a single branch of tree, and subsequently over the total tree. And finally efficiently computing the probability of observed data given the parameters.
 
 \subsection{Probability of transitions for a branch at a given site}
-Point substitution process define the instantaneous rates of change between the different codons through the substitution matrix $Q$.
-However, if we are given a starting state of the process (ancestral) and a given amount of time for which the substitution process runs, we can derive the probability of the descendant sequence having each of the $61$ codon states.
+Point substitution process define the instantaneous rates of change between the different codons through the substitution matrix $\Submatrix$.
+However, given a starting state of the process (ancestral) and a given amount of time for which the substitution process runs, it is possible to derive the probability of the descendant sequence having each of the $61$ codon states.
 In practice, time is measured in unit of branch length, expressing the expected number of changes to have occurred since the ancestor if transition are neutral.
-For example of branch length of $2$ imply we expect to see $2$ changes on average along the branch is substitution are neutral.
-As such the substitution rate matrix must be normalized to be measured in unit of branch length, where in practice instead of normalizing the codon subtitution matrix, the nucleotide mutation matrix is normalized.
+For example of branch length of $2$ imply that $2$ changes are expected to be seen on average along the branch under the condition that substitutions are neutral.
+Consequently, the substitution rate matrix must be normalized to be measured in unit of branch length, where in practice instead of normalizing the codon subtitution matrix, the nucleotide mutation matrix is normalized since mutation are considered neutral.
 The mathematical details of this transformation from rate-matrix to probability matrix are described from first order derivation of the Markov process.
-At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength\branchexp$, the codon probability matrix $\Probmatrix\siteexp(\branchlength\branchexp)$ is related to the transition matrix ($\Submatrix\siteexp$ at site $s$) trough the first-order differential equation:
+At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength\branchexp$, the codon probability matrix $\Probmatrix\siteexp(\branchlength\branchexp)$ is related to the transition matrix ($\Submatrix\siteexp$ at site $\site$) trough the first-order differential equation:
 \begin{align}
-	\dfrac{\der \Probmatrix\siteexp(\branchlength\branchexp)}{\der \branchlength\branchexp}	& = \Submatrix\siteexp \\
-	\iff \Probmatrix\siteexp(\branchlength\branchexp) & = \e^{\branchlength\branchexp \Submatrix\siteexp}
+	\dfrac{\der \Probmatrix\siteexp(\branchlength\branchexp)}{\der \branchlength\branchexp}	& = \Probmatrix\siteexp(\branchlength\branchexp) \Submatrix\siteexp, \\
+	\iff \Probmatrix\siteexp(\branchlength\branchexp) & = \e^{\branchlength\branchexp \Submatrix\siteexp}.
 \end{align}
-Where the integration of the substitution rate matrix over the branch length entails to take into all possible trajectories histories of evolutionary events, leading to a compact probability matrix computed as an exponential of the rate matrix.
+The integration of the substitution rate matrix over the branch length entails to take into all possible trajectories histories of evolutionary events, leading to a compact probability matrix computed as an exponential of the rate matrix.
 In practive, exponential of the rate matrix is usually performed using eigenvalues and eigenvectors decomposition.
 
 \subsection{Total probability of transition}
@@ -90,7 +90,7 @@ p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \
 \end{align}
 where $I$ runs over all the internal nodes.
 
-Because the  states of the internal nodes are not actually unknown, the likelihood must be summed over the all the possible states, weighted by their equilibrium stationary frequencies ($\pi\siteexp$).
+Because the states of the internal nodes are not actually unknown, the likelihood must be summed over the all the possible states, weighted by their equilibrium stationary frequencies ($\pi\siteexp$).
 
 In the case of the illustrative example, the total probability is given as
 \begin{align}
@@ -105,7 +105,7 @@ In the case of the illustrative example, the total probability is given as
 
 And because the process is reversible, the equilibrium frequencies of codons satisfies the equations:
 \begin{align}
-\bm{0}  & = \bm{\pi}\branchsiteexp \Submatrix\branchsiteexp \\
+\bm{0} & = \bm{\pi}\branchsiteexp \Submatrix\branchsiteexp \\
 \iff \bm{\pi}\branchsiteexp & = \bm{\pi}\branchsiteexp \Probmatrix\branchsiteexp \\
 \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
 \end{align}
@@ -126,7 +126,7 @@ The likelihood of the data $\Data$ can be computed using the pruning algorithm:
 \begin{align}
 p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
 \end{align}
-where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$  descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
+where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
 \pruning\siteexp_{\node} \left( \ci \right) = 
 \left[ \sum_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right] 
@@ -144,8 +144,8 @@ And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 
 \section{Bayesian estimation}
 The Bayesian Paradigm can be seen as a way to model uncertainty in a probabilistic way.
-In other words, parameter of the models (here $\Submatrix$ and $\branchlength$ for example) are considered as random variables whose distribution describes that uncertainty.
-This unconditional distribution of parameters ($p(\Submatrix)$) is called the prior.
+In other words, parameter of the models denoted $\theta$ are considered as random variables whose distribution describes that uncertainty.
+This unconditional distribution of parameters, $p(\theta)$, is called the prior.
 The probability of those parameters are going to be modified after acquisition of information supplied by observed data.
 More precisely, Bayes theorem is essential in updating of the distribution :
 \begin{equation}
@@ -155,37 +155,49 @@ The probability of the parameters matrix $\theta$ given the data is called the p
 
 Because the actual probability of the data is not going to change, in inference Bayes theorem is often presented as:
 \begin{equation}
-p(\Submatrix|\data) \propto p(\data|\Submatrix)p(\Submatrix)
+p(\data|\data) \propto p(\data|\data)p(\data)
 \end{equation}
 Simply stating that the \gls{posterior} is proportional to the \gls{likelihood} time the \gls{prior}.
 
-Because we have seen how to compute the likelihood in the previous section, the difficulties now is shifted to the definition of the prior distribution, where these difficulties come in two flavors.
-Firstly, the parameters of evolution for which we have prior distribution are the parameters of interest such as the selection coefficient, or on the mutation rate, but we do not have a prior distribution on the substitution matrix as a whole.
+From the likelihood of the data derived in the previous section, the difficulties now is shifted to the definition of the prior distribution, where these difficulties come in two flavors.
+Firstly, the parameters of evolution for which prior distribution can be apprehended might be the parameters of interest such as the selection coefficient, or on the mutation rate, but not the prior distribution of the substitution rate matrix as a whole.
 This difficulties is eased by Bayesian network, which are a probabilistic graphical representation of a set of variables and their conditional dependencies via a directed acyclic graph (DAG).
+In the example of the prior distribution for the rate substitution matrix, it is determined as the joint distribution of the prior over the selection coefficient and the mutation rate matrix, which itself is given by the joint distribution over the equilibrium frequencies of nucleotides and exchangeabilities rates for the general-time-reversible (GTR) mutation matrix (see figure \ref{fig:DAG}).
+Seeing the DAG the other way around (following the arrows), simple prior distribution are combined together to form more complex joint prior distribution which ultimately define the prior distribution of the model ($\theta$).
 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
 	\tikzstyle{every state}=[]
 	
-	\node[state] (P) {$\Probmatrix\branchsiteexp$};
+	\node[state] (P) {$\Probmatrix\siteexp(\branchlength\branchexp)$};
 	\node[state] (Q) [below right=of P] {$\Submatrix\siteexp$};
-	\node[state] (R) [below right=of Q] {$\Mutmatrix$};
 	\node[state] (BL) [BLUE, above right=of P] {$\branchlength\branchexp$};
-	\node[state] (sb) [RED, right=of BL] {$\StickBreaking$};
-	\node[state] (Ne) [BLUE, above right=of Q] {$\bm{F}\siteexp$};
-	\node[state] (sb) [RED, right=of BL] {$\StickBreaking$};
+	\node[state] (Exp) [RED, right=of BL] {$1$};
+	\node[state] (F) [below right=of Q] {$\bm{F}\siteexp$};
+	\node[state] (sb) [BLUE, right=of F] {$W$};
+	\node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};
+	\node[state] (R) [above right=of Q] {$\Mutmatrix$};
+	\node[state] (Ex) [BLUE, above right=of R] {$\Exchan$};
+	\node[state] (ExH) [RED, right=of Ex] {$\dfrac{1}{6}, 6$};
+	\node[state] (Equi) [BLUE, below right=of R] {$\Mutequi$};
+	\node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
 	
 	\path 
-	(Q) edge [dashed] node [above right] {} (P)
-	(BL) edge [dashed] node [] {} (P)
-	(Ne) edge [dashed] node {} (Q)
-	(R) edge [dashed] node {} (Q);
-	(BL) edge [BLUE] node [above] {} (sb)
-	
+	(Q) edge [] node [above right] {} (P)
+	(BL) edge [] node [] {} (P)
+	(Exp) edge [BLUE] node [above] {\textit{Exp}} (BL)
+	(R) edge [] node {} (Q)
+	(Ex) edge [] node [] {} (R)
+	(Equi) edge [] node [below] {} (R)
+	(ExH) edge [BLUE] node [above] {\textit{Dir}} (Ex)
+	(EquiH) edge [BLUE] node [above] {\textit{Dir}} (Equi)
+	(F) edge [] node {} (Q)
+	(sb) edge [] node [above] {} (F)
+	(sbH) edge [BLUE] node [above] {\textit{DP}} (sb);
 	\end{tikzpicture}
-	\caption{Directed acyclic graph of dependencies between variables}{Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black. Dotted {\color{BLUE}{blue}} line denotes a drawing from a random distribution, and black solid lines denote a function. $\theta$ }
-	\label{fig:graph}%
+	\caption[Directed acyclic graph of Bayesian network]{Directed acyclic graph of dependencies between variables. Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black. {\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function. \textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a Dirichlet process.}
+	\label{fig:DAG}
 \end{figure}
 
 Secondly, once realizing that the prior distribution can be boiled to a set of simpler prior distributions, the difficulty arise from the high dimensionality of the parameter space, known as the curse of dimensionality.
@@ -247,7 +259,7 @@ A realization of the random process results in a detailed \gls{substitution} his
 Most phylogenetic Monte-Carlo-Markov-Chain (\acrshort{MC}) samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate
 the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MC}.
 
-An alternative, which is used here, is to do the \acrshort{MC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MC} over the augmented configuration~($\subhistory$, $D$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
+An alternative, which is used here, is to do the \acrshort{MC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
 
 The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on
 compact summary statistics of $\subhistory$ (which in turn depend on the specific parameter component
