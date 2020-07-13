@@ -310,17 +310,19 @@ U_{y, x} \dfrac{F_X^{(k)} - F_Y^{(k)}}{1 - \e^{F_Y^{(k)}-F_X^{(k)}}}
 \end{align}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-parameters}
-	\end{center}
-	\caption[Parameters of the mutation-selection model]{Parameters of the mutation-selection model. One parameter for mutational bias, and one for strength of selection.}
+
+	\caption[Parameters of the mutation-selection model]{
+	Parameters of the mutation-selection model. One parameter for mutational bias, and one for strength of selection.}
 \end{figure}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-simulations}
-	\end{center}
-	\caption[Simulations and analysis]{Simulations and analysis. We can observe composition of the alignment as function of the mutation and selection parameters.}
+
+	\caption[Simulations and analysis]{
+	Simulations and analysis. We can observe composition of the alignment as function of the mutation and selection parameters.}
 \end{figure}
 
 \subsection{AT/GC as a function of the mutation-selection model}
@@ -382,10 +384,11 @@ For a large sequence ($ n \gg 1 $), $\lambda_{\mathrm{obs}} (\lambda, \bm{F})$ c
 \end{align}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-AT-GC-obs}
-	\end{center}
-	\caption[AT/GC composition of the alignment]{AT/GC composition of the alignment. Observed AT/GC at the third codon position matches the mutational bias. Selection is balancing the mutational bias.}
+
+	\caption[AT/GC composition of the alignment]{
+	AT/GC composition of the alignment. Observed AT/GC at the third codon position matches the mutational bias. Selection is balancing the mutational bias.}
 \end{figure}
 
 \subsection{Diversity of codons as a function of the mutation-selection model}
@@ -406,10 +409,11 @@ D^{(k)}(\lambda, F^{(k)})
 \end{align}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-diversity-aa}
-	\end{center}
-	\caption[Diversity of amino-acids]{Diversity of amino-acids. Sequence-diversity is higher than site-diversity. Diversity decreases with mutational bias.	Site-diversity decreases with selection. Sequence-diversity increase with selection.}
+
+	\caption[Diversity of amino-acids]{
+	Diversity of amino-acids. Sequence-diversity is higher than site-diversity. Diversity decreases with mutational bias.	Site-diversity decreases with selection. Sequence-diversity increase with selection.}
 \end{figure}
 
 \subsection{dN/dS as a function of the mutation-selection model}
@@ -493,33 +497,42 @@ For a large sequence ($ n \gg 1 $), $\omega (\lambda, \bm{F})$ converges to $\op
 \end{align}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-definitions}
-	\end{center}
+
 	\caption[Definition of $\omega$]{Definition of $\omega$.}
 \end{figure}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-omega}
-	\end{center}
-	\caption[$\omega$ as a function of the parameters]{$\omega$ as a function of the parameters. Non-synonymous fixation bias is always lower than. Non-synonymous fixation bias decrease with the strength of selection. Non-synonymous fixation bias is unaffected by mutational bias.}
+
+	\caption[$\omega$ as a function of the parameters]{
+	$\omega$ as a function of the parameters.
+	Non-synonymous fixation bias is always lower than.
+	Non-synonymous fixation bias decrease with the strength of selection.
+	Non-synonymous fixation bias is unaffected by mutational bias.}
 \end{figure}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth, page=1] {figures/mut-bias-omega-WS-SW}
-	\end{center}
-	\caption[Fixation bias of non-synonymous mutations]{Fixation bias of non-synonymous mutations. Mutation biased from GC to AT leads to a fixation bias in the opposite direction. More generally, mutation bias leads to balancing fixation bias. This is confounding factor with gBGC.}
+
+	\caption[Fixation bias of non-synonymous mutations]{
+	Fixation bias of non-synonymous mutations.
+	Mutation biased from GC to AT leads to a fixation bias in the opposite direction.
+	More generally, mutation bias leads to balancing fixation bias.
+	This is confounding factor with gBGC.}
 \end{figure}
 
 \section{Parametric inference}
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth, page=1] {figures/mut-bias-pipeline}
-	\end{center}
-	\caption[Inferred value compared to known value]{Inferred value compared to known value.}
+
+	\caption[Inferred value compared to known value]{
+	Inferred value compared to known value.}
 \end{figure}
 
 \subsection{Parametric inference with Muse-Gaut model}
@@ -552,10 +565,14 @@ From the maximum likelihood estimates of the $4 \times 4$ mutation matrix $\left
 
 
 \begin{figure}[thbp]
-	\begin{center}
+	\centering
 		\includegraphics[width=\textwidth] {figures/mut-bias-Simulation-vs-Inference}
-	\end{center}
-	\caption[Estimation of mutation and fixation bias]{Estimation of mutation and fixation bias. Modeling a single fixation bias leads to skewed estimation of mutation bias. Modeling multiple fixation bias leads to precise estimation of mutation bias. Estimation of fixation bias doesn't depend on the underlying mutation bias.}
+
+	\caption[Estimation of mutation and fixation bias]{
+	Estimation of mutation and fixation bias.
+	Modeling a single fixation bias leads to skewed estimation of mutation bias.
+	Modeling multiple fixation bias leads to precise estimation of mutation bias.
+	Estimation of fixation bias doesn't depend on the underlying mutation bias.}
 \end{figure}
 
 \subsection{Experiment I: Nucleoprotein}

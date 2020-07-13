@@ -7,7 +7,12 @@
 \definecolor{BROWN}{HTML}{A97C50}
 \definecolor{PINK}{HTML}{DA1C5C}
 
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
 \newcommand{\der}{\mathrm{d}}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
 \newcommand{\e}{\mathrm{e}}
 \newcommand{\dnds}{d_N / d_S}
 \newcommand{\indice}{l}
@@ -28,6 +33,9 @@
 \newcommand{\SetCodon}{\Omega_{\mathrm{C}}}
 \newcommand{\ci}{{i}}
 \newcommand{\cj}{{j}}
+\newcommand{\iSetCodon}{1 \leq \ci \leq 61}
+\newcommand{\jSetCodon}{1 \leq \cj \leq 61}
+\newcommand{\ijSetCodon}{1 \leq \ci, \cj \leq 61}
 \newcommand{\itoj}{\ci, \cj}
 \newcommand{\jtoi}{\cj, \ci}
 \newcommand{\nucitoj}{\mathcal{M}(\itoj)}
@@ -38,6 +46,8 @@
 \newcommand{\probmatrix}{P}
 \newcommand{\Probmatrix}{\bm{\probmatrix}}
 % Amino-acids
+\newcommand{\aminoacid}{\text{A}}
+\newcommand{\aSetAa}{1 \leq \aminoacid \leq 20}
 \newcommand{\SetAa}{\Omega_{\mathrm{A}}}
 \newcommand{\Neighbor}{\mathcal{V}}
 \newcommand{\NonSyn}{\mathcal{N}}
@@ -57,7 +67,6 @@
 \newcommand{\NyNonSyn}{\NonSyn_y}
 \newcommand{\NxSyn}{\Syn_x}
 \newcommand{\NySyn}{\Syn_y}
-\newcommand{\aminoacid}{\text{A}}
 \newcommand{\aai}{\mathcal{A}(\ci)}
 \newcommand{\aaj}{\mathcal{A}(\cj)}
 \newcommand{\Ni}{\mathcal{N}_{\mathrm{eighbors}}\left(\ci\right)}
@@ -106,7 +115,9 @@
 \newcommand{\Data}{\bm{\data}}
 \newcommand{\site}{\text{s}}
 \newcommand{\siteexp}{^{(\site)}}
-\newcommand{\Nsite}{S}
+\newcommand{\Nsite}{\text{S}}
+\newcommand{\Nsites}{\text{S}}
+\newcommand{\Nstate}{\text{K}}
 \newcommand{\Setsite}{\site \in \{1, \hdots, \Nsite\} }
 \newcommand{\branchsiteexp}{^{(\branch, \site)}}
 \newcommand{\treerootsiteexp}{^{(\treeroot, \site)}}
@@ -153,3 +164,20 @@
 \newcommand{\pruning}{\psi}
 \newcommand{\Multivariate}{\bm{Z}}
 \newcommand{\subhistory}{\mathcal{H}}
+
+% Genotype-Phenotype-Fitness
+\newcommand{\phenoGeo}{\bm{P}}
+\newcommand{\phenoFold}{\Delta G}
+\newcommand{\eq}{^{*}}
+\newcommand{\dx}{\delta x}
+\newcommand{\s}{s}
+\newcommand{\deltaG}{\Delta G}
+\newcommand{\deltadeltaG}{\Delta \deltaG}
+\newcommand{\DeltaDeltaG}{\gamma}
+\newcommand{\DeltaGmin}{\alpha}
+\newcommand{\Seqi}{\mathbb{S}}
+\newcommand{\Seqj}{\mathbb{S}'}
+\newcommand{\Seqitoj}{\ci, \cj}
+\newcommand{\setNeighbors}{\mathcal{M}\left(\ci\right)}
+\newcommand{\setNonSynNeighbors}{\mathcal{N}\left(\ci\right)}
+\newcommand{\setSynNeighbors}{\mathcal{S}\left(\ci\right)}

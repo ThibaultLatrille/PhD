@@ -141,10 +141,13 @@ p' & = p^2 \dfrac{1+2s}{1+2ps} + p(1-p)\dfrac{1+s}{1+2ps}\\
 \end{align}
 
 \begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth, page=1] {figures.pdf}
-	\end{center}
-	\caption[Frequency of derived \gls{allele} after a generation]{Frequency of derived \gls{allele} after a generation. Positive selection coefficient ($s > 0$) result in increased derived \gls{allele} frequency at the next generation, which is intuitively expected. The effect is stronger when the derived \gls{allele} frequency is close to $0.5$, intuitively because the poll of both alleles must be sufficiently large such that they can be replaced. It is worth noting that even for strong selection coefficient ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
+	\centering
+	\includegraphics[width=0.8\textwidth, page=1] {figures.pdf}
+	\caption[Frequency of derived \gls{allele} after a generation]{
+	Frequency of derived \gls{allele} after a generation.
+	Positive selection coefficient ($s > 0$) result in increased derived \gls{allele} frequency at the next generation, which is intuitively expected.
+	The effect is stronger when the derived \gls{allele} frequency is close to $0.5$, intuitively because the poll of both alleles must be sufficiently large such that they can be replaced.
+	It is worth noting that even for strong selection coefficient ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
 \end{figure}
 
 The population is considered discrete and consists of a fixed number of \gls{diploid} individuals $\Ne \gg 1$, where the number of copies of the derived \gls{allele} $A$ present at the current generation is denoted $i$ and $p=i / 2\Ne $ 
@@ -168,10 +171,13 @@ P_{\mathrm{fix}}(s, \Ne, p) & = \dfrac{1 - \e^{-4 \Ne p s }}{1 - \e^{-4 \Ne s}},
 \end{align}
 where $S = 4 \Ne s$ is the scaled selection coefficient.
 \begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth, page=3] {figures.pdf}
-	\end{center}
-	\caption[Probability of fixation]{Probability of fixation. The selection coefficient of the derived \gls{allele} is scaled by population size $S=4 \Ne s$. In contrast to changes of frequency during a generation, the probability of fixation is sensitive to very weak selection coefficient ($|s| \ll 1$), as long as the scaled selection coefficient is not negligible ($|S| > 1$). Intuitively, selective effects are magnified by population size because the fixation is the inherently the resultant of the trajectory overall, integrating small effects throughout the lifespan of the \gls{allele}. }
+	\centering
+	\includegraphics[width=0.8\textwidth, page=3] {figures.pdf}
+	\caption[Probability of fixation]{
+	Probability of fixation.
+	The selection coefficient of the derived \gls{allele} is scaled by population size $S=4 \Ne s$.
+	In contrast to changes of frequency during a generation, the probability of fixation is sensitive to very weak selection coefficient ($|s| \ll 1$), as long as the scaled selection coefficient is not negligible ($|S| > 1$).
+	Intuitively, selective effects are magnified by population size because the fixation is the inherently the resultant of the trajectory overall, integrating small effects throughout the lifespan of the \gls{allele}. }
 \end{figure}
 
 An interesting special case is obtained for a new mutation appearing in the population.
@@ -190,9 +196,8 @@ Altogether, the fixation probability of a selected \gls{allele} relative to a \g
 & \simeq  \dfrac{S}{1 - \e^{-S}} \label{eq:p-fix}
 \end{align}
 \begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth, page=2] {figures.pdf}
-	\end{center}
+	\centering
+	\includegraphics[width=0.8\textwidth, page=2] {figures.pdf}
 	\caption[Relative fixation probability]{Fixation probability of a selected \gls{allele} relative to a \gls{neutral} \gls{allele}.
 	For a substantive negative scaled selection coefficient ($s \leq -1/\Ne$, red filled area), the probability of fixation is greatly reduced (by an exponential factor), and \gls{allele} can not likely reach fixation. On the other hand for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear w.r.t $S$. In between, whenever the absolute value of is close to $1 / \Ne$ (yellow filled area), the \gls{allele} behave approximately neutrally.}
 \end{figure}
@@ -210,10 +215,11 @@ g(x, S) & = \dfrac{\left( 1 - \e^{- 2 s }\right) \left( 1 - \e^{-4 \Ne s(1-x)}\r
 \end{align}
 
 \begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth, page=4] {figures.pdf}
-	\end{center}
-	\caption[Expected time at a derived frequency]{Expected time at a derived frequency. Allele with positive selection coefficient can be observed at high frequency, while alleles with negative selection coefficient are unlikely to be observed at high frequency.}
+	\centering
+	\includegraphics[width=0.8\textwidth, page=4] {figures.pdf}
+	\caption[Expected time at a derived frequency]{
+	Expected time at a derived frequency.
+	Allele with positive selection coefficient can be observed at high frequency, while alleles with negative selection coefficient are unlikely to be observed at high frequency.}
 \end{figure}
 
 This equation is solely valid for a gene with two alleles, a configuration which is scarcely observed in empirical data since more than two variants of a gene are usually present in the population.
@@ -280,7 +286,10 @@ However, a more general mathematical description of the mutation-selection frame
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/point-process.pdf}
-	\caption[Mutation-selection point substitutions]{Mutation-selection point substitutions models. The trajectory of alleles inside a population is collapsed into a single point \gls{substitution} process. This approximation is valid under low mutation rate such that a mutation originate uniquely whenever the gene is monomorphic (with a single allele).}
+	\caption[Mutation-selection point substitutions]{
+	Mutation-selection point substitutions models.
+	The trajectory of alleles inside a population is collapsed into a single point \gls{substitution} process.
+	This approximation is valid under low mutation rate such that a mutation originate uniquely whenever the gene is monomorphic (with a single allele).}
 	\label{fig:point-process}
 \end{figure}
 
@@ -347,25 +356,25 @@ Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
 \end{equation}
 
 \begin{figure}[htb!]
-	\begin{center}
-		\begin{tikzpicture}[->,>=stealth',auto,node distance=1.2cm and 1.6cm,semithick]
-		\tikzstyle{every state}=[]
-		
-		\node[] (0) {};
-		\node[state] (A) [above=of 0] {$A$};
-		\node[state] (B) [below left=of 0] {$B$};
-		\node[state] (C) [below right=of 0] {$C$};
-		
-		\path[->]
-		(A) edge [BLUE,bend right=45] node [left] {$Q_{A \to B}$} (B)
-		(B) edge [BLUE,bend right=45] node [below] {$Q_{B \to C}$} (C)
-		(C) edge [BLUE,bend right=45] node [right] {$Q_{C \to A}$} (A)
-		(B) edge [RED,bend right=15] node [left] {$Q_{B \to A}$} (A)
-		(C) edge [RED,bend right=15] node [below] {$Q_{C \to B}$} (B)
-		(A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
-		\end{tikzpicture}
-	\end{center}
-	\caption[Kolmogorov's criterion]{The continuous-time Markov chain is reversible if the process fulfills Kolmogorov's criterion, such that the product of transition rate for a closed loop is equal whether traversed in one sens (blue arrows) or the other (red arrows).}
+	\centering
+	\begin{tikzpicture}[->,>=stealth',auto,node distance=1.2cm and 1.6cm,semithick]
+	\tikzstyle{every state}=[]
+
+	\node[] (0) {};
+	\node[state] (A) [above=of 0] {$A$};
+	\node[state] (B) [below left=of 0] {$B$};
+	\node[state] (C) [below right=of 0] {$C$};
+
+	\path[->]
+	(A) edge [BLUE,bend right=45] node [left] {$Q_{A \to B}$} (B)
+	(B) edge [BLUE,bend right=45] node [below] {$Q_{B \to C}$} (C)
+	(C) edge [BLUE,bend right=45] node [right] {$Q_{C \to A}$} (A)
+	(B) edge [RED,bend right=15] node [left] {$Q_{B \to A}$} (A)
+	(C) edge [RED,bend right=15] node [below] {$Q_{C \to B}$} (B)
+	(A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
+	\end{tikzpicture}
+	\caption[Kolmogorov's criterion]{
+	The continuous-time Markov chain is reversible if the process fulfills Kolmogorov's criterion, such that the product of transition rate for a closed loop is equal whether traversed in one sens (blue arrows) or the other (red arrows).}
 	\label{fig:reversible-circuit}%
 \end{figure}
 

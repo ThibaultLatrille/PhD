@@ -52,26 +52,26 @@ The challenge to generalize from branch to tree is that only the data at the tip
 As a result, \gls{likelihood} of the observed data can be readily calculated if the ancestral state of all internal node is know, from the probabilities of transitions along each branch of the tree.
 As an example for better readability, a simple illustrative tree given in figure \ref{fig:tree} will be used prior to giving to general formulas.
 \begin{figure}[H]
-	\begin{center}
-		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
-		\tikzstyle{every state}=[]
-		
-		\node[state] (1) [BLUE] {$\state_1$};
-		\node[state] (0) [YELLOW, below right=of 1] {$\state_0$};
-		\node[state] (2) [BLUE,below left=of 0] {$\state_2$};
-		\node[state] (5) [YELLOW,right=of 0] {$\state_5$};
-		\node[state] (3) [BLUE,above right=of 5] {$\state_3$};
-		\node[state] (4) [BLUE,below right=of 5] {$\state_4$};
-		
-		\path[-]
-		(1) edge [] node [above right] {$\branchlength^{(1)}$} (0)
-		(2) edge [] node [below right] {$\branchlength^{(2)}$} (0)
-		(5) edge [] node [above] {$\branchlength^{(5)}$} (0)
-		(5) edge [] node [above left] {$\branchlength^{(3)}$} (3)
-		(5) edge [] node [below left] {$\branchlength^{(4)}$} (4);
-		\end{tikzpicture}
-	\end{center}
-	\caption[Illustrative phylogenetic tree]{Illustrative phylogenetic tree. Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue. The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
+	\centering
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
+	\tikzstyle{every state}=[]
+
+	\node[state] (1) [dashed, BLUE] {$\state_1$};
+	\node[state] (0) [YELLOW, below right=of 1] {$\state_0$};
+	\node[state] (2) [BLUE,below left=of 0] {$\state_2$};
+	\node[state] (5) [YELLOW,right=of 0] {$\state_5$};
+	\node[state] (3) [BLUE,above right=of 5] {$\state_3$};
+	\node[state] (4) [BLUE,below right=of 5] {$\state_4$};
+
+	\path[-]
+	(1) edge [black] node [above right] {$\branchlength^{(1)}$} (0)
+	(2) edge [black] node [below right] {$\branchlength^{(2)}$} (0)
+	(5) edge [black] node [above] {$\branchlength^{(5)}$} (0)
+	(5) edge [black] node [above left] {$\branchlength^{(3)}$} (3)
+	(5) edge [black] node [below left] {$\branchlength^{(4)}$} (4);
+	\end{tikzpicture}
+	\caption[Illustrative phylogenetic tree]{
+	Illustrative phylogenetic tree. Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue. The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
 	\label{fig:tree}%
 \end{figure}
 
@@ -184,19 +184,23 @@ Seeing the DAG the other way around (following the arrows), simple prior distrib
 	\node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
 	
 	\path 
-	(Q) edge [] node [above right] {} (P)
-	(BL) edge [] node [] {} (P)
-	(Exp) edge [BLUE] node [above] {\textit{Exp}} (BL)
-	(R) edge [] node {} (Q)
-	(Ex) edge [] node [] {} (R)
-	(Equi) edge [] node [below] {} (R)
-	(ExH) edge [BLUE] node [above] {\textit{Dir}} (Ex)
-	(EquiH) edge [BLUE] node [above] {\textit{Dir}} (Equi)
-	(F) edge [] node {} (Q)
-	(sb) edge [] node [above] {} (F)
-	(sbH) edge [BLUE] node [above] {\textit{DP}} (sb);
+	(Q) edge [black] node [above right] {} (P)
+	(BL) edge [black] node [] {} (P)
+	(Exp) edge [dashed, BLUE] node [above] {\textit{Exp}} (BL)
+	(R) edge [black] node {} (Q)
+	(Ex) edge [black] node [] {} (R)
+	(Equi) edge [black] node [below] {} (R)
+	(ExH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Ex)
+	(EquiH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Equi)
+	(F) edge [black] node {} (Q)
+	(sb) edge [black] node [above] {} (F)
+	(sbH) edge [dashed, BLUE] node [above] {\textit{DP}} (sb);
 	\end{tikzpicture}
-	\caption[Directed acyclic graph of Bayesian network]{Directed acyclic graph of dependencies between variables. Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black. {\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function. \textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a Dirichlet process.}
+	\caption[Directed acyclic graph of Bayesian network]{
+	Directed acyclic graph of dependencies between variables.
+	Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
+	{\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function.
+	\textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a Dirichlet process.}
 	\label{fig:DAG}
 \end{figure}
 

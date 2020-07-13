@@ -99,7 +99,7 @@
 	\fancyhead[LO]{\emph{\leftmark}} 
 	\fancyhead[RE]{\emph{\rightmark}}
 	\else
-	\fancyhead[L]{\emph{\leftmark}}
+	\fancyhead[L]{\emph{\rightmark}}
 	\fi
 }
 
@@ -266,6 +266,7 @@
 \usepackage{pdfpages}
 \pdfinclusioncopyfonts=1
 \usepackage{graphicx}
+\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}}
 \pdfsuppresswarningpagegroup=1
 \setlength{\textfloatsep}{0pt plus0pt minus0pt}
 \usepackage{float}
