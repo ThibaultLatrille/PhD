@@ -119,6 +119,7 @@ def amino_acid_circos(cmap='tab20', filetype="pdf", reverse=False):
         g_aa.vp.aa_color[v] = cmappable.to_rgba(aa_index)
         g_aa.vp.count[v] = np.sqrt(len([k for k, v in codontable.items() if v == aa])) * 28
 
+    adj = np.zeros((g_aa.num_vertices(), g_aa.num_vertices()))
     for ref_index, ref in enumerate(g_aa.vertices()):
         for alt_index, alt in enumerate(g_aa.vertices()):
             if alt <= ref: continue
@@ -132,7 +133,27 @@ def amino_acid_circos(cmap='tab20', filetype="pdf", reverse=False):
                 y = cmappable.to_rgba(alt_index)[:3]
                 if reverse: x, y = y, x
                 g_aa.ep.grad[e_aa] = [0.0, *x, 0.75, 1.0, *y, 0.75]
-                g_aa.ep.count[e_aa] = len(nei) * 2.
+                g_aa.ep.count[e_aa] = len(nei) * 2.0
+                adj[ref_index, alt_index] = len(nei)
+
+    table = open("aa-adjacency.tex", "w")
+    table.writelines("\\begin{table}[H]\n\\centering\n")
+    table.writelines("\\begin{tabular}{|c||" + "c|" * g_aa.num_vertices() + "}\n")
+    table.writelines("\\hline & ")
+    table.writelines(" & ".join(map(lambda x: "\\textbf{" + x + "}", g_aa.vp.aa)) + "\\\\\n")
+    table.writelines("\\hline\n\\hline ")
+    for i in range(adj.shape[0]):
+        elts = ["\\textbf{" + g_aa.vp.aa[i] + "}"]
+        for j in range(adj.shape[1]):
+            if i < j:
+                elts.append("{:d}".format(int(adj[i][j])))
+            else:
+                elts.append("-")
+        table.writelines(" & ".join(elts) + "\\\\\n\\hline ")
+    table.writelines("\\end{tabular}\n")
+    table.writelines("\\caption[]{}\n")
+    table.writelines("\\end{table}\n")
+    table.close()
 
     assert g_aa.num_vertices() == 20
     dist = gt.shortest_distance(g_aa)
@@ -162,6 +183,6 @@ def amino_acid_circos(cmap='tab20', filetype="pdf", reverse=False):
                   output="gt-aa-{0}.{1}".format(cmap, filetype))
 
 
-for cmap in ['tab20', 'tab20b']:
+for cmap in ['tab20b']:  # ['tab20', 'tab20b', 'tab20c']
     amino_acid_circos(cmap=cmap, filetype="pdf", reverse=False)
     codon_circos(cmap=cmap, filetype="pdf", reverse=False)

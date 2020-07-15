@@ -104,7 +104,39 @@ As a result, in some genes some codons are more frequently represented than othe
 For genes that are expressed at high levels, the codon use is biased in favor of the codons that have an high tRNA concentration in the cell, ultimately increasing the expression rate and decreasing the rate of mistranslation by reducing the time of occupancy of an open site.
 Thus, at a fine-grained molecular scope, a synonymous change can influence mRNA stability, splicing process and protein-folding during translation \citep{Plotkin2011, Rak2018}.
 However in the scope of this manuscript, such selection between synonymous codons will not be considered, and selection for proteins will be framed at the amino-acid level in first approximation, and mutation at the nucleotide level.
-
+\begin{table}[H]
+	\resizebox{\columnwidth}{!}{%
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline & \textbf{K} & \textbf{N} & \textbf{T} & \textbf{R} & \textbf{S} & \textbf{I} & \textbf{M} & \textbf{Q} & \textbf{H} & \textbf{P} & \textbf{L} & \textbf{E} & \textbf{D} & \textbf{A} & \textbf{G} & \textbf{V} & \textbf{Y} & \textbf{C} & \textbf{W} & \textbf{F}\\
+		\hline
+		\hline \textbf{K} & - & 4 & 2 & 2 & 0 & 1 & 1 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		\hline \textbf{N} & - & - & 2 & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
+		\hline \textbf{T} & - & - & - & 2 & 6 & 3 & 1 & 0 & 0 & 4 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+		\hline \textbf{R} & - & - & - & - & 6 & 1 & 1 & 2 & 2 & 4 & 4 & 0 & 0 & 0 & 6 & 0 & 0 & 2 & 2 & 0\\
+		\hline \textbf{S} & - & - & - & - & - & 2 & 0 & 0 & 0 & 4 & 2 & 0 & 0 & 4 & 2 & 0 & 2 & 4 & 1 & 2\\
+		\hline \textbf{I} & - & - & - & - & - & - & 3 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 2\\
+		\hline \textbf{M} & - & - & - & - & - & - & - & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		\hline \textbf{Q} & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		\hline \textbf{H} & - & - & - & - & - & - & - & - & - & 2 & 2 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
+		\hline \textbf{P} & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+		\hline \textbf{L} & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 6 & 0 & 0 & 1 & 6\\
+		\hline \textbf{E} & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0\\
+		\hline \textbf{D} & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2 & 2 & 2 & 0 & 0 & 0\\
+		\hline \textbf{A} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 4 & 0 & 0 & 0 & 0\\
+		\hline \textbf{G} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 2 & 1 & 0\\
+		\hline \textbf{V} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 2\\
+		\hline \textbf{Y} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 0 & 2\\
+		\hline \textbf{C} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2\\
+		\hline \textbf{W} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0\\
+		\hline \textbf{F} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & -\\
+		\hline
+	\end{tabular}}
+\caption[Amino-acids adjacency matrix]{
+Number of possible one nucleotide non-synonymous transitions between amino-acids, integrating over the underlying codons.
+For all the possible $190$ pairs of amino-acids, only $75$ pairs contains at least one non-synonymous transition.
+}
+\label{table:adjacency}
+\end{table}
 Because mutations are at the nucleotide level and affect only one base, any codon can have at most $9$ possible transitions to another codons as illustrated in the left panel of figure \ref{fig:graph-codons-aa}.
 Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous transition between the underlying codons as illustrated in the right panel of figure \ref{fig:graph-codons-aa}.
 In fact, most pairs of amino-acids requires at least two non-synonymous transitions ($114$ pairs), in comparison to pairs of amino-acids that are accesible trough a single non-synonymous transition ($75$ pairs).
@@ -125,7 +157,7 @@ In fact, most pairs of amino-acids requires at least two non-synonymous transiti
 		Nodes corresponds to codons (left panel) and amino-acid (right panel), where their color pictures the encoded amino-acid.
 		Additionanly, for amino-acids the size of nodes represent the number of underlying codons.
 		An edge between two codons depicts a one nucleotide transition, such that a codon can have at most $9$ possible transitions.
-		Similarly, en edge between two amino-acids correspond to a one nucleotide non-synonymous transition between the underlying codons, and the weight of the edges represent the number such possible transitions.
+		Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous transition between the underlying codons, and the weight of the edges represent the number such possible transitions.
 		Non-synonymous transition are represented in colored gradient, while synonymous transitions are depicted in black.
 		The graph of the $61$ codons contains $263$ transitions, $67$ of them are syonymous while $196$ are non-synonymous.
 		The radius of the graph is three, such that the most distant amino-acids are at most three transition away.

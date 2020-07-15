@@ -11,6 +11,7 @@ Template-*
 Backup*.bib
 backup
 *.aux
+*.ai
 *.log
 *.synctex.gz
 *.swp
@@ -24,6 +25,7 @@ backup
 *.glg
 *.glo
 *.gls
+*.idx
 *.ist
 *.lof
 *.lot
@@ -39,3 +41,6 @@ backup
 *.mtc*
 *.nav
 *.snm
+/*/presentation.pdf
+/*/wrapper-main.pdf
+/*/wrapper-supp-mat.pdf
