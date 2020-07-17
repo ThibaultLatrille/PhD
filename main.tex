@@ -22,8 +22,12 @@
 \definecolor{Acidic}{HTML}{feceea}
 \definecolor{Stop}{HTML}{D0D0D0}
 
+\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}}
+\makeatletter
+\def\input@path{{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}}
+\makeatother
 
-\include{notations}
+\input{notations}
 % make part like a chapter
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
@@ -105,7 +109,7 @@
 }
 {
 	\setlength{\baselineskip}{\frontmatterbaselineskip}
-	\include{sections/glossary}
+	\input{sections/glossary}
 }
 
 \end{romanpages}
@@ -130,14 +134,6 @@
 \label{part:studies}
 \include{sections/mut-bias}
 
-\chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{MutationSelectionDrift/MutSelDrift-main}
-
-\chapter{Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{MutationSelectionDrift/MutSelDrift-supp-mat}
-
 \chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \include{GenotypePhenotypeFitness/GenoPhenoFit-main}
@@ -145,6 +141,14 @@
 \chapter{Supplementary Materials}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \include{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+
+\chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\include{MutationSelectionDrift/MutSelDrift-main}
+
+\chapter{Supplementary Materials}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\include{MutationSelectionDrift/MutSelDrift-supp-mat}
 
 \part{Conclusion}
 \label{part:discussion}

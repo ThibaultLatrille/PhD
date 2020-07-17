@@ -114,15 +114,16 @@ More precisely, the ability to survive and produce offspring that eventually bec
 
 \begin{table}[H]
 	\centering
-	\begin{tabu}{|l|ccc|}
+	\noindent\adjustbox{max width=\textwidth}{%
+	\begin{tabu}{|l||c|c|c|}
 		\hline
-		\textbf{Genotype} & $\bm{AA}$ & $\bm{AB}$ & $\bm{BB}$ \\
-		\hline\hline
-		Absolute Wrightian fitness ($W$) & $1+2s$ & $1+s$ & $1$ \\
-		\hline Hardy-Weinberg frequency & $p^2$ & $2p(1-p)$ & $(1-p)^2$ \\
-		\hline Relative Wrightian fitness & $\dfrac{1+2s}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ \\
+		\textbf{Genotype} & $AA$ & $AB$ & $BB$ \\
 		\hline
-	\end{tabu}
+		\textbf{Absolute Wrightian fitness ($\bm{W}$)} & $1+2s$ & $1+s$ & $1$ \\
+		\hline \textbf{Hardy-Weinberg frequency} & $p^2$ & $2p(1-p)$ & $(1-p)^2$ \\
+		\hline \textbf{Relative Wrightian fitness} & $\dfrac{1+2s}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ \\
+		\hline
+	\end{tabu}}
 	\caption[Fitnesses of the different genotypes]{Fitnesses of the different genotypes}\label{table:fitnesses}
 \end{table}
 
@@ -256,6 +257,7 @@ Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian f
 
 \begin{table}[H]
 	\centering
+	\noindent\adjustbox{max width=\textwidth}{%
 	\begin{tabu}{|l|c|c|c|}
 		\hline
 		\textbf{Parameter} & \textbf{Symbol} & \textbf{Range} \\
@@ -268,7 +270,7 @@ Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian f
 		\hline Mutation rate per generation & $u$ & $[10^{-10}, 10^{-7}]$ per site \\
 		\hline Scaled mutation rate & $\theta = 4 \Ne u$ & $[10^{-8}, 10^{-1}]$ per site \\
 		\hline
-	\end{tabu}
+	\end{tabu}}
 	\caption[Parameter of population-genetics]{Parameter of population-genetics}\label{table:params-popgen}
 \end{table}
 
@@ -435,7 +437,8 @@ where the notation $\langle . \rangle$ denotes the statistical average.
 It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result automatically in $\langle \nu \rangle \leq 1$ \textcolor{GREEN}{[I haven't found a proof for this claim, not even in \citep{Mustonen2009}]}. 
 
 \begin{table}[H]
-	\resizebox{\columnwidth}{!}{%
+	\centering
+	\noindent\adjustbox{max width=\textwidth}{%
 		\begin{tabu}{|l|c|c|c|}
 			\hline
 			\textbf{Parameter} & \textbf{Symbol} & \textbf{Range} \\

@@ -203,16 +203,15 @@
 \usetikzlibrary{positioning,arrows,automata,calc}
 \usepackage{bm}
 \usepackage{listings, enumerate, enumitem}
-
+\usepackage[export]{adjustbox}
 \usepackage{tabu}
-\tabulinesep=1.2mm
-
-\makeatletter
+\tabulinesep=0.6mm
 \newcommand\cellwidth{\TX@col@width}
 \usepackage{hhline}
-\setlength{\arrayrulewidth}{1.4pt}
-\usepackage{multicol,multirow,array} 
-% Used to make multiple columns for the indices and for creating columns that span multiple rows in tables
+\setlength{\arrayrulewidth}{1.2pt}
+\usepackage{multicol,multirow,array}
+\usepackage{etoolbox}
+\AtBeginEnvironment{tabu}{\footnotesize}
 
 \usepackage[nottoc]{tocbibind}
 % Used for inserting the Bibliography, List of Figures, indices, etc into the table of contents.
@@ -244,29 +243,10 @@
 \renewcommand*\bibliography[1]{{%
 		\renewcommand*\MakeUppercase[1]{##1}\@ldbib{#1}}}
 
-
-% JEM: for highlighting corrections
-\newlength{\mccurrentbaselineskip}
-\newlength{\mccurrentparskip}
-\newlength{\mccurrentparindent}
-\newif\ifcorrections
-\newif\ifm@csection
-\m@csectionfalse
-\correctionsfalse
-\colorlet{shadecolor}{blue!20}
-\usepackage{framed}
-\OuterFrameSep=-9pt
-\newenvironment{mccorrection}
-{\ifcorrections\if@nobreak\m@csectiontrue\fi\begin{shaded}\ifm@csection\noindent\ignorespaces\fi\fi}
-{\ifcorrections\end{shaded}\m@csectionfalse\ifx\@captype\@undefined\@nobreakfalse\fi\fi}
-\newcommand{\mccorrect}[1]{\ifcorrections\hl{#1}\else#1\fi}
-
 % Figure placement on page
 % JEM: Allow flexible spacing after figures, to reduce other stretching
 \usepackage{pdfpages}
 \pdfinclusioncopyfonts=1
-\usepackage{graphicx}
-\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}}
 \pdfsuppresswarningpagegroup=1
 \setlength{\textfloatsep}{0pt plus0pt minus0pt}
 \usepackage{float}

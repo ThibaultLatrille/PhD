@@ -39,10 +39,12 @@ Thus, amino-acids are encoded by synonymous codons, which are interchangeable in
 Altogether, the DNA genetic code translating codon to amino-acids, which is used almost universally by all organisms is given in table \ref{table:genetic_code}.
 
 \begin{table}[H]
-	\resizebox{\columnwidth}{!}{%
+	\centering
+	\noindent\adjustbox{max width=\textwidth}{%
 		\begin{tabular}{|c||l|c|l|c|l|c|l|c||c|}
-			\hline
-			& \multicolumn{2}{c|}{\textbf{T}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c|}{\textbf{G}} & \\ \hline \hline
+			\hhline{|-||-|-|-|-|-|-|-|-||-|}
+			& \multicolumn{2}{c|}{\textbf{T}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c||}{\textbf{G}} & \\
+			\hhline{=#========#=}
 			\multirow{4}{*}{\textbf{T}} & TTT & \cellcolor{Nonpolar} & TCT & \cellcolor{Polar} & TAT & \cellcolor{Polar} & TGT & \cellcolor{Polar} & \textbf{T} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
 			& TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar} & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)} & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)} & \textbf{C} \\
@@ -74,7 +76,7 @@ Altogether, the DNA genetic code translating codon to amino-acids, which is used
 			& GTA & \cellcolor{Nonpolar} & GCA & \cellcolor{Nonpolar} & GAA & \cellcolor{Acidic} & GGA & \cellcolor{Nonpolar} & \textbf{A} \\
 			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
 			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & \textbf{G} \\
-			\hline
+			\hhline{|-||-|-|-|-|-|-|-|-||-|}
 	\end{tabular}}
 	\caption[The Genetic Code]{
 		The genetic code DNA table translating codons into amino-acids.
@@ -105,8 +107,9 @@ For genes that are expressed at high levels, the codon use is biased in favor of
 Thus, at a fine-grained molecular scope, a synonymous change can influence mRNA stability, splicing process and protein-folding during translation \citep{Plotkin2011, Rak2018}.
 However in the scope of this manuscript, such selection between synonymous codons will not be considered, and selection for proteins will be framed at the amino-acid level in first approximation, and mutation at the nucleotide level.
 \begin{table}[H]
-	\resizebox{\columnwidth}{!}{%
-	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\centering
+	\noindent\adjustbox{max width=\textwidth}{%
+	\begin{tabu}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 		\hline & \textbf{K} & \textbf{N} & \textbf{T} & \textbf{R} & \textbf{S} & \textbf{I} & \textbf{M} & \textbf{Q} & \textbf{H} & \textbf{P} & \textbf{L} & \textbf{E} & \textbf{D} & \textbf{A} & \textbf{G} & \textbf{V} & \textbf{Y} & \textbf{C} & \textbf{W} & \textbf{F}\\
 		\hline
 		\hline \textbf{K} & - & 4 & 2 & 2 & 0 & 1 & 1 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
@@ -130,7 +133,7 @@ However in the scope of this manuscript, such selection between synonymous codon
 		\hline \textbf{W} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0\\
 		\hline \textbf{F} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & -\\
 		\hline
-	\end{tabular}}
+	\end{tabu}}
 \caption[Amino-acids adjacency matrix]{
 Number of possible one nucleotide non-synonymous transitions between amino-acids, integrating over the underlying codons.
 For all the possible $190$ pairs of amino-acids, only $75$ pairs contains at least one non-synonymous transition.
