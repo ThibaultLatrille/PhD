@@ -136,14 +136,31 @@ Our Bayesian implementation, written in C++ is publicly available at \url{https:
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\textwidth] {simulations.pdf}
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
+	\end{minipage}	\hfill
 	\caption[Inferred and simulated $\Ne$]{
 		Inferred and simulated $\Ne$
 		Top row, branch length in expected number of substitutions, for each branch of the tree.
 		Bottom row, $\Ne$ for each node (including leaves) of the tree, relative to $\Ne$ at the root of the tree.
-		Panel A, simulation under the mutation-selection approximation, as to test the soundness of the inference framework.
-		Panel B, simulation accounting for small population size effects~($5000$ individuals at the root), site linkage and short term fluctuation of $\Ne$.
-		Panel C, simulation accounting for site epistasis, with fluctuation of the selection coefficient along the phylogeny.
+		Left panel, simulation under the mutation-selection approximation, as to test the soundness of the inference framework.
+		Middle panel, simulation accounting for small population size effects~($5000$ individuals at the root), site linkage and short term fluctuation of $\Ne$.
+		Right panel, simulation accounting for site epistasis, with fluctuation of the selection coefficient along the phylogeny.
 		The tree root is $150$ million years old, where the initial population start with a mutation rate of $\smash{1e^{-8}}$ per site per generation, and generation time of $10$ years.
 		These experiments confirm that signal in the placental mammalian tree can allow to reliably infer the direction of change in $\Ne$, even if linkage disequilibrium, short term fluctuation of $\Ne$ and finite population size effects are not accounted for in the inference framework.
 		However, the presence of epistasis between sites is a serious threat to the inference of $\Ne$.
@@ -181,12 +198,20 @@ In such a model, the folding energy of the protein determines the probability of
 During a simulation, at a particular codon site, the fitness landscape is dependent on the actual amino-acids present in the vicinity of this particular site.
 Our inference framework could recover the simulated branch length, but had more difficulties to retrieve the simulated $\Ne$ in the context of site-dependent epistasis (Figure~\ref{fig:simulations}, panel E \& F)
 
-
 \subsection{Empirical experiments}
 \label{sec:ResultsEmpirical}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth] {mammals_popsize_and_mutrate.pdf}
+	\begin{minipage}{0.411\linewidth}
+		\includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 0.15cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
+	\end{minipage}
+	\begin{minipage}{0.158\linewidth}
+		\includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm -2.2cm 0cm 0cm]{mammals_species}
+	\end{minipage}
+	\begin{minipage}{0.411\linewidth}
+		\reflectbox{\includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 4.48cm 15.35cm 0cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}}
+		\includegraphics[valign=b,width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 32.3cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}
+	\end{minipage}
 	\caption[Example of inferred $\Ne$ and $\mu$ on placental mammals dataset]{
 		Example of inferred $\Ne$ and $\mu$ on placental mammals dataset.
 		Inference were performed on a randomly chosen set of $36$ coding sequences (CDS) out of $226$ highly conserved CDS~($<1\%$ of gaps).
@@ -218,19 +243,7 @@ To assess the reproducibility of our inference, we analyzed a concatenated rando
 Overall the estimation of $\Ne$ is reproducible for a random subset of CDS (Figure~\ref{fig:mammals_repeatability}).
 
 \begin{table}[H]
-	\centering
-	\resizebox{\columnwidth}{!}{%
-	\begin{tabu}{|c||c|c|c|c|c|}
-		\hline
-		& \specialcell{$\Ne$} & \specialcell{$\mu$} & \specialcell{Maximum\\longevity (yrs)} & \specialcell{Adult\\weight (g)} & \specialcell{Female\\maturity (days)}\\
-		\hline\hline
-		\specialcell{$\Ne$} & $\dots$ & $0.67^{**}$ & $-0.61^{**}$ & $-0.55^{**}$ & $-0.51^{**}$\\
-		\hline\specialcell{$\mu$} & $0.67^{**}$ & $\dots$ & $-0.85^{**}$ & $-0.83^{**}$ & $-0.78^{**}$\\
-		\hline\specialcell{Maximum longevity (yrs)} & $-0.61^{**}$ & $-0.85^{**}$ & $\dots$ & $0.83^{**}$ & $0.84^{**}$\\
-		\hline\specialcell{Adult weight (g)} & $-0.55^{**}$ & $-0.83^{**}$ & $0.83^{**}$ & $\dots$ & $0.8^{**}$\\
-		\hline\specialcell{Female maturity (days)} & $-0.51^{**}$ & $-0.78^{**}$ & $0.84^{**}$ & $0.8^{**}$ & $\dots$\\
-		\hline
-	\end{tabu}}
+	\input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
 	\caption[Traits correlation]{
 		Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity), taking account phylogenetic inertia.
 		Correlation coefficient are between $-1$ and $1$.
@@ -260,7 +273,7 @@ However, inference on simulations tends to show their effect is not strong enoug
 Second, $\mu$ and $\Ne$ could also be fluctuating along the genome.
 This assumption needs to be tested, though we expect that relaxing this assumption would not change drastically the magnitude of inferred $\Ne$.
 Third, the DNA sequences could also be misaligned in some sites, an effect we can control since the inferred $\Ne$ are repeatable for different set of genes.
-Fourth, the genes selected in our alignments could be under adaptive evolution, or  their function could have changed.
+Fourth, the genes selected in our alignments could be under adaptive evolution, or their function could have changed.
 More precisely, the fitness profile at each site could change with time, either due to Red-Queen dynamics or due to epistasis because amino-acid substitutions occurred at other sites.
 Simulation of DNA coding sequences under an epistatic landscape seemingly points to epistasis being the principal factor to be investigated, since $\Ne$ could not be appropriately inferred in such a case.
 Independently, the magnitude of inferred $\Ne$ is quite similar for the placental mammals dataset and the primates dataset, while we would expect a greater discrepancy at longer phylogenetic scale.
@@ -307,7 +320,24 @@ Spatial and temporal changes of random drift along ecological niches and events 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth] {mammals_repeatability.pdf}
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-2}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-3}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-4}
+	\end{minipage}
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-2}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-3}
+	\end{minipage}	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-4}
+	\end{minipage}
 	\caption[Repeatability of experiments]{
 		Repeatability of experiments.
 		$3$ independent inferences where performed on a randomly chosen set of $36$ coding sequences (CDS) out of $226$.
@@ -585,7 +615,7 @@ The simulator starts from an initial sequence at equilibrium.
 The change in fitness is computed for all possible mutant, hence computing all strictly positive substitution rates.
 At each point, the next substitution is chosen proportional to the rate as in Gillespie algorithm.
 At each node, the process is split, and finally the process is stopped at the leaves of the tree.
-\textit{SimuPoly} simulates explicitly each generation along the phylogeny under a Wright-Fisher  population, consisting of three steps: mutation, selection and random drift of alleles.
+\textit{SimuPoly} simulates explicitly each generation along the phylogeny under a Wright-Fisher population, consisting of three steps: mutation, selection and random drift of alleles.
 Mutations are drawn randomly based on the probability of mutation.
 Drift is modeled as a multinomial distribution on the allele counts.
 We assumed that the DNA sequence is composed of exons, with no linkage between exons, and total linkage of sites within an exon.

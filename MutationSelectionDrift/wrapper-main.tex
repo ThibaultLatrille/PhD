@@ -1,5 +1,9 @@
 \documentclass[a4paper]{MBE}
 \usepackage[bookmarks]{hyperref}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{tabu}
+\usepackage{hhline}
 \hypersetup{
 	colorlinks,
 	citecolor=black,
@@ -13,6 +17,9 @@
 \usepackage{xfrac, nicefrac}
 \usepackage{graphicx}
 \graphicspath{{artworks/}}
+\makeatletter
+\def\input@path{{artworks/}}
+\makeatother
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows,automata}

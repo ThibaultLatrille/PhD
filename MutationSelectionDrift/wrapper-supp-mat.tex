@@ -1,5 +1,9 @@
 \documentclass{article}
 \usepackage[bookmarks]{hyperref}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{tabu}
+\usepackage{hhline}
 \hypersetup{
 	colorlinks,
 	citecolor=black,
@@ -15,6 +19,9 @@
 \usepackage{bm,bbold}
 \usepackage{graphicx}
 \graphicspath{{artworks/}}
+\makeatletter
+\def\input@path{{artworks/}}
+\makeatother
 \pdfstringdefDisableCommands{%
 	\renewcommand*{\bm}[1]{#1}%
 	% any other necessary redefinitions 

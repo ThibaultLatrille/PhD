@@ -1,3 +1,31 @@
+\section{Summary statistics}
+
+\subsection{Partial correlation coefficient}
+
+The correlation coefficient $\rho_{\traiti, \traitj}$ give the total regression between two variable.
+Partial-correlation coefficient account for the entire covariance matrix, and measure the correlation between $2$ traits, knowing the values of all the other traits:
+\begin{equation}
+    \rho_{\traiti, \traitj | c \in \traitInterval \setminus \{ a, b\} } = - \dfrac{\Precisionmatrix_{\traiti, \traitj}}{\sqrt{\Precisionmatrix_{\traiti, \traiti} \Precisionmatrix_{\traitj, \traitj}}},
+\end{equation}
+where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance matrix:
+\begin{equation}
+    \PrecisionMatrix = \CovarianceMatrix^{-1}
+\end{equation}
+
+\subsection{Fitness profile entropy}
+For a category $\cat$, the Shannon entropy ($\Omega$) of the fitness profile is defined as:
+\begin{equation}
+    \Omega \left( \Base\catexp \right) = - \sum_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
+\end{equation}
+The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino-acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino-acid has the same fitness.
+
+The Shannon entropy can be averaged out as:
+\begin{equation}
+    \langle \Omega \left( \Fit \right) \rangle = \dfrac{1}{\Ncat}\sum_{\Setcat} \Omega \left( \Base\catexp \right)
+\end{equation}
+The average Shannon entropy was obtained in a context of constant $\Ne$ along the tree, and compared with the experiment where $\Ne$ is allowed to vary according to a log-Brownian process.
+
+
 \section{Simulations}
 
 \subsection{Independent fitness profiles}
@@ -6,26 +34,27 @@ Each site of the protein has a specific amino-acid fitness profile.
 Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino-acid present at each site of the protein.
 For each possible mutant, we compute the selection coefficient of the mutant:
 \begin{equation}
-s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{G_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{G_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
+    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{G_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{G_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
 \end{equation}
 where $G_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment \citep{Bloom2017}.
 
 \begin{center}
-	\includegraphics[width=\textwidth] {ModelSimuDiv.pdf}
+    \includegraphics[width=\textwidth] {ModelSimuDiv}
 \end{center}
 
 The next change in the protein coding DNA and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
-{\submatrix_{\itoj}} = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }}, 
+{\submatrix_{\itoj}}
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
 \subsection{Wright-Fisher with polymorphism}
 
-The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift. The population is assumed to be panmictic, with with effective population size $\Ne$ and with non-overlapping generations. 
+The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift. The population is assumed to be panmictic, with with effective population size $\Ne$ and with non-overlapping generations.
 
 \begin{center}
-	\includegraphics[width=\textwidth] {ModelSimuPoly.pdf}
+    \includegraphics[width=\textwidth] {ModelSimuPoly}
 \end{center}
 
 \subsection{Fisher geometric landscape}
@@ -44,25 +73,26 @@ Since different sites of the protein do not have the same physico-chimical prope
 Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino-acid present at each site of the protein.
 From a DNA sequence $\mathbb{S}^t$ after $t$ substitutions, the protein's phenotype is given by:
 \begin{equation}
-\phenoGeo\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
+    \phenoGeo\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
 \end{equation}
 where $\phenoGeo_{\site}$ is the genotype-phenotype map at site $\site$.\\
 
-And the Wrightian fitness of $\mathbb{S}^t$ is : 
+And the Wrightian fitness of $\mathbb{S}^t$ is :
 \begin{equation}
-w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right) = e^{-\alpha \left| \phenoGeo\left(\mathbb{S}^{t}\right) \right|^{\beta}},
+    w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right) = e^{-\alpha \left| \phenoGeo\left(\mathbb{S}^{t}\right) \right|^{\beta}},
 \end{equation}
 where strength ($\alpha > 0$) and epistasis ($\beta$) are parameters of the fitness function.
 \begin{center}
-	\includegraphics[width=\textwidth] {ModelSimuGeo.pdf}
+    \includegraphics[width=\textwidth] {ModelSimuGeo}
 \end{center}
 For each possible mutant ($t+1$ substitutions), we compute $\phenoGeo\left(\mathbb{S}^{t+1}\right)$ from the updated sequence $\mathbb{S}^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
-s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoGeo\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}.
+    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoGeo\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}.
 \end{equation}
 The next change in the protein coding DNA and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
-{\submatrix_{\itoj}} = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }}, 
+{\submatrix_{\itoj}}
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
@@ -70,136 +100,572 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in Goldstein \& Pollock (2017).
 From a DNA sequence $\mathbb{S}^t$ after $t$ substitutions, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\mathbb{S}^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
-G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \sum_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
+    G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \sum_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
 \end{equation}
 where $I(a,b)$ is the pair-wise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 
 The free energy of unfolded states $G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
-G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) = \langle G\left(\mathbb{S}^{t}\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \dfrac{2 \left[ \langle G\left(\mathbb{S}^{t}\right)^2 \rangle - \langle G\left(\mathbb{S}^{t}\right) \rangle^2\right] }{kT}
+    G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) = \langle G\left(\mathbb{S}^{t}\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \dfrac{2 \left[ \langle G\left(\mathbb{S}^{t}\right)^2 \rangle - \langle G\left(\mathbb{S}^{t}\right) \rangle^2\right] }{kT}
 \end{equation}
 where the average $\langle . \rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:
 \begin{equation}
-\phenoFold\left(\mathbb{S}^{t}\right) = G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) - G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)
+    \phenoFold\left(\mathbb{S}^{t}\right) = G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) - G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)
 \end{equation}
 
-Wrightian fitness is defined as the probability of our protein to be in the folded state: 
+Wrightian fitness is defined as the probability of our protein to be in the folded state:
 \begin{equation}
-w(\phenoFold\left(\mathbb{S}^{t}\right)) = \dfrac{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right)}{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right) + P_{\mathrm{U}}\left(\mathbb{S}^{t}\right)} = \dfrac{e^{-\beta G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) }}{e^{-\beta G_{\mathrm{F}} \left(\mathbb{S}^{t}\right) } + e^{-\beta G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) }} = \dfrac{1}{1 + e^{\beta \phenoFold\left(\mathbb{S}^{t}\right) }}, 
+    w(\phenoFold\left(\mathbb{S}^{t}\right)) = \dfrac{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right)}{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right) + P_{\mathrm{U}}\left(\mathbb{S}^{t}\right)} = \dfrac{e^{-\beta G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) }}{e^{-\beta G_{\mathrm{F}} \left(\mathbb{S}^{t}\right) } + e^{-\beta G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) }} = \dfrac{1}{1 + e^{\beta \phenoFold\left(\mathbb{S}^{t}\right) }},
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 \begin{center}
-	\includegraphics[width=\textwidth] {ModelSimuFold.pdf}
+    \includegraphics[width=\textwidth] {ModelSimuFold}
 \end{center}
 For each possible mutant ($t+1$ substitutions), we compute $\phenoFold^{t+1}$ from the updated sequence $\mathbb{S}^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
-s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoFold\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}.
+    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoFold\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}.
 \end{equation}
 The next change in the protein coding DNA and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
-{\submatrix_{\itoj}} = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }}, 
+{\submatrix_{\itoj}}
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
+
 \section{Simulated experiments}
 
-\subsection{Independent contrasts in simulated experiment}
+\subsection{Inferred and simulated branch properties}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth] {simulations_contrast.pdf}
-	\caption[Inferred and simulated $\Ne$]{
-		Inferred and simulated $\Ne$.
-		Bottom row, independent contrast of $\Ne$ for each branch of the tree, discarding effect of phylogenetic inertia.
-		Panel A, simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
-		Panel B, simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
-		Panel C, simulation accounting for site epistasis, thus fluctuation of the selection coefficient along the phylogeny.
-	}
-	\label{fig:independent}
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
+    \end{minipage}    \hfill
+    \caption[Inferred and simulated $\Ne$ independent contrast]{
+    Inferred and simulated $\Ne$ independent contrast.
+    Bottom row, independent contrast of $\Ne$ for each branch of the tree, discarding effect of phylogenetic inertia.
+    Left panel, simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Middle panel, simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Right panel, simulation accounting for site epistasis, thus fluctuation of the selection coefficient along the phylogeny.
+    }
 \end{figure}
 
-\section{Partial correlation in placental mammals}
-The correlation coefficient $\rho_{\traiti, \traitj}$ give the total regression between two variable.
-Partial-correlation coefficient account for the entire covariance matrix, and measure the correlation between $2$ traits, knowing the values of all the other traits: 
-\begin{equation}
-\rho_{\traiti, \traitj | c \in \traitInterval \setminus \{ a, b\} } = - \dfrac{\Precisionmatrix_{\traiti, \traitj}}{\sqrt{\Precisionmatrix_{\traiti, \traiti} \Precisionmatrix_{\traitj, \traitj}}}, 
-\end{equation}
-where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance matrix:
-\begin{equation}
-\PrecisionMatrix = \CovarianceMatrix^{-1}
-\end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_BranchTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_BranchTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_BranchTime}
+    \end{minipage}    \hfill
+    \caption[Inferred and simulated branch time]{
+    Inferred and simulated branch time ($\Delta T$).
+    Left panel, simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Middle panel, simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Right panel, simulation accounting for site epistasis, thus fluctuation of the selection coefficient along the phylogeny.
+    }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_LogMutationRatePerTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_LogMutationRatePerTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_LogMutationRatePerTime}
+    \end{minipage}    \hfill
+    \caption[Inferred and simulated mutation rate]{
+    Inferred and simulated mutation rate ($\mu$).
+    Left panel, simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Middle panel, simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Right panel, simulation accounting for site epistasis, thus fluctuation of the selection coefficient along the phylogeny.
+    }
+\end{figure}
+
+\subsection{Inferred and simulated site specific amino-acid profiles}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_ProfileCorrelation.png}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSel_ProfileCorrelation.png}
+    \end{minipage}
+    \caption[Inferred and simulated amino-acid profiles]{
+    Inferred and simulated amino-acid profiles.
+    Simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Estimation with fluctuating branch $\Ne$ (left panel) or constant $\Ne$ (right panel).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_ProfileCorrelation.png}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSel_ProfileCorrelation.png}
+    \end{minipage}
+    \caption[Inferred and simulated amino-acid profiles]{Inferred and simulated amino-acid profiles.
+    Simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$
+    Estimation with fluctuating branch $\Ne$ (left panel) or constant $\Ne$ (right panel).}
+\end{figure}
+
+
+\section{Empirical data in mammals}
+
+\subsection{Chain convergence}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_ProfileCorrelation.png}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSizeCorrelation}
+    \end{minipage}
+    \caption[Chain convergence of site profiles and branche $\Ne$]{
+    Chain convergence of site amino-acid preferences (left panel) and branch $\Ne$ (right panel).}
+\end{figure}
+
+\subsection{Traits estimation \& correlation (replicate 1, chain 1)}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
-	\centering
-	\resizebox{\columnwidth}{!}{%
-	\begin{tabu}{|c||c|c|c|c|c|}
-		\hline
-		& \specialcell{$\Ne$} & \specialcell{$\mu$} & \specialcell{Maximum\\longevity (yrs)} & \specialcell{Adult\\weight (g)} & \specialcell{Female\\maturity (days)}\\
-		\hline
-		\hline\specialcell{$\Ne$} & $\dots$ & $0.36^{**}$ & $-0.15$ & $0.036$ & $0.093$\\
-		\hline\specialcell{$\mu$} & $0.36^{**}$ & $\dots$ & $-0.33^{**}$ & $-0.37^{**}$ & $-0.14$\\
-		\hline\specialcell{Maximum longevity (yrs)} & $-0.15$ & $-0.33^{**}$ & $\dots$ & $0.25^{**}$ & $0.43^{**}$\\
-		\hline\specialcell{Adult weight (g)} & $0.036$ & $-0.37^{**}$ & $0.25^{**}$ & $\dots$ & $0.27^{**}$\\
-		\hline\specialcell{Female maturity (days)} & $0.093$ & $-0.14$ & $0.43^{**}$ & $0.27^{**}$ & $\dots$\\
-		\hline
-	\end{tabu}}
-	\caption[Partial correlation coefficient matrix]{
-	Partial correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
-	Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+    \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCovariance.tex}
+    \caption[Covariance matrix in mammals]{
+    Covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
-\section{Fitness profile entropy}
-For a category $\cat$, the Shannon entropy ($\Omega$) of the fitness profile is defined as:
-\begin{equation}
-\Omega \left( \Base\catexp \right) = - \sum_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
-\end{equation}
-The Shannon entropy  measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino-acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino-acid has the same fitness.
-
-The Shannon entropy can be averaged out as:
-\begin{equation}
-\langle \Omega \left( \Fit \right) \rangle = \dfrac{1}{\Ncat}\sum_{\Setcat} \Omega \left( \Base\catexp \right)
-\end{equation}
-The average Shannon entropy was obtained in a context of constant $\Ne$ along the tree, and compared with the experiment where $\Ne$ is allowed to vary according to a log-Brownian process.
 \begin{table}[H]
-	\centering
-	\begin{tabu}{|c|c|c|}
-		\hline
-		$\langle \Omega \left( \Fit \right) \rangle$ & \specialcell{\textbf{Constant} $\Ne$} & \specialcell{\textbf{log-Brownian} $\Ne$} \\
-		\hline
-		\hline\specialcell{Placental mammals, replicate $1$, chain $1$} & $1.34 \pm 0.09$ & $1.24 \pm 0.09$ \\
-		\hline\specialcell{Placental mammals, replicate $1$, chain $2$} & $1.33 \pm 0.08$ & $1.27 \pm 0.10$ \\
-		\hline\specialcell{Placental mammals, replicate $2$, chain $1$} & $1.40 \pm 0.06$ & $1.31 \pm 0.09$ \\
-		\hline\specialcell{Placental mammals, replicate $2$, chain $2$} & $1.42 \pm 0.07$ & $1.28 \pm 0.11$ \\
-		\hline\specialcell{Placental mammals, replicate $3$, chain $1$} & $1.23 \pm 0.08$ & $1.25 \pm 0.12$ \\
-		\hline\specialcell{Placental mammals, replicate $3$, chain $2$} & $1.25 \pm 0.09$ & $1.24 \pm 0.10$ \\
-		\hline
-	\end{tabu}
+    \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsPartialCorrelation.tex}
+    \caption[Partial correlation coefficient matrix in mammals]{
+    Partial correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
-\section{Likelihood of divergence data}
-The probability of transition between codons for a given branch $\branch$ and site $\site$ is:
-\begin{equation}
-\Probmatrix\branchsiteexp = \e^{\branchlength\branchexp \Submatrix\branchsiteexp}
-\end{equation}
-The likelihood of the data $\Data$ can be computed using the pruning algorithm:
-\begin{equation}
-p\left(\Data\siteexp|\Subequi^{\treerootexp}, \Probmatrix\branchsiteexp \right) = \sum_{\iSetCodon } \subequi_{\ci}^{\treerootsiteexp} \pruning\siteexp_{\treeroot} \left( \ci, \Probmatrix\branchsiteexp \right)
-\end{equation}
-where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$  descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
-\begin{equation}
-\pruning\siteexp_{\node} \left( \ci \right) = \left[ \sum_{\jSetCodon} \probmatrix^{(\branchnode\left(\node_{1}\right), \site)}_{\itoj} \pruning\siteexp_{\node_{1}} \left( \cj, \Probmatrix\branchsiteexp \right) \right] \cdot \left[ \sum_{\jSetCodon} \probmatrix^{(\branchnode\left(\node_{1}\right), \site)}_{\itoj} \pruning\siteexp_{\node_{2}} \left( \cj, \Probmatrix\branchsiteexp \right) \right]
-\end{equation}
-And if the node $\node$ is a node with no descendant, meaning $\Settaxon$:
-\begin{equation}
-\pruning\siteexp_{\node}\left( \ci, \Probmatrix\branchsiteexp \right) =
-\begin{dcases}
-1, & \text{if }\Data\taxonsiteexp =  \ci \\
-0, & \text{otherwise.}
-\end{dcases}
-\end{equation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMaximum_longevity}
+    \caption[Maximum longevity estimation in mammals]{Maximum longevity estimation in mammals}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogAdult_weight}
+    \caption[Adult weight estimation in mammals]{Adult weight estimation in mammals}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogFemale_maturity}
+    \caption[Female maturity estimation in mammals]{Female maturity estimation in mammals}
+\end{figure}
+
+\subsection{Repeatability of experiments}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime-1-2}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime-1-3}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime-1-4}
+    \end{minipage}
+    \caption[Repeatability of mutation rate estimation in mammals]{Repeatability of mutation rate ($\mu$) estimation in mammals}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_BranchTime-1-2}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_BranchTime-1-3}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_BranchTime-1-4}
+    \end{minipage}
+    \caption[Repeatability of branch time estimation in mammals]{Repeatability of branch time ($\Delta T$) estimation in mammals}
+\end{figure}
+
+\begin{table}[H]
+    \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex} \\
+    \input{mammals/18CDS_SiteMutSelBranchNe_R2_TraitsCorrelation.tex} \\
+    \input{mammals/18CDS_SiteMutSelBranchNe_R3_TraitsCorrelation.tex} \\
+    \input{mammals/18CDS_SiteMutSelBranchNe_R4_TraitsCorrelation.tex}
+    \caption[Covariance matrix repeatability in mammals]{
+    In all four replicates, covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\subsection{Amino-acid preferences entropy}
+
+\begin{table}[H]
+    \centering
+    \noindent\adjustbox{max width=\textwidth}{%
+    \begin{tabu}{|c|c|c|}
+        \hline
+        $\langle \Omega \left( \Fit \right) \rangle$ & \specialcell{\textbf{Constant} $\Ne$} & \specialcell{\textbf{log-Brownian} $\Ne$} \\
+        \hline
+        \hline\specialcell{Placental mammals, replicate $1$, chain $1$} & $1.34 \pm 0.09$ & $1.24 \pm 0.09$ \\
+        \hline\specialcell{Placental mammals, replicate $1$, chain $2$} & $1.33 \pm 0.08$ & $1.27 \pm 0.10$ \\
+        \hline\specialcell{Placental mammals, replicate $2$, chain $1$} & $1.40 \pm 0.06$ & $1.31 \pm 0.09$ \\
+        \hline\specialcell{Placental mammals, replicate $2$, chain $2$} & $1.42 \pm 0.07$ & $1.28 \pm 0.11$ \\
+        \hline\specialcell{Placental mammals, replicate $3$, chain $1$} & $1.23 \pm 0.08$ & $1.25 \pm 0.12$ \\
+        \hline\specialcell{Placental mammals, replicate $3$, chain $2$} & $1.25 \pm 0.09$ & $1.24 \pm 0.10$ \\
+        \hline
+    \end{tabu}}
+    \caption[Entropy of amino-acids in mammals]{Entropy of amino-acids}
+\end{table}
+
+\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate 1, chain 1)}
+Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_BranchOmega_R1_LogdNdS}
+    \caption[$\dnds$ estimation in mammals]{Non-synonymous substitution rate ($\dnds$) estimation in mammals}
+\end{figure}
+
+\begin{table}[H]
+    \input{mammals/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
+    \caption[Correlation coefficient matrix in mammals ($\dnds$)]{
+    Correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{mammals/18CDS_BranchOmega_R1_TraitsCovariance.tex}
+    \caption[Covariance matrix in mammals ($\dnds$)]{
+    Correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{mammals/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
+    \caption[Partial correlation coefficient matrix in mammals ($\dnds$)]{
+    Partial correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+
+\section{Isopods}
+
+\subsection{Traits estimation (replicate 1, chain 1)}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
+    \caption[$\Ne$ estimation in isopods]{Effective population size ($\Ne$) estimation in isopods}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}
+    \caption[Mutation rate estimation in isopods]{Mutation rate ($\mu$) estimation in isopods}
+\end{figure}
+
+\subsection{Repeatability of experiments}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-2_Log10BranchLength}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-3_Log10BranchLength}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-4_Log10BranchLength}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-5_Log10BranchLength}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-6_Log10BranchLength}
+    \end{minipage}
+    \caption[Repeatability of branch length estimation in isopods]{Repeatability of branch length ($\branchlength$) estimation in isopods}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-2_LogPopulationSize}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-3_LogPopulationSize}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-4_LogPopulationSize}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-5_LogPopulationSize}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-6_LogPopulationSize}
+    \end{minipage}
+    \caption[Repeatability of $\Ne$ estimation in isopods]{Repeatability of effective population size ($\Ne$) estimation in isopods}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-2_LogMutationRatePerTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-3_LogMutationRatePerTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-4_LogMutationRatePerTime}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-5_LogMutationRatePerTime}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-6_LogMutationRatePerTime}
+    \end{minipage}
+    \caption[Repeatability of $\mu$ estimation in isopods]{Repeatability of mutation rate ($\mu$) estimation in isopods}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-2_BranchTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-3_BranchTime}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-4_BranchTime}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-5_BranchTime}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep-1-6_BranchTime}
+    \end{minipage}
+    \caption[Repeatability of branch time estimation in isopods]{Repeatability of branch time ($\Delta T$) estimation in isopods}
+\end{figure}
+
+\subsection{Statistical test}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eco}
+    \caption[$\Ne$ as a function of habitat in isopods]{$\Ne$ as a function of habitat in isopods.}
+\end{figure}
+\begin{verbatim}
+Analysis of Variance Table
+
+Response: PopulationSize
+Df Sum Sq Mean Sq F value Pr(>F) 
+Habitat 1 2.4899 2.48991 83.2450 < 2.2e-16 ***
+Replicate 5 0.6446 0.12892 4.3102 0.0007908 ***
+Residuals 389 11.6352 0.02991 
+---
+Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_pig}
+    \caption[$\Ne$ as a function of pigmentation in isopods]{$\Ne$ as a function of pigmentation in isopods}
+\end{figure}
+\begin{verbatim}
+Analysis of Variance Table
+
+Response: PopulationSize
+Df Sum Sq Mean Sq F value Pr(>F) 
+Pigmentation 2 2.8413 1.42067 48.850 < 2.2e-16 ***
+Replicate 5 0.6446 0.12892 4.433 0.0006135 ***
+Residuals 388 11.2838 0.02908 
+---
+Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eye}
+    \caption[$\Ne$ as a function of ocular structure in isopods]{$\Ne$ as a function of ocular structure in isopods}
+\end{figure}
+\begin{verbatim}
+Analysis of Variance Table
+
+Response: PopulationSize
+Df Sum Sq Mean Sq F value Pr(>F) 
+Ocular.structure 2 2.8463 1.42314 48.9571 < 2.2e-16 ***
+Replicate 5 0.6446 0.12892 4.4349 0.000611 ***
+Residuals 388 11.2789 0.02907 
+---
+Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eco_merged}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_pig_merged}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eye_merged}
+    \end{minipage}
+    \caption[$\Ne$ as a function of traits in isopods]{$\Ne$ as a function of traits in isopods}
+\end{figure}
+
+
+\section{Primates}
+
+\subsection{Chain convergence}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_ProfileCorrelation.png}
+    \end{minipage}    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogPopulationSizeCorrelation}
+    \end{minipage}
+    \caption[Chain convergence of site profiles and branche $\Ne$]{
+    Chain convergence of site amino-acid preferences (left panel) and branch $\Ne$ (right panel).}
+\end{figure}
+
+\subsection{Traits estimation (chain 1)}
+Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+
+\begin{table}[H]
+    \input{primates/SiteMutSelBranchNe_TraitsCorrelation.tex}
+    \caption[Correlation coefficient matrix in primates ($\Ne$)]{
+    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{primates/SiteMutSelBranchNe_TraitsCovariance.tex}
+    \caption[Covariance matrix in primates ($\Ne$)]{
+    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{primates/SiteMutSelBranchNe_TraitsPartialCorrelation.tex}
+    \caption[Partial correlation coefficient matrix in primates ($\Ne$)]{
+    Partial correlation coefficient between Neffective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogPopulationSize}
+    \caption[$\Ne$ estimation in primates]{Effective population size ($\Ne$) estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogMutationRatePerTime}
+    \caption[Mutation rate estimation in primates]{Mutation rate ($\mu$) estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_Logmaturity}
+    \caption[Female maturity estimation in primates]{Female maturity estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_Logmass}
+    \caption[Mass estimation in primates]{Mass estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_Loglongevity}
+    \caption[Longevity estimation in primates]{Longevity estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogpiS}
+    \caption[$\pi_{S}$ estimation in primates]{$\pi_{S}$ estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogpiNpiS}
+    \caption[$\pi_{N} / \pi_{S}$ estimation in primates]{$\pi_{N} / \pi_{S}$ estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_Loggeneration_time}
+    \caption[Generation time estimation in primates]{Generation time estimation in primates}
+\end{figure}
+
+\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain 1)}
+Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/BranchOmega_LogOmega}
+    \caption[$\dnds$ estimation in primates]{Non-synonymous substitution rate ($\dnds$) estimation in primates}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{primates/BranchOmega_LogMutationRatePerTime}
+    \caption[$\mu$ estimation in primates]{Mutation rate ($\mu$) estimation in primates}
+\end{figure}
+
+\begin{table}[H]
+    \input{primates/BranchOmega_TraitsCorrelation.tex}
+    \caption[Correlation coefficient matrix in primates ($\dnds$)]{
+    Correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{primates/BranchOmega_TraitsCovariance.tex}
+    \caption[Covariance matrix in primates ($\dnds$)]{
+    Correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
+\begin{table}[H]
+    \input{primates/BranchOmega_TraitsPartialCorrelation.tex}
+    \caption[Partial correlation coefficient matrix in primates ($\dnds$)]{
+    Partial correlation coefficient between Non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+\end{table}
+
 
 \section{Sufficient statistics}
+
 A sequence of length $\Nsite$ evolves by point substitutions, according to a random process defined by the substitution matrices $\Submatrix\branchsiteexp$, over a phylogenetic tree.
 A realization of the random process along a branch $\branch$, and at a particular site $\site$ results in a detailed substitution history, which will be denoted by $\subhistory\branchsiteexp$.
 
@@ -208,47 +674,48 @@ All sites owning to the same category of fitness profile share the same substitu
 Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a specific category $\cat$, denoted $\subhistory\branchexp$.
 If we express the probability of the substitution mapping ($\subhistory\branchcatexp$) as a function of the codon substitution process for this category $\cat$, we get the following expression:
 \begin{equation}
-\label{eq:PathSuffStat}
-p(\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod_{\iSetCodon} \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod_{\iSetCodon} \e^{- \left|  \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp}
+    \label{eq:PathSuffStat}
+    p(\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod_{\iSetCodon} \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod_{\iSetCodon} \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp}
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}
-	\setlength\itemsep{-0.25em}
-	\item $m_{\ci, \cj}\branchcatexp$ is the total number of substitutions from codon $\ci$ to codon $\cj$
-	\item $n_{\ci}\branchcatexp$ is the number of sites starting with codon $\ci$ at the tip of the branch.
-	\item $a_{\ci}\branchcatexp$ is the total waiting time in codon $\ci$.
+    \setlength\itemsep{-0.25em}
+    \item $m_{\ci, \cj}\branchcatexp$ is the total number of substitutions from codon $\ci$ to codon $\cj$
+    \item $n_{\ci}\branchcatexp$ is the number of sites starting with codon $\ci$ at the tip of the branch.
+    \item $a_{\ci}\branchcatexp$ is the total waiting time in codon $\ci$.
 \end{itemize}
-Once these sufficient statistics have been computed, the parameters of the substitution matrix $\Submatrix\branchcatexp$ can be resampled conditional on $\subhistory\branchcatexp$, 
+Once these sufficient statistics have been computed, the parameters of the substitution matrix $\Submatrix\branchcatexp$ can be resampled conditional on $\subhistory\branchcatexp$,
 using equation~\ref{eq:PathSuffStat} each time the likelihood needs to be recomputed. This leads to relatively fast MCMC strategy.
+
 \subsubsection{Length sufficient statistics}
 $\subhistory\branchsiteexp$ can also be gathered across all sites along a specific branch, giving $\subhistory\branchexp$.
 Then the probability of the substitution history given the branch lengths ($\branchlength\branchexp = \mu\branchexp \branchtime\branchexp$), take a very simple form:
 \begin{equation}
-\label{eq:LengthSuffStat}
-p(\subhistory\branchexp | L\branchexp) \propto \left[ L\branchexp\right]^{u\branchexp} \e^{- r\branchexp L\branchexp}
+    \label{eq:LengthSuffStat}
+    p(\subhistory\branchexp | L\branchexp) \propto \left[ L\branchexp\right]^{u\branchexp} \e^{- r\branchexp L\branchexp}
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}
-	\setlength\itemsep{-0.25em}
-	\item $u\branchexp$ is the total number of substitutions over branch $\branch$, summed over all sites.
-	\item $r\branchexp$ is the mean rate away from current codon state (averaged over the entire substitution history).
+    \setlength\itemsep{-0.25em}
+    \item $u\branchexp$ is the total number of substitutions over branch $\branch$, summed over all sites.
+    \item $r\branchexp$ is the mean rate away from current codon state (averaged over the entire substitution history).
 \end{itemize}
 Thus, formally, the probability of the substitution mapping can be summarized by saying that the total number of substitutions along a given branch over all sites, $u\branchexp$, is Poisson distributed, of mean $r\branchexp L\branchexp$.
 
 \subsubsection{Scatter sufficient statistics}
-From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$  scatter sufficient statistic matrix, $\Scattermatrix$ as:
+From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$ scatter sufficient statistic matrix, $\Scattermatrix$ as:
 \begin{equation}
-\Scattermatrix = \sum_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
+    \Scattermatrix = \sum_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
 \end{equation}
 By Bayes theorem, the posterior on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
-\CovarianceMatrix  \sim \mathrm{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
+    \CovarianceMatrix \sim \mathrm{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
 \end{equation}
 This invert Wishart distribution can be obtained by sampling $\Nbranch + 3$ independent and identically distributed multivariate normal random variables $\Multivariate\indiceexp$ defined by
 \begin{equation}
-\Multivariate\indiceexp \sim \mathcal{N} \left( \bm{0}, \left[\covariancekappa \Identitymatrix + \Scattermatrix\right]^{-1} \right).
+    \Multivariate\indiceexp \sim \mathcal{N} \left( \bm{0}, \left[\covariancekappa \Identitymatrix + \Scattermatrix\right]^{-1} \right).
 \end{equation}
 And from these multivariate samples, $\CovarianceMatrix$ is Gibbs sampled as:
 \begin{equation}
-\CovarianceMatrix = \left( \sum_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\mathrm{T}} \right)^{-1}
+    \CovarianceMatrix = \left( \sum_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\mathrm{T}} \right)^{-1}
 \end{equation}
