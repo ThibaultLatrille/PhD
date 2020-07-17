@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage[bookmarks]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black,
+	linktoc=all,
+}
+
+\usepackage[margin=60pt]{geometry}
+\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{bm,bbold}
+\usepackage{graphicx}
+\graphicspath{{artworks/}}
+\pdfstringdefDisableCommands{%
+	\renewcommand*{\bm}[1]{#1}%
+	% any other necessary redefinitions 
+}
+\usepackage{xfrac, nicefrac}
+\usepackage{lmodern}
+\usepackage{natbib}
+\pdfinclusioncopyfonts=1
+\include{notations}
+
+
+\begin{document}
+\part*{Supplementary materials}
+\tableofcontents
+	
+\include{MutSelDrift-supp-mat}
+
+\bibliographystyle{natbib}%%%%Bibliography style file
+\bibliography{references/references}
+
+\end{document}

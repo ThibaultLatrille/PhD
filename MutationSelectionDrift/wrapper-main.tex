@@ -1,0 +1,84 @@
+\documentclass[a4paper]{MBE}
+\usepackage[bookmarks]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{bm,bbold}
+\usepackage{xfrac, nicefrac}
+\usepackage{graphicx}
+\graphicspath{{artworks/}}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows,automata}
+\pdfinclusioncopyfonts=1
+
+\include{notations}
+
+\jshort{mst}
+\volname{}
+\jvolume{0}
+\jvol{}
+\jissue{0}
+\pubyear{2019}
+
+\mstype{Article}
+
+\begin{document}
+\title[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
+
+
+\author[Latrille et al.] {
+	T. \surname{Latrille}$^{\ast,1,2}$,
+	V. \surname{Lanore}$^{1}$,
+	N. \surname{Lartillot}$^{1}$}
+
+\address{
+	$^{1}$Université de Lyon, Université Lyon 1, CNRS, Laboratoire de Biométrie et Biologie Évolutive UMR 5558, F-69622 Villeurbanne, France.\\
+	$^{2}$École normale supérieure de Lyon, Université de Lyon, Université Lyon 1, Lyon, France}
+
+
+% \history{Received ----; reviews returned -----;}
+
+\coresp{E-mail: thibault.latrille@ens-lyon.org}
+
+% \datade{The data were obtained from OrthoMam}
+% \editor{}
+
+\abstract{
+	Selection in protein-coding sequences can be detected based on multiple sequence alignments using phylogenetic codon models.
+	Mechanistic approaches, grounded on population-genetics first principles, explicitly formalize the interplay between mutation, selection and random drift, and return an estimate of the amino-acid fitness landscape.
+	However, these recently developed models rely on the assumption of constant effective population size.
+	We propose an extended mutation-selection model reconstructing site-dependent fitness landscape, long-term trends in effective population size and mutation rate along the phylogeny, from an alignment of DNA coding sequences.
+	Independently, ancestral life-history traits are reconstructed along the phylogeny from observation in present-day species.
+	Together, we estimate the correlation between reconstructed life-history traits, mutation rate and effective population size, intrinsically including phylogenetic inertia.
+	Our framework has been tested against simulated data, and in empirical data in mammals and primates.
+	Finally, our work also points to important theoretical questions about how coding sequences respond to changes in effective population size and to fluctuating selection.
+}
+
+\keyword{Phylogenetic, codon models, mutation-selection models, population genetic, population size, mutation rate, life history traits.}
+
+\maketitle
+
+\include{MutSelDrift-main}
+
+\section{Supplementary Material}
+Supplementary materials deriving mathematical formulas and figures are available at "!!!!TO BE WRITTEN!!!!".
+Mammalian alignments and life-history traits, simulated alignments and results of experiments are available at \url{https://datadryad.org/"!!!!TO BE WRITTEN!!!!"}.
+The scripts and instructions necessary to reproduce the experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+
+\section{Acknowledgments}
+The authors gratefully acknowledge the help of Nicolas Rodrigue, Laurent Guegen, Philippe Veber for their advice and review concerning this manuscript.
+This work was performed using the computing facilities of the CC LBBE/PRABI.
+A PhD grant of the École normale supérieure de Lyon awarded to T.L.
+provided a salary during the work.
+
+\bibliographystyle{natbib}%%%%Bibliography style file
+\bibliography{references/references}
+
+\end{document}

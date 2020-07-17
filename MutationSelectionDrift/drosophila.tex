@@ -1,0 +1,239 @@
+\documentclass{article}
+
+\usepackage{url}
+\usepackage{nicefrac}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{bbold}
+\usepackage[margin=40pt]{geometry}
+\pdfinclusioncopyfonts=1
+
+\include{new-commands}
+
+\begin{document}
+Each experiment consist of randomly choosing 18 CDS and run the analysis on the concatenate. The purpose of having 4 independent experiment is to assess for the replicability of our method and the results. \\
+
+Overall the results are replicable, the mean value of the correlation coefficient between population size and genome size is negative (between $0.069$ and $-0.14$), meaning population with high $\Ne$ tend to have lower genome size. However, the correlation is not statistically significant. The analysis using dN/dS ($\omega$) instead of $\Ne$ also don't detect any statistically significant correlation between $\omega$ and genome size.
+\section{Replicability between the 4 experiments}
+\subsection{Inferred log of branch length.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/Log10BranchLength.pdf}
+\end{center}
+
+
+\subsection{Inferred log of mutation rate per unit of time.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/LogMutationRatePerTime.pdf}
+\end{center}
+
+\subsection{Inferred log of effective population size ($\Ne$)}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/LogPopulationSize.pdf}
+\end{center}
+
+\subsection{Inferred log of dN/dS ($\omega$).}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/LogOmega.pdf}
+\end{center}
+
+
+\section{Experiment 1}
+Asterisks indicate strength of support ($^{*} pp > 0.95$, $^{**} pp > 0.975$)
+
+\subsection{Correlation coefficient between $\Ne$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$N_{\mathrm{e}}$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$N_{\mathrm{e}}$} & $\dots$ & $0.28^{**}$ & $-0.13$\\
+			\specialcell{$\mu$} & $0.28^{**}$ & $\dots$ & $0.2$\\
+			\specialcell{LogGenomeSize} & $-0.13$ & $0.2$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\subsection{Correlation coefficient between $\omega$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$\omega$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$\omega$} & $\dots$ & $0.23^{*}$ & $0.19$\\
+			\specialcell{$\mu$} & $0.23^{*}$ & $\dots$ & $0.26$\\
+			\specialcell{LogGenomeSize} & $0.19$ & $0.26$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\subsection{Inferred log of mutation rate per unit of time.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/Experiment1/LogMutationRatePerTime.pdf}
+\end{center}
+
+\subsection{Inferred log of effective population size ($\Ne$)}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment1/LogPopulationSize.pdf}
+\end{center}
+
+\subsection{Inferred log of genome size.}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment1/TraitsLogGenomeSize.pdf}
+\end{center}
+
+\section{Experiment 2}
+
+\subsection{Correlation coefficient between $\Ne$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$N_{\mathrm{e}}$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$N_{\mathrm{e}}$} & $\dots$ & $0.097$ & $-0.069$\\
+			\specialcell{$\mu$} & $0.097$ & $\dots$ & $0.059$\\
+			\specialcell{LogGenomeSize} & $-0.069$ & $0.059$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\subsection{Correlation coefficient between $\omega$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$\omega$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$\omega$} & $\dots$ & $0.33^{**}$ & $0.21$\\
+			\specialcell{$\mu$} & $0.33^{**}$ & $\dots$ & $0.061$\\
+			\specialcell{LogGenomeSize} & $0.21$ & $0.061$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\subsection{Inferred log of mutation rate per unit of time.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/Experiment2/LogMutationRatePerTime.pdf}
+\end{center}
+
+\subsection{Inferred log of effective population size ($\Ne$)}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment2/LogPopulationSize.pdf}
+\end{center}
+
+\subsection{Inferred log of genome size.}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment2/TraitsLogGenomeSize.pdf}
+\end{center}
+
+\section{Experiment 3}
+
+\subsection{Correlation coefficient between $\Ne$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$N_{\mathrm{e}}$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$N_{\mathrm{e}}$} & $\dots$ & $0.3^{**}$ & $-0.11$\\
+			\specialcell{$\mu$} & $0.3^{**}$ & $\dots$ & $0.064$\\
+			\specialcell{LogGenomeSize} & $-0.11$ & $0.064$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\subsection{Correlation coefficient between $\omega$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$\omega$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$\omega$} & $\dots$ & $0.14$ & $0.23$\\
+			\specialcell{$\mu$} & $0.14$ & $\dots$ & $0.11$\\
+			\specialcell{LogGenomeSize} & $0.23$ & $0.11$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+
+\subsection{Inferred log of mutation rate per unit of time.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/Experiment3/LogMutationRatePerTime.pdf}
+\end{center}
+
+\subsection{Inferred log of effective population size ($\Ne$)}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment3/LogPopulationSize.pdf}
+\end{center}
+
+\subsection{Inferred log of genome size.}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment3/TraitsLogGenomeSize.pdf}
+\end{center}
+
+\section{Experiment 4}
+
+\subsection{Correlation coefficient between $\Ne$ and genome size.}
+
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$N_{\mathrm{e}}$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$N_{\mathrm{e}}$} & $\dots$ & $0.29^{**}$ & $-0.14$\\
+			\specialcell{$\mu$} & $0.29^{**}$ & $\dots$ & $-0.13$\\
+			\specialcell{LogGenomeSize} & $-0.14$ & $-0.13$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\subsection{Correlation coefficient between $\omega$ and genome size.}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width = 0.5\textwidth}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& \specialcell{$\omega$} & \specialcell{$\mu$} & \specialcell{LogGenomeSize}\\
+			\hline
+			\specialcell{$\omega$} & $\dots$ & $0.042$ & $0.13$\\
+			\specialcell{$\mu$} & $0.042$ & $\dots$ & $-0.089$\\
+			\specialcell{LogGenomeSize} & $0.13$ & $-0.089$ & $\dots$\\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\subsection{Inferred log of mutation rate per unit of time.}
+\begin{center}
+	\includegraphics[width=0.6\textwidth] {drosophila/Experiment4/LogMutationRatePerTime.pdf}
+\end{center}
+
+\subsection{Inferred log of effective population size ($\Ne$)}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment4/LogPopulationSize.pdf}
+\end{center}
+
+\subsection{Inferred log of genome size.}
+\begin{center}
+	\includegraphics[width=0.60\textwidth] {drosophila/Experiment4/TraitsLogGenomeSize.pdf}
+\end{center}
+
+\end{document}

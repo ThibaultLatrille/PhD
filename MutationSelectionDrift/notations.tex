@@ -1,0 +1,143 @@
+\usepackage{xcolor}
+\definecolor{RED}{HTML}{EB6231}
+\definecolor{YELLOW}{HTML}{E29D26}
+\definecolor{BLUE}{HTML}{5D80B4}
+\definecolor{LIGHTGREEN}{HTML}{6ABD9B}
+\definecolor{GREEN}{HTML}{8FB03E}
+\definecolor{PURPLE}{HTML}{BE1E2D}
+\definecolor{BROWN}{HTML}{A97C50}
+\definecolor{PINK}{HTML}{DA1C5C}
+
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand{\der}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\dnds}{dN/dS}
+\newcommand{\indice}{l}
+\newcommand{\indiceexp}{^{(\indice)}}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+
+% Time, effective population size and mutation rate.
+\newcommand{\Ne}{N_{\mathrm{e}}}
+% DNA
+\newcommand{\SetNuc}{\{ A, C, G, T\}}
+\newcommand{\mutmatrix}{R}
+\newcommand{\Mutmatrix}{\bm{\mutmatrix}}
+\newcommand{\exchan}{\rho}
+\newcommand{\Exchan}{\bm{\exchan}}
+\newcommand{\mutequi}{\sigma}
+\newcommand{\Mutequi}{\bm{\mutequi}}
+% Codons
+\newcommand{\ci}{{i}}
+\newcommand{\cj}{{j}}
+\newcommand{\iSetCodon}{1 \leq \ci \leq 61}
+\newcommand{\jSetCodon}{1 \leq \cj \leq 61}
+\newcommand{\ijSetCodon}{1 \leq \ci, \cj \leq 61}
+\newcommand{\itoj}{\ci, \cj}
+\newcommand{\nucitoj}{\ci \rightarrow \cj}
+\newcommand{\submatrix}{Q}
+\newcommand{\Submatrix}{\bm{\submatrix}}
+\newcommand{\subequi}{\pi}
+\newcommand{\Subequi}{\bm{\subequi}}
+\newcommand{\probmatrix}{P}
+\newcommand{\Probmatrix}{\bm{\probmatrix}}
+% Amino-acids
+\newcommand{\aminoacid}{\text{A}}
+\newcommand{\aSetAa}{1 \leq \aminoacid \leq 20}
+\newcommand{\aai}{\mathcal{A}(\ci)}
+\newcommand{\aaj}{\mathcal{A}(\cj)}
+\newcommand{\Ni}{\mathcal{N}_{\mathrm{eighbors}}\left(\ci\right)}
+\newcommand{\NiNonSyn}{\mathcal{N}_{\mathrm{onSyn}}\left(\ci\right)}
+\newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
+\newcommand{\fit}{f}
+\newcommand{\Fit}{\bm{\fit}}
+\newcommand{\fiti}{\fit_{\aai}}
+\newcommand{\fitj}{\fit_{\aaj}}
+\newcommand{\scaledfit}{F}
+\newcommand{\ScaledFit}{\bm{\scaledfit}}
+\newcommand{\scaledfiti}{\scaledfit_{\aai}}
+\newcommand{\scaledfitj}{\scaledfit_{\aaj}}
+\newcommand{\selcoef}{{\delta_{\fit}}}
+\newcommand{\scaledselcoef}{{\Delta \scaledfit}}
+% Tree
+\newcommand{\Tree}{\mathcal{T}}
+\newcommand{\node}{\text{n}}
+\newcommand{\taxon}{\node}
+\newcommand{\Settaxon}{1 \leq \taxon \leq \Ntaxa}
+\newcommand{\Ntaxa}{P}
+\newcommand{\treeroot}{0}
+\newcommand{\treerootexp}{^{(\treeroot)}}
+\newcommand{\branch}{\text{b}}
+\newcommand{\branchexp}{^{(\branch)}}
+\newcommand{\Nbranch}{2 \Ntaxa - 2}
+\newcommand{\Setbranch}{\branch \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\nodeUp}{\branch^{\uparrow}}
+\newcommand{\nodeDown}{\branch^{\downarrow}}
+\newcommand{\nodeexp}{^{(\node)}}
+\newcommand{\Nnode}{2 \Ntaxa - 2}
+\newcommand{\Ninternal}{\Ntaxa - 2}
+\newcommand{\Setnode}{\node \in \{\treeroot, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setnodenoroot}{\node \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setinternal}{\node \in \{\Ntaxa + 1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\branchnode}{\mathcal{W}}
+\newcommand{\uniform}{0, 1}
+\newcommand{\age}{T}
+\newcommand{\branchtime}{\Delta \age}
+\newcommand{\branchlength}{L}
+% Alignment
+\newcommand{\data}{D}
+\newcommand{\Data}{\bm{\data}}
+\newcommand{\site}{\text{s}}
+\newcommand{\siteexp}{^{(\site)}}
+\newcommand{\Nsite}{S}
+\newcommand{\Setsite}{\site \in \{1, \hdots, \Nsite\} }
+\newcommand{\branchsiteexp}{^{(\branch, \site)}}
+\newcommand{\treerootsiteexp}{^{(\treeroot, \site)}}
+\newcommand{\taxonsiteexp}{^{(\taxon, \site)}}
+% Categories
+\newcommand{\cat}{\text{k}}
+\newcommand{\catexp}{^{(\cat)}}
+\newcommand{\Ncat}{\text{K}}
+\newcommand{\catInterval}{\{1, \hdots, \Ncat\}}
+\newcommand{\Setcat}{\cat \in \catInterval }
+\newcommand{\branchcatexp}{^{(\branch, \cat)}}
+\newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
+\newcommand{\base}{G}
+\newcommand{\Base}{\bm{\base}}
+\newcommand{\baseconc}{\alpha}
+\newcommand{\Basecenter}{\bm{\gamma}}
+\newcommand{\catVar}{\kappa}
+\newcommand{\catsite}{\catVar\left(\site\right)}
+\newcommand{\catmultivar}{m}
+\newcommand{\catMultiVar}{\bm{\catmultivar}}
+\newcommand{\stickbreaking}{\theta}
+\newcommand{\StickBreaking}{\bm{\stickbreaking}}
+\newcommand{\stick}{\phi}
+\newcommand{\stickbreakinghyper}{\beta}
+% Traits
+\newcommand{\traiti}{a}
+\newcommand{\traitj}{b}
+\newcommand{\Ntrait}{L}
+\newcommand{\traitInterval}{\{1, \hdots, \Ntrait\}}
+\newcommand{\lhtInterval}{\{3, \hdots, \Ntrait\}}
+\newcommand{\Settrait}{\traiti \in \traitInterval}
+\newcommand{\contrast}{\bm{C}}
+\newcommand{\Covariancematrix}{\Sigma}
+\newcommand{\CovarianceMatrix}{\bm{\Covariancematrix}}
+\newcommand{\Precisionmatrix}{\Omega}
+\newcommand{\PrecisionMatrix}{\bm{\Precisionmatrix}}
+\newcommand{\Identitymatrix}{\bm{I}}
+\newcommand{\brownian}{B}
+\newcommand{\Brownian}{\bm{\brownian}}
+\newcommand{\covariancedf}{q}
+\newcommand{\covariancekappa}{\kappa}
+\newcommand{\Scattermatrix}{\bm{A}}
+% Random variables
+\newcommand{\pruning}{\psi}
+\newcommand{\Multivariate}{\bm{Z}}
+\newcommand{\subhistory}{\mathcal{H}}
+
+% Simulators
+\newcommand{\phenoGeo}{\bm{P}}
+\newcommand{\phenoFold}{\Delta G}
