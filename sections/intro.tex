@@ -119,7 +119,7 @@ More precisely, the ability to survive and produce offspring that eventually bec
 		\hline
 		\textbf{Genotype} & $AA$ & $AB$ & $BB$ \\
 		\hline
-		\textbf{Absolute Wrightian fitness ($\bm{W}$)} & $1+2s$ & $1+s$ & $1$ \\
+		\textbf{Absolute Wrightian fitness ($\bm{w}$)} & $1+2s$ & $1+s$ & $1$ \\
 		\hline \textbf{Hardy-Weinberg frequency} & $p^2$ & $2p(1-p)$ & $(1-p)^2$ \\
 		\hline \textbf{Relative Wrightian fitness} & $\dfrac{1+2s}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ \\
 		\hline
@@ -129,7 +129,7 @@ More precisely, the ability to survive and produce offspring that eventually bec
 
 Under the Hardy-Weinberg equilibrium of the population, the mean fitness in the population is a function of the selection coefficient and frequency of alleles as:
 \begin{align}
-\overline{W} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
+\overline{w} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
 &= 1 + 2ps,
 \end{align}
 And the relative fitness\footnote{Analogous explanation between absolute and relative fitness can be found in economics, where absolute fitness correspond to wealth generation, while relative fitness is just transfer of wealth from one to another \citep{Masel2016}.} of the three different genotypes are also shown in table \ref{table:fitnesses}. 
@@ -247,13 +247,13 @@ Altogether, \acrshort{SFS} are empirically available and are function of the und
 
 Under the assumption that selection is weak $|s| \ll 1$, the selection coefficient is approximated by the difference in logarithm of Wrightian fitness between the mutant and resident \gls{allele}:
 \begin{align}
-s & = \dfrac{W_{B} - W_{A}}{W_{A}}, \\
-& = \dfrac{W_{B}}{W_{A}} - 1, \\
-& \simeq \ln\left( \dfrac{W_{B}}{W_{A}} \right), \\
-& \simeq \ln(W_{B}) - \ln(W_{A}), \\
+s & = \dfrac{w_{B} - w_{A}}{w_{A}}, \\
+& = \dfrac{w_{B}}{w_{A}} - 1, \\
+& \simeq \ln\left( \dfrac{w_{B}}{w_{A}} \right), \\
+& \simeq \ln(w_{B}) - \ln(w_{A}), \\
 & \simeq f_{B} - f_{A}.
 \end{align}
-Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian fitness, relative fitness or also log-fitness ($f$).
+Where the logarithm of Wrightian fitness ($w$) is often referred as Malthusian fitness, relative fitness or also log-fitness ($f$).
 
 \begin{table}[H]
 	\centering
@@ -263,8 +263,8 @@ Where the logarithm of Wrightian fitness ($W$) is often referred as Malthusian f
 		\textbf{Parameter} & \textbf{Symbol} & \textbf{Range} \\
 		\hline \hline
 		Effective population size & $\Ne$ & $ [10^2, 10^6]$ \\
-		\hline Absolute Wrightian fitness & $W$ & $ \simeq 1 $ \\
-		\hline Relative fitness & $f=\ln(W)$ & $ \ll 1 $ \\
+		\hline Absolute Wrightian fitness & $w$ & $ \simeq 1 $ \\
+		\hline Relative fitness & $f=\ln(w)$ & $ \ll 1 $ \\
 		\hline Selection coefficient & $s$ & $ |s| \ll 1 $ \\
 		\hline Scaled selection coefficient & $S=4 \Ne s$ & Finite (negative or positive) \\
 		\hline Mutation rate per generation & $u$ & $[10^{-10}, 10^{-7}]$ per site \\
