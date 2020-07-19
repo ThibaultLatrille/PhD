@@ -117,7 +117,7 @@ In a multivariate process, traits are modeled together as a vector-valued time-d
 Altogether, values of the multivariate process at each node of the tree, a covariance matrix and divergence times are jointly estimated.
 Once the traits are sampled at all nodes, traits along each branch is taken as the average (see Methods) between extremities of this branch.
 The work presented here implemented the branch-heterogeneity in a Bayesian context, as in \textit{CoEvol} \citep{Lartillot2011}.
-Technically, the precision matrix is distributed as an invert Wishart, meaning the prior matrix is diagonal pushing the correlation coefficients toward $0$.
+Technically, the precision matrix (invert of covariance matrix) is distributed as an invert Wishart, meaning the prior matrix is diagonal pushing the correlation coefficients toward $0$.
 
 \subsection{Mutation-selection-random drift model}
 \label{sec:BranchSiteHetero}
