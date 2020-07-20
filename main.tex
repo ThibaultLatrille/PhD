@@ -22,9 +22,9 @@
 \definecolor{Acidic}{HTML}{feceea}
 \definecolor{Stop}{HTML}{D0D0D0}
 
-\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}}
+\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}{NucleotideBias/artworks/}}
 \makeatletter
-\def\input@path{{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}}
+\def\input@path{{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{NucleotideBias/artworks/}}
 \makeatother
 
 \input{notations}
@@ -69,7 +69,7 @@
 	}
 
 	\vspace*{\fill}
-	\vspace*{\fill} 
+	\vspace*{\fill}
 \end{alwayssingle}
 
 
@@ -115,7 +115,7 @@
 \end{romanpages}
 
 %%%% CHAPTERS
-\pagenumbering{arabic} 
+\pagenumbering{arabic}
 \flushbottom
 \include{sections/preamble}
 
@@ -132,7 +132,10 @@
 
 \part{Studies}
 \label{part:studies}
-\include{sections/mut-bias}
+
+\chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias.}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\include{NucleotideBias//Nucleotide-Bias-main}
 
 \chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}

@@ -1,0 +1,91 @@
+\definecolor{RED}{HTML}{EB6231}
+\definecolor{YELLOW}{HTML}{E29D26}
+\definecolor{BLUE}{HTML}{5D80B4}
+\definecolor{LIGHTGREEN}{HTML}{6ABD9B}
+\definecolor{GREEN}{HTML}{8FB03E}
+\definecolor{PURPLE}{HTML}{BE1E2D}
+\definecolor{BROWN}{HTML}{A97C50}
+\definecolor{PINK}{HTML}{DA1C5C}
+
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\newcommand{\der}{\mathrm{d}}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\dnds}{d_N / d_S}
+\newcommand{\indice}{l}
+\newcommand{\indiceexp}{^{(\indice)}}
+% Time, effective population size and mutation rate.
+\newcommand{\Ne}{N_{\textrm{e}}}
+% \acrshort{DNA}
+\newcommand{\SetNuc}{\Omega_{\mathrm{N}}}
+\newcommand{\SetWeak}{\Omega_{\mathrm{W}}}
+\newcommand{\SetStrong}{\Omega_{\mathrm{S}}}
+\newcommand{\mutmatrix}{R}
+\newcommand{\Mutmatrix}{\bm{\mutmatrix}}
+\newcommand{\exchan}{\rho}
+\newcommand{\Exchan}{\bm{\exchan}}
+\newcommand{\mutequi}{\sigma}
+\newcommand{\Mutequi}{\bm{\mutequi}}
+% Codons
+\newcommand{\SetCodon}{\Omega_{\mathrm{C}}}
+\newcommand{\ci}{{i}}
+\newcommand{\cj}{{j}}
+\newcommand{\iSetCodon}{1 \leq \ci \leq 61}
+\newcommand{\jSetCodon}{1 \leq \cj \leq 61}
+\newcommand{\ijSetCodon}{1 \leq \ci, \cj \leq 61}
+\newcommand{\itoj}{\ci, \cj}
+\newcommand{\jtoi}{\cj, \ci}
+\newcommand{\nucitoj}{\mathcal{M}(\itoj)}
+\newcommand{\submatrix}{Q}
+\newcommand{\Submatrix}{\bm{\submatrix}}
+\newcommand{\subequi}{\pi}
+\newcommand{\Subequi}{\bm{\subequi}}
+\newcommand{\probmatrix}{P}
+\newcommand{\Probmatrix}{\bm{\probmatrix}}
+% Amino-acids
+\newcommand{\aminoacid}{\text{A}}
+\newcommand{\aSetAa}{1 \leq \aminoacid \leq 20}
+\newcommand{\SetAa}{\Omega_{\mathrm{A}}}
+\newcommand{\Neighbor}{\mathcal{V}}
+\newcommand{\NonSyn}{\mathcal{N}}
+\newcommand{\Syn}{\mathcal{S}}
+\newcommand{\Nx}{\Neighbor_x}
+\newcommand{\NxAB}{\Neighbor_x^{\mathrm{A} \rightarrow \mathrm{B}}}
+\newcommand{\NyBA}{\Neighbor_x^{\mathrm{B} \rightarrow \mathrm{A}}}
+\newcommand{\NxWS}{\Neighbor_x^{\mathrm{W} \rightarrow \mathrm{S}}}
+\newcommand{\NxSS}{\Neighbor_x^{\mathrm{S} \rightarrow \mathrm{S}}}
+\newcommand{\NxSW}{\Neighbor_x^{\mathrm{S} \rightarrow \mathrm{W}}}
+\newcommand{\NxWW}{\Neighbor_x^{\mathrm{W} \rightarrow \mathrm{W}}}
+\newcommand{\NyWS}{\Neighbor_y^{\mathrm{W} \rightarrow \mathrm{S}}}
+\newcommand{\NySS}{\Neighbor_y^{\mathrm{S} \rightarrow \mathrm{S}}}
+\newcommand{\NySW}{\Neighbor_y^{\mathrm{S} \rightarrow \mathrm{W}}}
+\newcommand{\NyWW}{\Neighbor_y^{\mathrm{W} \rightarrow \mathrm{W}}}
+\newcommand{\NxNonSyn}{\NonSyn_x}
+\newcommand{\NyNonSyn}{\NonSyn_y}
+\newcommand{\NxSyn}{\Syn_x}
+\newcommand{\NySyn}{\Syn_y}
+\newcommand{\aai}{\mathcal{A}(\ci)}
+\newcommand{\aaj}{\mathcal{A}(\cj)}
+\newcommand{\Ni}{\mathcal{N}_{\mathrm{eighbors}}\left(\ci\right)}
+\newcommand{\NiNonSyn}{\mathcal{N}_{\mathrm{onSyn}}\left(\ci\right)}
+\newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
+\newcommand{\fit}{f}
+\newcommand{\Fit}{\bm{\fit}}
+\newcommand{\fiti}{\fit_{\aai}}
+\newcommand{\fitj}{\fit_{\aaj}}
+\newcommand{\Fiti}{F_{\aai}}
+\newcommand{\Fitj}{F_{\aaj}}
+\newcommand{\scaledfit}{F}
+\newcommand{\ScaledFit}{\bm{\scaledfit}}
+\newcommand{\scaledfiti}{\scaledfit_{\aai}}
+\newcommand{\scaledfitj}{\scaledfit_{\aaj}}
+\newcommand{\selcoef}{{\delta_{\fit}}}
+\newcommand{\scaledselcoef}{{\Delta \scaledfit}}
+% Categories
+\newcommand{\Seqitoj}{\ci, \cj}
+\newcommand{\setNeighbors}{\mathcal{M}\left(\ci\right)}
+\newcommand{\setNonSynNeighbors}{\mathcal{N}\left(\ci\right)}
+\newcommand{\setSynNeighbors}{\mathcal{S}\left(\ci\right)}

@@ -1,8 +1,3 @@
-\chapter{Robustness of codon models to mutational bias.}
-{
-	\hypersetup{linkcolor=GREYDARK}
-	\minitoc
-}
 \section{Abstract}
 
 Protein-coding sequences subjected to mutational bias at the nucleotide level, and evolving under selection at the amino-acids will lean toward lower mutational bias when observed at the protein level. Unfortunately, parametric codon models developed to estimate the rate of evolution on amino-acids use the observed mutational bias at the protein level and don't take into account this effect. Thus, such parametric codon models are inherently misspecified to untangle mutation and selection, and they don't estimate the mutational process reliably. We also show that even if the mutational process is misspecified, parametric codon models are able to estimate reliably the rate of evolution acting on amino-acids. But if one wants to also estimate the mutational process, one need to use model where the rate of evolution is a tensor (95 parameters) instead of a single parameter.
@@ -311,7 +306,7 @@ U_{y, x} \dfrac{F_X^{(k)} - F_Y^{(k)}}{1 - \e^{F_Y^{(k)}-F_X^{(k)}}}
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-parameters}
+		\includegraphics[width=\textwidth] {parameters}
 
 	\caption[Parameters of the mutation-selection model]{
 	Parameters of the mutation-selection model. One parameter for mutational bias, and one for strength of selection.}
@@ -319,8 +314,7 @@ U_{y, x} \dfrac{F_X^{(k)} - F_Y^{(k)}}{1 - \e^{F_Y^{(k)}-F_X^{(k)}}}
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-simulations}
-
+		\includegraphics[width=\textwidth] {simulations-alignment}
 	\caption[Simulations and analysis]{
 	Simulations and analysis. We can observe composition of the alignment as function of the mutation and selection parameters.}
 \end{figure}
@@ -385,7 +379,7 @@ For a large sequence ($ n \gg 1 $), $\lambda_{\mathrm{obs}} (\lambda, \bm{F})$ c
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-AT-GC-obs}
+		\includegraphics[width=\textwidth] {AT-GC-obs}
 
 	\caption[AT/GC composition of the alignment]{
 	AT/GC composition of the alignment. Observed AT/GC at the third codon position matches the mutational bias. Selection is balancing the mutational bias.}
@@ -410,7 +404,7 @@ D^{(k)}(\lambda, F^{(k)})
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-diversity-aa}
+		\includegraphics[width=\textwidth] {diversity-aa}
 
 	\caption[Diversity of amino-acids]{
 	Diversity of amino-acids. Sequence-diversity is higher than site-diversity. Diversity decreases with mutational bias.	Site-diversity decreases with selection. Sequence-diversity increase with selection.}
@@ -498,14 +492,14 @@ For a large sequence ($ n \gg 1 $), $\omega (\lambda, \bm{F})$ converges to $\op
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-definitions}
+		\includegraphics[width=\textwidth] {definitions-omega}
 
 	\caption[Definition of $\omega$]{Definition of $\omega$.}
 \end{figure}
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-omega}
+		\includegraphics[width=\textwidth] {omega}
 
 	\caption[$\omega$ as a function of the parameters]{
 	$\omega$ as a function of the parameters.
@@ -516,7 +510,7 @@ For a large sequence ($ n \gg 1 $), $\omega (\lambda, \bm{F})$ converges to $\op
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth, page=1] {figures/mut-bias-omega-WS-SW}
+		\includegraphics[width=\textwidth, page=1] {omega-WS-SW}
 
 	\caption[Fixation bias of non-synonymous mutations]{
 	Fixation bias of non-synonymous mutations.
@@ -529,7 +523,7 @@ For a large sequence ($ n \gg 1 $), $\omega (\lambda, \bm{F})$ converges to $\op
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth, page=1] {figures/mut-bias-pipeline}
+		\includegraphics[width=\textwidth, page=1] {pipeline}
 
 	\caption[Inferred value compared to known value]{
 	Inferred value compared to known value.}
@@ -566,7 +560,7 @@ From the maximum likelihood estimates of the $4 \times 4$ mutation matrix $\left
 
 \begin{figure}[thbp]
 	\centering
-		\includegraphics[width=\textwidth] {figures/mut-bias-Simulation-vs-Inference}
+		\includegraphics[width=\textwidth] {Simulation-vs-Inference}
 
 	\caption[Estimation of mutation and fixation bias]{
 	Estimation of mutation and fixation bias.
