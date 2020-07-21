@@ -59,7 +59,7 @@ In population-based method, one of the most widely used test for adaptation was 
 	\caption{Detecting adaptive evolution in coding sequences from inter- and intra-specific data}
 \end{figure}
 
-\subsection{Adaptive \gls{substitution} rate}
+\subsection{Adaptive {substitution} rate}
 The population and phylogeny-based method work over very different time scales.
 For that reason, they might be capturing different signals: isolated events of adaptation along a particular lineage for population-based method, versus long-term evolutionary Red-Queen for phylogeny based methods. On the other hand, the two signals might be correlated. This represent a unique opportunity to confound these two types of approaches on non-overlapping data frames. Accordingly, the goal of this study is to set-up a pipeline for gathering divergence and polymorphism data for coding genes across species. As a proof of concept, I analyzed 1,355 protein-coding sequences (CDS) orthologs in mammals, and conducted two separate analysis on these CDS. First, alignments in placentals (except \textit{Homo sapiens} and \textit{Pan troglodytes}) were used to run classical site-models and mutation-selection models. The method estimated the rate of adaptation in each CDS, and extracted CDS with a rate of adaptation significantly high. Secondly, the population-based method was conducted using polymorphism available in \textit{Homo sapiens} and divergence to \textit{Pan troglodytes}. The pipeline then testes if the group of sequences detected with a high rate of adaption in the phylogeny-based method also display a high rate of adaptation in the population-based method.
 
