@@ -2,7 +2,7 @@
 
 \subsection{Partial correlation coefficient}
 
-The correlation coefficient $\rho_{\traiti, \traitj}$ give the total regression between two variable.
+The correlation coefficient $\rho_{\traiti, \traitj}$ give the total regression between two variables.
 Partial-correlation coefficient account for the entire covariance matrix, and measure the correlation between $2$ traits, knowing the values of all the other traits:
 \begin{equation}
     \rho_{\traiti, \traitj | c \in \traitInterval \setminus \{ a, b\} } = - \dfrac{\Precisionmatrix_{\traiti, \traitj}}{\sqrt{\Precisionmatrix_{\traiti, \traiti} \Precisionmatrix_{\traitj, \traitj}}},
@@ -15,13 +15,13 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 \subsection{Fitness profile entropy}
 For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino-acid is present), and a value of $log(20)\simeq3$ corresponding to a \gls{neutral} landscape, where each amino-acid has the same fitness.
 
 The Shannon entropy can be averaged over all sites as:
 \begin{equation}
-    \langle \entropy \rangle = \dfrac{1}{\Nsite}\sum_{\Setsite} \entropy\catsite
+    \langle \entropy \rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
 \end{equation}
 
 
@@ -33,7 +33,7 @@ Each site of the protein has a specific amino-acid fitness profile.
 Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino-acid present at each site of the protein.
 For each possible mutant, we compute the selection coefficient of the mutant:
 \begin{equation}
-    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Base_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{\Base_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
+    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Base_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{\Base_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
 \end{equation}
 where $\Base_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment \citep{Bloom2017}.
 
@@ -176,7 +176,7 @@ Since different sites of the protein do not have the same physico-chimical prope
 Overall, the protein \gls{Phenotype} is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino-acid present at each site of the protein.
 From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ \glspl{substitution}, the protein's \gls{Phenotype} is given by:
 \begin{equation}
-    \phenoGeo\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
+    \phenoGeo\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
 \end{equation}
 where $\phenoGeo_{\site}$ is the genotype-phenotype map at site $\site$.\\
 
@@ -241,7 +241,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
 We simulated \glspl{substitution} in the protein phosphatase ($\Nsite=300$ \gls{codon} sites) as in Goldstein \& Pollock (2017).
 From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ \glspl{substitution}, we compute the free energy of the folded state $\Base_{\mathrm{F}}\left(\mathbb{S}^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
-    G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum_{1 \leq \site \leq \Nsite} \sum_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
+    G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
 \end{equation}
 where $I(a,b)$ is the pair-wise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 
@@ -972,7 +972,7 @@ Thus, formally, the probability of the \gls{substitution} mapping can be summari
 \subsubsection{Scatter sufficient statistics}
 From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$ scatter sufficient statistic matrix, $\Scattermatrix$ as:
 \begin{equation}
-    \Scattermatrix = \sum_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
+    \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
 \end{equation}
 By Bayes theorem, the \gls{posterior} on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
@@ -984,5 +984,5 @@ This invert Wishart distribution can be obtained by sampling $\Nbranch + 3$ inde
 \end{equation}
 And from these multivariate samples, $\CovarianceMatrix$ is Gibbs sampled as:
 \begin{equation}
-    \CovarianceMatrix = \left( \sum_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\mathrm{T}} \right)^{-1}
+    \CovarianceMatrix = \left( \sum\limits_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\mathrm{T}} \right)^{-1}
 \end{equation}

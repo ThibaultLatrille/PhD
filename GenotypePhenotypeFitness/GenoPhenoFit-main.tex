@@ -454,7 +454,7 @@ Each site of the protein has a specific amino-acid fitness profile.
 Overall, the protein \gls{Phenotype} is computed as the sum of site-specific selection coefficient, obtained by accessing the amino-acid present at each site of the protein.
 The selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-s \left( \Seqi,\Seqj\right) = \sum_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{G_{\site} \left(\Seqj(\site) \right)}{G_{\site} \left(\Seqi(\site) \right)} \right) ,
+s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{G_{\site} \left(\Seqj(\site) \right)}{G_{\site} \left(\Seqi(\site) \right)} \right) ,
 \end{equation}
 where $G_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment \citep{Bloom2017}.
 
@@ -466,8 +466,8 @@ Under simulation with a fixed distribution of fitness effects (\acrshort{DFE}), 
 From the set of mutants $\setNeighbors$ that is one nucleotide away from $\Seqi$, we define the subsets $\setNonSynNeighbors$ and $\setSynNeighbors$ that are respectively the set of non-synonymous and synonymous mutants, where $\setNonSynNeighbors \cup \setSynNeighbors = \setNeighbors$.
 As in previous works \citep{Spielman2015, DosReis2015, Jones2016}, the ratio of non-synonymous over \gls{synonymous} rates of the sequence is defined as :
 \begin{align}
-\omega(t) &= \dfrac{\sum_{\Seqj \in \setNonSynNeighbors} \submatrix_{\Seqitoj}}{\sum_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj}} \left( \dfrac{\sum_{\Seqj \in \setSynNeighbors} \submatrix_{\Seqitoj}}{\sum_{\Seqj \in \setSynNeighbors} \mu_{\Seqitoj}} \right)^{-1}\\
-&= \dfrac{\sum_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{{1 - \e^{-4 \Ne \left( \Seqi,\Seqj\right)} }}}{\sum_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj}} 
+\omega(t) &= \dfrac{\sum\limits_{\Seqj \in \setNonSynNeighbors} \submatrix_{\Seqitoj}}{\sum\limits_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj}} \left( \dfrac{\sum\limits_{\Seqj \in \setSynNeighbors} \submatrix_{\Seqitoj}}{\sum\limits_{\Seqj \in \setSynNeighbors} \mu_{\Seqitoj}} \right)^{-1}\\
+&= \dfrac{\sum\limits_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{{1 - \e^{-4 \Ne \left( \Seqi,\Seqj\right)} }}}{\sum\limits_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj}}
 \end{align}
 And $\omega$ is taken as the average of the time-dependent $\omega(t)$ along the simulation.
 

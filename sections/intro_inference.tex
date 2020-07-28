@@ -94,8 +94,8 @@ Because the states of the internal nodes are not actually unknown, the \gls{like
 
 In the case of the illustrative example, the total probability is given as
 \begin{align}
-	p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum_{\state_0=1}^{61} \subequi_{\state_0} \sum_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
-	& = \sum_{\state_0=1}^{61} \subequi_{\state_0} \sum_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+	p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
+	& = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
 	\Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
 	& \qquad \qquad \qquad
 	\times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
@@ -113,7 +113,7 @@ And because the process is reversible, the equilibrium frequencies of \glspl{cod
 In the general topology, the \gls{likelihood} of the observed data is thus given as:
 \begin{align}
 p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
-& = \sum_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
+& = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
 \end{align}
 
 And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns:
@@ -124,14 +124,14 @@ p\left(\Data| \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \bran
 The \gls{likelihood} of observed data at a specific column of a multiple sequence alignment, given by equation \ref{eq:likelihood} requires extensive computation, but can however can be determined with the pruning algorithm of \citet{Felsenstein1985}. 
 The \gls{likelihood} of the data $\Data$ can be computed using the pruning algorithm:
 \begin{align}
-p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
+p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
 \end{align}
 where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
 \pruning\siteexp_{\node} \left( \ci \right) = 
-\left[ \sum_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right] 
+\left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right]
 \cdot 
-\left[ \sum_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right] 
+\left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right]
 \end{align}
 And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \begin{align}

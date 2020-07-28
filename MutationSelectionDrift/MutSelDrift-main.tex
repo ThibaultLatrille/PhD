@@ -369,7 +369,7 @@ Altogether, the rate matrix is:
 \end{equation}
 By definition, the sum of the entries in each rows of the nucleotide rate matrix $\Mutmatrix$ is equal to $0$, giving the diagonal entries:
 \begin{equation}
-\mutmatrix_{a,a} = - \sum_{ b \neq a} \mutmatrix_{a,b}
+\mutmatrix_{a,a} = - \sum\limits_{ b \neq a} \mutmatrix_{a,b}
 \end{equation}
 The \gls{prior} on the exchangeabilities $\Exchan$ is a uniform Dirichlet distribution of dimension $6$:
 \begin{equation}
@@ -383,7 +383,7 @@ The \gls{prior} on the equilibrium base frequencies $\Mutequi$ is a uniform Diri
 \end{equation}
 The general time-reversible nucleotide matrix is normalized such that the total flow equals to $1$:
 \begin{equation}
-\sum_{a \in \{A, C, G, T\}} - \mutequi_a \mutmatrix_{a,a} = 1.
+\sum\limits_{a \in \{A, C, G, T\}} - \mutequi_a \mutmatrix_{a,a} = 1.
 \end{equation}
 
 \subsection{Site-dependent selection}
@@ -558,7 +558,7 @@ For a given branch $\branch$ and a given site $\site$, the \gls{codon} \gls{subs
 \submatrix\branchsiteexp_{\itoj} = 0\text{ if $\ci$ and $\cj$ are not neighbors,} \\
 \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj}\text{ if $\ci$ and $\cj$ are synonymous,} \\
 \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj} \dfrac{4\Ne\branchexp \left({\fitj\siteexp - \fiti\siteexp}\right)}{{1 - \e^{4\Ne\branchexp\left({\fiti\siteexp - \fitj\siteexp}\right)} }} \text{ if non-syn.,}\\
-\submatrix\branchsiteexp_{\ci, \ci} = - \sum_{ \cj \neq \ci, \jSetCodon} \submatrix\branchsiteexp_{\itoj},
+\submatrix\branchsiteexp_{\ci, \ci} = - \sum\limits_{ \cj \neq \ci, \jSetCodon} \submatrix\branchsiteexp_{\itoj},
 \end{dcases}
 \end{equation}
 The branch length $\branchlength\branchexp$ are defined as the expected number of \gls{neutral} \glspl{substitution} per \acrshort{DNA} site along a branch:

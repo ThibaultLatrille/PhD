@@ -124,7 +124,7 @@ The $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \citet{Muse1994} is de
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
         \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
         \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
     \end{dcases}
     \label{eq:codon-muse-gaut}
 \end{equation}
@@ -138,7 +138,7 @@ Under projected mutation-selection model, the $61$-by-$61$ \gls{codon} \gls{subs
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \beta_{\aai, \aaj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
     \end{dcases}
     \label{eq:codon-mean-field}
 \end{equation}
@@ -236,7 +236,7 @@ At one particular site, under a static fitness landscape, the \gls{substitution}
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum_{\cj \neq \ci} \submatrix_{\itoj}
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
     \end{dcases}
     \label{codonSubRates}
 \end{equation}
@@ -246,7 +246,7 @@ The stationary distribution $ \Subequi$ must be annihilated by the mutation matr
     & = 0 ,\\
     \iff \subequi_{\ci}\siteexp
     & = \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp},\\
-    & \mathrm{ where } \ \mathcal{Z}\siteexp = \left( \sum_{\cj=1}^{61} \lambda^{\nbrWeak_{\cj}} \e^{\Fitj\siteexp} \right)^{-1}.
+    & \mathrm{ where } \ \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \lambda^{\nbrWeak_{\cj}} \e^{\Fitj\siteexp} \right)^{-1}.
     \label{codonStationarity}
 \end{align}
 
@@ -262,8 +262,8 @@ Moreover this process has stationary distribution $\Subequi\siteexp$.
 From this equilibrium frequency of \glspl{codon}, we define $\mathrm{AT_{obs}}$ as the observed stationary distribution of weak nucleotides at site $\site$:
 \begin{align}
     \mathrm{AT_{obs}}
-    & = \frac{1}{3} \sum_{\ci=1}^{61}  \subequi_{\ci}\siteexp \nbrWeak_{\ci} , \ \textrm{by definition},\\
-    & = \frac{\mathcal{Z}\siteexp}{3} \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci} , \ \textrm{from eq.} \ \ref{codonStationarity}.
+    & = \frac{1}{3} \sum\limits_{\ci=1}^{61}  \subequi_{\ci}\siteexp \nbrWeak_{\ci} , \ \textrm{by definition},\\
+    & = \frac{\mathcal{Z}\siteexp}{3} \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci} , \ \textrm{from eq.} \ \ref{codonStationarity}.
     \label{atPctSite}
 \end{align}
 As noted in \ref{sec:mutBias}, the mutational process leads to $(\mutequi_A+\mutequi_T)/(\mutequi_C+\mutequi_G) = \lambda$.
@@ -271,13 +271,13 @@ Similarly, we denote the observed ratio of weak over strong nucleotide frequency
 \begin{align}
     \lambda_{\mathrm{obs}}\siteexp 
     & = \dfrac{\mathrm{AT_{obs}}}{1 - \mathrm{AT_{obs}} }, \ \textrm{by definition},\\
-    & = \dfrac{ \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci}}{\sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} (3 - \nbrWeak_{\ci} )}, \ \textrm{from eq.} \ \ref{atPctSite}.
+    & = \dfrac{ \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci}}{\sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} (3 - \nbrWeak_{\ci} )}, \ \textrm{from eq.} \ \ref{atPctSite}.
 \end{align}
 At the sequence level, $\lambda_{\mathrm{obs}} $ is the observed stationary ratio of weak over strong nucleotide frequency:
 \begin{align}
-    \lambda_{\mathrm{obs}} 
-    & = \dfrac{1}{\Nsite} \sum_{\site=1}^{\Nsite} \lambda_{\mathrm{obs}}\siteexp \\
-    & = \dfrac{1}{\Nsite} \sum_{\site=1}^{\Nsite} \dfrac{ \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci}}{\sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} (3 - \nbrWeak_{\ci} )}
+    \lambda_{\mathrm{obs}}
+    & = \dfrac{1}{\Nsite} \sum\limits_{\site=1}^{\Nsite} \lambda_{\mathrm{obs}}\siteexp \\
+    & = \dfrac{1}{\Nsite} \sum\limits_{\site=1}^{\Nsite} \dfrac{ \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \nbrWeak_{\ci}}{\sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} (3 - \nbrWeak_{\ci} )}
 \end{align}
 
 \subsection{Diversity of {codons} as a function of the mutation-selection model}
@@ -287,17 +287,17 @@ Moreover this process has stationary distribution $\Subequi\siteexp$.
 From this equilibrium frequency of \glspl{codon}, we can compute the effective number of \gls{codon}, mathematically this correspond to the diversity of the distribution $\entropy\siteexp$, at site $\site$:
 \begin{align}
     \entropy\siteexp
-    & = \e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \ln (  \subequi_{\ci}\siteexp )}, \ \textrm{by definition},\\
-    & = \e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \ln \left( \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \right)}, \ \textrm{from eq.} \ \ref{codonStationarity},\\
-    & = \e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \left[ \ln ( \mathcal{Z}\siteexp )+ \ln( \lambda^{\nbrWeak_{\ci}} ) + \ln (\e^{\Fiti\siteexp}) \right] }\\
-    & = \e^{ - \ln ( \mathcal{Z}\siteexp ) \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp } \e^{ -  \ln (\lambda) \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  } \\
-    & = \frac{1}{\mathcal{Z}\siteexp} \e^{ -  \ln (\lambda) \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  }
+    & = \e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \ln (  \subequi_{\ci}\siteexp )}, \ \textrm{by definition},\\
+    & = \e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \ln \left( \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \right)}, \ \textrm{from eq.} \ \ref{codonStationarity},\\
+    & = \e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \left[ \ln ( \mathcal{Z}\siteexp )+ \ln( \lambda^{\nbrWeak_{\ci}} ) + \ln (\e^{\Fiti\siteexp}) \right] }\\
+    & = \e^{ - \ln ( \mathcal{Z}\siteexp ) \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp } \e^{ -  \ln (\lambda) \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  } \\
+    & = \frac{1}{\mathcal{Z}\siteexp} \e^{ -  \ln (\lambda) \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  }
     \label{eq:sit-entropy}
 \end{align}
 
 \begin{align}
-  \entropy & = \dfrac{1}{\Nsite} \sum_{\site=1}^{\Nsite} \entropy\siteexp\\
-	& = \dfrac{1}{\Nsite} \sum_{\site=1}^{\Nsite} \frac{1}{\mathcal{Z}\siteexp} \e^{ -  \ln (\lambda) \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  }
+  \entropy & = \dfrac{1}{\Nsite} \sum\limits_{\site=1}^{\Nsite} \entropy\siteexp\\
+	& = \dfrac{1}{\Nsite} \sum\limits_{\site=1}^{\Nsite} \frac{1}{\mathcal{Z}\siteexp} \e^{ -  \ln (\lambda) \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \nbrWeak_{\ci} }\e^{ - \sum\limits_{\ci=1}^{61}   \subequi_{\ci}\siteexp \Fiti\siteexp  }
 	\label{entropy}
 \end{align}
 
@@ -308,23 +308,23 @@ Moreover this process has stationary distribution $\Subequi\siteexp$.
 From this equilibrium frequency of \glspl{codon}, we define $L_{\NonSyn}$ as the \gls{non-synonymous} flow, at site $\site$:
 \begin{align}
     L_{\NonSyn}
-    & = \sum_{\ci=1}^{61} \sum_{y \in \NxNonSyn}  \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp, \ \textrm{by definition},\\
-    & = \sum_{\ci=1}^{61} \sum_{y \in \NxNonSyn} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity},\\
-    & = \mathcal{Z}\siteexp \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}}.
+    & = \sum\limits_{\ci=1}^{61} \sum\limits_{y \in \NxNonSyn}  \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp, \ \textrm{by definition},\\
+    & = \sum\limits_{\ci=1}^{61} \sum\limits_{y \in \NxNonSyn} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity},\\
+    & = \mathcal{Z}\siteexp \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}}.
     \label{subFlowNonSyn}
 \end{align}
 Moreover, we define $K_{\NonSyn}$ as the non-synonymous mutation flow, at site $\site$:
 \begin{align}
     K_{\NonSyn}
-    & = \sum_{\ci=1}^{61} \sum_{y \in \NxNonSyn}  \subequi_{\ci}\siteexp U_{\itoj}, \ \textrm{by definition},\\
-    & = \mathcal{Z}\siteexp  \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn} \e^{\Fiti\siteexp} U_{\itoj}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity}.
+    & = \sum\limits_{\ci=1}^{61} \sum\limits_{y \in \NxNonSyn}  \subequi_{\ci}\siteexp U_{\itoj}, \ \textrm{by definition},\\
+    & = \mathcal{Z}\siteexp  \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn} \e^{\Fiti\siteexp} U_{\itoj}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity}.
     \label{mutFlowNonSyn}
 \end{align}
 We also define the mutation and \gls{substitution} synonymous as $K_{\Syn}$ and $L_{\Syn}$ respectively:
 \begin{align}
     L_{\Syn}
-    & =  \sum_{\ci=1}^{61} \sum_{y \in \NxSyn}  \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp, \ \textrm{by definition},\\
-    & = \sum_{\ci=1}^{61} \sum_{y \in \NxSyn} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} U_{\itoj}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity}, \\
+    & =  \sum\limits_{\ci=1}^{61} \sum\limits_{y \in \NxSyn}  \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp, \ \textrm{by definition},\\
+    & = \sum\limits_{\ci=1}^{61} \sum\limits_{y \in \NxSyn} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} U_{\itoj}, \ \textrm{from eq.}\ \ref{codonSubRates} \ \text{and} \ \ref{codonStationarity}, \\
     & = K_{\Syn}
     \label{subFlowSyn}
 \end{align}
@@ -333,16 +333,16 @@ Following Spielman and Wilke \citep{Spielman2015}, the rate of non-synonymous to
     \omega
     & = \dfrac{L_{\NonSyn}}{K_{\NonSyn}}  \left( \dfrac{L_{\Syn}}{K_{\Syn}}  \right)^{-1}, \\
     & = \dfrac{L_{\NonSyn}}{K_{\NonSyn}}, \ \textrm{from eq.}\ \ref{subFlowSyn} \\
-    & = \dfrac{ \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{ \sum_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn} U_{\itoj} \e^{\Fiti\siteexp} }, \ \textrm{from eq.}\ \ref{subFlowNonSyn} \ \text{and} \ \ref{mutFlowNonSyn}.
+    & = \dfrac{ \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{ \sum\limits_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn} U_{\itoj} \e^{\Fiti\siteexp} }, \ \textrm{from eq.}\ \ref{subFlowNonSyn} \ \text{and} \ \ref{mutFlowNonSyn}.
     \label{omegaSite}
 \end{align}
 The non-synonymous over synonymous rate for the whole sequence is then given by:
 \begin{align}
     \omega
-    & = \dfrac{\sum_{\site=1}^{\Nsite} L_{\NonSyn}}{\sum_{\site=1}^{\Nsite}K_{\NonSyn}}  \left( \dfrac{\sum_{\site=1}^{\Nsite}L_{\Syn}}{\sum_{\site=1}^{\Nsite}K_{\Syn}}  \right)^{-1}, \\
-    & = \dfrac{\sum_{\site=1}^{\Nsite} L_{\NonSyn}}{\sum_{\site=1}^{\Nsite}K_{\NonSyn}}, \ \textrm{from eq.}\ \ref{subFlowSyn} \\
-    & = \dfrac{ \sum_{\site=1}^{\Nsite} \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{ \sum_{\site=1}^{\Nsite} \sum_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}}  \sum_{y \in \NxNonSyn} U_{\itoj} \e^{\Fiti\siteexp}}, \ \textrm{from eq.}\ \ref{subFlowNonSyn} \ \text{and} \ \ref{mutFlowNonSyn}.
+    & = \dfrac{\sum\limits_{\site=1}^{\Nsite} L_{\NonSyn}}{\sum\limits_{\site=1}^{\Nsite}K_{\NonSyn}}  \left( \dfrac{\sum\limits_{\site=1}^{\Nsite}L_{\Syn}}{\sum\limits_{\site=1}^{\Nsite}K_{\Syn}}  \right)^{-1}, \\
+    & = \dfrac{\sum\limits_{\site=1}^{\Nsite} L_{\NonSyn}}{\sum\limits_{\site=1}^{\Nsite}K_{\NonSyn}}, \ \textrm{from eq.}\ \ref{subFlowSyn} \\
+    & = \dfrac{ \sum\limits_{\site=1}^{\Nsite} \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn}  U_{\itoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{ \sum\limits_{\site=1}^{\Nsite} \sum\limits_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}}  \sum\limits_{y \in \NxNonSyn} U_{\itoj} \e^{\Fiti\siteexp}}, \ \textrm{from eq.}\ \ref{subFlowNonSyn} \ \text{and} \ \ref{mutFlowNonSyn}.
     \\
-    & = \dfrac{ \sum_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum_{y \in \NxNonSyn}  U_{\itoj}  \sum_{\site=1}^{\Nsite} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{  \sum_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}}  \sum_{y \in \NxNonSyn} U_{\itoj}  \sum_{\site=1}^{\Nsite} \e^{\Fiti\siteexp}}.
+    & = \dfrac{ \sum\limits_{\ci=1}^{61} \lambda^{\nbrWeak_{\ci}} \sum\limits_{y \in \NxNonSyn}  U_{\itoj}  \sum\limits_{\site=1}^{\Nsite} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{\e^{ - \Fitj\siteexp} -  \e^{- \Fiti\siteexp} } }{  \sum\limits_{\ci=1}^{61}  \lambda^{\nbrWeak_{\ci}}  \sum\limits_{y \in \NxNonSyn} U_{\itoj}  \sum\limits_{\site=1}^{\Nsite} \e^{\Fiti\siteexp}}.
     \label{omegaSeq}
 \end{align}

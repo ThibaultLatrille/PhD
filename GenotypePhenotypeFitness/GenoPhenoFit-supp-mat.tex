@@ -256,8 +256,8 @@ where we assume that each protein has $n=100$ residues at its surface, $x_i$ sta
 
 By conservation of the total number of molecules:
 \begin{align}
-C & = [i] + \sum_{j \neq i} [ij] \\
-& = [i] + \sum_{j \neq i} \frac{[i][j]}{C_0} \, e^{\beta E_{ij}}
+C & = [i] + \sum\limits_{j \neq i} [ij] \\
+& = [i] + \sum\limits_{j \neq i} \frac{[i][j]}{C_0} \, e^{\beta E_{ij}}
 \end{align}
 and we note:
 \begin{align}
@@ -348,7 +348,7 @@ In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\omega)$ a
 We simulated \glspl{substitution} in the protein phosphatase ($\Nsite=300$ \gls{codon} sites).
 From a \acrshort{DNA} sequence $\ci$ after $t$ \glspl{substitution}, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\ci\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
-G_{\mathrm{F}}\left(\ci\right) = \sum_{1 \leq \site \leq \Nsite} \sum_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
+G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
 where $I(a,b)$ is the pair-wise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 The free energy of unfolded states $G_{\mathrm{U}}\left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:

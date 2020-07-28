@@ -414,8 +414,8 @@ Under the assumption that the mutational process is also reversible, the detaile
 \end{align}
 Altogether, the probability $\pi_{A}$ to find the population in \gls{allele} $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of \gls{allele} $A$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
 \begin{align}
-\dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum_{A}\pi_{A} = 1, \\ 
-\iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
+\dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum\limits_{A}\pi_{A} = 1, \\
+\iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum\limits_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
 \end{align}
 where the denominator is a normalizing constant such that the sum of probabilities equal to $1$.
 In analogy to thermodynamic systems, the evolutionary system reaches thus a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of \gls{drift}.}.
@@ -431,7 +431,7 @@ On the other hand, $\langle \nu \rangle<1$ is a signal of underlying purifying s
 Together, in the case of a mutation-selection point \gls{substitution} process, $\langle \nu \rangle$ is defined as:
 \begin{equation}
 \label{eq:relative-sub-rate}
-\langle \nu \rangle = \dfrac{ \sum_{A} \pi_{A} \sum_{B} Q_{A \to B}}{\sum_{A} \pi_{A}  \sum_{B} \mu_{A \to B}},
+\langle \nu \rangle = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
 \end{equation}
 where the notation $\langle . \rangle$ denotes the statistical average.
 It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result automatically in $\langle \nu \rangle \leq 1$ \textcolor{GREEN}{[I haven't found a proof for this claim, not even in \citep{Mustonen2009}]}. 
