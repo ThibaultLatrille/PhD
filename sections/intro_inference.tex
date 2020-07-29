@@ -4,6 +4,7 @@
 	\minitoc
 }
 \label{sec:phylo_bayes}
+
 The previous chapter treated how \gls{substitution} rates are defined and parameterized, but not how these parameters are inferred and estimated.
 Given a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages, the goal is to estimates the underlying parameters of evolution.
 However, models of \glspl{substitution} presented so far are not sufficient to fulfills this endeavor, but instead can be used to generate a random trajectory of protein-coding \acrshort{DNA} sequence evolution.
@@ -143,6 +144,12 @@ And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \end{align}
 
 \section{Bayesian estimation}
+
+
+$\bullet$ Why has Bayesian statistics been used in phylogenetic inference?
+
+$\bullet$ Difference between likelihood and Bayesian statistics
+
 The Bayesian Paradigm can be seen as a way to model uncertainty in a probabilistic way.
 In other words, parameter of the models denoted $\theta$ are considered as random variables whose distribution describes that uncertainty.
 This unconditional distribution of parameters, $p(\theta)$, is called the \gls{prior}.
@@ -279,4 +286,7 @@ Several methods exist for doing this \citep{Nielsen2002,Rodrigue2008}.
 Then, we write down the probability of $\subhistory$ given the parameters, and finally, we collect all factors that depend on some parameter of interest and make some simplifications.
 This ultimately leads to relatively compact sufficient statistics (Supplementary Materials for the different sufficient statistics used by our model) that are fast to evaluate \citep{Irvahn2014,Davydov2016}.
 
+\subsection{Implementation}
 
+$\bullet$ Modularity of the code, JAGS, MrBayes, RevBayes and now BayesCode,
+\url{https://github.com/bayesiancook/bayescode}

@@ -285,6 +285,10 @@ It is important to note that under this model, the equilibrium frequencies of al
 \end{align}
 where $\ci[1]$ denotes the nucleotide at position $1$ of \gls{codon} $i$.
 
+$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the codons, however it as empirically been observed that the nucleotide composition are not indentical;
+
+$\bullet$ Another approach is 3x4 model which is not mechanistically justified.
+
 Moreover, the relative \gls{substitution} rate at equilibrium $\langle \nu \rangle$ defined by equation \ref{eq:relative-sub-rate}, if restricted to the subset of \glspl{non-synonymous}, identifies to $\omega$:
 \begin{align}
 \langle \nu \rangle & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
@@ -406,7 +410,7 @@ A first approximation of \gls{nearly-neutral} models is that all the positions o
 But it has been rapidly recognized that each site in the \gls{codon} sequence should have its own independent \gls{codon} preferences.
 Site-specific amino-acid preferences have been estimated either by maximum \gls{likelihood} \citep{Tamuri2012,Tamuri2014}, by experimental means \citep{Bloom2017}, or in a Bayesian context have been estimated using non-parametric
 prior distribution with \gls{Dirichlet-process} \citep{Rodrigue2010, Rodrigue2014}.
-Fitting the mutation-selection model on a sequence alignment leads, via equation (\ref{eq:propensities-models}), results to an estimation of the nucleotide mutation rate matrix as well as the fitness landscape of the protein at each site of the sequence.
+Fitting the mutation-selection model on a sequence alignment, via equation (\ref{eq:propensities-models}), results to an estimation of the nucleotide mutation rate matrix as well as the fitness landscape of the protein at each site of the sequence.
 
 \subsection{Relationship to classical models}
 Mechanistic mutation-selection \gls{codon} models display the important feature of genuinely accounting for purifying selection.

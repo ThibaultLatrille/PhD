@@ -15,6 +15,7 @@
 %%%%% CHOOSE PAGE LAYOUT
 %\documentclass[a4paper,openright,twoside]{thesis}
 \documentclass[a4paper,oneside,nobind]{thesis}
+\usepackage{hyperref}
 
 \definecolor{Nonpolar}{HTML}{fef1d2}
 \definecolor{Polar}{HTML}{a9fdd8}
@@ -135,23 +136,26 @@
 
 \chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{NucleotideBias//Nucleotide-Bias-main}
-
-\chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{GenotypePhenotypeFitness/GenoPhenoFit-main}
-
-\chapter{Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+\label{chap:NucleotideBias}
+\include{NucleotideBias/Nucleotide-Bias-main}
 
 \chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:MutSelDrift}
 \include{MutationSelectionDrift/MutSelDrift-main}
 
 \chapter{Supplementary Materials}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \include{MutationSelectionDrift/MutSelDrift-supp-mat}
+
+\chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:GenoPhenoFit}
+\include{GenotypePhenotypeFitness/GenoPhenoFit-main}
+
+\chapter{Supplementary Materials}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\include{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
 
 \part{Conclusion}
 \label{part:discussion}

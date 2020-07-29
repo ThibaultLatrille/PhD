@@ -3,12 +3,87 @@
 	\hypersetup{linkcolor=GREYDARK}
 	\minitoc
 }
-\label{sec:goals}
+\label{chap:goals}
 
-What determines the evolutionary rate of DNA sequences?
+Evolution of molecular sequences is a stochastic process, balancing forces of mutation, selection and drift.
+In a phylogenetic context, over hundreds of millions years, this stochastic results in a pattern of substitution along lineages.
+Are the sequences of today extant species still containing traces of ancient drift?
+Can this ancient long-term fluctuation of population size be quantified?
+Is this signal confounded with selection or mutation?
+What is the nature of selection affecting protein DNA sequences?
+This work is a modest attempt to disentangle interaction between mutation, selection and drift, and their resulting observable patterns in protein coding DNA sequences.
+I confront theoretical development to empirical data, whether through analytical results, simulation and inference.
+The results are divided in three chapters, each written in the form of independent manuscript that shall be submitted to peer-reviewed journals.
 
-Can we disentangle the effect of mutation, selection and drift, or are they confounded?
+\subsection{Robustness of codon models to mutational bias}
 
-Can we retrieve long-term fluctuation of population size? 
+$\bullet$ Nucleotide composition in protein-coding sequences is the result of the equilibrium between mutation and selection.
 
-All inside a framework of point substitutions between population, but mechanistically grounded in population-genetics equations such as to be generalized to within population.
+$\bullet$ Phenomenological parametric \gls{codon} models developed to estimate the rate of evolution on amino-acids are qualitative, in the sens that they model the fitness landscape and drift throught an unique aggregate parameter.
+
+$\bullet$ By aggregating selection and drift into a sole parameter, is the mutational process estimated reliably?
+
+$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the codons, however it as empirically been observed that the nucleotide composition are not identical.
+
+$\bullet$ Can we estimate mutational bias reliably?
+
+$\bullet$ Is mutational bias having side effect on estimation of selection?
+
+\subsection{Inferring long-term population size}
+
+$\bullet$ Mechanistic phylogenetic codon model, grounded on population-genetics first principles, articulates the interplay between mutation, selection and drift, and return an estimate of the amino-acid fitness landscape.
+However, these recently developed models rely on the assumption of constant effective population size.
+
+$\bullet$ Can mechanistic phylogenetic codon model be extended to model explicitly drift across branches?
+
+$\bullet$ Selection and drift are confounded parameters, but can they be disentangled by leveraging site and branch patterns?
+Namely by assuming that fitness is fixed along the phylogeny but changing across the sequence, and orthogonally by assuming that drift is fixed along the sequence but changing across the phylogeny?
+
+$\bullet$ Can fluctuation of effective population size along the phylogeny be reliably inferred from an alignment of protein coding DNA sequence, with a single representative sequence per extant taxa?
+
+$\bullet$ How does effective population size correlates with ancestral quantitative life-history traits and mutation rate reconstructed along the phylogeny from observation in present-day species.
+
+$\bullet$ What are results of population size inference telling us on the property of the fitness landscape?
+
+\subsection{Substitution rate susceptibility}
+
+$\bullet$ Populations with high $\Ne$ are expected to undergo stronger purifying selection, and consequently a decrease in substitution rate.
+
+$\bullet$ The response of substitution rate to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
+Theoretically, how does the rate of substitution depends on the fitness landscape?
+
+$\bullet$ Under the context of selection for protein stability, what is the theoretical response of substitution rate to changes in effective population size and protein expression level?
+
+$\bullet$ Does the model of selection for protein stability fits empirical data?
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
+		\tikzstyle{every state}=[]
+
+		\node[state] (0) {Substitution};
+		\node[state] (mut) [above left=of 0] {Mutation};
+		\node[state] (sel) [left=of 0] {Selection};
+		\node[state] (drift) [below left=of 0] {Drift};
+		\node[state] (sub) [right=of 0] {Divergence data};
+
+		\path[]
+		(mut) edge [black] node [above right] {} (0)
+		(sub) edge [<->, BLUE, bend right=45, dashed] node [below left] {Chapter \ref{chap:NucleotideBias}} (mut)
+		(sel) edge [black] node [below right] {} (0)
+		(sub) edge [->, BLUE, bend left=45, dashed] node [above left] {Chapter \ref{chap:MutSelDrift}} (drift)
+		(0) edge [black] node [above left] {} (sub)
+		(0) edge [<-, BLUE, bend right=4, dashed] node [left] {Chapter \ref{chap:GenoPhenoFit}} (drift)
+		(drift) edge [black] node [above] {} (0);
+	\end{tikzpicture}
+	\caption[Goal of the thesis]{
+	Goal of the thesis.
+	Under the framework of the mutation, selection drift equilibrium, several aspects of this equilibrium are studied and related to empirical data.
+	In chapter \ref{chap:NucleotideBias}, mutational bias is inferred whenever accounting for selection on amino-acids.
+	In chapter \ref{chap:MutSelDrift}, long-term fluctuation of effective population size is inferred from protein coding DNA alignment in several taxa, taking into account site-dependent fitness landscape.
+	In chapter \ref{chap:GenoPhenoFit}, the response of substitution rate to changes in effective population size and expression level is analytically derived under selection for protein stability.
+	}\label{fig:goals}
+\end{figure}
+
+$\bullet$ More broadly, this thesis is a stepping stone to understand the complex interplay between evolutionary forces and their resulting strength.
+$\bullet$ It is also a modest attempt to bridge the gap between phylogenetic and population-genetic.
