@@ -3,8 +3,8 @@ import argparse
 import inflect
 
 p = inflect.engine()
-input_list = ["intro.tex", "intro_inference.tex", "intro_selection.tex", "discussion.tex", "conclusion.tex",
-              "../MutationSelectionDrift/MutSelDrift-main.tex", "../MutationSelectionDrift/MutSelDrift-supp-mat.tex",
+input_list = ["intro_historical.tex", "intro_formalism.tex", "intro_inference.tex", "intro_selection.tex",
+              "discussion.tex", "conclusion.tex",
               "../MutationSelectionDrift/MutSelDrift-main.tex", "../MutationSelectionDrift/MutSelDrift-supp-mat.tex",
               "../GenotypePhenotypeFitness/GenoPhenoFit-main.tex",
               "../GenotypePhenotypeFitness/GenoPhenoFit-supp-mat.tex", "../NucleotideBias/Nucleotide-Bias-main.tex"]
@@ -34,16 +34,17 @@ if __name__ == '__main__':
         lines = []
         for line in open(file, 'r').readlines():
             f = line
-            for context in context_list:
-                for k, v in glossary.items():
-                    f = f.replace(context.format(k), context.format("\\gls{" + v + "}"))
-                    plural = p.plural(k)
-                    f = f.replace(context.format(plural), context.format("\\glspl{" + v + "}"))
-                    if v[0].capitalize() == v[0]: continue
-                    f = f.replace(context.format(k.capitalize()), context.format("\\Gls{" + v + "}"))
-                    f = f.replace(context.format(plural.capitalize()), context.format("\\Glspl{" + v + "}"))
-                for k, v in acronym.items():
-                    f = f.replace(context.format(k), context.format("\\acrshort{" + v + "}"))
+            if ('section{' not in f) and ('caption' not in f):
+                for context in context_list:
+                    for k, v in glossary.items():
+                        f = f.replace(context.format(k), context.format("\\gls{" + v + "}"))
+                        plural = p.plural(k)
+                        f = f.replace(context.format(plural), context.format("\\glspl{" + v + "}"))
+                        if v[0].capitalize() == v[0]: continue
+                        f = f.replace(context.format(k.capitalize()), context.format("\\Gls{" + v + "}"))
+                        f = f.replace(context.format(plural.capitalize()), context.format("\\Glspl{" + v + "}"))
+                    for k, v in acronym.items():
+                        f = f.replace(context.format(k), context.format("\\acrshort{" + v + "}"))
             if f != line: print(f)
             lines.append(f)
         open(file, 'w').writelines(lines)

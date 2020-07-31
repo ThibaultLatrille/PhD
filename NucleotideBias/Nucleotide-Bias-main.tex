@@ -16,13 +16,13 @@ $\bullet$ Phenomenological parametric \gls{codon} models developed to estimate t
 
 $\bullet$ By aggregating selection and drift into a sole parameter, is the mutational process estimated reliably?
 
-$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the codons, however it as empirically been observed that the nucleotide composition are not identical.
+$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the \glspl{codon}, however it as empirically been observed that the nucleotide composition are not identical.
 
 $\bullet$ Can we estimate mutational bias reliably?
 
 $\bullet$ Is mutational bias having side effect on estimation of selection?
 
-$\bullet$ Influence of mutation bias and hydrophobicity on the substitution rates and sequence entropies of protein evolution \citet{Santos2018}
+$\bullet$ Influence of mutation bias and hydrophobicity on the \gls{substitution} rates and sequence entropies of protein evolution \citet{Santos2018}
 
 \section{Results}
 
@@ -95,11 +95,11 @@ $\bullet$ The mutationnal bias greatly reduce site and sequence entropy.
 %The \gls{substitution} rate (e.g., Grishin, Wolf \& Koonin, 2000).
 %These two measures of evolutionary variability are considered to be essentially equivalent~\citep{Halpern1998}, though they are differently influenced by the mutational process~\citep{Santos2018}.
 
-$\bullet$ Because the sequences are not independent but related together by a specie tree, entropy of the alignment does not converges to entropy of the substitution process.
+$\bullet$ Because the sequences are not independent but related together by a specie tree, entropy of the alignment does not converges to entropy of the \gls{substitution} process.
 
-$\bullet$ Instead, the substitution rate $\omega$, which measures the rate at which mutations at individual sites arise and go to fixation, is an aggregate parameter measuring the overall strength of selection of the sequence.
+$\bullet$ Instead, the \gls{substitution} rate $\omega$, which measures the rate at which mutations at individual sites arise and go to fixation, is an aggregate parameter measuring the overall strength of selection of the sequence.
 
-$\bullet$ Because point substitutions are recorded along the simulation, the average substitution rate can be quantified (see figure \ref{fig-mut-bias:definitions-omega}).
+$\bullet$ Because point \glspl{substitution} are recorded along the simulation, the average \gls{substitution} rate can be quantified (see figure \ref{fig-mut-bias:definitions-omega}).
 
 \begin{figure}[H]
     \centering
@@ -108,7 +108,7 @@ $\bullet$ Because point substitutions are recorded along the simulation, the ave
     \label{fig-mut-bias:definitions-omega}
 \end{figure}
 
-$\bullet$ Substitution rate depends strongly on selection/drift, but not on mutational bias (see figure \ref{fig-mut-bias:omega}).
+$\bullet$ \Gls{substitution} rate depends strongly on selection/drift, but not on mutational bias (see figure \ref{fig-mut-bias:omega}).
 
 \begin{figure}[H]
     \centering
@@ -137,9 +137,9 @@ $\bullet$ Fixation bias is opposed to mutational bias, such that mutation pushes
     \label{fig-mut-bias:omega-WS-SW}
 \end{figure}
 
-\subsection{Parametric inference with phenomenological codon model}
+\subsection{Parametric inference with phenomenological {codon} model}
 
-$\bullet$ Known values of underlying $\lambda$ and simulated $\omega$ can be compared to estimates under different models, models knowing solely the protein coding DNA alignment (see figure \ref{fig-mut-bias:pipeline}).
+$\bullet$ Known values of underlying $\lambda$ and simulated $\omega$ can be compared to estimates under different models, models knowing solely the protein coding \acrshort{DNA} alignment (see figure \ref{fig-mut-bias:pipeline}).
 
 \begin{figure}[H]
     \centering
@@ -160,7 +160,7 @@ The $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \citet{Muse1994} is de
     \label{eq:codon-muse-gaut}
 \end{equation}
 
-$\bullet$ Phenomenological codon models are not designed to tease out mutational bias, fixation bias is not implemented.
+$\bullet$ Phenomenological \gls{codon} models are not designed to tease out mutational bias, fixation bias is not implemented.
 
 $\bullet$ From the maximum \gls{likelihood} estimates of the $4 \times 4$ mutation matrix ($\widehat{\Mutmatrix}$), we can estimate of the mutational bias toward $\mathrm{AT}$ $\left({\widehat{\lambda}_{\text{MG}}} \right)$.
 Estimate of the mutational bias is halfway between observed bias of the alignment and true value (see figure \ref{fig-mut-bias:inference}, left panel).
@@ -168,7 +168,7 @@ Estimate of the mutational bias is halfway between observed bias of the alignmen
 $\bullet$ We can also estimate the fixation bias of non-synonymous mutations (${\widehat{\omega}_{\text{MG}}}$).
 Error of the estimated non-synonymous fixation bias is 1.8\%.
 
-\subsection{Parametric inference with mean-field codon model}
+\subsection{Parametric inference with mean-field {codon} model}
 
 $\bullet$ Mean-field models are parameterized to account for fixation bias in different directions.
 
@@ -231,7 +231,7 @@ Also, in empirical data we observed that the fixation bias between weak and stro
     \label{table-mut-bias:estimation}
 \end{table}
 
-Maximum likelihood estimation has been performed with the software Hyphy~\citep{Pond2005}.
+Maximum \gls{likelihood} estimation has been performed with the software Hyphy~\citep{Pond2005}.
 The python scripts generating the Hyphy batch files (for both Muse \& Gaut and mean-field), as well as scripts to analyse experiments are available at \url{https://github.com/ThibaultLatrille/NucleotideBias}
 
 \section{Conclusion}
@@ -287,7 +287,7 @@ It is important to note that ratio of weak over strong nucleotides frequency at 
 The mutation rate between a pair of \glspl{codon} is given by the underlying mutation rates between nucleotides.
 However the rate mutation rate is null if the pair of \glspl{codon} differs by more than one nucleotide:
 To note, the \gls{substitution} rate between \glspl{codon} would be equal to the mutation rate if \glspl{codon} are selectively \gls{neutral}.
-However, we subsequently take into the selection acting on \gls{codon} by modeling it at the amino-acid level, where each amino-acid $\aai$ encoded by codon $\ci $are given a fitness ($\Fiti$).
+However, we subsequently take into the selection acting on \gls{codon} by modeling it at the amino-acid level, where each amino-acid $\aai$ encoded by \gls{codon} $\ci $are given a fitness ($\Fiti$).
 By modeling fitness at the amino-acid level, we assume that all \glspl{codon} encoding for one particular amino-acid are selectively \gls{neutral}.
 In this modeling framework, the genetic code is of particular importance since the number of \glspl{codon} encoding for a particular amino-acid varies greatly.
 As an example, Tryptophan is encoded by one \gls{codon}, while Leucine is encoded by 6 \glspl{codon}.
@@ -315,7 +315,7 @@ The stationary distribution $\Subequi$ must be annihilated by the mutation matri
     & \mathrm{ where } \ \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \lambda^{\nbrWeak_{\cj}} \e^{\Fitj\siteexp} \right)^{-1},
     \label{codonStationarity}
 \end{align}
-where $\nbrWeak_{\ci}$ is the number of weak nucleotide (A or T) in the codon (between 0 and 3).
+where $\nbrWeak_{\ci}$ is the number of weak nucleotide (A or T) in the \gls{codon} (between 0 and 3).
 
 Moreover, the \gls{substitution} process is reversible and fulfills detailed balance conditions at each site $\site$:
 \begin{align}
@@ -326,13 +326,13 @@ Moreover, the \gls{substitution} process is reversible and fulfills detailed bal
 \subsection{Simulation}
 \label{sec-mut-bias:simu}
 We seek to simulate the evolution of protein-coding sequences along a specie tree.
-Starting with one sequence at the root of the tree, the sequences evolves independently along the different branches of the tree by point substitutions, until they reach the leaves.
+Starting with one sequence at the root of the tree, the sequences evolves independently along the different branches of the tree by point \glspl{substitution}, until they reach the leaves.
 At the end of the simulation, we get one sequence for each leaf of the tree, meaning one sequence per specie.
 Such evolutionary process is an idealized version of the reality, in the sens that the whole heterogeneity of sequences in the population is wiped away, with only one sequence representing the whole population.
 For a protein-coding \acrshort{DNA} sequence, a \gls{substitution} is modeled as the product of mutation at the nucleotide level, and selection of the amino-acid level.
 On one hand, the mutation rate between nucleotides as assumed to be same for all sites of the sequences.
 On the other hand, the selection for amino-acids is assumed to be varying along the sequences.
-During the simulation, from a given sequence the substitution rate toward all possible mutant (one nucleotide change) is computed and the next substitution is chosen by Gillespie algorithm.
+During the simulation, from a given sequence the \gls{substitution} rate toward all possible mutant (one nucleotide change) is computed and the next \gls{substitution} is chosen by Gillespie algorithm.
 
 \subsection{Fixation bias under the mean-field model}
 \label{sec-mut-bias:mean-field-omega}

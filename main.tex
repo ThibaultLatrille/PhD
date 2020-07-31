@@ -37,7 +37,7 @@
 \begin{document}
 \pagenumbering{gobble}
 \hypersetup{pageanchor=false}
-\include{sections/frontpage}
+\input{sections/frontpage}
 %%%%% CHOOSE YOUR LINE SPACING HERE
 \setlength{\textbaselineskip}{1.2em}
 % You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
@@ -120,7 +120,7 @@
 %%%% CHAPTERS
 \pagenumbering{arabic}
 \flushbottom
-\include{sections/preamble}
+\input{sections/preamble}
 
 \pagestyle{fancybook}
 
@@ -128,11 +128,11 @@
 \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 
 \label{part:intro}
-\include{sections/intro_historical}
-\include{sections/intro_formalism}
-\include{sections/intro_selection}
-\include{sections/intro_inference}
-\include{sections/intro_goal}
+\input{sections/intro_historical}
+\input{sections/intro_formalism}
+\input{sections/intro_selection}
+\input{sections/intro_inference}
+\input{sections/intro_goal}
 
 \part{Studies}
 \label{part:studies}
@@ -157,8 +157,8 @@
 
 \part{Conclusion}
 \label{part:discussion}
-%\include{sections/discussion}
-\include{sections/conclusion}
+%\input{sections/discussion}
+\input{sections/conclusion}
 
 %% APPENDICES %% 
 \part{Appendices}

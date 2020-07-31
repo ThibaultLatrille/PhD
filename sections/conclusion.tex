@@ -14,15 +14,15 @@ $\bullet$ By modeling fixation bias, mutational bias can be inferred reliably.
 
 $\bullet$ It is possible to construct and implement models of evolution parameterized by drift across branch and selection across sites.
 
-$\bullet$ There is persistent signal in substitution patterns that relates to past drift.
+$\bullet$ There is persistent signal in \gls{substitution} patterns that relates to past drift.
 
 $\bullet$ However, assumptions on the properties of the fitness landscape, namely that each site is independent results in low sensitivity.
 
-$\bullet$ Susceptibility of $\dnds$ to changes in $\Ne$ is between two extremes, site independent fitness landscapes, and phenotype define for the whole sequence.
+$\bullet$ Susceptibility of $\dnds$ to changes in $\Ne$ is between two extremes, site independent fitness landscapes, and \gls{Phenotype} define for the whole sequence.
 
 \section{Epistasis and entrenchment}
 
-$\bullet$ A blind spot of the mutation-selection phylogenetic codon model is the assumption of site-independence, each site is an independent Markov chain.
+$\bullet$ A blind spot of the mutation-selection phylogenetic \gls{codon} model is the assumption of site-independence, each site is an independent \gls{mc}.
 
 $\bullet$ Previous studies have argued that models of molecular evolution should consider the importance epistasis for its role in speciation, in modulating the rate of adaptation, and many other factors~\citep{Goldstein2017, Miller2018}.
 
@@ -55,20 +55,20 @@ It is important to note that because of the mutation-selection-drift equilibrium
 $\bullet$ $\omega$ and $\omega_0$ can be estimated along the sequence, such that mutation-selection framework can detect site-specific adaptive evolution in protein-coding genes.
 Such method has been implemented in Bayescode, and the manuscript is available in appendix page \pageref{sec-appendix:MutSelM3starMBE}.
 
-$\bullet$ Moreover, contrasting $\omega$ and $\omega_0$ lead to estimation of the rate of adaptive substitution as:
+$\bullet$ Moreover, contrasting $\omega$ and $\omega_0$ lead to estimation of the rate of adaptive \gls{substitution} as:
 \begin{equation}
     \omega_A = \omega - \omega_0
 \end{equation}
 
 $\bullet$ This phylogenetic estimation of the proportion of adaptation can be confronted to estimation of adaptation obtained with polymorphism dataset within species.
 Originally pioneered by \citet{McDonald1991}, the ratio of non-synonymous over synonymous polymorphism ($\pnps$) supposedly solely contains non-adaptive polymorphism.
-On the other hand, divergence data allows to estimate the ratio of non-synonymous over synonymous substitutions ($\dnds$), supposedly composed of a mixture of both advantageous substitutions and non-adaptive (nearly-neutral) substitutions.
+On the other hand, divergence data allows to estimate the ratio of non-synonymous over \glspl{synonymous} ($\dnds$), supposedly composed of a mixture of both advantageous \glspl{substitution} and non-adaptive (\gls{nearly-neutral}) \glspl{substitution}.
 Thus the difference $\dnds - \pnps $ is the rate of adaptive evolution.
 
 $\bullet$ To note, the rate of non-adaptive evolution, $\pnps$ obtained with polymorphism data supposedly matches the compound parameters $\omega_0$ obtained uniquely from divergence data.
 
 $\bullet$ However, estimation of adaptive rate can be biased by moderately deleterious mutations~\citep{eyre-walker_quantifying_2002} and by the change in population size through time~\citep{eyre-walker_changing_2002}.
-To overcome this biases, the method of \citet{Galtier2016} relies on the synonymous and non-synonymous site-frequency spectra (SFS) to estimate the distribution of fitness effects of mutations (DFE), modeled as a continuous distribution.
+To overcome this biases, the method of \citet{Galtier2016} relies on the synonymous and non-synonymous site-frequency spectra (\acrshort{SFS}) to estimate the distribution of fitness effects of mutations (\acrshort{DFE}), modeled as a continuous distribution.
 Subsequent development of these methods are reviewed in~\citep{Moutinho2019a}, intrinsically measuring the rate of non-adaptive evolution present in polymorphism data.
 
 \begin{figure}[H]
@@ -77,25 +77,25 @@ Subsequent development of these methods are reviewed in~\citep{Moutinho2019a}, i
 	\caption{Detecting adaptive evolution in coding sequences from inter- and intra-specific data}
 \end{figure}
 
-$\bullet$ From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models matches the rate estimated from SFS.
-Are phylogenetic codon models and population-genetics models independently estimating the same parameters?
+$\bullet$ From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models matches the rate estimated from \acrshort{SFS}.
+Are phylogenetic \gls{codon} models and population-genetics models independently estimating the same parameters?
 
 \section{Unifying phylogenetic and population-genetics model}
 \label{sec:unifying-phylogenetic-and-population-genetics-model}
 
 $\bullet$ Along this manuscript, polymorphism inside species has not been leveraged. Can we unify phylogenetic and population-genetics model?
 
-$\bullet$ Selection is more easily detectable in substitution, while mutation bias is more easily detectable in polymorphism (SFS).
+$\bullet$ Selection is more easily detectable in \gls{substitution}, while mutation bias is more easily detectable in polymorphism (\acrshort{SFS}).
 Unless they are carefully articulated, see chapter \ref{chap:NucleotideBias}.
 Hence to disentangle the gBGC for example, integrated phylogenetic and population-genetics methods should be devised.
 
-$\bullet$ Also, the availability of intra-specific diversity across taxa, allow to align orthologous protein coding DNA sequence across and within species.
+$\bullet$ Also, the availability of intra-specific diversity across taxa, allow to align orthologous protein coding \acrshort{DNA} sequence across and within species.
 
-$\bullet$ Example of integration between phylogeny and population genetics in the context of a DFE in \citet{Wilson2011}.
+$\bullet$ Example of integration between phylogeny and population genetics in the context of a \acrshort{DFE} in \citet{Wilson2011}.
 
 $\bullet$ Example of integration using scaling properties of the evolutionary process~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019} able to disentangle gBGC and mutational bias~\citep{Borges2019, Borges2020}.
 
-$\bullet$ Because mechanistic codon models are based on population-genetics first principles, they can theoretically be extended to account for within taxa diversity.
+$\bullet$ Because mechanistic \gls{codon} models are based on population-genetics first principles, they can theoretically be extended to account for within taxa diversity.
 
 $\bullet$ The strategy can be to augment molecular divergence data between species with information about molecular polymorphism within species.
 
@@ -104,13 +104,13 @@ The methods has found to be rather straightforward to implement into BayesCode, 
 
 $\bullet$ First, it was found to be computationally intensive, even though optimizing the computation with sufficient statistics.
 Secondly, the method provided sensible estimation of diversity ($\theta = 4 \Ne u$) based on generated simulation under Wright-Fisher model of evolution (SimuPoly).
-Most importantly, the assumption of constant drift along the phylogeny assumed by mutation-selection codon models was arguably the strongest assumption to relax in such context.
+Most importantly, the assumption of constant drift along the phylogeny assumed by mutation-selection \gls{codon} models was arguably the strongest assumption to relax in such context.
 In other words, why integrating polymorphism and diversity in extant species if $\Ne$ is considered constant along the phylogeny.
-It was historically the reason to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$ presented in chapter \ref{chap:MutSelDrift}.
+It was historically the reason to extend phylogenetic site-specific mutation-selection \gls{codon} models by incorporating branch-specific $\Ne$ presented in chapter \ref{chap:MutSelDrift}.
 
-$\bullet$ After extending mutation-selection with branch specific drift, we actually realized that the susceptibility of substitution rate to changes in $\Ne$ is too strong because of site-independence assumption (chapter \ref{chap:GenoPhenoFit}), effectively amortizing the range of $\Ne$ which could be inferred.
+$\bullet$ After extending mutation-selection with branch specific drift, we actually realized that the susceptibility of \gls{substitution} rate to changes in $\Ne$ is too strong because of site-independence assumption (chapter \ref{chap:GenoPhenoFit}), effectively amortizing the range of $\Ne$ which could be inferred.
 
-$\bullet$ Hence, even tough site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating signal of polymorphism, which actually has been implemented in Bayescode (-p option).
+$\bullet$ Hence, even tough site- and branch-specific mutation-selection phylogenetic \gls{codon} models can be extended by incorporating signal of polymorphism, which actually has been implemented in Bayescode (-p option).
 
 $\bullet$ Based on these observations, I believe it is not yet the path forward to build an unified phylogenetic and population-genetics model.
 
@@ -163,16 +163,16 @@ Finally, explaining to others our choices of algorithms, implementation and data
 \section{Concluding remarks}
 \label{sec:concluding-remarks}
 
-$\bullet$ This work is modest attempt to construct integrated models of protein coding DNA sequences evolution.
+$\bullet$ This work is modest attempt to construct integrated models of protein coding \acrshort{DNA} sequences evolution.
 
-$\bullet$ It succeeded in consolidating the idea that the patterns of substitutions inform us on long term fluctuation of drift along branches, and selection along sites.
+$\bullet$ It succeeded in consolidating the idea that the patterns of \glspl{substitution} inform us on long term fluctuation of drift along branches, and selection along sites.
 
 $\bullet$ It did not succeeded in modeling the fitness landscape, apparently either too site-specific, or integrated over too many sites.
 It is an indication that fitness landscape of protein coding sequences is between this two extremes.
 
 $\bullet$ It is building block to bridge phylogeny and population-genetic, constructing an integrated framework is theoretically possible but with limited scope.
-However, confronting the estimation of phylogenetic codon and population-genetics, through for example the proportion of adaptive substitution is a path forward to build bridges.
+However, confronting the estimation of phylogenetic \gls{codon} and population-genetics, through for example the proportion of adaptive \gls{substitution} is a path forward to build bridges.
 
 $\bullet$ Finally, I believe this thesis is not providing any ground breaking, nor disruptive results, but instead is consolidating the theoretical models on which molecular evolution is based, and points out the pitfall to avoid.
 Science is alike a mutation selection process not optimized but as to trade off exploration of new ideas and exploitation of old ones.
-Attempts to build bridges and connexion between fields, alike recombination, can bring the best of both worlds but many attemps are required.
+Attempts to build bridges and connexion between fields, alike \gls{recombination}, can bring the best of both worlds but many attemps are required.
