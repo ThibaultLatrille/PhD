@@ -243,6 +243,8 @@
 \renewcommand*\bibliography[1]{{%
 		\renewcommand*\MakeUppercase[1]{##1}\@ldbib{#1}}}
 
+\renewcommand{\numberline}[1]{#1~}
+
 % Figure placement on page
 % JEM: Allow flexible spacing after figures, to reduce other stretching
 \usepackage{pdfpages}

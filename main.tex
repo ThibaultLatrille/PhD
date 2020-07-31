@@ -17,6 +17,7 @@
 \documentclass[a4paper,oneside,nobind]{thesis}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{natbib}
 
 \definecolor{Nonpolar}{HTML}{fef1d2}
 \definecolor{Polar}{HTML}{a9fdd8}
@@ -127,7 +128,8 @@
 \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 
 \label{part:intro}
-\include{sections/intro}
+\include{sections/intro_historical}
+\include{sections/intro_formalism}
 \include{sections/intro_selection}
 \include{sections/intro_inference}
 \include{sections/intro_goal}
@@ -135,37 +137,59 @@
 \part{Studies}
 \label{part:studies}
 
+\thispagestyle{empty}
 \chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:NucleotideBias}
-\include{NucleotideBias/Nucleotide-Bias-main}
+\input{NucleotideBias/Nucleotide-Bias-main}
 
+\thispagestyle{empty}
 \chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:MutSelDrift}
-\include{MutationSelectionDrift/MutSelDrift-main}
+\input{MutationSelectionDrift/MutSelDrift-main}
 
-\chapter{Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{MutationSelectionDrift/MutSelDrift-supp-mat}
-
+\thispagestyle{empty}
 \chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:GenoPhenoFit}
-\include{GenotypePhenotypeFitness/GenoPhenoFit-main}
-
-\chapter{Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\include{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+\input{GenotypePhenotypeFitness/GenoPhenoFit-main}
 
 \part{Conclusion}
 \label{part:discussion}
-\include{sections/discussion}
-%\include{sections/conclusion}
+%\include{sections/discussion}
+\include{sections/conclusion}
 
 %% APPENDICES %% 
-\part*{Appendices}
+\part{Appendices}
+
+\thispagestyle{empty}
+\chapter{Inferring long-term population size - Supplementary Materials}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:MutSelDrift-SuppMat}
+\input{MutationSelectionDrift/MutSelDrift-supp-mat}
+
+\thispagestyle{empty}
+\chapter{Substitution rate susceptibility - Supplementary Materials}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:GenoPhenoFit-SuppMat}
+\input{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+
+\chapter*{Mutation-selection-drift as bridge between phylogeny and population-genetics}
+\addcontentsline{toc}{part}{Poisson random fields}
+\phantomsection
+\label{sec-appendix:PRF}
+\input{sections/appendix_PRF}
+
+\thispagestyle{empty}
+%\chapter*{Detecting site-specific adaptation with mutation-selection models}
+\addcontentsline{toc}{part}{Detecting site-specific adaptation with mutation-selection models}
+\phantomsection
+\label{sec-appendix:MutSelM3starMBE}
+\includepdf[pages=-]{sections/MutSelM3starMBE.pdf}
+
 %%%%% REFERENCES
+\thispagestyle{empty}
 \bibliographystyle{natbib}
 \bibliography{references/references, references/introduction}
 \end{document}

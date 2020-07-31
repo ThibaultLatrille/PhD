@@ -62,18 +62,18 @@ $\bullet$ Does the model of selection for protein stability fits empirical data?
 		\tikzstyle{every state}=[]
 
 		\node[state] (0) {Substitution};
-		\node[state] (mut) [above left=of 0] {Mutation};
+		\node[state] (mut) [above=of 0] {Mutation};
 		\node[state] (sel) [left=of 0] {Selection};
-		\node[state] (drift) [below left=of 0] {Drift};
+		\node[state] (drift) [below=of 0] {Drift};
 		\node[state] (sub) [right=of 0] {Divergence data};
 
 		\path[]
 		(mut) edge [black] node [above right] {} (0)
-		(sub) edge [<->, BLUE, bend right=45, dashed] node [below left] {Chapter \ref{chap:NucleotideBias}} (mut)
+		(sub) edge [<->, BLUE, bend left=15, dashed] node [above] {Chapter \ref{chap:NucleotideBias}} (mut)
 		(sel) edge [black] node [below right] {} (0)
-		(sub) edge [->, BLUE, bend left=45, dashed] node [above left] {Chapter \ref{chap:MutSelDrift}} (drift)
+		(sub) edge [->, BLUE, bend right=15, dashed] node [below] {Chapter \ref{chap:MutSelDrift}} (drift)
 		(0) edge [black] node [above left] {} (sub)
-		(0) edge [<-, BLUE, bend right=4, dashed] node [left] {Chapter \ref{chap:GenoPhenoFit}} (drift)
+		(0) edge [<-, BLUE, bend right=15, dashed] node [left] {Chapter \ref{chap:GenoPhenoFit}} (drift)
 		(drift) edge [black] node [above] {} (0);
 	\end{tikzpicture}
 	\caption[Goal of the thesis]{

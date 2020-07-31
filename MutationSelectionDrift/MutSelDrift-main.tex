@@ -13,32 +13,32 @@ In protein coding \acrshort{DNA} sequences, we can first assume the mutational p
 Assuming \glspl{synonymous} are selectively \gls{neutral} allows us to infer the pattern of mutation, free of selection and random drift.
 
 Non-synonymous \glspl{substitution} change the amino-acid sequence, and by comparing their \glspl{substitution} rate relative to the \gls{synonymous} rate (the ratio $\dnds$), we can estimate the global strength of selection and random drift.
-Such method has been leveraged in original \gls{codon} models \citep{Muse1994,Goldman1994} to detect proteins under adaptive selection.
-However the detection of adaptive evolution as been proved difficult since both pervasive purifying selection and adaptation are entangled into $\dnds$ \citep{Yang2000}.
+Such method has been leveraged in original \gls{codon} models~\citep{Muse1994,Goldman1994} to detect proteins under adaptive selection.
+However the detection of adaptive evolution as been proved difficult since both pervasive purifying selection and adaptation are entangled into $\dnds$~\citep{Yang2000}.
 Moreover, these phenomenological \gls{codon} models do not explicitly model selection and random drift, meaning the \gls{non-synonymous} rate cannot be explicitly related to selection (purifying or adaptive) and random drift.
 
-Mechanistic \gls{codon} models explicitly introduced population-genetics equations into phylogenetic \gls{codon} models \citep{Halpern1998}.
+Mechanistic \gls{codon} models explicitly introduced population-genetics equations into phylogenetic \gls{codon} models~\citep{Halpern1998}.
 These so called mutation-selection \gls{codon} models assign a different fitness for each amino-acid at given specific \gls{codon} site of the \acrshort{DNA} sequence.
-As such they assume a static fitness landscape of amino-acids along the phylogeny, providing a model of purifying selection where the least fit amino-acids are purified away \citep{Rodrigue2010,Rodrigue2014,Tamuri2012,Tamuri2014}.
-Modeling explicitly purifying selection proved to be a valuable null (\gls{nearly-neutral}) model against which to test for the presence of adaptation \citep{Rodrigue2016,Bloom2017}.
+As such they assume a static fitness landscape of amino-acids along the phylogeny, providing a model of purifying selection where the least fit amino-acids are purified away~\citep{Rodrigue2010,Rodrigue2014,Tamuri2012,Tamuri2014}.
+Modeling explicitly purifying selection proved to be a valuable null (\gls{nearly-neutral}) model against which to test for the presence of adaptation~\citep{Rodrigue2016,Bloom2017}.
 These methods have so far assumed the strength of random drift to be constant across the phylogeny.
 
-Drift, which is proportional to the inverse of effective population size~($\Ne$), can not be realistically assumed constant \citep{Ohta1992}.
-Estimation of $\Ne$ using polymorphism sequence data obtained from a diverse array of species have demonstrated that the range of $\Ne$ varies by orders of magnitude in mammals \citep{Galtier2016}, in drosophila \citep{Benger2013,Keightley2016}.
+Drift, which is proportional to the inverse of effective population size~($\Ne$), can not be realistically assumed constant~\citep{Ohta1992}.
+Estimation of $\Ne$ using polymorphism sequence data obtained from a diverse array of species have demonstrated that the range of $\Ne$ varies by orders of magnitude in mammals~\citep{Galtier2016}, in drosophila~\citep{Benger2013,Keightley2016}.
 Relaxing the assumption of constant random drift in mutation-selection \gls{codon} models is necessary to account for empirically grounded
 assumptions.
 Practically, can we mathematically model long-term fluctuation of $\Ne$ in mutation-selection model?
 Empirically do we have enough signal in alignment data, and computational tools, to estimate fluctuations of $\Ne$?
 
-Independent empirical experiments have sought to correlate life-history traits and population-genetic parameters of evolution under the molecular comparative method \citep{Lartillot2011,Weber2014}.
-They have proved that $\dnds$ is correlated to life-history traits, such as body mass and longevity, thought the direction of correlation could not be replicated across all experiments \citep{Figuet2016}.
+Independent empirical experiments have sought to correlate life-history traits and population-genetic parameters of evolution under the molecular comparative method~\citep{Lartillot2011,Weber2014}.
+They have proved that $\dnds$ is correlated to life-history traits, such as body mass and longevity, thought the direction of correlation could not be replicated across all experiments~\citep{Figuet2016}.
 The expected correlation under the \gls{nearly-neutral} theory of evolution is that population with low $\Ne$ would have both a large body size and a high $\dnds$ due to the increase of random drift.
-However, the relationship between $\Ne$ and $\dnds$ is far for from being linear nor $1$-to-$1$, due to contrasted effect of selection merged into a single phenomenological parameter and due to non-equilibrium properties \citep{Jones2016}.
+However, the relationship between $\Ne$ and $\dnds$ is far for from being linear nor $1$-to-$1$, due to contrasted effect of selection merged into a single phenomenological parameter and due to non-equilibrium properties~\citep{Jones2016}.
 The mutation-selection models now give us leverage to revisit these studies by incorporating explicitly $\Ne$ as a parameter of the model.
 With this in mind, can we craft a framework which could allow us to correlate ecological life-history traits (longevity, maturity, weight, size, \ldots) to effective population size~($\Ne$) and mutation rate per unit of time~($\mu$)?
 
 Here we introduce a model of site-heterogeneous selection, and branch-heterogeneous traits~($\mu$, $\Ne$ and life-history traits).
-Our model can be seen as the integration between the mutation-selection framework estimating site-heterogeneous selection coefficients \citep{Rodrigue2014,Tamuri2014}, and the molecular comparative framework modeling the joint evolution of life-history and molecular traits \citep{Lartillot2011,Weber2014}.
+Our model can be seen as the integration between the mutation-selection framework estimating site-heterogeneous selection coefficients~\citep{Rodrigue2014,Tamuri2014}, and the molecular comparative framework modeling the joint evolution of life-history and molecular traits~\citep{Lartillot2011,Weber2014}.
 We test our model and inference framework against simulated data made under more realistic assumptions, and with empirical data while correlating life-history traits and population-genetic parameters of evolution.
 Broadly, these framework aims to shade light on the long-term ecological and evolutionary process shaping the history of molecular sequences.
 
@@ -78,7 +78,7 @@ Finally ${\submatrix_{\itoj}}$ simplifies to:
 \submatrix_{\itoj} = \mu_{\itoj}
 \end{equation}
 
-In the case of non-synonymous mutations, the probability of fixation depends on the difference in fitness between the amino-acid encoded by the initial and final \glspl{codon} \citep{Ohta1992}:
+In the case of non-synonymous mutations, the probability of fixation depends on the difference in fitness between the amino-acid encoded by the initial and final \glspl{codon}~\citep{Ohta1992}:
 \begin{equation}
 \label{eq:mutationSelection}
 {\submatrix_{\itoj}} = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}
@@ -95,28 +95,28 @@ Technically, the $4$-dimensional nucleotide relative rate matrix~($\Mutmatrix$) 
 \subsection{Site-selection model}
 \label{sec:SiteHetero}
 The strength of selection is not typically homogeneous along the sequence.
-For example, exposed sites are under lower selective pressure than buried sites \citep{Echave2016}.
-In fact, selection differs in a way that depends on the local physico-chemical requirements \citep{Goldstein2016,Goldstein2017,Weber2019}.
-Following the seminal work on mutation-selection models \citep{Halpern1998}, one increasingly popular way to account for this variation is to allow for site-specific amino-acid fitness profiles (20-dimensional vectors).
+For example, exposed sites are under lower selective pressure than buried sites~\citep{Echave2016}.
+In fact, selection differs in a way that depends on the local physico-chemical requirements~\citep{Goldstein2016,Goldstein2017,Weber2019}.
+Following the seminal work on mutation-selection models~\citep{Halpern1998}, one increasingly popular way to account for this variation is to allow for site-specific amino-acid fitness profiles (20-dimensional vectors).
 
 The sparcity of signal per site requires to aggregate sites together in categories, such as to fit the amino-acid fitnesses.
 Conversely, the category assigned to each site is fitted such that the sites aggregated into the same category share the pattern of selection and hopefully the same physico-chemical properties.
-The methods previously developed to estimate site-heterogeneous amino-acid fitnesses relied on penalized-likelihood \citep{Tamuri2012,Tamuri2014}, or a Bayesian non-parametric random-effect approach \citep{Rodrigue2010,Rodrigue2014,Rodrigue2016}.
-The work presented here relies on the Bayesian approach, as in \textit{PhyloBayes} \citep{Rodrigue2010}.
+The methods previously developed to estimate site-heterogeneous amino-acid fitnesses relied on penalized-likelihood~\citep{Tamuri2012,Tamuri2014}, or a Bayesian non-parametric random-effect approach~\citep{Rodrigue2010,Rodrigue2014,Rodrigue2016}.
+The work presented here relies on the Bayesian approach, as in \textit{PhyloBayes}~\citep{Rodrigue2010}.
 
 \subsection{Branch-traits model}
 \label{sec:BranchHetero}
-Many phenotypic traits can vary between species, either evolutionary parameters of interest, environmental variables or life-history traits \citep{Felsenstein1985,Romiguier2014}.
-However, the value of a trait along a branch is expected to be dependent on the value at the parent branch, such that abrupt shifts on trait value should be penalized \citep{Huelsenbeck2003,Seo2004}.
-Moreover, some of these traits might be correlated, for example an increase in $\Ne$ might be correlated with a decrease in body size \citep{Weber2014,Romiguier2014}.
+Many phenotypic traits can vary between species, either evolutionary parameters of interest, environmental variables or life-history traits~\citep{Felsenstein1985,Romiguier2014}.
+However, the value of a trait along a branch is expected to be dependent on the value at the parent branch, such that abrupt shifts on trait value should be penalized~\citep{Huelsenbeck2003,Seo2004}.
+Moreover, some of these traits might be correlated, for example an increase in $\Ne$ might be correlated with a decrease in body size~\citep{Weber2014,Romiguier2014}.
 
-Correlation of traits has previously been modeled using diffusive log-Brownian multivariate process along a phylogeny \citep{Seo2004,Lartillot2011}.
+Correlation of traits has previously been modeled using diffusive log-Brownian multivariate process along a phylogeny~\citep{Seo2004,Lartillot2011}.
 Under a log-Brownian process, the logarithm of the trait value at a given node of the tree is normally distributed, with mean equal to the log-value at parent node, and the standard deviation is proportional to the branch size (in unit of time).
 
 In a multivariate process, traits are modeled together as a vector-valued time-dependent random process, parameterized by a covariance matrix between traits~($\Covariancematrix$).
 Altogether, values of the multivariate process at each node of the tree, a covariance matrix and divergence times are jointly estimated.
 Once the traits are sampled at all nodes, traits along each branch is taken as the average (see Methods) between extremities of this branch.
-The work presented here implemented the branch-heterogeneity in a Bayesian context, as in \textit{CoEvol} \citep{Lartillot2011}.
+The work presented here implemented the branch-heterogeneity in a Bayesian context, as in \textit{CoEvol}~\citep{Lartillot2011}.
 Technically, the precision matrix (invert of covariance matrix) is distributed as an invert Wishart, meaning the \gls{prior} matrix is diagonal pushing the correlation coefficients toward $0$.
 
 \subsection{Mutation-selection-random drift model}
@@ -194,7 +194,7 @@ The simulated branch length and $\Ne$ could be robustly recovered by the inferen
 
 However, if the results are encouraging to apply the method on empirical data, we rely on the assumption of site-independent fitness landscape, which is almost certainly broken in practice.
 Finally, we implemented a more complex, site-dependent fitness landscape accounting for the $3$-dimensional structure of protein and interaction between sites.
-In such a model, the folding energy of the protein determines the probability of being in the folded state, a proxy for fitness \citep{Goldstein2017}.
+In such a model, the folding energy of the protein determines the probability of being in the folded state, a proxy for fitness~\citep{Goldstein2017}.
 During a simulation, at a particular \gls{codon} site, the fitness landscape is dependent on the actual amino-acids present in the vicinity of this particular site.
 Our inference framework could recover the simulated branch length, but had more difficulties to retrieve the simulated $\Ne$ in the context of site-dependent epistasis (Figure~\ref{fig:simulations}, panel E \& F)
 
@@ -219,14 +219,14 @@ Our inference framework could recover the simulated branch length, but had more 
 		Brownian processes along the tree are represented for effective population size~($\Ne$, left panel) and mutation rate per site per unit of time~($\mu$, right panel).
 		Mean values of \acrshort{MCMC} (after burn-in) are obtained at each node of the tree, hence a gradient can be extrapolated along each branch.
 		At each node, the inner circle represent the lower bound of the \acrshort{MCMC} $90\%$ confidence interval, and the outer circle represent the upper bound, as to give visual input into the range of estimation.
-		$\mu$ spanned almost $2$ order of magnitude, and if we assume the root to be $105$My old \citep{Kumar2017}, the re-scaled mutation rate per site per year in extant species is between $\smash{1.1e^{-10}}$ and $\smash{7.8e^{-9}}$.
+		$\mu$ spanned almost $2$ order of magnitude, and if we assume the root to be $105$My old~\citep{Kumar2017}, the re-scaled mutation rate per site per year in extant species is between $\smash{1.1e^{-10}}$ and $\smash{7.8e^{-9}}$.
 		$\Ne$ at the root of the tree is arbitrarily set to $1$, and all values are relative to the root.
 	}
 	\label{fig:mammals_popsize_and_mutrate}
 \end{figure}
 
-We reconstructed long-term changes of effective population size~($\Ne$) and mutation rate per site per unit of time~($\mu$) in placental mammals, with alignments extracted from OrthoMam database \citep{Ranwez2007,Scornavacca2019}.
-Life-history traits (LHT) for longevity, age at maturity and weight were obtained from AnAge database \citep{DEMAGALHAES2009,Tacutu2012}.
+We reconstructed long-term changes of effective population size~($\Ne$) and mutation rate per site per unit of time~($\mu$) in placental mammals, with alignments extracted from OrthoMam database~\citep{Ranwez2007,Scornavacca2019}.
+Life-history traits (LHT) for longevity, age at maturity and weight were obtained from AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
 We focused our analysis on 77 taxa for which information is available for at least one LHT.
 
 In the result of this analysis (Figure~\ref{fig:mammals_popsize_and_mutrate}), we visually observe a global trend of increased $\Ne$ throughout the tree around $90$ and $60$ My.
@@ -234,7 +234,7 @@ We also observe $\Ne$ to be lower in \textit{Cetacea} and \textit{Camelidae}, wh
 In some clades we can see a decrease along a single branch of the tree, for example \textit{Heterocephalus glaber} or \textit{Acinonyx jubatus}.
 
 The analysis of the covariance matrix, discarding phylogenetic inertia, shows that $\Ne$ is positively correlated~($r^2 = 0.44$) with mutation rate per unit of time (Table~\ref{fig:mammals_correlation}), which is compatible with the assumption that large population are small-sized and with a shorter generation time.
-Moreover the \gls{effective-population-size} is negatively correlated with longevity, age at maturity and weight (Table~\ref{fig:mammals_correlation}), consistent with the observation that larger population have small-sized and short-lived individuals \citep{Galtier2016,Romiguier2014}.
+Moreover the \gls{effective-population-size} is negatively correlated with longevity, age at maturity and weight (Table~\ref{fig:mammals_correlation}), consistent with the observation that larger population have small-sized and short-lived individuals~\citep{Galtier2016,Romiguier2014}.
 The partial-correlation coefficients (Supplementary Materials) are not significantly different from $0$.
 
 However, if the trend of $\Ne$ would be in the right direction, the magnitude of inferred $\Ne$ is vastly underestimated by our method, with a ratio of $2.5$ between the maximum and minimum $\Ne$ in extant species (Figure~\ref{fig:mammals_popsize_and_mutrate}).
@@ -282,7 +282,7 @@ Thought modeling epistasis in an inference framework is a complex biological, ma
 % None equilibrium properties 
 
 % Perspective : \gls{codon} bias
-Our model also assume no bias in \gls{codon} usage, though the strength of selection for a particular \gls{codon} (or set of codons) among all synonymous possible \glspl{codon} has been proved to be substantial \citep{Plotkin2011}.
+Our model also assume no bias in \gls{codon} usage, though the strength of selection for a particular \gls{codon} (or set of codons) among all synonymous possible \glspl{codon} has been proved to be substantial~\citep{Plotkin2011}.
 
 This assumption can be relaxed by implementing \gls{codon} preferences that are shared across all sites, such that $41$ more parameters would be required in total.
 Such implementation would provide the advantage of estimating \gls{codon} usage biases, and of accounting for its confounding effect while estimating selection and $\Ne$.
@@ -301,7 +301,7 @@ Even though our method requires more computing resources to estimate fitness pro
 
 % Comparison with other methods
 Other methods have recently been developed to reconstruct phylogenetic changes in $\Ne$.
-For example, a new method (preprint) uses \acrshort{DNA} coding sequences, a distribution of fitness effects, polymorphism and generation-time for some present-day species to reconstruct $\Ne$ along the phylogeny \citep{Brevet2019}.
+For example, a new method (preprint) uses \acrshort{DNA} coding sequences, a distribution of fitness effects, polymorphism and generation-time for some present-day species to reconstruct $\Ne$ along the phylogeny~\citep{Brevet2019}.
 This method also based on the quasi-neutral theory of evolution allows to estimate the absolute value of $\Ne$, even for species where the polymorphism is unavailable.
 Here our method requires neither generation time nor polymorphism, and the fitness effects are not constrained to a specific distribution.
 However, the inferred values are solely relative and the computation requires more computing resources.
@@ -310,8 +310,8 @@ However, the inferred values are solely relative and the computation requires mo
 Estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\Ne$ and relative strength of drift, where ultimately the signal of drift comes from the relative rate of \glspl{substitution}.
 However, they do not leverage a second aspect of $\Ne$ at the population level, which determines the \gls{neutral} genetic diversity that can be maintained~($\pi=4\Ne \mu \tau$, where $\tau$ is the generation time).
 Hence, \gls{polymorphic} data give us independent empirical estimates of $\Ne$, based on the assumption that mutations are \gls{neutral}.
-In principle, our mechanistic model could be extended to leverage polymorphism within species in the case of differential selection, a method which has been previously pioneered in the case of $3$ species and using a distribution of fitness effect \citep{Wilson2011}.
-More generally, the \gls{nearly-neutral} theory of evolution defines a long-term $\Ne$, which might be different from the short-term definition of $\Ne$ \citep{Platt2018}.
+In principle, our mechanistic model could be extended to leverage polymorphism within species in the case of differential selection, a method which has been previously pioneered in the case of $3$ species and using a distribution of fitness effect~\citep{Wilson2011}.
+More generally, the \gls{nearly-neutral} theory of evolution defines a long-term $\Ne$, which might be different from the short-term definition of $\Ne$~\citep{Platt2018}.
 Thus we could ask if empirical independent estimations of $\Ne$ from within species (polymorphic diversity) and between species (\glspl{substitution}) are congruent, and if not what are the mechanisms responsible for this discrepancy.
 
 % Relation to ecology
@@ -592,9 +592,9 @@ On the other hand, this requires to implement more complex \acrshort{MCMC} proce
 2) re-sampling the parameters conditionally on $\subhistory$.
 
 To implement the mapping-based \acrshort{MCMC} sampling strategy, we first sample the detailed \gls{substitution} history $\subhistory$ for all sites along the tree.
-Several methods exist for doing this \citep{Nielsen2002,Rodrigue2008}.
+Several methods exist for doing this~\citep{Nielsen2002,Rodrigue2008}.
 Then, we write down the probability of $\subhistory$ given the parameters, and finally, we collect all factors that depend on some parameter of interest and make some simplifications.
-This ultimately leads to relatively compact sufficient statistics (Supplementary Materials for the different sufficient statistics used by our model) that are fast to evaluate \citep{Irvahn2014,Davydov2016}.
+This ultimately leads to relatively compact sufficient statistics (Supplementary Materials for the different sufficient statistics used by our model) that are fast to evaluate~\citep{Irvahn2014,Davydov2016}.
 
 As an example, making an \acrshort{MCMC} move on the $\Ne$ at a given node of the tree is drastically faster since only the mapping-based \gls{likelihood} (using path sufficient statistics) at the neighboring branches of the node is necessary, and not computing the \gls{likelihood} for the all tree.
 \\
@@ -621,9 +621,9 @@ Drift is modeled as a multinomial distribution on the \gls{allele} counts.
 We assumed that the \acrshort{DNA} sequence is composed of exons, with no linkage between exons, and total linkage of sites within an exon.
 Moreover, in \textit{SimuPoly} $\Ne$ can also be modeled as a sum of a log-Brownian process and an Ornstein-Uhlenbeck process.
 The log-Brownian motion takes into account long-term fluctuations, while the Ornstein-Uhlenbeck can take into account short fluctuations of $\Ne$.
-In \textit{SimuDiv} and \textit{SimuPoly} each \gls{codon} site contribute independently to the fitness depending on the encoded amino-acids, through site-specific amino-acid fitness profiles experimentally determined \citep{Bloom2017}.
+In \textit{SimuDiv} and \textit{SimuPoly} each \gls{codon} site contribute independently to the fitness depending on the encoded amino-acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
 However, in \textit{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state (Supplementary Materials).
-\textit{SimuFold} is in practice a C++ adaptation of a Java code previously published \citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
+\textit{SimuFold} is in practice a C++ adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
 
 The simulators written in C++ are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}
 

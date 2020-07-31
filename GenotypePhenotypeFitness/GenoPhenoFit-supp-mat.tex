@@ -130,7 +130,7 @@ or equivalently
 P_{U}(x) & \simeq e^{\beta(\alpha + \gamma \Nsite x)}
 \end{align}
 \subsection{Fitness equal to folded fraction}
-A first model is to assume that the fitness is equal to the folded fraction \citep{Goldstein2013}:
+A first model is to assume that the fitness is equal to the folded fraction~\citep{Goldstein2013}:
 \begin{gather}
 f(x) = \frac{1}{1 + \e^{\beta(\alpha + \Nsite \gamma x)}}. \label{eq:fitness}
 \end{gather}
@@ -163,7 +163,7 @@ Finally, $\omega$ susceptibility after a change in $\Ne$ is simply:
 which is independent of $x\eq$, meaning $\omega$ is linearly decreasing with $\Ne$ in log space.
 This model, however, does not express the fact that selection is typically stronger for proteins characterized by higher levels of expression. 
 \subsection{Selective cost proportional to amount of misfolded protein}
-A slight variation is to assume that the selective cost itself is proportional to the total amount of misfolded protein  \citep{Drummond2005a, Wilke2006, Drummond2008, Serohijos2012}. For a given protein with expression level $y$:
+A slight variation is to assume that the selective cost itself is proportional to the total amount of misfolded protein ~\citep{Drummond2005a, Wilke2006, Drummond2008, Serohijos2012}. For a given protein with expression level $y$:
 \begin{align}
 \ln f(x) = - A y P_{U} (x)
 \end{align}
@@ -211,10 +211,10 @@ Moreover, $\omega$ susceptibility after a change in $\Ne$ is again the same as b
 \frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \Nsite \gamma}.
 \end{align}
 \subsection{Cost-benefit argument}
-The cost-benefit argument \citep{Beaulieu2018} is based on two assumptions 
+The cost-benefit argument~\citep{Beaulieu2018} is based on two assumptions
 \begin{enumerate}
  \item the expression level is regulated so that the total number of \emph{functional} macromolecules is maintained at a target level $y$;
- \item the log-fitness is proportional to the ratio of the \emph{total} cost of expression over the benefit contributed by the protein .
+ \item the log-fitness is proportional to the ratio of the \emph{total} cost of expression over the benefit contributed by the protein.
 \end{enumerate}
 Specifically, the protein is assumed to be regulated so as to reach a level of expression of functional proteins of $y$, and contributes a total benefit $B$ (which depends on its specific function). Given that only a fraction $P_{F}(x) = 1-P_{U}(x)$ of the total amount of protein expressed by the cell is functional, the total cost of expression $C$ is then equal to:
 \begin{align}
@@ -306,7 +306,7 @@ Finally, applying the main result of this work to the present case allows us to 
 \end{align}
 Note that, here, we have used $K=2$ (hydrophobic and polar residues are roughly equally likely to occur by mutation), and assumed $x^* << 1$. A more accurate formula could be used without this latter assumption. In any case, $\chi$ is now dependent on $x^*$, through $\lambda$.
 \subsection{Empirical calibration}
-Based on empirical estimates \citep{Zhang2008}. The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$. The mean value for $E_{ij}$ is 7 kT, with a standard deviation of $\sigma = 1.8$ kT. Assuming that this standard deviation of $\pm 1.8$ kT is contributed by $\pm 6$ mutations gives $\gamma = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole. Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a much stronger response than under the model based on conformational stability.
+Based on empirical estimates~\citep{Zhang2008}. The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$. The mean value for $E_{ij}$ is 7 kT, with a standard deviation of $\sigma = 1.8$ kT. Assuming that this standard deviation of $\pm 1.8$ kT is contributed by $\pm 6$ mutations gives $\gamma = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole. Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a much stronger response than under the model based on conformational stability.
 
 \section{Empirical estimation of susceptibility}
 
@@ -412,7 +412,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[$\omega$ susceptibility with gamma distributed selection coefficient]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), under a model of gamma distributed selection coefficient.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	In the model of gamma distributed fitness effect, $\omega$ at equilibrium is strongly dependent on log-$\Ne$ where the slope correlation is proportional to the inverse of the shape parameter of the gamma distribution \citep{Welch2008}.
+	In the model of gamma distributed fitness effect, $\omega$ at equilibrium is strongly dependent on log-$\Ne$ where the slope correlation is proportional to the inverse of the shape parameter of the gamma distribution~\citep{Welch2008}.
 	}
 \end{figure}
 
@@ -422,7 +422,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[$\omega$ susceptibility with amino-acid fitness profiles]{
 	$\omega$ at equilibrium as a function of $\Ne$ (relative), under a model of amino-acid fitness profiles.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	In the model of site-wise amino-acid fitness profiles taken from \citep{Bloom2017}, $\omega$ at equilibrium is strongly dependent on log-$\Ne$.
+	In the model of site-wise amino-acid fitness profiles taken from~\citep{Bloom2017}, $\omega$ at equilibrium is strongly dependent on log-$\Ne$.
 	}
 \end{figure}
 
@@ -554,7 +554,7 @@ DNA mutations changing a genotype can result in a change of \gls{Phenotype}, and
 From a specific genotype, all the possible mutations thus result in a distribution a phenotypic effect (DPE) and fitness effects (\acrshort{DFE}).
 The DPE and \acrshort{DFE} are not known a priori, but are the resulting consequence of the mutation-selection-drift balance.
 Empirically, these distributions are of particular importance since they can be obtained experimentally or inferred with other data.
-As an example, \acrshort{DFE} can be inferred from polymorphism dataset \citep{Eyre-walker2007, Galtier2016}. 
+As an example, \acrshort{DFE} can be inferred from polymorphism dataset~\citep{Eyre-walker2007, Galtier2016}.
 Moreover, the distribution of $\deltadeltaG$ for novel mutations can be obtained experimentally.
 
 \begin{figure}[H]

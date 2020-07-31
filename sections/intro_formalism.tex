@@ -1,126 +1,10 @@
 \thispagestyle{empty}
-\chapter{Molecular evolution}
+\chapter{Mutation, selection and drift formalism}
 {
 	\hypersetup{linkcolor=GREYDARK}
 	\minitoc
 }
-
-\label{sec:intro}
-
-From the discovery of evolution to today knowledge, the understanding of the mechanisms from which the diversity of life and complexity emerges has seen dramatic changes, and revolution.
-One such revolution is called molecular evolution, a recent scientific fields, emerging at the crossroad of evolutionary biology which had seen tremendous theoretical development in the nineteenth and twentieth century, and molecular biology which recruited advances in chemistry and had seen many technical revolutions.
-Being both empirical and theoretical biology, molecular evolution borrows strength from the amount of empirical data available in molecular biology, and the predictive power of evolutionary biology.
-From the difference of molecular sequences observable between individuals of the same population, or difference of sequences between species, we can wonder what are the processes generating such diversity?
-What are the forces governing such evolutionary mechanisms?
-Can we quantify the relative strength of these forces, shaping both nowadays populations but also ancient and sometimes extinct lineages?
-In a nutshell, molecular evolution leverages the patterns of sequences distribution carried by individuals in order to uncover evolutionary mechanisms shaping organisms evolution and their ancestral lineages, while at the same time shining light on cellular and molecular processes allowing organism to live and reproduce.
-
-\section{Historical perspective}
-
-This section will recall theoretical frameworks, assumptions and limitations on which molecular evolution is based.
-It will emphasis the milestones and their respective contribution, while doing its best to highlight the undertaken paths which have been forgotten with time.
-It is a modest attempt neither exhaustive nor accurate, imprinted with ideology of our current society on how we perceive and interpret past discoveries. 
-Moreover, this introduction will highlight a few names, while the bulk of the rigorous assessment and develpoment of molecular evolution has been done by unmentioned and sometimes forgotten scientists.
-
-\subsection{Population-genetic}
-Molecular evolution is theoretically build upon the framework of population-genetic, which in turn historically emerged as an unifying theory between Mendelian inheritance and quantitative genetic, in the early twentieth century.
-Originally,
-Johann Gregor Mendel% (1822-1884)
- established the statistical laws governing heredity of discrete characters through  hybridisation experiments on the garden pea plant \textit{Pisum sativum} between 1857 and 1864.
-This model of inheritance was rediscovered and confirmed in the early twentieth century independently by botanists
-Hugo de Vries% (1848-1935)
-, Carl Correns% (1864-1933)
- and Erich von Tschermak% (1871-1962)
-\ \citep{dunn2003gregor}.
-
-Models of Mendelian inheritance where deemed incompatible with models of biometricians, while the crux of the argument revolved around the evolution of continuous characters\footnote{Incompatibility between continuous and discrete evolution can actually be traced back to debates between Jean-Baptiste de Lamarck (1744-1829) defending gradual changes and Georges Cuvier (1869-1932) supporting punctual catastrophic changes, in the late eighteenth century.}.
-Broadly speaking, supports of Mendelian genetic believed that evolution was driven by mutations transmitted by the discrete segregation of \glspl{allele}, which biometricians rejected on the basis that it would necessarily imply discontinuous evolutionary leaps \citep{bowler2003evolution}.
-On the other hand, biometricians claimed that variation was continuous, which mendelian geneticist rejected on the basis variations measured by biometricians were too small to be subject to selection \citep{provine2001origins}.
-
-Statistician Ronald A.\ Fisher reconciled both theories, first by proving mathematically that mutiple discrete loci could result in a continuous variation \citep{fisher1919xv}.
-Secondly, \citet{fisher1930genetical} and \citet{haldane1932causes} proved that natural selection could change \gls{allele} frequencies in a population. 
-Fisher and Haldane hence articulated selection on continuous traits with discrete underlying genetic inheritance, completed by the work of \citet{wright1932roles} on combinations of interacting genes.
-Altogether, they laid the foundations of population genetics, a discipline which basically integrated Mendelism, Darwinism and biometry, easing the debate between continous and gradual evolution\footnote{This debate was revived by paleontologists \citet*{Gould1972}. As of today it is admitted that both macroevolutive patterns of ponctual and gradual changes can be found.}.
-
-The emergence of this new field of study was the first step towards the development of a unified theory of evolution named the ‘modern synthesis’ \citep{huxley1942evolution}, defined on the basis that natural selection acts on the heritable variation supplied by mutations \citep{mayr1959where,stebbins1966processes,dobzhansky1974chance}.
-
-\subsection{Central dogma of molecular biology}
-During the theoretical development of population-genetic, the support of heredity was largely unknown, the terminology of gene, \glspl{allele} and loci where theoretical and not grounded on chemical first principles.
-The first evidence that deoxyribonucleic acid (\acrshort{DNA}) carries genetic information is in the work of \citet{Avery1944}, after bacteria treated with a deoxyribonuclease enzyme failed to transform, while otherwise transforming, even when treated by protease.
-The chemical composition of \acrshort{DNA} was later refined by \citet{Chargaff1950}, whom found that the amounts of adenine (A) and thymine (T) in \acrshort{DNA} were roughly the same as the amounts of cytosine (C) and guanine (G).
-Most importantly, the relative amounts of guanine, cytosine, adenine and thymine bases were found to vary from one species to another, which provided evidence that \acrshort{DNA} could encodes genetic information, via a four letter molecular alphabet.
-
-Ultimately, the double-helix structure of \acrshort{DNA} was deciphered by \citet{franklin1953molecular}, \citet{watson1953molecular} and \citet{wilkins1953molecular}.
-Chemically, \acrshort{DNA} consists of two interwoven strands of nucleotides, each of which contains an identical phosphate group, an identical $5$-carbon sugar (deoxyribose) and a variable base which define the four nucleotide: T, C, A and G.
-Apart from being different molecules, bases are also hybridizing via hydrogen bonds, which are weak attractive forces between hydrogen and either nitrogen or oxygen.
-This hybridization explains that the two strands of \acrshort{DNA} are interwoven due to base pair complementarity, where a specific base on one strand is aligned with its complement on the other strand.
-More precisely, the complementary bases are:
-\begin{itemize}
-	\item A with T, through two hydrogen bonds.
-	\item G with C, through three hydrogen bonds which are stronger than A-T bonds. 
-\end{itemize}
-It is important to note the two strands are oriented, a constrained imposed by the asymmetry of the deoxyribose, where one end is called the $5'$ end and the other $3'$ end\footnote{The naming come from the numbering of carbon atoms of the asymmetric sugar molecule ($5$ of them) on which the end is attached.}. 
-This means that two strands will only hybridize if they are reverse complement, such that that the sequence of one strand when read from $5'$ to $3'$ is complementary to the sequence of the other strand read from $3'$ to $5'$.
-
-Ultimately, the information contained by each strand of \acrshort{DNA} is redundant, and this redundancy is leveraged during replication of the \acrshort{DNA}.
-During the cell cycle, the \acrshort{DNA} double strand is split into its two separate strands, each of them used as a template to synthesize its complementary strand, resulting in two copies of the original double-stranded \acrshort{DNA}.
-
-Once understood that molecular structure of \acrshort{DNA} and its role has a support of heredity, the guest to understand the transfer of information between \acrshort{DNA} and protein \cite{Crick1958} resulted in the determination of the genetic code, the translation table from triplet of nucleotides (\gls{codon}) to amino-acids, and of the central dogma of molecular biology detailing the process of protein synthesis \cite{Crick1970}.
-Proteins are synthesized in a two-step process called gene expression.
-First, an messenger ribonucleic acid (mRNA) transcript is synthesized from \acrshort{DNA}, containing the same information since \acrshort{RNA} is also formed by 4 bases, where thymin (T) is replaced by uracil (U), though the three other bases are the same. 
-Second, mRNA is matured and spliced to form a mature \acrshort{RNA}, which is read and interpreted by ribosomes to synthesize a protein in a process called translation. 
-More broadly, the central dogma of molecular biology states that the determination of sequence from nucleic acid to nucleic acid, or from nucleic acid to protein may be possible, but transfer from protein to protein, or from protein to nucleic acid is impossible.
-It is worth noting that the same \acrshort{DNA} sequence can produce many different proteins through a process called alternative splicing.
-
-As the support of heredity, \acrshort{DNA} gained a central role in evolutionary biology, and development of polymerase chain reaction (PCR), Sanger sequencing and their subsequent refinement revolutionized the availability of empirical data on which to test the theoretical prediction and development of population genetics.
-
-\subsection{Neutral theory}
-
-Although an unifying theory, population-genetics remained rather theoretical for some time because it deals with the concept of gene frequencies and has no direct way to connect unambiguously to conventional dataset obtained at the phenotypic level.
-With the advent of molecular genetics, it became possible to study the variability of nucleic and protein sequences within a species, as well as in related organism such as to estimate the rate at which allelic genes are substituted.
-
-From protein sequences in related species, it was then observed that a given protein rate of \gls{substitution} is about the same in many diverse lineages, where the \glspl{substitution} seemed to be random rather than having a specific pattern.
-Additionally, from \acrshort{DNA} sequences in related species, it was observed that the overall rate of \acrshort{DNA} \glspl{substitution} is very high, of least one nucleotide base per genome every two years in a mammalian lineage.
-On the other hand, from the variability of protein sequences in the same population, electrophoretic methods suddenly unveiled a wealth of genetic variability, such that the proteins produced by a large fraction of the genes in diverse organisms were found to be \gls{polymorphic}, and in many cases the protein polymorphism had no visible phenotypic effects and no obvious correlation.
-Altogether, these observation lead Motoo Kimura to propose the \gls{neutral} theory of molecular evolution \citep{kimura1968evolutionary,kimura1991neutral,kimura1986dna}.
-Neutral theory claimed that most mutations are adaptively \gls{neutral}, thus explaining the high protein variability observed in polymorphism dataset, where the diversity is supplied by a high mutational input.
-Subsequently, this selectively \gls{neutral} diversity is reduced by random extinction of \glspl{allele}, via the cumulative effect of genetic random sampling of \glspl{allele} at each generation.
-Although the likely outcome of a \gls{neutral} \gls{allele} in a population is it ultimate extinction, it is also possible that the random drift leads to a fixation of this \gls{allele} in the population.
-In this context, the frequency of the \gls{neutral} \gls{allele} fluctuates through generations, increasing or decreasing fortuitously over time, because only a relatively small number of \glspl{Gamete} are randomly sampled out of the vast number of male and female \glspl{Gamete} produced in each generation.
-As a consequence, effect of \gls{drift} at the level of a population results into divergence between lineages, where the majority of the nucleotide \glspl{substitution} in the course of evolution must then be the result of the random fixation of \gls{neutral} or mutants rather than the result of positive Darwinian selection.
-Tomoko Ohta later incorporated weakly selected mutation into the \gls{nearly-neutral} theory \citep{ohta1973slightly}, which posits that selective effect in the order of inverse population size are negligible and behaves neutrally.
-
-This theory sparked controversy between neutralist and selectionists.
-Selectionists maintain that a mutant \gls{allele} must have some selective advantage to spread through a species, although admitting that a \gls{neutral} \gls{allele} may occasionally be carried along by hitchhiking on a closely linked gene that is positively selected.
-Neutralists, on the other hand, argued that some mutants might spread through a population without having any selective advantage by random sampling, such that if a mutant is selectively equivalent to preexisting resident \glspl{allele}, its fate is thus left to chance.
-As of today, it is widely accepted that both \gls{drift} and natural selection participate in the evolution of genomes.
-The controversy is no longer strictly dichotomous but rather concerns the quantitative contributions of adaptive and of non-adaptive evolutionary processes, and their articulation with regards to mutation, selection, drift, migrations, \gls{GeneConv}, and other evolutionary processes.
-
-\subsection{Molecular sequences rate of evolution}
-
-$\bullet$ The nearly-neutral theory resulted in prediction on the pace of evolution measurable in the divergence between molecular sequences in different organisms.
-
-$\bullet$ Prediction of intra-genetic diversity is out of the scope of this manuscript, as well as estimation of the rate of adaptation.
-
-$\bullet$ In protein coding DNA sequences, the rate of evolution of non-synonymous mutations can be normalized by the neutral rate of synonymous mutations.
-
-$\bullet$ Estimation of the rate of evolution along clades and across branches, across genes and between different sites of orthologous genes sought to uncover the determining factor of the rate of evolution.
-
-$\bullet$ Correlation of substitution rate with quantitative traits that are proxy of effective population size, thought with mixed results.
-
-$\bullet$ Correlation of substitution rate with gene expression, with highly expressed genes under stronger purifying selection.
-
-$\bullet$ Phenomenological models of evolution are qualitative, in the sens that they aggregate selection and drift through an unique parameter.
-
-$\bullet$ Firstly, by aggregating selection and drift into a sole parameter, is the mutational process estimated reliably?
-
-$\bullet$ How to formally quantify the rate of substitution as resulting from an process integrating mutation, selection and drift.
-
-$\bullet$ Mecanistic models are integrative, and substitution is parameterized directly in terms of mutation, selection and drift.
-
-$\bullet$ Theoretically, how does the rate of substitution depends on the fitness landscape?
-
-$\bullet$ What can be inferred on the structure of the fitness landscape, variation of drift and mutational bias from empirical data?
+\label{sec:intro-formalism}
 
 \section{Population-genetics of sequences}
 In molecular evolution, empirically observed sequences are leveraged to reconstruct ancestral lineages and unveils evolutionary mechanisms generating this diversity of sequences, or in other words, we are reconstructing ancestral path undertaken by organisms using available knowledge today.
@@ -158,7 +42,7 @@ Under the Hardy-Weinberg equilibrium of the population, the mean fitness in the 
 \overline{w} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
 &= 1 + 2ps,
 \end{align}
-And the relative fitness\footnote{Analogous explanation between absolute and relative fitness can be found in economics, where absolute fitness correspond to wealth generation, while relative fitness is just transfer of wealth from one to another \citep{Masel2016}.} of the three different genotypes are also shown in table \ref{table:fitnesses}. 
+And the relative fitness\footnote{Analogous explanation between absolute and relative fitness can be found in economics, where absolute fitness correspond to wealth generation, while relative fitness is just transfer of wealth from one to another~\citep{Masel2016}.} of the three different genotypes are also shown in table \ref{table:fitnesses}.
 
 Adults contribute to the next generation proportionally to the fitness of their genotype, and assuming a discrete generation and random mating between individuals, the genotype frequencies in the zygotes match the Hardy-Weinberg distribution if no recurrent mutation is allowed.
 Altogether, the frequency $p'$ of \glspl{Gamete} bearing the $A$ \gls{allele} produced by the adults passed down to the next generation is:
@@ -251,7 +135,7 @@ g(x, S) & = \dfrac{\left( 1 - \e^{- 2 s }\right) \left( 1 - \e^{-4 \Ne s(1-x)}\r
 
 This equation is solely valid for a gene with two \glspl{allele}, a configuration which is scarcely observed in empirical data since more than two variants of a gene are usually present in the population.
 However, its frequent to observe sites inside a gene sequence for which only two \glspl{allele} are segregating.
-This observation led to the development of modeling the Wright-Fisher process at multiple sites, by assuming that each site follow an independent process \citep{Sawyer1992}.
+This observation led to the development of modeling the Wright-Fisher process at multiple sites, by assuming that each site follow an independent process~\citep{Sawyer1992}.
 Strictly speaking, this model consider collection of independently evolving loci, meaning without linkage or equivalently considering free-recombination between sites.
 Moreover, the collection is considered infinite whereas the total mutation rate across this infinite collection is considered finite.
 Assumption of infinite sites is necessary to ensure that each mutation arise at a new site, with a Poisson distribution of rate $u$ per generation for the whole sequence.
@@ -267,7 +151,7 @@ Given the scaled selection pressure ($S=4 \Ne s$), and the scaled mutation rate 
 
 This site frequency spectrum can be confronted to empirical \gls{polymorphic} data in order to estimate the scaled selection coefficient of new mutations.
 However, a single selection coefficient for all sites and all mutations is biologically not realistic, and selection coefficients are usually modeled as a continuous distribution, known as the distribution of fitness effects of mutations (\acrshort{DFE}).
-Altogether, \acrshort{SFS} are empirically available and are function of the underlying \acrshort{DFE} which can thus be estimated \citep{eyre-walker_distribution_2006, eyre-walker_estimating_2009}. 
+Altogether, \acrshort{SFS} are empirically available and are function of the underlying \acrshort{DFE} which can thus be estimated~\citep{eyre-walker_distribution_2006, eyre-walker_estimating_2009}.
 
 \subsection{Wrightian fitness and selection coefficient}
 
@@ -305,7 +189,7 @@ Where the logarithm of Wrightian fitness ($w$) is often referred as Malthusian f
 The previous section recalled the Wright-Fisher process of evolution inside a population, relating selection and drift to the diversity of sequences, which empirically requires gene sequences for at least several individuals.
 However, modeling sequence evolution between different species along lineages is a different endeavor, where species are often simplified with a single representative sequence, collapsing the intra-specific diversity of sequences.
 Under this simplification, the inter-specific variability and evolutionary trajectory of sequences is described by the past history of point \glspl{substitution} along lineages.
-Such \glspl{substitution} along lineages can nonetheless be decomposed into two mechanisms, their origination through mutation and their final fate of fixation, a modeling approach broadly known as origin-fixation \citep{McCandlish2014}, illustrated in figure \ref{fig:point-process}.
+Such \glspl{substitution} along lineages can nonetheless be decomposed into two mechanisms, their origination through mutation and their final fate of fixation, a modeling approach broadly known as origin-fixation~\citep{McCandlish2014}, illustrated in figure \ref{fig:point-process}.
 Most importantly this decomposition of \gls{substitution} into mutation and fixation is able to conciliate population genetics and inter-specific protein evolution, where the \gls{substitution} history is parameterized by mutation, selection and drift.
 Under the field of phylogenetic, the origin-fixation framework is more commonly known as mutation-selection, where fixation of an \gls{allele} encompass the confounded effect of natural selection and drift (which are confounded factors, see equation \ref{eq:p-fix}), and origination correspond respectively to mutation.
 Since the scope of this manuscript emanates from phylogenetic, I will use the convention mutation-selection hereafter.
@@ -323,7 +207,7 @@ However, a more general mathematical description of the mutation-selection frame
 
 Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier sequences visited in the history of a lineage.
 This continuous-time Markovian process is valid if the mutation rate is sufficiently low, such that the event of a new mutations reaching fixation do so before the next one occurs. 
-Since the rate of \gls{substitution} is equal to $u$ (per generation) and that each \gls{allele} reaching fixation are segregating for an average of $4 \Ne$ generations \citep{Kimura1969}, this assumption is broadly applicable whenever the product of population size and mutation rate per generation for the sequence is lower than $1$ ($4 \Ne u \ll 1$).
+Since the rate of \gls{substitution} is equal to $u$ (per generation) and that each \gls{allele} reaching fixation are segregating for an average of $4 \Ne$ generations~\citep{Kimura1969}, this assumption is broadly applicable whenever the product of population size and mutation rate per generation for the sequence is lower than $1$ ($4 \Ne u \ll 1$).
 More strictly, the model would require not only that new mutations reaching fixation do so before the next \gls{substitution} occurs, but before any mutation occurs, even the one that ultimately become extinct.
 Since at each generation during the process an average of $2\Ne$ of mutations are produced, the point \gls{substitution} is valid under the condition that $8\Ne^2 u \ll 1$.
 In practice, the assumptions that $4 \Ne u \ll 1$ is a sufficient condition for the process to be well approximated.
@@ -438,7 +322,7 @@ Under the assumption that the mutational process is also reversible, the detaile
 \begin{align}
 \dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}} 
 \end{align}
-Altogether, the probability $\pi_{A}$ to find the population in \gls{allele} $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of \gls{allele} $A$, the population size, and details of the mutation process \citep{Sella2005,Mustonen2005}:
+Altogether, the probability $\pi_{A}$ to find the population in \gls{allele} $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of \gls{allele} $A$, the population size, and details of the mutation process~\citep{Sella2005,Mustonen2005}:
 \begin{align}
 \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum\limits_{A}\pi_{A} = 1, \\
 \iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum\limits_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
@@ -460,7 +344,7 @@ Together, in the case of a mutation-selection point \gls{substitution} process, 
 \langle \nu \rangle = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
 \end{equation}
 where the notation $\langle . \rangle$ denotes the statistical average.
-It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result automatically in $\langle \nu \rangle \leq 1$ \textcolor{GREEN}{[I haven't found a proof for this claim, not even in \citep{Mustonen2009}]}. 
+It worth noting that under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process will result automatically in $\langle \nu \rangle \leq 1$ \textcolor{GREEN}{[I haven't found a proof for this claim, not even in~\citep{Mustonen2009}]}.
 
 \begin{table}[H]
 	\centering
@@ -492,11 +376,11 @@ On the other hand, selection is the criteria on which a new state is deemed a di
 Fundamentally, mutation creates diversity and selection reduce this diversity by selecting the fittest ones.
 Finally, drift arbitrate between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
 
-I argue that this creation and reduction process is found at the core of several research disciplines, while the link between them is scarcely made \citep{Baeck1994, Eiben1998}. 
+I argue that this creation and reduction process is found at the core of several research disciplines, while the link between them is scarcely made~\citep{Baeck1994, Eiben1998}.
 
 \subsection{Metropolis-Hasting sampling}
 Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
-However, the Metropolis-Hasting procedure based on a Monte Carlo \gls{mc} can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density \citep{Hastings1970}.
+However, the Metropolis-Hasting procedure based on a Monte Carlo \gls{mc} can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
 This stochastic procedure which is based on three steps bears many similarities with the mutation-selection process:
 \begin{itemize}
 	\item Generate a stochastic candidate from the current state, analogous to the mutation.
@@ -508,15 +392,15 @@ Inherently, Metropolis-Hasting procedure is based on creating and subsequently r
 \subsection{The exploration-exploitation dilemma}
 Many mathematical, engineering and day-life problems are not about sampling a state space, but rather finding the optimal and best state given a criteria or a function to maximize.
 Naturally, we would prefer deterministic (strictly reproducible) rather than stochastic optimizing strategies to search for an optimal state.
-Unfortunately, whenever the state space is too large, often due to the curse of dimensionality, a greedy or heuristic search of an optimal state can performs atrociously \citep{Bellman1966}.
-In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithm \citep{Russell2010,Vikhar2017}.
+Unfortunately, whenever the state space is too large, often due to the curse of dimensionality, a greedy or heuristic search of an optimal state can performs atrociously~\citep{Bellman1966}.
+In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithm~\citep{Russell2010,Vikhar2017}.
 Inherently, they are based on two processes, one is stochastically creating diversity and exploring the state space, while the other is filtering the explored states and thus reducing the diversity.
 
 In the constrained case of a finite number of time or attempts to find the best outcome overall, the problem is best described by the multi-armed bandit problem. The name comes from imagining a gambler at a row of slot machines (sometimes known as one-armed bandits), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of trials.
 The gambler faces a dilemma at each trial, either reducing his regret by exploiting the best arm, or gaining information through exploration of other arms.
-The best strategy to solved this dilemma can be mathematically derived in numerous cases, and encompass a mixing strategies with a defined ratio of exploration and exploitation \citep{Auer2002,Kocsis2006,Furnkranz2006}.
-This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials \textcolor{GREEN}{[Hence the name a clinical arm, although I don't have any reference to back this claim]} \citep{Berger-Tal2014, March}. 
-An other application of the exploration-exploitation dilemma is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017, and out-compete Ke Jie, the world n°1 ranked player at the time \citep{Silver2017, Silver2018}.
+The best strategy to solved this dilemma can be mathematically derived in numerous cases, and encompass a mixing strategies with a defined ratio of exploration and exploitation~\citep{Auer2002,Kocsis2006,Furnkranz2006}.
+This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials \textcolor{GREEN}{[Hence the name a clinical arm, although I don't have any reference to back this claim]}~\citep{Berger-Tal2014, March}.
+An other application of the exploration-exploitation dilemma is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017, and out-compete Ke Jie, the world n°1 ranked player at the time~\citep{Silver2017, Silver2018}.
 AlphaGo has often been publicized and hyped in various media outlets that this feat was possible due to machine learning, more specifically due to convolutionnal neural networks.
 However, it is more scarcely mentioned that AlphaGo neural network is combined with an exploration-exploitation algorithm, or more specifically Monte Carlo tree search. 
 In practice, the convolutionnal neural network is used as a criteria to measure the advantage of a board configuration\footnote{Convolutionnal neural networks also use a stochastic gradient descend to reach convergence, inherently leveraging stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and path probed and trimmed is done via an exploration-exploitation procedure. 
@@ -531,15 +415,15 @@ Arguably, studying evolution while disregarding mutation is a sufficient approxi
 Sex and mutation are both generating new states and are part of the more general exploration facet.
 This explains why sex is favored in fluctuating environments.
 
-I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there as been many crossover between economics and evolution in the context of game theory.\footnote{Game theory had originally been developed to model economic actors behavior and strategies \citep{VonNeumann1947}, while latter being emerging as the framework of evolutionary dynamics, which explains the emergence of altruistic behaviours in Darwinian evolution \citep{Smith1973, Smith1982, Nowak2006}.}.
+I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there as been many crossover between economics and evolution in the context of game theory.\footnote{Game theory had originally been developed to model economic actors behavior and strategies~\citep{VonNeumann1947}, while latter being emerging as the framework of evolutionary dynamics, which explains the emergence of altruistic behaviours in Darwinian evolution~\citep{Smith1973, Smith1982, Nowak2006}.}.
 
 As an example of such insight from exploration-exploitation dilemma is on the understanding of relationship between mutation rate and chromosome size.
-It has been observed that organism with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant \cite{Drake1991}.
-An explanation for this pervasive negative correlation between mutation rate and genome size invoke the drift barrier hypothesis, where the correlation is inherently due to an underlying changes of \gls{drift} \citep{Lynch2016a}.
+It has been observed that organism with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant~\citep{Drake1991}.
+An explanation for this pervasive negative correlation between mutation rate and genome size invoke the drift barrier hypothesis, where the correlation is inherently due to an underlying changes of \gls{drift}~\citep{Lynch2016a}.
 The drift barrier hypothesis posits the selection operates to minimize the mutation rate, with the efficiency of such improvement eventually being overcome by random \gls{drift}, such that population with higher population size have smaller mutation rate. 
 On the other hand, higher population size induces stronger purifying selection which reduce genome size by expelling transposable elements.
 Altogether, both high mutation rate and smaller genome are consequences of higher population size.
 An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offsprings must balance the trade-off between exploration of new genotype and the reliable transmission of the current one.
-The genetic difference between parents and offsprings is the product of mutation rate and genome size, such that individuals whom are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations \citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
+The genetic difference between parents and offsprings is the product of mutation rate and genome size, such that individuals whom are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations~\citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
 
 

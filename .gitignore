@@ -12,6 +12,8 @@ out/
 /*/references/
 /references/*.pdf
 /references/*.eps
+/references/*.sty
+/references/*.bst
 /references/refs-cds.bib
 /references/refs-codons.bib
 /references/Backup*.bib
