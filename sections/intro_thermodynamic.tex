@@ -1,0 +1,144 @@
+\chapter{Protein thermodynamic}
+{
+	\hypersetup{linkcolor=GREYDARK}
+	\minitoc
+}
+\label{sec-intro:physic-protein}
+
+The previous chapters introduced codon models and methodology for parameters of mutation, selection and drift from empirical data. But so far, remained elusive on the nature of the fitness landscape underlying proteins, and did not yet question the causal determining factor for the strength of selection.
+This chapter, on the other hand, will seek to clarify the relationship between phylogenetic codon models and biophysics of protein, such as to uncover the underlying properties of the selective pressures shaping proteins coding \acrshort{DNA} sequences.
+Consequently, this chapter will present works at the interface between phylogenetic codon models and protein biophysics, where both fields at this interface are informed and augmented by the other. 
+At this interface, are the prediction of biophysical model of protein evolution compatible and confirmed by application of phylogenetic codon models on empirical data?
+Or the other way around, can phylogenetic codon model be informed by the underlying biophysics of protein?
+To answer such questions, the first section will present the theoretical foundations of protein biophysics, focusing on protein stability imposed by structural constrains.
+Subsequently, the second section will present how these models can explain in part the observed variation of selective constrains across genes, across sites and across branches observed with classical codon models.
+Thirdly, moving from classical to mechanistic codon model, the next section will discuss how fitness landscape estimated by mechanistic codon models can also be related to the underlying protein biophysics.
+Finally, phylogenetic models augmented and incorporating the underlying biophysics are presented and the implication of such models discussed.
+
+Although several reviews discussed this interface \citep{Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}, this chapter aims at evolutionary biologists familiar with phylogenetic codon models, already presented chapter \ref{sec:selection}, and how such models fit within the prediction of protein biophysics.
+
+% Also Sikosek T, Chan HS. 2014. Biophysics ofprotein evolution and evolutionary protein biophysics. J. R. Soc. Interface 11:20140419
+\section{Protein biophysics}
+
+The ability of a protein to performs its function depends on the stability of its 3-dimensional folding structure, but also on its ability to bind ligands and/or interact with other protein, both in terms of kinetic and stability.
+Theoretically, thermodynamics and kinetic of protein are expected to be related to its function, hence to selective constrains~\citep{Bastolla2017}.
+
+\subsection{Protein stability}
+
+Empirically, a large body of evidence indicates that the stability, or in other word the ability to fold in globular conformation, is a target of natural selection~\citep{Sikosek2014}.
+In thermodynamics, stability of a protein is determined by the Gibbs free energy of its folded conformations, in comparison to the free energy of the unfolded conformations.
+Similarly to the mutation-selection Markov process defined in the previous chapter, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformation are more stable) and population size to inverse temperature.
+As a result, probabilities of observing the protein in folded conformation, given by Boltzmann equation, is proportional to the exponential of free energy:
+\begin{align}
+p(G_F) = \frac{\e^{G_F / T}}{\mathcal{Z}},
+\end{align}
+where $\mathcal{Z}$ is a normalizing constant, summed over all possible conformations.
+In this context, mutations of the proteins stabilizes the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
+For example, a {transition} to an amino-acid that decrease by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
+As a result, protein stability can be increased by stabilizing folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design). 
+Theoretically, the stability of a protein can be computed with biophysical of protein, by modeling the atomic structure and the potential energy of contact between residues at the atomic level in 3-dimensionnal structure \cite{Goldstein2011}.
+On the other extreme, some models approximates the structure and dynamic of protein by 2-dimensional lattice models with regular pavement \cite{Noivirt-Brik2009}.
+In between these two extremes, many models can approximate with various degrees of liberties and parametrization the relationship from sequence to stability.
+The difficulty is to compute the normalizing constant, or in other words to sum over all possible conformations.
+Lattices models are designed to sum over all possible conformations, while more complex models typically approximate the distribution of unfolded Gibbs free energy using representative decoy conformations for which energy is computed.
+
+%- Ashenberg O, Gong LI, Bloom JD. 2013. Mutational effects on stability are largely conserved during protein evolution.
+%- Ding F, Dokholyan NV. 2006. Emergence of protein fold families through rational design.
+%- Echave J, Jackson EL, Wilke CO. 2015. Relationship between protein thermodynamic constraints and variation of evolutionary rates among sites.
+%- Kachroo AH, Laurent JM, Yellman CM, Meyer AG, Wilke CO, Marcotte EM. 2015. Systematic humanization of yeast genes reveals conserved functions and genetic modularity.
+%- Shah P, McCandlish DM, Plotkin JB. 2015. Contingency and entrenchment in protein evolution under purifying selection.
+
+
+\subsection{From stability to fitness}
+If the relationship from protein sequence to protein stability is within reach and can be obtained with various degrees of approximations, relationship from stability to fitness is more elusive and difficult to apprehend.
+First, it is known the protein stability relates to fitness, as demonstrated by a study of nearly 1000 mutations in beta-lactamase TEM-1~\citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations~\citep{Araya2012}.
+However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that result in purifying selection for destabilizing mutations.
+Finally, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
+
+\subsection{Aggregation avoidance}
+
+So far, proteins have been seen as independent machinery of the cells, however within the cramped intra-cellular space, proteins are not independent entities but are interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
+In non-specific interactions at the protein surface, stabilizing amino-acids are hydrophilic and destabilizing amino-acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
+The misinteraction avoidance hypothesis predicts that, compared with lowly expressed proteins, highly expressed proteins disfavour residues that promote misinteraction, exhibit a lower misinteraction probability per molecule and have higher conservation for misinteraction-avoiding residues.
+
+
+\section{Protein biophysics and classical codon models}
+
+Application of phylogenetic codon models to empirical data lead to estimation of the selective constrains across genes, sites, and branches, where such results have been previously related to the underlying protein biophysics.
+
+\subsection{Variation across genes}
+
+Phylogenetic codon can models readily be applied to independent gene alignments, and the properties of these genes can be related to selective constrain of the gene, measured by $\dnds$.
+As a result, increased availability of genomic data together with advancement of computing resources and algorithm prompted an extensive search for the major determining factor of a gene $\dnds$.
+Surprisingly, the functional importance of a protein, widely thought to approximate the level of functional constraint, has only a minor role, whereas protein expression level (mRNA concentraion) is found to be a major determinant~\citep{Zhang2015}.
+Most importantly, this relationship is negative such that genes with high expression level are under stronger purifying selection, or lower $\dnds$ at the level of the gene~\citep{Duret2000, Drummond2005a, Zhang2015}.
+In unicellular organisms, the mRNA concentration of a gene varies across cell cycle stages and environments, but most studies used data collected from the mid-log phase of growth under rich media, which presumably reflect average concentrations across cell cycle stages.
+In multicellular organisms, mRNA concentration data used are typically from the whole organism or are averaged from several examined tissues.
+Because of the strong correlation between mRNA and protein concentrations, the negative correlation between protein concentration and evolutionary rate is also strong.
+
+Importantly, theoretical models based on protein stability presented previously have been invoked to explain the negative correlation between $\dnds$ and expression level~\citep{Wilke2006, Drummond2008}, such that selection against protein misfolding induces abundant proteins to evolve to greater stability, where the protein is more constrained and evolve slowly~\citep{Serohijos2012}.
+
+However, even for those proteins of comparable expression levels, their $\dnds$ still span several orders of magnitude~\citep{Drummond2008}.
+Abundance likewise cannot account for the quasi log-normal distribution of $\dnds$ among genes in a genome, a fact observed from bacteria, yeast, worm, fly, mouse, and humans.
+These observations suggest that protein abundance, although a major determinant of $\dnds$, is not its only causal variable.
+
+\subsection{Variation across sites}
+
+Similarly to search for the determining factors of $\dnds$ at the gene level, extensive search had been conducted at the site level, within a protein.
+The major determinant of site-specific $\dnds$ proved to be relative solvent accessibility (RSA), where site with higher RSA display a lower $\dnds$~\citep{Ramsey2011}.
+It was later shown that the number of native inter-residue contacts formed by a protein site, which is negatively correlated with the RSA, is a stronger predictor of site-specific $\dnds$~\citep{Yeh2013}.
+
+The observations that surface residues of globular proteins undergo \gls{substitution} more rapidly than those in the core is generally attributed to the fact that natural selection imposes stronger constraints on buried sites.
+In fact, selection for protein stability induces stronger constrains on amino acid residues located inside a protein structure (that is, core residues), which have more central roles than surface residues in the Gibbs free energy of folding.
+
+Altogether, $\dnds$ changes dramatically between exposed and buried sites in such a way that buried sites tend to evolve more slowly than exposed sites, compatible with model of selection for protein stability~\citep{Echave2016}.
+Moreover, this relationship obtained by means of phylogenetic \gls{codon} models can be matched with experiment correlating protein site properties with allelic diversity within population.
+In this context, relative solvent accessibility was also found to be a major determinant of adaptive evolution, with most adaptive mutations occurring at the surface of proteins~\citep{Moutinho2019}.
+
+\subsection{Variation across branches}
+
+Under the assumption that proteins are under selection for their thermodynamic stability, with fitness being proportional to folding probability of the protein, computational experiments have led to the observation that $\dnds$ is essentially independent of $\Ne$~\citep{Goldstein2013}.
+This result in stark contrast with quasi-neutral theory of evolution that $\dnds$ should decrease with population size.
+This observation has been explained by the equimutability of the free energy of folding, namely that the distribution of changes in free energy of folding ($\deltadeltaG$) due to mutations is approximately independent of the current free energy ($\deltaG$), a necessary and sufficient conditions (under the condition that fitness is log-concave) to obtain independence between $\dnds$ and $\Ne$~\citep{Cherry1998}.
+
+Ultimately, studies presented in this chapter focus on the scaling of $\dnds$ to either protein abundance, or to effective population size, and also to relative solvent accessibility, but these relationship are not discussed altogether.
+Why is $\dnds$ supposedly independent of $\Ne$ but depend on protein abundance?
+For example are the relationship of $\dnds$ to protein abundance or to population size expected to be different?
+I argue the integration and unification between these levels is scarcely made.
+
+\section{Protein biophysics and mechanistic codon models}
+
+In experimental context, it is possible to mutate DNA of an organism and establish an experiment where the mutant compete with the resident in a specific medium, and the difference in growth of the two variants allows to determine the fitness impact of the mutation.
+In the case of free living unicellular organisms, such process can be automated to estimate selection coefficient of a wide variety of mutant, an experiment called deep mutational scanning.
+Technically, for each site of the protein, fitness of the 20 amino-acids can be experimentally determined and the resulting fitness landscape, also named preferences or fitness profile, can be estimated.
+Such experimentally determined fitness landscape are directly comparable to statistical estimates by phylogenetic codon models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
+\citet{Doud2015} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed nonsite-specific alternatives in fitting phylogenies of proteins from human, swine, equine, and avian influenza. 
+Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
+
+$\bullet$ Figure with experimentally determined fitness profiles and with fitness profiles estimated by phylogenetic codon models.
+
+Even though it is possible to compare estimated fitness profiles under phylogenetic codon models with predicted profiles under biophysical modeling, I argue that this congruence and confrontation is scarcely made.
+
+\section{Phylogenetic model accounting for protein thermodynamic}
+
+It has long been realized that inter-residue interactions within the protein conformation lead to amino acid fixation probabilities that are dependent upon the amino-acid present at other sites.
+More generally, site-specific fixation probabilities may change along an evolutionary trajectory because the selection coefficient of a given mutation may depend on the specific sequence background in which it occurs \cite{Goldstein2016}.
+However, either classical codon models or mechanistic codon models rely on the assumption of site-independence, where each site of the protein is modeled as an independent Markov process.
+Accordingly, each site is considered separately, and defines an independent Markov substitution process along the branches of a tree.
+
+From a modeling and inference perspective, accounting for epistasis is challenging both in terms of parametrization and computational complexity~\citep{Manhart2014}.
+Means of relaxing this assumption have been pursued, usually with dependence introduced between a limited number of sites (Felsenstein and Chruchill, 1996).
+In particular, models explicitly treating protein structure and site inter-dependencies have been developed, recruiting a coarse-grained protein structure conjointly to a statistical potential scoring the compatibility between sequence and structure, in order to evaluate the probability of fixation of a given mutation \citep{Rodrigue2005}.
+Subsequently, methods to assess the statistical fit of such heavily parameterized models had been developed \citep{Rodrigue2009}, as well as refinement of statistical potentials \citep{Kleinman2010}.
+These structurally constrained models have been shown to fit data better than the corresponding models that ignore protein structure.
+However, some of the available site-independent phylogenetic codon models still better fit to the data than structurally constrained models, possibly indicating that alternatives models should be explored in order to better incorporate structural constrain and protein biophysics.
+
+Alternatively, assumption of site-independence can be understood as considering that substitution process at the level of site are averaged over time, where the dependencies to other sites are integrated over the course of the process.
+As a result, statistical method relying on site-independent processes while accounting for other sites consist in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
+Projecting a joint process of several sites into a single site process leverages mean-field theory developed in statistical physics, and as been used to developed phylogenetic models accounting for protein structure \citep{Chi2018} and protein stability \citep{Arenas2015a, Arenas2017}.
+Unfortunately, these methods are not parameterized directly in terms of parameters of evolution, namely mutation and effective population size, and the estimated fitness parameters can not be related to empirically determined parameters. 
+
+Finally, models of protein biophysics are appealing to evolutionary biologists since they are based on theoretical ground and can also be confronted to empirical data.
+However, integration of protein biophysics models into the framework of phylogenetic inference is difficult, and inference models have to balance the trade-off between complexity and simplicity.
+Moreover, I argue that phylogenetic model should be mechanistic in principle, or in other words they should be defined in terms of parameters that can be accessed by independent experimental means, such as to confront estimates.
+As an example, analytical models of protein biophysics relating probability of fixation to molecular and thermodynamics parameters can be fitted to protein coding DNA sequences, and estimates can compared to their empirically determined counterpart, such as to verify and solidify the soundness of both phylogenetic inference and protein biophysics.

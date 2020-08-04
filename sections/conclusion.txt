@@ -1,0 +1,282 @@
+Voici mes commentaires sur ton plan de discussion.
+dans l’ensemble: assez riche, c’est bien.
+par contre, 
+- dans chaque section, il faudrait un peu plus construire une problématique, un argumentaire (attention à éviter la succession de propos non reliés entre eux).
+- ne pas juste répéter les conclusions de tes articles ainsi que des éléments de littérature, mais en tirer quelque chose de nouveau  
+- plus particuilèrement: bien mettre en valeur la portée de tes résultats
+(ce que cela permet de comprendre, à quoi ca peut servir, comment il faudrait procéder à partir de là)
+
+constant drift: -constant Ne
+>
+Discussion & perspectives
+>
+  1. Conclusion
+-not conclusion, but Summary of main results
+- une section ici sur les biais mutationnels? (sur comment exploiter ton article 1 en gros). A mettre plus tard si le temps.
+  2. Epistasis and entrenchment
+  3. Adaptive landscape
+  4. Unifying phylogenetic and population-genetics model
+  5. Mechanistic and phenomenological models
+  6. Reproducible science
+  7. Concluding remarks
+>
+
+==
+
+
+ Conclusion
+Summary of main results
+
+• Recall the frame and goals of the thesis (see chapter 5).
+
+• Mutational bias result in fixation bias in the other direction (which can be con-
+founded with gBGC).
+-bizarre de parler de gBGC dans un résumé de tes résultats, dans lesquels tu n’en parles pas du tout.
+• By modeling fixation bias, mutational bias can be inferred reliably.
+in the context of classical (i.e. non mechanistic) codon models.
+
+• It is possible to construct and implement models of evolution parameterized by
+drift across branch and selection across sites.
+• There is persistent signal in substitution patterns that relates to past drift.
+• However, assumptions on the properties of the fitness landscape, namely that each
+site is independent results in low sensitivity.
+
+je suis réservé sur l’utilisation du mot susceptibilité en dehors du contexte du formalisme mathématique.
+pas assez parlant (Laurent D). Response of omega to changes in Ne.
+• Susceptibility of dN /dS to changes in Ne is between two extremes, site independent
+fitness landscapes, and phenotype define for the whole sequence.
+-other conclusions about: a remaining gap between quantitative predictions of biophysical models and 
+empirical observations about response of omega to changes in Ne and expression level.
+
+
+>
+ Epistasis and entrenchment
+• A blind spot of the mutation-selection phylogenetic codon models
+at least those explored here, 
+is the assumption of
+site-independence,
+- this assumption is convenient, both computationally and statistically:
+computationally,
+each site is an independent Markov chain.
+(markov process)
+statistically,
+can use mixture models (Rodrigue) or penalized likelihood (Tamuri) to estimate site-specific amino-acid fitness profiles 
+In contrast:
+• From a modeling and inference perspective, accounting for epistasis is challenging
+both in terms of parametrization and computational complexity (Rodrigue et al., 2005;
+Manhart and Morozov, 2015b).
+-Is the main reason why epistatis generally ignored in phylogenetic models, and more particularly in codon models
+
+Empirically, however, 
+many reasons to believe that this hypothesis of site-independence is not adequate.
+Most notably -biophysics 
+
+et du coup, poser une problématique. Par exemple, dire que cela soulève plusieurs questions:
+- What are the consequences of epistatis on the molecular evolutionary process?
+- what are the consequences of ignoring epistatis in the contexte of phylogenetic inference?
+- How can we ultimately account for epistasis in inference?
+
+• Previous studies have argued that models of molecular evolution should consider
+the importance epistasis for its role in speciation, in modulating the rate of adaptation,
+and many other factors (Goldstein and Pollock, 2017; Miller et al., 2018).
+• I argue that epistasis also has an important role in the response of dN /dS to changes
+in Ne , both in terms of susceptibility and dynamic of the response.
+• Fundamentally, any model modeling fitness at the site level (without epistasis)
+implies a slow dynamic and a strong susceptibility, and adding epistasis to the model
+imply a faster dynamic and a weaker susceptibility.
+Intuitively, this effect originates in
+the fact that each site is to adapt independently to changes in Ne leading to overall
+a slow response (substitutions must affect all sites), and a strong susceptibility since
+each site will change its position in the fitness landscape. Taking into account epistasis,
+the burden of adapting to changes in Ne is shared by more sites, such that all of them
+don’t have to switch position.
+-bien, tu rappelles le message de l’article 3. Mais qu’as tu à en dire de plus?
+
+je pense que ce serait important de faire le lien avec l’article 2 
+tu vois bien une variation du Ne, faible, mais non nulle.
+c’est une retraduction sur le Ne de la question du omega dans l’article 3.
+
+
+je ne vois pas trop l'articulation entre entrenchement et le paragraphe précédent.
+• On the other hand, entrenchment due to specific epistasis has implication in terms
+of the assumption of a static fitness landscape.
+attention: globalement, le paysage est fixe, c’est juste que, en un site, il apparait comme variable.
+pourrait être bien précisé.
+Fitness landscapes are considered static,
+where the current sequence is sitting on the high ground of the fitness landscape, where
+by high ground I mean that the gap between peaks and current sequence is on the order
+of 1/Ne . With epistasis, fitness landscape is not static but dynamic, and for a specific
+site the proposed mutations are mostly from high ground into a fitness valley, where
+such valley is getting deeper and deeper with time. In other words the selection coeffi-
+cient of proposed mutations are getting increasingly negative with time, mimicking a
+dynamic fitness landscape.
+>
+la structure logique du paragraphe entrenchement n’est pas claire du tout.
+et, on peut se demander: finalement, tu veux en venir ou?
+là, tu ne fais que réexpliquer le concept d’entrenchement, mais en quoi ca s’articule avec tes résultats?
+
+
+ Adaptive landscape
+• Another blind spot of the mutation-selection is the assumption of a static fitness land-
+scape.
+
+
+ici, il faut un peu élaborer:
+- the mut-sel equilibrium under a fixed fitness landscape is essentially a nearly-neutral regime.
+-at eq., sequence is close to optimum
+-therefore, most mutations are deleterious
+-or compensate for previous deleterious mutations that got fixed (previous substitutions).
+
+Thus, conversely:
+adaptation can be characterized as a dynamic fitness landscape, or seascape (Mustonen, Lassig).
+• With seascape, fitness landscape is not static but dynamic, and for a specific site
+the proposed mutations are mostly from high ground into a fitness valley. Because of
+the movement of the landscape behind our feet, similarly to a Red-Queen dynamic, it is
+more likely to slide into a valley rather than on top of a peak when the landscape moving.
+In other words, because the current sequence is at marginal stability, and that they are
+more ways to move downward that upwards in the fitness landscape, any changes of the
+landscape results in lower elevation of the current coordinate. The resulting dynamic is
+that selection pushes the sequence to climb up the landscape constantly.
+-this way of formalizing adaptation, or positive selection, is more mechanistic than the classical perspective, in terms of omega>1.
+In particular, it is possible to have adaptation without having omega 1 (cet argument est développé dans l’article de Nic)
+
+
+ouh la la… c’est pas correctement construit tout ca, logiquement parlant:
+• This effect translates into a discrepancy between ω and ω0 , where ω ω0 is signature
+of adaption (Rodrigue et al., 2016).
+-tu ne peux pas vraiment le dire comme cela, directement en termes des paramètres d’un modèle.
+dire plutôt: translates into a higher dN/dS than expected if the fitness landscape was fixed.
+As a result, the assumption of static landscape can
+be turned into an advantage, where ω0 is the null model of absence of adaptive evolution,
+in the sens that the fitness landscape is not moving.
+-mal dit
+
+This suggests to do the following:
+- first, fit a nearly-neutral model (mut-sel at equilibirium)
+- calculate the induced dN/dS (call it omega0)
+- estimate the dN/dS on the same data (omega)
+then if omega omega_0: sign that the gene is under positive selection
+It is important to note that because
+of the mutation-selection-drift equilibrium is not optimized, their is always of proportion
+of advantageous mutation that are proposed.
+-oui, mais ca, c’est juste une manière d'expliquer le point plus haut, à savoir, que le dN/dS est plus grand qu’attendu si le paysage est fixe. Donc, pourquoi le mettre ici?
+• ω and ω0 can be estimated along the sequence, such that mutation-selection frame-
+work can detect site-specific adaptive evolution in protein-coding genes. Such method has
+been implemented in Bayescode, and the manuscript is available in appendix page 199.
+• Moreover, contrasting ω and ω0 lead to estimation of the rate of adaptive substitu-
+tion as:
+ωA = ω − ω0
+-à revoir..
+
+Peut-être ici, je rajouterais un paragraphe, pour être d’abord plus en rapport avec tes articles de thèse:
+- this mut-sel framework for detecting adaptation has been proposed relatively recently.
+- still to be applied more broadly to empirical data, and compare it with classical codon models.
+
+- however, in its current form: assumes a constant Ne across the tree.
+-this suggests to add omega* (or omega_a) in the mutsel-Ne
+would potentially be more effective at detecting positive selection.
+Also:  omega* could be allowed to vary across branches, like Ne.
+This could have interesting applications:
+For instance, do bats, compared to other mammals, have both stronger purifying selection (large Ne)
+and stronger positive selection (larger omega*)?
+
+
+Finally,
+• This phylogenetic estimation of the proportion of adaptation can be confronted to
+estimation of adaptation obtained with polymorphism dataset within species. Originally
+pioneered by McDonald and Kreitman (1991), the ratio of non-synonymous over synony-
+mous polymorphism (pN /pS ) supposedly solely contains non-adaptive polymorphism.
+On the other hand, divergence data allows to estimate the ratio of non-synonymous over
+synonymous substitutions (dN /dS ), supposedly composed of a mixture of both advanta-
+geous substitutions and non-adaptive (nearly-neutral) substitutions. Thus the difference
+dN /dS − pN /pS is the rate of adaptive evolution.
+• To note, the rate of non-adaptive evolution, pN /pS obtained with polymorphism
+data supposedly matches the compound parameters ω0 obtained uniquely from divergence
+data.
+• However, estimation of adaptive rate can be biased by moderately deleterious muta-
+tions (Eyre-Walker et al., 2002) and by the change in population size through time (Eyre-
+Walker, 2002). To overcome this biases, the method of Galtier (2016) relies on the syn-
+onymous and non-synonymous site-frequency spectra (SFS) to estimate the distribution
+of fitness effects of mutations (DFE), modeled as a continuous distribution. Subsequent
+development of these methods are reviewed in (Moutinho et al., 2019b), intrinsically
+measuring the rate of non-adaptive evolution present in polymorphism data.
+• From the availability of divergence and polymorphism data, it is now possible
+to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-
+selection models matches the rate estimated from SFS. Are phylogenetic codon models
+(both mechanistic and classical) for detecting positive selection
+and population-genetics models independently estimating the same parameters?
+the same parameters? ou plutôt the same genes?
+
+
+>
+Unifying phylogenetic and population-genetics model
+• Along this manuscript, polymorphism inside species has not been leveraged. Can we
+unify phylogenetic and population-genetics model?
+Doing that would be useful, for several reasons.
+• Selection is more easily detectable in substitution, while mutation bias is more easily
+detectable in polymorphism (SFS). Unless they are carefully articulated, see chapter 6.
+Hence to disentangle the gBGC for example, integrated phylogenetic and population-
+genetics methods should be devised.
+• Also, the availability of intra-specific diversity across taxa, allow to align orthologous
+protein coding DNA sequence across and within species.
+-so what?
+
+• Example of integration between phylogeny and population genetics in the context
+of a DFE in Wilson et al. (2011).
+• Example of integration using scaling properties of the evolutionary process (De
+Maio et al., 2013; Schrempf et al., 2016; Bergman et al., 2018; Schrempf et al., 2019) able
+to disentangle gBGC and mutational bias (Borges et al., 2019; Borges and Kosiol, 2020).
+
+• Because mechanistic codon models are based on population-genetics first principles,
+they can theoretically be
+naturally
+extended to account for within
+taxa
+-species
+diversity.
+• The strategy can be to augment molecular divergence data between species with
+information about molecular polymorphism within species.
+• Such attempt has been tried during the first year of the PhD, where the for-
+malism, based on Poisson Random fields can be found in appendices page 198. The
+methods has found to be rather straightforward to implement into BayesCode, extend-
+ing mutation-selection formalism.
+• First, it was found to be computationally intensive, even though optimizing the
+computation with sufficient statistics. Secondly, the method provided sensible estima-
+tion of diversity (θ = 4Neu) based on generated simulation under Wright-Fisher model
+of evolution (SimuPoly).
+
+Most importantly,
+However,
+the assumption of constant drift along the
+phylogeny assumed by mutation-selection codon models was arguably the strongest as-
+sumption to relax in such context.
+In other words,
+what sense would it make to integrate
+why integrating polymorphism and
+diversity in extant species
+that generally have quite different levels of diversity
+if Ne is considered constant along the phylogeny.
+This was
+It was his-
+torically the reason to extend phylogenetic site-specific mutation-selection codon models
+by incorporating branch-specific Ne presented in chapter 7.
+• After extending mutation-selection with branch specific drift, we actually realized
+that the susceptibility of substitution rate to changes in Ne is too strong because of
+site-independence assumption (chapter 8), effectively amortizing the range of Ne which
+could be inferred.
+• Hence, even tough site- and branch-specific mutation-selection phylogenetic codon
+models can be extended by incorporating signal of polymorphism, which actually has
+been implemented in Bayescode (-p option).
+• Based on these observations, I believe it is not yet the path forward to build an
+unified phylogenetic and population-genetics model.
+>
+ Mechanistic and phenomenological models
+
+présenter d’abord la problématique
+
+• In order to reduce the complexity of mechanistic models, analytical models could allow
+to relate microscopic parameters of protein coding sequences to macroscopic parameters
+of evolution in a similar fashion of chapter 8. Subsequently, the microscopic parame-
+ters can be inferred from divergence and polymorphism data, and compared to their
+experimental estimation.
+• The methodology can be found in Brevet and Lartillot (2019).

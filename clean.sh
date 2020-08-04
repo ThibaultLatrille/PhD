@@ -10,5 +10,6 @@ rm -rf main.out
 rm -rf main.synctex.gz
 rm -rf main.toc
 rm -rf *.aux
-rm -rf sections/*.aux
-rm -rf sections/*.log
+rm -rf */*.aux
+rm -rf */*.bbl
+rm -rf */*.log
