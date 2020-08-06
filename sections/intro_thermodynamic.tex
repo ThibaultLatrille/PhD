@@ -28,11 +28,11 @@ Theoretically, thermodynamics and kinetic of protein are expected to be related 
 Empirically, a large body of evidence indicates that the stability, or in other word the ability to fold in globular conformation, is a target of natural selection~\citep{Sikosek2014}.
 In thermodynamics, stability of a protein is determined by the Gibbs free energy of its folded conformations, in comparison to the free energy of the unfolded conformations.
 Similarly to the mutation-selection Markov process defined in the previous chapter, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformation are more stable) and population size to inverse temperature.
-As a result, probabilities of observing the protein in folded conformation, given by Boltzmann equation, is proportional to the exponential of free energy:
+As a result, probabilities of observing the protein in folded conformation, given by Boltzmann equation, is proportional to the exponential of free energy $G_F$:
 \begin{align}
-p(G_F) = \frac{\e^{G_F / T}}{\mathcal{Z}},
+p(G_F) = \frac{\e^{-G_F / T}}{\mathcal{Z}},
 \end{align}
-where $\mathcal{Z}$ is a normalizing constant, summed over all possible conformations.
+where $T$ is temperature, and $\mathcal{Z}$ is a normalizing constant, summed over all possible conformations.
 In this context, mutations of the proteins stabilizes the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
 For example, a {transition} to an amino-acid that decrease by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
 As a result, protein stability can be increased by stabilizing folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design). 

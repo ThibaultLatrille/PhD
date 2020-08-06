@@ -290,8 +290,8 @@ Such implementation would provide the advantage of estimating \gls{codon} usage 
 % Perspective: 
 Bayesian computation shown in this study are based on relatively small alignments~($20,000$ sites at most), and with a limited parametrization in the number of fitness profile categories~($50$).
 Analyzing execution duration of the program (not shown) leads to conclude that the number of fitness profile categories is the limiting step to expand the computation.
-To estimate genome-wide $\Ne$, we could develop an extended version leveraging parallel computing, where each coding sequence has its own computing process and own profile categories, but the $\Ne$ would be shared by all computing processes.
-By increasing the number of categories per site, the magnitude of inferred $\Ne$ would also increase, since fitness profiles would be sharper.
+To estimate a more statistically stable genome-wide $\Ne$, we could develop an extended version leveraging parallel computing, where each coding sequence has its own computing process and own profile categories, but the $\Ne$ would be shared by all computing processes.
+By increasing the number of categories per gene, the magnitude of inferred $\Ne$ would also increase, since fitness profiles would be sharper.
 
 % Perspective: increase power
 Mutation-selection models originated with the aim of increasing the power to detect adaptive evolution, by modeling explicitly the confounding effect of purifying selection.
