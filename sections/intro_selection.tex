@@ -1,9 +1,6 @@
 \chapter{Phylogenetic {codon} models}
-{
-	\hypersetup{linkcolor=GREYDARK}
-	\minitoc
-}
-\label{sec:selection}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:intro-codon-models}
 Evolutionary trajectory of sequences depends on the forces of mutation, selection and drift, which acts conjointly such that each one of them must be well studied and understood.
 More precisely, molecular evolution requires either a given selection coefficient associated to mutation, or that the fitness of each particular sequence to be defined.
 In other word, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein coding \acrshort{DNA} sequence.
@@ -377,7 +374,7 @@ The difference is better highlighted in the case of reverse mutations, where a n
 However in classical \gls{codon} models, a negative selection coefficient is matched by an also a negative selection coefficient for the reverse mutation.
 
 Realizing this relationship between classical and mechanistic \gls{codon} models, under the assumption that the protein is under a \gls{nearly-neutral} regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (classical-model) should be the same~\citep{Spielman2015, Spielman2016}.
-But assumptions of the models can be broken, resulting in discrepancy between $\omega_0$ and $\omega$, modeled as multipliying factor $\omega_0$ \cite{Rodrigue2016}:
+But assumptions of the models can be broken, resulting in discrepancy between $\omega_0$ and $\omega$, modeled as a multiplying factor $\omega_*$ \cite{Rodrigue2016}:
 \begin{equation}
 \omega = \omega_* \omega_0
 \end{equation}
@@ -393,10 +390,10 @@ The resulting dynamic is that selection pushes the sequence to climb up the land
 Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since \glspl{substitution} are accepted preferentially if they are in the direction of this target, \glspl{substitution} are on average adaptive.
 In other word, at the moment of a \gls{substitution} the target amino-acid as a high relative fitness, which can only then decreases trough time.
 Thus breaking the assumption of time independence of amino-acid preferences leads to estimation of induced $\omega_0$ lower than realized $\omega$:
-\begin{align}
-\omega & > \omega_0 \\
-\iff \omega_* & > 1
-\end{align}
+\begin{equation}
+\omega > \omega_0 \\
+\iff \omega_* > 1
+\end{equation}
 
 \subsection{Epistasis and entrenchment}
 
@@ -405,10 +402,10 @@ Unfortunately, one consequence of epistatic interactions is that even if a mutat
 This effect called entrenchment result in the current amino-acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
 In other word, at the moment of a \gls{substitution} the target amino-acid has a nearly equal relative fitness, which can only increases with time~\citep{Goldstein2016, Goldstein2017}.
 Contradictory to adaption, breaking the assumption of independence between sites leads to entrenchment and estimation of induced $\omega_0$ greater than realized $\omega$~\citep{Rodrigue2016}:
-\begin{align}
-\omega & > \omega_0 \\
-\iff \omega_* & > 1
-\end{align}
+\begin{equation}
+\omega > \omega_0 \\
+\iff \omega_* > 1
+\end{equation}
  
 To summarize, a departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
 On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino-acids.

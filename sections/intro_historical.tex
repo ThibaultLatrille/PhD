@@ -1,11 +1,7 @@
 \thispagestyle{empty}
 \chapter{Historical perspective on molecular evolution}
-{
-	\hypersetup{linkcolor=GREYDARK}
-	\minitoc
-}
-
-\label{sec:intro-historical}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:intro-historical}
 
 From the discovery of evolution to today knowledge, the understanding of the mechanisms from which the diversity of life and complexity emerges has seen dramatic changes, and revolution.
 One such revolution is called molecular evolution, a recent scientific endeavor emerging at the crossroad of two fields, on one hand evolutionary biology which had seen tremendous theoretical development in the nineteenth and twentieth century, and on the other hand molecular biology which recruited advances in chemistry and had seen many technical revolutions.
@@ -22,7 +18,7 @@ Moreover, this introduction will highlight a few names, while the bulk of the ri
 Molecular evolution is theoretically build upon the framework of population-genetic, which in turn historically emerged as an unifying theory between Mendelian inheritance and quantitative genetic, in the early twentieth century.
 Originally,
 Johann Gregor Mendel% (1822-1884)
- established the statistical laws governing heredity of discrete characters through  hybridisation experiments on the garden pea plant \textit{Pisum sativum} between 1857 and 1864.
+ established the statistical laws governing heredity of discrete characters through hybridization experiments on the garden pea plant \textit{Pisum sativum} between 1857 and 1864.
 This model of inheritance was rediscovered and confirmed in the early twentieth century independently by botanists
 Hugo de Vries% (1848-1935)
 , Carl Correns% (1864-1933)
@@ -93,7 +89,7 @@ Although nearly-neutral theory introduced the force of drift balancing the force
 Originally, neutral theory was developed in the context of theoretically scrutinizing the clock hypothesis of Zuckerkandl and Pauling (1965), which posit that rate of sequence evolution is the same in different evolutionary species.
 Theoretical development, available empirical data and computing resources altogether led to development of methods modeling fluctuation of the substitution rate along a phylogeny \citep{Thorne1998}, which subsequently showed that the molecular clock approximation does not hold empirically.
 Relaxation of strict molecular clock also fostered methods of comparative evolution, where variation of substitution rate is related to strength of selection \citep{Seo2004}, or variation of life-history traits, such as body size or generation time \citep{Lartillot2012}, most importantly taking into account non-independence of lineages due to the underlying phylogeny \citep{Lanfear2010a}.
-Notably, nearly-neutral theory and more especially the drift barrier hypothesis has been invoked to explain the observation that product of genome size and mutation rate is constant~\citep{Lynch2016a} (see end of chapter \ref{sec:intro-formalism}).
+Notably, nearly-neutral theory and more especially the drift barrier hypothesis has been invoked to explain the observation that product of genome size and mutation rate is constant~\citep{Lynch2016a} (see end of chapter \ref{chap:intro-formalism}).
 Finally, because mutation, selection and drift are untangled, it is important to note that composition of genome does not reflect the underlying mutational process \citep{Singer2000}, but its filtering by selection and drift.
 As a result a careful modeling of selection and drift is necessary to uncover mutational process, an articulation of this thesis studied in chapter~\ref{chap:NucleotideBias}.
 
@@ -117,7 +113,7 @@ Finally, some patterns have been found inconsistent within the general framework
 Such forces are altering the composition of genomes and must be carefully accounted for in models of evolution \citep{Galtier2009, Figuet2014}.
 However, even though forces such as \gls{bgc} are not within the scope of this thesis, some assumptions and design of our models had been taken such as to implement these forces subsequently. 
 
-Altogether, evolution of sequences result from the interplay between mutation, selection and drift, where this formalism is developed in chapter \ref{sec:intro-formalism}.
-Of all these components, selection is the most pervasive, which can be approximated and observed in protein-coding \acrshort{DNA} sequences in a phylogenetic context between lineages, presented in chapter \ref{sec:selection}).
-Consequently, models are applied to empirical data, and the methodology of Bayesian inference from an alignment of DNA sequences is presented in chapter \ref{sec:phylo_codon_models}.
-Finally, selection of protein coding DNA sequences is related to bio-chemical and bio-physical constrains (chapter \ref{sec:phylo_codon_models}).
+Altogether, evolution of sequences result from the interplay between mutation, selection and drift, where this formalism is developed in chapter \ref{chap:intro-formalism}.
+Of all these components, selection is the most pervasive, which can be approximated and observed in protein-coding \acrshort{DNA} sequences in a phylogenetic context between lineages, presented in chapter \ref{chap:intro-codon-models}).
+Consequently, models are applied to empirical data, and the methodology of Bayesian inference from an alignment of DNA sequences is presented in chapter \ref{chap:intro-inference}.
+Finally, selection of protein coding DNA sequences is related to bio-chemical and bio-physical constrains (chapter \ref{chap:intro-inference}).

@@ -1,38 +1,35 @@
 \chapter{Phylogenetic {codon} models inference}
-{
-	\hypersetup{linkcolor=GREYDARK}
-	\minitoc
-}
-\label{sec:phylo_codon_models}
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
+\label{chap:intro-inference}
 
-The previous chapter treated how \gls{substitution} rates are defined and parameterized in phylogenetic codon models, but not how these parameters are inferred and estimated.
-Given a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages, the goal is to estimates the underlying parameters of evolution.
-However, models of \glspl{substitution} presented so far are not sufficient to fulfills this endeavor, but instead can be used to generate a random trajectory of protein-coding \acrshort{DNA} sequence evolution.
+The previous chapter treated how \gls{substitution} rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
+In contrast, the goal of this chapter is to present methodology to estimates underlying parameters of evolution from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
+To realize such endeavor, it is important to realize that models of \glspl{substitution} presented previously can be used to generate an alignment of  protein-coding \acrshort{DNA}.
 Indeed, given parameters of evolution, simulations using the \gls{substitution} rates between \glspl{codon}, when run along a phylogenetic tree, can give us a likely representative protein coding \acrshort{DNA} sequence for each extant species (at the tip of the tree), producing an alignment. 
 Moreover by running several random simulations, one can expect to obtain representative and likely set of alignments.
 Unfortunately, even with huge amount of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by a given set of parameters.
 Deriving this probability of observing a specific alignment given the parameters is thus the first theoretical question to answer, which is the focus of the first section.
-With this analytical probability obtained, it is then possible the derive for different sets of parameters their respective probability of generating the observed alignment.
-The next endeavor is thus to reverse the question, and instead of having the probability of the alignement given the parameters, the goal is to derive the probability of the parameters given the alignment.
-This subsequent endeavor is thus the focus of the second section, recalling theoretical and computational implementation of Bayesian inference, in the context of phylogenetic \gls{codon} models.
+With this analytical probability obtained, it is then possible to derive for different sets of parameters their respective probability of generating an observed alignment.
+The next endeavor is thus to reverse the question, and instead of having the probability of an alignment given some parameters, the goal is to derive the probability of parameters given the alignment.
+This subsequent endeavor developed in the second section, recalling theoretical and computational implementation of Bayesian inference, in the context of phylogenetic \gls{codon} models.
 
 \section{Likelihood of the data}
 \label{sec-intro:likelihood}
 
-For a dataset of protein-coding \acrshort{DNA} sequences, the goal is to determine the probability of the observed sequence data at the tips of the tree conditional upon the evolutionary model, the tree, and values of parameters in the model.
-The challenge is that only the data for the extant species are observed whereas the sequence at the root of the tree and the subsequent evolutionary events are not directly observed.
+For a dataset of protein-coding \acrshort{DNA} sequences, the goal is first to determine the probability of observing sequence data at tips of the tree conditional upon the evolutionary model, the tree, and values of parameters in the model.
+The challenge is that only the data for extant species are observed whereas sequence at the root of the tree and subsequent evolutionary events of speciation are not directly observed.
 In other words, all possible trajectories leading to the observed alignment must be integrated, weighted by their respective probabilities.
 
 Throughout this development, the tree topology ($\tau$) is considered know and fixed.
-This restriction emanates that the scope of this is work is not to infer the topology, but the parameters of evolution.
+This restriction emanates that the scope of this is work is not to infer the topology, but rather parameters of evolution.
 Moreover, the development does not delves into the details of how alignment are obtained, and thus assume that they are correct.
 However it has been shown that outputs of different sequence alignment methods tend to produce different results that are not consistent.
 The main determining factor of alignment accuracy is evolutionary divergence, such that if alignment are restricted to orthologs from closely related taxa, or to slow-evolving genes, alignment errors become scarce and may not cause significant encumbrance.
-Finally, and not the least, models of sequence change will assume that changes at one sequence position have no impact on whether other positions will change.
-This assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns. 
+Finally, and not the least, models of sequence change will assume site-independence, or in other words absence of epistasis, such that changes at one sequence position have no impact on whether other positions will change.
+This assumption of independence between sites allows the probability of an observed set of aligned sequences at tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns. 
 This independence assumption is simplistic, throwing away biological information, and can be shown statistically to be problematic, but permits computationally convenient likelihood-based inference.
 
-The section is divided into first integrating over all trajectory over a single branch of tree, and subsequently over the total tree. And finally efficiently computing the probability of observed data given the parameters.
+The section is divided into first integrating over all trajectory along a single branch of tree, and subsequently over the total tree, while finally efficiently computing the probability of observed data given the parameters.
 
 \subsection{Probability of {transitions} for a branch at a given site}
 Point \gls{substitution} process define the instantaneous rates of change between the different \glspl{codon} through the \gls{substitution} matrix $\Submatrix$.
@@ -147,40 +144,42 @@ And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \section{Bayesian estimation}
 \label{sec-intro:bayesian}
 
-The Bayesian Paradigm can be seen as a way to model uncertainty in a probabilistic way.
-In other words, parameter of the models denoted $\theta$ are considered as random variables whose distribution describes that uncertainty.
-This unconditional distribution of parameters, $p(\theta)$, is called the \gls{prior}.
+After obtaining the probability of an observed sequence alignment given models parameters, the question must be reversed such as to obtain probability of parameters given an observed sequence alignment.
+A framework under which such feat is possible is Bayesian paradigm, a inference methodology introduced in phylogenetic by Yang and Rannala (1997), Mau et al. (1999), Larget and Simon (1999), Li et al. (2000) and Huelsenbeck and Ronquist (2001).
+Broadly speaking, Bayesian paradigm can be seen as a way to model uncertainty in a probabilistic way.
+In other words, parameter of the models denoted $\theta$ are considered as random variables whose distribution is called the \gls{prior} and describes that uncertainty.
 The probability of those parameters are going to be modified after acquisition of information supplied by observed data.
-
-$\bullet$ Why has Bayesian statistics been used in phylogenetic inference \citep{Lartillot2020}.
-Knowingly that maximum \gls{likelihood} and Bayesian statistics are often opposed to each others and sometimes fiercely defended by their tenant, using one of them implicitly put someone in the position to argument their choice.
-
-The main differences between likelihood is about handling complexity of the models.
-First, Bayesian statistics technically is not required to devise procedure necessary to evades local optimums.
-Second and most importantly, Bayesian statistics output not a single statistic but a confidence interval, meaning how much certainty is available given the data.
-Posterior and \gls{prior} can be thus presented next to each others and differences between the two is due to signal extracted from the data.
-A corollary is that over parametrization is not such a drastic issue as in maximum \gls{likelihood} inference, since in a case where there is only limited extractable signal from the data this will reflect in the confidence interval.
-In the worst possible case of over-parametrization, namely that of confounded parameters, such that the model is exactly the same for different set of parameters, the confidence interval will expand but confounded parameters can be identified afterward through parameters correlation in their joint \gls{posterior} distribution.
-The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical \gls{prior} distribution.
-However, over-parameterized models is still a misappropriate use of computing resource, which results in a greater environmental cost.
-
-Formally, Bayes theorem is essential in updating of the distribution :
+Formally, Bayes theorem is essential in updating of the distribution:
 \begin{equation}
 	p(\theta|\data)=\frac{p(\data|\theta)p(\theta)}{p(\data)}
 \end{equation}
-The probability of the parameters matrix $\theta$ given the data is called the \gls{posterior} probability, it is \gls{posterior} to the data, and $p(\data|\Probmatrix)$ is the 
-
-Because the actual probability of the data is not going to change, in inference Bayes theorem is often presented as:
+The distribution of parameters $\theta$ given the data is then called \gls{posterior}.
+In inference, because the actual probability of the data is not going to change, Bayes theorem is often presented as:
 \begin{equation}
 p(\data|\data) \propto p(\data|\data)p(\data)
 \end{equation}
-Simply stating that the \gls{posterior} is proportional to the \gls{likelihood} time the \gls{prior}.
+Simply stating that \gls{posterior} is proportional to \gls{likelihood} multiplied by \gls{prior}.
 
-From the \gls{likelihood} of the data derived in the previous section, the difficulties now is shifted to the definition of the \gls{prior} distribution, where these difficulties come in two flavors.
-Firstly, the parameters of evolution for which \gls{prior} distribution can be apprehended might be the parameters of interest such as the selection coefficient, or on the mutation rate, but not the \gls{prior} distribution of the \gls{substitution} rate matrix as a whole.
-This difficulties is eased by Bayesian network, which are a probabilistic graphical representation of a set of variables and their conditional dependencies via a directed acyclic graph (DAG).
+\subsection{Bayesian statistics and {Maximum likelihood}}
+Another approach to parameter estimation is to find parameters which maximizes likelihood of the data, an estimate naturally called maximum likelihood.
+Bayesian statistics and maximum \gls{likelihood} are often opposed to each others and sometimes fiercely defended by their tenant.
+It this context, the recent success of Bayesian inference relates to its inherent handling model complexity \citet{Lartillot2020}.
+Firstly, Bayesian statistics technically is not required to devise procedure necessary to evades local optimums.
+Secondly, Bayesian statistics output not a single statistic but a confidence interval, meaning how much certainty is available given the data.
+Posterior and \gls{prior} can be thus presented next to each others and differences between the two is due to signal extracted from the data.
+A corollary is that over parametrization is not such a drastic issue as in maximum \gls{likelihood} inference, since in a case where there is only limited extractable signal from the data this will be reflected in confidence intervals.
+In the worst possible case of over-parametrization, namely that of confounded parameters, such that the model is exactly the same for different set of parameters, confounded parameters can be identified afterward through parameters correlation in their joint \gls{posterior} distribution.
+%The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical \gls{prior} distribution.
+However, over-parameterized models is still a misappropriate use of computing resource, which results in a greater environmental cost.
+Finally, and most importantly the combination of hierarchical models and generic Monte Carlo approaches for dealing with complex random-effects and multi-level evolutionary processes has played the most important role in the recent success and popularity of Bayesian inference in evolutionary genetics.
+
+\subsection{Hierarchical model}
+
+Parameters of evolution for which \gls{prior} distribution can be apprehended might be for example selection coefficient, or mutation rate, but not the \gls{prior} distribution of the \gls{substitution} rate matrix as a whole.
+Such relationship between variables is modeled as Bayesian network, which are a probabilistic graphical representation of a set of variables and their conditional dependencies via a directed acyclic graph (DAG).
 In the example of the \gls{prior} distribution for the rate \gls{substitution} matrix, it is determined as the joint distribution of the \gls{prior} over the selection coefficient and the mutation rate matrix, which itself is given by the joint distribution over the equilibrium frequencies of nucleotides and exchangeabilities rates for the general-time-reversible (GTR) mutation matrix (see figure \ref{fig:DAG}).
 Seeing the DAG the other way around (following the arrows), simple \gls{prior} distribution are combined together to form more complex joint \gls{prior} distribution which ultimately define the \gls{prior} distribution of the model ($\theta$).
+This hierarchy can naturally be extended across sites, across branches or across genes.
 
 \begin{figure}[H]
 	\centering
@@ -221,20 +220,20 @@ Seeing the DAG the other way around (following the arrows), simple \gls{prior} d
 	\label{fig:DAG}
 \end{figure}
 
-Secondly, once realizing that the \gls{prior} distribution can be boiled to a set of simpler \gls{prior} distributions, the difficulty arise from the high dimensionality of the parameter space, known as the curse of dimensionality.
+\subsection{Monte-Carlo Markov-Chain}
+
+Once realizing that the \gls{prior} distribution can be boiled to a set of simpler \gls{prior} distributions, the difficulty arise from the high dimensionality of the parameter space, known as the curse of dimensionality.
 More precisely, the number of states increases exponentially with the number of dimension of the space, such that the space is too large to be explored and computation of both the \gls{prior} and the \gls{likelihood} for each set of parameters is unrealistic.
 Reduction in the exploration of the state space is obtained by employing Monte-Carlo Markov-Chain, which effectively approximate the target \gls{posterior} distribution.
 
-\subsection{Monte-Carlo Markov-Chain}
-
-The first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952.
+Historically, the first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952.
 Both a physicist and a mathematician, Nicolas Metropolis was one of the first scientists to work on the Manhattan Project that led to the production of the atomic bomb.
 Almost as early, he became obsessed with the hydrogen bomb, which he eventually succeed in building.
 
 Published in June 1953 in the \textit{Journal of Chemical Physics}, the primary focus of \acrshort{MC} algorithm is computing the energy of random configurations for a system of many particles.
 This energy is not not available analytically and requires integration across for all realizations of the random configurations of the particle system.
-Because the number of dimensions is high (twice the number of particles), numerical integration is impossible using a deterministic algorithm.
-Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration, by sampling randomly across the target distribution of configurations fails to correctly approximate this integral.
+Because dimensionality is high (proportional to number of particles), numerical integration is impossible using a deterministic algorithm.
+Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration by sampling randomly across the target distribution of configurations fails to correctly approximate this integral.
 
 This problem can however be transposed in the \gls{mc} realm, where each state of the process is a particular configuration of particles.
 The {transition} probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
@@ -244,8 +243,8 @@ Once reaching the dynamic equilibrium, the energy of each configuration can be c
 
 \subsection{Metropolis-Hastings sampling}
 
-The Metropolis algorithm is an acceptance/rejection rule for the probabilities of {transition} allowing to match the stationary distribution to the specified target distribution, present in the original paper.
-From a state $X_t$, the algorithm proceeds as follows at each step of the \gls{mc}:
+One specific algorithm designed such that MCMC stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper.
+This algorithm is composed of an acceptance/rejection rule, such that from a state $X_t$, the algorithm proceeds as follows at each step of the \gls{mc}:
 \begin{itemize}
 	\item Generate a random candidate state $X'$ according to $g(X'\mid X_t)$.
 	\item Calculate the acceptance ratio $\displaystyle r=\min \left(1,{\frac {P(X')}{P(X_{t})}}{\frac {g(X_{t}\mid X')}{g(X'\mid X_{t})}}\right)$.
@@ -260,7 +259,7 @@ The Metropolis procedure has been developped in the context of a symmetric distr
 
 \subsection{Gibbs sampling}
 
-Gibbs sampling is applicable when a joint distribution of variables is not known explicitly or is difficult to sample from directly, but the conditional distribution of each variable are easier to sample from.
+Whenever a joint distribution of variables is not known explicitly or is difficult to sample from directly, but the conditional distribution of each variable are easier to sample from, a specific algorithm known as Gibbs sampling is applicable.
 The original implementation of the Gibbs sampler was applied to a discrete image processing problem, a problem somewhat removed from statistical inference in the classical sense.
 This paper is also responsible for the name {\it Gibbs sampling}, because it implemented this method for the Bayesian study of {\it Gibbs random fields} which, in turn, derive their name from the physicist Josiah Willard Gibbs (1839-1903).
 
@@ -273,29 +272,23 @@ Various algorithms can be used to sample these individual variables, depending o
 
 \subsection{Sufficient statistics \& data augmentation}
 
-The basic idea is to augment the observed sequence data with a possible \gls{substitution} history and to then use \gls{mc} Monte Carlo techniques to perform a random walk over histories that are consistent with the observed data.
+Most phylogenetic Monte-Carlo-Markov-Chain (\acrshort{MC}) samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MC}.
+An alternative is to augment the observed sequence data with a realization of the random process resulting in a detailed \gls{substitution} history over the tree~\citep{Nielsen2002,Rodrigue2008}.
+Conditionally on the detailed \gls{substitution} history $\subhistory$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
 
-A realization of the random process results in a detailed \gls{substitution} history over the tree.
-Most phylogenetic Monte-Carlo-Markov-Chain (\acrshort{MC}) samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate
-the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MC}.
-
-An alternative, which is used here, is to do the \acrshort{MC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
-
-The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on
-compact summary statistics of $\subhistory$ (which in turn depend on the specific parameter component
-being resampled), leading to very fast evaluation of the \gls{likelihood}.
+The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the \gls{likelihood}~\citep{Irvahn2014,Davydov2016}.
 On the other hand, this requires to implement more complex \acrshort{MC} procedures, that have to alternate between:
-
-1) sampling $\subhistory$ conditionally on the data and the current parameter configuration.
-
-2) re-sampling the parameters conditionally on $\subhistory$.
-
-To implement the mapping-based \acrshort{MC} sampling strategy, we first sample the detailed \gls{substitution} history $\subhistory$ for all sites along the tree.
-Several methods exist for doing this~\citep{Nielsen2002,Rodrigue2008}.
-Then, we write down the probability of $\subhistory$ given the parameters, and finally, we collect all factors that depend on some parameter of interest and make some simplifications.
-This ultimately leads to relatively compact sufficient statistics (Supplementary Materials for the different sufficient statistics used by our model) that are fast to evaluate~\citep{Irvahn2014,Davydov2016}.
+\begin{enumerate}
+	\item sampling $\subhistory$ conditionally on the data and the current parameter configuration;
+	\item re-sampling the parameters conditionally on $\subhistory$.
+\end{enumerate}
 
 \subsection{Implementation}
 
-$\bullet$ Modularity of the code, JAGS, MrBayes, RevBayes and now BayesCode,
-\url{https://github.com/bayesiancook/bayescode}
+Software implementation of Bayesian methods integrating variation across sites, across genes and across genes is a theoretically possible, but the design of such implementation are complex.
+They must be flexible to adapt different model of variations, while at the same time be reliable, reproducible, maintainable and fast.
+All this constrains led to development of the Bayesian phylogenetic software \textit{BayesCode}, conducted by multiple maintainers with different goals and models of evolution in mind.
+Historically, development of this software was initiated concurrently to the beginning of this thesis, and chapter \ref{chap:MutSelDrift} which model variation of selection across sites and drift across branches has been implemented under this framework.
+This software is available at \url{https://github.com/bayesiancook/bayescode}.
+
+
