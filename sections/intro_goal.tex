@@ -2,58 +2,56 @@
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:goals}
 
-Evolution of molecular sequences is a stochastic process, balancing forces of mutation, selection and drift.
-In a phylogenetic context, over hundreds of millions years, this stochastic results in a pattern of substitution along lineages.
-Are the sequences of today extant species still containing traces of ancient drift?
-Can this ancient long-term fluctuation of population size be quantified?
-Is this signal confounded with selection or mutation?
-What is the nature of selection affecting protein DNA sequences?
-This work is a modest attempt to disentangle interaction between mutation, selection and drift, and their resulting observable patterns in protein coding DNA sequences.
+Nearly-neutral theory of evolution, introduced historically in chapter \ref{chap:intro-historical}, had broad implications in evolutionary biology and molecular evolution.
+In this context, evolution of molecular sequences is seen as a stochastic process, where one component of this process is creating diversity through mutation, another antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift, formally presented in chapter \ref{chap:intro-formalism}.
+Applied to protein coding DNA sequences, this stochastic process results in a pattern of substitution along of species tree, where phylogenetic codon models presented in chapter \ref{chap:intro-codon-models} captures intrinsic parameters of evolution.
+How such parameters are inferred from an contemporaneous protein coding DNA sequences is described and developed in \ref{chap:intro-inference}.
+Finally, selection of protein coding is related to biophysical constrains and thermodynamic properties of protein, such as to model selection acting on protein coding DNA sequences from physical first principles illustrated in chapter \ref{chap:intro-physic-proteins}.
+
+In this context, this thesis is a modest attempt to disentangle interaction between mutation, selection and drift, from patterns found in contemporaneous protein coding DNA sequences.
 I confront theoretical development to empirical data, whether through analytical results, simulation and inference.
 The results are divided in three chapters, each written in the form of independent manuscript that shall be submitted to peer-reviewed journals.
+Firstly, because the composition of protein coding DNA sequences does not reflect the underlying mutational process, but its filtering by selection at the level of amino-acids, a careful phenomenological modeling is necessary to uncover mutational process and nucleotide fixation bias, a study presented in section ~\ref{sec-goals:NucleotideBias} and developed in chapter~\ref{chap:NucleotideBias}.
+Secondly, the balance between mutation and selection is arbitrated by drift, which is mediated by effective population size and its changes along a phylogeny can be estimated by mechanistic codon models, a study presented in section ~\ref{sec-goals:MutSelDrift} and developed in chapter~\ref{chap:MutSelDrift}.
+Finally, selection for protein stability imply an analytical relationship between the rate of evolution and effective population size and protein expression level, a study presented in section ~\ref{sec-goals:GenoPhenoFit} and developed in chapter~\ref{chap:GenoPhenoFit}.
 
 \section{Robustness of codon models to mutational bias}
+\label{sec-goals:NucleotideBias}
 
-$\bullet$ Nucleotide composition in protein-coding sequences is the result of the equilibrium between mutation and selection.
-
-$\bullet$ Phenomenological parametric \gls{codon} models developed to estimate the rate of evolution on amino-acids are qualitative, in the sens that they model the fitness landscape and drift throught an unique aggregate parameter.
-
-$\bullet$ By aggregating selection and drift into a sole parameter, is the mutational process estimated reliably?
-
-$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the codons, however it as empirically been observed that the nucleotide composition are not identical.
-
-$\bullet$ Can we estimate mutational bias reliably?
-
-$\bullet$ Is mutational bias having side effect on estimation of selection?
+Nucleotide composition in protein-coding sequences is the result of the equilibrium between mutation and selection.
+However, by capturing selection through a single parameter $\omega$, classical codon model (see chapter \ref{chap:intro-codon-models}) can risk mistaking the mutational process, which is corroborated by some observations. 
+Indeed, codon model parameterized by a single mutation rate matrix predicts that the nucleotide composition is the same for all $3$ positions of the codons.
+However it as empirically been observed that the nucleotide composition of protein coding sequences are not identical, with the third positions showing more extreme composition than first and second position.
+Alternatively, to accommodate such variation across positions, some models allow for different nucleotide rate matrices at the three positions, an approach which is problematic since the mutation process should in principle be blind to the coding structure, and should be homogeneous across coding positions.
+Although this misconception has probably minor impact on detection of positive selection, it is clear symptom of a more fundamental issue with teasing apart mutation rates and fixation biases in codon models.
+Practically, this could have important consequences in the current interest for detecting traces of biased gene conversion toward GC (gBGC) in protein coding sequences, a factor which requires mutation and fixation biases to be disentangled.
+In this context, chapter \ref{chap:GenoPhenoFit} presents an alternative modeling approach, where $\omega$ is seen as a tensor, an array of $\omega$ values unfolding along multiple directions, an  is test to empirical and simulated protein coding DNA alignment.
 
 \section{Inferring long-term population size}
+\label{sec-goals:MutSelDrift}
 
-$\bullet$ Mechanistic phylogenetic codon model, grounded on population-genetics first principles, articulates the interplay between mutation, selection and drift, and return an estimate of the amino-acid fitness landscape.
-However, these recently developed models rely on the assumption of constant effective population size.
+Presented in section \ref{sec:intro-classical-codon-models}, mechanistic phylogenetic codon model are grounded on population-genetics first principles and articulates the interplay between mutation, selection and drift.
+These recently models return site-specific estimate of amino-acid fitness landscape, but they rely on the assumption of constant drift along the phylogeny.
+Selection and drift are confounded parameters, but can they be disentangled by assuming that fitness is fixed along the phylogeny but changing across the sequence, and orthogonally by assuming that drift is fixed along the sequence but changing across the phylogeny.
+Chapter \ref{chap:MutSelDrift} propose an extended mutation-selection model reconstructing site-dependent fitness landscape, long-term trends in effective population size and mutation rate along the phylogeny, from an alignment of DNA coding sequences in a Bayesian paradigm (see chapter \ref{sec:intro-bayesian}).
+Independently, ancestral life-history traits are reconstructed along the phylogeny from observation in present-day species.
+Together, the model estimates correlation between reconstructed life-history traits, mutation rate and effective population size, intrinsically including phylogenetic inertia.
+This framework is tested against simulated data, and empirical data in mammals, isopods, primates and drosophila.
+Finally, this work shed light on whether fluctuation of effective population size along the phylogeny can reliably be inferred from an alignment of protein coding DNA sequence, with a single representative sequence per extant taxa.
+Notably, the work inferring variation long term changes in effective shed lights on property of fitness landscape.
 
-$\bullet$ Can mechanistic phylogenetic codon model be extended to model explicitly drift across branches?
+\section{Substitution rate response to changes in effective population size}
+\label{sec-goals:GenoPhenoFit}
 
-$\bullet$ Selection and drift are confounded parameters, but can they be disentangled by leveraging site and branch patterns?
-Namely by assuming that fitness is fixed along the phylogeny but changing across the sequence, and orthogonally by assuming that drift is fixed along the sequence but changing across the phylogeny?
+Under the nearly-neutral theory of evolution, lineages with high effective population size ($\Ne$) are expected to undergo stronger purifying selection, and consequently a decrease in substitution rate of selected mutations relative to the substitution rate of neutral mutation ($\omega$).
+However, computational models based on biophysics of protein stability, presented in section chapter \ref{sec:intro-protein-biophysics} have suggested that $\omega$ can also be independent of $\Ne$, proven under general conditions.
+Together, the response of $\omega$ to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
+Importantly, increase in protein expression level has been found empirically to result in decrease of $\omega$, predicted by theoretical results recruiting the selection for protein stability.
+In the light of these results, chapter \ref{chap:GenoPhenoFit} derive a theoretical approximation for the response of $\omega$ to changes in $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
+The method presented is generally valid for additive traits and log-concave fitness functions, but more specifically applied to protein undergoing selection for their conformational stability, corroborated by simulations under more complex models.
+Analytical predictions of $\omega$ response to changes in $\Ne$ are confronted to empirical data, while other aspects of protein biophysics such as protein-protein interactions are also considered.
 
-$\bullet$ Can fluctuation of effective population size along the phylogeny be reliably inferred from an alignment of protein coding DNA sequence, with a single representative sequence per extant taxa?
-
-$\bullet$ How does effective population size correlates with ancestral quantitative life-history traits and mutation rate reconstructed along the phylogeny from observation in present-day species.
-
-$\bullet$ What are results of population size inference telling us on the property of the fitness landscape?
-
-\section{Substitution rate susceptibility}
-
-$\bullet$ Populations with high $\Ne$ are expected to undergo stronger purifying selection, and consequently a decrease in substitution rate.
-
-$\bullet$ The response of substitution rate to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
-Theoretically, how does the rate of substitution depends on the fitness landscape?
-
-$\bullet$ Under the context of selection for protein stability, what is the theoretical response of substitution rate to changes in effective population size and protein expression level?
-
-$\bullet$ Does the model of selection for protein stability fits empirical data?
-
-\begin{figure}[H]
+\begin{figure}[htbp!]
 	\centering
 	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
 		\tikzstyle{every state}=[]
@@ -74,14 +72,9 @@ $\bullet$ Does the model of selection for protein stability fits empirical data?
 		(drift) edge [black] node [above] {} (0);
 	\end{tikzpicture}
 	\caption[Goal of the thesis]{
-	Goal of the thesis.
-	Under the framework of the mutation, selection drift equilibrium, several aspects of this equilibrium are studied and related to empirical data.
-	In chapter \ref{chap:NucleotideBias}, mutational bias is inferred whenever accounting for selection on amino-acids.
-	In chapter \ref{chap:MutSelDrift}, long-term fluctuation of effective population size is inferred from protein coding DNA alignment in several taxa, taking into account site-dependent fitness landscape.
-	In chapter \ref{chap:GenoPhenoFit}, the response of substitution rate to changes in effective population size and expression level is analytically derived under selection for protein stability.
+	In this thesis, several aspects of the mutation-selection-drift equilibrium are studied and related to empirical data, in the context of protein coding DNA sequences.
+	Firstly in chapter \ref{chap:NucleotideBias}, mutational bias and nucleotide fixation bias are inferred whenever accounting for selection on amino-acids in different direction.
+	Secondly, in chapter \ref{chap:MutSelDrift}, long-term fluctuation of effective population size along phylogenetic tree is inferred from protein coding DNA alignment in several taxa, taking into account site-dependent fitness landscape.
+	Finally, in chapter \ref{chap:GenoPhenoFit}, the response of substitution rate to changes in effective population size and expression level is analytically derived under selection for protein stability.
 	}\label{fig:goals}
 \end{figure}
-
-$\bullet$ More broadly, this thesis is a stepping stone to understand the complex interplay between evolutionary forces and their resulting strength.
-
-$\bullet$ It is also a modest attempt to bridge the gap between phylogenetic and population-genetic.
