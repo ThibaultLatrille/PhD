@@ -72,7 +72,7 @@ Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-aci
 			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & \textbf{G} \\
 			\hhline{|-||-|-|-|-|-|-|-|-||-|}
 	\end{tabular}}
-	\caption[The Genetic Code]{
+	\caption[Genetic Code]{
 		The genetic code \acrshort{DNA} table translating \glspl{codon} into amino-acids.
 		Amino-acids are represent into $4$ categories based on the electrochemical properties.
 		Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
@@ -251,9 +251,9 @@ $\bullet$ This model predicts that the nucleotide composition is the same for al
 
 $\bullet$ Another approach is 3x4 model which is not mechanistically justified.
 
-Moreover, the relative \gls{substitution} rate at equilibrium $\langle \nu \rangle$ defined by equation \ref{eq:relative-sub-rate}, if restricted to the subset of \glspl{non-synonymous}, identifies to $\omega$:
+Moreover, the relative \gls{substitution} rate at equilibrium $\nu$ defined by equation \ref{eq:relative-sub-rate}, if restricted to the subset of \glspl{non-synonymous}, identifies to $\omega$:
 \begin{align}
-\langle \nu \rangle & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+\nu & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
 					& = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
 					& = \omega \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
 					& = \omega, 
@@ -274,14 +274,14 @@ However, and fortunately, estimation of $\dnds$ has been proved to be largely in
 
 The strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that the parameter $\dnds$ should not be estimated globally over the entire sequence.
 However, the statistical information available along the tree for a specific site is sparse, such that sites sharing similar patterns are merged together to gather enough signal.
-Practically, in so-called site-specific phylogenetic \gls{codon} models, $\dnds$ is allowed to vary across sites, either via a finite mixture~\citep{Yang2001}, an infinite mixture~\citep{Huelsenbeck2006}, or as random effects from a parametric distribution~\citep{Lartillot2013}.
+Practically, in so-called site-specific phylogenetic \gls{codon} models, $\dnds$ is allowed to vary across sites, either via a finite mixture~\citep{Nielsen1998, Yang2000, Yang2005}, an infinite mixture~\citep{Huelsenbeck2006}, or as random effects from a parametric distribution~\citep{Lartillot2013}.
 Site-specific models had been developed to detect specific site of the sequence under positive recurrent selection~\citep{kosiol_patterns_2008}, with a $\dnds>1$, but also proved to be very valuable models to uncover selective pressure acting on specific sites.
 
 \subsection{Variation across branches}
 
 Beside variation across site, the strength of selection is not typically homogeneous along the phylogenetic tree, and it has also been recognized that the parameter $\dnds$ should be varying along the tree~\citep{Yang1998}.
 The motivation was to allow for $\dnds$ to be estimated only on a subset of the phylogeny, based on biological assumption.
-For example, such models can detect an adaptive process ongoing during the divergence of one lineage, which can allow for the detection of the proteins responsible for speciation~\citep{Yang2001, Zhang2004}.
+For example, such models can detect an adaptive process ongoing during the divergence of one lineage, which can allow for the detection of the proteins responsible for speciation~\citep{Yang2002, Zhang2004}.
 Moreover, without \gls{prior} knowledge on biological divergence, branches can get clustered together based on their \gls{substitution} rates~\citep{Dutheil2012a}.
 However, \gls{substitution} rate is a continuous traits, and should evolve smoothly along the phylogeny, such that abrupt shifts are penalized~\citep{Huelsenbeck2003,Seo2004}.
 I this modeling approach, \gls{substitution} rate of given branch is log-normally distributed around the value of its parent branch, where the standard deviation is proportional to the branch size (in unit of time)~\citep{Lartillot2011, Brevet2019}.

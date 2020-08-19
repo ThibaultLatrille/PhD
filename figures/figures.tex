@@ -13,7 +13,7 @@
 \usefonttheme{serif}
 \pgfplotsset{compat=1.16}
 
-\input{notations}
+\input{../notations}
 \pgfplotsset{every axis/.append style={line width=1pt}}
 \pgfplotscreateplotcyclelist{colors}{LIGHTGREEN\\YELLOW\\RED\\GREEN\\BLUE\\}
 
@@ -143,28 +143,26 @@
 	\end{tikzpicture}
 \end{frame}
 
-
-
 \begin{frame}
-\centering
+	\centering
 	\begin{tikzpicture}
 	\begin{axis}[
 	width=\textwidth,
 	height=0.75\textwidth,
-	ylabel={$p(S)$},
-	xlabel={$S$},
+	ylabel={$p(F) $},
+	xlabel={$\Delta G$},
 	cycle list name=colors,
-	domain=-5:5,
-	samples=200,
-	legend entries={high $\Ne$, low $\Ne$},
+	domain=-10:5,
+	ymin=0.0, ymax=1.0,
+	legend entries={$\frac{\e^{-\Delta G/kT}}{ 1 + \e^{-\Delta G/kT} }$},
 	legend cell align=left,
+	samples=200,
 	minor tick num=2,
 	axis x line=bottom,
 	axis y line=left,
-	legend style={at={(0.1,0.9)},anchor=north west}
+	legend style={at={(0.9,0.9)},anchor=north east}
 	]
-	\addplot{ exp(- x*x / 2)};
-	\addplot{ exp(- x*x / 8) / 2 };
+	\addplot[line width=1.5pt, BLUE]{ exp(- x) / (1 + exp(- x)};
 	\end{axis}
 	\end{tikzpicture}
 \end{frame}
