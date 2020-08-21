@@ -9,12 +9,13 @@ Application of these phylogenetic models to empirical \acrshort{DNA} alignment c
 Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino-acid.
 Finally the relationship between classical and mechanistic models are investigated, and how the discrepancy between both models can be interpreted.
 
+
 \section{Protein coding {DNA} sequences}
 \label{sec-intro:genetic-code}
 Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyses chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, and so on.
 This variety of roles is accomplished by a variety of three-dimensional shapes.
 A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids, with their size ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino-acids.
-Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus, and each amino-acid will interact with the other amino-acids in its spatial vicinity. 
+Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus, and each amino-acid will interact with the other amino-acids in its spatial vicinity.
 
 Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories determining their solubility and acidity (classification is given in table \ref{table:genetic_code}).
 Charged amino-acids can be either basic (positively charged) or acidic (negatively charged).
@@ -33,53 +34,53 @@ Thus, amino-acids are encoded by synonymous \glspl{codon}, which are interchange
 Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-acids, which is used almost universally by all organisms is given in table \ref{table:genetic_code}.
 
 \begin{table}[H]
-	\centering
-	\noindent\adjustbox{max width=\textwidth}{%
-		\begin{tabular}{|c||l|c|l|c|l|c|l|c||c|}
-			\hhline{|-||-|-|-|-|-|-|-|-||-|}
-			& \multicolumn{2}{c|}{\textbf{T}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c||}{\textbf{G}} & \\
-			\hhline{=#========#=}
-			\multirow{4}{*}{\textbf{T}} & TTT & \cellcolor{Nonpolar} & TCT & \cellcolor{Polar} & TAT & \cellcolor{Polar} & TGT & \cellcolor{Polar} & \textbf{T} \\
-			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar} & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)} & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)} & \textbf{C} \\
-			\hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
-			& TTA & \cellcolor{Nonpolar} & TCA & \cellcolor{Polar} & TAA & \cellcolor{Stop} Stop (Ochre) & TGA & \cellcolor{Stop} Stop (Opal) & \textbf{A} \\
-			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
-			& TTG & \cellcolor{Nonpolar} & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)} & TAG & \cellcolor{Stop} Stop (Amber) & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W) & \textbf{G} \\
-			\hhline{|-||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|-|-|-||-|}
-			\multirow{4}{*}{\textbf{C}} & CTT & \cellcolor{Nonpolar} & CCT & \cellcolor{Nonpolar} & CAT & \cellcolor{Basic} & CGT & \cellcolor{Basic} & \textbf{T} \\
-			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& CTC & \cellcolor{Nonpolar} & CCC & \cellcolor{Nonpolar} & CAC & \cellcolor{Basic} \multirow{-2}{*}{Histidine (His/H)} & CGC & \cellcolor{Basic} & \textbf{C} \\
-			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
-			& CTA & \cellcolor{Nonpolar} & CCA & \cellcolor{Nonpolar} & CAA & \cellcolor{Polar} & CGA & \cellcolor{Basic} & \textbf{A} \\
-			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& CTG & \cellcolor{Nonpolar} \multirow{-6}{*}{Leucine (Leu/L)} & CCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Proline (Pro/P)} & CAG & \cellcolor{Polar} \multirow{-2}{*}{Glutamine (Gln/Q)} & CGG & \cellcolor{Basic} \multirow{-4}{*}{Arginine (Arg/R)} & \textbf{G} \\
-			\hhline{|-||-|-|-|-|-|-|-|-||-|}
-			\multirow{4}{*}{\textbf{A}} & ATT & \cellcolor{Nonpolar} & ACT & \cellcolor{Polar} & AAT & \cellcolor{Polar} & AGT & \cellcolor{Polar} & \textbf{T} \\
-			\cline{2-2} \cline{4-4}\cline{6-6} \cline{8-8} \cline{10-10}
-			& ATC & \cellcolor{Nonpolar} & ACC & \cellcolor{Polar} & AAC & \cellcolor{Polar} \multirow{-2}{*}{Asparagine (Asn/N)} & AGC & \cellcolor{Polar} \multirow{-2}{*}{Serine (Ser/S)} & \textbf{C} \\
-			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
-			& ATA & \cellcolor{Nonpolar} \multirow{-3}{*}{Isoleucine (Ile/I)} & ACA & \cellcolor{Polar} & AAA & \cellcolor{Basic} & AGA & \cellcolor{Basic} & \textbf{A} \\
-			\hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
-			& ATG & \cellcolor{Nonpolar} Methionine (Met/M) & ACG & \cellcolor{Polar} \multirow{-4}{*}{Threonine (Thr/T)} & AAG & \cellcolor{Basic} \multirow{-2}{*}{Lysine (Lys/K)} & AGG & \cellcolor{Basic} \multirow{-2}{*}{Arginine (Arg/R)} & \textbf{G} \\
-			\hhline{|-||-|-|-|-|-|-|-|-||-|}
-			\multirow{4}{*}{\textbf{G}} & GTT & \cellcolor{Nonpolar} & GCT & \cellcolor{Nonpolar} & GAT & \cellcolor{Acidic} & GGT & \cellcolor{Nonpolar} & \textbf{T} \\
-			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& GTC & \cellcolor{Nonpolar} & GCC & \cellcolor{Nonpolar} & GAC & \cellcolor{Acidic} \multirow{-2}{*}{Aspartic acid (Asp/D)} & GGC & \cellcolor{Nonpolar} & \textbf{C} \\
-			\hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}||-|}
-			& GTA & \cellcolor{Nonpolar} & GCA & \cellcolor{Nonpolar} & GAA & \cellcolor{Acidic} & GGA & \cellcolor{Nonpolar} & \textbf{A} \\
-			\cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
-			& GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)} & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & \textbf{G} \\
-			\hhline{|-||-|-|-|-|-|-|-|-||-|}
-	\end{tabular}}
-	\caption[Genetic Code]{
-		The genetic code \acrshort{DNA} table translating \glspl{codon} into amino-acids.
-		Amino-acids are represent into $4$ categories based on the electrochemical properties.
-		Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
-		Stop \glspl{codon} are represented in black (\textcolor{Stop}{\ding{110}}).
-		The synonymous \glspl{codon} encoding for the same amino-acid are usually different by their third \gls{codon} position, the wooble base.
-	}
-	\label{table:genetic_code}
+    \centering
+    \noindent\adjustbox{max width=\textwidth}{%
+    \begin{tabular}{|c||l|c|l|c|l|c|l|c||c|}
+        \hhline{|-||-|-|-|-|-|-|-|-||-|}
+        & \multicolumn{2}{c|}{\textbf{T}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c||}{\textbf{G}} & \\
+        \hhline{=#========#=}
+        \multirow{4}{*}{\textbf{T}} & TTT & \cellcolor{Nonpolar}                                         & TCT & \cellcolor{Polar}                                      & TAT & \cellcolor{Polar}                                          & TGT & \cellcolor{Polar}                                      & \textbf{T} \\
+        \cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
+        & TTC & \cellcolor{Nonpolar} \multirow{-2}{*}{Phenylalanine (Phe/P)} & TCC & \cellcolor{Polar}                                      & TAC & \cellcolor{Polar} \multirow{-2}{*}{Tyrosine (Tyr/Y)}       & TGC & \cellcolor{Polar} \multirow{-2}{*}{Cysteine (Cys/C)}   & \textbf{C} \\
+        \hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+        & TTA & \cellcolor{Nonpolar}                                         & TCA & \cellcolor{Polar}                                      & TAA & \cellcolor{Stop} Stop (Ochre)                              & TGA & \cellcolor{Stop} Stop (Opal)                           & \textbf{A} \\
+        \hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+        & TTG & \cellcolor{Nonpolar}                                         & TCG & \cellcolor{Polar} \multirow{-4}{*}{Serine (Ser/S)}     & TAG & \cellcolor{Stop} Stop (Amber)                              & TGG & \cellcolor{Nonpolar} Tryptophan (Trp/W)                & \textbf{G} \\
+        \hhline{|-||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|-|-|-||-|}
+        \multirow{4}{*}{\textbf{C}} & CTT & \cellcolor{Nonpolar}                                         & CCT & \cellcolor{Nonpolar}                                   & CAT & \cellcolor{Basic}                                          & CGT & \cellcolor{Basic}                                      & \textbf{T} \\
+        \cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
+        & CTC & \cellcolor{Nonpolar}                                         & CCC & \cellcolor{Nonpolar}                                   & CAC & \cellcolor{Basic} \multirow{-2}{*}{Histidine (His/H)}      & CGC & \cellcolor{Basic}                                      & \textbf{C} \\
+        \hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
+        & CTA & \cellcolor{Nonpolar}                                         & CCA & \cellcolor{Nonpolar}                                   & CAA & \cellcolor{Polar}                                          & CGA & \cellcolor{Basic}                                      & \textbf{A} \\
+        \cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
+        & CTG & \cellcolor{Nonpolar} \multirow{-6}{*}{Leucine (Leu/L)}       & CCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Proline (Pro/P)} & CAG & \cellcolor{Polar} \multirow{-2}{*}{Glutamine (Gln/Q)}      & CGG & \cellcolor{Basic} \multirow{-4}{*}{Arginine (Arg/R)}   & \textbf{G} \\
+        \hhline{|-||-|-|-|-|-|-|-|-||-|}
+        \multirow{4}{*}{\textbf{A}} & ATT & \cellcolor{Nonpolar}                                         & ACT & \cellcolor{Polar}                                      & AAT & \cellcolor{Polar}                                          & AGT & \cellcolor{Polar}                                      & \textbf{T} \\
+        \cline{2-2} \cline{4-4}\cline{6-6} \cline{8-8} \cline{10-10}
+        & ATC & \cellcolor{Nonpolar}                                         & ACC & \cellcolor{Polar}                                      & AAC & \cellcolor{Polar} \multirow{-2}{*}{Asparagine (Asn/N)}     & AGC & \cellcolor{Polar} \multirow{-2}{*}{Serine (Ser/S)}     & \textbf{C} \\
+        \hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|-|-|-||-|}
+        & ATA & \cellcolor{Nonpolar} \multirow{-3}{*}{Isoleucine (Ile/I)}    & ACA & \cellcolor{Polar}                                      & AAA & \cellcolor{Basic}                                          & AGA & \cellcolor{Basic}                                      & \textbf{A} \\
+        \hhline{|~||-|-|-|>{\arrayrulecolor{Polar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Basic}}->{\arrayrulecolor{black}}||-|}
+        & ATG & \cellcolor{Nonpolar} Methionine (Met/M)                      & ACG & \cellcolor{Polar} \multirow{-4}{*}{Threonine (Thr/T)}  & AAG & \cellcolor{Basic} \multirow{-2}{*}{Lysine (Lys/K)}         & AGG & \cellcolor{Basic} \multirow{-2}{*}{Arginine (Arg/R)}   & \textbf{G} \\
+        \hhline{|-||-|-|-|-|-|-|-|-||-|}
+        \multirow{4}{*}{\textbf{G}} & GTT & \cellcolor{Nonpolar}                                         & GCT & \cellcolor{Nonpolar}                                   & GAT & \cellcolor{Acidic}                                         & GGT & \cellcolor{Nonpolar}                                   & \textbf{T} \\
+        \cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
+        & GTC & \cellcolor{Nonpolar}                                         & GCC & \cellcolor{Nonpolar}                                   & GAC & \cellcolor{Acidic} \multirow{-2}{*}{Aspartic acid (Asp/D)} & GGC & \cellcolor{Nonpolar}                                   & \textbf{C} \\
+        \hhline{|~||-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}|-|-|-|>{\arrayrulecolor{Nonpolar}}->{\arrayrulecolor{black}}||-|}
+        & GTA & \cellcolor{Nonpolar}                                         & GCA & \cellcolor{Nonpolar}                                   & GAA & \cellcolor{Acidic}                                         & GGA & \cellcolor{Nonpolar}                                   & \textbf{A} \\
+        \cline{2-2} \cline{4-4} \cline{6-6} \cline{8-8} \cline{10-10}
+        & GTG & \cellcolor{Nonpolar} \multirow{-4}{*}{Valine (Val/V)}        & GCG & \cellcolor{Nonpolar} \multirow{-4}{*}{Alanine (Ala/A)} & GAG & \cellcolor{Acidic} \multirow{-2}{*}{Glutamic acid (Glu/E)} & GGG & \cellcolor{Nonpolar} \multirow{-4}{*}{Glycine (Gly/G)} & \textbf{G} \\
+        \hhline{|-||-|-|-|-|-|-|-|-||-|}
+    \end{tabular}}
+    \caption[Genetic Code]{
+    The genetic code \acrshort{DNA} table translating \glspl{codon} into amino-acids.
+    Amino-acids are represent into $4$ categories based on the electrochemical properties.
+    Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
+    Stop \glspl{codon} are represented in black (\textcolor{Stop}{\ding{110}}).
+    The synonymous \glspl{codon} encoding for the same amino-acid are usually different by their third \gls{codon} position, the wooble base.
+    }
+    \label{table:genetic_code}
 \end{table}
 
 Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
@@ -104,69 +105,70 @@ However in the scope of this manuscript, such selection between synonymous \glsp
 \subsection{Amino-acid transitions}
 
 \begin{table}[H]
-	\centering
-	\noindent\adjustbox{max width=\textwidth}{%
-	\begin{tabu}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline & \textbf{K} & \textbf{N} & \textbf{T} & \textbf{R} & \textbf{S} & \textbf{I} & \textbf{M} & \textbf{Q} & \textbf{H} & \textbf{P} & \textbf{L} & \textbf{E} & \textbf{D} & \textbf{A} & \textbf{G} & \textbf{V} & \textbf{Y} & \textbf{C} & \textbf{W} & \textbf{F}\\
-		\hline
-		\hline \textbf{K} & - & 4 & 2 & 2 & 0 & 1 & 1 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\hline \textbf{N} & - & - & 2 & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
-		\hline \textbf{T} & - & - & - & 2 & 6 & 3 & 1 & 0 & 0 & 4 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\hline \textbf{R} & - & - & - & - & 6 & 1 & 1 & 2 & 2 & 4 & 4 & 0 & 0 & 0 & 6 & 0 & 0 & 2 & 2 & 0\\
-		\hline \textbf{S} & - & - & - & - & - & 2 & 0 & 0 & 0 & 4 & 2 & 0 & 0 & 4 & 2 & 0 & 2 & 4 & 1 & 2\\
-		\hline \textbf{I} & - & - & - & - & - & - & 3 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 2\\
-		\hline \textbf{M} & - & - & - & - & - & - & - & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
-		\hline \textbf{Q} & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\hline \textbf{H} & - & - & - & - & - & - & - & - & - & 2 & 2 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
-		\hline \textbf{P} & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\hline \textbf{L} & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 6 & 0 & 0 & 1 & 6\\
-		\hline \textbf{E} & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0\\
-		\hline \textbf{D} & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2 & 2 & 2 & 0 & 0 & 0\\
-		\hline \textbf{A} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 4 & 0 & 0 & 0 & 0\\
-		\hline \textbf{G} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 2 & 1 & 0\\
-		\hline \textbf{V} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 2\\
-		\hline \textbf{Y} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 0 & 2\\
-		\hline \textbf{C} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2\\
-		\hline \textbf{W} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0\\
-		\hline \textbf{F} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & -\\
-		\hline
-	\end{tabu}}
-\caption[Amino-acids adjacency matrix]{
-Number of possible one nucleotide non-synonymous {transitions} between amino-acids, integrating over the underlying \glspl{codon}.
-For all the possible $190$ pairs of amino-acids, only $75$ pairs contains at least one non-synonymous {transition}.
-}
-\label{table:adjacency}
+    \centering
+    \noindent\adjustbox{max width=\textwidth}{%
+    \begin{tabu}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline & \textbf{K} & \textbf{N} & \textbf{T} & \textbf{R} & \textbf{S} & \textbf{I} & \textbf{M} & \textbf{Q} & \textbf{H} & \textbf{P} & \textbf{L} & \textbf{E} & \textbf{D} & \textbf{A} & \textbf{G} & \textbf{V} & \textbf{Y} & \textbf{C} & \textbf{W} & \textbf{F}\\
+        \hline
+        \hline \textbf{K} & - & 4 & 2 & 2 & 0 & 1 & 1 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \hline \textbf{N} & - & - & 2 & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
+        \hline \textbf{T} & - & - & - & 2 & 6 & 3 & 1 & 0 & 0 & 4 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \hline \textbf{R} & - & - & - & - & 6 & 1 & 1 & 2 & 2 & 4 & 4 & 0 & 0 & 0 & 6 & 0 & 0 & 2 & 2 & 0\\
+        \hline \textbf{S} & - & - & - & - & - & 2 & 0 & 0 & 0 & 4 & 2 & 0 & 0 & 4 & 2 & 0 & 2 & 4 & 1 & 2\\
+        \hline \textbf{I} & - & - & - & - & - & - & 3 & 0 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 2\\
+        \hline \textbf{M} & - & - & - & - & - & - & - & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+        \hline \textbf{Q} & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \hline \textbf{H} & - & - & - & - & - & - & - & - & - & 2 & 2 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0\\
+        \hline \textbf{P} & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+        \hline \textbf{L} & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 6 & 0 & 0 & 1 & 6\\
+        \hline \textbf{E} & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 2 & 2 & 2 & 0 & 0 & 0 & 0\\
+        \hline \textbf{D} & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2 & 2 & 2 & 0 & 0 & 0\\
+        \hline \textbf{A} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 4 & 0 & 0 & 0 & 0\\
+        \hline \textbf{G} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 4 & 0 & 2 & 1 & 0\\
+        \hline \textbf{V} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0 & 0 & 0 & 2\\
+        \hline \textbf{Y} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 0 & 2\\
+        \hline \textbf{C} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 2 & 2\\
+        \hline \textbf{W} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & 0\\
+        \hline \textbf{F} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & -\\
+        \hline
+    \end{tabu}}
+    \caption[Amino-acids adjacency matrix]{
+    Number of possible one nucleotide non-synonymous {transitions} between amino-acids, integrating over the underlying \glspl{codon}.
+    For all the possible $190$ pairs of amino-acids, only $75$ pairs contains at least one non-synonymous {transition}.
+    }
+    \label{table:adjacency}
 \end{table}
 Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible {transitions} to another \glspl{codon} as illustrated in the left panel of figure \ref{fig:graph-codons-aa}.
 Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous {transition} between the underlying \glspl{codon} as illustrated in the right panel of figure \ref{fig:graph-codons-aa}.
 In fact, most pairs of amino-acids requires at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino-acids that are accesible trough a single non-synonymous {transition} ($75$ pairs).
 
 \begin{figure}[htbp!]
-	\centering
-		\begin{minipage}{0.49\linewidth}
-			\includegraphics[width=\linewidth, page=1]{figures/gt-codon-tab20b.pdf}
-		\end{minipage}%
-		\hfill
-		\begin{minipage}{0.49\linewidth}
-			\includegraphics[width=\linewidth, page=1]{figures/gt-aa-tab20b.pdf}
-		\end{minipage}
+    \centering
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{figures/gt-codon-tab20b.pdf}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{figures/gt-aa-tab20b.pdf}
+    \end{minipage}
 
-	\caption[Graphs of {codon} and amino-acid transitions]{
-		\label{fig:graph-codons-aa}
-		Graphs of possible one nucleotide {transition} between \gls{codon} (left panel) and between amino-acid (right panel).
-		Nodes corresponds to \glspl{codon} (left panel) and amino-acid (right panel), where their color pictures the encoded amino-acid.
-		Additionally, for amino-acids the size of nodes represent the number of underlying \glspl{codon}.
-		An edge between two \glspl{codon} depicts a one nucleotide {transition}, such that a \gls{codon} can have at most $9$ possible {transitions}.
-		Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the weight of the edges represent the number of such possible {transitions}.
-		Non-synonymous {transition} are represented in colored gradient, while synonymous {transitions} are depicted in black.
-		The graph of the $61$ \glspl{codon} contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
-		The radius of the graph is three, such that the most distant amino-acids are at most three {transition} away.
-		Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for Serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence a least two non-synonymous {transitions}.
-		From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous {transitions}.
-		The graph is not fully connected and do not form a clique. Moreover, the graph radius equal to three because a {transition} from Methionine to Tyrosine requires at least three non-synonymous {transitions}.
-		Altogether, for all the possible $190$ pairs of amino-acids, $114$ pairs requires at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
-	}
+    \caption[Graphs of {codon} and amino-acid transitions]{
+    \label{fig:graph-codons-aa}
+    Graphs of possible one nucleotide {transition} between \gls{codon} (left panel) and between amino-acid (right panel).
+    Nodes corresponds to \glspl{codon} (left panel) and amino-acid (right panel), where their color pictures the encoded amino-acid.
+    Additionally, for amino-acids the size of nodes represent the number of underlying \glspl{codon}.
+    An edge between two \glspl{codon} depicts a one nucleotide {transition}, such that a \gls{codon} can have at most $9$ possible {transitions}.
+    Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the weight of the edges represent the number of such possible {transitions}.
+    Non-synonymous {transition} are represented in colored gradient, while synonymous {transitions} are depicted in black.
+    The graph of the $61$ \glspl{codon} contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
+    The radius of the graph is three, such that the most distant amino-acids are at most three {transition} away.
+    Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for Serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence a least two non-synonymous {transitions}.
+    From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous {transitions}.
+    The graph is not fully connected and do not form a clique. Moreover, the graph radius equal to three because a {transition} from Methionine to Tyrosine requires at least three non-synonymous {transitions}.
+    Altogether, for all the possible $190$ pairs of amino-acids, $114$ pairs requires at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
+    }
 \end{figure}
+
 
 \section{Classical codon models}
 \label{sec:intro-classical-codon-models}
@@ -181,33 +183,33 @@ The genetic code allows to split mutations into synonymous and non-synonymous mu
 
 Following the formalism of \gls{codon} models pioneered by \citet{Muse1994}, the $4 \times 4$ mutation matrix $\Mutmatrix$ at the nucleotide level is defined as:
 \begin{equation}
-\label{eq:mutrates}
-\Mutmatrix = \begin{pmatrix}
-- & {\mutmatrix_{AC}} & 		{\mutmatrix_{AG}} & 		{\mutmatrix_{AT}} \\
-{\mutmatrix_{AC}} & - & {\mutmatrix_{CG}} &		{\mutmatrix_{CT}} \\
-{\mutmatrix_{AG}} & 		{\mutmatrix_{CG}} & - & {\mutmatrix_{GT}} \\
-{\mutmatrix_{AT}} & 		{\mutmatrix_{CT}} & 		{\mutmatrix_{GT}} & -
-\end{pmatrix},
+    \label{eq:mutrates}
+    \Mutmatrix = \begin{pmatrix}
+                     - & {\mutmatrix_{AC}} &        {\mutmatrix_{AG}} &        {\mutmatrix_{AT}} \\
+                     {\mutmatrix_{AC}} & - & {\mutmatrix_{CG}} &        {\mutmatrix_{CT}} \\
+                     {\mutmatrix_{AG}} &        {\mutmatrix_{CG}} & - & {\mutmatrix_{GT}} \\
+                     {\mutmatrix_{AT}} &        {\mutmatrix_{CT}} &        {\mutmatrix_{GT}} & -
+    \end{pmatrix},
 \end{equation}
 Grouping nucleotides into \glspl{codon}, mutation rate from \gls{codon} $\ci$ to $\cj$ thus depends on the underlying nucleotide change between the \gls{codon}, if $\ci$ to $\cj$ are only a mutation away, $\nucitoj$ denotes the nucleotide change between the \glspl{codon} and the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
 \begin{equation}
-\mu_{\itoj} = 
-\begin{dcases}
- \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are one mutation away,} \\
- 0 \text{ else.}
-\end{dcases}
+    \mu_{\itoj} =
+    \begin{dcases}
+        \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are one mutation away,} \\
+        0 \text{ else.}
+    \end{dcases}
 \end{equation}
 
-At the \gls{codon} level, synonymous mutations are deemed \gls{neutral} and the rate of \glspl{synonymous} ${\submatrix_{\itoj}}$ is equal to the mutation rate: 
+At the \gls{codon} level, synonymous mutations are deemed \gls{neutral} and the rate of \glspl{synonymous} ${\submatrix_{\itoj}}$ is equal to the mutation rate:
 \begin{align}
-\submatrix_{\itoj} & = \mu_{\itoj} \\
-				  & = \mutmatrix_{\nucitoj}
+    \submatrix_{\itoj} & = \mu_{\itoj} \\
+    & = \mutmatrix_{\nucitoj}
 \end{align}
 
 Conversely, non-synonymous mutations are considered under selection, where their probability of fixation is stretched by a factor $\omega$, and their \gls{substitution} rate is:
 \begin{align}
-\submatrix_{\itoj} & = \omega \mu_{\itoj} \\
-					& = \omega \mutmatrix_{\nucitoj}.
+    \submatrix_{\itoj} & = \omega \mu_{\itoj} \\
+    & = \omega \mutmatrix_{\nucitoj}.
 \end{align}
 All non-synonymous mutations are considered equivalent, and $\omega$ encompass the average strength of selection exercised on them.
 Most importantly, $\omega>1$ is absorbing the signals of an excess in the rate of \glspl{non-synonymous}, indicating that the protein is under adaptive evolution.
@@ -219,31 +221,31 @@ Because of this definition, $\omega$ identifies with the rate of \glspl{non-syno
 Throughout this manuscript, the term $\dnds$ will be used to identify the estimation of $\omega$ from protein coding \acrshort{DNA} sequence alignment under the original model of \citet{Muse1994}.
 To note, $\omega$ can also be parameterized as function of the average scaled selection coefficient:
 \begin{align}
-\omega & = \dfrac{S}{1 - \e^{-S}} \text{, where }\\
-& \Rightarrow	\begin{dcases}
-	S > 0 \iff \omega > 1 \\
-	S = 0 \iff \omega = 1 \\
-	S < 0 \iff \omega < 1
-	\end{dcases}
+    \omega & = \dfrac{S}{1 - \e^{-S}} \text{, where }\\
+    & \Rightarrow    \begin{dcases}
+                         S > 0 \iff \omega > 1 \\
+                         S = 0 \iff \omega = 1 \\
+                         S < 0 \iff \omega < 1
+    \end{dcases}
 \end{align}
 
 Altogether, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \citet{Muse1994} is defined entirely by the mutation matrix ($\Mutmatrix$), $\omega$ and the genetic code:
 \begin{equation}
-\begin{dcases}
-\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
-\submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-\submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-\submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
-\end{dcases}
-\label{eq:codon-models}
+    \begin{dcases}
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
+        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
+    \end{dcases}
+    \label{eq:codon-models}
 \end{equation}
 
 \subsection{Equilibrium properties}
 
 It is important to note that under this model, the equilibrium frequencies of all \glspl{codon} are equal, and depends only on the equilibrium frequencies of nucleotides ($\sigma_{A}, \sigma_{C}, \sigma_{G}, \sigma_{T}$):
 \begin{align}
-\pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{\sum\limits_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]} } \\
- & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{(1 - \sigma_{T}\sigma_{A}\sigma_{A} - \sigma_{T}\sigma_{A}\sigma_{G} - \sigma_{T}\sigma_{G}\sigma_{A} )},
+    \pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{\sum\limits_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]} } \\
+    & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}}{(1 - \sigma_{T}\sigma_{A}\sigma_{A} - \sigma_{T}\sigma_{A}\sigma_{G} - \sigma_{T}\sigma_{G}\sigma_{A} )},
 \end{align}
 where $\ci[1]$ denotes the nucleotide at position $1$ of \gls{codon} $i$.
 
@@ -253,10 +255,10 @@ $\bullet$ Another approach is 3x4 model which is not mechanistically justified.
 
 Moreover, the relative \gls{substitution} rate at equilibrium $\nu$ defined by equation \ref{eq:relative-sub-rate}, if restricted to the subset of \glspl{non-synonymous}, identifies to $\omega$:
 \begin{align}
-\nu & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-					& = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-					& = \omega \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-					& = \omega, 
+    \nu & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \omega \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \omega,
 \end{align}
 where $\NonSyn_{\ci}$ is the set of non-synonymous \glspl{codon} neighbors to \gls{codon} $\ci$.
 This identity seems so far trivial and unnecessary, but will bear importance later when comparing this phenomenological model to mechanistic models of \gls{codon} \glspl{substitution}.
@@ -266,9 +268,8 @@ More precisely, these models can provides estimates of $\dnds$ for the whole gen
 However, in practice, protein are typically under a mix of adaptation and purifying selection, thus typically leading to an $\dnds<1$ even in the presence of positive selection.
 Most importantly to the scope of this manuscript, they \gls{codon} models proved to be very valuable to quantify and asses the selective constrains imposed on protein coding sequences.
 
-Importantly, different implementations of phylogenetic \gls{codon} models have been proposed, which parameterize the mutation matrix and the \gls{codon} frequencies in different way~\citep{Muse1994, Goldman1994}, ultimately leading to variable fits of the data and different estimation of $\dnds$ on the same dataset. 
+Importantly, different implementations of phylogenetic \gls{codon} models have been proposed, which parameterize the mutation matrix and the \gls{codon} frequencies in different way~\citep{Muse1994, Goldman1994}, ultimately leading to variable fits of the data and different estimation of $\dnds$ on the same dataset.
 However, and fortunately, estimation of $\dnds$ has been proved to be largely insensitive to the underlying \gls{codon} models~\citep{Spielman2018}, such that empirical estimation of $\dnds$ using different methods leads to comparable results.
-
 
 \subsection{Variation across sites}
 
@@ -285,12 +286,12 @@ For example, such models can detect an adaptive process ongoing during the diver
 Moreover, without \gls{prior} knowledge on biological divergence, branches can get clustered together based on their \gls{substitution} rates~\citep{Dutheil2012a}.
 However, \gls{substitution} rate is a continuous traits, and should evolve smoothly along the phylogeny, such that abrupt shifts are penalized~\citep{Huelsenbeck2003,Seo2004}.
 I this modeling approach, \gls{substitution} rate of given branch is log-normally distributed around the value of its parent branch, where the standard deviation is proportional to the branch size (in unit of time)~\citep{Lartillot2011, Brevet2019}.
-In other words, \gls{substitution} rate is seen as a log-Brownian motion along the phylogeny, where the process splits at every node of the tree. 
+In other words, \gls{substitution} rate is seen as a log-Brownian motion along the phylogeny, where the process splits at every node of the tree.
 
 Environmental variables or life-history traits that can vary between species have been investigated as factor determining $\dnds$ along the phylogeny~\citep{Felsenstein1985,Romiguier2014}.
-Integrative inference methods combining molecular sequences and lineage specific quantitative traits have also found that $\dnds$ correlates positively with traits such as longevity and body mass~\citep{Lartillot2011, Figuet2017}.
+Integrative inference methods combining molecular sequences and lineage specific quantitative traits have also found that $\dnds$ correlates positively with traits such as longevity and body mass~\citep{Lartillot2011, Nabholz2013, Figuet2017}.
 Since lineage with a large body size and extended longevity typically correspond to low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\dnds$ and $\Ne$, thus confirming the theoretical prediction of the \gls{nearly-neutral} theory of evolution.
-However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated~\citep{Nabholz2013, Lanfear2014, Figuet2016}.
+However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated~\citep{Lanfear2014}, and depends on whether forces such as biased gene conversion are taken into account~\citep{Figuet2016, Bolivar2019.
 
 \subsection{Variation across sites and branches}
 
@@ -305,6 +306,7 @@ Indeed the overall tree is under adaptive process and one cannot contrast a bran
 %
 %Because its a distribution of fitness effects and not a fitness landscape, features of evolutionary trajectory such as transient positive selection is not represented.
 %They are a generic representation of fitness, easily parameterized and inherently taking into account phenomenon such as epistasis.
+
 
 \section{Mechanistic {codon} models}
 \label{sec:intro-mechanistic-codon-models}
@@ -321,25 +323,25 @@ Mechanistic models thus assume that the protein-coding sequence is at mutation-s
 The probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated \gls{codon} ($\fitj$) and the fitness of the amino-acid encoded by the original \gls{codon} ($\fiti$), where $\aai$ denotes the amino-acid encoded by \gls{codon} $i$.
 The rate of \gls{substitution} from \gls{codon} $\ci$ to $\cj$ is derived from equation \ref{eq:sub-transion-rates}:
 \begin{align}
-\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}, \\
-& = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }.
+    \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}, \\
+    & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }.
 \end{align}
 
 Altogether, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of mechanistic \gls{codon} models is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
 \begin{equation}
-\begin{dcases}
-\submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
-\submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-\submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-\submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
-\end{dcases}
-\label{eq:propensities-models}
+    \begin{dcases}
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
+    \end{dcases}
+    \label{eq:propensities-models}
 \end{equation}
 
 \subsection{Equilibrium properties}
 Because the process is time-reversible (see previous chapter), from equation \ref{eq:equilibrium-mut-sel}, the stationary distribution equals:
 \begin{align}
-\pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]}\Fitj }
+    \pi_{\ci} & = \dfrac{\sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\sigma_{\cj[1]}\sigma_{\cj[2]}\sigma_{\cj[3]}\Fitj }
 \end{align}
 
 From a dynamical perspective, a non-synonymous mutation from a \gls{codon} with high fitness to another \gls{codon} will have a low probability of fixation, since the mutated \gls{codon} will have a lower fitness.
@@ -351,6 +353,7 @@ In contrast, in \gls{nearly-neutral} models, the amino-acids have a fitness land
 The difficulty and complexity of \gls{nearly-neutral} models are to estimate the underlying amino-acid fitness landscape~\citep{Halpern1998}.
 
 \subsection{Variation across sites and branches}
+\label{subsec:variation-across-sites-and-branches}
 Because of computational complexity, mechanistic models consider multiplicative fitness (additive log-fitness) across sites.
 A first approximation of \gls{nearly-neutral} models is that all the positions of the sequence share the same amino-acid preferences.
 But it has been rapidly recognized that each site in the \gls{codon} sequence should have its own independent \gls{codon} preferences.
@@ -359,14 +362,15 @@ Fitting the mutation-selection model on a sequence alignment, via equation (\ref
 
 On the other hand, to our knowledge this model had not been implemented in branch specific context, although a model of site-specific fitness profils and branch specific effective population can in principle tease out selection and drift and estimate fluctuation of population size across the phylogeny.
 
+
 \section{Relationship between mechanistic and classical codon models}
 Mechanistic mutation-selection \gls{codon} models display the important feature of genuinely accounting for purifying selection.
 Indeed \citet{Spielman2015} showed mathematically that if the underlying process is \gls{nearly-neutral} \gls{substitution}, the $\dnds$ estimated by the model seeking deviation from neutrality will always be lower than $1$, under the assumption of no \gls{codon} usage bias.
 In other word, classical \gls{codon} \gls{substitution} model will interpret a \gls{nearly-neutral} model as purifying selection ($\dnds < 1$).
 
-Indeed, the site-specific predicted rate of non-synonymous over \gls{synonymous} at the mutation-selection balance is obtained as: 
+Indeed, the site-specific predicted rate of non-synonymous over \gls{synonymous} at the mutation-selection balance is obtained as:
 \begin{equation}
-\omega_0 = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}},
+    \omega_0 = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}},
 \end{equation}
 where $\NonSyn_{\ci}$ is the set of non-synonymous \glspl{codon} neighbors to \gls{codon} $\ci$.
 
@@ -376,14 +380,15 @@ The difference is better highlighted in the case of reverse mutations, where a n
 However in classical \gls{codon} models, a negative selection coefficient is matched by an also a negative selection coefficient for the reverse mutation.
 
 Realizing this relationship between classical and mechanistic \gls{codon} models, under the assumption that the protein is under a \gls{nearly-neutral} regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (classical-model) should be the same~\citep{Spielman2015, Spielman2016}.
-But assumptions of the models can be broken, resulting in discrepancy between $\omega_0$ and $\omega$, modeled as a multiplying factor $\omega_*$ \cite{Rodrigue2016}:
+But assumptions of the models can be broken, resulting in discrepancy between $\omega_0$ and $\omega$, modeled as a multiplying factor $\omega_*$ \citep{Rodrigue2016}:
 \begin{equation}
-\omega = \omega_* \omega_0
+    \omega = \omega_* \omega_0
 \end{equation}
 
 \subsection{Adaptive evolution}
+\label{subsec:adaptive-evolution}
 
-Firstly, if amino-acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic. 
+Firstly, if amino-acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic.
 Because of the movement of the landscape behind our feet, similarly to a Red-Queen dynamic, it is more likely to slide into a valley rather than on top of a peak when the landscape moving.
 In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward that upwards in the fitness landscape.
 As a result, any changes of the landscape results in lower elevation of the current coordinate.
@@ -393,8 +398,8 @@ Since the protein sequence is always lagging behind the moving target defined by
 In other word, at the moment of a \gls{substitution} the target amino-acid as a high relative fitness, which can only then decreases trough time.
 Thus breaking the assumption of time independence of amino-acid preferences leads to estimation of induced $\omega_0$ lower than realized $\omega$:
 \begin{equation}
-\omega > \omega_0 \\
-\iff \omega_* > 1
+    \omega > \omega_0 \\
+    \iff \omega_* > 1
 \end{equation}
 
 \subsection{Epistasis and entrenchment}
@@ -405,10 +410,13 @@ This effect called entrenchment result in the current amino-acids reinforcing it
 In other word, at the moment of a \gls{substitution} the target amino-acid has a nearly equal relative fitness, which can only increases with time~\citep{Goldstein2016, Goldstein2017}.
 Contradictory to adaption, breaking the assumption of independence between sites leads to entrenchment and estimation of induced $\omega_0$ greater than realized $\omega$~\citep{Rodrigue2016}:
 \begin{equation}
-\omega > \omega_0 \\
-\iff \omega_* > 1
+    \omega > \omega_0 \\
+    \iff \omega_* > 1
 \end{equation}
- 
+
+\subsection{Hybrid models}
+
+\citep{Nielsen2003}
 To summarize, a departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
 On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino-acids.
 But one shortcoming of \gls{nearly-neutral} \gls{codon} \gls{substitution} models is that if one does not get a statistical departure from near-neutrality ($\omega = \omega_0$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be disentangled.

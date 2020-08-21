@@ -29,13 +29,13 @@ As a result, probabilities of observing the protein in folded conformation, give
 \begin{equation}
 p(F) = \frac{\e^{-G_F / kT}}{\mathcal{Z}},
 \end{equation}
-where $k$ is the Boltzmann constant and $T$ is temperature in Kelvin, $\mathcal{Z}$ is a normalizing constant summed over all possible conformations, also called {partition function}.
-Since most conformations are unfolded, the partition function is related to the free energy of unfolded states:
+where $k$ is the Boltzmann constant and $T$ is temperature in Kelvin, $\mathcal{Z}$ is a normalizing constant summed over all possible conformations, also called the conformational {partition function}.
+The conformational partition function is related to the free energy of the folded state and of all the possible unfolded states:
 \begin{align}
-\mathcal{Z} & = \e^{-G_F / kT} + \sum\limits_{\text{unfolded}} \e^{-G_{\text{unfolded}} / kT}
+\mathcal{Z} & = \e^{-G_F / kT} + \sum\limits_{\text{unfolded}} \e^{-G_{\text{unfolded}} / kT} \\
             & = \e^{-G_F / kT} + \e^{-G_U / kT},
 \end{align}
-where $G_U$ is the total free energy of the unfolded conformation.
+where $G_U$ encompasses the free energy of all the possible unfolded conformations.
 Altogether, the probability of observing the protein in folded conformation can then be re-expressed as:
 \begin{align}
 p(F) & = \frac{\e^{-G_F / kT}}{\e^{-G_F / kT} + \e^{-G_U / kT}}, \\
@@ -62,12 +62,10 @@ We can thus characterize the destabilizing effect of a mutation by its:
 \begin{equation}
     \Delta \Delta G = \Delta G(mutant) - \Delta G(wild type),
 \end{equation}
-where $\Delta \Delta G <0 $ are stabilizing mutations, and conversely $\Delta \Delta G > 0 $ are destabilizing mutations.
+where by defintion $\Delta \Delta G <0 $ are stabilizing mutations, and conversely $\Delta \Delta G > 0 $ are destabilizing mutations.
 
-TODO
-Free energy gaps $\Delta G$ can be experimentally measured (by calorimetry? some refs).
--> donner quelques résultats, en particulier, sur le DG empirique et sa variance à travers les protéines.
-However, this process is costly, and has to be done for each single mutation.
+Free energy gaps $\Delta G$ can be experimentally measured, which lies in the range of $-25$ to $-5$ kcal/mol~\citep{Kumar2006, Gromiha2016}.
+Moreover, empirical measurements of folding stability changes due to single point mutations can also be obtained experimentally, this process is costly, and has to be done for each single mutation~\citep{Rocklin2017}.
 
 Alternatively, the free energy gap of a protein can be computed with biophysical model of protein, by modeling the atomic structure and the potential energy of contact between residues at the atomic level in 3-dimensionnal structure.
 Computing the free energy gap for a given protein sequence is challenging, for a given conformation of the backbone, it also depends on the conformation of the side chains, as well as the solvent (water).
@@ -92,29 +90,23 @@ In between these two extremes, many models can approximate with various degrees 
 
 Empirically, a large body of evidence indicates that the stability, or in other word the ability to fold in globular conformation, is a target of natural selection~\citep{Sikosek2014}.
 If the relationship from protein sequence to protein stability is within reach and can be obtained with various degrees of approximations, relationship from stability to fitness is more elusive and difficult to apprehend.
-First, it is known the protein stability relates to fitness, as demonstrated by a study of nearly 1000 mutations in beta-lactamase TEM-1~\citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations~\citep{Araya2012}.
+First, it is known the protein stability relates to fitness, as demonstrated by a study of beta-lactamase TEM-1 mutants~\citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations~\citep{Araya2012}.
 However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that result in purifying selection for destabilizing mutations.
-
 Finally, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
-TODO
--> What's in that last sentence relates to the more general question of why proteins are marginally stable.
-Deserves to be expanded somewhat like a new paragraph.
-which would briefly introduce
-- the observation that the prots are marginally stable
-- two types of explanation have been proposed:
-that this is the consequence of the stability-activity tradeoff
-but that, more fundamentally, it is an expectation of mut-salt equilibrium even under selection only for stability,
-in soft-threshold (Goldstein). The two explanations are not mutually incompatible.
 
--> maybe also: the question of translational robustness.
-TODO
-translation errors act like point mutations.
-Fairly high translation error rate.
-They have measurable stabilizing effects in terms of Delta Delta G, just like non-synonymous mutations.
-The fitness associated with a sequence variant at the DNA level integrates the average effect of these stabilizing mutations induced at the translation level.
-For this reason, at mutation-selection equilibrium, the protein encoded at the DNA level tends to have a more negative Delta G than without error, as if to anticipate these additional stabilizing effects.
+The relationship from stability to fitness raises the more general question of why proteins are marginally stable.
+Indeed the optimal stability is never achieved, and two types of explanation have been proposed.
+Firstly, this could the consequence of the stability-activity trade-off, such that proteins are selected for an intermediate stability.
+Secondly, and more fundamentally, it is an expectation of mutation-selection equilibrium even under directional selection for stability~\citep{Taverna2002}.
+This two explanations are not mutually incompatible, and can both explains the observed marginal stability of proteins.
+
+Additionally, translation errors act like point mutations, with a fairly high translation error rate.
+They have measurable destabilizing effects in terms of $\Delta \Delta G$, just like non-synonymous mutations.
+The fitness associated with a sequence variant at the DNA level thus integrates the average effect of these destabilizing mutations induced at the translation level.
+For this reason, at mutation-selection equilibrium, the protein encoded at the DNA level tends to have a more negative $\Delta G$ than without error, as if to anticipate these additional destabilizing effects.
 
 \subsection{Conformational stability and epistatis}
+\label{subsec:conformational-stability-and-epistatis}
 
 Computing the free energy gap $\Delta G$ requires knowledge of interacting energy contact between amino-acids in close proximity.
 As a result, the $\Delta G$ impact of a mutation at a specific position of the protein depends on the context and the amino-acids at other positions.
@@ -123,26 +115,23 @@ Moreover, even if $\Delta G$ would be an additive traits, in the sens that each 
 The reason is that even if $\Delta G$ is an additive traits, the log-fitness is still not a linear function of $\Delta G$.
 The former case of site-interdependence due to interacting terms is called specific epistasis, while the latter case of non-linearity of the fitness function is called by contrast non-specific epistasis.
 
-Altogether, the relation between sequence ($\Seqi$) and fitness ($f$) is complex, and can be abstracted by an intermediate phenotype.
+Formally, the relation between sequence ($\Seqi$) and fitness ($f$) is complex, and can be abstracted by an intermediate phenotype.
 In the specific case of conformational stability, the phenotype is the free energy gap, and the ternary relationship develops as:
 \begin{equation}
-    \Seqi \rightarrow \Delta G (\Seqi) \rightarrow f \left( \Delta G \right)
+    \Seqi \rightarrow \Delta G (\Seqi) \rightarrow f \left( \Delta G \right).
 \end{equation}
-- additive trait, linear log-fitness: site-independent
-- in all other cases: site-interdependent
+Withing this ternary relationship, the fitness effect of a mutation is site-independent in only one specific case, namely that the phenotype is additive and that the log-fitness is linear with the phenotype.
+Whenever one of these two assumptions is not valid, the fitness effect of a mutation at a specific site depends on the overall sequence.
+This site-interdependence represents a challenge for phylogenetic codons, generally not modeled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics} below).
 
-- that this point has important consequences on molecular evolution
-talk about entrenchement and Stokes shift here.
-You can reread Echave and Wilke's review, for an example of how to talk about this fairly briefly.
-
-This site-interdependence represents a challenge for phylogenetic codons, generaly not modeled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics} below).
+Site-interdependence has important consequences on molecular evolution  of protein sequences, and results in entrenchment and Stokes shifts~\citep{Pollock2012, Shah2015}
+Briefly speaking, even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time~\citep{Lunzer2010, Naumenko2012, Mccandlish2013}.
 
 \subsection{Aggregation avoidance}
 
 So far, proteins have been seen as independent machinery of the cells, however within the crowded intra-cellular space, proteins are not independent entities but are interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
 In non-specific interactions at the protein surface, stabilizing amino-acids are hydrophilic and destabilizing amino-acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
 The misinteraction avoidance hypothesis predicts that, compared with lowly expressed proteins, highly expressed proteins disfavor residues that promote misinteraction, exhibit a lower misinteraction probability per molecule and have higher conservation for misinteraction avoiding residues.
-
 
 \section{Confronting classical codon models with protein biophysics}
 \label{sec:classical-codon-biophysics}
@@ -162,18 +151,14 @@ In multicellular organisms, mRNA concentration data used are typically from the 
 Because of the strong correlation between mRNA and protein concentrations, the negative correlation between protein concentration and evolutionary rate is also strong.
 
 Theoretical models based on protein stability presented previously have been invoked to explain the negative correlation between $\dnds$ and expression level~\citep{Wilke2006, Drummond2008}.
-Selection against protein misfolding induces abundant proteins to evolve to greater stability, where the protein is more constrained and evolve slowly~\citep{Serohijos2012}.
-TODO
-Maybe expand a bit on the different assumptions about how this toxicity is mediated:
-in terms of translation errors? is it the only one?
-Maybe also explain the logic of the argument: for the same misfolded fraction, a strongly expressed protein will produce more macromolecules toxic to the cell than a weakly expressed protein, or something like that.
-
+The rationnal is that for the same fraction of misfolded proteins, a strongly expressed protein will produce more macromolecules toxic to the cell than a weakly expressed protein.
+As a result, selection against protein misfolding induces abundant proteins to evolve to greater stability, where the protein is more constrained and evolve more slowly~\citep{Serohijos2012}.
 
 However, even for those proteins of comparable expression levels, their $\dnds$ still span several orders of magnitude~\citep{Drummond2008}.
 Abundance likewise cannot account for the quasi log-normal distribution of $\dnds$ among genes in a genome, a fact observed from bacteria, yeast, worm, fly, mouse, and humans.
 These observations suggest that protein abundance, although a major determinant of $\dnds$, is not its only causal variable.
-TODO
--> there is a review / discussion on this subject in Echave and Wilke: regardless of the level of expression, some topologies are more robust (depending on the density of contacts, in particular), and therefore evolve faster. Not sure this explains the residual variance, but it may be one of the contributing factors.
+As an example, some topologies are more robust (depending on the density of contacts, in particular), and therefore evolve faster, which may be one of the contributing factors of the residual variance~\citep{Echave2017}.
+
 \subsection{Variation across sites}
 
 Similarly to search for the determining factors of $\dnds$ at the gene level, extensive search had been conducted at the site level, within a protein.
@@ -201,7 +186,7 @@ For example, if a protein sequence is already maximally stable, only destabilizi
 Ultimately, studies presented in this chapter focus on the scaling of $\dnds$ to either protein abundance, or to effective population size, and also to relative solvent accessibility.
 However, these various factors susceptible to modulate the $\dnds$ have been rarely investigated simultaneously.
 Why is $\dnds$ supposedly independent of $\Ne$ but depend on protein abundance?
-For example are the relationship of $\dnds$ to protein abundance or to population size expected to be different?
+For example are the relationship between $\dnds$ and either protein abundance or population size expected to be different?
 I argue the integration and unification between these levels is scarcely made.
 For example, under which models for the relation between biophysics and fitness are the relations of $\dnds$ to protein abundance and population size expected to be the same, or different?
 What do empirical data have to say quantitatively about this question?
@@ -218,7 +203,7 @@ In the case of mutation-selection codon models, on the other hand, knowledge obt
 
 In experimental context, it is possible to mutate DNA of an organism and establish an experiment where the mutant compete with the resident in a specific medium, and the difference in growth of the two variants allows to determine the fitness impact of the mutation.
 In the case of free living unicellular organisms, such process can be automated to estimate selection coefficient of a wide variety of mutant, an experiment called deep mutational scanning.
-Technically, for each site of the protein, fitness of the 20 amino-acids can be experimentally determined and the resulting fitness landscape, also named preferences or fitness profile, can be estimated.
+Technically, for each site of the protein, fitness of the 20 amino-acids can be experimentally determined and the resulting fitness landscape (also named preferences or fitness profile) can be estimated, as shown in figure \ref{fig:intro-deep-mut-profile}.
 Such experimentally determined fitness landscape are directly comparable to statistical estimates by phylogenetic codon models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
 \citet{Doud2015} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed nonsite-specific alternatives in fitting phylogenies of proteins from human, swine, equine, and avian influenza. 
 Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
@@ -227,13 +212,15 @@ Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles
     \centering
     \includegraphics[width=\textwidth, page=1] {prefs_plots_lactamase_stiffler.pdf}
     \caption[Deep mutational scanning profile]{
-    Site-specific deep mutational scanning data on beta-lactamase of~\citep{Stiffler2015}.
+    Site-specific deep mutational scanning data on beta-lactamase of \citet{Stiffler2015}.
+    For each site, preferences of the 20 amino-acids are represented by the height of the corresponding amino-acid letter.
     The analysis is performed using phydms~\citep{Hilton2017}.}
     \label{fig:intro-deep-mut-profile}
 \end{figure}
 Even though it is possible to compare estimated fitness profiles under phylogenetic codon models with predicted profiles under biophysical modeling, I argue that this congruence and confrontation is scarcely made.
 
 \subsection{Structurally-constrained site-interdependent codon models}
+\label{subsec:structurally-constrained-site-interdependent-codon-models}
 
 It has long been realized that inter-residue interactions within the protein conformation lead to amino acid fixation probabilities that are dependent upon the amino-acid present at other sites.
 More generally, site-specific fixation probabilities may change along an evolutionary trajectory because the selection coefficient of a given mutation may depend on the specific sequence background in which it occurs~\citep{Goldstein2016}.
@@ -249,7 +236,7 @@ These structurally constrained models have been shown to fit data better than th
 However, some of the available site-independent phylogenetic codon models still better fit to the data than structurally constrained models, possibly indicating that alternatives models should be explored in order to better incorporate structural constrain and protein biophysics.
 
 Alternatively, assumption of site-independence can be understood as considering that substitution process at the level of site are averaged over time, where the dependencies to other sites are integrated over the course of the process.
-As a result, statistical method relying on site-independent processes while accounting for other sites consist in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
+As a result, statistical method relying on site-independent processes while accounting for epistasis consist in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
 Projecting a joint process of several sites into a single site process leverages mean-field theory developed in statistical physics, and as been used to developed phylogenetic models accounting for protein structure~\citep{Chi2018} and protein stability~\citep{Arenas2015a, Arenas2017}.
 Unfortunately, these methods are not parameterized directly in terms of parameters of evolution, namely mutation and effective population size, and the estimated fitness parameters can not be related to empirically determined parameters.
 

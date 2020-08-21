@@ -10,19 +10,72 @@ But if one wants to also estimate the mutational process, one need to use model 
 
 \section{Introduction}
 
-$\bullet$ Nucleotide composition in protein-coding sequences is the result of the equilibrium between mutation and selection.
+%%** Introducing codon models and their usefulness **
+Phylogenetic codon models are now routinely used in many domains of bioinformatics and molecular evolutionary studies.
+Most often used to characterize the selective regimes, or genes, or sites, having experienced positive selection.
+More generally: understanding the respective contributions of mutation, selection and drift (and other forces, such as gBGC), and the causes of their variation between genes or across species (REFS).
 
-$\bullet$ Phenomenological parametric \gls{codon} models developed to estimate the rate of evolution on amino-acids are qualitative, in the sens that they model the fitness landscape and drift throught an unique aggregate parameter.
+%** introducing the idea of a single $\omega$ **
+Conceptually, codon models take advantage of the fact that synonymous and non-syn substitutions are differentially impacted by selection
+Assuming synonymous mutations are neutral, the synonymous rate equal to the underlying mutation rate.
+Non-synonymous substitutions, on the other hand, reflect the combined effect of mutation and selection.
+Classical codon models formalize this idea by invoking a single parameter $\omega$, acting multiplicatively on non-synonymous substitutions rates.
+Using a parametric model automatically corrects for the multiplicity issues created by the complex structure of the genetic code and by uneven mutation rates between nucleotides.
+As a result, this parameter $\omega$ capture the net, or aggregate, effect of selection on non-synonymous mutations.
 
-$\bullet$ By aggregating selection and drift into a sole parameter, is the mutational process estimated reliably?
+%** elaborating on the phenomenological versus mechanistic, classical versus mutsel, distinction **
+Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through single parameter.
+In reality, the selective effects of associated with non-synonymous mutations depend on the context (position, initial final amino acid, etc).
+In contrast, attempts at an explicitly modeling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism.
+However, computationally complex, and robustness issues (violation of assumptions about the fitness landscape).
+Classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
-$\bullet$ This model predicts that the nucleotide composition is the same for all $3$ positions of the \glspl{codon}, however it as empirically been observed that the nucleotide composition are not identical.
+%** bringing in the key issue here: correctly teasing apart mutation and selection **
+This simple parametric design of current classical models raises an important question: by capturing selection through a single parameter, $\omega$, is the mutational process estimated reliably?
+There are indications that this is not the case.
+In their simplest form, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
+In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC.
+As show below, this pattern can also be reproduced in simulations assuming a protein-coding sequence at mutation-selection balance under a fixed fitness landscape.
 
-$\bullet$ Can we estimate mutational bias reliably?
+%** Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent **
+These modulations across the three coding positions has been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
+However, this is problematic, this modelling has the consequence that synonymous substitutions, say, from A to C, occur at different rates at the first and third positions.
+Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions, and if neutral, all mutations from A to C should have same rate.
+In any case: this suggests that the mutation matrix (F1x4) or matrices (F3x4) estimated by codon models are not correctly reflecting the mutation rates between nucleotides.
+Instead, what these matrices are capturing is the result of the compromise between mutation and selection at the level of the realized nucleotide frequencies.
 
-$\bullet$ Is mutational bias having side effect on estimation of selection?
+%** potential impact of these problems: both practical and conceptual **
+For detecting selection, this problem is probably minor.
+Conceptually, however, this is a clear symptom of a more fundamental problem: mutation rates and fixation biases are not correctly teased apart.
+Practically, could have important consequences in other contexts than tests of positive selection.
+In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences.
+A particularly important factor here: gBGC, which can confound the tests for detecting positive selection.
+Even in the absence of gBGC, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection, through $\omega$ (REFS).
+All this suggests that, even before introducing gBGC in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
 
-$\bullet$ Influence of mutation bias and hydrophobicity on the \gls{substitution} rates and sequence entropies of protein evolution \citet{Santos2018}
+%** the mut-sel balance revisited: an equilibrium between two net forces **
+In this direction, the key point that needs to be correctly formalized is that, since the realized nucleotide frequencies is the result of a compromise between mutation and selection, then this implies that the strength of selection is not the same between all nucleotide or amino-acid pairs.
+For instance, if the mutation process is AT-biased, because of selection, the realized nucleotide frequencies at equilibrium will be less AT-biased than expected under the mutation process.
+However, this implies that, at equilibrium, there will be a net mutation pressure towards AT, which has to be compensated for by a net selection differential towards GC, or in other words that mutations towards AT will be more deleterious on average than those towards GC.
+As a result, the net $\dnds$ towards AT will be lower than the net $\dnds$ towards GC.
+
+%** introducing $\omega$ as a tensor **
+All this suggests that, in order for a codon model to correctly formalize this subtle interplay between mutation and selection, the component of the parameter vector responsible for absorbing the net effect of selection (i.e. $\omega$) should not be a scalar, as is currently the case.
+Instead, it should be a tensor, an array of $\omega$ values unfolding along multiple directions.
+However, how many components should this tensor contain?
+More generally, what is the simplest parametric structure able to correctly tease apart mutation rates on one hand, and net fixation biases caused by selection on the other hand, and this, without having to explicitly model the underlying fitness landscape?
+
+%** end of introduction: outline of the mean-field approach and of the results — à compléter à la fin **
+In the present work, we address this question.
+In order to derive a codon model along those lines, our strategy is to first assume a true evolutionary process, following the mutation-selection formalism.
+For the sake of simplicity and illustration, we assume a site-independent, fixed fitness landscape, however, the argument is more general.
+Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
+This mean-field 61x61 substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
+Finally, we identify the average fixation probabilities appearing in this expression with the $\omega$ tensor we are looking for.
+What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino-acids that are nearest-neighbors in the genetic code.
+There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor.
+Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
+
 
 \section{Results}
 
@@ -192,7 +245,7 @@ However, under the assumption of a reversible process, the number of parameters 
 The process is reversible:
 \begin{align}
     \epsilon_{\aai} \omega_{\aai, \aaj} & = \epsilon_{\aai} \epsilon_{\aaj} \beta_{\aai, \aaj}, \\
-     & = \epsilon_{\aaj} \omega_{\aaj, \aai}
+    & = \epsilon_{\aaj} \omega_{\aaj, \aai}
 \end{align}
 
 $\bullet$ From the maximum \gls{likelihood} estimates of the mutation matrix ($\widehat{\Mutmatrix}$), we can estimate the mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$.
@@ -234,6 +287,7 @@ Also, in empirical data we observed that the fixation bias between weak and stro
 Maximum \gls{likelihood} estimation has been performed with the software Hyphy~\citep{Pond2005}.
 The python scripts generating the Hyphy batch files (for both Muse \& Gaut and mean-field), as well as scripts to analyse experiments are available at \url{https://github.com/ThibaultLatrille/NucleotideBias}
 
+
 \section{Conclusion}
 
 $\bullet$ The observed composition of the alignment is the result of the articulation between mutation and selection.
@@ -243,6 +297,7 @@ $\bullet$ Mutational bias is balanced by a fixation bias (selection) in the oppo
 $\bullet$ Inference of mutational bias requires to model fixation bias in different direction.
 
 $\bullet$ Our mean-field parametric framework is not site-wise, but can be used to untangle mutation and selection, potentially in the presence of fluctuating selection or epistasis.
+
 
 \section{Materials \& Methods}
 
@@ -278,7 +333,7 @@ It is important to note that ratio of weak over strong nucleotides frequency at 
 \begin{align}
     \label{lambda}
     \dfrac{ \mutequi_A + \mutequi_T }{ \mutequi_C + \mutequi_G }
-    & = \dfrac{ \lambda ( 2 + 2 \lambda)^{-1} + \lambda ( 2 + 2 \lambda)^{-1}}{ ( 2 + 2 \lambda)^{-1} +  ( 2 + 2 \lambda)^{-1}}, \ \textrm{from eq.}\ \ref{nucStationarity},\\
+    & = \dfrac{ \lambda ( 2 + 2 \lambda)^{-1} + \lambda ( 2 + 2 \lambda)^{-1}}{ ( 2 + 2 \lambda)^{-1} + ( 2 + 2 \lambda)^{-1}}, \ \textrm{from eq.}\ \ref{nucStationarity},\\
     & = \lambda.
 \end{align}
 

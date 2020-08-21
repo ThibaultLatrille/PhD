@@ -266,6 +266,9 @@ Of note, a more general mathematical description of the mutation-selection frame
     \label{fig:point-process}
 \end{figure}
 
+\subsection{Mutation-limited process}
+\label{subsec:mutation-limited-assumption}
+
 Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier sequences visited in the history of a lineage.
 This continuous-time Markovian process is valid if the mutation rate is sufficiently low, such that the event of a new mutation reaching fixation is completed before the next one occurs.
 Since the rate of \gls{substitution} is equal to $u$ (per generation) and that each \gls{allele} ultimately reaching fixation is segregating for an average of $4 \Ne$ generations~\citep{Kimura1969}, this assumption is broadly applicable whenever the product of population size and mutation rate per generation for the sequence is lower than $1$ ($4 \Ne u \ll 1$).
@@ -397,7 +400,7 @@ Occurrence probabilities given by the stationary distribution allows one to calc
 One quantity of interest is the mean \gls{substitution} rate to the mean mutation rate, called $ \nu $:
 \begin{align}
     \nu & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle}
-    \label{eq:relative-sub-rate}
+    \label{eq:relative-sub-rate} \\
     & = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
 \end{align}
 where the notation $\langle \cdot \rangle$ denotes the statistical average.
@@ -463,7 +466,7 @@ Inherently, they are based on two processes, one is stochastically creating dive
 In the constrained case of a finite number of time or attempts to find the best outcome overall, the problem is best described by the multi-armed bandit problem. The name comes from imagining a gambler at a row of slot machines (sometimes known as one-armed bandits), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of trials.
 The gambler faces a dilemma at each trial, either reducing his regret by exploiting the best arm, or gaining information through exploration of other arms.
 The best strategy to solved this dilemma can be mathematically derived in numerous cases, and encompass a mixing strategies with a defined ratio of exploration and exploitation~\citep{Auer2002,Kocsis2006,Furnkranz2006}.
-This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials \textcolor{GREEN}{[Hence the name a clinical arm, although I don't have any reference to back this claim]}~\citep{Berger-Tal2014, March}.
+This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials~\citep{Berger-Tal2014, March}.
 An other application of the exploration-exploitation dilemma is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017, and out-compete Ke Jie, the world n°1 ranked player at the time~\citep{Silver2017, Silver2018}.
 AlphaGo has often been publicized and hyped in various media outlets that this feat was possible due to machine learning, more specifically due to convolutionnal neural networks.
 However, it is more scarcely mentioned that AlphaGo neural network is combined with an exploration-exploitation algorithm, or more specifically Monte Carlo tree search.

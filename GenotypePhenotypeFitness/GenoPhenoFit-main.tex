@@ -15,8 +15,8 @@ Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an app
 In practice, DFEs are strongly leptokurtic, thus predicts a weak negative relation between $\omega$ and $\Ne$.
 
 The \gls{substitution} rate of selected mutations relative to \gls{neutral} \gls{substitution} rate ($\omega$) is an observable quantity of the molecular evolutionary process, at least if we can separately estimate the rate of \gls{neutral} and selected mutations in a phylogenetic or comparative context.
-Practically, in the case of protein-coding \acrshort{DNA} sequences, and assuming that synonymous mutations are \gls{neutral}, while non-synonymous changes affecting the amino-acid sequence are under selection, $\omega$ can be identified with the ratio of non-synonymous over \gls{synonymous} rates ($dN/dS$).
-Thus the \gls{nearly-neutral} argument translates into a predicted decrease in $\omega = dN/dS$ as a function of long-term changes in $\Ne$.
+Practically, in the case of protein-coding \acrshort{DNA} sequences, and assuming that synonymous mutations are \gls{neutral}, while non-synonymous changes affecting the amino-acid sequence are under selection, $\omega$ can be identified with the ratio of non-synonymous over \gls{synonymous} rates ($\dnds$).
+Thus the \gls{nearly-neutral} argument translates into a predicted decrease in $\omega = \dnds$ as a function of long-term changes in $\Ne$.
 
 The context of protein-coding sequences fostered another modeling approach, based on genotype-fitness map instead of distribution of fitness effects.
 In this alternative approach, the selective effect of a mutation depends on the fitness of both source and target amino-acids involved on the mutation~\citep{Halpern1998, Rodrigue2010, Tamuri2012}.
@@ -28,7 +28,8 @@ Even though this modeling approach differs substantially from the one assuming a
 Conversely, one striking theoretical result was the proof that $\omega$ is in fact predicted to be independent of $\Ne$ under very general circumstances, namely, whenever (i) the fitness is a log-concave function of a \gls{Phenotype} and (ii) the \gls{Phenotype} itself is equimutable.
 Equimutability states that the distribution of phenotypic changes due to mutations is independent the current \gls{Phenotype} of individuals~\citep{Cherry1998}.
 This general theoretical argument has been invoked in the context of \textit{in silico} experiments of protein sequence evolution, assuming that proteins are under selection for their thermodynamic stability, with fitness being proportional to  folding probability of the protein~\citep{Goldstein2013}.
-Thermodynamic stability is itself computed using a 3D structural model of the protein. These computational experiments have led to the observation that $\omega$ is essentially independent of $\Ne$.
+Thermodynamic stability is itself computed using a 3D structural model of the protein.
+These computational experiments have led to the observation that $\omega$ is essentially independent of $\Ne$.
 An explanation proposed for this result is that the distribution of changes in free energy of folding ($\deltadeltaG$) due to mutations is approximately independent of the current free energy ($\deltaG$), thus making the free energy of folding essentially equimutable.
 
 However, the equimutability assumption is a relatively strong one, which also conflicts with combinatorial considerations about the relation between sequence and \gls{Phenotype}~\citep{Serohijos2012}.
@@ -71,7 +72,9 @@ We also discuss some of the alternative biophysical mechanisms that could determ
 \subsection{Models of evolution}
 
 The results that are presented below are valid for a general category of models of sequence evolution, based on an additive trait $x$, such that the coding positions of the sequence contribute additively to the trait.
-The trait is under directional selection specified by a decreasing and log-concave fitness function $f(x)$. As a specific example, we more specifically consider a model of protein evolution under the constraint of thermodynamic stability (See figure \ref{fig:Summary}, left panel). This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Pollock2012}, except that we make several simplifying assumptions, allowing us to derive analytical equations.
+The trait is under directional selection specified by a decreasing and log-concave fitness function $f(x)$.
+As a specific example, we more specifically consider a model of protein evolution under the constraint of thermodynamic stability (See figure \ref{fig:Summary}, left panel).
+This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Pollock2012}, except that we make several simplifying assumptions, allowing us to derive analytical equations.
 %Throughout our derivation, we present the results both for the general case and for the more specific example.
 
 \begin{figure}[H]
@@ -79,11 +82,17 @@ The trait is under directional selection specified by a decreasing and log-conca
  \includegraphics[width=\textwidth, page=1] {summary.pdf}
  \caption[Outline of the theoretical results]{
  Outline of the theoretical results.
- Left panel. The complete state of the amino-acid sequence is the genotype. The \gls{Phenotype} ($x$) is a real-valued summary of the genotype, and is defined in our model as the fraction of destabilizing sites in the sequence. Fitness is a decreasing log-concave function of the \gls{Phenotype}, depending on structural parameters of the model ($\Nsites, \DeltaGmin, \ \gamma, \ \beta$).
- Middle panel. Once defined the relation from genotype to fitness at the individual level, the evolutionary process consists of point \glspl{substitution} of the amino-acid representative sequence of the population. \Glspl{substitution} are mutation reaching fixation, thus the rate of \gls{substitution} depends mechanistically on the interplay between mutation, selection and \gls{drift}.
+ Left panel.
+The complete state of the amino-acid sequence is the genotype.
+The \gls{Phenotype} ($x$) is a real-valued summary of the genotype, and is defined in our model as the fraction of destabilizing sites in the sequence.
+Fitness is a decreasing log-concave function of the \gls{Phenotype}, depending on structural parameters of the model ($\Nsites, \DeltaGmin, \ \gamma, \ \beta$).
+ Middle panel.
+Once defined the relation from genotype to fitness at the individual level, the evolutionary process consists of point \glspl{substitution} of the amino-acid representative sequence of the population.
+\Glspl{substitution} are mutation reaching fixation, thus the rate of \gls{substitution} depends mechanistically on the interplay between mutation, selection and \gls{drift}.
  For a given \gls{effective-population-size} ($\Ne$), the evolutionary process result in an average value of the \gls{Phenotype} ($\smash{x\eq}$) and an average relative \gls{substitution} rate of selected mutation ($\omega$).
  Averaging over time is equivalent to determining the statistical equilibrium, by ergodicity of the stochastic process, given we can derive the probabilities of {transitions} between \glspl{Phenotype}.
- Right panel. The scaling of equilibrium $\omega$ under a range of $\Ne$ give us the susceptibility ($\chi$), as a function of the structural parameters defined in the phenotype-fitness map.
+ Right panel.
+The scaling of equilibrium $\omega$ under a range of $\Ne$ give us the susceptibility ($\chi$), as a function of the structural parameters defined in the phenotype-fitness map.
  }
  \label{fig:Summary}
 \end{figure}
@@ -96,7 +105,8 @@ Instead, each site contributes independently to $\deltaG$.
 With such approximation, for each site of the sequence only one amino-acid is stabilizing the protein.
 All $19$ other amino-acids are equally destabilizing, and each site contribute to an excess of $\gamma = \Delta \Delta G > 0$ (in kcal/mol) to $\deltaG$ per destabilizing amino-acids.
 If all amino-acids of the sequence are stabilizing, $\deltaG$ is optimal and equal to $ \DeltaGmin = \Delta G_{\text{min}} < 0$.
-In this model, the most succinct \gls{Phenotype} of a given genotype (i.e. sequence) is just the proportion of destabilizing amino-acids in the sequence, defined as $0 \leq x \leq 1$. Thus $\deltaG$ is a linear function of $x$:
+In this model, the most succinct \gls{Phenotype} of a given genotype (i.e. sequence) is just the proportion of destabilizing amino-acids in the sequence, defined as $0 \leq x \leq 1$.
+Thus $\deltaG$ is a linear function of $x$:
 \begin{align}
  \deltaG (x) = \DeltaGmin + \Nsite \gamma x,
 \end{align}
@@ -113,7 +123,8 @@ where $\DeltaGmin$ and $\gamma$ are defined as above, and the parameter $\beta$ 
 
 \subsection{Susceptibility of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
 
-In this section we present an analytical approximate solution for the response of equilibrium $\omega$ after a change in $\Ne$ (in log space). We call this response the susceptibility of $\omega$ to changes in $\Ne$, and denote it as $\chi$:
+In this section we present an analytical approximate solution for the response of equilibrium $\omega$ after a change in $\Ne$ (in log space).
+We call this response the susceptibility of $\omega$ to changes in $\Ne$, and denote it as $\chi$:
 \begin{align}
  \chi = \frac{ \der \omega}{\der \ln (\Ne)} \label{eq:chi}
 \end{align}
@@ -155,7 +166,8 @@ Formally, and after simplification, the equilibrium \gls{Phenotype} denoted $x\e
  \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (19) & \simeq - \frac{4\Ne}{\Nsite} \frac{ \partial \ln f(x\eq) }{\partial {x\eq}} \\
  \Rightarrow \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (19) & \simeq 4\Ne \beta \gamma e^{\beta (\DeltaGmin + \Nsite \gamma x\eq)} \text{,} \label{eq:equilibrium}
 \end{align}
-in the more specific case of the biophysical model. This equation essentially expresses the mutation-selection equilibrium: the left-hand side of the equation is the log of the mutation bias at $x$, while the right-hand side is simply $4 \Ne s$, the scaled selection coefficient.
+in the more specific case of the biophysical model.
+This equation essentially expresses the mutation-selection equilibrium: the left-hand side of the equation is the log of the mutation bias at $x$, while the right-hand side is simply $4 \Ne s$, the scaled selection coefficient.
 
 This equation cannot be solved explicitly for $x\eq$, but a qualitative intuition on the consequences of change in $\Ne$ to the equilibrium \gls{Phenotype} $x\eq$ is given in figure \ref{fig:NeChangeInfluence}.
 Intuitively an increase in $\Ne$ results in a more optimal \gls{Phenotype}, closer to $0$.
@@ -169,9 +181,12 @@ The leftward shift is smaller for selective strength with steeper curve, resulti
 
  \caption[Phenotype susceptibility after a change in $\Ne$]{
  Phenotype susceptibility after a change in $\Ne$.
- The equilibrium \gls{Phenotype} $x\eq$ is determined by the equation $\smash{\ln(\frac{1 - x\eq}{x\eq}) + \ln(19)=4\Ne \beta \gamma e^{\beta (\DeltaGmin + \Nsite \gamma x\eq)}}$. The right-hand side of the equation increases exponentially with $x$ where $\Nsite \gamma$ is the exponential growth rate ({\color{RED}red} and {\color{GREEN}green} curves).
+ The equilibrium \gls{Phenotype} $x\eq$ is determined by the equation $\smash{\ln(\frac{1 - x\eq}{x\eq}) + \ln(19)=4\Ne \beta \gamma e^{\beta (\DeltaGmin + \Nsite \gamma x\eq)}}$.
+The right-hand side of the equation increases exponentially with $x$ where $\Nsite \gamma$ is the exponential growth rate ({\color{RED}red} and {\color{GREEN}green} curves).
  The parameter $\gamma$ is chosen such that $\gamma$ is increased by an order of magnitude in the red compared to the green curve, moreover, the value of $\DeltaGmin$ is chosen such that the equilibrium value $\smash{x\eq}$ is kept constant by solving numerically equation \ref{eq:equilibrium}.
- Whenever $\Nsite \gamma$ is large ({\color{RED}red solid} curve), the exponential growth is steep and increasing $\Ne$ (dotted curve) only changes subtly the equilibrium \gls{Phenotype} by a factor $\smash{\color{RED}\Delta x\eq}$. On the other hand, whenever $\Nsite \gamma$ is low ({\color{GREEN}green} solid curve), the exponential growth is steadier and increasing $\Ne$ (dotted curve) involve a stronger susceptibility of the equilibrium \gls{Phenotype} by a factor $\smash{\color{GREEN}\Delta x\eq}$. Moreover, changes in $\smash{x\eq}$ reflects the changes in $\omega$ since both are approximately equal (equation \ref{eq:dnds}).
+ Whenever $\Nsite \gamma$ is large ({\color{RED}red solid} curve), the exponential growth is steep and increasing $\Ne$ (dotted curve) only changes subtly the equilibrium \gls{Phenotype} by a factor $\smash{\color{RED}\Delta x\eq}$.
+On the other hand, whenever $\Nsite \gamma$ is low ({\color{GREEN}green} solid curve), the exponential growth is steadier and increasing $\Ne$ (dotted curve) involve a stronger susceptibility of the equilibrium \gls{Phenotype} by a factor $\smash{\color{GREEN}\Delta x\eq}$.
+Moreover, changes in $\smash{x\eq}$ reflects the changes in $\omega$ since both are approximately equal (equation \ref{eq:dnds}).
  }
  \label{fig:NeChangeInfluence}
 \end{figure}
@@ -244,10 +259,12 @@ This assumption is relaxed in our simulation, such that destabilizing mutations 
 Additionally, the number of sites in the sequence ($\Nsite$) is assumed to be large such that the selection coefficient is well approximated by the fitness derivative (equation \ref{eq:s}).
 The robustness of such approximation is tested in the simulations with finite sequences ($\Nsite=300$).
 % Finally, the \gls{substitution} rate is known to vary among sites within a protein, and each site does not contribute equally to the stability of the protein~\citep{Echave2016}.
-% To mimic this effect, the destabilizing effect of mutations is scaled by a factor specific to each site, drawn from gamma distribution (see supplementary materials). 
+% To mimic this effect, the destabilizing effect of mutations is scaled by a factor specific to each site, drawn from gamma distribution (see supplementary materials).
 
 Simulations demonstrate that the relation between $\omega$ and log-$\Ne$ is indeed linear, at least in the range explored here, and that the slope of the linear regression matches the expected theoretical value (figure \ref{fig:GoldsteinVsToy}A).
-Secondly, we observe that the parameter $\DeltaGmin$ has virtually no effect on the slope of the linear regression, as also expected theoretically (figure \ref{fig:GoldsteinVsToy}B). Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (i.e. has an impact on the intercept, not on the slope). This is due to the fact that decreasing $\DeltaGmin$ shifts the equilibrium to higher $x\eq$, since more destabilizing sites can then reach fixation before reaching the point of marginal stability.
+Secondly, we observe that the parameter $\DeltaGmin$ has virtually no effect on the slope of the linear regression, as also expected theoretically (figure \ref{fig:GoldsteinVsToy}B).
+Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (i.e. has an impact on the intercept, not on the slope).
+This is due to the fact that decreasing $\DeltaGmin$ shifts the equilibrium to higher $x\eq$, since more destabilizing sites can then reach fixation before reaching the point of marginal stability.
 
 Finally, we relaxed our assumption that each site of the sequence contributes independently to $\deltaG$, by taking into account the $3$D structure of protein and using a statistical potential to estimate $\deltaG$.
 We implemented the original model~\citep{Williams2006, Goldstein2011, Pollock2012}, in which the free energy of the folded are unfolded conformations are computed using $3$D structures of the protein conformations and pairwise contact potential energies between neighboring amino-acid residues~\citep{Miyazawa1985} (supplementary materials).
@@ -269,8 +286,10 @@ In such experiment, $\DeltaGmin=-118$ kcal/mol as it is the $\deltaG$ of the opt
  Panel A; $\DeltaGmin$ and $\gamma$ are given in the legend.
  $\gamma$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation \ref{eq:equilibrium}.
  The estimated susceptibility ($\hat{\chi}$) decreases proportionally to the inverse of $\gamma$, as predicted by our theoretical model.
- Panel B; $\gamma=1$ and $\DeltaGmin$ are given in the legend. Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but changes hardly the slope of the linear regression, as expected theoretically.
- Panel C; Folding free energy that determines the stability of the folded native state is computed using $3$D structural conformations and pairwise contact potential energies between neighboring amino-acid residues. The estimated susceptibility $\hat{\chi}=0.00124$, and $\omega$ at equilibrium is weakly dependent on log-$\Ne$, but not completely as originally claimed~\citep{Goldstein2013}.
+ Panel B; $\gamma=1$ and $\DeltaGmin$ are given in the legend.
+Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but changes hardly the slope of the linear regression, as expected theoretically.
+ Panel C; Folding free energy that determines the stability of the folded native state is computed using $3$D structural conformations and pairwise contact potential energies between neighboring amino-acid residues.
+The estimated susceptibility $\hat{\chi}=0.00124$, and $\omega$ at equilibrium is weakly dependent on log-$\Ne$, but not completely as originally claimed~\citep{Goldstein2013}.
  Under the approximation of an additive free energy model and with empirical estimate of $\gamma = \Delta \Delta G \simeq 1$, our theoretical prediction is $\chi = 0.00198$, close to the observation using $3$D structural conformations.
  Panel D; structural parameters are matched to their empirical estimates of $\DeltaGmin=\Delta G_{\text{min}} = -118$ and $\gamma = \Delta \Delta G = 1$.
  Under such parametrization, the scaling behavior is similar to panel C, although with less variance.
@@ -315,7 +334,9 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to a temporari
  Finally, $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation \ref{eq:equilibrium}.
  As such, whatever the exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
  We observe that increasing the number of sites implies a reduced time to reach the new equilibrium.
- Panel B. In context of a fixed fitness landscape, where each amino-acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate. In the context of a fixed distribution of fitness effects (\acrshort{DFE}), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
+ Panel B.
+In context of a fixed fitness landscape, where each amino-acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
+In the context of a fixed distribution of fitness effects (\acrshort{DFE}), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
  }
  \label{fig:relaxStability}
 \end{figure}
@@ -333,7 +354,7 @@ This product can be several orders of magnitude greater than $1$ in practice, su
 %Empirical data showed mitigated confirmation of this prediction, encouraging alternative explanatory mechanism.
 %One such explanation, developed in the context of genotype-phenotype-fitness map, demonstrated the absence of $\omega$ susceptibility to changes in $\Ne$ if the probabilities of \gls{Phenotype} changes are invariant to the current \gls{Phenotype}.
 %We argue that this assumption can be relaxed, and provide theoretical tools to derive the relationship between $\omega$ and $\Ne$ at equilibrium in this context.
-%We apply our framework in the special case of fitness proportional to the proportion of folded proteins. 
+%We apply our framework in the special case of fitness proportional to the proportion of folded proteins.
 
 Our compact theoretical results are supported by more complex simulations of protein evolution relaxing several assumptions.
 Particularly, our theoretical prediction match a numerical model of protein evolution, in which the free energy of the folded and unfolded conformations are computed using $3$D structures of the protein conformations.
@@ -354,7 +375,8 @@ More empirical data across different clades would be required to robustly consol
 % Stress the importance that susceptibility is valid for Ne and protein abondance
 Conjointly, the theoretical prediction of a weak negative $\omega$ susceptibility to changes in protein expression level is in stark contrast with various empirical studies~\citep{Duret2000, Rocha2004, Wang2011, Song2017}.
 Furthermore, protein expression level is one of the best predictors of $\omega$ and the empirical estimation of $\chi$ in fungi, archaea and bacteria varies in the range $[-0.046;-0.021]$ (table in supplementary materials) extracted from  \citet{Zhang2015}, which is in the best case one order of magnitude times greater than our theoretical prediction ($\simeq -0.002$).
-Interestingly, estimation of $\chi$ in animals and plants varies in the range $[-0.026;-0.004]$, which is closer to theoretical estimate (table in supplementary materials). Altogether, fitness based on protein stability is a compelling model of molecular evolution, but is apparently not a sufficiently comprehensive model to explain the amplitude of variation of $\omega$ empirically observed along a gradient of either \gls{effective-population-size} or protein expression level.
+Interestingly, estimation of $\chi$ in animals and plants varies in the range $[-0.026;-0.004]$, which is closer to theoretical estimate (table in supplementary materials).
+Altogether, fitness based on protein stability is a compelling model of molecular evolution, but is apparently not a sufficiently comprehensive model to explain the amplitude of variation of $\omega$ empirically observed along a gradient of either \gls{effective-population-size} or protein expression level.
 Our theoretical work aligned with recent independent empirical studies providing negative evidence for the hypotheses linking the rate of sequence evolution with the toxicity constraint\citep{Plata2017,Razban2019,Biesiadecka2020}.
 
 % Protein-protein interactions
@@ -376,7 +398,7 @@ We argue analogy between evolutionary and physical system is not restricted to w
 Because it is constructive approach, and not solely intuitive, the robustness of theoretical results to approximations can be asserted by computational implementation.
 Computational models offer a means to test the validity and robustness, while mathematical models offer an intuitive mechanistic mental analogy.
 
-% Thermodynamic analogy 
+% Thermodynamic analogy
 % Analogy to Clapeyron formula ? TdP/dT = Î”H/Î”V, where T is analogous to Ne
 A first analogy between evolutionary biology and physics comes from statistical mechanics, describing how observable macroscopic properties are emerging from microscopic states.
 As an example, in the Ising model the magnetization is a macroscopic resultant of all microscopic atomic spins that can be in one of two states~\citep{Brush1967}.
@@ -386,8 +408,8 @@ Ultimately, the susceptibility of macroscopic observable ($\omega$) to a control
 Another example of observable macroscopic property, though not considered in this manuscript, could be for example site entropy, i.e. the effective number of observed amino-acid at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
 
 % Mechanical analogy
-% Elasticity with springs ? Surface tension with molecule and radius of the 
-% Elasticity ? Susceptibility (dimensionless) ? Compliance (units of metres per newton) ? Flexibility (units of metres per newton) ? 
+% Elasticity with springs ? Surface tension with molecule and radius of the
+% Elasticity ? Susceptibility (dimensionless) ? Compliance (units of metres per newton) ? Flexibility (units of metres per newton) ?
 A second analogy between evolutionary biology physics comes from mechanics, where \gls{Phenotype} represent a spatial coordinate of the system, which is determined by external evolutionary forces; namely mutation, selection and drift.
 These evolutionary forces are analogous to springs attached and stretching the \gls{Phenotype} in various directions and with various stiffness, resulting in an equilibrium point.
 Once the equilibrium point determined, an elastic (or reversible) deformation of the \gls{Phenotype} can be studied whenever applying a differential stress to the system.
@@ -408,7 +430,7 @@ Models of inference are classified broadly into phenomenological and mechanistic
 Mechanistic models dissect the causation chains and construct a model from first principles, while phenomenological models aims to determine the statistical significance of parameters.
 
 % Phenomenological models
-Example of such phenomenological models are the models parameterized directly in $\omega = dN/dS$.
+Example of such phenomenological models are the models parameterized directly in $\omega = \dnds$.
 They will for example tell us which branch of the tree, or which site of the sequence has a decrease or increase in $\omega$ but not the underlying reason for such changes, which can be either mutation, selection, drift or another evolutionary force.
 For example, in such models, a mutation and its reverse mutation does not have the opposite selection coefficient.
 As such they cannot disentangle the potentially confounding effect of mutation, selection and drift.
@@ -472,13 +494,3 @@ As in previous works~\citep{Spielman2015, DosReis2015, Jones2016}, the ratio of 
 &= \dfrac{\sum\limits_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{{1 - \e^{-4 \Ne \left( \Seqi,\Seqj\right)} }}}{\sum\limits_{\Seqj \in \setNonSynNeighbors} \mu_{\Seqitoj}}
 \end{align}
 And $\omega$ is taken as the average of the time-dependent $\omega(t)$ along the simulation.
-
-\section{Acknowledgments}
-
-The authors gratefully acknowledge the help of Nicolas Rodrigue and Laurent Duret for their advice and review concerning this manuscript.
-This work was performed using the computing facilities of the CC LBBE/PRABI.
-A PhD grant of the École normale supérieure de Lyon awarded to T.L. provided a salary during part of the work.
-
-The simulators written in C++ are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}.
-The scripts and instructions necessary to reproduce this study are available at \url{https://github.com/ThibaultLatrille/GenotypePhenotypeFitness}.
-

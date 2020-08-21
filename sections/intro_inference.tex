@@ -4,14 +4,15 @@
 
 The previous chapter treated how \gls{substitution} rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
 In contrast, the goal of this chapter is to present methodology to estimates underlying parameters of evolution from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
-To realize such endeavor, it is important to realize that models of \glspl{substitution} presented previously can be used to generate an alignment of  protein-coding \acrshort{DNA}.
-Indeed, given parameters of evolution, simulations using the \gls{substitution} rates between \glspl{codon}, when run along a phylogenetic tree, can give us a likely representative protein coding \acrshort{DNA} sequence for each extant species (at the tip of the tree), producing an alignment. 
+To realize such endeavor, it is important to realize that models of \glspl{substitution} presented previously can be used to generate an alignment of protein-coding \acrshort{DNA}.
+Indeed, given parameters of evolution, simulations using the \gls{substitution} rates between \glspl{codon}, when run along a phylogenetic tree, can give us a likely representative protein coding \acrshort{DNA} sequence for each extant species (at the tip of the tree), producing an alignment.
 Moreover by running several random simulations, one can expect to obtain representative and likely set of alignments.
 Unfortunately, even with huge amount of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by a given set of parameters.
 Deriving this probability of observing a specific alignment given the parameters is thus the first theoretical question to answer, which is the focus of the first section.
 With this analytical probability obtained, it is then possible to derive for different sets of parameters their respective probability of generating an observed alignment.
 The next endeavor is thus to reverse the question, and instead of having the probability of an alignment given some parameters, the goal is to derive the probability of parameters given the alignment.
 This subsequent endeavor developed in the second section, recalling theoretical and computational implementation of Bayesian inference, in the context of phylogenetic \gls{codon} models.
+
 
 \section{Likelihood of the data}
 \label{sec-intro:likelihood}
@@ -26,7 +27,7 @@ Moreover, the development does not delves into the details of how alignment are 
 However it has been shown that outputs of different sequence alignment methods tend to produce different results that are not consistent.
 The main determining factor of alignment accuracy is evolutionary divergence, such that if alignment are restricted to orthologs from closely related taxa, or to slow-evolving genes, alignment errors become scarce and may not cause significant encumbrance.
 Finally, and not the least, models of sequence change will assume site-independence, or in other words absence of epistasis, such that changes at one sequence position have no impact on whether other positions will change.
-This assumption of independence between sites allows the probability of an observed set of aligned sequences at tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns. 
+This assumption of independence between sites allows the probability of an observed set of aligned sequences at tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns.
 This independence assumption is simplistic, throwing away biological information, and can be shown statistically to be problematic, but permits computationally convenient likelihood-based inference.
 
 The section is divided into first integrating over all trajectory along a single branch of tree, and subsequently over the total tree, while finally efficiently computing the probability of observed data given the parameters.
@@ -40,8 +41,8 @@ Consequently, the \gls{substitution} rate matrix must be normalized to be measur
 The mathematical details of this transformation from rate-matrix to probability matrix are described from first order derivation of the Markov process.
 At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength\branchexp$, the \gls{codon} probability matrix $\Probmatrix\siteexp(\branchlength\branchexp)$ is related to the {transition} matrix ($\Submatrix\siteexp$ at site $\site$) trough the first-order differential equation:
 \begin{align}
-	\dfrac{\der \Probmatrix\siteexp(\branchlength\branchexp)}{\der \branchlength\branchexp}	& = \Probmatrix\siteexp(\branchlength\branchexp) \Submatrix\siteexp, \\
-	\iff \Probmatrix\siteexp(\branchlength\branchexp) & = \e^{\branchlength\branchexp \Submatrix\siteexp}.
+    \dfrac{\der \Probmatrix\siteexp(\branchlength\branchexp)}{\der \branchlength\branchexp}    & = \Probmatrix\siteexp(\branchlength\branchexp) \Submatrix\siteexp, \\
+    \iff \Probmatrix\siteexp(\branchlength\branchexp) & = \e^{\branchlength\branchexp \Submatrix\siteexp}.
 \end{align}
 The integration of the \gls{substitution} rate matrix over the branch length entails to take into all possible trajectories histories of evolutionary events, leading to a compact probability matrix computed as an exponential of the rate matrix.
 In practive, exponential of the rate matrix is usually performed using eigenvalues and eigenvectors decomposition.
@@ -51,41 +52,41 @@ The challenge to generalize from branch to tree is that only the data at the tip
 As a result, \gls{likelihood} of the observed data can be readily calculated if the ancestral state of all internal node is know, from the probabilities of {transitions} along each branch of the tree.
 As an example for better readability, a simple illustrative tree given in figure \ref{fig:tree} will be used \gls{prior} to giving to general formulas.
 \begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
-	\tikzstyle{every state}=[]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
+        \tikzstyle{every state}=[]
 
-	\node[state] (1) [BLUE] {$\state_1$};
-	\node[state] (0) [YELLOW, below right=of 1] {$\state_0$};
-	\node[state] (2) [BLUE,below left=of 0] {$\state_2$};
-	\node[state] (5) [YELLOW,right=of 0] {$\state_5$};
-	\node[state] (3) [BLUE,above right=of 5] {$\state_3$};
-	\node[state] (4) [BLUE,below right=of 5] {$\state_4$};
+        \node[state] (1) [BLUE] {$\state_1$};
+        \node[state] (0) [YELLOW, below right=of 1] {$\state_0$};
+        \node[state] (2) [BLUE,below left=of 0] {$\state_2$};
+        \node[state] (5) [YELLOW,right=of 0] {$\state_5$};
+        \node[state] (3) [BLUE,above right=of 5] {$\state_3$};
+        \node[state] (4) [BLUE,below right=of 5] {$\state_4$};
 
-	\path[-]
-	(1) edge [black] node [above right] {$\branchlength^{(1)}$} (0)
-	(2) edge [black] node [below right] {$\branchlength^{(2)}$} (0)
-	(5) edge [black] node [above] {$\branchlength^{(5)}$} (0)
-	(5) edge [black] node [above left] {$\branchlength^{(3)}$} (3)
-	(5) edge [black] node [below left] {$\branchlength^{(4)}$} (4);
-	\end{tikzpicture}
-	\caption[Illustrative phylogenetic tree]{
-	Illustrative phylogenetic tree. Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue. The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
-	\label{fig:tree}%
+        \path[-]
+        (1) edge [black] node [above right] {$\branchlength^{(1)}$} (0)
+        (2) edge [black] node [below right] {$\branchlength^{(2)}$} (0)
+        (5) edge [black] node [above] {$\branchlength^{(5)}$} (0)
+        (5) edge [black] node [above left] {$\branchlength^{(3)}$} (3)
+        (5) edge [black] node [below left] {$\branchlength^{(4)}$} (4);
+    \end{tikzpicture}
+    \caption[Illustrative phylogenetic tree]{
+    Illustrative phylogenetic tree. Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue. The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
+    \label{fig:tree}%
 \end{figure}
 
 In the example of the illustrated tree, from the observed data for the extant nodes $\Data\siteexp = \{ \state_1,\state_2, \state_3, \state_4 \}$, at site $\site$, the \gls{likelihood} given that the states of the internal nodes are known is computed as:
 \begin{align}
-	p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
-	\Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
-	& \quad \quad \quad
-	\times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
-	\Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
-	\Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}) \notag
+    p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
+    & \quad \quad \quad
+    \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
+    \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
+    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}) \notag
 \end{align}
 In the general topology, $\Data\siteexp = \{ \state_P \hdots \state_{2P-1} \}$, where $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denoted the respectively the parent and descendant nodes of a branch, the \gls{likelihood} of the observed data is given as:
 \begin{align}
-p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right) & = \prod_{b} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
+    p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right) & = \prod_{b} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
 \end{align}
 where $I$ runs over all the internal nodes.
 
@@ -93,53 +94,55 @@ Because the states of the internal nodes are not actually unknown, the \gls{like
 
 In the case of the illustrative example, the total probability is given as
 \begin{align}
-	p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
-	& = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
-	\Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
-	& \qquad \qquad \qquad
-	\times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
-	\Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
-	\Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)})\notag
+    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
+    & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
+    & \qquad \qquad \qquad
+    \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
+    \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
+    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)})\notag
 \end{align}
 
 And because the process is reversible, the equilibrium frequencies of \glspl{codon} satisfies the equations:
 \begin{align}
-\bm{0} & = \bm{\pi}\branchsiteexp \Submatrix\branchsiteexp \\
-\iff \bm{\pi}\branchsiteexp & = \bm{\pi}\branchsiteexp \Probmatrix\branchsiteexp \\
-\iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
+    \bm{0} & = \bm{\pi}\branchsiteexp \Submatrix\branchsiteexp \\
+    \iff \bm{\pi}\branchsiteexp & = \bm{\pi}\branchsiteexp \Probmatrix\branchsiteexp \\
+    \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
 \end{align}
 
 In the general topology, the \gls{likelihood} of the observed data is thus given as:
 \begin{align}
-p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
-& = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
+    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
+    & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
 \end{align}
 
 And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns:
 \begin{align}
-p\left(\Data| \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \branch) \right) & = \prod_{\site} p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) \label{eq:likelihood}
-\end{align} 
+    p\left(\Data| \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \branch) \right) & = \prod_{\site} p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) \label{eq:likelihood}
+\end{align}
+
 \subsection{Pruning algorithm}
-The \gls{likelihood} of observed data at a specific column of a multiple sequence alignment, given by equation \ref{eq:likelihood} requires extensive computation, but can however can be determined with the pruning algorithm of \citet{Felsenstein1985}. 
+The \gls{likelihood} of observed data at a specific column of a multiple sequence alignment, given by equation \ref{eq:likelihood} requires extensive computation, but can however can be determined with the pruning algorithm of \citet{Felsenstein1985}.
 The \gls{likelihood} of the data $\Data$ can be computed using the pruning algorithm:
 \begin{align}
-p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
+    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
 \end{align}
 where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
-\pruning\siteexp_{\node} \left( \ci \right) = 
-\left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right]
-\cdot 
-\left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right]
+    \pruning\siteexp_{\node} \left( \ci \right) =
+    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right]
+    \cdot
+    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right]
 \end{align}
 And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \begin{align}
-\pruning\siteexp_{\node} \left( \ci \right) =
-\begin{dcases}
-1, & \text{if } \state_{\node} = \ci \\
-0, & \text{otherwise.}
-\end{dcases}
+    \pruning\siteexp_{\node} \left( \ci \right) =
+    \begin{dcases}
+        1, & \text{if } \state_{\node} = \ci \\
+        0, & \text{otherwise.}
+    \end{dcases}
 \end{align}
+
 
 \section{Bayesian estimation}
 \label{sec:intro-bayesian}
@@ -151,12 +154,12 @@ In other words, parameter of the models denoted $\theta$ are considered as rando
 The probability of those parameters are going to be modified after acquisition of information supplied by observed data.
 Formally, Bayes theorem is essential in updating of the distribution:
 \begin{equation}
-	p(\theta|\data)=\frac{p(\data|\theta)p(\theta)}{p(\data)}
+    p(\theta|\data)=\frac{p(\data|\theta)p(\theta)}{p(\data)}
 \end{equation}
 The distribution of parameters $\theta$ given the data is then called \gls{posterior}.
 In inference, because the actual probability of the data is not going to change, Bayes theorem is often presented as:
 \begin{equation}
-p(\data|\data) \propto p(\data|\data)p(\data)
+    p(\data|\data) \propto p(\data|\data)p(\data)
 \end{equation}
 Simply stating that \gls{posterior} is proportional to \gls{likelihood} multiplied by \gls{prior}.
 
@@ -182,42 +185,42 @@ Seeing the DAG the other way around (following the arrows), simple \gls{prior} d
 This hierarchy can naturally be extended across sites, across branches or across genes.
 
 \begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
-	\tikzstyle{every state}=[]
-	
-	\node[state] (P) {$\Probmatrix\siteexp(\branchlength\branchexp)$};
-	\node[state] (Q) [below right=of P] {$\Submatrix\siteexp$};
-	\node[state] (BL) [BLUE, above right=of P] {$\branchlength\branchexp$};
-	\node[state] (Exp) [RED, right=of BL] {$1$};
-	\node[state] (F) [below right=of Q] {$\bm{F}\siteexp$};
-	\node[state] (sb) [BLUE, right=of F] {$W$};
-	\node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};
-	\node[state] (R) [above right=of Q] {$\Mutmatrix$};
-	\node[state] (Ex) [BLUE, above right=of R] {$\Exchan$};
-	\node[state] (ExH) [RED, right=of Ex] {$\dfrac{1}{6}, 6$};
-	\node[state] (Equi) [BLUE, below right=of R] {$\Mutequi$};
-	\node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
-	
-	\path 
-	(Q) edge [black] node [above right] {} (P)
-	(BL) edge [black] node [] {} (P)
-	(Exp) edge [dashed, BLUE] node [above] {\textit{Exp}} (BL)
-	(R) edge [black] node {} (Q)
-	(Ex) edge [black] node [] {} (R)
-	(Equi) edge [black] node [below] {} (R)
-	(ExH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Ex)
-	(EquiH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Equi)
-	(F) edge [black] node {} (Q)
-	(sb) edge [black] node [above] {} (F)
-	(sbH) edge [dashed, BLUE] node [above] {\textit{DP}} (sb);
-	\end{tikzpicture}
-	\caption[Directed acyclic graph of Bayesian network]{
-	Directed acyclic graph of dependencies between variables.
-	Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
-	{\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function.
-	\textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a \gls{Dirichlet-process}.}
-	\label{fig:DAG}
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
+        \tikzstyle{every state}=[]
+
+        \node[state] (P) {$\Probmatrix\siteexp(\branchlength\branchexp)$};
+        \node[state] (Q) [below right=of P] {$\Submatrix\siteexp$};
+        \node[state] (BL) [BLUE, above right=of P] {$\branchlength\branchexp$};
+        \node[state] (Exp) [RED, right=of BL] {$1$};
+        \node[state] (F) [below right=of Q] {$\bm{F}\siteexp$};
+        \node[state] (sb) [BLUE, right=of F] {$W$};
+        \node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};
+        \node[state] (R) [above right=of Q] {$\Mutmatrix$};
+        \node[state] (Ex) [BLUE, above right=of R] {$\Exchan$};
+        \node[state] (ExH) [RED, right=of Ex] {$\dfrac{1}{6}, 6$};
+        \node[state] (Equi) [BLUE, below right=of R] {$\Mutequi$};
+        \node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
+
+        \path
+        (Q) edge [black] node [above right] {} (P)
+        (BL) edge [black] node [] {} (P)
+        (Exp) edge [dashed, BLUE] node [above] {\textit{Exp}} (BL)
+        (R) edge [black] node {} (Q)
+        (Ex) edge [black] node [] {} (R)
+        (Equi) edge [black] node [below] {} (R)
+        (ExH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Ex)
+        (EquiH) edge [dashed, BLUE] node [above] {\textit{Dir}} (Equi)
+        (F) edge [black] node {} (Q)
+        (sb) edge [black] node [above] {} (F)
+        (sbH) edge [dashed, BLUE] node [above] {\textit{DP}} (sb);
+    \end{tikzpicture}
+    \caption[Directed acyclic graph of Bayesian network]{
+    Directed acyclic graph of dependencies between variables.
+    Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
+    {\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function.
+    \textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a \gls{Dirichlet-process}.}
+    \label{fig:DAG}
 \end{figure}
 
 \subsection{Monte-Carlo Markov-Chain}
@@ -246,14 +249,14 @@ Once reaching the dynamic equilibrium, the energy of each configuration can be c
 One specific algorithm designed such that MCMC stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper.
 This algorithm is composed of an acceptance/rejection rule, such that from a state $X_t$, the algorithm proceeds as follows at each step of the \gls{mc}:
 \begin{itemize}
-	\item Generate a random candidate state $X'$ according to $g(X'\mid X_t)$.
-	\item Calculate the acceptance ratio $\displaystyle r=\min \left(1,{\frac {P(X')}{P(X_{t})}}{\frac {g(X_{t}\mid X')}{g(X'\mid X_{t})}}\right)$.
-	\item Generate a uniform random number $u\in [0,1]$.
-	If $u\leq A(X',X_{t})$, then accept the new state and set $X_{t+1}=X'$.
-	Else reject the new state and set $X_{t+1}=X$
+    \item Generate a random candidate state $X'$ according to $g(X'\mid X_t)$.
+    \item Calculate the acceptance ratio $\displaystyle r=\min \left(1,{\frac {P(X')}{P(X_{t})}}{\frac {g(X_{t}\mid X')}{g(X'\mid X_{t})}}\right)$.
+    \item Generate a uniform random number $u\in [0,1]$.
+    If $u\leq A(X',X_{t})$, then accept the new state and set $X_{t+1}=X'$.
+    Else reject the new state and set $X_{t+1}=X$
 \end{itemize}
 
-The algorithm requires the ability to calculate the acceptance ratio $r$ for all possible jump, and to draw a jump from any state. 
+The algorithm requires the ability to calculate the acceptance ratio $r$ for all possible jump, and to draw a jump from any state.
 In addition, last step above requires the generation of a uniform random number.
 The Metropolis procedure has been developped in the context of a symmetric distribution $g(X'\mid X) = g(X \mid X')$, and was later generalized to incorporate any distribution, such that the factor $g(X'\mid X) / g(X \mid X')$ took the name Hasting ratio.
 
@@ -279,11 +282,12 @@ Conditionally on the detailed \gls{substitution} history $\subhistory$, the \acr
 The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the \gls{likelihood}~\citep{Irvahn2014,Davydov2016}.
 On the other hand, this requires to implement more complex \acrshort{MC} procedures, that have to alternate between:
 \begin{enumerate}
-	\item sampling $\subhistory$ conditionally on the data and the current parameter configuration;
-	\item re-sampling the parameters conditionally on $\subhistory$.
+    \item sampling $\subhistory$ conditionally on the data and the current parameter configuration;
+    \item re-sampling the parameters conditionally on $\subhistory$.
 \end{enumerate}
 
 \subsection{Implementation}
+\label{subsec:implementation}
 
 Software implementation of Bayesian methods integrating variation across sites, across genes and across genes is a theoretically possible, but the design of such implementation are complex.
 They must be flexible to adapt different model of variations, while at the same time be reliable, reproducible, maintainable and fast.
