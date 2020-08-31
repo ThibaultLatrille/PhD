@@ -394,7 +394,8 @@ Altogether, the probability $\pi_{A}$ to find the population in \gls{allele} $A$
 where the denominator is a normalizing constant such that the sum of probabilities is equal to $1$.
 By analogy with thermodynamic systems, the evolutionary system thus reaches a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of \gls{drift}.}.
 
-\subsection{Equilibrium {substitution} rate over mutation rate}
+\subsection{Mean scaled fixation probability}
+\label{subsec:mean-scaled-fixation-probability}
 
 Occurrence probabilities given by the stationary distribution allows one to calculate all observable quantities of interest, such as the mean fitness, or the mean mutation and \gls{substitution} rates, using standard probability theory.
 One quantity of interest is the mean \gls{substitution} rate to the mean mutation rate, called $ \nu $:
@@ -424,11 +425,11 @@ Moreover, under the assumption of a static fitness landscape, a mutation-selecti
         \hline \Gls{substitution} rate per time & $Q$ & $[10^{-11}, 10^{-8}]$ per site per year \\
         \hline Equilibrium frequency & $\pi$ & $[0, 1]$ \\
         \hline Equilibrium frequency under mutation & $\sigma$ & $[0, 1]$ \\
-        \hline Equilibrium \gls{substitution} rate & \multirow{2}{*}{ $\nu$} & \multirow{2}{*}{$[0, 1]$ for purifying selection} \\
-        over mutation rate & & \\
+        \hline Mean scaled fixation probability & $\nu$ & $[0, 1]$ for purifying selection \\
         \hline
     \end{tabu}}
-    \caption[Parameter of mutation-selection processes]{Parameter of mutation-selection processes}\label{table:params-mutsel}
+    \caption[Parameter of mutation-selection processes]{Parameter of mutation-selection processes}
+    \label{table:params-mutsel}
 \end{table}
 
 

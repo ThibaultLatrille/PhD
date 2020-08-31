@@ -18,6 +18,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{natbib}
+\usepackage{bm}
 
 \definecolor{Nonpolar}{HTML}{fef1d2}
 \definecolor{Polar}{HTML}{a9fdd8}
@@ -84,11 +85,9 @@
 % \end{abstractseparate}
 %
 % \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
-%\begin{alwayssingle}
-%\begingroup
-%\input{sections/abstract}
-%\endgroup
-%\end{alwayssingle}
+\begin{alwayssingle}
+\input{sections/abstract_fr}%\endgroup
+\end{alwayssingle}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 %\input{sections/acknowledgement}
@@ -139,13 +138,13 @@
 \label{part:studies}
 
 \thispagestyle{empty}
-\chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias.}
+\chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:NucleotideBias}
 \input{NucleotideBias/Nucleotide-Bias-main}
 
 \thispagestyle{empty}
-\chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models.}
+\chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:MutSelDrift}
 \input{MutationSelectionDrift/MutSelDrift-main}
@@ -155,11 +154,11 @@ Supplementary materials and figures are available in appendix, chapter~\ref{chap
 The scripts and instructions necessary to reproduce the experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
 
 \section{Acknowledgments}
-The authors gratefully acknowledge the help of Nicolas Rodrigue, Laurent Guegen, Philippe Veber for their advice and review concerning this manuscript.
+The authors gratefully acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Philippe Veber for their advice and review concerning this manuscript.
 This work was performed using the computing facilities of the CC LBBE/PRABI.
 
 \thispagestyle{empty}
-\chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level.}
+\chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:GenoPhenoFit}
 \input{GenotypePhenotypeFitness/GenoPhenoFit-main}

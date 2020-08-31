@@ -140,6 +140,7 @@ Application of phylogenetic codon models to empirical data has made it possible 
 These results have been interpreted in the light of the underlying biophysics.
 
 \subsection{Variation across genes}
+\label{subsec:thermo-variation-across-genes}
 
 Phylogenetic codon models can readily be applied to independent single-gene multiple-sequence alignments.
 The $\dnds$ estimated for each gene can then be related to the selective constraints acting on the gene.
@@ -160,6 +161,7 @@ These observations suggest that protein abundance, although a major determinant 
 As an example, some topologies are more robust (depending on the density of contacts, in particular), and therefore evolve faster, which may be one of the contributing factors of the residual variance~\citep{Echave2017}.
 
 \subsection{Variation across sites}
+\label{subsec:thermo-variation-across-sites}
 
 Similarly to search for the determining factors of $\dnds$ at the gene level, extensive search had been conducted at the site level, within a protein.
 The major determinant of site-specific $\dnds$ proved to be relative solvent accessibility (RSA), where site with higher RSA display a lower $\dnds$~\citep{Ramsey2011}.
@@ -173,6 +175,7 @@ Moreover, this relationship obtained by means of phylogenetic \gls{codon} models
 In this context, relative solvent accessibility was also found to be a major determinant of adaptive evolution, with most adaptive mutations occurring at the surface of proteins~\citep{Moutinho2019}.
 
 \subsection{Variation across branches}
+\label{subsec:thermo-variation-across-branches}
 
 As already mentioned earlier (chapter~\ref{chap:intro-historical}), the nearly-neutral theory predicts a lower $\dnds$ in species with a higher Ne, due to a better purification of weakly deleterious mutants.
 Biophysical knowledge can be useful here to get more insight about the magnitude of the response of $\dnds$ to changes in $\Ne$.
@@ -205,7 +208,7 @@ In experimental context, it is possible to mutate DNA of an organism and establi
 In the case of free living unicellular organisms, such process can be automated to estimate selection coefficient of a wide variety of mutant, an experiment called deep mutational scanning.
 Technically, for each site of the protein, fitness of the 20 amino-acids can be experimentally determined and the resulting fitness landscape (also named preferences or fitness profile) can be estimated, as shown in figure \ref{fig:intro-deep-mut-profile}.
 Such experimentally determined fitness landscape are directly comparable to statistical estimates by phylogenetic codon models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
-\citet{Doud2015} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed nonsite-specific alternatives in fitting phylogenies of proteins from human, swine, equine, and avian influenza. 
+\citet{Bloom2014,Bloom2014a} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed nonsite-specific alternatives in fitting phylogenies of proteins, from human, swine, equine, and avian influenza \citep{Doud2015} .
 Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
 
 \begin{figure}[H]

@@ -2,13 +2,18 @@
 \label{ch:discussion-perspectives}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 
-As a legacy of the nearly-neutral theory, evolution of molecular sequences is seen as a stochastic process, where one component of this process is creating diversity through mutation, while another antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
-Applied to protein coding DNA sequences, this stochastic process results in a pattern of substitution along of species tree, where phylogenetic codon models captures intrinsic parameters of evolution.
+As a legacy of the nearly-neutral theory, the evolution of molecular sequences is seen as a stochastic process.
+One component of this process is creating diversity through mutation, while another antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
+In the long term, this stochastic process results in a history of substitution events along species trees, inducing compllex patterns of molecular divergence between species.
+By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
+
 In this context, this thesis has been focused on phylogenetic codon models, and on modelling the interplay between mutation, selection and drift shaping protein-coding DNA sequences.
 As an introduction of this conclusive chapter, I first recall the main results of this thesis in section~\ref{sec:summary-of-main-results}.
 
-Even though the topic and results of this thesis appears to be quite narrow, and based on several strong assumptions, these development recruited knowledge and insights from different theoretical and empirical scientific disciplines.
-First, I attempt to draw the limitations if this work, mainly in terms of the modelling of site-interdependence in section~\ref{sec:epistasis-and-entrenchment}.
+Even though the results presented in this thesis are modest, and are based on several strong and potentially questionable assumptions, these development recruited knowledge and insights from different theoretical, methodological and empirical scientific disciplines.
+
+First, I attempt to discuss the limitations of this work.
+One main in terms of the modelling of site-interdependence in section~\ref{sec:epistasis-and-entrenchment}.
 Secondly, I draw the connexion between detection of adaptive evolution and the results of this work~\ref{sec:adaptative-landscape}.
 As a perspective, I discuss how phylogenetic mechanistic models can be unified with population-genetics in section~\ref{sec:mechanistic-and-phenomenological-models}, and the theoretical methodology of inference that would be adapted for such endeavor in section~\ref{sec:mechanistic-and-phenomenological-models}.
 Finally, before concluding, I discuss the question and issue of reproducible sciences in evolutionary biology in section~\ref{sec:reproducible-science}.
@@ -49,7 +54,7 @@ A remaining gap between quantitative predictions of biophysical models and empir
 A blind spot of the mechanistic phylogenetic codon models developed in chapter~\ref{chap:MutSelDrift} is the assumption of site-independence.
 This assumption is convenient, both computationally and statistically.
 Computationally, each site is considered an independent Markov chain (see~\ref{subsec:mutation-limited-assumption} and~\ref{sec-intro:likelihood}).
-Statistically, model can rely on mixture models to estimate site-specific amino-acid fitness profiles (see~\ref{subsec:variation-across-sites-and-branches}).
+Statistically, model can rely on mixture models to estimate site-specific amino-acid fitness profiles (see~\ref{subsec:empirical-calibration-HB}).
 In contrast, from a modeling and inference perspective, accounting for epistasis is challenging both in terms of parametrization and computational complexity (see~\ref{subsec:structurally-constrained-site-interdependent-codon-models})
 This complexity is the main reason why epistasis is generally ignored in phylogenetic models, and more particularly in codon models.
 
@@ -127,7 +132,7 @@ As a result, polymorphism and divergence can be leveraged altogether to help dis
 As such we can wonder whether phylogenetic and population-genetics model can be unified?
 % Charlesworth, D. (2010) Don’t forget the ancestral polymorphisms. Heredity, doi:10.1038/hdy.2010.14
 
-Such integration between phylogenetic and population-genetics as been attempted in severals studies.
+Such integration between phylogenetic and population-genetics as been proposed \citep{Thorne2012} and attempted in severals studies.
 For example, \citet{Wilson2011} modeled codon evolution in a joint framework with $3$ species, allowing to analyze variation in selection pressures spatially along the genome and temporally between lineages.
 This methodology proved to be computational intensive and scaled difficulty with the number of extant species.
 Alternatively, modeling substitutions as mutational events followed by a gradual fixation allow to estimate nucleotide mutation rates and fixation biases from genetic variation within and between species, inherently accounting for shared ancestral polymorphisms and incomplete lineage sorting~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019}.
@@ -155,13 +160,13 @@ As a second step, subsequently to this confrontation, phylogenetic models could 
 
 % Categories of models
 Models of inference are classified broadly into phenomenological and mechanistic~\citep{Rodrigue2010a}.
-Mechanistic models dissect the causation chains and construct a model from first principles, they relate structural, population-genetics and ecological parameters to the \gls{likelihood} of the data (see chapter \chapter*{chap:MutSelDrift}).
+Mechanistic models dissect the causation chains and construct a model from first principles, they relate structural, population-genetics and ecological parameters to the \gls{likelihood} of the data (see chapter~\ref{chap:MutSelDrift}).
 As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and \gls{effective-population-size} across lineages.
 Once such models is fitted to the data, the estimated parameters can be confronted to their independent empirical estimate, which allow to robustly test the model since orthogonal estimation of biological and ecological parameters should be congruent~\citep{Dasmeh2014}.
 Additionally, once model robustness has been assessed, this inference framework could allow to estimate unknown variable, for example ancestral \gls{effective-population-size}, with enough signal and calibration of the other parameters.
 However they are computationally intensive and some simplifying assumption (such as no epistasis) can have detrimental effects (see chapter ~\ref{chap:MutSelDrift}).
 
-On the other hand phenomenological models are based on aggregate parameters of evolution, and aims to determine the statistical significance of these parameters (see chapter \chapter*{chap:NucleotideBias}).
+On the other hand phenomenological models are based on aggregate parameters of evolution, and aims to determine the statistical significance of these parameters.
 As experienced in chapter~\ref{chap:NucleotideBias}, mean-field phenomenological models are useful tools to disentangle mutation and selection, such that gene specific mean-field parameters can capture and aggregate site-specific parameters.
 In between phenomenological and mechanistic, models can be hybrid, mechanistic in essence, but subsequently phenomenological by deriving aggregate parameters of evolution from underlying microscopic parameters (see chapter ~\ref{chap:GenoPhenoFit}).
 

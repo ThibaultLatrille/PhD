@@ -1,56 +1,69 @@
-\chapter{Phylogenetic {codon} models inference}
+\chapter{Probabilistic inference and parameter estimation}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:intro-inference}
 
-The previous chapter treated how \gls{substitution} rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
-In contrast, the goal of this chapter is to present methodology to estimates underlying parameters of evolution from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
-To realize such endeavor, it is important to realize that models of \glspl{substitution} presented previously can be used to generate an alignment of protein-coding \acrshort{DNA}.
-Indeed, given parameters of evolution, simulations using the \gls{substitution} rates between \glspl{codon}, when run along a phylogenetic tree, can give us a likely representative protein coding \acrshort{DNA} sequence for each extant species (at the tip of the tree), producing an alignment.
-Moreover by running several random simulations, one can expect to obtain representative and likely set of alignments.
-Unfortunately, even with huge amount of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by a given set of parameters.
-Deriving this probability of observing a specific alignment given the parameters is thus the first theoretical question to answer, which is the focus of the first section.
-With this analytical probability obtained, it is then possible to derive for different sets of parameters their respective probability of generating an observed alignment.
-The next endeavor is thus to reverse the question, and instead of having the probability of an alignment given some parameters, the goal is to derive the probability of parameters given the alignment.
-This subsequent endeavor developed in the second section, recalling theoretical and computational implementation of Bayesian inference, in the context of phylogenetic \gls{codon} models.
+The previous chapter treated how substitution rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
+In contrast, the goal of this chapter is to present the methodology for estimating the parameters from a set of observed protein-coding DNA sequences in different species or lineages.
+To do so, I will first introduce the concept of likelihood and how the likelihood is computed in the context of phylogenetic models.
+Then, I will briefly introduce the maximum likelihood method and, finally, the principles of Bayesian inference using Markov Chain Monte Carlo.
 
 
 \section{Likelihood of the data}
 \label{sec-intro:likelihood}
 
-For a dataset of protein-coding \acrshort{DNA} sequences, the goal is first to determine the probability of observing sequence data at tips of the tree conditional upon the evolutionary model, the tree, and values of parameters in the model.
+To define the likelihood, it is important to realize that codon models presented previously can also be used in forward mode, so as to generate a simulated alignment of protein-coding sequences.
+Given specific parameter values for the model (generically noted $\theta$), the probability of simulating a replicate of the sequence data exactly identical to the empirical dataset $D$ (noted $p(D \mid \theta)$) can then be taken as a measure of how well this alignment is explained by the model, under the specific parameter values $\theta$.
+This defines the likelihood, which is thus a function of the parameter $\theta$:
+
+\begin{equation}
+    L(theta) = p(D \mid theta)
+\end{equation}
+
+Unfortunately, even with an astronomical number of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by the model under a given set of parameters.
+Deriving this probability analytically is thus the first theoretical question to answer, which is the focus of this section.
 The challenge is that only the data for extant species are observed whereas sequence at the root of the tree and subsequent evolutionary events of speciation are not directly observed.
 In other words, all possible trajectories leading to the observed alignment must be integrated, weighted by their respective probabilities.
 
-Throughout this development, the tree topology ($\tau$) is considered know and fixed.
-This restriction emanates that the scope of this is work is not to infer the topology, but rather parameters of evolution.
-Moreover, the development does not delves into the details of how alignment are obtained, and thus assume that they are correct.
-However it has been shown that outputs of different sequence alignment methods tend to produce different results that are not consistent.
-The main determining factor of alignment accuracy is evolutionary divergence, such that if alignment are restricted to orthologs from closely related taxa, or to slow-evolving genes, alignment errors become scarce and may not cause significant encumbrance.
-Finally, and not the least, models of sequence change will assume site-independence, or in other words absence of epistasis, such that changes at one sequence position have no impact on whether other positions will change.
-This assumption of independence between sites allows the probability of an observed set of aligned sequences at tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns.
-This independence assumption is simplistic, throwing away biological information, and can be shown statistically to be problematic, but permits computationally convenient likelihood-based inference.
+Throughout this development, the tree topology ($\tau$) is considered known and fixed.
+This restriction emanates from the fact that the scope of this is work is not to infer the topology, but rather the parameters of the molecular evolutionary process.
+Moreover, the development conducted below does not delve into the details of how multiple sequence alignments are obtained in practice, and assumes in particular that they are correct.
+However it has been shown that outputs of different sequence alignment methods tend to produce different results that are not always mutually consistent.
+The main determining factor of alignment accuracy is evolutionary divergence, such that if alignmentS are restricted to orthologs from closely related taxa, or to slowly-evolving genes, alignment errors become rare and may not cause significant problems.
 
-The section is divided into first integrating over all trajectory along a single branch of tree, and subsequently over the total tree, while finally efficiently computing the probability of observed data given the parameters.
+Importantly, the models of sequence evolution considered in this thesis all assume site-independence, such that changes at one sequence position have no impact on whether and how other positions will change.
+This assumption of independence between sites allows the probability of an observed alignment to be expressed as the product over alignment columns of the probability of observing each of them.
+This independence assumption is a simplification, however it greatly facilitates likelihood-based inference.
+The section is divided into first integrating over all trajectory along a single branch of the tree, and subsequently over the entire tree, while finally efficiently computing the probability of the data given the parameters.
 
-\subsection{Probability of {transitions} for a branch at a given site}
+\subsection{Finite-time transition probabilities over a branch at a given site}
+
 Point \gls{substitution} process define the instantaneous rates of change between the different \glspl{codon} through the \gls{substitution} matrix $\Submatrix$.
 However, given a starting state of the process (ancestral) and a given amount of time for which the \gls{substitution} process runs, it is possible to derive the probability of the descendant sequence having each of the $61$ \gls{codon} states.
 In practice, time is measured in unit of branch length, expressing the expected number of changes to have occurred since the ancestor if {transition} are \gls{neutral}.
 For example of branch length of $2$ imply that $2$ changes are expected to be seen on average along the branch under the condition that \glspl{substitution} are \gls{neutral}.
 Consequently, the \gls{substitution} rate matrix must be normalized to be measured in unit of branch length, where in practice instead of normalizing the \gls{codon} subtitution matrix, the nucleotide mutation matrix is normalized since mutation are considered \gls{neutral}.
 The mathematical details of this transformation from rate-matrix to probability matrix are described from first order derivation of the Markov process.
-At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength\branchexp$, the \gls{codon} probability matrix $\Probmatrix\siteexp(\branchlength\branchexp)$ is related to the {transition} matrix ($\Submatrix\siteexp$ at site $\site$) trough the first-order differential equation:
-\begin{align}
-    \dfrac{\der \Probmatrix\siteexp(\branchlength\branchexp)}{\der \branchlength\branchexp}    & = \Probmatrix\siteexp(\branchlength\branchexp) \Submatrix\siteexp, \\
-    \iff \Probmatrix\siteexp(\branchlength\branchexp) & = \e^{\branchlength\branchexp \Submatrix\siteexp}.
-\end{align}
-The integration of the \gls{substitution} rate matrix over the branch length entails to take into all possible trajectories histories of evolutionary events, leading to a compact probability matrix computed as an exponential of the rate matrix.
-In practive, exponential of the rate matrix is usually performed using eigenvalues and eigenvectors decomposition.
+At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength$, the \gls{codon} probability matrix $\Probmatrix\siteexp(\branchlength)$ is related to the {transition} matrix ($\Submatrix\siteexp$ at site $\site$) trough the first-order differential equation:
 
-\subsection{Total probability of transition}
-The challenge to generalize from branch to tree is that only the data at the tips of the tree are observed whereas the states of the internal nodes are not directly observed.
-As a result, \gls{likelihood} of the observed data can be readily calculated if the ancestral state of all internal node is know, from the probabilities of {transitions} along each branch of the tree.
-As an example for better readability, a simple illustrative tree given in figure \ref{fig:tree} will be used \gls{prior} to giving to general formulas.
+The Point substitution process implied by the codon model defines the instantaneous rates of change between the different codons through the substitution matrix $\Submatrix$.
+Given a starting (ancestral) codon state and a given amount of time over which the substitution process runs, the first task is to derive the probability of the descendant sequence presenting each of the $61$ possible codon states.
+In practice, the substitution rate matrix must be normalized, such that time is measured in unit of branch length, expressing the expected number of neutral changes that have occurred since the ancestor.
+For example, a branch length of 2 imply that 2 changes are expected to be seen on average along the branch under the condition that substitutions are neutral.
+At a give site ($\site$) of the sequence, and along a given branch with branch length $\branchlength$, the codon probability matrix $\Probmatrix\siteexp(\branchlength)$ is related to the transition matrix ($\Submatrix\siteexp$ at site $\site$) trough the first-order differential equation:
+\begin{equation}
+    \dfrac{\der \Probmatrix\siteexp(\branchlength)}{\der \branchlength} = \Probmatrix\siteexp(\branchlength) \Submatrix\siteexp.
+\end{equation}
+Which has solution:
+\begin{equation}
+    \Probmatrix\siteexp(\branchlength) = \e^{\branchlength \Submatrix\siteexp}.
+\end{equation}
+This integration of the substitution rate matrix over the branch takes into account all possible histories of substitution events compatible with the states at the two ends, leading to a compact probability matrix computed as an exponential of the rate matrix.
+In practice, exponentiating the rate matrix is usually performed using decomposition in eigenvalues and eigenvectors.
+
+\subsection{Integrating over ancestral states}
+The challenge for generalizing this argument from a single branch to an complete tree is that only the data at the tips of the tree are observed whereas the states at the internal nodes are not.
+If they were known, the likelihood would be readily calculated, by taking the product of the transition probabilities over all branches.
+As an example, and for better readability, a simple illustrative tree given in figure~\ref{fig:tree} will be used \gls{prior} to giving to general formulas.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
@@ -71,30 +84,33 @@ As an example for better readability, a simple illustrative tree given in figure
         (5) edge [black] node [below left] {$\branchlength^{(4)}$} (4);
     \end{tikzpicture}
     \caption[Illustrative phylogenetic tree]{
-    Illustrative phylogenetic tree. Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue. The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
+    Illustrative phylogenetic tree.
+    Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is know from the observed data is represented in blue.
+    The node $0$ is considered the root of the tree, although defining is not strictly required since the process is reversible.}
     \label{fig:tree}%
 \end{figure}
 
 In the example of the illustrated tree, from the observed data for the extant nodes $\Data\siteexp = \{ \state_1,\state_2, \state_3, \state_4 \}$, at site $\site$, the \gls{likelihood} given that the states of the internal nodes are known is computed as:
 \begin{align}
-    p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+    p\left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
     \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
     & \quad \quad \quad
     \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
     \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
     \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}) \notag
 \end{align}
-In the general topology, $\Data\siteexp = \{ \state_P \hdots \state_{2P-1} \}$, where $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denoted the respectively the parent and descendant nodes of a branch, the \gls{likelihood} of the observed data is given as:
+In the general case of an arbitrary topology, $\Data\siteexp = \{ \state_P \hdots \state_{2P-1} \}$, where $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denote the parent and descendant nodes of a branch, the \gls{likelihood} conditional on internal states is given as:
 \begin{align}
-    p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right) & = \prod_{b} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
+    p\left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right) & = \prod_{b} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
 \end{align}
 where $I$ runs over all the internal nodes.
 
-Because the states of the internal nodes are not actually unknown, the \gls{likelihood} must be summed over the all the possible states, weighted by their equilibrium stationary frequencies ($\pi\siteexp$).
+Because the states of the internal nodes are actually unknown, the \gls{likelihood} must be summed over all possible configurations for them, including at the root.
+At the root, the states are produced according to equilibrium frequencies of the process ($\pi\siteexp$).
 
-In the case of the illustrative example, the total probability is given as
+In the case of the illustrative example, the total probability is given as:
 \begin{align}
-    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp| \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
+    p\left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} p\left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
     & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
     \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
     & \qquad \qquad \qquad
@@ -110,22 +126,21 @@ And because the process is reversible, the equilibrium frequencies of \glspl{cod
     \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
 \end{align}
 
-In the general topology, the \gls{likelihood} of the observed data is thus given as:
+In the general topology, the \gls{likelihood} is thus given as:
 \begin{align}
-    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = p\left(\Data\siteexp| \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
+    p\left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = p\left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
     & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
 \end{align}
 
 And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns:
 \begin{align}
-    p\left(\Data| \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \branch) \right) & = \prod_{\site} p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) \label{eq:likelihood}
+    p\left(\Data \mid \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \branch) \right) & = \prod_{\site} p\left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) \label{eq:likelihood}
 \end{align}
 
 \subsection{Pruning algorithm}
-The \gls{likelihood} of observed data at a specific column of a multiple sequence alignment, given by equation \ref{eq:likelihood} requires extensive computation, but can however can be determined with the pruning algorithm of \citet{Felsenstein1985}.
-The \gls{likelihood} of the data $\Data$ can be computed using the pruning algorithm:
+The \gls{likelihood} at a specific column of a multiple sequence alignment given by equation~\ref{eq:likelihood} requires extensive computation, but can however be computed in linear time (as a function of the number of branches) using the pruning algorithm of \citet{Felsenstein1981}.
 \begin{align}
-    p\left(\Data\siteexp| \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
+    p\left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right)
 \end{align}
 where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
@@ -143,47 +158,66 @@ And if the node $\node$ is a node with no descendant, meaning an extant taxa:
     \end{dcases}
 \end{align}
 
+\subsection{Maximum likelihood}
 
-\section{Bayesian estimation}
+The previous sections introduced the computational procedure to compute the likelihood.
+Combining this procedure with numerical optimization methods allows one to find the parameter values $\widehat{\theta}$ maximizing the likelihood.
+In other words, our point estimate for the parameters is taken such as to maximize the probability for the model to reproduce the empirical alignment.
+This approach, which enjoys many desirable theoretical properties, such as asymptotic consistency and efficiency, was introduced in phylogenetics by \citet{Cavalli-Sforza1967} with reconstruction based on allele frequencies, and then by \citet{Felsenstein1981} for phylogenies based on nucleotide sequences.
+It has also been extensively used for estimating the parameters of codon models, and in particular, classical $\dnds$ based codon models~\citep{Yang1997a,Pond2005,Dutheil2006,Yang2007,Gueguen2013,KosakovskyPond2020}.
+
+
+\section{Bayesian inference}
 \label{sec:intro-bayesian}
 
-After obtaining the probability of an observed sequence alignment given models parameters, the question must be reversed such as to obtain probability of parameters given an observed sequence alignment.
-A framework under which such feat is possible is Bayesian paradigm, a inference methodology introduced in phylogenetic by Yang and Rannala (1997), Mau et al. (1999), Larget and Simon (1999), Li et al. (2000) and Huelsenbeck and Ronquist (2001).
-Broadly speaking, Bayesian paradigm can be seen as a way to model uncertainty in a probabilistic way.
-In other words, parameter of the models denoted $\theta$ are considered as random variables whose distribution is called the \gls{prior} and describes that uncertainty.
+An alternative to maximum likelihood is Bayesian inference.
+This inference methodology, which dates back from Laplace and Bayes (1763), was introduced in phylogenetics by \citet{Yang1997}, \citet{Mau1999}, \citet{Larget1999}, \citet{Li2000} and \citet{Huelsenbeck2001}.
+Broadly speaking, the Bayesian paradigm can be seen as a way to model uncertainty in a probabilistic way.
+More specifically, the parameters of the model (collectively denoted $\theta$) are considered as random variables, from a prior distribution describing our uncertainty about their value before having seen the data.
 The probability of those parameters are going to be modified after acquisition of information supplied by observed data.
-Formally, Bayes theorem is essential in updating of the distribution:
+Formally, this update of our knowledge is captured by the computation of the posterior distribution, which is obtained by conditioning the random variable theta on the observed value for the data:
 \begin{equation}
-    p(\theta|\data)=\frac{p(\data|\theta)p(\theta)}{p(\data)}
+    p(\theta \mid \data)=\frac{p(\data \mid \theta)p(\theta)}{p(\data)}.
 \end{equation}
-The distribution of parameters $\theta$ given the data is then called \gls{posterior}.
-In inference, because the actual probability of the data is not going to change, Bayes theorem is often presented as:
+Where the denominator is the marginal likelihood, meaning the likelihood integrated over the prior:
 \begin{equation}
-    p(\data|\data) \propto p(\data|\data)p(\data)
+    p(\data) = \int p(D \mid \theta) p(\theta) \der \theta,
+\end{equation}
+In an inference context, because we are only interested in the relative posterior probabilities of alternative values of $\theta$, the marginal likelihood is a constant.
+For that reason, Bayes theorem can also be presented as:
+\begin{equation}
+    p(\data \mid \data) \propto p(\data \mid \data)p(\data).
 \end{equation}
 Simply stating that \gls{posterior} is proportional to \gls{likelihood} multiplied by \gls{prior}.
+In other words, updating our knowledge, such as initially represented by our prior, is done multiplicatively, using the likelihood, and renormalizing to obtain a proper probability distribution (the posterior).
 
 \subsection{Bayesian statistics and {Maximum likelihood}}
-Another approach to parameter estimation is to find parameters which maximizes likelihood of the data, an estimate naturally called maximum likelihood.
-Bayesian statistics and maximum \gls{likelihood} are often opposed to each others and sometimes fiercely defended by their tenant.
-It this context, the recent success of Bayesian inference relates to its inherent handling model complexity \citet{Lartillot2020}.
-Firstly, Bayesian statistics technically is not required to devise procedure necessary to evades local optimums.
-Secondly, Bayesian statistics output not a single statistic but a confidence interval, meaning how much certainty is available given the data.
-Posterior and \gls{prior} can be thus presented next to each others and differences between the two is due to signal extracted from the data.
-A corollary is that over parametrization is not such a drastic issue as in maximum \gls{likelihood} inference, since in a case where there is only limited extractable signal from the data this will be reflected in confidence intervals.
-In the worst possible case of over-parametrization, namely that of confounded parameters, such that the model is exactly the same for different set of parameters, confounded parameters can be identified afterward through parameters correlation in their joint \gls{posterior} distribution.
-%The subjective arbitrary introduced by lasso and penalized-likelihood is replaced by statistical \gls{prior} distribution.
+Bayesian statistics and maximum \gls{likelihood} are often opposed to each others and sometimes fiercely defended by their respective proponents.
+There are indeed fundamental philosophical differences.In particular, Bayesian inference is potentially sensitive to the prior, although, practically, prior sensitivity can be investigated.
+In addition posterior and prior can be presented next to each other, such that differences between the two can be interpreted as the amount of signal extracted from the data, and potential issues with the choice of the prior can be pointed out.
+
+However, the recent success of Bayesian inference relates more fundamentally to the way it deals with model complexity~\citep{Huelsenbeck2000a,Lartillot2020}.
+
+First, by sampling from the posterior distribution, Bayesian inference offers a method for integrating over the uncertainty about the parameters.
+This leads to more robust inference~\citep{Huelsenbeck2000a}.
+A corollary is that over parametrization is not such a drastic issue as in maximum likelihood inference.
+In the worst possible case of over-parametrization, namely that of confounded parameters, such that the model is exactly the same for different set of parameters, confounded parameters can be identified afterward through parameters correlation in their joint posterior distribution.
 However, over-parameterized models is still a misappropriate use of computing resource, which results in a greater environmental cost.
-Finally, and most importantly the combination of hierarchical models and generic Monte Carlo approaches for dealing with complex random-effects and multi-level evolutionary processes has played the most important role in the recent success and popularity of Bayesian inference in evolutionary genetics.
+
+Second, and most importantly, Bayesian inference gives a natural language to combine multiple levels of random variables, in the form of hierarchical models.
+Thus, for instance, in Bayesian molecular daring, the substitution process depends on divergence times and substitution rate variation across the tree.
+In turn, divergence times, such as specified by the phylogeny, are the result of a birth-death process, while variation in the substitution rate across branches is naturally expressed by modeling the rate itself as a log-Brownian process.
+Finally, the parameters of the birth-death and log-Brownian processes are endowed with a prior.
+The model is thus hierarchical, with four levels.
+This expressivity in model structure, combined with generic Monte Carlo approaches for dealing with complex random-effects and multi-level evolutionary processes, has played a fundamental role in the recent success and popularity of Bayesian inference in evolutionary genetics.
+
 
 \subsection{Hierarchical model}
-
-Parameters of evolution for which \gls{prior} distribution can be apprehended might be for example selection coefficient, or mutation rate, but not the \gls{prior} distribution of the \gls{substitution} rate matrix as a whole.
-Such relationship between variables is modeled as Bayesian network, which are a probabilistic graphical representation of a set of variables and their conditional dependencies via a directed acyclic graph (DAG).
-In the example of the \gls{prior} distribution for the rate \gls{substitution} matrix, it is determined as the joint distribution of the \gls{prior} over the selection coefficient and the mutation rate matrix, which itself is given by the joint distribution over the equilibrium frequencies of nucleotides and exchangeabilities rates for the general-time-reversible (GTR) mutation matrix (see figure \ref{fig:DAG}).
-Seeing the DAG the other way around (following the arrows), simple \gls{prior} distribution are combined together to form more complex joint \gls{prior} distribution which ultimately define the \gls{prior} distribution of the model ($\theta$).
-This hierarchy can naturally be extended across sites, across branches or across genes.
-
+\label{sec:intro-hierarchical-models}
+The relationship between the random variables defining a hierarchical model can be formalized as a Bayesian network, which is a probabilistic graphical representation of the set of variables and their conditional dependencies via a directed acyclic graph (DAG).
+In the example of the \gls{prior} distribution for the rate \gls{substitution} matrix in the case of the mutation-selection model, the prior is defined as the joint distribution of the \gls{prior} over the selection coefficient over amino-acids and the mutation rate matrix, which itself is a deterministic function of the equilibrium frequencies of nucleotides and the exchangeabilities rates for the general-time-reversible (GTR) mutation matrix (see figure~\ref{fig:DAG}).
+Seeing the DAG the other way around (following the arrows), simple \gls{prior} distributions are combined together to form more complex joint \gls{prior} distribution which ultimately defines the \gls{prior} distribution over the model parameter vector ($\theta$).
+This hierarchy can naturally be extended across sites, across branches or across genes, and include the data, which are themselves a random variable produced by the substitution process.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
@@ -217,82 +251,86 @@ This hierarchy can naturally be extended across sites, across branches or across
     \end{tikzpicture}
     \caption[Directed acyclic graph of Bayesian network]{
     Directed acyclic graph of dependencies between variables.
-    Nodes of the directed acyclic graph are the variables, and edges are the functions. Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
+    Nodes of the directed acyclic graph are the variables, and edges are the functions.
+    Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
     {\color{BLUE}{blue}} solid line denotes a drawing from a random distribution, and black solid lines denote a function.
     \textit{Exp} denotes an exponential distribution, \textit{Dir} denotes a Dirichlet distribution, and finally \textit{DP} denotes a \gls{Dirichlet-process}.}
     \label{fig:DAG}
 \end{figure}
 
-\subsection{Monte-Carlo Markov-Chain}
+\subsection{Markov Chain Monte Carlo (MCMC)}
 
-Once realizing that the \gls{prior} distribution can be boiled to a set of simpler \gls{prior} distributions, the difficulty arise from the high dimensionality of the parameter space, known as the curse of dimensionality.
-More precisely, the number of states increases exponentially with the number of dimension of the space, such that the space is too large to be explored and computation of both the \gls{prior} and the \gls{likelihood} for each set of parameters is unrealistic.
-Reduction in the exploration of the state space is obtained by employing Monte-Carlo Markov-Chain, which effectively approximate the target \gls{posterior} distribution.
+Once realizing that the \gls{prior} distribution can be boiled down to a set of simpler distributions over the components of the parameter vector, the difficulty in computing the posterior distribution arises from the high dimensionality of the parameter space, known as the curse of dimensionality.
+More precisely, the number of states increases exponentially with the number of dimension of the space, such that the explicit evaluation for both the prior and the likelihood for a sufficiently fine-grained set of parameter values is unrealistic.
+In addition, the posterior distribution takes negligibly small values over most of the parameter space.
+Reduction in the exploration of the state space, and focusing of most of the computational effort in the relevant region, is obtained by employing Monte-Carlo (MC) methods, which effectively approximate the target posterior distribution by sampling from it.
 
 Historically, the first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952.
 Both a physicist and a mathematician, Nicolas Metropolis was one of the first scientists to work on the Manhattan Project that led to the production of the atomic bomb.
-Almost as early, he became obsessed with the hydrogen bomb, which he eventually succeed in building.
+Almost as early, he became obsessed with the hydrogen bomb, which he eventually contributed to make.
 
-Published in June 1953 in the \textit{Journal of Chemical Physics}, the primary focus of \acrshort{MC} algorithm is computing the energy of random configurations for a system of many particles.
-This energy is not not available analytically and requires integration across for all realizations of the random configurations of the particle system.
+Published by \citet{Metropolis1953}, the primary focus of \acrshort{MC} algorithm is on computing the mean energy of random configurations for a system of many particles.
+This energy is not available analytically and requires integration across for all realizations of the random configurations of the particle system.
 Because dimensionality is high (proportional to number of particles), numerical integration is impossible using a deterministic algorithm.
-Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration by sampling randomly across the target distribution of configurations fails to correctly approximate this integral.
+Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration by sampling randomly the prior (uniform) distribution over configurations fails to correctly approximate this integral.
 
-This problem can however be transposed in the \gls{mc} realm, where each state of the process is a particular configuration of particles.
+This problem can however be formalized in terms of a \gls{mc}, where each state of the process is a particular configuration of particles.
 The {transition} probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
-Given this requirement, and given we can also sample from the {transition} probabilities, the Monte Carlo \gls{mc} starts from a given state and can be updated by random sampling from the {transition} probabilities.
-The chain is composed of a period of burn-in, where the current state is of low probability relative to more likely states.
-Once reaching the dynamic equilibrium, the energy of each configuration can be computed and the average of this energy is an approximate solution for the integral of energy over the distribution of configurations.
+Given this requirement, and given one can also sample from the {transition} probabilities, the Monte Carlo \gls{mc} starts from an arbitrary state and can be updated by random sampling from the {transition} probabilities.
+After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed and the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
 
 \subsection{Metropolis-Hastings sampling}
 
-One specific algorithm designed such that MCMC stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper.
-This algorithm is composed of an acceptance/rejection rule, such that from a state $X_t$, the algorithm proceeds as follows at each step of the \gls{mc}:
+One specific algorithm designed such that MCMC stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
+This algorithm is composed of an acceptance/rejection rule, such that the algorithm proceeds as follows at each step of the Markov chain.
+Starting from a state $X_t$ at step $t$:
 \begin{itemize}
     \item Generate a random candidate state $X'$ according to $g(X'\mid X_t)$.
     \item Calculate the acceptance ratio $\displaystyle r=\min \left(1,{\frac {P(X')}{P(X_{t})}}{\frac {g(X_{t}\mid X')}{g(X'\mid X_{t})}}\right)$.
     \item Generate a uniform random number $u\in [0,1]$.
     If $u\leq A(X',X_{t})$, then accept the new state and set $X_{t+1}=X'$.
-    Else reject the new state and set $X_{t+1}=X$
+    Otherwise reject the new state and set $X_{t+1}=X$
 \end{itemize}
 
 The algorithm requires the ability to calculate the acceptance ratio $r$ for all possible jump, and to draw a jump from any state.
-In addition, last step above requires the generation of a uniform random number.
-The Metropolis procedure has been developped in the context of a symmetric distribution $g(X'\mid X) = g(X \mid X')$, and was later generalized to incorporate any distribution, such that the factor $g(X'\mid X) / g(X \mid X')$ took the name Hasting ratio.
+In addition, the last step above requires the generation of a uniform random number.
+The Metropolis procedure has been initially developed in the context of a symmetric distribution $g(X'\mid X) = g(X \mid X')$, and was later generalized to incorporate any proposal distribution, in which case an additional factor named the Hastings ratio ($g(X'\mid X) / g(X \mid X')$) as to be accounted for.
 
 \subsection{Gibbs sampling}
 
 Whenever a joint distribution of variables is not known explicitly or is difficult to sample from directly, but the conditional distribution of each variable are easier to sample from, a specific algorithm known as Gibbs sampling is applicable.
-The original implementation of the Gibbs sampler was applied to a discrete image processing problem, a problem somewhat removed from statistical inference in the classical sense.
-This paper is also responsible for the name {\it Gibbs sampling}, because it implemented this method for the Bayesian study of {\it Gibbs random fields} which, in turn, derive their name from the physicist Josiah Willard Gibbs (1839-1903).
+The original implementation of the Gibbs sampler by \citet{Geman1984} was applied to a discrete image processing problem, a problem somewhat remote from statistical inference in the classical sense.
+This paper is also responsible for the name Gibbs sampling, because it implemented this method for the Bayesian study of Gibbs random fields, which in turn, derive their name from the physicist Josiah Willard Gibbs (1839-1903).
 
-The individual variables are sampled one at a time, with each variable conditioned on the most recent values of all the others.
+The individual random variables are sampled one at a time, with each variable being conditioned on the most recent values for all other variables.
 It can be shown that the sequence of samples constitutes a \gls{mc}, and the stationary distribution of that \gls{mc} is just the joint distribution.
 Gibbs sampling is particularly well-adapted to sampling the \gls{posterior} distribution of a Bayesian network, since they are composed of a set of individual random variables in which each variable is conditioned on only a small number of other variables.
 
-Gibbs sampling can be considered a general framework for sampling from a large set of variables by sampling each variable (or in some cases, each group of variables) in turn.
+Gibbs sampling, or more generally conditional Metropolis-Hastings can be considered a general framework for sampling from a large set of variables by sampling each variable (or in some cases, each group of variables) in turn.
 Various algorithms can be used to sample these individual variables, depending on the exact form of the multivariate distribution, it can incorporate the Metropolis–Hastings algorithm, or more sophisticated methods such as slice sampling, adaptive rejection sampling and adaptive rejection Metropolis.
 
 \subsection{Sufficient statistics \& data augmentation}
 
-Most phylogenetic Monte-Carlo-Markov-Chain (\acrshort{MC}) samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MC}.
+MCMC samplers target the distribution over the model parameters by repeatedly invoking the pruning algorithm to recalculate the pruning-based \gls{likelihood}.
+This is most often the limiting step of the MCMC.
 An alternative is to augment the observed sequence data with a realization of the random process resulting in a detailed \gls{substitution} history over the tree~\citep{Nielsen2002,Rodrigue2008}.
-Conditionally on the detailed \gls{substitution} history $\subhistory$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
-
-The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the \gls{likelihood}~\citep{Irvahn2014,Davydov2016}.
+Conditionally on the detailed \gls{substitution} history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters.
+The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the \gls{likelihood}~\citep{Lartillot2006,DeKoning2010,Romiguier2012,Irvahn2014,Davydov2016,Gueguen2018}.
 On the other hand, this requires to implement more complex \acrshort{MC} procedures, that have to alternate between:
 \begin{enumerate}
     \item sampling $\subhistory$ conditionally on the data and the current parameter configuration;
     \item re-sampling the parameters conditionally on $\subhistory$.
 \end{enumerate}
 
+This strategy plays an essential role in the case of the complex phylogenetic codon model introduced in chapter~\ref{chap:MutSelDrift}.
+
 \subsection{Implementation}
 \label{subsec:implementation}
 
-Software implementation of Bayesian methods integrating variation across sites, across genes and across genes is a theoretically possible, but the design of such implementation are complex.
+The software implementation of Bayesian phylogenetic models is globally a difficult endeavor.
 They must be flexible to adapt different model of variations, while at the same time be reliable, reproducible, maintainable and fast.
-All this constrains led to development of the Bayesian phylogenetic software \textit{BayesCode}, conducted by multiple maintainers with different goals and models of evolution in mind.
-Historically, development of this software was initiated concurrently to the beginning of this thesis, and chapter \ref{chap:MutSelDrift} which model variation of selection across sites and drift across branches has been implemented under this framework.
-This software is available at \url{https://github.com/bayesiancook/bayescode}.
-
-
+This is even more true for models integrating variation across sites, across branches or across genes.
+All this constraints led to the (still ongoing) development of a new Bayesian phylogenetic software platform called BayesCode, conducted by multiple maintainers with different goals and different models of evolution in mind.
+BayesCode adopts a modular design, using the graphical model formalism (see~\ref{sec:intro-hierarchical-models}) at a coarse-grained level, resulting in a flexible approach for model design by combining building blocks, corresponding to the fundamental distributions, the stochastic processes, and the likelihood computation routines that form the basis of a large family of phylogenetic models.
+Historically, the development of this software platform was initiated concurrently to the beginning of this thesis, and chapter~\ref{chap:MutSelDrift} which model variation of selection across sites and drift across branches has been implemented under this framework.
+This software, written in modern C++ (version 14) is available at \url{https://github.com/bayesiancook/bayescode}.
