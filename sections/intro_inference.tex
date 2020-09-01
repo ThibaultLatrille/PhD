@@ -16,7 +16,7 @@ Given specific parameter values for the model (generically noted $\theta$), the 
 This defines the likelihood, which is thus a function of the parameter $\theta$:
 
 \begin{equation}
-    L(theta) = p(D \mid theta)
+    L(\theta) = p(D \mid \theta)
 \end{equation}
 
 Unfortunately, even with an astronomical number of simulations, it is very unlikely to generate precisely our observed alignment, and even more difficult to precisely pin down the probability of our observed alignment to have been generate by the model under a given set of parameters.
@@ -310,6 +310,7 @@ Gibbs sampling, or more generally conditional Metropolis-Hastings can be conside
 Various algorithms can be used to sample these individual variables, depending on the exact form of the multivariate distribution, it can incorporate the Metropolis–Hastings algorithm, or more sophisticated methods such as slice sampling, adaptive rejection sampling and adaptive rejection Metropolis.
 
 \subsection{Sufficient statistics \& data augmentation}
+\label{subsec:suffstats-data-augmentation}
 
 MCMC samplers target the distribution over the model parameters by repeatedly invoking the pruning algorithm to recalculate the pruning-based \gls{likelihood}.
 This is most often the limiting step of the MCMC.

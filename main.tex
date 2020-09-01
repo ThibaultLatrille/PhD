@@ -52,14 +52,6 @@
 % The level that shows up in the ToC:
 \setcounter{tocdepth}{2}
 
-%%%%% DEDICATION
-%\begin{dedication}
-%	\thispagestyle{empty}
-%	\begin{center}
-%		\includegraphics[width=\textwidth, page=1] {figures/preface.pdf}
-%	\end{center} 
-%\end{dedication}
-
 %%%% EPIGRAPH
 \begin{alwayssingle}
 	\thispagestyle{empty}
@@ -71,11 +63,20 @@
 			\hfill \qauthor{Claude Lévi-Strauss.}
 		\end{minipage}
 	}
-
 	\vspace*{\fill}
 	\vspace*{\fill}
 \end{alwayssingle}
 
+
+%%%%% DEDICATION
+%\begin{alwayssingle}
+%	\thispagestyle{empty}
+%	\newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
+%	\begin{center}
+%		\includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface}
+%	\end{center}
+%	\restoregeometry
+%\end{alwayssingle}
 
 % %%%%% ABSTRACT SEPARATE
 % % This is used to create the separate, one-page abstract that you are required to hand into the Exam
@@ -85,12 +86,19 @@
 % \end{abstractseparate}
 %
 % \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
+\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
 \begin{alwayssingle}
-\input{sections/abstract_fr}%\endgroup
+	\input{sections/abstract}
+\end{alwayssingle}
+
+\begin{alwayssingle}
+	\input{sections/abstract_fr}
 \end{alwayssingle}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 %\input{sections/acknowledgement}
+
+\setlength{\baselineskip}{\frontmatterbaselineskip}
 \hypersetup{pageanchor=true}
 \begin{romanpages}
 %%%%% MINI TABLES
@@ -117,6 +125,7 @@
 \end{romanpages}
 
 %%%% CHAPTERS
+\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
 \pagenumbering{arabic}
 \flushbottom
 \input{sections/preamble}
@@ -124,7 +133,6 @@
 \pagestyle{fancybook}
 
 \part{Introduction}
-\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 
 \label{part:intro}
 \input{sections/intro_historical}
