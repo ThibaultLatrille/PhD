@@ -6,7 +6,22 @@
 \setlength{\parskip}{0.5em}
 
 \section*{Abstract}
+
 Molecular evolution aims to characterize the mechanisms at work in the evolution of sequences.
-These evolutionary mechanisms, which can be adaptive or neutral, simultaneously shape the coding sequences for proteins.
-Understanding the respective roles of adaptation and the other evolutionary forces at work in the evolution of the proteome, characterizing the adaptation acting on individual proteins and identifying the variation of these forces are major challenges and bear many applications in biology.
-This dissertation seek to 
+Sequences evolution is thus governed by a stochastic process composed of a mutation, selection and genetic drift.
+In the long term, this stochastic process results in a history of substitution events along species trees, inducing complex patterns of molecular divergence between species.
+By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
+In this context, this thesis has been focused on phylogenetic codon models, and on modelling the interplay between mutation, selection and drift shaping protein-coding DNA sequences.
+Because the composition of protein coding DNA sequences does not reflect the underlying mutational process, but its filtering by selection at the level of amino-acids, a careful modeling is necessary to tease apart mutation and selection.
+Therefore, I first developed a phylogenetic codon model of inference in which different rates of evolution gives an accurate representation of how mutation and selection oppose each other at equilibrium.
+Between the opposing forces of mutation and selection, the balance is arbitrated by genetic drift, which in turn is modulated by effective population size ($\Ne$).
+As a consequence, variation of $\Ne$ along of a phylogeny can theoretically be inferred from the trails of substitutions along the lineages.
+I thus developed a second model of inference, reconstructing altogether site-specific fitness landscape, long-term trends in $\Ne$ and in the mutation rate along the phylogeny.
+This bayesian framework was tested against simulated data and then applied to empirical data.
+Estimates of the variation of $\Ne$ corresponds to the expected direction of correlation with life-history traits or ecological variables.
+However, the magnitude of inferred variation is narrower than expected.
+Such as to understand this effect, I finally developed a theoretical model describing how changes in both $\Ne$ or expression level or protein will translate in change in the rate substitution, under the assumption that protein are selected against misfolding.
+This response is parameterized in terms of molecular of parameters of protein biophysics and imply a
+It succeeded in consolidating the idea that the patterns of \glspl{substitution} inform us on long term fluctuation of drift along branches, and selection along sites.
+It is an indication that fitness landscape of protein coding sequences is too site-specific, or integrated over too many sites.
+It is building block to bridge phylogeny and population-genetics, constructing an integrated framework is theoretically possible but with limited scope.

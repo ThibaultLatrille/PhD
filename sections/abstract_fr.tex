@@ -1,123 +1,91 @@
 \thispagestyle{empty}
 
-\section*{Résumé en français}
+\section*{Résumé (v1)}
 
-La sélection dans des séquences codant pour des protéines peut être détectée sur la base d'alignements de séquences multiples à l'aide de modèles de codons phylogénétiques.
-Les approches mécanistes, fondées sur les premiers principes de la génétique des populations, officialisent explicitement l'interaction entre la mutation, la sélection et la dérive aléatoire, et renvoient une estimation du paysage de la condition physique des acides aminés.
-Cependant, ces modèles récemment développés reposent sur l'hypothèse d'une taille de population effective constante.
-Nous proposons un modèle de sélection de mutation étendu reconstruisant le paysage de remise en forme dépendant du site, les tendances à long terme de la taille effective de la population et le taux de mutation le long de la phylogénie, à partir d'un alignement des séquences codantes de l'ADN.
-Indépendamment, les traits ancestraux du cycle biologique sont reconstruits le long de la phylogénie à partir de l'observation chez les espèces actuelles.
-Ensemble, nous estimons la corrélation entre les traits d'histoire de vie reconstruits, le taux de mutation et la taille effective de la population, y compris intrinsèquement l'inertie phylogénétique.
-Notre cadre a été testé par rapport à des données simulées et à des données empiriques chez les mammifères et les primates.
-Enfin, nos travaux soulèvent également d'importantes questions théoriques sur la façon dont les séquences de codage répondent aux changements de la taille effective de la population et à la sélection fluctuante.
+Dans cette thèse, plusieurs aspects de l'équilibre mutation-sélection-dérive sont étudiés et mis en relation avec des données empiriques, dans le contexte de séquences d'ADN codant pour des protéines.
+Premièrement, parce que la composition des séquences d'ADN codant pour les protéines ne reflète pas le processus de mutation sous-jacent, mais son filtrage par la sélection au niveau des acides aminés, une modélisation phénoménologique minutieuse est nécessaire pour estimer le processus de mutation et le biais de fixation des nucléotides.
+Deuxièmement, l'équilibre entre mutation et sélection est arbitré par la dérive, qui est médiée par la taille efficace de la population et ses changements le long d'une phylogénie peuvent être estimés par des modèles de codons mécanistes.
+Enfin, la sélection pour la stabilité des protéines implique une relation analytique entre la pression de sélection et la taille efficace de la population et le niveau d'expression des protéines.
+
+\section*{Résumé (v2)}
+
+L'évolution moléculaire vise à caractériser les mécanismes à l'œuvre dans l'évolution des séquences, régie par un processus stochastique composé de mutation, sélection et de dérive génétique.
+À long terme, ce processus stochastique résulte en une histoire d'événements de substitution le long des arbres d'espèces, induisant des motifs complexes de divergence moléculaire entre les espèces.
+En analysant ces motifs, les modèles de codons phylogénétiques visent à estimer les paramètres d'évolution.
+Dans ce contexte, cette thèse s'est concentrée sur les modèles de codons phylogénétiques et sur la modélisation de l'interaction entre la mutation, la sélection et la dérive des séquences d'ADN codant pour les protéines.
+Parce que la composition des séquences d'ADN codant pour les protéines ne reflète pas le processus de mutation sous-jacent, mais qu'elle est filtrée par sélection au niveau des acides aminés, une modélisation minutieuse est nécessaire pour démêler la mutation et la sélection.
+Par conséquent, j'ai d'abord développé un modèle d'inférence de codon phylogénétique dans lequel différents taux d'évolution donnent une représentation précise de la manière dont la mutation et la sélection s'opposent à l'équilibre.
+Entre les forces opposées de mutation et de sélection, l'équilibre est arbitré par la dérive génétique, qui à son tour est modulée par la taille efficace de population ($\Ne$).
+En conséquence, la variation de $\Ne$ le long d'une phylogénie peut théoriquement être déduite des motifs de substitutions le long des lignées.
+J'ai ainsi développé un deuxième modèle d'inférence, reconstituant à la fois le paysage de fitness en chaque au site, les tendances à long terme de $\Ne$ et le taux de mutation le long de la phylogénie.
+Ce cadre bayésien a été testé par rapport à des données simulées puis appliqué à des données empiriques.
+Les estimations de la variation de $\Ne$ correspondent à la direction attendue de la corrélation avec les traits d’histoire de vie ou les variables écologiques, malgré que l'ampleur de la variation estimé soit plus étroite que prévue.
+Afin de comprendre cette variation étroite du $\Ne$ estimé, j'ai finalement développé un modèle théorique décrivant comment les changements à la fois de $\Ne$ ou du niveau d'expression ou la protéine se traduisent par un changement du taux de substitution, sous l'hypothèse que les protéines mal repliés sont contre sélectionnées.
+Cette réponse est paramétrée en termes de paramètres moléculaires de la biophysique des protéines et implique une faible réponse du taux de substitution aux changements de niveau d'expression ou de $\Ne$.
 
 
-\section*{Résumé en français}
-
-La phylogénie moléculaire cherche à inférer l’histoire évolutive du vivant à partir des séquences génétiques actuelles.
-L'évolution moléculaire, quant à elle, vise à caractériser les mécanismes à l’œuvre dans l'évolution des séquences.
-Ces mécanismes évolutifs, pouvant être adaptatifs ou neutres, façonnent simultanément les séquences codantes pour protéines.
-Comprendre les rôles respectifs de l'adaptation et des autres forces évolutives à l’œuvre dans l'évolution du protéome, caractériser l'adaptation agissant sur les protéines individuelles et identifier les gènes sous sélection positive sont des enjeux majeurs et porteurs de nombreuses applications en biologie.
-Les méthodes phylogénétiques actuelles, en se basant sur des données d'alignement entre espèces, comme les modèles à codons (Goldman \& Yang, 1994) permettent d'estimer l'intensité de la sélection en se basant sur le ratio des taux de substitutions synonymes et non-synonymes.
-Par ailleurs les données de polymorphisme au sein d'une population permettent aussi d'estimer l'intensité de la sélection (McDonald \& Kreitman, 1991).
-Cependant, sous leurs formes actuelles, ces méthodes présentent de nombreuses limitations.
-En particulier, elles n'articulent pas correctement les différentes forces évolutives en jeu : pression mutationnnelle, sélection, dérive génétique et enfin la conversion génique biaisée vers GC (gBGC).
-
-Dans cette thèse, plusieurs aspects de l'équilibre mutation-sélection-dérive sont étudiés et mis en relation avec des données empiriques, dans le cadre de séquences d'ADN codant pour des protéines.
-Premièrement, parce que la composition des séquences d'ADN codant pour les protéines ne reflète pas le processus de mutation sous-jacent, mais son filtrage par la sélection au niveau des acides aminés, une modélisation phénoménologique minutieuse est nécessaire pour découvrir le processus de mutation et le biais de fixation des nucléotides.
-Deuxièmement, l'équilibre entre mutation et sélection est arbitré par la dérive, qui est médiée par la taille efficace de population. et ses changements le long d'une phylogénie peuvent être estimé par des modèles de codons mécanistes.
-La sélection dans des séquences codant pour des protéines peut être détectée sur la base d'alignements de séquences multiples à l'aide de modèles de codons phylogénétiques.
-Les approches mécanistes, fondées sur les premiers principes de la génétique des populations, officialisent explicitement l'interaction entre la mutation, la sélection et la dérive aléatoire, et renvoient une estimation du paysage de la condition physique des acides aminés.
-Cependant, ces modèles récemment développés reposent sur l'hypothèse d'une taille de population effective constante.
-Nous proposons un modèle de sélection de mutation étendu reconstruisant le paysage de remise en forme dépendant du site, les tendances à long terme de la taille effective de la population et le taux de mutation le long de la phylogénie, à partir d'un alignement des séquences codantes de l'ADN.
-Indépendamment, les traits ancestraux du cycle biologique sont reconstruits le long de la phylogénie à partir de l'observation chez les espèces actuelles.
-Ensemble, nous estimons la corrélation entre les traits d'histoire de vie reconstruits, le taux de mutation et la taille effective de la population, y compris intrinsèquement l'inertie phylogénétique.
-
-Enfin, la sélection pour la stabilité des protéines implique une relation analytique entre le taux d'évolution et la taille efficace de population et le niveau d'expression des protéines.
-
-\section*{Résumé étendu en français}
+\section*{Résumé étendu}
 
 La théorie neutre de l’évolution, et son extension quasi-neutre, ont profondément influencé notre compréhension de la génétique des populations et de l'évolution moléculaire.
 Au-delà des disputes et des controverses entre neutralisme et sélectionnisme, le consensus actuel est de considérer l'évolution des séquences génétiques comme un processus stochastique.
-Un composant de ce processus est la création de diversité par la mutation, un autre composant antagoniste filtre cette diversité par sélection, et enfin l'équilibre entre ces composants est réglé par la taille efficace de population, qui détermine la quantité de dérive génétique.
-Le résultat à long terme de ce processus évolutif est une accumulation de substitutions ponctuelles (à la fois synonymes et non synonymes) entre les espèces.
-S'appuyant sur cette principale source d'information contenue dans les alignements de séquences multiples de gènes codant pour des protéines obtenus à partir d'espèces contemporaines, l'objectif des modèles de codons phylogénétiques est de mieux caractériser et quantifier l'interaction entre mutation, sélection et dérive aléatoire.
+Un composant de ce processus est la création de diversité par la mutation, tandis que la sélection filtre cette diversité.
+Enfin l'équilibre entre ces composants est arbitré par la dérive génétique, elle même étant une fonction la taille efficace de population ($\Ne$).
+Le résultat à long terme de ce processus évolutif stochastique est une accumulation de substitutions ponctuelles (à la fois synonymes et non synonymes) entre les espèces.
+S'appuyant sur l'information contenue dans les alignements multiples de séquences d'ADN, l'objectif des modèles à codons phylogénétiques est de mieux caractériser et quantifier l'interaction entre mutation, sélection et dérive génétique.
 Les modèles à codons sont toujours un domaine de recherche actif et se scindent en deux philosophies différentes.
-D'un côté, les modèles phénoménologiques, visent à capturer l'effet net de la sélection par $\omega$ = dN / dS.
-De l'autre côté, des approches mécanistes, avec pour objectif plus ambitieux de modéliser le paysage du fitness à grain fin.
+D'un côté, les modèles phénoménologiques, visent à capturer l'effet net de la sélection à travers le paramètre $\dnds$, défini comme le ratio du taux substitutions non-synonymes (sous-sélection) sur le taux de substitution synonyme (supposé neutre).
+De l'autre côté, des approches mécanistes ont pour objectif de modéliser le paysage du fitness.
 En l'état, cependant, de nombreuses questions restent ouvertes et les modèles actuels, qu'ils soient phénoménologiques ou mécanistes, présentent de nombreuses faiblesses.
 Les approches phénoménologiques pourraient encore être améliorées, tout en restant dans l'idée de ne pas modéliser explicitement le paysage détaillé du fitness.
-Quant aux approches mécanistes, dans leurs versions actuelles, émettent des hypothèses très fortes, telles que l'indépendance entre sites, un paysage de fitness fixe, mais aussi une taille efficace de population constante le long de la phylogénie.
-Plus fondamentalement, il y a un certain vide à combler entre ces deux approches, et de meilleures connexions pourraient être établies entre elles.
+Quant aux approches mécanistes, dans leurs versions actuelles, émettent des hypothèses très fortes, telles que l'indépendance entre sites, un paysage de fitness fixe, mais aussi une taille efficace de population ($\Ne$) constante le long de la phylogénie.
+Plus fondamentalement, il existe un certain vide à combler entre ces deux approches, et de meilleures connexions pourraient être établies entre elles.
 
-Dans ce contexte, mon travail de thèse représente une tentative pour savoir comment démêler correctement les interactions complexes entre mutation, sélection et dérive génétiques à l'aide de modèles de codons phylogénétiques, selon les deux approches, phénoménologiques ou mécanistes.
+Dans ce contexte, mon travail de thèse représente une tentative de démêler les interactions complexes entre mutation, sélection et dérive génétiques à l'aide de modèles à codons phylogénétiques, selon les deux approches, phénoménologiques ou mécanistes.
 Au cours de ce travail, j'ai testé des idées théoriques sur des données empiriques, en utilisant une combinaison de développements analytiques, d'expériences en simulation et d'inférence bayésienne.
-Les résultats sont divisés en trois manuscrits indépendants qui seront soumis à des revues à comité de lecture.
-Le premier article revient sur la question de l'équilibre entre biais de mutation et biais de sélection, et comment cet équilibre doit être correctement formalisé dans le contexte des modèles à codons classiques (phénoménologiques).
-Le deuxième manuscrit explore la question de la prise en compte de la variation à long terme de la taille efficace de population ($\Ne$) entre les espèces, dans le contexte d'un modèle de sélection de mutation mécaniste.
-Les travaux présentés dans ce manuscrit représentent la partie la plus intensive du travail de doctorat, en termes de modélisation, d'algorithmes de Monte-Carlo et de développement logiciel.
-Enfin, certaines des observations faites au cours de cette seconde partie de mon travail, en particulier les gammes de variations de $\Ne$ relativement étroite mise au jour par cette approche entièrement mécaniste, m'ont amené à revoir la question de savoir comment la biophysique des protéines, et plus généralement l'épistasie, peut moduler quantitativement la réponse du processus évolutif moléculaire aux changements de la taille efficace de population.
+Les résultats sont divisés en trois manuscrits indépendants.
+
+Le premier article revient sur la question de l'équilibre entre biais de mutation et biais de sélection, et comment cet équilibre doit être correctement formalisé dans le contexte des modèles à codons classiques.
+Parce que la composition des séquences d'ADN codant pour les protéines ne reflète pas le processus sous-jacent de mutation, mais son filtrage par sélection au niveau des acides aminés, une modélisation minutieuse est nécessaire pour démêler le processus de mutation et les biais nucléotidiques d'un côté, et la sélection d'un autre côté.
+Malheureusement, les modèles à codons phénoménologiques modèles, développés à l'origine pour estimer le taux d'évolution sur les acides aminés ($\dnds$), ne modélisent pas correctement cet équilibre mutation-sélection.
+En effet, ils utilisent le  biais de composition nucléotidique observé comme proxy pour le biais de mutation nucléotidique.
+En conséquence, ils ne fournissent pas une estimation précise du processus de mutation, même s'ils sont capables d'estimer de manière assez fiable la force globale de sélection agissant sur les acides aminés.
+Pour résoudre ce problème, j'ai développé un modèle à codon phylogénétique dans lequel la vitesse d'évolution n'est pas considérée comme un paramètre unique mais comme un tenseur (95 paramètres libres).
+Le tenseur capture les faibles différences de taux de fixation (ou $\dnds$) dans différentes directions, ce qui donne une représentation précise de la manière dont la mutation et la sélection s'opposent à l'équilibre.
+Cette paramétrisation est la forme paramétrique la plus simple, dans un contexte phénoménologique, capable de faire la séparation mutation-sélection de manière exacte (ou asymptotiquement exacte).
+Grâce à cela, cette approche de modélisation donne une estimation fiable du processus de mutation, tout en démêlant les probabilités de fixation dans différentes directions.
+Cela offre des outils pour mieux comprendre comment le processus mutation-mutation s’articule avec la conversion génique biaisée (gBGC), et permet donc également de mieux comprendre comment la gBGC affecte à la fois la composition nucléotidique et le $\dnds$.
+
+Si premier manuscrit articule mutation et mutation dans le contexte d'un modèle à codon phénoménologique, l'équilibre entre ces forces de mutation et de sélection est arbitré par la dérive génétique, qui à son tour est modulée par taille efficace de population ($\Ne$).
+En conséquence, théoriquement, la variation de $\Ne$ le long d'une phylogénie peut être déduite des traînées de substitutions le long des lignées.
+Le deuxième manuscrit explore ainsi la question de la prise en compte de la variation à long terme de la taille efficace de population ($\Ne$) entre les espèces, dans le contexte d'un modèle de sélection de mutation mécaniste.
+Les travaux présentés dans ce second manuscrit représentent la partie la plus intensive du travail de doctorat, en termes de modélisation, d'algorithmes de Monte-Carlo et de développement logiciel.
+ J'ai ainsi développé un modèle de mutation-sélection mécaniste reconstituant le paysage le fitness en chaque site, les tendances à long terme de la taille efficace de population et du taux de mutation le long de la phylogénie, à partir d’alignements d'ADN de séquences codantes.
+Simultanément, l'approche estime la corrélation entre les traits d’histoires de vie, le taux de mutation et la taille efficace de population, qui inclut explicitement l'inertie phylogénétique.
+Ce modèle a été testé sur des données simulées, puis appliqué à des données empiriques chez les mammifères, les isopodes, les primates et les drosophiles.
+Les résultats sur données simulées et empiriques suggèrent qu'il existe un des signaux persistants dans les séquences d’ADN qui permettent de reconstruire l'évolution de $\Ne$ le long de la phylogénie.
+Par ailleurs les variations observées correspondent à la direction attendue de la corrélation avec les traits d’histoire de vie ou les variables écologiques.
+Cependant, l'ampleur de la variation inférée de $\Ne$ à travers la phylogénie est plus étroite que prévu.
+
+Finalement, ces observations de la gamme de variations de $\Ne$ relativement étroite mise à jour par cette approche entièrement mécaniste, m'ont amené à revoir la question de savoir comment la biophysique des protéines, et plus généralement l'épistasie, peut moduler quantitativement la réponse du processus évolutif moléculaire aux changements de la taille efficace de population.
 Ce dernier travail est présenté comme un troisième manuscrit.
+En effet ce second travail partait du principe que les lignées avec un grand $\Ne$ devraient subir une sélection purificatrice plus forte.
+Cependant, les hypothèses sur la structure sous-jacente du paysage de la condition physique peuvent avoir une grande influence sur la réponse attendue de la probabilité moyenne de fixation aux changements de $\Ne$.
+De plus, une augmentation du niveau d'expression des protéines entraîne également une diminution de la probabilité moyenne de fixation.
+Cette corrélation est également prédite par des modèles théoriques supposant que les protéines mal repliées sont sous sélection négative.
+En conséquence, il convient d'articuler ensemble toutes ces corrélations entre la probabilité moyenne de fixation, la taille efficace de population et le niveau d'expression, en rapport avec la structure du paysage de fitness sous-jacent.
+Pour ce faire, j'ai dérivé une approximation théorique de la réponse de la probabilité moyenne de fixation aux changements à la fois de $\Ne$ et du niveau d'expression, en fonction du la relation génotype-phénotype-fitness sous-jacente.
+Le développement est généralement valide pour des traits additifs sous une fonction de fitness log-concave, mais a été appliqué plus spécifiquement à un modèle biophysique dans lequel les protéines sont sous sélection directionnelle pour maximiser leur stabilité conformationnelle.
+Dans ce cas précis, le modèle prédit une réponse faible de la probabilité moyenne de fixation aux changements de $\Ne$ ou de niveau d'expression (qui sont interchangeables), un résultat corroboré par des simulations sous des modèles plus complexes.
+Sur la base de preuves empiriques, je propose que l'adéquation basée sur la stabilité conformationnelle pourrait ne pas fournir un mécanisme suffisant pour expliquer l'amplitude de la variation la pression de sélection qui est observée empiriquement.
+D'autres aspects de la biophysique des protéines pourraient être explorés tels que les interactions protéine-protéine, qui pourraient conduire à une réponse plus forte pression de sélection aux changements de $\Ne$.
+Cependant, il subsiste un écart entre les prévisions quantitatives des modèles biophysiques et les observations empiriques reliant la réponse de la pression de sélection aux changements de $\Ne$ et du niveau d'expression.
 
-Robustesse des modèles de codons aux biais mutationnels
-La composition des séquences moléculaire est le résultat de l'équilibre entre mutation et sélection.
-En raison de la sélection, la composition nucléotidique des séquences codant pour des protéines est différente de ce à quoi on pourrait s'attendre dans le cadre d'un processus de mutation pure.
-En particulier, il diffère entre les trois positions d’un codon, la troisième position présentant une composition plus extrême que la première et deuxième position.
-Cette observation empirique est bien connue.
-Pourtant, les modèles de codons classiques ne capturent pas correctement ce phénomène.
-Au lieu de cela, dans leur paramétrage classique, en termes d'une matrice de taux de nucléotides 4x4 et d'un seul paramètre de sélection $\omega$, les modèles de codons phénoménologiques prédisent que la composition nucléotidique devrait être la même pour les 3 positions des codons, et devrait être égale aux fréquences d'équilibre du processus nucléotidique sous-jacent.
-Alternativement, pour s'adapter à cette variation à travers les positions d’un codon, certains modèles utilisent différentes matrices de taux de nucléotides aux trois positions.
-Cependant, cette approche est problématique, car le processus de mutation doit en principe être indépendant du code génétique et doit être homogène à travers les trois positions.
-Bien que ce biais ait probablement un impact mineur sur la détection de la sélection positive, c'est un symptôme d'un problème plus fondamental de modélisation des taux de mutation et des biais de fixation dans le contexte des modèles de codons phénoménologiques.
-En pratique, cela pourrait avoir des conséquences importantes sur les biais de fixations, en particulier, compte tenu de l'intérêt actuel pour la modélisation de l'impact de la conversion génique biaisée vers GC (gBGC) sur l'évolution des séquences codant pour les protéines, un facteur qui nécessite de démêler soigneusement les biais de mutations et de fixations.
-Conceptuellement, le problème vient du fait qu'à l'équilibre mutation-sélection, il y a un différentiel de sélection net, ou biais de fixation net, agissant contre la pression mutationnelle.
-En d'autres termes, à l'équilibre, $\omega$ n'est pas le même dans différentes directions de mutation.
-Parce qu'ils capturent la sélection à travers un seul paramètre $\omega$, les modèles de codons classiques ne peuvent pas capturer correctement ce biais de fixation net.
-Pour résoudre ce problème, je développe une approche de modélisation alternative, où $\omega$ n'est plus vu comme un scalaire, mais comme un vecteur de $\omega$ dans plusieurs directions.
-Ce modèle est testé sur des alignements d'ADN empiriques et simulés.
-
-Déduire la taille efficace de population à long terme
-Les modèles à codons phylogénétiques mécanistes sont fondés sur les principes fondamentaux de la génétique des populations.
-Étant explicitement paramétrés en termes de taux de mutation et de coefficients de sélection à l'échelle de la population, ces modèles permettent d’étudier les fondements de l'interaction complexe entre mutation, sélection et dérive.
-Dans leur forme actuelle, les modèles mécanistes supposent un paysage de fitness fixe et indépendant par site, sans épistasie.
-En conséquence, ils sont entièrement caractérisés par la collection de profils de fitness d'acides aminés spécifiques en chaque site.
-Cependant, jusqu'à présent, ils se sont appuyés sur l'hypothèse d'une taille efficace de population constante le long de la phylogénie, une hypothèse clairement déraisonnable.
-La sélection et la dérive sont des paramètres confondus, mais ils peuvent néanmoins être démêlés en supposant que le profil de fitness est fixé le long de la phylogénie, mais changeant le long de la séquence, et orthogonalement, en supposant que la taille efficace de population est constante le long de la séquence, mais variable à travers la phylogénie.
-En plus de la taille efficace de population ($\Ne$), le taux de mutation ($\mu$) est également susceptible de varier entre les lignées.
-En outre, $\Ne$ et $\mu$ devraient co-varier avec des traits d’histoire de vie.
-Cela suggère que le modèle devrait plus globalement rendre compte du processus d'évolution conjoint de ces variables spécifiques à la lignée ($\Ne$, $\mu$ et traits d’histoire de vie).
-Dans cette direction, j'introduis un modèle mécaniste reconstruisant conjointement le paysage de fitness à travers les sites et les tendances à long terme de la taille efficace de population, du taux de mutation et des traits d'histoire de vie le long de la phylogénie, à partir d'un alignement de séquences codantes d'ADN et d'une matrice des traits d’histoire de vie observés chez les espèces existantes.
-Le modèle a été implémenté dans un cadre bayésien de Monte-Carlo.
-En fin de compte, le modèle estime la corrélation entre les traits d'histoire de vie reconstruits, le taux de mutation et la taille efficace de population, en prenant en compte l'inertie phylogénétique.
-Il a été testé sur des données simulées et finalement appliqué à des données empiriques chez les mammifères, les isopodes, les primates et la drosophile.
-L'histoire reconstruite de $\Ne$ dans ces groupes semble être en corrélation avec les traits traits d’histoire de vie ou les variables écologiques d'une manière qui suggère que la reconstruction est raisonnable, au moins dans ses tendances globales.
-D'autre part, la gamme de variation de $\Ne$ déduite d'une espèce à l'autre est étonnamment étroite.
-Ce dernier point suggère que certaines hypothèses du modèle, en particulier concernant la structure du paysage de fitness supposé, sont potentiellement problématiques.
-
-Réponse du taux de substitution aux changements de la taille efficace de population
-La gamme étonnamment étroite de variation de $\Ne$ estimé à travers les phylogénies par le modèle à codon mécaniste m'a incité à mener une étude théorique plus détaillée de l'impact quantitatif des changements de $\Ne$ sur le processus d'évolution de séquences codant pour les protéines.
-Une variable particulièrement importante à étudier dans ce sens est le taux de substitution des mutations sélectionnées par rapport au taux de substitution neutre $\omega$ = dN / dS.
-Selon la théorie de l'évolution quasi-neutre, les lignées avec une grande taille de population efficace ($\Ne$) devraient subir une sélection purificatrice plus forte, et par conséquent une diminution de $\omega$.
-Les modèles de corrélation empirique entre $\omega$ et les traits traits d’histoire de vie ou la diversité synonyme (qui est une approximation de $\Ne$), ont eu tendance à confirmer cette prédiction.
-Cependant, des simulations utilisant des modèles informatiques basés sur la stabilité conformationnelle des protéines ont suggéré que $\omega$ peut être indépendant de $\Ne$.
-L'écart entre ces conclusions suggère qu'une étude quantitative plus détaillée de ce qui détermine la réponse quantitative de $\omega$ aux changements de $\Ne$, en fonction de la modélisation du lien entre séquences et fitness serait utile.
-Une autre question connexe est de savoir comment $\omega$ varie entre les protéines, en fonction de leur niveau d'expression.
-Empiriquement, il existe une corrélation négative robuste entre $\omega$ et le niveau d'expression entre les gènes.
-Théoriquement, de nombreux modèles inspirés de la biophysique suggèrent que la réponse de $\omega$ aux changements de niveau d'expression devrait être identique ou similaire à sa réponse aux changements de $\Ne$.
-Cela suggère que les deux questions, l'impact des changements de $\Ne$ et de niveau d'expression, bénéficieraient d'une investigation théorique simultanée.
-Pour répondre à ces questions, je dérive une approximation théorique de la réponse quantitative de $\omega$ aux changements de $\Ne$ et du niveau d'expression, en modélisant explicitement la relation entre génotype, phénotype et fitness.
-La méthode présentée est de manière générale valable pour des traits phénotypiques additifs et des fonctions de fitness log concaves, mais plus spécifiquement appliquée dans cette étude aux protéines sélectionnées pour leur stabilité conformationnelle.
-Les résultats analytiques, obtenus sous des hypothèses simplificatrices sont corroborés par des simulations sous des modèles plus complexes.
-Enfin, les prédictions analytiques de la réponse de $\omega$ aux changements de $\Ne$ et du niveau d'expression sont confrontées à des données empiriques, tandis que d'autres aspects de la biophysique des protéines tels que les interactions protéine-protéine sont également discutés.
-
-Conclusions
-Ce travail est une tentative modeste de construire des modèles intégrés d’évolution des séquences d'ADN codant pour les protéines.
-Il a réussi à consolider l'idée que les modèles de substitutions nous informent sur les fluctuations à long terme de la dérive le long de la phylogénie et des variations de la sélection le long des sites.
-Il n'a pas réussi à modéliser le paysage de fitness, apparemment trop spécifique au site, ou intégré sur trop de sites.
-C'est une indication que le paysage de fitness des protéines se situe entre ces deux extrêmes.
-Le cadre théorique mécaniste permet théoriquement de créer des liens entre phylogénie et la génétique des populations.
-Enfin, je pense que cette thèse ne fournit aucun résultat révolutionnaire, mais consolide plutôt des modèles théoriques sur laquelle se fonde l'évolution moléculaire et souligne les écueils à éviter.
-La science, pareille un processus de sélection de mutation n'est pas optimisé, mais est un compromis entre l'exploration de nouvelles idées et l'exploitation des anciennes.
-
-
-\vspace*{\stretch{3}}
+Pour conclure, ce travail est une tentative modeste de construire des modèles intégrés d'évolution des séquences d'ADN codant pour les protéines.
+Il a réussi à consolider l'idée que les modèles de substitutions nous informent sur les fluctuations à long terme de la dérive le long des branches et la sélection le long des sites.
+Il n'a pas réussi à modéliser le paysage du fitness, apparemment trop spécifique au site, ou intégré sur trop de sites.
+C'est une indication que le paysage de fitness des séquences codant pour les protéines se situe entre ces deux extrêmes.
+Ce travail représente aussi un cadre conceptuelle permettant de  relier phylogénie et génétique des populations.
+Par exemple, confronter l'estimation du taux de substitution adaptative dans le cadre des modèles phylogénétiques d’un côté et dans le cadre génétique des populations d’un autre côté permet de construire un cadre unifié de l'évolution de l'ADN codant pour les protéines.
+Enfin, je pense que cette thèse n'apporte aucun résultat révolutionnaire, ni perturbateur, mais consolide plutôt des modèles théoriques sur lesquels se fonde l'évolution moléculaire et souligne les écueils à éviter.
+La science, tout comme un processus de sélection de mutation, n'est pas optimisée mais comme un compromis entre l'exploration de nouvelles idées et l'exploitation des anciennes.
+Les tentatives de construction de ponts et de connexion entre les champs, tout comme la recombinaison, peuvent apporter le meilleur des deux mondes, mais de nombreuses tentatives sont nécessaires.

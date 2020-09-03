@@ -4,14 +4,14 @@
 
 As a legacy of the nearly-neutral theory, the evolution of molecular sequences is seen as a stochastic process.
 One component of this process is creating diversity through mutation, while another antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
-In the long term, this stochastic process results in a history of substitution events along species trees, inducing compllex patterns of molecular divergence between species.
+In the long term, this stochastic process results in a history of substitution events along species trees, inducing complex patterns of molecular divergence between species.
 By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
 
 In this context, this thesis has been focused on phylogenetic codon models, and on modelling the interplay between mutation, selection and drift shaping protein-coding DNA sequences.
 As an introduction of this conclusive chapter, I first recall the main results of this thesis in section~\ref{sec:summary-of-main-results}.
 Subsequently, I attempt to discuss the limitations of this work.
 One main limitations concerns the problem of modelling site-interdependence, which is discussed in section~\ref{sec:epistasis-and-entrenchment}.
-Secondly, in section \ref{sec:adaptative-landscape}, I draw some important connections between the mechanistic models developed here and the problem of detecting adaptive evolutionary regimes.
+Secondly, in section~\ref{sec:adaptative-landscape}, I draw some important connections between the mechanistic models developed here and the problem of detecting adaptive evolutionary regimes.
 As a perspective, I discuss how phylogenetic mechanistic models could be unified with population-genetics in section~\ref{sec:mechanistic-and-phenomenological-models}, and the inference methodology that would be adapted to such an endeavor in section~\ref{sec:mechanistic-and-phenomenological-models}.
 Finally, before concluding, I discuss the question and issue of reproducible sciences in evolutionary biology in section~\ref{sec:reproducible-science}.
 
@@ -36,7 +36,7 @@ As a result, theoretically, variation of $\Ne$ along of a phylogeny can be infer
 
 In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscape, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of DNA coding sequences.
 Simultaneously, the approach estimates the correlation between life-history traits, mutation rate and effective population size, intrinsically accounting for phylogenetic inertia.
-Our framework was tested against simulated data and the applied to empirical data in mammals, isopods, primates and drosophila.
+Our framework was tested against simulated data and then applied to empirical data in mammals, isopods, primates and drosophila.
 Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to past history of $\Ne$, whose trends correspond to expected direction of correlation with life-history traits or ecological variables.
 However, the magnitude of inferred variation in $\Ne$ across the phylogeny is narrower than expected, which is probably a bias of the approach caused by the assumptions made on the structure of the fitness landscape.
 
@@ -50,15 +50,14 @@ To do so, in chapter~\ref{chap:GenoPhenoFit}, I derived a theoretical approximat
 The development is generally valid for an additive traits under a log-concave fitness function, but was applied more specifically to a biophysical model in which proteins are under directional selection for maximizing their conformational stability.
 In this specific case, I predict a weak response of the mean fixation probability to changes in either $\Ne$ or expression level (which are interchangeable), a result corroborated by simulations under more complex models.
 Based on empirical evidence, I propose that fitness based on conformational stability might not provide a sufficient mechanism to explain the amplitude of the variation in the mean fixation probability which is observed empirically.
-Other aspects of protein biophysics COULD be explored, such as protein-protein interactions, which COULD lead to A stronger response of the mean fixation probability to changes in Ne.
-In this context, other aspects of protein biophysics could be explored such as protein-protein interactions, which could lead to a stronger response of the mean fixation probability to changes in $\Ne$.
+Other aspects of protein biophysics could be explored such as protein-protein interactions, which could lead to a stronger response of the mean fixation probability to changes in $\Ne$.
 However, there is a remaining gap between quantitative predictions of biophysical models and empirical observations relating the response of the mean fixation probability to changes in $\Ne$ and expression level.
 
 
 \section{Site-interdependency and epistasis}
 \label{sec:epistasis-and-entrenchment}
 
-One of the blind spots of the mechanistic codon model developed in chapter~\ref{chap:MutSelDrift}, and more generally of current mechanistic models of the Halpern-Bruno family (see \ref{subsec:HB-formalism}), is the assumption of site-independence.
+One of the blind spots of the mechanistic codon model developed in chapter~\ref{chap:MutSelDrift}, and more generally of current mechanistic models of the Halpern-Bruno family (see~\ref{subsec:HB-formalism}), is the assumption of site-independence.
 This assumption is convenient, both computationally and statistically.
 Computationally, each site can be considered as an independent Markov process (see~\ref{subsec:mutation-limited-assumption} and~\ref{sec-intro:likelihood}).
 Statistically, one can rely on mixture models to estimate site-specific amino-acid fitness profiles (see~\ref{subsec:empirical-calibration-HB})
@@ -69,7 +68,7 @@ This approximation is problematic, and raises multiple questions.
 What are the consequences of ignoring epistasis in the context of phylogenetic inference?
 Practically, how could we ultimately account for epistasis in the context of inference?
 
-Fundamentally, one key result of chapter \ref{chap:GenoPhenoFit} is that any model without (or ignoring) epistasis implies a slow dynamic and a strong sensitivity of the mean fixation probability to changes in $\Ne$.
+Fundamentally, one key result of chapter~\ref{chap:GenoPhenoFit} is that any model without (or ignoring) epistasis implies a slow dynamic and a strong sensitivity of the mean fixation probability to changes in $\Ne$.
 Intuitively, model without epistasis exhibit a slow return to equilibrium upon a change in $\Ne$ due to the waiting time until the next substitution, since the evolutionary process is mainly mutation limited (see~\ref{subsec:molecular-evolution-is-mutation-limited})
 Indeed, the mutation rate per site is very low, from $10^{-8}$ to $10^{-9}$ in mammals, such that the expected waiting time for each specific until the next mutation is between $100$ to $1000$ Million years.
 Moreover, the strong sensitivity of the mean fixation probability to changes in $\Ne$ originates in the fact that after a change in $\Ne$, each site of the sequence has to adapt independently, and change its position in the fitness landscape.
@@ -77,26 +76,25 @@ Moreover, the strong sensitivity of the mean fixation probability to changes in 
 In contrast, in the presence of epistasis, the burden of adapting to changes in $\Ne$ is shared by more sites, such that not all of them (and possibly, very few of them) have to switch their position in the fitness landscape, in order for the trait to return to equilibrium under the new $\Ne$.
 As a result, adding epistasis to the model implies a faster dynamic and a weaker response of the mean fixation probability to changes in $\Ne$.
 
-This effect first the low response of the mean fixation probability to changes in $\Ne$ in chapter~\ref{chap:GenoPhenoFit}.
+Epistasis ths explains the low response of the mean fixation probability to changes in $\Ne$ observed in chapter~\ref{chap:GenoPhenoFit}.
 Indeed, in that case, all sites of the sequences are involved in non-specific epistasis.
-TODO Link between phenomenological and mechanistic approach.
-Moreover, this explains the low magnitude of $\Ne$ variation estimated with site-independent mechanistic codon models in chapter~\ref{chap:MutSelDrift}.
-Empirically, it appears that the susceptibility of $\nu$ to changes in $\Ne$ is between these two extremes, namely that of site independent fitness landscapes, and the other extreme of a single univariate phenotype controlled by all sites.
+Conversely, under a site-independent model, a slight change in $\Ne$ results in strong changes of mean fixation probability, and thus of the substitution rate.
+Since the variation of substitution rate is the signal on which inference model are grasping, only slight variation of $\Ne$ are expected to be grasped by inference model.
+Epistasis thus also the explains the low magnitude of $\Ne$ variation estimated with site-independent mechanistic codon models in chapter~\ref{chap:MutSelDrift}.
+Empirically, it appears that the susceptibility of the mean fixation probability to changes in $\Ne$ is between these two extremes, namely that of site independent fitness landscapes, and the other extreme of a single univariate phenotype controlled by all sites.
 More probably, the ternary relation from sequence to phenotype to fitness imply several sites, but not all sites of the sequences, in a given phenotypic trait.
 
-TODO
-It would need to be part of a larger discussion of what is known about the role of epistasis in molecular evolution of proteins and lead to further or deeper reflection on the implications.
-This is a conceptual point that, to your knowledge, had never really identified until now.
-A small inventory of other implications already known are interlocking or Stokes shift, downward impact on the $\dnds$ predicted by the mutation-selection models.
+Previous studies have argued that models of molecular evolution should consider the importance of epistasis for its different roles.
+From the importance in speciation, in modulating the rate of adaptation, in interlocking between sites (Stokes shift), downward impact on the $\dnds$ predicted by the mutation-selection models, and many other factors \citet{Goldstein2017, Miller2018}.
+We argue that epistasis also has an important role in the response of $\dnds$ to changes in $\Ne$, both in terms of its susceptibility and dynamic of the response.
+This is a conceptual point that, to your knowledge, had never been really identified until now.
 
-TO DO
-The very long slow dynamic time constants you are talking about are of the order of the depth of phylogeny.
-And so, in the absence of epistasis, you shouldn't even see LHT or $\dnds$ correlations because of it.
+Moreover, the very long slow dynamic time constants implied by site-independent models are of the order of the depth of phylogeny ($100$ to $1000$ My).
+As such, in the absence of epistasis, we shouldn't even see $\dnds$ correlations with either LHT or $\Ne$ because of it.
 Conversely, the fact that we see it is in itself an important indication of the presence of epistasis.
 
-TO DO
-We should first give some discussion points in these directions (or other than you think), and in an order to be found.
-If accounting for epistasis in mechanistic models of evolutions is challenging, paths for statistical methods that can account for epistasis are developed in section~\ref{sec:mechanistic-and-phenomenological-models}.
+Ultimately, accounting for epistasis in mechanistic models of evolutions is necessary but challenging from a computational and statistical perspective.
+Paths for statistical methods that can account for it are developed in section~\ref{sec:mechanistic-and-phenomenological-models}.
 
 
 \section{Adaptive landscape and positive selection}
@@ -105,14 +103,14 @@ If accounting for epistasis in mechanistic models of evolutions is challenging, 
 Another blind spot the mechanistic phylogenetic codon models developed in chapter~\ref{chap:MutSelDrift} is the absence of adaptive evolution (see~\ref{subsec:where-is-adaptation?}).
 Indeed, the mutation-selection equilibrium is essentially a nearly-neutral regime.
 As a result, at mutation-selection equilibrium, the sequence is close to the fitness optimum and therefore, most mutations are deleterious or compensate for previous deleterious mutations that reached fixation.
-Adaptation, on the other hand can be seen as a process where the underlying fitness landscapes are not fixed but are instead dynamic, commonly known as fitness seascapes \citep{Mustonen2009}.
-Under a moving landscape, the sequence is constantly lagging behind a moving target, and mutations are adaptive in a Red-Queen like process (see \ref{subsec:adaptive-evolution}).
+Adaptation, on the other hand can be seen as a process where the underlying fitness landscapes are not fixed but are instead dynamic, commonly known as fitness seascapes~\citep{Mustonen2009}.
+Under a moving landscape, the sequence is constantly lagging behind a moving target, and mutations are adaptive in a Red-Queen like process (see~\ref{subsec:adaptive-evolution}).
 
 \subsection{Mechanistic mutation-selection models under fitness seascapes}
 \label{subsec:mechanistic-fluctuating-selection}
 
 In the context of a mutation-selection framework, modelling adaptation in the form of fitness seascapes moving along the phylogeny represents the challenge of mechanistically describing this dynamic.
-A first direction considers that adaptation consists in changes in the site-specific fitness profiles along some lineages, either informed by experimental mutational scanning \citep{Bloom2017}, or estimated in lineages with a priori knowledge of phenotypic changes\citep{Tamuri2009, Parto2018, Parto2018a}.
+A first direction considers that adaptation consists in changes in the site-specific fitness profiles along some lineages, either informed by experimental mutational scanning~\citep{Bloom2017}, or estimated in lineages with a priori knowledge of phenotypic changes\citep{Tamuri2009, Parto2018, Parto2018a}.
 Without knowledge of the phenotypic changes that drive adaptation, modulations of the fitness profiles through time could also be implemented as a Markov modulated process along the phylogeny.
 However, such endeavour would be statistically and computationally challenging, where paths for statistical methods that can account for moving fitness landscape are developed in section~\ref{sec:mechanistic-and-phenomenological-models}.
 
@@ -163,19 +161,19 @@ Altogether, the rate of adaptive evolution, which contribute disproportionately 
 
 Unfortunately, estimation of the non-adaptive rate through $\pnps$ can be biased by moderately deleterious mutations and by the change in population size through time~\citep{eyre-walker_changing_2002}.
 To overcome this biases, a method initially proposed by \citet{eyre-walker_estimating_2009, Galtier2016} relies on the synonymous and non-synonymous site-frequency spectra (\acrshort{SFS}) to correct for demography and to estimate the distribution of fitness effects of mutations (\acrshort{DFE}), modeled as a continuous distribution.
-This method, and subsequent developments \citep{Galtier2016} provides a better estimate of $\omega_{\text{NA}}$, and as result a better estimate of $\omega_{\text{A}}$, which are reviewed in \citet{Moutinho2019a}.
+This method, and subsequent developments~\citep{Galtier2016} provides a better estimate of $\omega_{\text{NA}}$, and as result a better estimate of $\omega_{\text{A}}$, which are reviewed in \citet{Moutinho2019a}.
 
 \subsection{Confronting methods for detecting adaptation}
 \label{subsec:confronting-methods-for-detecting-adaptation}
 
 The availability of independent phylogenetic methods for detecting adaptation, with both classical and mechanistic codon models, raises the question whether they detect congruent signals of adaptation.
 In addition, both phylogenetic methods should be confronted to McDonald \& Kreitman (MK) methods leveraging polymorphism within species, such as to also assert whether results are congruent.
-In the case of the overlap between positively selected genes detected with classical codon models and with MK methods, the set of genes detected does not seem to overlap beyond random expectation \citep{He2020}.
+In the case of the overlap between positively selected genes detected with classical codon models and with MK methods, the set of genes detected does not seem to overlap beyond random expectation~\citep{He2020}.
 Contrarily, at the site level, classical codon models are congruent with MK methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
 These results still needs be refined across clades and genes, and the availability of polymorphism and divergence DNA sequences that are aligned will make this comparison possible.
 
 However, positively selected gene or sites detected by classical codon models and MK methods can theoretically be different, since non-adaptive part of substitution ($\omega_{\text{NA}}$) is subtracted in MK test while classical codon models are not accounting for it.
-Interestingly, an another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon model is $\omega_0$ induced by the mutation-selection null model (see \ref{subsec:HB-formalism-nearly-neutral-model}).
+Interestingly, an another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon model is $\omega_0$ induced by the mutation-selection null model (see~\ref{subsec:HB-formalism-nearly-neutral-model}).
 As a result, mechanistic mutation-selection codon models ($\omega_0$) and MK test ($\pnps$) should theoretically be congruent.
 From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models and MK methods are congruent.
 And if not the reason for such discrepancy should be understood.
@@ -201,7 +199,7 @@ Also, mildly deleterious can be present in polymorphism while being filtered out
 Finally, the mutational bias is deeply entangled with selection in substitution (see chapter~\ref{chap:NucleotideBias}), while being more easily detectable in polymorphism.
 
 Interestingly, this suggests that polymorphism and divergence could be leveraged together to help disentangle mutation, selection and drift.
-In other words, phylogenetic and population-genetic approaches could be unified, in the context of a single modeling framework \citep{Thorne2012}.
+In other words, phylogenetic and population-genetic approaches could be unified, in the context of a single modeling framework~\citep{Thorne2012}.
 
 Such an integration between phylogenetic and population-genetics as already been attempted in severals studies.
 For example, \citet{Wilson2011} modeled codon evolution in a joint framework with $3$ species, allowing ont to analyze the variation in selection pressures spatially along the genome and temporally between lineages.
@@ -216,24 +214,24 @@ One strategy would be to augment molecular divergence data between species with 
 Such an attempt has been tried during the first year of the PhD.
 The formalism that was used is based on Poisson Random fields (details can be found in appendices page~\pageref{sec-appendix:PRF}).
 This extension was rather straightforward to implement in BayesCode, in the context of site-specific mechanistic codon models.
-This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter \ref{chap:MutSelDrift}.
+This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
 A first implementation was tested against simulation under a Wright-Fisher model of evolution along the phylogeny.
 It yields an accurate estimation of diversity ($\theta = 4 \Ne u$), and allowed to better tease out mutation and selection by leveraging both divergence and polymorphism signal.
-However, it was found to be computationally intensive, even with the use of sufficient statistics to accelerate the computation (see \ref{subsec:suffstats-data-augmentation}).
+However, it was found to be computationally intensive, even with the use of sufficient statistics to accelerate the computation (see~\ref{subsec:suffstats-data-augmentation}).
 Moreover, the assumption of a constant $\Ne$ along the phylogeny assumed by mutation-selection codon models was arguably the strongest assumption to relax in this context.
 Indeed, what sense would it make to integrate empirical data about genetic diversity in extant species that generally have quite different levels of diversity if $\Ne$ is considered constant along the phylogeny.
 
 Once incorporating branch-specific $\Ne$ was done, the original goal was to add polymorphism data in the context of this improved mutation-selection codon model.
 As it turns out, however, there are other issues that need to be addressed, before achieving this integration.
-In particular, the fact that the range of $\Ne$ inferred by the model is too narrow (see \ref{chap:MutSelDrift}), as well as computational issues.
+In particular, the fact that the range of $\Ne$ inferred by the model is too narrow (see~\ref{chap:MutSelDrift}), as well as computational issues.
 Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the MCMC became prohibitive.
 
 Retrospectively, even tough site- and branch-specific mutation-selection phylogenetic \gls{codon} models can be extended by incorporating empirical data about polymorphism, as I have started to do in Bayescode, I believe it is not yet the path forward to build an unified phylogenetic and population-genetic model.
 Before doing this, I believe phylogenetic codon models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
 The impact of epistasis should also be better understood and characterized.
 Only in a second step, subsequently to this confrontation, could phylogenetic models in principle accommodate extant polymorphism.
-However, this will probably require another approach of inference, more computationally reasonable that the one that I have explored in my work (in chapter \ref{chap:MutSelDrift}).
+However, this will probably require another approach of inference, more computationally reasonable that the one that I have explored in my work (in chapter~\ref{chap:MutSelDrift}).
 
 
 \section{Mechanistic and phenomenological models}
@@ -245,22 +243,39 @@ Mechanistic models dissect the detailed causal chain of events responsible for e
 By doing this, they relate structural, population-genetics and ecological parameters to the \gls{likelihood} function (see chapter~\ref{chap:MutSelDrift}).
 As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and varying \glspl{effective-population-size} across lineages.
 
-Once such models have been fitted to empirical data, the estimated parameters can then be confronted with independent empirical estimates, which allow to robustly test the model since orthogonal estimation of biological and ecological parameters should be congruent~\citep{Dasmeh2014}.
-However they are computationally very intensive.
-As a result, they tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter ~\ref{chap:MutSelDrift}).
-
-On the other hand phenomenological models are based on aggregate parameters of evolution, and aims to determine the statistical significance of these parameters.
-As experienced in chapter~\ref{chap:NucleotideBias}, mean-field phenomenological models are useful tools to disentangle mutation and selection, such that gene specific mean-field parameters can capture and aggregate site-specific parameters.
-In between phenomenological and mechanistic, models can be hybrid, mechanistic in essence, but subsequently phenomenological by deriving aggregate parameters of evolution from underlying microscopic parameters (see chapter ~\ref{chap:GenoPhenoFit}).
-
-Observations and experiences done throughout this thesis led to crystallize the conception that models of inference should be mechanistic in essence, in the sens that they should be parameterized by variables that can be obtained from other independent experiments.
-In order to be more realistic, they should be complexified by introducing various sources of variability, for example incorporating site-interdependence or polymorphism within species.
-However, they should not simply add more parameters and more computational intensive algorithm.
-First because of the limit of computing power available, but apart from the physical limit, they should be as parsimonious as possible in the use of computing resources since any computation bears ecological consequences on environmental degradation and $C0_2$ emissions.
+Once such models have been fitted to empirical data, the estimated parameters can then be confronted with independent estimations, which allow to robustly test the model since independent estimates of biological and ecological parameters should be congruent~\citep{Dasmeh2014}.
+However they are computationally very intensive, which can reach the limit of computing power available.
+Apart from the physical limit of resource available, the use of computing resources bears ecological consequences on environmental degradation and $C0_2$ emissions, such that models should use resources as parsimoniously as possible.
 Moreover, increased complexity of the model bears another consequences, such that the liability of the code and software decreases, hence the reproducibility of such models.
-Altogether, hybrid models based on mechanistic first principles but deriving analytically aggregate parameters are avoiding the pitfalls of both, being based on independently identifiable parameters and at the same time being computationally parsimonious.
-Such endeavor however requires an intensive labor to derive the relationship between parameters of interest (such as $\Delta \Delta G, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\nu$).
+As a result, complex mechanistic models tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter ~\ref{chap:MutSelDrift}).
 
+In contrast, phenomenological models are formulated in terms of aggregate parameters, capturing the average rate of synonymous or non-synonymous substitutions, or their ratio.
+Their aim is to determine the statistical distribution of these aggregate quantities across the tree, across genes, or across sites, but without deriving them from first principles.
+Compared to mechanistic models, they are computationally much more efficient.
+On they other hand, they do not give direct access to the population-genetic parameters.
+
+This raises the question of how to benefit from the advantages of the two approaches.
+Observations and experiences done throughout this thesis led to crystallize the conception that models of inference should be mechanistic in essence, in the sens that they should be parameterized by variables that are derived from first principles,
+But should be phenomenological in practice, in the sense that these variables should nevertheless be aggregate parameters.
+
+The first manuscript presented in this theses (chapter~\ref{chap:NucleotideBias}) give preliminary directions to accomplish this project.
+In chapter~\ref{chap:NucleotideBias}, A mean-field argument was used to derive a phenomenological model based on an underlying mechanistic site-specific model.
+As a result, the mean-field parameters of the phenomenological model capture aggregate quantities that are averages across sites of site-specific parameters of the mechanistic model.
+The phenomenological model thus obtained is easier to fit on the data.
+Nonetheless, it captures essential parameters that are easy to interpret mechanistically.
+
+Altogether, hybrid models based on mechanistic first principles but deriving analytically aggregate parameters are avoiding the pitfalls of both, being based on independently identifiable parameters and at the same time being computationally parsimonious.
+Such hybrid models can be developed with the following procedure:
+\begin{enumerate}
+    \item Define a mechanistic microscopic model from molecular first principles (see chapter~\ref{chap:GenoPhenoFit}).
+        This model can be potentially complex, modeling all kinds of variations, such as for example incorporating site-interdependence or polymorphism within species.
+        Such model is meant to be implemented in simulation, but never in inference.
+    \item Use a mean-field argument and calculate aggregate quantities emerging from the microscopic model, leveraging population-genetics first principles.
+    \item Implement the inference phenomenological model whose parameters correspond to the mean-field aggregates.
+        Such phenomenological model is meant to confronted with simulation under the mechanistic model.
+        And subsequently applied to empirical data to estimate the parameters of interest.
+\end{enumerate}
+Such endeavor however requires mathematical work to derive the relationship between parameters of interest (such as $\Delta \Delta G, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\nu$).
 
 \section{Reproducible science}
 \label{sec:reproducible-science}
@@ -309,7 +324,7 @@ It succeeded in consolidating the idea that the patterns of \glspl{substitution}
 It did not succeeded in modeling the fitness landscape, apparently either too site-specific, or integrated over too many sites.
 It is an indication that fitness landscape of protein coding sequences is between this two extremes.
 It is building block to bridge phylogeny and population-genetics, constructing an integrated framework is theoretically possible but with limited scope.
-However, confronting the estimation of phylogenetic \gls{codon} and population-genetics model, through for example the rate of adaptive \gls{substitution}, is a path forward in an integrated view of .
+However, confronting the estimation of phylogenetic \gls{codon} and population-genetics model, through for example the rate of adaptive \gls{substitution}, is a path forward in an integrated view of protein coding DNA evolution.
 Finally, I believe this thesis is not providing any ground breaking, nor disruptive results, but instead is consolidating theoretical models on which molecular evolution is based, and points out the pitfall to avoid.
 Science, alike a mutation-selection process not is optimized but as to trade off exploration of new ideas and exploitation of old ones.
 Attempts to build bridges and connection between fields, alike \gls{recombination}, can bring the best of both worlds but many attempts are required.

@@ -238,8 +238,8 @@ Altogether, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \citet{Mus
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
-        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-syonymous} \\
+        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-synonymous} \\
         \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
     \end{dcases}
     \label{eq:codon-models}
@@ -287,18 +287,21 @@ In this formalism, the mutation involving a specific codon position depends on t
 Moreover, it has been shown that this alternative formalism induce different estimation of the strength of selection $\omega$~\citep{Pond2005a,Yap2010, Spielman2015}.
 Altogether, such alternative formalism are theoretically problematic, and the original Muse \& Gaut formalism remain the sensible mechanistically justified framework~\citep{Rodrigue2008a}.
 
-As a result, throughout this manuscript the notation $\omega$ will be used specifically and uniquely for the multiplicative factor in the \citet{Muse1994} formalism (see~\ref{subsec:MG-formalism}).
-Alternatively, the term $\dnds$ will be used generically for describing method estimating the ratio of non-synonymous over synonymous substitution rates, without accounting for the underlying variability of formalism.
+As a result, throughout this manuscript the symbol $\omega$ will be used specifically for the multiplicative factor appearing in the \citet{Muse1994} formalism (see~\ref{subsec:MG-formalism}), whereas $\dnds$ will be used to refer generically to the ratio of non-synonymous over synonymous substitution rates, regardless of the specific formalism.
 Hence whenever $\dnds$ is used in this manuscript instead of $\omega$, the underlying specific formalism is not considered necessary to the point raised.
-Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut formalism of section~\ref{subsec:MG-formalism}, recruited for its mechanistic formalism.
+Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut formalism of section~\ref{subsec:MG-formalism}.
 
 \subsection{Complexification of classical codon models}
 \label{subsec:classical-codon-models-complexification}
 
 Classical models of codon substitutions have been extensively applied to protein-coding sequence alignments, to estimate the ratio of non-synonymous over synonymous substitution rates, $\dnds$.
-More precisely, variants of these models have been developed that can provide estimates of $\dnds$ for the whole gene, for each site within a gene, or for each branch within a phylogenetic tree.
-One particularly important application has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
-However, these codon models have also proved to be valuable to quantify and asses the modulation of the selective constraint more generally imposed on protein coding sequences (see \ref{sec:classical-codon-biophysics}).
+Such models capture the average effect of selection on non-synonymous mutations, without seeking to discriminate between different types of mutations.
+To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino-acids, measured in terms of the \citet{Grantham1974} distance.
+Additionally, models introduced severals $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
+
+One particularly important application of classical codon models has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
+As a result, variants of codon models have been developed that can provide estimates of $\dnds$ for each site within a gene, or for each branch within a phylogenetic tree.
+Moreover, these codon models have also proved to be valuable to quantify and asses the modulation of the selective constraint more generally imposed on protein coding sequences (see \ref{sec:classical-codon-biophysics}).
 
 \subsection{Variation across sites}
 \label{subsec:variation-across-sites}
@@ -313,7 +316,7 @@ However, the statistical information available along the tree for a specific sit
 Practically, in a popular approach of so-called random-site phylogenetic \gls{codon} models, $\dnds$ is allowed to vary across sites, via a finite mixture models~\citep{Nielsen1998, Yang2000, Yang2005, Huelsenbeck2006}.
 Generally, for detecting positive selection a category of sites is constrained to be under $\dnds > 1$.
 Both proportions of sites and values of the different $\dnds$ categories are then estimated by maximum likelihood or bayesian inference (see chapter~\ref{chap:intro-inference}).
-In bayesian inference, sites under adaptive evolution are then detected based on their empirical Bayes posterior probability that $\dnds > 1$~\citep{Yang2005}.
+Sites under adaptive evolution are then detected based on their empirical Bayes posterior probability that $\dnds > 1$~\citep{Huelsenbeck2004,Yang2005}.
 To note, in this context of site-specific finite mixture models, methods have also proposed to estimate both $\dn$ and $\ds$ separately~\citep{Pond2005a, Spielman2016}.
 
 A long series of site models has been proposed, most of which have been implemented in PAML~\citep{Yang1997a,Yang2007}, but also in MrBayes for the infinite mixture version~\citep{Huelsenbeck2001, Ronquist2012}.
@@ -341,7 +344,7 @@ Finally, it was used to model the variation, independently, of $\ds$ and $\dn$~\
 The external factors determining the variation $\dnds$ across lineages has subsequently been investigated, primarily focused on environmental variables and life-history traits that can vary between species.
 This has been done using either sequential approaches, first estimating the variation in $\dnds$ using some of the methods mentioned above, and then using the classical comparative method to correlate the variation thus estimated with independently observed quantitative or life-history traits~\citep{Popadin2007, Lanfear2010, Romiguier2014}.
 
-Thereafter, integrative inference methods combining both molecular sequences and quantitative traits have been developed, jointly modeling the variation of all of these variables using a single multivariate Brownian process.
+Thereafter, integrative inference methods combining both molecular sequences and quantitative traits have been developed, jointly modeling the variation of all of these variables using a single multivariate Brownian process~\citep{Lartillot2011}.
 Each entry of the process describes the evolution of one of the variables of interest: $\ds$, $\dnds$, quantitative traits, etc.
 The model can then be fitted on an empirical data set consisting of a multiple sequence alignment of coding sequences and a matrix of quantitative traits observed in extant species.
 This leads to a joint estimation of the stochastic process and the covariance matrix, thus giving estimates of the covariance between $\dnds$ and traits, corrected for phylogenetic inertia.
@@ -350,12 +353,12 @@ Applications of this integrative approach also found that $\dnds$ correlates pos
 Since lineage with a large body size and extended longevity typically correspond to low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\dnds$ and $\Ne$, thus confirming the theoretical prediction of the nearly-neutral theory of evolution.
 Similarly, and more directly, $\dnds$ was found to correlate negatively with the synonymous diversity ($\ps = 4 \Ne u$), which is a molecular proxy of effective population size~\citep{Brevet2019}.
 These important results confirm one of the key predictions of the nearly-neutral theory.
-However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated, and further inverstigation are required~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}.
+However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated, and further investigation are required~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}.
 
 \subsection{Variation across sites and branches}
 \label{subsec:variation-across-sites-and-branches}
 
-Naturally, both these space (site-specific) and time (branch-specific) refinements mentioned above led to the development of so called branch-site models~\citep{Yang2002a, Zhang2004, Pond2011}.
+Naturally, both these space (site-specific) and time (branch-specific) refinements mentioned above led to the development of so called branch-site models~\citep{Yang2002a, Zhang2004, Pond2011, Murrell2012, Murrell2013}.
 The fine-grained tuning of site-branch models increased statistical power by seeking short and strong episodes of adaptive selection on a background of purifying selection.
 However, in the case of Red-Queen processes ongoing on the protein, the episodes detected by branch-site models would merely be a small fraction of the underlying adaptation.
 Indeed the overall tree is under adaptive process and one cannot contrast a branch to the rest of the tree.
@@ -365,8 +368,7 @@ Indeed the overall tree is under adaptive process and one cannot contrast a bran
 \label{sec:intro-mechanistic-codon-models}
 
 Classical codon models presented above capture the average effect of selection on non-synonymous mutations, without seeking to discriminate between different types of mutations.
-As a consequence, a single parameter $\omega$ can not disentangle the specific importance of amino-acid chemical properties (polarity, volume, charge, and so on) since all non-synonymous {transitions} are considered equivalent in classical phylogenetic \gls{codon} models~\citep{Dutheil2008}.
-Conversely, mechanistic codon models seek to predict individually all substitution rates, for each position and between each pair of codons, in an explicit model of the adaptive landscape.
+In contrast, mechanistic codon models seek to predict individually all substitution rates, for each position and between each pair of codons, in an explicit model of the adaptive landscape.
 
 \subsection{The Halpern \& Bruno formalism}
 \label{subsec:HB-formalism}
@@ -388,9 +390,9 @@ Altogether, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of mechanisti
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are syonymous} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-syonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
+        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
     \end{dcases}
     \label{eq:propensities-models}
 \end{equation}
@@ -399,7 +401,7 @@ Because the process is time-reversible (see previous chapter), from equation~\re
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
-Where the stationary frequency of codon is ultimately the product of the nucleotide frequencies at three positions ($\bm{\mutequi}$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$), which is sometimes called propensities of amino-acid.
+The stationary frequency of codon is ultimately the product of the nucleotide frequencies at three positions ($\bm{\mutequi}$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
 
 \subsection{Empirical calibration of the model}
 \label{subsec:empirical-calibration-HB}
@@ -414,7 +416,7 @@ In the original approach, \citet{Halpern1998} leveraged the detailed balanced:
     & =  \frac{\mu_{\jtoi} \e^{\Fiti} \left(\e^{- \Fitj} - \e^{- \Fiti} \right)}{\mu_{\itoj}  \e^{\Fitj} \left(\e^{- \Fitj} - \e^{- \Fiti} \right)} \\
     & =  \e^{\Fiti - \Fitj} \frac{\mu_{\jtoi} }{\mu_{\itoj}}
 \end{align}
-Such that scaled selection coefficients are related to the stationary codon frequencies of the process:
+Such that the scaled selection coefficients are related to the stationary codon frequencies:
 \begin{equation}
     \Fiti - \Fitj = \ln \left( \frac{\pi_{\ci} \mu_{\itoj} }{\pi_{\cj} \mu_{\jtoi}} \right)
 \end{equation}
@@ -423,23 +425,37 @@ And finally the substitution rate between codon $\ci$ and $\cj$ is:
     \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \\
     & = \mu_{\itoj} \frac{ \ln \left( \frac{\pi_{\cj} \mu_{\jtoi}}{\pi_{\ci} \mu_{\itoj} } \right) }{ 1 -  \frac{\pi_{\ci} \mu_{\itoj} }{\pi_{\cj} \mu_{\jtoi}} }
 \end{align}
-As a result, the substitution rate from codon $\ci$ to $\cj$ can be approximated as a plugin estimator from both the mutionnal process and the amino-acid frequencies, independently estimated.
-Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}.
-Comparison of both inference approaches yield similar results in terms of estimated profiles and their induced selective constraint on protein coding DNA sequences~\citep{Spielman2016a}.
-Finally, instead of estimating the fitness landscape directly on the multiple sequence alignment, deep mutational scanning approaches can be used to estimate fitness profiles experimentally~\citep{Bloom2014,Bloom2014a}, presented in chapter~\ref{chap:intro-physic-proteins}.
+As a result, the substitution rate from codon $\ci$ to $\cj$ can be approximated based on a plugin estimator for both the mutational process and the amino-acid frequencies, independently estimated.
+Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}, .
+Comparison of both inference approaches yields similar results in terms of estimated profiles and their induced selective constraint on protein coding DNA sequences~\citep{Spielman2016a}.
+Finally, instead of estimating the fitness landscape directly on the multiple sequence alignment, deep mutational scanning approaches can be used to estimate fitness profiles experimentally~\citep{Bloom2014,Bloom2014a}, as presented in chapter~\ref{chap:intro-physic-proteins}.
 
 \subsection{Modulating the fitness landscape across branches}
 \label{subsec:modulating-the-fitness-landscape-across-branches}
 
-In the context of mutation-selection applied to amino-acid sequence, observing that two subdivision of the tree share different amino-acid profile can be interpreted as directional selection and related to changes in environment~\citep{Tamuri2009}.
+Thus far, in the mutation-selection formalism, fitness landscape has been considered static.
+In practice, fitness landscape are dynamic and changing with time~\citep{Naumenko2012, Bazykin2015}.
+In particular, selective pressure may change following one (or more) transitions to a new environment (eg: new host).
+That changes in selection pressure induced by environmental changes can be modeled in a mutation-selection framework by introducing different fitness profiles in different parts of the tree~\citep{Tamuri2009}.
 Similarly, phenotypic convergent evolution have been investigated in relation to underlying molecular convergence at the level of codons.
-In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence of amino-acid profiles at this specific site \citep{Parto2018,Parto2018a}
+In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence of amino-acid profiles at this specific site~\citep{Parto2018,Parto2018a}
 
 \subsection{Mutation-selection and codon usage}
 \label{subsec:model-codon-usage}
 
-Another example of mutation-selection mechanistic codon model is on modelling codon usage bias, where each synonymous codon of the same amino-acids have different fitness~\citep{Yang2008}.
-Such hybrid model between classical and mutation-selection formalism have the interest of measuring the average effect of selection on non-synonymous through $\dnds$ without making the assumption that synonymous mutations are neutral.
+Another example of mutation-selection mechanistic codon model is modelling codon usage bias, where each synonymous codon of the same amino-acids have different fitness~\citep{Yang2008}.
+It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
+\begin{equation}
+    \begin{dcases}
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
+        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} }\text{ if $\ci$ and $\cj$ are synonymous} \\
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
+    \end{dcases}
+    \label{eq:yang-codon-models}
+\end{equation}
+With such definition, this model is hybrid between classical model (due to $\omega$) and mechanistic mutation-selection codon models (due to selection coefficient for codon $\Fitci$).
+Such hybrid model have the interest of measuring the average effect of selection on non-synonymous through $\dnds$ without making the assumption that synonymous mutations are neutral.
 
 
 \section{Relationship between mechanistic and classical codon models}
@@ -463,7 +479,7 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015} a
 
 Once fitted to the data, the classical Muse \& Gaut (MG) formalism return estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
 From there, one can compute the substitution and mutation rates of each codon substitution.
-Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives the mean scaled fixation probability over non-synonymous mutations ($\nu_{\text{MG}}$) at stationarity:
+Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\nu_{\text{MG}}$ at stationarity:
 \begin{align}
     \nu_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
@@ -471,25 +487,20 @@ Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutati
     & = \omega,
 \end{align}
 where $\NonSyn_{\ci}$ is the set of non-synonymous \glspl{codon} neighbors to \gls{codon} $\ci$.
-
-
 Such equation is also true for any classical codon model formalism, where this identity between $\nu$ and $\dnds$ bears many importance.
+
+This rate of non-synonymous substitution over mutations ($\nu$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}).
 Such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
-In this vain, $\dnds$ can alternatively be parameterized as function of the average scaled selection coefficient~\citep{Nielsen2003}:
-\begin{align}
-    \dnds & = \dfrac{S}{1 - \e^{-S}}
-\end{align}
 
 On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino-acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
-Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives the mean scaled fixation probability over non-synonymous mutations ($\nu_{\text{HB}}$) at stationarity:
+Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\nu_{\text{HB}}$) at stationarity:
 \begin{align}
     \nu_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}},
+    & = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
-
 Such that for mutation-selection mechanistic model, $\nu_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
-Indeed, Simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
+Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
 To note, inference under Muse \& Gaut formalism showed the best agreement compared to other formalism of classical codon models.
 
 Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a fixed fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\nu_{\text{HB}}$ induced by the model will always be lower than $1$.
@@ -508,7 +519,17 @@ Accordingly, the mean scaled probability of fixation $\nu_{\text{HB}}$ has also 
 As seen above, under the assumption that the protein is under a nearly-neutral regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (classical model) should be the same~\citep{Spielman2015}.
 But assumptions of the models can be broken, resulting in discrepancy between the $\omega_0$ induced (or predicted) by the Halpern \& Bruno mechanistic model, once fitted on the data, and $\omega$ directly estimated by classical codon models.
 
-This deviation can be captured as a multiplying factor $\omega_*$~\citep{Rodrigue2016}:
+This deviation can be captured as a gene-wide multiplying factor $\omega_*$~\citep{Rodrigue2016}:
+\begin{equation}
+    \begin{dcases}
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
+        \submatrix_{\itoj} & = \omega_* \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
+        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
+    \end{dcases}
+    \label{eq:propensities-models-omegastar}
+\end{equation}
+Since fitness profiles are capturing $\omega_0$, the resulting  can be interpreted as:
 \begin{equation}
     \omega = \omega_* \omega_0
 \end{equation}
@@ -539,7 +560,7 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 \subsection{Adaptive evolution}
 \label{subsec:adaptive-evolution}
 
-Firstly, if amino-acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic \citep{Mustonen2009}.
+Firstly, if amino-acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic~\citep{Mustonen2009}.
 Because of the movement of the landscape behind our feet, similarly to a Red-Queen dynamic, it is more likely to slide into a valley rather than on top of a peak when the landscape moving.
 In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward that upwards in the fitness landscape.
 As a result, any changes of the landscape results in lower elevation of the current coordinate.
@@ -560,13 +581,12 @@ The \gls{nearly-neutral} assumption can also be broken if there is no independen
 Unfortunately, one consequence of epistatic interactions is that even if a mutation is \gls{nearly-neutral} upon fixation, subsequently fixed mutations on other sites make the original \gls{substitution} more and more deleterious to revert over time~\citep{Gong2014, Lunzer2010, Mccandlish2013}.
 This effect called entrenchment result in the current amino-acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
 In other word, at the moment of a \gls{substitution} the target amino-acid has a nearly equal relative fitness, which can only increases with time~\citep{Goldstein2016, Goldstein2017}.
-Contradictory to adaption, breaking the assumption of independence between sites leads to entrenchment and estimation of induced $\omega_0$ greater than realized $\omega$~\citep{Rodrigue2016}:
+Contradictory to adaption, breaking the assumption of independence between sites leads to entrenchment and estimated $\omega$ lower being higher than the induced $\omega_0$~\citep{Rodrigue2016}:
 \begin{equation}
     \omega > \omega_0 \\
-    \iff \omega_* > 1
+    \iff \omega_* < 1
 \end{equation}
 
-\subsection{Conclusion}
-A departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
+Altogether, a departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
 On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino-acids.
 But one shortcoming of \gls{nearly-neutral} \gls{codon} \gls{substitution} models is that if one does not get a statistical departure from near-neutrality ($\omega = \omega_0$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be disentangled.

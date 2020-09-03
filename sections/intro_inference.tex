@@ -186,7 +186,7 @@ Where the denominator is the marginal likelihood, meaning the likelihood integra
 In an inference context, because we are only interested in the relative posterior probabilities of alternative values of $\theta$, the marginal likelihood is a constant.
 For that reason, Bayes theorem can also be presented as:
 \begin{equation}
-    p(\data \mid \data) \propto p(\data \mid \data)p(\data).
+    p(\theta \mid \data) \propto p(\data \mid \theta)p(\theta).
 \end{equation}
 Simply stating that \gls{posterior} is proportional to \gls{likelihood} multiplied by \gls{prior}.
 In other words, updating our knowledge, such as initially represented by our prior, is done multiplicatively, using the likelihood, and renormalizing to obtain a proper probability distribution (the posterior).
