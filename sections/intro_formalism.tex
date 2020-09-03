@@ -257,7 +257,7 @@ Of note, a more general mathematical description of the mutation-selection frame
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/point-process.pdf}
+    \includegraphics[width=0.75\textwidth]{figures/point-process.pdf}
     \caption[Mutation-selection point substitutions]{
     Mutation-selection point \glspl{substitution} models.
     The trajectory of \glspl{allele} inside a population is collapsed into a single point \gls{substitution} process.
@@ -406,13 +406,12 @@ One quantity of interest is the ratio of the mean \gls{substitution} rate over t
 where the notation $\langle \cdot \rangle$ denotes the statistical average.
 In other words, $ \nu $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
 
-Moreover, the probability of fixation relates to the ratio of the mean \gls{substitution} rate over the mean mutation rate:
+Moreover, the mean probability fixation, scaled by $2 \Ne$ can be approximated as:
 \begin{align}
-    \langle  2\Ne P_{\mathrm{fix}} \rangle & = \langle 2\Ne \dfrac{ 2 s }{1 - \e^{- S}} \rangle, \\
-    & = \langle  \dfrac{ S }{1 - \e^{- S}} \rangle, \\
-    & = \langle \dfrac{ Q }{\mu} \rangle, \\
-    & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}, \\
-    & \simeq \nu.
+    \langle  2\Ne P_{\mathrm{fix}} \rangle & = \left\langle 2\Ne \dfrac{ 2 s }{1 - \e^{- S}} \right\rangle, \\
+    & = \left\langle  \dfrac{ S }{1 - \e^{- S}} \right\rangle, \\
+    & = \left\langle \dfrac{ Q }{\mu} \right\rangle, \\
+    & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}.
 \end{align}
 Because of this relation, $\nu$ can thus be seen as an approximation of the mean scaled probability of fixation of mutations.
 
