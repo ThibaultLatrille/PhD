@@ -5,16 +5,15 @@
 
 In molecular evolution, the information contained in empirically observed sequences is leveraged to reconstruct ancestral lineages and to unveil the evolutionary mechanisms having generated this diversity of sequences.
 In other words, the task is to reconstruct the ancestral path followed by lineages using the knowledge available today, by working backward in time.
-Such effort to infer mechanisms backward in time requires a theoretical model that generate diversity forward in time, where we can play this model forward and derive how likely such model would generate the pattern of sequence distribution we observe.
-To do so, however, first requires a theoretical model of the generating process forward in time.
+To do so, however, requires a theoretical model of the generating process forward in time.
 One can then play this model forward and derive how likely it would be for this model to generate the sequence patterns that are empirically observed.
 
-Working out the long-term molecular evolutionary process first requires to formalize what happens in the short time period within populations.
+Working out the long-term molecular evolutionary process first requires to formalize what happens in a short time period within populations.
 Population genetics, with its assumptions and limitations, provides the theoretical framework for this.
 The first section thus recalls the basics of mathematical population genetics, and more specifically, the Wright-Fisher model and its assumptions.
 This will allow me to relate parameters of evolution such as mutation, selection and drift to observable patterns in molecular sequences such as the probability of fixation of a mutant \gls{allele}, as well as the expected number of copies of the derived \gls{allele} we should observe in a population.
 This will allow me to relate the parameters of the evolutionary process, such as mutation rates, selection coefficients and effective population sizes, to observable properties of molecular sequences, such as the probability of fixation of a mutant allele or the expected number of copies of the derived allele we should observe in a population.
-These relationships between the underlying evolutionary forces and the observable patterns will subsequently be leveraged and recruited in the next section to derive an approximation of the long-term process of sequence substitution, again, parameterized directly in terms of mutation, selection and drift.
+These relationships between the underlying evolutionary forces and the observable patterns will subsequently be leveraged and recruited in the next section to derive an approximation of the long-term process of sequence substitution, again, parametrized directly in terms of mutation, selection and drift.
 
 Although the mathematical proof for most of the results presented here are out of the scope of this manuscript, an effort was made to state all definitions and assumptions.
 Such an effort is meant to clearly define the models, their assumptions and their parametrization from the ground up.
@@ -398,15 +397,26 @@ By analogy with thermodynamic systems, the evolutionary system thus reaches a Bo
 \label{subsec:mean-scaled-fixation-probability}
 
 Occurrence probabilities given by the stationary distribution allows one to calculate all observable quantities of interest, such as the mean fitness, or the mean mutation and \gls{substitution} rates, using standard probability theory.
-One quantity of interest is the mean \gls{substitution} rate to the mean mutation rate, called $ \nu $:
+One quantity of interest is the ratio of the mean \gls{substitution} rate over the mean mutation rate, called $ \nu $:
 \begin{align}
-    \nu & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle}
+    \nu & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
     \label{eq:relative-sub-rate} \\
     & = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
 \end{align}
 where the notation $\langle \cdot \rangle$ denotes the statistical average.
 In other words, $ \nu $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
-From its definition, $\nu=1$ for genes or sites under \gls{neutral} evolution.
+
+Moreover, the probability of fixation relates to the ratio of the mean \gls{substitution} rate over the mean mutation rate:
+\begin{align}
+    \langle  2\Ne P_{\mathrm{fix}} \rangle & = \langle 2\Ne \dfrac{ 2 s }{1 - \e^{- S}} \rangle, \\
+    & = \langle  \dfrac{ S }{1 - \e^{- S}} \rangle, \\
+    & = \langle \dfrac{ Q }{\mu} \rangle, \\
+    & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}, \\
+    & \simeq \nu.
+\end{align}
+Because of this relation, $\nu$ can thus be seen as an approximation of the mean scaled probability of fixation of mutations.
+
+As a result of this definition, $\nu=1$ for genes or sites under \gls{neutral} evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences.
 First, $\nu>1$ is interpreted as a signal of adaptive recurrent evolution, where $P_{\mathrm{fix}} > 1/2 \Ne$ on average.
 On the other hand, $\nu<1$ is a signal of underlying purifying selection, such that the sequence is constrained.
@@ -464,7 +474,8 @@ Unfortunately, whenever the state space is too large, often due to the curse of 
 In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithm~\citep{Russell2010,Vikhar2017}.
 Inherently, they are based on two processes, one is stochastically creating diversity and exploring the state space, while the other is filtering the explored states and thus reducing the diversity.
 
-In the constrained case of a finite number of time or attempts to find the best outcome overall, the problem is best described by the multi-armed bandit problem. The name comes from imagining a gambler at a row of slot machines (sometimes known as one-armed bandits), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of trials.
+In the constrained case of a finite number of time or attempts to find the best outcome overall, the problem is best described by the multi-armed bandit problem.
+The name comes from imagining a gambler at a row of slot machines (sometimes known as one-armed bandits), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of trials.
 The gambler faces a dilemma at each trial, either reducing his regret by exploiting the best arm, or gaining information through exploration of other arms.
 The best strategy to solved this dilemma can be mathematically derived in numerous cases, and encompass a mixing strategies with a defined ratio of exploration and exploitation~\citep{Auer2002,Kocsis2006,Furnkranz2006}.
 This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials~\citep{Berger-Tal2014, March}.
@@ -510,5 +521,3 @@ On the other hand, higher population size induces stronger purifying selection w
 Altogether, both high mutation rate and smaller genome are consequences of higher population size.
 An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offsprings must balance the trade-off between exploration of new genotype and the reliable transmission of the current one.
 The genetic difference between parents and offsprings is the product of mutation rate and genome size, such that individuals whom are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations~\citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
-
-
