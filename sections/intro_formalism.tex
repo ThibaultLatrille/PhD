@@ -57,6 +57,13 @@ where $f = \ln(w)$ is often referred to as the Malthusian fitness, relative fitn
 
 Under the Hardy-Weinberg equilibrium of the population, the diploid genotype frequencies in the current generation are distributed as given in table~\ref{table:fitnesses}.
 
+As a result, the mean fitness in the population is a function of the selection coefficient and the frequency of two alleles as:
+\begin{align}
+    \overline{w} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
+    &= 1 + 2ps,
+\end{align}
+And the relative fitness of the three different genotypes are also shown in table~\ref{table:fitnesses}.
+
 \begin{table}[H]
     \centering
     \noindent\adjustbox{max width=\textwidth}{%
@@ -64,20 +71,13 @@ Under the Hardy-Weinberg equilibrium of the population, the diploid genotype fre
         \hline
         \textbf{Genotype} & $AA$ & $AB$ & $BB$ \\
         \hline
-        \textbf{Wrightian fitness ($\bm{w}$)}  & $1+s$ & $1$ & $1+2s$ \\
+        \textbf{Wrightian fitness ($\bm{w}$)}  & $1$ & $1+s$ & $1+2s$ \\
         \hline \textbf{Hardy-Weinberg frequency}  & $2p(1-p)$ & $(1-p)^2$ & $p^2$\\
-        \hline \textbf{Relative Wrightian fitness}  & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1}{1+2ps}$ & $\dfrac{1+2s}{1+2ps}$\\
+        \hline \textbf{Relative Wrightian fitness}  & $\dfrac{1}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1+2s}{1+2ps}$\\
         \hline
     \end{tabu}}
     \caption[Fitnesses of the different genotypes]{Fitnesses of the different genotypes}\label{table:fitnesses}
 \end{table}
-
-As a result, the mean fitness in the population is a function of the selection coefficient and the frequency of two alleles as:
-\begin{align}
-    \overline{w} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
-    &= 1 + 2ps,
-\end{align}
-And the relative fitness\footnote{Analogous explanation between absolute and relative fitness can be found in economics, where absolute fitness correspond to wealth generation, while relative fitness is just transfer of wealth from one to another~\citep{Masel2016}.} of the three different genotypes are also shown in table~\ref{table:fitnesses}.
 
 Reproduction proceeds in two steps.
 In a first step, a very large pool of gametes is produced, in which adults contribute proportionally to the fitness of their genotype.
@@ -92,12 +92,12 @@ Altogether, the frequency $p'$ of gametes bearing the $B$ allele is:
     \includegraphics[width=0.8\textwidth, page=1] {figures.pdf}
     \caption[Frequency of derived {allele} after a generation]{
     Frequency of derived \gls{allele} after a generation.
-    Positive selection coefficient ($s > 0$) result in increased derived \gls{allele} frequency at the next generation, which is intuitively expected.
+    Positive selection coefficients ($s > 0$) result in increased derived \gls{allele} frequency at the next generation, which is intuitively expected.
     The effect is stronger when the derived \gls{allele} frequency is close to $0.5$, intuitively because the poll of both \glspl{allele} must be sufficiently large such that they can be replaced.
-    It is worth noting that even for strong selection coefficient ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
+    It is worth noting that even for strong selection coefficients ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
 \end{figure}
 
-Under the assumption that selection is weak $|s| \ll 1$,  $p'$ of gametes bearing the $A$ allele reduces to:
+Under the assumption that selection is weak $|s| \ll 1$, $p'$ reduces to:
 \begin{align}
     p' & \simeq p (1 + s + ps - 2ps) \\
     & = p + sp(1-p)
@@ -113,10 +113,10 @@ As a result, the probability $\mathcal{P}_{ij}$, that there are $j$ copies of th
 \end{align}
 
 These {transition} probabilities define a discrete-space and discrete-time Markov process.
-However, it has been shown to be extremely difficult to explicitly derive formulas for several quantities of evolutionary interest.
-However, as the size of the population approaches infinity (i.e. $ N \to \infty$), and assuming that the scaled selection pressure ($N s $) remain constant, the discrete Markov process given above can be closely approximated by continuous-time and continuous-space diffusion process.\\
+It has also been shown to be extremely difficult to explicitly derive formulas for several quantities of evolutionary interest.
+However, as the size of the population approaches infinity (i.e. $ N \to \infty$), and assuming that the scaled selection pressure ($N s $) remains constant, the discrete Markov process given above can be closely approximated by a continuous-time and continuous-space diffusion process.\\
 
-Of note, the fluctuations induced by the binomial sampling (equation~\ref{eq:binomial-WF}) are the original cause of random drift.
+Of note, the fluctuations induced by the binomial sampling (equation~\ref{eq:binomial-WF}) are the underlying cause of random drift.
 Quantitatively, the expected frequency change from one adult generation to the next adult generation is:
 \begin{equation}
     \E[\Delta p] = s p (1-p).
@@ -135,33 +135,33 @@ In contrast, if $s \ll 1 / 2N$, drift dominates over selection, describing the e
 
 \subsection{Effective population size}
 
-The notion of effective population size, called $\Ne$ only appears when we apply a panmictic model to a population that is not, or to a real population.
+The notion of effective population size, called $\Ne$, only appears when we apply a panmictic model to a population that is not, or to a real population.
 $\Ne$ was originally defined as \textit{the number of breeding individuals in an idealised population that would show the same amount of dispersion of allele frequencies under random genetic drift or the same amount of inbreeding as the population under consideration}.
 For most quantities of interest and most real populations, the census population size $N$ of a real population is usually larger than the effective population size $\Ne$.
 The same population may have multiple effective population sizes, for different properties of interest, including for different genetic loci.
 
 \subsection{Probability of fixation}
 
-Starting from an initial frequency, the Wright-Fisher process eventually reaches absorption: the derived \gls{allele} either invade the population or dies out.
+Starting from an initial frequency, the Wright-Fisher process eventually reaches absorption: the derived \gls{allele} either invades the population or dies out.
 Under the continuous-time and continuous-space diffusion approximation, a partial differential equation know as the Kolmogorov backward equation can be used to derive the probability of these two alternative events.
-If the selection coefficient is small (or if selection is weak, $|s| \ll 1$), the probability of fixation ($P_{\mathrm{fix}}$) of a derived \gls{allele} with selection coefficient $s$ and initial frequency $p$ was derived by \citet{Kimura1962}:
+\citet{Kimura1962} derived the probability of fixation ($P_{\mathrm{fix}}$) of a derived \gls{allele} with selection coefficient $s$ and initial frequency $p$ if the selection coefficient is small ($|s| \ll 1$):
 \begin{align}
     P_{\mathrm{fix}}(s, \Ne, p) & = \dfrac{1 - \e^{-4 \Ne p s }}{1 - \e^{-4 \Ne s}},\\
     & = \dfrac{1 - \e^{- p S }}{1 - \e^{-S}},
 \end{align}
 where $S = 4 \Ne s$ is the scaled selection coefficient.
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth, page=3] {figures.pdf}
     \caption[Probability of fixation]{
     Probability of fixation.
     The selection coefficient of the derived \gls{allele} is scaled by population size $S=4 \Ne s$.
-    In contrast to changes of frequency during a generation, the probability of fixation is sensitive to very weak selection coefficient ($|s| \ll 1$), as long as the scaled selection coefficient is not negligible ($|S| > 1$).
-    Intuitively, selective effects are magnified by population size because the fixation is the inherently the resultant of the trajectory overall, integrating small effects throughout the lifespan of the \gls{allele}. }
+    In contrast to changes of frequency during a generation, the probability of fixation is sensitive to very weak selection coefficients ($|s| \ll 1$), as long as the scaled selection coefficient is not negligible ($|S| > 1$).
+    Intuitively, selective effects are magnified by population size because the fixation probability is the resultant of the overall trajectory of the \gls{allele}, integrating small effects throughout its lifespan. }
 \end{figure}
 
 An interesting special case is obtained for a new mutation appearing in the population.
-Because it is a single mutant the derived \gls{allele} initial frequency is $p = 1 / 2 \Ne$, and the probability of fixation ($P_{\mathrm{fix}}$) is given by:
+Because it is a single mutant, the initial frequency of the derived \gls{allele} is $p = 1 / 2 \Ne$, and the probability of fixation ($P_{\mathrm{fix}}$) is given by:
 \begin{align}
     P_{\mathrm{fix}}(s, \Ne) & = \dfrac{1 - \e^{-2 s}}{1 - \e^{-4 \Ne s}} \\
     & \simeq  \dfrac{2 s }{1 - \e^{-4 \Ne s}}
@@ -179,16 +179,16 @@ Altogether, the fixation probability of a selected \gls{allele} relative to a \g
     \centering
     \includegraphics[width=0.8\textwidth, page=2] {figures.pdf}
     \caption[Relative fixation probability]{Fixation probability of a selected {allele} relative to a {neutral} {allele}.
-    For a substantive negative scaled selection coefficient ($s \leq -1/\Ne$, red filled area), the probability of fixation is greatly reduced (by an exponential factor), and \gls{allele} can not likely reach fixation. On the other hand for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear w.r.t $S$. In between, whenever the absolute value of is close to $1 / \Ne$ (yellow filled area), the \gls{allele} behave approximately neutrally.}
+    For a substantial negative scaled selection coefficient ($s \leq -1/\Ne$, red filled area), the probability of fixation is greatly reduced (by an exponential factor), and the \gls{allele} will not likely reach fixation. On the other hand, for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear with regards to $S$. In between, whenever the absolute value of $s$ is close to $1 / \Ne$ (yellow filled area), the \gls{allele} behaves approximately neutrally.}
 \end{figure}
-This essential result has important consequences, random \gls{drift} and selection are intrinsically confounded factors.
-As a an example, increasing population size by a factor $2$ while reducing the selection coefficient by the same amount lead to the exact same equation, such that they are indistinguishable.
+This essential result has important consequences: random \gls{drift} and selection are intrinsically confounded factors.
+As a an example, increasing population size by a factor of $2$ while reducing the selection coefficient by the same amount leads to the exact same equation, such that they are indistinguishable.
 
 \subsection{Site frequency spectrum}
-The probability of fixation of an \gls{allele} can be empirically observable, and in the context of Wright-Fisher processes is related to selection and drift.
+The probability of fixation of an \gls{allele} can be empirically observable, and in the context of a Wright-Fisher processes it is related to selection and drift.
 However, this absorbing fate is not the sole characteristic of the process that relates empirical observable quantities to parameters of the process.
 Along the whole trajectory of an \gls{allele}, before fixation or extinction, the probability of this \gls{allele} to be at a certain frequency can be related to its selection coefficient and to the \gls{effective-population-size}.
-More precisely, $g(x) \der x $ is the expected time for which the population frequency of derived \gls{allele} is in the range $(x, x+\der x)$ before eventual absorption, and can be derived using Kolmogorov forward equation:
+More precisely, $g(x) \der x $ is the expected time for which the population frequency of derived \gls{allele} is in the range $(x, x+\der x)$ before eventual absorption, and can be derived using the Kolmogorov forward equation:
 \begin{align}
     g(x, S) & = \dfrac{\left( 1 - \e^{- 2 s }\right) \left( 1 - \e^{-4 \Ne s(1-x)}\right)}{ s (1 - \e^{-4 \Ne s})x(1-x)} \\
     & \approx \dfrac{2 \left[ 1 - \e^{-S(1-x)}\right]}{(1 - \e^{-S})x(1-x)} \label{eq:expected_time}
@@ -199,7 +199,7 @@ More precisely, $g(x) \der x $ is the expected time for which the population fre
     \includegraphics[width=0.8\textwidth, page=4] {figures.pdf}
     \caption[Expected time at a derived frequency]{
     Expected time at a derived frequency.
-    Allele with positive selection coefficient can be observed at high frequency, while \glspl{allele} with negative selection coefficient are unlikely to be observed at high frequency.}
+    Alleles with a positive selection coefficient can be observed at high frequency, while \glspl{allele} with negative selection coefficient are unlikely to be observed at high frequency.}
 \end{figure}
 
 This equation is solely valid for a gene with two \glspl{allele}, a configuration which is rarely observed in empirical data since more than two variants of a gene are usually present in the population.
@@ -208,10 +208,10 @@ This observation led to the development of a sitewise Wright-Fisher process, ass
 Strictly speaking, this model considers a collection of independently evolving loci, meaning without linkage.
 It provides a good approximation if there is free-recombination between sites.
 Moreover, the collection is considered infinite whereas the total mutation rate across this infinite collection is considered finite.
-Assumption of an infinite number of sites is necessary to ensure that each mutation arise at a new site, with a Poisson distribution of total rate $u$ per generation for the whole sequence.
+The assumption of an infinite number of sites is necessary to ensure that each mutation arises at a new site, with a Poisson distribution of total rate $u$ per generation for the whole sequence.
 
-From an empirical perceptive, for a sample of $n$ sequences taken in the population, the expected number of sites with $i$ copies of the derived allele (with $i$ ranging from $1$ to $n - 1$) denoted $G(i, n)$.
-The collection of all $G(i, n)$ generate what is called a site frequency spectrum (\acrshort{SFS}), which can intuitively be interpreted as the discrete version of the expected time at a derived frequency (equation~\ref{eq:expected_time}), readily available from a sample of sequences from a population.
+From an empirical perspective, for a sample of $n$ sequences taken in the population, the expected number of sites with $i$ copies of the derived allele (with $i$ ranging from $1$ to $n - 1$) is denoted $G(i, n)$.
+The collection of all $G(i, n)$ generates what is called a site frequency spectrum (\acrshort{SFS}), which can intuitively be interpreted as the discrete version of the expected time at a derived frequency (equation~\ref{eq:expected_time}), readily available from a sample of sequences from a population.
 Given the scaled selection pressure ($S=4 \Ne s$), and the scaled mutation rate per generation for the whole sequence ($\theta = 4 \Ne u $), each entry of the \acrshort{SFS} is:
 \begin{align}
     G(i, n) & = \int_{0}^{1}  2 \Ne u g(x) \binom{n}{i} x^{i} (1-x)^{n-i} \der x \\
@@ -241,7 +241,7 @@ Mixing over this distribution, the SFS can then be computed as a function of the
         \hline Scaled mutation rate & $\theta = 4 \Ne u$ & $[10^{-8}, 10^{-1}]$ per site \\
         \hline
     \end{tabu}}
-    \caption[Parameter of population-genetics]{Parameter of population-genetics}\label{table:params-popgen}
+    \caption[Parameters of population-genetics]{Parameters of population-genetics}\label{table:params-popgen}
 \end{table}
 
 
@@ -437,7 +437,7 @@ Moreover, under the assumption of a static fitness landscape, a mutation-selecti
         \hline Mean scaled fixation probability & $\nu$ & $[0, 1]$ for purifying selection \\
         \hline
     \end{tabu}}
-    \caption[Parameter of mutation-selection processes]{Parameter of mutation-selection processes}
+    \caption[Parameters of mutation-selection processes]{Parameter of mutation-selection processes}
     \label{table:params-mutsel}
 \end{table}
 
