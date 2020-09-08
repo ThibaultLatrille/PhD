@@ -45,6 +45,7 @@ This formalism give us leverage to revisit the correlations between ecological l
 Altogether, can we mathematically model long-term fluctuation of $\Ne$ in mutation-selection codon model?
 Empirically, do we have enough signal in alignment data, and computational tools, to estimate fluctuations of $\Ne$?
 
+
 \section{New approaches}
 \label{sec:NewApproaches}
 
@@ -117,33 +118,39 @@ Fourth, we assume \acrshort{DNA} sequences to be representative of the species, 
 \section{Results}
 \label{sec:Results}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize A\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize B\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
-        \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
-    \end{minipage}    \hfill
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuFold_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize C\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize D\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize E\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
-        \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
-    \end{minipage}    \hfill
-    \caption[Inferred and simulated $\Ne$]{
-    Inferred and simulated $\Ne$
-    Top row, branch length in expected number of \glspl{substitution}, for each branch of the tree.
-    Bottom row, $\Ne$ for each node (including leaves) of the tree, relative to $\Ne$ at the root of the tree.
-    Left panel, simulation under the mutation-selection approximation, as to test the soundness of the inference framework.
-    Middle panel, simulation accounting for small population size effects~($5000$ individuals at the root), site linkage and short term fluctuation of $\Ne$.
-    Right panel, simulation accounting for site epistasis, with fluctuation of the selection coefficient along the phylogeny.
+        \includegraphics[width=\linewidth, page=1]{simulations/SimuFold_SiteMutSelBranchNe_BranchCorrelation_LogPopulationSize}
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize F\hspace{0.35cm}}}\hfill
+    \caption[Inferred and simulated branch length and $\Ne$]{
+    Inferred values in vertical axis against simulated value in horizontal axis.
+    In top row (panels A, B and C), branch length in expected number of \glspl{substitution} for each branch of the tree.
+    In bottom row (panels D, E and F), $\Ne$ for each node (including leaves) of the tree, relative to $\Ne$ at the root of the tree.
+    In left panels (A and D), simulation under the mutation-selection approximation, as to test the soundness of the inference framework.
+    In middle panels (B and E), simulation accounting for small population size effects~($5000$ individuals at the root), site linkage and short term fluctuation of $\Ne$.
+    In right panels (C and F), simulation accounting for site epistasis in context of selection for protein stability, with fluctuation of the selection coefficient along the phylogeny.
     The tree root is $150$ million years old, where the initial population start with a mutation rate of $\smash{1e^{-8}}$ per site per generation, and generation time of $10$ years.
     These experiments confirm that signal in the placental mammalian tree can allow to reliably infer the direction of change in $\Ne$, even if linkage disequilibrium, short term fluctuation of $\Ne$ and finite population size effects are not accounted for in the inference framework.
     However, the presence of epistasis between sites is a serious threat to the inference of $\Ne$.
@@ -154,33 +161,36 @@ Fourth, we assume \acrshort{DNA} sequences to be representative of the species, 
 \subsection{Simulated experiments}
 \label{sec:ResultsSimulated}
 The inference framework was first tested using independently simulated alignments (see Methods).
-With the aim of applying the inference method to empirical dataset in placental mammals and in primates, the simulation parameters were chosen to match the empirical regime of total branch length (expected number of substitutions) from root to leaves.
+With the aim of applying the inference method to empirical dataset in placental mammals, the simulation parameters were chosen to match the empirical regime of total branch length (expected number of substitutions) from root to leaves.
 
-A first serie of simulations was meant to test the soundness of our inference framework, by simulating essentially under the model used for inference.
+A first series of simulations was meant to test the soundness of our inference framework, by simulating essentially under the model used for inference, although with an independently developed software.
 The mutation-selection approximation was assumed to be valid, and sites were simulated under different fitness profiles.
 In addition, $\Ne$ varies at the tree nodes but otherwise remains constant along each branch.
-In this context, simulated branch length and $\Ne$ could be recovered appropriately by our inference method (Figure~\ref{fig:simulations}, panel A \& B).
+In this context, simulated branch length and $\Ne$ could be recovered appropriately by our inference method, as depicted in figure~\ref{fig:simulations}, panel A \& D.
 Unfortunately, assumptions made for this simulations are almost certainly violated in practice.
 First, $\Ne$ should change continuously along a branch, between each generation of the population.
 Second, having a separate process for each site is equivalent to have no linkage between sites (free recombination), an assumption that should be relaxed.
-Third, the probability of fixation (equation \ref{eq:mutationSelection}) does not hold in small finite population.
+Third, the probability of fixation (equation~\ref{eq:mutationSelection}) does not hold in small finite population.
 
 For these reasons, we performed a second more challenging series of simulations.
 The finite population was modeled explicitly in a Wright-Fisher simulator, tracking the frequency of each \gls{allele} at each generation along the phylogeny.
-Such simulator accounts for small population size effects, hitchhiking of weakly deleterious mutations during selective sweep and background selection due to linkage desequilibrium.
+Such simulator accounts for small population size effects, hitchhiking of weakly deleterious mutations during selective sweep and background selection due to linkage disequilibrium.
 Fluctuations of $\Ne$ and mutation rate were also fluctuating continuously along the branch of the tree.
 Moreover, noise was added by accounting for short term fluctuations of $\Ne$ on the order of $20\%$ per generation.
-The simulated branch length and $\Ne$ could be robustly recovered by the inference framework in this context (Figure~\ref{fig:simulations}, panel C \& D).
+The simulated branch length and $\Ne$ could be robustly recovered by the inference framework in this context, as depicted in figure~\ref{fig:simulations}, panel B \& E.
 
 However, if the results are encouraging to apply the method on empirical data, we rely on the assumption of site-independent fitness landscape, which is almost certainly broken in practice.
 Finally, we implemented a more complex, site-dependent fitness landscape accounting for the $3$-dimensional structure of protein and interaction between sites.
-In such a model, the folding energy of the protein determines the probability of being in the folded state, a proxy for fitness~\citep{Goldstein2017}.
-During a simulation, at a particular \gls{codon} site, the fitness landscape is dependent on the actual amino-acids present in the vicinity of this particular site.
-Our inference framework could recover the simulated branch length, but had more difficulties to retrieve the simulated $\Ne$ in the context of site-dependent epistasis (Figure~\ref{fig:simulations}, panel E \& F)
+In such a model, the conformational stability of the protein determines the probability of being in the folded state, a proxy for fitness~\citep{Williams2006, Goldstein2011, Pollock2012}.
+During a simulation, at a particular \gls{codon} site, the fitness landscape is dependent on the actual amino-acids present in the vicinity of this particular site (see section~\ref{subsec:protein-folding-probability} in supplementary materials).
+Our inference framework could recover the simulated branch length (figure~\ref{fig:simulations}, panel C), but hardly retrieves the simulated $\Ne$ in the context of site-dependent epistasis (figure~\ref{fig:simulations}, panel F).
+This effect can however be explained by the predicted independence of $\dnds$ to changes in $\Ne$ in this specific model of protein stability~\citep{Goldstein2013}.
+Such independence between $\dnds$ and $\Ne$ is due to the structure of the fitness landscape, where an decrease in $\Ne$ leads to a sequence further to the optimal protein where the curvature of the fitness landscape is steeper, resulting in a higher selection coefficient exactly compensating the decrease in $\Ne$, and the scaled selection coefficient is (almost) constant.
+Additionally, under a Fisher geometric landscape developed in supplementary materials (section~\ref{subsec:fisher-geometric-landscape}) and also incorporating epistasis, branch length is reliably estimates while $\Ne$ is also more difficult to estimate.
 
 \subsection{Empirical experiments}
 \label{sec:ResultsEmpirical}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{minipage}{0.411\linewidth}
         \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 0.15cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
@@ -194,7 +204,7 @@ Our inference framework could recover the simulated branch length, but had more 
     \end{minipage}
     \caption[Example of inferred $\Ne$ and $\mu$ on placental mammals dataset]{
     Example of inferred $\Ne$ and $\mu$ on placental mammals dataset.
-    Inference were performed on a randomly chosen set of $36$ coding sequences (CDS) out of $226$ highly conserved CDS~($<1\%$ of gaps).
+    Inference were performed on a randomly chosen set of $18$ coding sequences (CDS) out of $226$ highly conserved CDS~($<1\%$ of gaps).
     Only highly conserved CDS were retained such that the assumption of constant fitness landscape is not incautiously broken by protein with changing function and/or adaptive selection.
     Brownian processes along the tree are represented for effective population size~($\Ne$, left panel) and mutation rate per site per unit of time~($\mu$, right panel).
     Mean values of \acrshort{MCMC} (after burn-in) are obtained at each node of the tree, hence a gradient can be extrapolated along each branch.
@@ -209,25 +219,29 @@ We reconstructed long-term changes of effective population size~($\Ne$) and muta
 Life-history traits (LHT) for longevity, age at maturity and weight were obtained from AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
 We focused our analysis on 77 taxa for which information is available for at least one LHT.
 
-In the result of this analysis (Figure~\ref{fig:mammals_popsize_and_mutrate}), we visually observe a global trend of increased $\Ne$ throughout the tree around $90$ and $60$ My.
+In the result of this analysis, depicted in figure~\ref{fig:mammals_popsize_and_mutrate}), we visually observe a global trend of increased $\Ne$ throughout the tree around $90$ and $60$ My.
 We also observe $\Ne$ to be lower in \textit{Cetacea} and \textit{Camelidae}, while being higher in \textit{Rodentia} and \textit{Pecora}.
 In some clades we can see a decrease along a single branch of the tree, for example \textit{Heterocephalus glaber} or \textit{Acinonyx jubatus}.
 
-The analysis of the covariance matrix, discarding phylogenetic inertia, shows that $\Ne$ is positively correlated~($r^2 = 0.44$) with mutation rate per unit of time (Table~\ref{fig:mammals_correlation}), which is compatible with the assumption that large population are small-sized and with a shorter generation time.
+The analysis of the covariance matrix presented in table~\ref{fig:mammals_correlation}, discarding phylogenetic inertia, shows that $\Ne$ is positively correlated~($r^2 = 0.44$) with mutation rate per unit of time, which is compatible with the assumption that large population are small-sized and with a shorter generation time.
 Moreover the \gls{effective-population-size} is negatively correlated with longevity, age at maturity and weight (Table~\ref{fig:mammals_correlation}), consistent with the observation that larger population have small-sized and short-lived individuals~\citep{Galtier2016,Romiguier2014}.
-The partial-correlation coefficients (Supplementary Materials) are not significantly different from $0$.
+The partial-correlation coefficients (see definition section~\ref{subsec:partial-correlation-coefficient} and table~\ref{tab:table-partcor-mammals} in supplementary materials) are not significantly different from $0$.
 
-However, if the trend of $\Ne$ would be in the right direction, the magnitude of inferred $\Ne$ is vastly underestimated by our method, with a ratio of $2.5$ between the maximum and minimum $\Ne$ in extant species (Figure~\ref{fig:mammals_popsize_and_mutrate}).
+However, if the trend of $\Ne$ would be in the right direction, the magnitude of inferred $\Ne$ is vastly underestimated by our method, with a ratio of $2.5$ between the maximum and minimum $\Ne$ in extant species (see figure~\ref{fig:mammals_popsize_and_mutrate}).
+To assess the reproducibility of our inference, we analyzed a concatenated random sample of $18$ highly conserved coding sequences~($\leq 1\%$ of gaps in the alignment), and repeated the procedure on different random samples of $18$ CDS.
+Overall the estimation of $\Ne$ is reproducible for a random subset of CDS, as depicted in figure~\ref{fig:mammals_repeatability}.
 
-To assess the reproducibility of our inference, we analyzed a concatenated random sample of 36 highly conserved coding sequences~($\leq 1\%$ of gaps in the alignment), and repeated the procedure on different random samples of 36 CDS.
-Overall the estimation of $\Ne$ is reproducible for a random subset of CDS (Figure~\ref{fig:mammals_repeatability}).
+We performed other empirical experiments using a group of isopod species that have made multiple independent transitions to subterranean environments.
+Protein coding DNA sequences alignment and life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphtalmia, or ocular) are available for these species~\citep{Scalier2019}.
+Estimation of $\Ne$ reveals a correlation between life-history traits and $\Ne$, presented section \ref{sec:isopods} in supplementary materials.
+However these estimation are sensitive to phylogenetic inertia since not obtained under a comparative, although the phylogenetic inertia.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
     \caption[Traits correlation]{
     Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity), taking account phylogenetic inertia.
     Correlation coefficient are between $-1$ and $1$.
-    Asterisks indicate strength of support~($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).
+    Asterisks indicate strength of support of the posterior probability to be different than $0$ (pp) as $\smash{^{*}} pp > 0.95$ and $\smash{^{**}} pp > 0.975$.
     Observed correlation are compatible with the interpretation that large populations are composed of small, short-lived individuals.
     Moreover if the mutation rate per generation is considered constant in first approximation, the mutation rater per unit of time is positively correlated to generation rate, hence to population size.
     }
@@ -268,7 +282,7 @@ This assumption can be relaxed by implementing \gls{codon} preferences that are 
 Such implementation would provide the advantage of estimating \gls{codon} usage biases, and of accounting for its confounding effect while estimating selection and $\Ne$.
 
 % Perspective: 
-Bayesian computation shown in this study are based on relatively small alignments~($20,000$ sites at most), and with a limited parametrization in the number of fitness profile categories~($50$).
+Bayesian computation shown in this study are based on relatively small alignments ($20,000$ sites at most), and with a limited parametrization in the number of fitness profile categories~($50$).
 Analyzing execution duration of the program (not shown) leads to conclude that the number of fitness profile categories is the limiting step to expand the computation.
 To estimate a more statistically stable genome-wide $\Ne$, we could develop an extended version leveraging parallel computing, where each coding sequence has its own computing process and own profile categories, but the $\Ne$ would be shared by all computing processes.
 By increasing the number of categories per gene, the magnitude of inferred $\Ne$ would also increase, since fitness profiles would be sharper.
@@ -276,7 +290,7 @@ By increasing the number of categories per gene, the magnitude of inferred $\Ne$
 % Perspective: increase power
 Mutation-selection models originated with the aim of increasing the power to detect adaptive evolution, by modeling explicitly the confounding effect of purifying selection.
 However, by assuming constant $\Ne$ along a phylogeny, the statistical power to detect sites under adaptive evolution is not optimal.
-Fitness profiles estimated are averaged along the phylogeny and are more seemingly \gls{neutral} than our estimated profiles under our present framework (Supplementary Materials).
+Fitness profiles estimated are averaged along the phylogeny and are more seemingly \gls{neutral} than our estimated profiles under our present framework (see table \ref{tab:table-entropy-aa-mutselne} in supplementary materials).
 Even though our method requires more computing resources to estimate fitness profiles, it provides a better null model of purifying selection to test against the presence of adaptive evolution.
 
 % Comparison with other methods
@@ -298,32 +312,38 @@ Thus we could ask if empirical independent estimations of $\Ne$ from within spec
 Notwithstanding theoretical considerations on the quasi-neutral theory of evolution, empirical clues about the long-term trends in the direction of genetic drift, and changes between species allows to open a large diversity of ecological and evolutionary questions.
 Spatial and temporal changes of genetic drift along ecological niches and events can be investigated to disentangle the underlying evolutionary and ecological pressures.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-2}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize A\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-3}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize B\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-4}
     \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize C\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-2}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize D\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-3}
-    \end{minipage}    \hfill
+    \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize E\hspace{0.35cm}}}\hfill
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-4}
     \end{minipage}
+    \llap{\raisebox{-1.1cm}{\scriptsize F\hspace{0.35cm}}}\hfill
     \caption[Repeatability of experiments]{
     Repeatability of experiments.
-    $3$ independent inferences where performed on a randomly chosen set of $36$ coding sequences (CDS) out of $226$.
+    $3$ independent inferences where performed on a randomly chosen set of $18$ coding sequences (CDS) out of $226$.
     Each plot is a correlation between a pair of experiments for a given parameter.
-    $2$ relevant parameters are shown, mutation rate per unit of time~($\mu$, bottom left plots) and effective population size~($\Ne$, upper right plots).
-    For each node of the tree, the mean of the parameter~($\Ne$ or $\mu$) over the \acrshort{MCMC} is represented in blue dot, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+    Mutation rate per unit of time~($\mu$), is represented in top row (panels A, B and C), while effective population size~($\Ne$) is represented in bottom row (panels D, E and F).
+    For each node of the tree, the mean posterior of the parameter~($\Ne$ or $\mu$) over the \acrshort{MCMC} (after burn-in) is represented in blue dot, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
     Solid red line is the regression line between experiments.
     Inference of $\mu$ is more reproducible than $\Ne$, but overall the experiment is reproducible for a random subset of CDS.
     }
@@ -331,8 +351,10 @@ Spatial and temporal changes of genetic drift along ecological niches and events
 \end{figure}
 
 
-\section{Materials and Methods model}
+\section{Materials and Methods}
 \label{sec:MatMet}
+The parameterization of the models is described as a Bayesian hierarchical model, containing the prior distributions and parameters of the model.
+This hierarchical models is formally represented as directed acyclic graph, depicted in figure~\ref{fig:DAG-MutSelNe}.
 
 \subsection{Nucleotide mutation rates}
 The generalized time-reversible nucleotide mutation rate matrix $\Mutmatrix$ is a function of the nucleotide frequencies $\Mutequi$ and the relative rate $\Exchan$.
@@ -480,39 +502,40 @@ Moreover, the rate of change of the log-Brownian process per unit of time is con
         \node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};
 
         \path
-        (Q) edge [dashed] node [above right] {\ref{eq:Probmatrix}} (P)
-        (dT) edge [dashed] node [above left] {\ref{eq:branchlength}} (BL)
-        (Mu) edge [dashed] node [] {} (BL)
-        (BL) edge [dashed] node [] {} (P)
-        (Ne) edge [dashed] node {} (Q)
-        (R) edge [dashed] node {} (Q)
-        (Bb) edge [dashed] node {} (Ne)
-        (Bb) edge [dashed] node [below] {\ref{eq:branchNemu}} (Mu)
-        (f) edge [dashed] node [above] {\ref{eq:subrates}} (Q)
-        (Ex) edge [dashed] node [] {} (R)
-        (Equi) edge [dashed] node [below] {\ref{eq:gtr-mutrates}} (R)
-        (T) edge [dashed] node [above] {\ref{eq:ageTobranchtime}} (dT)
-        (dT) edge [dashed] node {} (Bb)
-        (Base) edge [dashed] node {} (f)
-        (cat) edge [dashed] node [above] {\ref{eq:sitefitness}} (f)
-        (ExH) edge [BLUE] node [above] {\ref{eq:DistribExchan}} (Ex)
-        (EquiH) edge [BLUE] node [above] {\ref{eq:DistribMutequi}} (Equi)
-        (Unif) edge [BLUE] node [above] {\ref{eq:Distribage}} (T)
-        (C) edge [dashed] node [above] {\ref{eq:independent_contrast}} (Bb)
-        (Cov) edge [BLUE] node [above] {\ref{eq:Distribcontrast}} (C)
-        (baseH) edge [BLUE] node [above] {\ref{eq:DistribBase}} (Base)
-        (sb) edge [BLUE] node [above] {\ref{eq:DistribMultinomial}} (cat)
-        (CovH) edge [BLUE] node [above] {\ref{eq:Distribcovariance}} (Cov)
-        (sbH) edge [BLUE] node [above] {\ref{eq:DistribStickBreaking},\ref{eq:Beta}} (sb);
+        (Q) edge [black] node [above right] {\ref{eq:Probmatrix}} (P)
+        (dT) edge [black] node [above left] {\ref{eq:branchlength}} (BL)
+        (Mu) edge [black] node [] {} (BL)
+        (BL) edge [black] node [] {} (P)
+        (Ne) edge [black] node {} (Q)
+        (R) edge [black] node {} (Q)
+        (Bb) edge [black] node {} (Ne)
+        (Bb) edge [black] node [below] {\ref{eq:branchNemu}} (Mu)
+        (f) edge [black] node [above] {\ref{eq:subrates}} (Q)
+        (Ex) edge [black] node [] {} (R)
+        (Equi) edge [black] node [below] {\ref{eq:gtr-mutrates}} (R)
+        (T) edge [black] node [above] {\ref{eq:ageTobranchtime}} (dT)
+        (dT) edge [black] node {} (Bb)
+        (Base) edge [black] node {} (f)
+        (cat) edge [black] node [above] {\ref{eq:sitefitness}} (f)
+        (ExH) edge [dashed, BLUE] node [above] {\ref{eq:DistribExchan}} (Ex)
+        (EquiH) edge [dashed, BLUE] node [above] {\ref{eq:DistribMutequi}} (Equi)
+        (Unif) edge [dashed, BLUE] node [above] {\ref{eq:Distribage}} (T)
+        (C) edge [black] node [above] {\ref{eq:independent_contrast}} (Bb)
+        (Cov) edge [dashed, BLUE] node [above] {\ref{eq:Distribcontrast}} (C)
+        (baseH) edge [dashed, BLUE] node [above] {\ref{eq:DistribBase}} (Base)
+        (sb) edge [dashed, BLUE] node [above] {\ref{eq:DistribMultinomial}} (cat)
+        (CovH) edge [dashed, BLUE] node [above] {\ref{eq:Distribcovariance}} (Cov)
+        (sbH) edge [dashed, BLUE] node [above] {\ref{eq:DistribStickBreaking},\ref{eq:Beta}} (sb);
     \end{tikzpicture}
 
     \caption[Directed acyclic graph of dependencies between variables]{
-    Directed acyclic graph of dependencies between variables.
+    Directed acyclic graph (DAG) of dependencies between variables.
     Nodes of the directed acyclic graph are the variables, and edges are the functions.
     Hyper-parameters are depicted in {\color{RED}{red}} circle, random variables in {\color{BLUE}{blue}} circles, and transformed variables in black.
-    Solid {\color{BLUE}{blue}} line denotes a drawing from a random distribution, and black dashed lines denote a function.
-    }
-    \label{fig:graph}%
+    {\color{BLUE}{blue}} dashed line denotes a drawing from a random distribution, and black solid lines denote a function.
+    For a given node, all the nodes pointing toward him (upstream) are its dependencies which determines its distribution.
+    The other way around, following the arrows in the DAG (downstream), simple \gls{prior} distributions are combined together to form more complex joint \gls{prior} distribution which ultimately defines the \gls{prior} distribution of the model.
+    }\label{fig:DAG-MutSelNe}
 \end{figure}
 
 We make a change of variable as to define the branch-wise independent contrast $\contrast\branchexp$:
@@ -554,33 +577,27 @@ Together, the probability of {transition} between \glspl{codon} for a given bran
     \label{eq:Probmatrix}
     \Probmatrix\branchsiteexp = \e^{\branchlength\branchexp \Submatrix\branchsiteexp},
 \end{equation}
-which are the matrices necessary to compute the \gls{likelihood} of the data $\data$ given the parameters of the model using the pruning algorithm (Supplementary Materials).
+which are the matrices necessary to compute the \gls{likelihood} of the data ($\data$) given the parameters of the model using the pruning algorithm.
 
 \subsection{Bayesian implementation}
 \label{sec:Bayesian}
-The \gls{likelihood} computed by the pruning algorithm can then be combined with the \gls{prior} over the model parameters.
-A realization of the random process results in a detailed \gls{substitution} history over the tree.
-Most phylogenetic Monte-Carlo-Markov-Chain (\acrshort{MCMC}) samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate
-the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MCMC}.
+Monte-Carlo Markov-Chain (\acrshort{MCMC}) are run for 4000 points and the first 1000 points are discarded as burn-in, the convergence is then assessed as shown supplementary materials (section \label{subsec:chain-convergence}), as both site-specific fitness and branch $\Ne$ have the same posterior mean.
+Most phylogenetic MCMC samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MCMC}.
+An alternative, which is used here, is to do the \acrshort{MCMC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MCMC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters.
 
-An alternative, which is used here, is to do the \acrshort{MCMC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MCMC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters
-
-The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on
-compact summary statistics of $\subhistory$ (which in turn depend on the specific parameter component
-being resampled), leading to very fast evaluation of the \gls{likelihood}.
+The key idea that makes this strategy efficient is that the mapping-based \gls{likelihood} depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the \gls{likelihood}.
 On the other hand, this requires to implement more complex \acrshort{MCMC} procedures, that have to alternate between:
-
-1) sampling $\subhistory$ conditionally on the data and the current parameter configuration.
-
-2) re-sampling the parameters conditionally on $\subhistory$.
+\begin{enumerate}
+    \item sampling $\subhistory$ conditionally on the data and the current parameter configuration.
+    \item re-sampling the parameters conditionally on $\subhistory$.
+\end{enumerate}
 
 To implement the mapping-based \acrshort{MCMC} sampling strategy, we first sample the detailed \gls{substitution} history $\subhistory$ for all sites along the tree.
 Several methods exist for doing this~\citep{Nielsen2002,Rodrigue2008}.
 Then, we write down the probability of $\subhistory$ given the parameters, and finally, we collect all factors that depend on some parameter of interest and make some simplifications.
-This ultimately leads to relatively compact sufficient statistics (Supplementary Materials for the different sufficient statistics used by our model) that are fast to evaluate~\citep{Irvahn2014,Davydov2016}.
+This ultimately leads to relatively compact sufficient statistics (see section~\ref{sec:sufficient-statistics-mutselne} in supplementary materials) that are fast to evaluate~\citep{Irvahn2014,Davydov2016}.
 
 As an example, making an \acrshort{MCMC} move on the $\Ne$ at a given node of the tree is drastically faster since only the mapping-based \gls{likelihood} (using path sufficient statistics) at the neighboring branches of the node is necessary, and not computing the \gls{likelihood} for the all tree.
-\\
 
 \subsection{Correlation between traits}
 \label{sec:Correlation}
@@ -591,9 +608,9 @@ The correlation between traits $\Settrait$ and trait $\traitj \in \traitInterval
 
 \subsection{Simulations}
 \label{sec:Simulation}
-To test the robustness of the model, $3$ parameterized simulators were developed: \textit{SimuDiv}, \textit{SimuPoly} \& \textit{SimuFold}.
-All $3$ simulators use a log-Brownian multivariate process to model conjointly the changes in mutation rate per generation, the generation time and $\Ne$, in logarithm space.
-\textit{SimuDiv} \& \textit{SimuFold} both simulate point \glspl{substitution} along the phylogenetic tree.
+To test the robustness of the model, $4$ parameterized simulators were developed: \textit{SimuDiv}, \textit{SimuPoly}, \textit{SimuFold} \& \textit{SimuGeo}.
+All $4$ simulators use a log-Brownian multivariate process to model conjointly the changes in mutation rate per generation, the generation time and $\Ne$, in logarithm space.
+\textit{SimuDiv}, \textit{SimuFold} \& \textit{SimuGeo} all simulate point \glspl{substitution} along the phylogenetic tree.
 The simulator starts from an initial sequence at equilibrium.
 The change in fitness is computed for all possible mutant, hence computing all strictly positive \gls{substitution} rates.
 At each point, the next \gls{substitution} is chosen proportional to the rate as in Gillespie algorithm.
@@ -605,7 +622,7 @@ We assumed that the \acrshort{DNA} sequence is composed of exons, with no linkag
 Moreover, in \textit{SimuPoly} $\Ne$ can also be modeled as a sum of a log-Brownian process and an Ornstein-Uhlenbeck process.
 The log-Brownian motion takes into account long-term fluctuations, while the Ornstein-Uhlenbeck can take into account short fluctuations of $\Ne$.
 In \textit{SimuDiv} and \textit{SimuPoly} each \gls{codon} site contribute independently to the fitness depending on the encoded amino-acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
-However, in \textit{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state (Supplementary Materials).
+However, in \textit{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state.
 \textit{SimuFold} is in practice a C++ adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
-
+Section~\ref{sec:supp-mat-simulations} in supplementary materials describe the models in more details, as well as performance of the inference model against them.
 The simulators written in C++ are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}

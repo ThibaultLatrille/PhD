@@ -1,6 +1,8 @@
 \section{Summary statistics}
+\label{sec:summary-statistics}
 
 \subsection{Partial correlation coefficient}
+\label{subsec:partial-correlation-coefficient}
 
 The correlation coefficient $\rho_{\traiti, \traitj}$ give the total regression between two variables.
 Partial-correlation coefficient account for the entire covariance matrix, and measure the correlation between $2$ traits, knowing the values of all the other traits:
@@ -13,6 +15,8 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 \end{equation}
 
 \subsection{Fitness profile entropy}
+\label{subsec:fitness-profile-entropy}
+
 For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
 \begin{equation}
     \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
@@ -26,6 +30,7 @@ The Shannon entropy can be averaged over all sites as:
 
 
 \section{Simulations}
+\label{sec:supp-mat-simulations}
 
 \subsection{Independent fitness profiles}
 Under a simulation with site independent fitness profiles, a fitness profile give a fitness for each amino-acid (vector of size $20$).
@@ -92,7 +97,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuDiv, chain 1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
+        SimuDiv, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
         SimuDiv, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Inferred amino-acids entropy for SimuDiv]{
@@ -103,7 +108,8 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
 
 \subsection{Wright-Fisher with polymorphism}
 
-The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift. The population is assumed to be panmictic, with with \gls{effective-population-size} $\Ne$ and with non-overlapping generations.
+The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift
+The population is assumed to be panmictic, with with \gls{effective-population-size} $\Ne$ and with non-overlapping generations.
 
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuPoly}
@@ -152,7 +158,7 @@ The evolutionary dynamics was formalized as a Wright-Fisher model with mutation,
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuPoly, chain 1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
+        SimuPoly, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
         SimuPoly, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Inferred amino-acid entropy for SimuPoly]{
@@ -161,6 +167,7 @@ The evolutionary dynamics was formalized as a Wright-Fisher model with mutation,
 \end{table}
 
 \subsection{Fisher geometric landscape}
+\label{subsec:fisher-geometric-landscape}
 
 We simulated \glspl{substitution} in a protein using an adaptation of Fisher's geometric landscape.
 In the original context, the \gls{Phenotype} is a vector ($\phenoGeo$) in a multidimensional space, where the number of dimensions is often termed complexity.
@@ -217,7 +224,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
         \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
     \caption[Inferred branch parameters for SimuGeo]{
-    Inferred branch parameters under simulation accounting for site epistasis (Geometric landscape), thus fluctuation of the selection coefficient along the phylogeny.
+    Inferred branch parameters under simulation accounting for site epistasis in geometric landscape, thus fluctuation of the selection coefficient along the phylogeny.
     }
 \end{figure}
 
@@ -229,7 +236,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuGeo, chain 1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
+        SimuGeo, chain~1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
         SimuGeo, chain 2 & $2.23 \pm 0.04$ & $2.46 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Entropy of amino-acids for SimuGeo]{
@@ -238,6 +245,8 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
 \end{table}
 
 \subsection{Protein folding probability}
+\label{subsec:protein-folding-probability}
+
 We simulated \glspl{substitution} in the protein phosphatase ($\Nsite=300$ \gls{codon} sites) as in Goldstein \& Pollock (2017).
 From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ \glspl{substitution}, we compute the free energy of the folded state $\Base_{\mathrm{F}}\left(\mathbb{S}^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
@@ -304,7 +313,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuFold, chain 1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
+        SimuFold, chain~1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
         SimuFold, chain 2 & $1.30 \pm 0.04$ & $1.60 \pm 0.03$\\ \hline
     \end{tabu}}
     \caption[Entropy of amino-acids in SimuFold]{
@@ -314,8 +323,10 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \glspl{synonymous}.
 
 
 \section{Empirical data in mammals}
+\label{sec:empirical-data-in-mammals}
 
 \subsection{Chain convergence}
+\label{subsec:chain-convergence}
 Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
@@ -330,7 +341,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
     Chain convergence of site amino-acid preferences (left panel) and branch $\Ne$ (right panel).}
 \end{figure}
 
-\subsection{Traits estimation \& correlation (replicate 1, chain 1)}
+\subsection{Traits estimation \& correlation (replicate~1, chain~1)}
 Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
@@ -345,6 +356,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
     \caption[Partial correlation coefficient matrix in mammals]{
     Partial correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (Maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
+    \label{tab:table-partcor-mammals}
 \end{table}
 
 \begin{figure}[H]
@@ -415,7 +427,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        Mammals 18 CDS, replicate 1, Chain 1 & $1.07 \pm 0.10$ & $1.14 \pm 0.10$\\ \hline
+        Mammals 18 CDS, replicate~1, Chain 1 & $1.07 \pm 0.10$ & $1.14 \pm 0.10$\\ \hline
         Mammals 18 CDS, replicate 2, Chain 2 & $1.07 \pm 0.09$ & $1.14 \pm 0.10$\\ \hline
         Mammals 18 CDS, replicate 2, Chain 1 & $1.06 \pm 0.10$ & $1.12 \pm 0.09$\\ \hline
         Mammals 18 CDS, replicate 2, Chain 2 & $1.06 \pm 0.09$ & $1.11 \pm 0.10$\\ \hline
@@ -424,8 +436,8 @@ Obtained with the inference model of site selection for amino-acid, and branch f
         Mammals 18 CDS, replicate 4, Chain 1 & $0.94 \pm 0.11$ & $1.02 \pm 0.12$\\ \hline
         Mammals 18 CDS, replicate 4, Chain 2 & $0.89 \pm 0.11$ & $1.02 \pm 0.11$\\ \hline
         \hline
-        Mammals 36 CDS, replicate 1, Chain 1 & $1.02 \pm 0.06$ & $1.07 \pm 0.10$\\ \hline
-        Mammals 36 CDS, replicate 1, Chain 2 & $0.91 \pm 0.07$ & $1.03 \pm 0.07$\\ \hline
+        Mammals 36 CDS, replicate~1, Chain 1 & $1.02 \pm 0.06$ & $1.07 \pm 0.10$\\ \hline
+        Mammals 36 CDS, replicate~1, Chain 2 & $0.91 \pm 0.07$ & $1.03 \pm 0.07$\\ \hline
         Mammals 36 CDS, replicate 2, Chain 1 & $0.92 \pm 0.09$ & $0.96 \pm 0.09$\\ \hline
         Mammals 36 CDS, replicate 2, Chain 2 & $1.01 \pm 0.09$ & $1.02 \pm 0.11$\\ \hline
         Mammals 36 CDS, replicate 3, Chain 1 & $0.93 \pm 0.00$ & $1.05 \pm 0.09$\\ \hline
@@ -439,9 +451,10 @@ Obtained with the inference model of site selection for amino-acid, and branch f
     \end{tabu}}
     \caption[Entropy of amino-acids in mammals]{Estimated amino-acids entropy in mammals.
     Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \label{tab:table-entropy-aa-mutselne}
 \end{table}
 
-\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate 1, chain 1)}
+\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
 Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
 
 \begin{figure}[H]
@@ -473,8 +486,9 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 
 
 \section{Isopods}
+\label{sec:isopods}
 
-\subsection{Traits estimation (replicate 1, chain 1)}
+\subsection{Traits estimation (replicate~1, chain~1)}
 Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
@@ -655,7 +669,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
     Chain convergence of site amino-acid preferences (left panel) and branch $\Ne$ (right panel).}
 \end{figure}
 
-\subsection{Traits estimation (chain 1)}
+\subsection{Traits estimation (chain~1)}
 Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
@@ -736,14 +750,14 @@ Obtained with the inference model of site selection for amino-acid, and branch f
         \hline
         \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        Primates, chain 1 & $1.41 \pm 0.10$ & $1.49 \pm 0.08$\\ \hline
+        Primates, chain~1 & $1.41 \pm 0.10$ & $1.49 \pm 0.08$\\ \hline
         Primates, chain 2 & $1.40 \pm 0.10$ & $1.48 \pm 0.08$\\ \hline
     \end{tabu}}
     \caption[Entropy of amino-acids in primates]{Estimated amino-acids entropy in primates.
     Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
-\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain 1)}
+\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain~1)}
 Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
 
 \begin{figure}[H]
@@ -782,7 +796,7 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 
 \section{Empirical data in drosophila}
 
-\subsection{Traits estimation \& correlation (replicate 1, chain 1)}
+\subsection{Traits estimation \& correlation (replicate~1, chain~1)}
 Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
@@ -893,7 +907,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
-\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate 1, chain 1)}
+\subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
 Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
 
 \begin{figure}[H]
@@ -932,11 +946,12 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 
 
 \section{Sufficient statistics}
+\label{sec:sufficient-statistics-mutselne}
 
 A sequence of length $\Nsite$ evolves by point \glspl{substitution}, according to a random process defined by the \gls{substitution} matrices $\Submatrix\branchsiteexp$, over a phylogenetic tree.
 A realization of the random process along a branch $\branch$, and at a particular site $\site$ results in a detailed \gls{substitution} history, which will be denoted by $\subhistory\branchsiteexp$.
 
-\subsubsection{Path sufficient statistics}
+\subsection{Path sufficient statistics}
 All sites owning to the same category of fitness profile share the same \gls{substitution} rate matrix.
 Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a specific category $\cat$, denoted $\subhistory\branchexp$.
 If we express the probability of the \gls{substitution} mapping ($\subhistory\branchcatexp$) as a function of the \gls{codon} \gls{substitution} process for this category $\cat$, we get the following expression:
@@ -969,7 +984,7 @@ where we define the sufficient statistics:
 \end{itemize}
 Thus, formally, the probability of the \gls{substitution} mapping can be summarized by saying that the total number of \glspl{substitution} along a given branch over all sites, $u\branchexp$, is Poisson distributed, of mean $r\branchexp L\branchexp$.
 
-\subsubsection{Scatter sufficient statistics}
+\subsection{Scatter sufficient statistics}
 From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$ scatter sufficient statistic matrix, $\Scattermatrix$ as:
 \begin{equation}
     \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
