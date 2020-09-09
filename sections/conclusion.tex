@@ -40,11 +40,11 @@ Our framework was tested against simulated data and then applied to empirical da
 Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to past history of $\Ne$, whose trends correspond to expected direction of correlation with life-history traits or ecological variables.
 However, the magnitude of inferred variation in $\Ne$ across the phylogeny is narrower than expected, which is probably a bias of the approach caused by the assumptions made on the structure of the fitness landscape.
 
-The second manuscript leveraged the trails of substitutions along the lineages to estimate variation in $\Ne$, under the premise that lineages with large $\Ne$ are expected to undergo stronger purifying selection, thus a lower mean probability of fixation ($\nu$).
+The second manuscript leveraged the trails of substitutions along the lineages to estimate variation in $\Ne$, under the premise that lineages with large $\Ne$ are expected to undergo stronger purifying selection, thus a lower mean probability of fixation ($\avgpfix$).
 However, assumptions about the underlying structure of the fitness landscape might have an large influence on the expected response of the mean fixation probability to changes in $\Ne$.
 Moreover, an increase in protein expression level has also been found to result in a decrease in the mean fixation probability.
 This correlation is also predicted by theoretical models assuming that proteins are under selection against misfolding.
-As a result, all of these correlation between mean fixation probability ($\nu$), effective population size ($\Ne$) and expression level should be articulated together and quantified in relation to the structure of the fitness landscape.
+As a result, all of these correlation between mean fixation probability ($\avgpfix$), effective population size ($\Ne$) and expression level should be articulated together and quantified in relation to the structure of the fitness landscape.
 
 To do so, in chapter~\ref{chap:GenoPhenoFit}, I derived a theoretical approximation for the quantitative response of the mean fixation probability to changes in both $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
 The development is generally valid for an additive traits under a log-concave fitness function, but was applied more specifically to a biophysical model in which proteins are under directional selection for maximizing their conformational stability.
@@ -119,7 +119,7 @@ However, such endeavour would be statistically and computationally challenging, 
 
 Alternatively, the mutation-selection phylogenetic framework can be leveraged as a null model.
 Deviation from this null model can be seen as a signal of adaptation (see~\ref{subsec:adaptive-evolution}).
-In particular, if the sequences are under recurrent positive selection, the mean fixation probability ($\nu$) of non-synonymous mutations will tend to be higher than predicted by the purely nearly-neutral model.
+In particular, if the sequences are under recurrent positive selection, the mean fixation probability ($\avgpfix$) of non-synonymous mutations will tend to be higher than predicted by the purely nearly-neutral model.
 This discrepancy between the mean fixation probability and the nearly-neutral expectation can be captured by a gene-wide deviation parameter $\omega_*$, as in \citet{Rodrigue2016}.
 This gene-wide deviation parameter $\omega_*$ can be refined at the site-level.
 In this direction, in a work led by Nicolas Rodrigue, we developed a method to detect site-specific adaptation as a deviation from a null nearly-neutral model of evolution.
@@ -275,7 +275,7 @@ Such hybrid models can be developed with the following procedure:
         Such phenomenological model is meant to confronted with simulation under the mechanistic model.
         And subsequently applied to empirical data to estimate the parameters of interest.
 \end{enumerate}
-Such endeavor however requires mathematical work to derive the relationship between parameters of interest (such as $\Delta \Delta G, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\nu$).
+Such endeavor however requires mathematical work to derive the relationship between parameters of interest (such as $\Delta \Delta G, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\avgpfix$).
 
 \section{Reproducible science}
 \label{sec:reproducible-science}

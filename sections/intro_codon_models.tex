@@ -1,25 +1,25 @@
 \chapter{Phylogenetic {codon} models}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:intro-codon-models}
-Evolutionary trajectory of sequences depends on the forces of mutation, selection and drift, which acts conjointly such that each one of them must be well studied and understood.
-More precisely, molecular evolution requires either a given selection coefficient associated to mutation, or that the fitness of each particular sequence to be defined.
-In other word, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein coding \acrshort{DNA} sequence.
-To this aims, this chapter will first present the genetic code and classical phylogenetic \glspl{codon} models, which can quantify the strength of selection acting on proteins trough an aggregate parameter (called $\omega$ or $\dnds$).
-Application of these phylogenetic models to empirical \acrshort{DNA} alignment can be extended to model variation of selection across sites of the same protein, or between branches of the phylogenetic tree.
-Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino-acid.
-Finally the relationship between classical and mechanistic models are investigated, and how the discrepancy between both models can be interpreted.
+Evolutionary trajectories of sequences depend on the forces of mutation, selection and drift, which act conjointly such that each one of them must be well studied and understood.
+More precisely, molecular evolution requires either a given selection coefficient associated to mutation, or that the fitness of each particular sequence be defined.
+In other words, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein coding \acrshort{DNA} sequences.
+To this aim, this chapter will first present the genetic code and classical phylogenetic \glspl{codon} models, which can quantify the strength of selection acting on proteins trough an aggregate parameter (called $\omega$ or $\dnds$).
+Application of these phylogenetic models to empirical \acrshort{DNA} alignments can be extended to model variation of selection across sites of the same protein, or between branches of a phylogenetic tree.
+Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino-acids.
+Finally the relationship between classical and mechanistic models is investigated, and the interpretation of the discrepancy between both models is analyzed.
 
 
 \section{Protein coding {DNA} sequences}
 \label{sec-intro:genetic-code}
-Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyses chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, and so on.
-This variety of roles is accomplished by a variety of three-dimensional shapes.
-A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids, with their size ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino-acids.
-Just as \acrshort{DNA} is oriented because of the asymetry of nucleotides, proteins are oriented due to asymetry of amino-acids, one end is called \gls{N-ter} and the other end C-terminus, and each amino-acid will interact with the other amino-acids in its spatial vicinity.
+Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyse chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, among other functions.
+This diversity of roles is accomplished by a variety of three-dimensional shapes.
+A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids of which it is made of, with protein sequences ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino-acids.
+Just as \acrshort{DNA} is oriented because of the assymetry of nucleotides, proteins are oriented due to the assymetry of amino-acids. One end is called the \gls{N-ter}, and the other end, the C-terminus, and each amino acid will interact with the other amino acids in its spatial vicinity.
 
 Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories determining their solubility and acidity (classification is given in table~\ref{table:genetic_code}).
 Charged amino-acids can be either basic (positively charged) or acidic (negatively charged).
-On the other hand, non charged amino-acids can however be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
+However, non charged amino-acids can be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
 Consequently, polar amino acids are called hydrophilic, and are often found on the outer surface of folded proteins.
 Also, non charged amino-acids can have a uniform charge distribution, and do not form hydrogen bonds with water.
 Reciprocally, these non polar amino-acids are called hydrophobic and tend to be found in the core of folded proteins.
@@ -28,9 +28,9 @@ Reciprocally, these non polar amino-acids are called hydrophobic and tend to be 
 
 Because the $20$ letter alphabet of proteins is different to the $4$ letter alphabet of nucleic acid (DNA and RNA), there is not a one-to-one correspondence between the two alphabets.
 Instead, amino acids are encoded by \glspl{codon}, a consecutive sequences of 3 nucleotides, yielding $4^3=64$ possible permutations, more than sufficient to encode the 20 different amino acids.
-Moreover, three stop \glspl{codon} signals termination of the protein, such that 61 of the 64 \glspl{codon} are used to encode amino acids.
+Moreover, three stop \glspl{codon} signal the termination of the protein, such that 61 of the 64 \glspl{codon} are used to encode amino acids.
 Since there are 61 coding \glspl{codon} and only 20 amino acids, there is a necessary redundancy in the code.
-Thus, amino-acids are encoded by synonymous \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan.
+Thus, amino-acids are encoded by synonymous \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe codon.
 Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-acids, which is used almost universally by all organisms is given in table~\ref{table:genetic_code}.
 
 \begin{table}[H]
@@ -77,30 +77,30 @@ Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-aci
     The genetic code \acrshort{DNA} table translating \glspl{codon} into amino-acids.
     Amino-acids are represent into $4$ categories based on the electrochemical properties.
     Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
-    Stop \glspl{codon} are represented in black (\textcolor{Stop}{\ding{110}}).
-    The synonymous \glspl{codon} encoding for the same amino-acid are usually different by their third \gls{codon} position, the wooble base.
+    Stop \glspl{codon} are represented in gray (\textcolor{Stop}{\ding{110}}).
+    The synonymous \glspl{codon} encoding for the same amino-acid are usually different in their third \gls{codon} position, the wooble base.
     }
     \label{table:genetic_code}
 \end{table}
 
 Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
 More precisely, \glspl{codon} binds to \acrshort{tRNA} via an anticodon, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}.
-On the other end, \acrshort{tRNA} structure complexes uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
+On the other end, \acrshort{tRNA} complexes bind uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
 As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating \glspl{codon} into amino-acids .
 However, there is not a one-to-one correspondence between the $61$ \glspl{codon} and \acrshort{tRNA} genes.
-First, the set of unique sequence of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$~\citep{Goodenbour2006}.
-This subset of anticodon sequences necessary to binds all $61$ \glspl{codon} is due to non canonical base pairing\footnote{Canonical base pairing are A-U and G-C, where thymin (T) is replaced by uracil (U) in RNA}.
+First, the set of unique sequences of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$~\citep{Goodenbour2006}.
+This subset of anticodon sequences necessary to bind all $61$ \glspl{codon} is due to non canonical base pairing\footnote{Canonical base pairing are A-U and G-C, where thymin (T) is replaced by uracil (U) in RNA}.
 More precisely, the first two positions in the \gls{codon} bond strongly to the anticodon of the \acrshort{tRNA} (second and third positions), while the third base of the \gls{codon} can be subject to non standard pairing with the first base of the anticodon.
-If the anticodon contains a guanine at first position, \glspl{codon} with either U or C at the third position can bounds to this anticodon, and this phenomenon explains why there is not any non-synonymous {transition} from only U to C at third position, and why synonymous \glspl{codon} usually end with T or C.
-Also, if the anticodon contains an Inosine at first position, \glspl{codon} with either C, U or A at the third position can bounds to this anticodon, such that for example Leucine encoded by three \gls{codon} (AUU, AUC, AUA) can be bounded by the unique anticodon IAU.
+If the anticodon contains a guanine at first position, \glspl{codon} with either U or C at the third position can bound to this anticodon, and this phenomenon explains why there is not any non-synonymous {transition} from only U to C at the third position, and why synonymous \glspl{codon} usually end with T or C.
+Also, if the anticodon contains an inosine at the first position, \glspl{codon} with either C, U or A at the third position can bound to this anticodon, such that for example leucine encoded by three \gls{codon} (AUU, AUC, AUA) can be bound by the unique anticodon IAU.
 Altogether, non-standard pairing explains why the number of unique anticodons is lower than the number of possible \glspl{codon}, and also explains some part of the structure of the genetic code.
 
 Secondly, \acrshort{tRNA} genes with the same amino-acid binding site and anticodon, which are called isoacceptor \acrshort{tRNA}, may vary in other parts of the \acrshort{tRNA} sequence.
-Effectively, many genes can codes for the same isoacceptor \acrshort{tRNA}, where each gene can display varying efficiency and errors in translation, adding a layer of regulation to the process of protein synthesis~\citep{Lowe1997,Chan2008,Juhling2008,Lin2019}.
-As a result, in some genes some \glspl{codon} are more frequently represented than other possible synonymous \glspl{codon}, an effect named \gls{codon} usage bias.
-For genes that are expressed at high levels, the \gls{codon} use is biased in favor of the \glspl{codon} that have an high \acrshort{tRNA} concentration in the cell, ultimately increasing the expression rate and decreasing the rate of mistranslation by reducing the time of occupancy of an open site.
+Effectively, many genes can code for the same isoacceptor \acrshort{tRNA}, where each gene can display varying efficiency and errors in translation, adding a layer of regulation to the process of protein synthesis~\citep{Lowe1997,Chan2008,Juhling2008,Lin2019}.
+As a result, in some genes, some \glspl{codon} are more frequently represented than other possible synonymous \glspl{codon}, an effect named \gls{codon} usage bias.
+For genes that are expressed at high levels, the \gls{codon} used is biased in favor of the \glspl{codon} that have an high \acrshort{tRNA} concentration in the cell, ultimately increasing the expression rate and decreasing the rate of mistranslation by reducing the time of occupancy of an open site.
 Thus, at a fine-grained molecular scope, a synonymous change can influence mRNA stability, splicing process and protein-folding during translation~\citep{Plotkin2011, Rak2018}.
-However in the scope of this manuscript, such selection between synonymous \glspl{codon} will not be considered, and selection for proteins will be framed at the amino-acid level in first approximation, and mutation at the nucleotide level.
+However in the scope of this manuscript, such selection between synonymous \glspl{codon} will not be considered. Selection for proteins will be framed at the amino-acid level in a first approximation, and mutation, at the nucleotide level.
 
 \subsection{Amino-acid transitions}
 
@@ -140,7 +140,7 @@ However in the scope of this manuscript, such selection between synonymous \glsp
 \end{table}
 Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible {transitions} to another \glspl{codon} as illustrated in the left panel of figure~\ref{fig:graph-codons-aa}.
 Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous {transition} between the underlying \glspl{codon} as illustrated in the right panel of figure~\ref{fig:graph-codons-aa}.
-In fact, most pairs of amino-acids requires at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino-acids that are accesible trough a single non-synonymous {transition} ($75$ pairs).
+In fact, most pairs of amino-acids require at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino-acids that are accessible through a single non-synonymous {transition} ($75$ pairs).
 
 \begin{figure}[htbp!]
     \centering
@@ -154,18 +154,18 @@ In fact, most pairs of amino-acids requires at least two non-synonymous {transit
 
     \caption[Graphs of {codon} and amino-acid transitions]{
     \label{fig:graph-codons-aa}
-    Graphs of possible one nucleotide {transition} between \gls{codon} (left panel) and between amino-acid (right panel).
-    Nodes corresponds to \glspl{codon} (left panel) and amino-acid (right panel), where their color pictures the encoded amino-acid.
-    Additionally, for amino-acids the size of nodes represent the number of underlying \glspl{codon}.
+    Graphs of possible one nucleotide {transition} between \gls{codon} (left panel) and between amino acids (right panel).
+    Nodes correspond to \glspl{codon} (left panel) and amino acids (right panel), and their color represents the encoded amino-acid.
+    Additionally, for amino-acids the size of nodes represents the number of underlying \glspl{codon}.
     An edge between two \glspl{codon} depicts a one nucleotide {transition}, such that a \gls{codon} can have at most $9$ possible {transitions}.
-    Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the weight of the edges represent the number of such possible {transitions}.
-    Non-synonymous {transition} are represented in colored gradient, while synonymous {transitions} are depicted in black.
+    Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the width of the edges represents the number of such possible {transitions}.
+    Non-synonymous {transition} are represented in a color gradient, while synonymous {transitions} are depicted in black.
     The graph of the $61$ \glspl{codon} contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
     The radius of the graph is three, such that the most distant amino-acids are at most three {transition} away.
-    Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for Serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence a least two non-synonymous {transitions}.
+    Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence at least two non-synonymous {transitions}.
     From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous {transitions}.
-    The graph is not fully connected and do not form a clique. Moreover, the graph radius equal to three because a {transition} from Methionine to Tyrosine requires at least three non-synonymous {transitions}.
-    Altogether, for all the possible $190$ pairs of amino-acids, $114$ pairs requires at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
+    The graph is not fully connected and does not form a clique. Moreover, the graph radius is three because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
+    Altogether, for all of the possible $190$ pairs of amino-acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
     }
 \end{figure}
 
@@ -173,7 +173,7 @@ In fact, most pairs of amino-acids requires at least two non-synonymous {transit
 \section{Classical codon models}
 \label{sec:intro-classical-codon-models}
 
-Under the approximation that selection occurs for protein, designing \gls{substitution} models at the amino-acid level has the major shortcoming of not taking into account that the underlying mutation process occurs at the nucleotide level.
+Under the approximation that selection occurs for proteins, designing \gls{substitution} models at the amino-acid level has the major shortcoming of not taking into account that the underlying mutation process occurs at the nucleotide level.
 Conversely, studying evolution of protein coding \acrshort{DNA} sequences only at the nucleotide level, while disregarding the genetic code neglects the consequences that nucleotide variation can have onto protein sequences.
 These shortcomings are both addressed by \gls{codon} models, where the complexity of the genetic code is seen as an asset rather than an encumbrance.
 Indeed the redundancy in the genetic code can be leveraged to disentangle mutation and selection in protein coding \acrshort{DNA} sequences, under the approximation that selection occurs at the protein level in first approximation, while the mutation process occurs at the \acrshort{DNA} level.
@@ -212,7 +212,7 @@ Most often, this matrix is assumed to be general time-reversible (GTR) and thus 
     \end{pmatrix}
 \end{equation}
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from \gls{codon} $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
-Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denotes the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
+Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
 With this notation, the mutation rate from \gls{codon} $\ci$ to $\cj$ is:
 \begin{equation}
     \mu_{\itoj} =
@@ -248,10 +248,10 @@ Altogether, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \citet{Mus
 \subsection{Interpretation of the model}
 \label{subsec:interpretation-of-the-model}
 
-With the definition given above, $\omega$ identifies with the ratio of the rate of \glspl{non-synonymous} over the rate of \glspl{synonymous}, hence often called $\dnds$.
+With the definition given above, $\omega$ identifies with the ratio of the rate of \glspl{non-synonymous} over the rate of \glspl{synonymous}, hence $\dnds$.
 More globally, given how its parameterization carefully distinguishes between synonymous and non-synonymous substitutions, the model can be seen as trying to separate the effects of the mutation rates (captured by $\Mutmatrix$) and those of selection at the non-synonymous level (captured by $\omega$).
 
-All non-synonymous mutations are considered equivalent, and $\omega$ encompass the average strength of selection exercised on them.
+All non-synonymous mutations are considered equivalent, and $\omega$ encompasses the average strength of selection exercised on them.
 Most importantly, $\omega>1$ is absorbing the signal of an excess in the rate of \glspl{non-synonymous}, indicating that the protein is under adaptive evolution.
 Conversely, a default of \glspl{non-synonymous}, leading to $\omega<1$, means the protein is globally under purifying selection.
 
@@ -266,10 +266,10 @@ Under the Muse \& Gaut formalism, the equilibrium frequencies of \glspl{codon} d
 where $\ci[1]$ denotes the nucleotide at position $1$ of \gls{codon} $i$.
 
 As a result of equation~\ref{eq:equilibrium-MG}, the Muse \& Gaut formalism predicts that the nucleotide composition is the same for all $3$ positions of the codons.
-However it as empirically been observed that the nucleotide composition are in fact not identical~\citep{Singer2000}.
-These modulations across the three coding positions has been accommodated using the so-called 3x4 formalism , allowing for different nucleotide rate matrices at the three positions.
-However, this is problematic, this modelling has the consequence that synonymous substitutions occur at different rates at the first and third positions.
-For instance, mutation from codon CTC to CTT (Leucine) or from CTA to TTA (Leucine) are both synonymous and from C to T, but the 3x4 formalism would give them different rates.
+However it has empirically been observed that the nucleotide compositions are in fact not identical~\citep{Singer2000}.
+These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism , allowing for different nucleotide rate matrices at the three positions.
+However, this is problematic, since this modelling has the consequence that synonymous substitutions occur at different rates at the first and third positions.
+For instance, mutations from codon CTC to CTT or from CTA to TTA are both synonymous (leucine) and from C to T, but the 3x4 formalism would give them different rates.
 Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions, and if neutral, all mutations from C to T should have same rate.
 In any case, this suggests that the mutation matrices estimated by codon models are not correctly reflecting the mutation rates between nucleotides.
 
@@ -479,31 +479,31 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015} a
 
 Once fitted to the data, the classical Muse \& Gaut (MG) formalism return estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
 From there, one can compute the substitution and mutation rates of each codon substitution.
-Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\nu_{\text{MG}}$ at stationarity:
+Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
 \begin{align}
-    \nu_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \omega \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \omega,
 \end{align}
 where $\NonSyn_{\ci}$ is the set of non-synonymous \glspl{codon} neighbors to \gls{codon} $\ci$.
-Such equation is also true for any classical codon model formalism, where this identity between $\nu$ and $\dnds$ bears many importance.
+Such equation is also true for any classical codon model formalism, where this identity between $\avgpfix$ and $\dnds$ bears many importance.
 
-This rate of non-synonymous substitution over mutations ($\nu$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}).
+This rate of non-synonymous substitution over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}).
 Such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
 
 On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino-acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
-Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\nu_{\text{HB}}$) at stationarity:
+Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
 \begin{align}
-    \nu_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
-Such that for mutation-selection mechanistic model, $\nu_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
+Such that for mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
 To note, inference under Muse \& Gaut formalism showed the best agreement compared to other formalism of classical codon models.
 
-Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a fixed fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\nu_{\text{HB}}$ induced by the model will always be lower than $1$.
+Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a fixed fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{HB}}$ induced by the model will always be lower than $1$.
 In in other words, that mechanistic mutation-selection \gls{codon} models display the important feature of genuinely accounting for purifying selection.
 From a dynamical perspective, a non-synonymous mutation from a \gls{codon} with high fitness to another \gls{codon} will have a low probability of fixation, since the mutated \gls{codon} will have a lower fitness.
 At equilibrium this low probability of fixation of the other \gls{codon} result into high frequency of the \gls{codon} with high fitness.
@@ -511,7 +511,7 @@ Essentially, at equilibrium the \gls{codon} frequencies only fluctuate at the mu
 This justifies to interpret the Halpern \& Bruno mechanistic codon models as an implementation of the nearly-neutral regime.
 
 Altogether, classical \gls{codon} \gls{substitution} model will interpret a mechanistic mutation-selection model as purifying selection ($\omega < 1$).
-Accordingly, the mean scaled probability of fixation $\nu_{\text{HB}}$ has also been denoted $\omega_0$~\citep{Rodrigue2016}.
+Accordingly, the mean scaled probability of fixation $\avgpfix_{\text{HB}}$ has also been denoted $\omega_0$~\citep{Rodrigue2016}.
 
 \subsection{Halpern \& Bruno mechanistic codon model as a nearly-neutral null model}
 \label{subsec:HB-formalism-nearly-neutral-null-model}
@@ -546,12 +546,12 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
         $\dn$ & Non-synonymous substitution rate. \\ \hline
         $\ds$ & Synonymous substitution rate. \\ \hline
         $\dnds$ & Ratio of non-synonymous over synonymous substitution rate. \\ \hline
-        $\nu$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
+        $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
         \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in \citet{Muse1994} formalism. \\
-        & Also, $\nu_{\text{MG}}=\omega$ in Muse \& Gaut formalism. \\ \hline
-        $\omega_0$ & Induced $\nu_{\text{HB}}$ in \citet{Halpern1998} mechanistic formalism. \\ \hline
+        & Also, $\avgpfix_{\text{MG}}=\omega$ in Muse \& Gaut formalism. \\ \hline
+        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in \citet{Halpern1998} mechanistic formalism. \\ \hline
         \multirow{2}{*}{$\omega_*$} & Scaling factor for all non-synonymous substitutions in \citet{Halpern1998} formalism. \\
-        & Hence $\nu = \omega = \omega_* \omega_0 $ \\ \hline
+        & Hence $\avgpfix = \omega = \omega_* \omega_0 $ \\ \hline
     \end{tabu}}
     \caption[Parameters of classical and mechanistic codon models]{Relationship between classical and mechanistic codon models}
     \label{table:params-codon-models}

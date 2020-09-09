@@ -13,10 +13,10 @@ Population genetics, with its assumptions and limitations, provides the theoreti
 The first section thus recalls the basics of mathematical population genetics, and more specifically, the Wright-Fisher model and its assumptions.
 This will allow me to relate parameters of evolution such as mutation, selection and drift to observable patterns in molecular sequences such as the probability of fixation of a mutant \gls{allele}, as well as the expected number of copies of the derived \gls{allele} we should observe in a population.
 This will allow me to relate the parameters of the evolutionary process, such as mutation rates, selection coefficients and effective population sizes, to observable properties of molecular sequences, such as the probability of fixation of a mutant allele or the expected number of copies of the derived allele we should observe in a population.
-These relationships between the underlying evolutionary forces and the observable patterns will subsequently be leveraged and recruited in the next section to derive an approximation of the long-term process of sequence substitution, again, parametrized directly in terms of mutation, selection and drift.
+These relationships between the underlying evolutionary forces and the observable patterns will subsequently be leveraged and recruited in the next section to derive an approximation of the long-term process of sequence substitution, again, parameterized directly in terms of mutation, selection and drift.
 
 Although the mathematical proof for most of the results presented here are out of the scope of this manuscript, an effort was made to state all definitions and assumptions.
-Such an effort is meant to clearly define the models, their assumptions and their parametrization from the ground up.
+Such an effort is meant to clearly define the models, their assumptions and their parameterization from the ground up.
 
 
 \section{Population-genetics of sequences}
@@ -179,7 +179,7 @@ Altogether, the fixation probability of a selected \gls{allele} relative to a \g
     \centering
     \includegraphics[width=0.8\textwidth, page=2] {figures.pdf}
     \caption[Relative fixation probability]{Fixation probability of a selected {allele} relative to a {neutral} {allele}.
-    For a substantial negative scaled selection coefficient ($s \leq -1/\Ne$, red filled area), the probability of fixation is greatly reduced (by an exponential factor), and the \gls{allele} will not likely reach fixation. On the other hand, for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear with regards to $S$. In between, whenever the absolute value of $s$ is close to $1 / \Ne$ (yellow filled area), the \gls{allele} behaves approximately neutrally.}
+    For a substantial negative scaled selection coefficient ($s \leq -1/\Ne$, red filled area), the probability of fixation is greatly reduced (by an exponential factor), and the \gls{allele} will not likely reach fixation. On the other hand, for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear with regard to $S$. In between, whenever the absolute value of $s$ is close to $1 / \Ne$ (yellow filled area), the \gls{allele} behaves approximately neutrally.}
 \end{figure}
 This essential result has important consequences: random \gls{drift} and selection are intrinsically confounded factors.
 As a an example, increasing population size by a factor of $2$ while reducing the selection coefficient by the same amount leads to the exact same equation, such that they are indistinguishable.
@@ -249,10 +249,10 @@ Mixing over this distribution, the SFS can then be computed as a function of the
 The previous section recalled the Wright-Fisher process of evolution inside a population, relating selection and drift to the diversity of sequences, which empirically requires gene sequences for at least several individuals.
 However, modeling sequence evolution between different species along lineages is a different endeavor, in which species are often simplified with a single representative sequence, collapsing the intra-specific diversity.
 Under this simplification, the inter-specific variability and the evolutionary trajectory of sequences is described by the past history of point \glspl{substitution} along lineages.
-The rate at which such \glspl{substitution} occur can nonetheless be decomposed into two mechanisms, their origination through mutation and their final fate of fixation or loss, a modeling approach broadly known as the origin-fixation approximation~\citep{McCandlish2014}, illustrated in figure~\ref{fig:point-process}.
-Most importantly this decomposition of \gls{substitution} events into mutation and fixation events is able to conciliate population genetics and inter-specific molecular evolution, where the \gls{substitution} history is parameterized by mutation, selection and drift.
-In the field of phylogenetic, the origin-fixation framework is more commonly known as the mutation-selection paradigm, where fixation of an \gls{allele} encompass the confounded effect of natural selection and drift (which are confounded factors, see equation~\ref{eq:p-fix}), and origination corresponds to mutation.
-Since the scope of this manuscript emanates from phylogenetic, I will use the convention mutation-selection terminology hereafter.
+The rate at which such \glspl{substitution} occur can nonetheless be decomposed into two mechanisms: their origination through mutation and their final fate of fixation or loss, a modeling approach broadly known as the origin-fixation approximation~\citep{McCandlish2014}, illustrated in figure~\ref{fig:point-process}.
+Most importantly, this decomposition of \gls{substitution} events into mutation and fixation events is able to conciliate population genetics and inter-specific molecular evolution, where the \gls{substitution} history is parameterized by mutation, selection and drift.
+In the field of phylogenetics, the origin-fixation framework is more commonly known as the mutation-selection paradigm, where fixation of an \gls{allele} encompasses the effect of natural selection and drift (which are confounded factors, see equation~\ref{eq:p-fix}), and origination corresponds to mutation.
+Since the scope of this manuscript emanates from phylogenetics, I will use the convention mutation-selection terminology hereafter.
 Of note, a more general mathematical description of the mutation-selection framework recruiting tools from statistical physics can be found in \citet{Sella2005} and \citet{Mustonen2009}.
 
 \begin{figure}[H]
@@ -261,7 +261,7 @@ Of note, a more general mathematical description of the mutation-selection frame
     \caption[Mutation-selection point substitutions]{
     Mutation-selection point \glspl{substitution} models.
     The trajectory of \glspl{allele} inside a population is collapsed into a single point \gls{substitution} process.
-    This approximation is valid under low mutation rate such that a mutation originate uniquely whenever the gene is monomorphic (with a single allele).}
+    This approximation is valid under low mutation rates such that a mutation originates uniquely whenever the gene is monomorphic (with a single allele).}
     \label{fig:point-process}
 \end{figure}
 
@@ -271,29 +271,29 @@ Of note, a more general mathematical description of the mutation-selection frame
 Mutation-selection probabilistic models are usually Markovian with respect to time, such that the next \gls{substitution} event depends on the current representative sequence but not on earlier sequences visited in the history of a lineage.
 This continuous-time Markovian process is valid if the mutation rate is sufficiently low, such that the event of a new mutation reaching fixation is completed before the next one occurs.
 Since the rate of \gls{substitution} is equal to $u$ (per generation) and that each \gls{allele} ultimately reaching fixation is segregating for an average of $4 \Ne$ generations~\citep{Kimura1969}, this assumption is broadly applicable whenever the product of population size and mutation rate per generation for the sequence is lower than $1$ ($4 \Ne u \ll 1$).
-More strictly, the model would require not only that new mutations reaching fixation do so before the next \gls{substitution} occurs, but before any mutation occurs, even the one that ultimately become extinct.
+More strictly, the model would require not only that new mutations reaching fixation do so before the next \gls{substitution} occurs, but before any mutation occurs, even the ones that ultimately become extinct.
 Since at each generation during the process an average of $2\Ne$ of mutations are produced, the point \gls{substitution} is valid under the condition that $8\Ne^2 u \ll 1$.
 In practice, the assumptions that $4 \Ne u \ll 1$ is a sufficient condition for the process to be well approximated.
 Throughout this development, it is important to note that $u$ is the mutation rate for the whole sequence under consideration.
 
-For large sequences this approximation is usually not valid, and the sequence is then decomposed into each individual sites, forming a collection of independently evolving continuous-time \glspl{mc}.
+For large sequences this approximation is usually not valid, and the sequence is then decomposed into each individual site, forming a collection of independently evolving continuous-time \glspl{mc}.
 For such a decomposition to be valid, these models have to assume free \gls{recombination} between sites.
-The mutation rate $u$ in the condition then refers to the mutation rate for each independent site, rather than the total mutation rate over the collection as a whole.
-For example, \citet{Halpern1998} construct a model for the evolution of coding sequences where each \gls{codon} site is modeled as an independent \gls{mc}.
+The mutation rate $u$ in this condition then refers to the mutation rate for each independent site, rather than the total mutation rate over the collection as a whole.
+For example, \citet{Halpern1998} constructed a model for the evolution of coding sequences where each \gls{codon} site is modeled as an independent \gls{mc}.
 
 \subsection{Substitution rate}
 The continuous-time \gls{mc} is defined by the instantaneous rate at which transitions occur between pairs of states.
-Given the current state of the process is \gls{allele} $A$, the rate of {transition} to other states can be derived using the population-genetic equations introduced above.
-At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutant have a probability $P_{\mathrm{fix}}$ to result in a \gls{substitution}.
+Given the current state of \gls{allele} $A$, the rate of {transition} to other states can be derived using the population-genetic equations introduced above.
+At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutants has a probability $P_{\mathrm{fix}}$ to result in a \gls{substitution}.
 Altogether, the instantaneous rate of \gls{substitution} from \gls{allele} $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $P_{\mathrm{fix}}(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
 \begin{align}
     Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(s_{A \to B}, \Ne)
 \end{align}
-It is important to note that the \gls{substitution} rate and the mutation rate are in the same unit, such that this equation is valid whether the rate is measured either in unit of chronological time or per generation (or in branch length, which will matter later on).
-As a convention, in what follows, mutation rate is denoted $u$ when measured in unit of generation, and denoted $\mu$ when measured in unit of time.
-As a consequence, $Q$ is measured in unit of time in this section.
+It is important to note that the \gls{substitution} rate and the mutation rate are in the same units, such that this equation is valid whether the rate is measured either in units of chronological time or per generation (or in branch length, which will matter later on).
+As a convention, in what follows, mutation rate is denoted $u$ when measured in units of generation, and denoted $\mu$ when measured in units of time.
+As a consequence, $Q$ is measured in units of time in this section.
 
-In the case of \gls{neutral} mutations, the probability of fixation is independent of the original and target sequence, and equal $1/2 \Ne$.
+In the case of \gls{neutral} mutations, the probability of fixation is independent of the original and target sequence, and equals $1/2 \Ne$.
 As a consequence, the \gls{substitution} rate $Q_{A \to B}$ simplifies to:
 \begin{align}
     Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(0, \Ne) \\
@@ -313,14 +313,14 @@ If the difference of log-fitness tends to $0$, the \gls{substitution} rate is eq
     & =  \mu_{A \to B}
 \end{align}
 
-Taken together, the {transition} rates which generates the \gls{substitution} history and ultimately the inter-specific diversity is parameterized solely by mutation, selection and drift.
-Consequently, from a particular history of \glspl{substitution}, one can theoretically estimate the parameter of selection, mutation and drift, although it is important to keep in mind that selection and drift are confounded.
+Taken together, the {transition} rates which generate the \gls{substitution} history and ultimately the inter-specific diversity is parameterized solely by mutation, selection and drift.
+Consequently, from a particular history of \glspl{substitution}, one can theoretically estimate the parameters of selection, mutation and drift, although it is important to keep in mind that selection and drift are confounded.
 
 \subsection{Reversibility of the process}
-The continuous-time \gls{mc} as so far been defined for $2$ \glspl{allele} but can be generalized to any number of \glspl{allele}, when the number of \glspl{allele} must be discrete and is must be possible to undergo {transition} from any \gls{allele} to any other possible \gls{allele}, possibly in several \glspl{substitution}.
-In this configuration, the {transition} rates between all possible pairs of \glspl{allele} is defined by equation~\ref{eq:sub-transion-rates}, and equal to $0$ whenever single step {transitions} are not possible.
+The continuous-time \gls{mc} has so far been defined for $2$ \glspl{allele} but can be generalized to any number of \glspl{allele}, when the number of \glspl{allele} is discrete and when {transition} from any \gls{allele} to any other \gls{allele} is possible in one or more \glspl{substitution}.
+In this configuration, the {transition} rates between all possible pairs of \glspl{allele} is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step {transitions} are not possible.
 Because any state is ultimately connected to any other state, the continuous-time \gls{mc} is irreducible.
-Moreover, this \gls{substitution} process is positive recurrent and aperiodic since any strictly positive {transition} rate is matched by a stricly positive {transition} for the reverse \gls{substitution}.
+Moreover, this \gls{substitution} process is positive recurrent and aperiodic since any strictly positive {transition} rate is matched by a strictly positive {transition} for the reverse \gls{substitution}.
 More precisely, the \gls{substitution} rate between two \glspl{allele} is null only if the underlying mutation rate is null, in which case the {transition} rate for the reverse mutation is also null, hence the {transition} rate for the reverse \gls{substitution} is also null.
 
 Theoretically, for an irreducible, positive recurrent and aperiodic continuous-time \gls{mc}, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
@@ -349,7 +349,7 @@ As an example for a \gls{mc} composed of $3$ \glspl{allele} ($A$, $B$ and $C$) t
         (A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
     \end{tikzpicture}
     \caption[Kolmogorov's criterion]{
-    The continuous-time \gls{mc} is reversible if the process fulfills Kolmogorov's criterion, such that the product of {transition} rate for a closed loop is equal whether traversed in one sens (blue arrows) or the other (red arrows).}
+    The continuous-time \gls{mc} is reversible if the process fulfills Kolmogorov's criterion, such that the product of the {transition} rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
     \label{fig:reversible-circuit}%
 \end{figure}
 
@@ -367,21 +367,21 @@ As a result, Kolmogorov's criterion for the \gls{substitution} process is satisf
 \begin{equation}
     \mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}.
 \end{equation}
-This example can be generalized for any close loop, such that the reversibility of the \gls{substitution} process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
+This example can be generalized for any closed loop, such that the reversibility of the \gls{substitution} process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
 
 \subsection{Stationary distribution}
 
 A realization of the \gls{mc} for a long period of time results in a given proportion of the time for which the process is fixed for a specific \gls{allele}, where this proportion depends of the \gls{allele} fitnesses, the mutational process and $\Ne$.
 Because the continuous-time \gls{mc} is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\bm{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in \gls{allele} $A$ after the \gls{mc} has run for an infinite amount of time.
 
-Moreover, under the condition that the \gls{mc} is time-reversible, the detailed balanced for the stationary distribution is satisfied:
+Moreover, under the condition that the \gls{mc} is time-reversible, the detailed balance for the stationary distribution is satisfied:
 \begin{align}
     \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{Q_{B \to A}}{Q_{A \to B}} \\
     & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{F_{A}-F_{B}}{ 1 - \e^{F_{B}-F_{B}}}  \dfrac{1 - \e^{F_{A} - F_{B}} }{F_{B} - F_{A}}\\
     & = - \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{ \e^{F_{A}}(\e^{-F_{A}} - \e^{- F_{B}}) }{ \e^{F_{B}}(\e^{-F_{B}} - \e^{- F_{A}})}  \\
     & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}} \dfrac{\e^{F_{A}}}{\e^{F_{B}}} \\
 \end{align}
-Under the assumption that the mutational process is also reversible, the detailed balanced for the stationary distribution of the mutation process ($\bm{\sigma}$) is satisfied:
+Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\bm{\sigma}$) is satisfied:
 \begin{align}
     \dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}}
 \end{align}
@@ -397,14 +397,14 @@ By analogy with thermodynamic systems, the evolutionary system thus reaches a Bo
 \label{subsec:mean-scaled-fixation-probability}
 
 Occurrence probabilities given by the stationary distribution allows one to calculate all observable quantities of interest, such as the mean fitness, or the mean mutation and \gls{substitution} rates, using standard probability theory.
-One quantity of interest is the ratio of the mean \gls{substitution} rate over the mean mutation rate, called $ \nu $:
+One quantity of interest is the ratio of the mean \gls{substitution} rate over the mean mutation rate, called $ \avgpfix $:
 \begin{align}
-    \nu & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
+    \avgpfix & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
     \label{eq:relative-sub-rate} \\
     & = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
 \end{align}
 where the notation $\langle \cdot \rangle$ denotes the statistical average.
-In other words, $ \nu $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
+In other words, $ \avgpfix $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
 
 Moreover, the mean probability fixation, scaled by $2 \Ne$ can be approximated as:
 \begin{align}
@@ -413,14 +413,14 @@ Moreover, the mean probability fixation, scaled by $2 \Ne$ can be approximated a
     & = \left\langle \dfrac{ Q }{\mu} \right\rangle, \\
     & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}.
 \end{align}
-Because of this relation, $\nu$ can thus be seen as an approximation of the mean scaled probability of fixation of mutations.
+Because of this relation, $\avgpfix$ can thus be seen as an approximation of the mean scaled probability of fixation of mutations.
 
-As a result of this definition, $\nu=1$ for genes or sites under \gls{neutral} evolution.
+As a result of this definition, $\avgpfix=1$ for genes or sites under \gls{neutral} evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences.
-First, $\nu>1$ is interpreted as a signal of adaptive recurrent evolution, where $P_{\mathrm{fix}} > 1/2 \Ne$ on average.
-On the other hand, $\nu<1$ is a signal of underlying purifying selection, such that the sequence is constrained.
-Of note, $ \nu > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
-Moreover, under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process at equilibrium results in $\nu \leq 1$ \footnote{However, I haven't found a proof for this claim in the bibliography.}.
+First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, where $P_{\mathrm{fix}} > 1/2 \Ne$ on average.
+On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection, such that the sequence is constrained.
+Of note, $ \avgpfix > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
+Moreover, under the assumption of a static fitness landscape, a mutation-selection point \gls{substitution} process at equilibrium results in $\avgpfix \leq 1$ \footnote{However, I haven't found a proof for this claim in the bibliography.}.
 
 \begin{table}[H]
     \centering
@@ -434,7 +434,7 @@ Moreover, under the assumption of a static fitness landscape, a mutation-selecti
         \hline \Gls{substitution} rate per time & $Q$ & $[10^{-11}, 10^{-8}]$ per site per year \\
         \hline Equilibrium frequency & $\pi$ & $[0, 1]$ \\
         \hline Equilibrium frequency under mutation & $\sigma$ & $[0, 1]$ \\
-        \hline Mean scaled fixation probability & $\nu$ & $[0, 1]$ for purifying selection \\
+        \hline Mean scaled fixation probability & $\avgpfix$ & $[0, 1]$ for purifying selection \\
         \hline
     \end{tabu}}
     \caption[Parameters of mutation-selection processes]{Parameter of mutation-selection processes}
@@ -449,43 +449,43 @@ This effort is made in the aim of giving another view of the mutation-selection 
 Such attempts requires to boil down the mutation-selection mechanism into its core components, while at the same time rephrasing the description using lexicography outside of population-genetics such as to open new perceiving angles.
 
 At the bottom, mutation is a process creating diversity, changing and moving the current viable state to a novel and unknown position, fundamentally allowing exploration of the state space.
-On the other hand, selection is the criteria on which a new state is deemed a disrupting innovation or a nonviable alteration, and allow to determine which changes to exploit and which to filter out and discard based on its fitness.
-Fundamentally, mutation creates diversity and selection reduce this diversity by selecting the fittest ones.
-Finally, drift arbitrate between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
+On the other hand, selection is the criteria on which a new state is deemed a disrupting innovation or a nonviable alteration, and allows to determine which changes to exploit and which to filter out and discard based on its fitness.
+Fundamentally, mutation creates diversity and selection reduces this diversity by selecting the fittest ones.
+Finally, drift arbitrates between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
 
 I argue that this creation and reduction process is found at the core of several research disciplines, while the link between them is scarcely made~\citep{Baeck1994, Eiben1998}.
 
-\subsection{Metropolis-Hasting sampling}
+\subsection{Metropolis-Hastings sampling}
 Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
-However, the Metropolis-Hasting procedure based on a Monte Carlo \gls{mc} can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
+However, the Metropolis-Hastings procedure based on a Monte Carlo \gls{mc} can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
 This stochastic procedure which is based on three steps bears many similarities with the mutation-selection process:
 \begin{itemize}
-    \item Generate a stochastic candidate from the current state, analogous to the mutation.
+    \item Generate a stochastic candidate from the current state, analogous to mutation.
     \item Calculate the acceptance ratio as the ratio of the two densities, analogous to the selection coefficient of the mutated state.
     \item Stochastic acceptance or rejection based on the acceptance ratio, a process analogous to drift.
 \end{itemize}
-Inherently, Metropolis-Hasting procedure is based on creating and subsequently reducing diversity, which allows to obtain a random sequence of samples from any distribution with a straightforward recipe, and is a critical tools in statistic and statistical physics.
+Inherently, the Metropolis-Hastings procedure is based on creating and subsequently reducing diversity, which allows to obtain a random sequence of samples from any distribution with a straightforward recipe, and is a critical tool in statistics and statistical physics.
 
 \subsection{The exploration-exploitation dilemma}
-Many mathematical, engineering and day-life problems are not about sampling a state space, but rather finding the optimal and best state given a criteria or a function to maximize.
+Many mathematical, engineering and daily-life problems are not about sampling a state space, but rather about finding the optimal and best state given the criteria or a function to maximize.
 Naturally, we would prefer deterministic (strictly reproducible) rather than stochastic optimizing strategies to search for an optimal state.
-Unfortunately, whenever the state space is too large, often due to the curse of dimensionality, a greedy or heuristic search of an optimal state can performs atrociously~\citep{Bellman1966}.
-In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithm~\citep{Russell2010,Vikhar2017}.
+Unfortunately, whenever the state space is too large, often due to the curse of dimensionality, a greedy or heuristic search of an optimal state can perform atrociously~\citep{Bellman1966}.
+In high dimensional space, stochastic optimization tools have been deemed very valuable, such as stochastic gradient decent or so called evolutionary algorithms~\citep{Russell2010,Vikhar2017}.
 Inherently, they are based on two processes, one is stochastically creating diversity and exploring the state space, while the other is filtering the explored states and thus reducing the diversity.
 
 In the constrained case of a finite number of time or attempts to find the best outcome overall, the problem is best described by the multi-armed bandit problem.
 The name comes from imagining a gambler at a row of slot machines (sometimes known as one-armed bandits), where each slot machine provides a random reward from a probability distribution specific to that machine. The player has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine, such as to maximize the sum of rewards earned through a sequence of trials.
 The gambler faces a dilemma at each trial, either reducing his regret by exploiting the best arm, or gaining information through exploration of other arms.
-The best strategy to solved this dilemma can be mathematically derived in numerous cases, and encompass a mixing strategies with a defined ratio of exploration and exploitation~\citep{Auer2002,Kocsis2006,Furnkranz2006}.
-This problem is far from be only theoretical, and has be used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in search of the most efficient treatment in clinical trials~\citep{Berger-Tal2014, March}.
-An other application of the exploration-exploitation dilemma is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017, and out-compete Ke Jie, the world n°1 ranked player at the time~\citep{Silver2017, Silver2018}.
-AlphaGo has often been publicized and hyped in various media outlets that this feat was possible due to machine learning, more specifically due to convolutionnal neural networks.
-However, it is more scarcely mentioned that AlphaGo neural network is combined with an exploration-exploitation algorithm, or more specifically Monte Carlo tree search.
-In practice, the convolutionnal neural network is used as a criteria to measure the advantage of a board configuration\footnote{Convolutionnal neural networks also use a stochastic gradient descend to reach convergence, inherently leveraging stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and path probed and trimmed is done via an exploration-exploitation procedure.
+The best strategy to solve this dilemma can be mathematically derived in numerous cases, and encompasses mixing strategies with a defined ratio of exploration and exploitation~\citep{Auer2002,Kocsis2006,Furnkranz2006}.
+This problem is far from being only theoretical, and has been used to explain a multitude of phenomena, such as the movement of animals in novel landscapes, the most efficient resource allocation for a start-up company, the effects of age on knowledge acquisition in humans, and in the search of the most efficient treatment in clinical trials~\citep{Berger-Tal2014, March}.
+Another application of the exploration-exploitation dilemma is AlphaGo, the first computational program mastering the board game go at the professional 9-dan level in 2017, which out-competed Ke Jie, the world n°1 ranked player at the time~\citep{Silver2017, Silver2018}.
+AlphaGo has often been publicized and hyped in various media outlets stating that this feat was possible due to machine learning, more specifically due to convolutional neural networks.
+However, it is more scarcely mentioned that the AlphaGo neural network is combined with an exploration-exploitation algorithm, or more specifically a Monte Carlo tree search.
+In practice, the convolutional neural network is used as a criterion to measure the advantage of a board configuration\footnote{Convolutional neural networks also use a stochastic gradient descend to reach convergence, inherently leveraging the stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and paths probed and trimmed are done via an exploration-exploitation procedure.
 
 
-Altogether, exploration and exploitation, creation and reduction, mutation and selection, are different names that encompass the inherently same process efficiently sampling and optimizing whenever the state is too large to be traversed in a finite amount of time.
-I argue that scientific research endeavor is also a exploration-exploitation dilemma, which is arguably externally pressured to pursue exploitation, through funding of impactful research and a \textit{publish-or-perish} systemic culture in early career stage.
+Altogether, exploration and exploitation, creation and reduction, mutation and selection, are different names that encompass the inherently same process: efficiently sampling and optimizing whenever the state space is too large to be traversed in a finite amount of time.
+I argue that scientific research endeavor is also an exploration-exploitation dilemma, which is arguably externally pressured to pursue exploitation, through funding of impactful research and a \textit{publish-or-perish} systemic culture in the early career stage.
 
 \begin{table}[H]
     \centering
@@ -495,7 +495,7 @@ I argue that scientific research endeavor is also a exploration-exploitation dil
         \textbf{Mutation} & \textbf{Selection} & \textbf{Drift} \\ \hline
         \hline Exploration & Exploitation & Trade-off \\
         \hline Creation & Reduction & Arbitration \\
-        \hline Candidate generation & Acceptance & Hasting ratio \\
+        \hline Candidate generation & Acceptance & Hastings ratio \\
         \hline
     \end{tabu}}
     \caption[Mutation, selection and drift analogy]{
@@ -505,18 +505,18 @@ I argue that scientific research endeavor is also a exploration-exploitation dil
 \end{table}
 
 % As a side note, it appears that drift and selection are actually confounded, they are both on the side of exploitation, not on exploration.
-As a side note, mutation is a necessary process of evolution, while sexe is not mandatory but increase the diversity of genomes between generations.
-Arguably, studying evolution while disregarding mutation is a sufficient approximation whenever mutation rate and number of generations is low, which is developed thoroughly through the whole field of quantitative genetics.
+As a side note, mutation is a necessary process of evolution, while sex is not mandatory but increases the diversity of genomes between generations.
+Arguably, studying evolution while disregarding mutation is a sufficient approximation whenever the mutation rate and the number of generations are low, which is developed thoroughly through the whole field of quantitative genetics.
 Sex and mutation are both generating new states and are part of the more general exploration facet.
 This explains why sex is favored in fluctuating environments.
 
-I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there as been many crossover between economics and evolution in the context of game theory.\footnote{Game theory had originally been developed to model economic actors behavior and strategies~\citep{VonNeumann1947}, while latter being emerging as the framework of evolutionary dynamics, which explains the emergence of altruistic behaviours in Darwinian evolution~\citep{Smith1973, Smith1982, Nowak2006}.}.
+I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there has been many crossovers between economics and evolution in the context of game theory.\footnote{Game theory was originally developed to model economic actors' behavior and strategies~\citep{VonNeumann1947}. It was later adopted within the framework of evolutionary dynamics, helping to explain, for example, the emergence of altruistic behavior in Darwinian evolution~\citep{Smith1973, Smith1982, Nowak2006}.}.
 
-As an example of such insight from exploration-exploitation dilemma is on the understanding of relationship between mutation rate and chromosome size.
-It has been observed that organism with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant~\citep{Drake1991}.
-An explanation for this pervasive negative correlation between mutation rate and genome size invoke the drift barrier hypothesis, where the correlation is inherently due to an underlying changes of \gls{drift}~\citep{Lynch2016a}.
-The drift barrier hypothesis posits the selection operates to minimize the mutation rate, with the efficiency of such improvement eventually being overcome by random \gls{drift}, such that population with higher population size have smaller mutation rate.
-On the other hand, higher population size induces stronger purifying selection which reduce genome size by expelling transposable elements.
-Altogether, both high mutation rate and smaller genome are consequences of higher population size.
-An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offsprings must balance the trade-off between exploration of new genotype and the reliable transmission of the current one.
-The genetic difference between parents and offsprings is the product of mutation rate and genome size, such that individuals whom are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations~\citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
+As an example of such insight from the exploration-exploitation dilemma is the understanding of the relationship between mutation rate and chromosome size.
+It has been observed that organisms with a low mutation rate (per site per generation) tend also to have a long chromosome size, such that the product of genome size and mutation rate is constant~\citep{Drake1991}.
+An explanation for this pervasive negative correlation between mutation rate and genome size invokes the drift barrier hypothesis, where the correlation is inherently due to underlying changes in \gls{drift}~\citep{Lynch2016a}.
+The drift barrier hypothesis posits that selection operates to minimize the mutation rate, with the efficiency of such improvement eventually being overcome by random \gls{drift}, such that populations with higher population size have smaller mutation rates.
+On the other hand, a higher population size induces stronger purifying selection which reduces genome size by expelling transposable elements.
+Altogether, both high mutation rate and a smaller genome are consequences of a higher population size.
+An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offspring must balance the trade-off between exploration of new genotypes and the reliable transmission of the current one.
+The genetic difference between parents and offspring is the product of mutation rate and genome size, such that individuals who are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations~\citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
