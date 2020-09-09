@@ -106,7 +106,7 @@ Technically, the precision matrix (invert of covariance matrix) is distributed a
 The work presented here implemented the branch-heterogeneity in a Bayesian context, as in \textit{CoEvol}~\citep{Lartillot2011}.
 Conversely, amino-acid fitness profiles $\Fit$ are assumed to vary across sites, but are considered constant along the tree.
 The work presented here relies on the Bayesian non-parametric random-effect approach, developed to estimate site-heterogeneous amino-acid fitnesses as in \textit{PhyloBayes}~\citep{Rodrigue2010}.
-Our Bayesian implementation, written in C++ in the software \textit{BayesCode}, is publicly available at \url{https://github.com/bayesiancook/bayescode/tree/chronogram}.
+Our Bayesian implementation, written in C++ in the software \textit{BayesCode}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
 
 The phylogenetic \gls{codon} model presented here makes several additional assumptions on the evolutionary processes generating the observed alignment.
 First, the species tree topology is supposed to be known, and each gene should match the species tree, meaning genes are strict orthologs (no paralogs and no horizontal transfers).
@@ -186,7 +186,7 @@ During a simulation, at a particular \gls{codon} site, the fitness landscape is 
 Our inference framework could recover the simulated branch length (figure~\ref{fig:simulations}, panel C), but hardly retrieves the simulated $\Ne$ in the context of site-dependent epistasis (figure~\ref{fig:simulations}, panel F).
 This effect can however be explained by the predicted independence of $\dnds$ to changes in $\Ne$ in this specific model of protein stability~\citep{Goldstein2013}.
 Such independence between $\dnds$ and $\Ne$ is due to the structure of the fitness landscape, where an decrease in $\Ne$ leads to a sequence further to the optimal protein where the curvature of the fitness landscape is steeper, resulting in a higher selection coefficient exactly compensating the decrease in $\Ne$, and the scaled selection coefficient is (almost) constant.
-Additionally, under a Fisher geometric landscape developed in supplementary materials (section~\ref{subsec:fisher-geometric-landscape}) and also incorporating epistasis, branch length is reliably estimates while $\Ne$ is also more difficult to estimate.
+Additionally, under a Fisher geometric landscape developed in supplementary materials (section~\ref{subsec:fisher-geometric-landscape}) and also incorporating epistasis, branch length is reliably estimated while $\Ne$ is also more difficult to estimate.
 
 \subsection{Empirical experiments}
 \label{sec:ResultsEmpirical}
@@ -232,9 +232,10 @@ To assess the reproducibility of our inference, we analyzed a concatenated rando
 Overall the estimation of $\Ne$ is reproducible for a random subset of CDS, as depicted in figure~\ref{fig:mammals_repeatability}.
 
 We performed other empirical experiments using a group of isopod species that have made multiple independent transitions to subterranean environments.
-Protein coding DNA sequences alignment and life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphtalmia, or ocular) are available for these species~\citep{Scalier2019}.
-Estimation of $\Ne$ reveals a correlation between life-history traits and $\Ne$, presented section \ref{sec:isopods} in supplementary materials.
-However these estimation are sensitive to phylogenetic inertia since not obtained under a comparative, although the phylogenetic inertia.
+Protein coding DNA sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphtalmia, or ocular) are available for these species~\citep{Scalier2019}.
+Estimation of $\Ne$ reveals a correlation between qualitative life-history traits and $\Ne$, presented section~\ref{sec:empirical-data-in-isopods} in supplementary materials.
+However, these correlation are sensitive to phylogenetic inertia since multivariate log-Brownian does not accommodate qualitative traits, although this particular dataset is composed of surface and subterranean species reducing biases.
+Finally, our empirical framework was also applied in drosophila and primates (see~\ref{sec:empirical-data-in-primates} and~\ref{sec:empirical-data-in-drosophila} in supplementary materials).
 
 \begin{table}[htbp]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
@@ -255,19 +256,23 @@ However these estimation are sensitive to phylogenetic inertia since not obtaine
 Mechanistic phylogenetic \gls{codon} models explicitly define the \gls{substitution} rates as function of the mutation rate, selection and genetic drift.
 Applied on an alignment of \acrshort{DNA} coding sequence, the mechanistic model can estimate amino-acid fitness landscapes along the \acrshort{DNA} sequence.
 On the other hand, molecular comparative framework reconstruct the joint evolution of life-history, molecular and population-genetics traits along the phylogeny, intrinsically including phylogenetic inertia.
-Combined together, the resulting framework can reconstruct site-heterogeneous amino-acid fitness landscapes, also the age of internal nodes, and finally reconstruct branch-heterogeneous life-history traits, $\mu$ and $\Ne$, with their correlation.
+Combined together, the resulting framework can reconstruct site-heterogeneous amino-acid fitness landscapes, estimates the age of internal nodes, and finally reconstitute branch-heterogeneous life-history traits, $\mu$ and $\Ne$, with their correlation.
 Testing the method against simulated alignments suggests the signal is strong enough in protein coding \acrshort{DNA} alignment to infer selection at the site level, and long-term changes in $\Ne$ and $\mu$ using a phylogenetic approach.
 In placental mammals, $\Ne$ correlates negatively with longevity, weight and maturity, and positively with $\mu$.
 Our observations suggest that the empirical signal is strong enough such that we can infer the directional trends in changes.
 
 % Longvariance in Ne 
-If the trend is in right direction, the magnitude of the change is greatly inferior to independent estimates.
-Different mechanism not accounted for by the model could explain such a low variance of $\Ne$ inferred.
+If the trend is in right direction, the magnitude of the change is greatly inferior to the expected variation observed in mammals \citep{Galtier2016}.
+Different mechanism not accounted for by the model could explain such a low variation of reconstructed $\Ne$.
+
 First, genetic hitch-hiking, Hill-Robertson interference, and short-term fluctuations of $\Ne$ could generate this effect.
 However, inference made on alignments simulated by Wright-Fisher model accounting for linkage tends to show that this effect is not strong enough in the regimes explored.
+
 Second, $\mu$ and $\Ne$ could also be fluctuating along the genome.
 This assumption needs to be tested, though we expect that relaxing this assumption would not change drastically the magnitude of inferred $\Ne$ since some of this fluctuation is absorbed by site-specific fitness profiles.
+
 Third, the \acrshort{DNA} sequences could also be misaligned in some sites, however we observe the same magnitude of inferred $\Ne$ for different set of genes indicating this might not be the primary reason.
+
 Fourth, the genes selected in our alignments could be under adaptive evolution, or their function could have changed.
 More precisely, the fitness profile at each site could change with time, either due to Red-Queen dynamics or due to epistasis because amino-acid \glspl{substitution} occurred at other sites.
 Simulation of \acrshort{DNA} coding sequences under an epistatic landscape seemingly points to epistasis being the principal factor to be investigated, since $\Ne$ could not be appropriately inferred in such a case.
@@ -290,7 +295,7 @@ By increasing the number of categories per gene, the magnitude of inferred $\Ne$
 % Perspective: increase power
 Mutation-selection models originated with the aim of increasing the power to detect adaptive evolution, by modeling explicitly the confounding effect of purifying selection.
 However, by assuming constant $\Ne$ along a phylogeny, the statistical power to detect sites under adaptive evolution is not optimal.
-Fitness profiles estimated are averaged along the phylogeny and are more seemingly \gls{neutral} than our estimated profiles under our present framework (see table \ref{tab:table-entropy-aa-mutselne} in supplementary materials).
+Fitness profiles estimated are averaged along the phylogeny and are more seemingly \gls{neutral} than our estimated profiles under our present framework (see section~\ref{subsec:fitness-profile-entropy} and table~\ref{tab:table-entropy-aa-mutselne} in supplementary materials).
 Even though our method requires more computing resources to estimate fitness profiles, it provides a better null model of purifying selection to test against the presence of adaptive evolution.
 
 % Comparison with other methods
@@ -581,7 +586,7 @@ which are the matrices necessary to compute the \gls{likelihood} of the data ($\
 
 \subsection{Bayesian implementation}
 \label{sec:Bayesian}
-Monte-Carlo Markov-Chain (\acrshort{MCMC}) are run for 4000 points and the first 1000 points are discarded as burn-in, the convergence is then assessed as shown supplementary materials (section \label{subsec:chain-convergence}), as both site-specific fitness and branch $\Ne$ have the same posterior mean.
+Monte-Carlo Markov-Chain (\acrshort{MCMC}) are run for 4000 points and the first 1000 points are discarded as burn-in, the convergence is then assessed (see section~\ref{subsec:chain-convergence} in supplementary materials), as both site-specific fitness and branch $\Ne$ have the same posterior mean.
 Most phylogenetic MCMC samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate the pruning-based \gls{likelihood} which is most often the limiting step of the \acrshort{MCMC}.
 An alternative, which is used here, is to do the \acrshort{MCMC} conditionally on the detailed \gls{substitution} history $\subhistory$, thus doing the \acrshort{MCMC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based \gls{likelihood} with the \gls{prior} over model parameters.
 

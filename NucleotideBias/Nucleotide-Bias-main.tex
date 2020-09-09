@@ -162,11 +162,11 @@ This effect is less visible whenever selection is more stringent (decreasing $\a
 
 Because the sequences are not independent but related together by a specie tree, entropy obtained from the observed alignment does not converges to entropy of the \gls{substitution} process.
 Moreover, this measure of stringency of selection does not relate directly to the fixation probability of proposed mutations.
-Instead, the mean scaled fixation probability of non-synonymous mutations ($\nu$), which measures the rate at which mutations arise and go to fixation relatively to neutral mutation, is an aggregate parameter measuring the overall strength of selection throughout the process.
-Moreover, $\nu$ can be quantified from the \glspl{substitution} recorded along the simulation (see section~\ref{subsec:fixation-bias}).
-As expected, $\nu$ depends strongly on the stringency of selection ($\alpha$), but however depends weakly on the mutational bias ($\lambda$), as depicted in left panel of figure~\ref{fig-mut-bias:omega}).
-Mean scaled fixation probability ($\nu$) concerns all non-synonymous mutations, but we can consider only the subset of non-synonymous mutations from weak nucleotides (A or T) to strong nucleotides (G or C), called $\nu_{AT \rightarrow GC}$.
-With increased mutational bias toward AT ($\alpha$), the mean scaled fixation probability toward GC ($\nu_{AT \rightarrow GC}$) increases in response, as seen in right panel of figure~\ref{fig-mut-bias:omega-WS-SW}.
+Instead, the mean scaled fixation probability of non-synonymous mutations ($\avgpfix$), which measures the rate at which mutations arise and go to fixation relatively to neutral mutation, is an aggregate parameter measuring the overall strength of selection throughout the process.
+Moreover, $\avgpfix$ can be quantified from the \glspl{substitution} recorded along the simulation (see section~\ref{subsec:fixation-bias}).
+As expected, $\avgpfix$ depends strongly on the stringency of selection ($\alpha$), but however depends weakly on the mutational bias ($\lambda$), as depicted in left panel of figure~\ref{fig-mut-bias:omega}).
+Mean scaled fixation probability ($\avgpfix$) concerns all non-synonymous mutations, but we can consider only the subset of non-synonymous mutations from weak nucleotides (A or T) to strong nucleotides (G or C), called $\avgpfix_{AT \rightarrow GC}$.
+With increased mutational bias toward AT ($\alpha$), the mean scaled fixation probability toward GC ($\avgpfix_{AT \rightarrow GC}$) increases in response, as seen in right panel of figure~\ref{fig-mut-bias:omega-WS-SW}.
 The effect is stronger whenever the stringency of selection increases ($\alpha$ decreases).
 In other words, selection is opposed to mutational bias, which had pushed sites toward less fit amino-acids.
 
@@ -174,11 +174,11 @@ In other words, selection is opposed to mutational bias, which had pushed sites 
     \centering
     \includegraphics[width=\textwidth] {omega-AT-to-GC}
     \caption[Mean scaled fixation probability as a function of the parameters]{
-    Mean scaled fixation probability ($\nu$) in vertical axis as a function of mutational bias ($\lambda$) in horizontal axis, for different stringency of selection ($\alpha$) in colored solid lines.
-    In right panel, $\nu$ of all non-synonymous mutations is always lower than $1$ for simulation under a fixed fitness landscape~\citep{Spielman2015}.
-    Expectedly, $\nu$ decrease with the strength of selection (decreasing $\alpha$).
-    However, $\nu$ is relatively unaffected by the strength of the mutational bias.
-    In right panel, the mean scaled fixation probability of non-synonymous mutations restricted to mutations from weak nucleotides (AT) to strong nucleotides (GC), $\nu_{AT \rightarrow GC}$ is represented in vertical axis.
+    Mean scaled fixation probability ($\avgpfix$) in vertical axis as a function of mutational bias ($\lambda$) in horizontal axis, for different stringency of selection ($\alpha$) in colored solid lines.
+    In right panel, $\avgpfix$ of all non-synonymous mutations is always lower than $1$ for simulation under a fixed fitness landscape~\citep{Spielman2015}.
+    Expectedly, $\avgpfix$ decrease with the strength of selection (decreasing $\alpha$).
+    However, $\avgpfix$ is relatively unaffected by the strength of the mutational bias.
+    In right panel, the mean scaled fixation probability of non-synonymous mutations restricted to mutations from weak nucleotides (AT) to strong nucleotides (GC), $\avgpfix_{AT \rightarrow GC}$ is represented in vertical axis.
     Mutation biased from GC to AT leads to a mean scaled fixation probability in the opposite direction.
     More generally, mutation bias is balanced by selection, even more strongly that the stringency of selection is strong.
     This is confounding factor with gBGC.}
@@ -187,7 +187,7 @@ In other words, selection is opposed to mutational bias, which had pushed sites 
 
 \subsection{Parameter inference on simulated data}
 
-From an alignment protein coding \acrshort{DNA} sequences, without knowing the specific history of substitutions, models of inference can estimate the mutational bias ($\lambda$) and mean scaled fixation probability ($\nu$).
+From an alignment protein coding \acrshort{DNA} sequences, without knowing the specific history of substitutions, models of inference can estimate the mutational bias ($\lambda$) and mean scaled fixation probability ($\avgpfix$).
 Once estimated from the alignment, the biases can be compared to the known value used during the simulation (see figure~\ref{fig-mut-bias:pipeline}).
 Two models of inference are proposed, the first is based on Muse \& Gaut formalism, and the second based on a tensor of mean scaled fixation probabilities.
 
@@ -219,7 +219,7 @@ Phenomenological \gls{codon} models are not designed to tease out mutational bia
 From the maximum \gls{likelihood} estimates of the $4 \times 4$ GTR mutation matrix ($\widehat{\Mutmatrix}$), we can estimate of the mutational bias toward $\mathrm{AT}$ $\left({\widehat{\lambda}_{\text{MG}}} \right)$.
 As shown in left panel of figure \ref{fig-mut-bias:inference}, estimate of the mutational bias is halfway between observed bias of the alignment and the true value used during the simulation.
 As a result, this model can not reliably infer the mutational bias, and is doing a compromise between estimating the selection coefficients and mutational bias.
-We can also estimate the parameter ${\widehat{\omega}_{\text{MG}}}$, which is close to the underlying mean scaled fixation probability $\nu$ of the simulation, with an error rate of 1.8\%.
+We can also estimate the parameter ${\widehat{\omega}_{\text{MG}}}$, which is close to the underlying mean scaled fixation probability $\avgpfix$ of the simulation, with an error rate of 1.8\%.
 
 \subsubsection{$\omega$ as a tensor: mean-field derivation}
 
@@ -227,7 +227,7 @@ Alternatively, gene-wide parameters of fixation should attempt to capture and ag
 As a result, projecting site-specific processes into a gene-wise process can be seen as a mean-field approximation, accounting for mean scaled fixation probability between amino-acids, even though done at the level of the gene.
 
 \begin{align}
-    \langle \nu \rangle_{\itoj} & \simeq \langle \nu_{\itoj} \rangle \\
+    \langle \avgpfix \rangle_{\itoj} & \simeq \langle \avgpfix_{\itoj} \rangle \\
     & = \dfrac{ \langle \pi_{\ci} 2\Ne P_{\mathrm{fix}}(\itoj) \rangle }{ \langle \pi_{\ci} \rangle } \\
     & = \dfrac{ \sum\limits_{\site}  \pi_{\ci}\dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \pi_{\ci} }
 \end{align}
@@ -413,11 +413,11 @@ The Shannon entropy can be averaged over all sites as:
     \langle \entropy \rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
 \end{equation}
 
-\subsection{Mean scaled fixation probability \texorpdfstring{$\nu$}{ν}}
+\subsection{Mean scaled fixation probability \texorpdfstring{$\avgpfix$}{φ}}
 \label{subsec:fixation-bias}
 The mean scaled fixation probability is:
 \begin{align}
-    \nu & = & = \dfrac{ \sum\limits_{B} Q_{A \to B}}{ \sum\limits_{B} \mu_{A \to B}}
+    \avgpfix & = & = \dfrac{ \sum\limits_{B} Q_{A \to B}}{ \sum\limits_{B} \mu_{A \to B}}
 \end{align}
 
 \subsection{Mean scaled fixation probability under the mean-field model}
