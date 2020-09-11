@@ -232,10 +232,10 @@ To assess the reproducibility of our inference, we analyzed a concatenated rando
 Overall the estimation of $\Ne$ is reproducible for a random subset of CDS, as depicted in figure~\ref{fig:mammals_repeatability}.
 
 We performed other empirical experiments using a group of isopod species that have made multiple independent transitions to subterranean environments.
-Protein coding DNA sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphtalmia, or ocular) are available for these species~\citep{Scalier2019}.
+Protein coding DNA sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphtalmia, or ocular) are available for these species~\citep{Saclier2018}.
 Estimation of $\Ne$ reveals a correlation between qualitative life-history traits and $\Ne$, presented section~\ref{sec:empirical-data-in-isopods} in supplementary materials.
 However, these correlation are sensitive to phylogenetic inertia since multivariate log-Brownian does not accommodate qualitative traits, although this particular dataset is composed of surface and subterranean species reducing biases.
-Finally, our empirical framework was also applied in drosophila and primates (see~\ref{sec:empirical-data-in-primates} and~\ref{sec:empirical-data-in-drosophila} in supplementary materials).
+Finally, our empirical framework was also applied in drosophila and related to genome size,  (see~\ref{sec:empirical-data-in-primates} and~\ref{sec:empirical-data-in-drosophila} in supplementary materials).
 
 \begin{table}[htbp]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
@@ -256,13 +256,13 @@ Finally, our empirical framework was also applied in drosophila and primates (se
 Mechanistic phylogenetic \gls{codon} models explicitly define the \gls{substitution} rates as function of the mutation rate, selection and genetic drift.
 Applied on an alignment of \acrshort{DNA} coding sequence, the mechanistic model can estimate amino-acid fitness landscapes along the \acrshort{DNA} sequence.
 On the other hand, molecular comparative framework reconstruct the joint evolution of life-history, molecular and population-genetics traits along the phylogeny, intrinsically including phylogenetic inertia.
-Combined together, the resulting framework can reconstruct site-heterogeneous amino-acid fitness landscapes, estimates the age of internal nodes, and finally reconstitute branch-heterogeneous life-history traits, $\mu$ and $\Ne$, with their correlation.
+Combined together, the resulting framework can reconstruct site-heterogeneous amino-acid fitness landscapes, estimates the age of internal nodes, and finally reconstitute branch-heterogeneous life-history traits, mutation rate ($\mu$) and effective population size ($\Ne$), with their correlation.
 Testing the method against simulated alignments suggests the signal is strong enough in protein coding \acrshort{DNA} alignment to infer selection at the site level, and long-term changes in $\Ne$ and $\mu$ using a phylogenetic approach.
 In placental mammals, $\Ne$ correlates negatively with longevity, weight and maturity, and positively with $\mu$.
 Our observations suggest that the empirical signal is strong enough such that we can infer the directional trends in changes.
 
 % Longvariance in Ne 
-If the trend is in right direction, the magnitude of the change is greatly inferior to the expected variation observed in mammals \citep{Galtier2016}.
+If the trend of variations in $\Ne$ is in right direction, the magnitude of change across the phylogeny with a ratio of $2.5$ is greatly inferior to the expected variation observed in mammals~\citep{Galtier2016}.
 Different mechanism not accounted for by the model could explain such a low variation of reconstructed $\Ne$.
 
 First, genetic hitch-hiking, Hill-Robertson interference, and short-term fluctuations of $\Ne$ could generate this effect.
@@ -282,7 +282,7 @@ Thought modeling epistasis in an inference framework is a complex biological, ma
 % None equilibrium properties
 
 % Perspective : \gls{codon} bias
-Our model also assume no bias in \gls{codon} usage, though the strength of selection for a particular \gls{codon} (or set of codons) among all synonymous possible \glspl{codon} has been proved to be substantial~\citep{Plotkin2011}.
+Our model also assume no bias in \gls{codon} usage, though the strength of selection for a particular \gls{codon} (or set of codons) among all synonymous possible \glspl{codon} has been proved to be substantial~\citep{Yang2008,Plotkin2011}.
 This assumption can be relaxed by implementing \gls{codon} preferences that are shared across all sites, such that $41$ more parameters would be required in total.
 Such implementation would provide the advantage of estimating \gls{codon} usage biases, and of accounting for its confounding effect while estimating selection and $\Ne$.
 
@@ -304,8 +304,8 @@ For example, a method recently developed by \citet{Brevet2019} uses \acrshort{DN
 This method also based on the quasi-neutral theory of evolution allows to estimate the absolute value of $\Ne$, even for species where the polymorphism is unavailable.
 Here our method requires neither generation time nor polymorphism, and the fitness effects are not constrained to a specific distribution.
 However, the inferred values are solely relative and the computation requires more computing resources.
-% Perspective: Short and long-term Ne
 
+% Perspective: Short and long-term Ne
 Estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\Ne$ and relative strength of drift, where ultimately the signal of drift comes from the relative rate of \glspl{substitution}.
 However, they do not leverage a second aspect of $\Ne$ at the population level, which determines the \gls{neutral} genetic diversity that can be maintained~($\pi=4\Ne \mu \tau$, where $\tau$ is the generation time).
 Hence, \gls{polymorphic} data give us independent empirical estimates of $\Ne$, based on the assumption that mutations are \gls{neutral}.
