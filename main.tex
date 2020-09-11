@@ -69,38 +69,36 @@
 
 
 %%%%% DEDICATION
-%\begin{alwayssingle}
-%	\thispagestyle{empty}
-%	\newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
-%	\begin{center}
-%		\includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface}
-%	\end{center}
-%	\restoregeometry
-%\end{alwayssingle}
-
-% %%%%% ABSTRACT SEPARATE
-% % This is used to create the separate, one-page abstract that you are required to hand into the Exam
-% % Schools.  You can comment it out to generate a PDF for printing or whatnot.
-% \begin{abstractseparate}
-%     \input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
-% \end{abstractseparate}
-%
-% \newgeometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
-\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
 \begin{alwayssingle}
-	\input{sections/abstract}
+	\thispagestyle{empty}
+	\newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
+	\begin{center}
+		\includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface}
+	\end{center}
+	\restoregeometry
 \end{alwayssingle}
+
+%%%%% ABSTRACT FRENCH
+\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
 
 \begin{alwayssingle}
 	\input{sections/abstract_fr}
 \end{alwayssingle}
 
-%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
-%\input{sections/acknowledgement}
+%%%%% ACKNOWLEDGEMENTS
+\input{sections/acknowledgement}
 
-\setlength{\baselineskip}{\frontmatterbaselineskip}
+%%%%% ABSTRACT ENGLISH
+
 \hypersetup{pageanchor=true}
 \begin{romanpages}
+
+\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
+\begin{alwayssingle}
+	\input{sections/abstract}
+\end{alwayssingle}
+
+\setlength{\baselineskip}{\frontmatterbaselineskip}
 %%%%% MINI TABLES
 \dominitoc % include a mini table of contents
 %\dominilof  % include a mini list of figures
@@ -147,17 +145,39 @@
 
 \thispagestyle{empty}
 \chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:NucleotideBias}
+
+\begin{center}
+	\Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
+	\vspace{0.5cm}
+	\normalsize
+	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+\end{center}
+
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
 \input{NucleotideBias/Nucleotide-Bias-main}
 
 \section{Author contributions}
-Thibault Latrille TODO . Nicolas Lartillot TODO
+TL developed the models and conducted all analyses, in the context of a PhD (Ecole Normale Superieure de Lyon).
+TL and NL both contributed to the writing of the manuscript.
+
+\section{Acknowledgments}
+We gratefully acknowledge the help of Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their input and comments on this work.
 
 \thispagestyle{empty}
 \chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:MutSelDrift}
+
+\begin{center}
+	\Large Thibault Latrille$^{\text{1, 2}}$, Vincent Lanore$^{\text{1}}$, Nicolas Lartillot$^{\text{1}}$\\
+	\vspace{0.5cm}
+	\normalsize
+	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+\end{center}
+
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
 
 \input{MutationSelectionDrift/MutSelDrift-main}
 
@@ -166,16 +186,29 @@ Supplementary materials and figures are available in appendix, chapter~\ref{chap
 The scripts and instructions necessary to reproduce the simulated and empirical experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
 
 \section{Author contributions}
-Thibault Latrille TODO. Nicolas Lartillot TODO
+TL gathered and formatted the data, developed the new models in BayesCode and SimuEvol and conducted all analyses, in the context of a PhD (Ecole Normale Superieure de Lyon).
+VL restructured and refactored the code sustaining the branch and site heterogeneous Bayesian Monte-Carlo in BayesCode.
+TL and NL both contributed to the writing of the manuscript.
 
 \section{Acknowledgments}
-The authors gratefully acknowledge the help of Nicolas Rodrigue, Philippe Veber, Laurent Gueguen, Tristan Lefebure, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
+We wish to thank Tristan Lefébure for sharing the isopods phylogeny, alignments and life-history traits, and Annabelle Haudry \& Théo Tricou for providing the drosophila alignments, phylogeny and genome sizes.
+We thank Philippe Veber for insightful discussion on developping.
+We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
 This work was performed using the computing facilities of the CC LBBE/PRABI.
 
 \thispagestyle{empty}
 \chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:GenoPhenoFit}
+
+\begin{center}
+	\Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
+	\vspace{0.5cm}
+	\normalsize
+	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+\end{center}
+
+{\hypersetup{linkcolor=GREYDARK}\minitoc}
 
 \input{GenotypePhenotypeFitness/GenoPhenoFit-main}
 
@@ -184,10 +217,12 @@ The mathematical development of the general case and supplementary figures are a
 The scripts and instructions necessary to reproduce this study are available at \url{https://github.com/ThibaultLatrille/GenotypePhenotypeFitness}.
 
 \section{Author contributions}
-Thibault Latrille TODO. Nicolas Lartillot TODO
+TL gathered and formatted the data, developed the new models in BayesCode and conducted all analyses, in the context of a PhD (Ecole Normale Superieure de Lyon).
+TL and NL both contributed to the writing of the manuscript.
 
 \section{Acknowledgments}
-The authors gratefully acknowledge the help of Nicolas Rodrigue and Laurent Duret for their advice and review concerning this manuscript.
+We wish to thank Julien Joseph for whiteboard mathematical sessions.
+We gratefully acknowledge the help of Nicolas Rodrigue and Laurent Duret for their input on this work and their comments on the manuscript.
 This work was performed using the computing facilities of the CC LBBE/PRABI.
 
 \part{Conclusion}
