@@ -267,7 +267,7 @@ where $\ci[1]$ denotes the nucleotide at position $1$ of \gls{codon} $i$.
 
 As a result of equation~\ref{eq:equilibrium-MG}, the Muse \& Gaut formalism predicts that the nucleotide composition is the same for all $3$ positions of the codons.
 However it has empirically been observed that the nucleotide compositions are in fact not identical~\citep{Singer2000}.
-These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism , allowing for different nucleotide rate matrices at the three positions.
+These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
 However, this is problematic, since this modelling has the consequence that synonymous substitutions occur at different rates at the first and third positions.
 For instance, mutations from codon CTC to CTT or from CTA to TTA are both synonymous (leucine) and from C to T, but the 3x4 formalism would give them different rates.
 Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions, and if neutral, all mutations from C to T should have same rate.
@@ -282,13 +282,13 @@ In the alternative \citet{Goldman1994} formalism, the mutation rate between two 
 \end{equation}
 
 Careful examination of this model reveals a number of peculiar properties, which seem undesirable.
-For example, under a mutational bias toward T, a synonymous mutation from codon AAC to AAT (Asparagine) would have a lower instantaneous rate than a substitution from codon TTC to TTT (Phenylalaline), while both being synonymous and from C to T at third position.
+For example, under a mutational bias toward T, a synonymous mutation from codon AAC to AAT (Asparagine) would have a lower instantaneous rate than a substitution from codon TTC to TTT (Phenylalaline), both being synonymous and from C to T at third position.
 In this formalism, the mutation involving a specific codon position depends on the nucleotide states at the other two positions, even if the mutation is synonymous (neutral).
-Moreover, it has been shown that this alternative formalism induce different estimation of the strength of selection $\omega$~\citep{Pond2005a,Yap2010, Spielman2015}.
-Altogether, such alternative formalism are theoretically problematic, and the original Muse \& Gaut formalism remain the sensible mechanistically justified framework~\citep{Rodrigue2008a}.
+Moreover, it has been shown that this alternative formalism induces different estimations of the strength of selection $\omega$~\citep{Pond2005a,Yap2010, Spielman2015}.
+Altogether, such alternative formalisms are theoretically problematic, and the original Muse \& Gaut formalism remains the mechanistically justified framework~\citep{Rodrigue2008a}.
 
 As a result, throughout this manuscript the symbol $\omega$ will be used specifically for the multiplicative factor appearing in the \citet{Muse1994} formalism (see~\ref{subsec:MG-formalism}), whereas $\dnds$ will be used to refer generically to the ratio of non-synonymous over synonymous substitution rates, regardless of the specific formalism.
-Hence whenever $\dnds$ is used in this manuscript instead of $\omega$, the underlying specific formalism is not considered necessary to the point raised.
+Hence, whenever $\dnds$ is used in this manuscript instead of $\omega$, the underlying specific formalism is not considered necessary to the point raised.
 Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut formalism of section~\ref{subsec:MG-formalism}.
 
 \subsection{Complexification of classical codon models}
@@ -297,52 +297,52 @@ Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut fo
 Classical models of codon substitutions have been extensively applied to protein-coding sequence alignments, to estimate the ratio of non-synonymous over synonymous substitution rates, $\dnds$.
 Such models capture the average effect of selection on non-synonymous mutations, without seeking to discriminate between different types of mutations.
 To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino-acids, measured in terms of the \citet{Grantham1974} distance.
-Additionally, models introduced severals $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
+Additionally, models introduced several $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
 
 One particularly important application of classical codon models has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
 As a result, variants of codon models have been developed that can provide estimates of $\dnds$ for each site within a gene, or for each branch within a phylogenetic tree.
-Moreover, these codon models have also proved to be valuable to quantify and asses the modulation of the selective constraint more generally imposed on protein coding sequences (see \ref{sec:classical-codon-biophysics}).
+Moreover, these codon models have also proved to be valuable to quantify and asses the modulation of the selective constraints more generally imposed on protein coding sequences (see \ref{sec:classical-codon-biophysics}).
 
 \subsection{Variation across sites}
 \label{subsec:variation-across-sites}
 
 The strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that it could be useful to estimate the $\dnds$ for each site individually, as opposed to globally over the entire sequence.
 This turns out to be particularly important for detecting recurrent positive selection.
-Indeed, recurrent positive selection might often be concentrated in a small region of the proteins (e.g. domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
+Indeed, recurrent positive selection might often be concentrated in a small region of the protein (e.g. domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
 Estimating $\dnds$ at the site level will make it possible to detect such regions under positive selection.
 In contrast, the gene-level $\dnds$ will generally be below $1$.
 
 However, the statistical information available along the tree for a specific site is sparse, such that sites sharing similar patterns are merged together to gather enough signal.
-Practically, in a popular approach of so-called random-site phylogenetic \gls{codon} models, $\dnds$ is allowed to vary across sites, via a finite mixture models~\citep{Nielsen1998, Yang2000, Yang2005, Huelsenbeck2006}.
+Practically, in a popular approach of so-called random-site phylogenetic \gls{codon} models, $\dnds$ is allowed to vary across sites, via a finite mixture model~\citep{Nielsen1998, Yang2000, Yang2005, Huelsenbeck2006}.
 Generally, for detecting positive selection a category of sites is constrained to be under $\dnds > 1$.
-Both proportions of sites and values of the different $\dnds$ categories are then estimated by maximum likelihood or bayesian inference (see chapter~\ref{chap:intro-inference}).
-Sites under adaptive evolution are then detected based on their empirical Bayes posterior probability that $\dnds > 1$~\citep{Huelsenbeck2004,Yang2005}.
+Both proportions of sites and values of the different $\dnds$ categories are then estimated by maximum likelihood or Bayesian inference (see chapter~\ref{chap:intro-inference}).
+Sites under adaptive evolution are then detected based on their empirical Bayes posterior probability, such that $\dnds > 1$~\citep{Huelsenbeck2004,Yang2005}.
 To note, in this context of site-specific finite mixture models, methods have also proposed to estimate both $\dn$ and $\ds$ separately~\citep{Pond2005a, Spielman2016}.
 
 A long series of site models has been proposed, most of which have been implemented in PAML~\citep{Yang1997a,Yang2007}, but also in MrBayes for the infinite mixture version~\citep{Huelsenbeck2001, Ronquist2012}.
 Specific applications at the level of the entire exome have uncovered sites of the sequence under positive recurrent selection~\citep{kosiol_patterns_2008}.
 Other analyses have revealed the importance of host-pathogen or host-virus interactions in contributing to strong signals of ongoing adaptation in protein-coding sequences~\citep{Enard2016}.
 
-Finally, independently of the question of detecting positive selection, site models also turn out to be very valuable models, in the aim to uncover selective pressure acting on specific sites.
+Finally, independently of the question of detecting positive selection, site models also turn out to be very valuable models, in the aim of uncovering selective pressures acting on specific sites.
 This can be used, for instance, to investigate the biophysical correlates of the strength of purifying selection at the site level (see~\ref{subsec:thermo-variation-across-sites}).
 
 \subsection{Variation across branches}
 \label{subsec:variation-across-branches}
 
-Beside variation across site, the strength of selection is not typically homogeneous along the phylogenetic tree, and it has also been recognized that it could be useful to model this variation.
-A first approach allows for a different $\dnds$ only on a given branch, or on subset of the phylogeny, chosen a priori based on biological assumptions~\citep{Yang1998}.
+Beside variation across sites, the strength of selection is not typically homogeneous along the phylogenetic tree, and it has also been recognized that it could be useful to model this variation.
+A first approach allows for a different $\dnds$ only on a given branch, or on a subset of the phylogeny, chosen a priori based on biological assumptions~\citep{Yang1998}.
 For example, such models can detect an adaptive process ongoing during the divergence of one lineage, which can allow for the detection of the proteins responsible for speciation~\citep{Yang1998, Zhang2004}.
 The most extreme version of this model simply assume that each branch has its own $\dnds$, without any constraints~\citep{Popadin2007}.
 To avoid over-fitting, branches can be clustered based on their substitution rates, using a sequential testing approach~\citep{Dutheil2012}.
 
-Alternatively, $\dnds$ can be modelled as a continuous trait, varying continuously along the phylogeny, and susceptible to show phylogenetic inertia.
-To account for this, $\dnds$ is not anymore mathematically formalized as a parameter, but instead, as a stochastic process, and more specifically, a log-Brownian process, splitting at each node of the tree into independent processes.
+Alternatively, $\dnds$ can be modeled as a continuous trait, varying continuously along the phylogeny, and susceptible to show phylogenetic inertia.
+To account for this, $\dnds$ is not mathematically formalized as a parameter anymore, but instead, it is modeled as a stochastic process, and more specifically, a log-Brownian process, splitting at each node of the tree into independent processes.
 This modeling approach was previously used in the context of the comparative method, to model the evolution of quantitative traits observable at the tips~\citep{Felsenstein1985, Huelsenbeck2003}.
 It was then recruited to model the variation in the total rate of substitution, in the context of the so-called auto-correlated relaxed clock models, used to estimate divergence times~\citep{Thorne1998}.
 Finally, it was used to model the variation, independently, of $\ds$ and $\dn$~\citep{Seo2004}, or of $\ds$ and $\dnds$~\citep{Lartillot2011}.
 
 The external factors determining the variation $\dnds$ across lineages has subsequently been investigated, primarily focused on environmental variables and life-history traits that can vary between species.
-This has been done using either sequential approaches, first estimating the variation in $\dnds$ using some of the methods mentioned above, and then using the classical comparative method to correlate the variation thus estimated with independently observed quantitative or life-history traits~\citep{Popadin2007, Lanfear2010, Romiguier2014}.
+This has been done using either sequential approaches, first estimating the variation in $\dnds$ using some of the methods mentioned above, and then using the classical comparative method to correlate the estimated variation with independently observed quantitative or life-history traits~\citep{Popadin2007, Lanfear2010, Romiguier2014}.
 
 Thereafter, integrative inference methods combining both molecular sequences and quantitative traits have been developed, jointly modeling the variation of all of these variables using a single multivariate Brownian process~\citep{Lartillot2011}.
 Each entry of the process describes the evolution of one of the variables of interest: $\ds$, $\dnds$, quantitative traits, etc.
@@ -350,15 +350,15 @@ The model can then be fitted on an empirical data set consisting of a multiple s
 This leads to a joint estimation of the stochastic process and the covariance matrix, thus giving estimates of the covariance between $\dnds$ and traits, corrected for phylogenetic inertia.
 
 Applications of this integrative approach also found that $\dnds$ correlates positively with traits such as longevity and body mass~\citep{Lartillot2011, Figuet2017}.
-Since lineage with a large body size and extended longevity typically correspond to low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\dnds$ and $\Ne$, thus confirming the theoretical prediction of the nearly-neutral theory of evolution.
+Since lineages with a large body size and extended longevity typically correspond to low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\dnds$ and $\Ne$, thus confirming the theoretical prediction of the nearly-neutral theory of evolution.
 Similarly, and more directly, $\dnds$ was found to correlate negatively with the synonymous diversity ($\ps = 4 \Ne u$), which is a molecular proxy of effective population size~\citep{Brevet2019}.
 These important results confirm one of the key predictions of the nearly-neutral theory.
-However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated, and further investigation are required~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}.
+However, the universality and robustness of the correlation between $\dnds$ and life-history traits is still debated, and further investigations are required~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}.
 
 \subsection{Variation across sites and branches}
 \label{subsec:variation-across-sites-and-branches}
 
-Naturally, both these space (site-specific) and time (branch-specific) refinements mentioned above led to the development of so called branch-site models~\citep{Yang2002a, Zhang2004, Pond2011, Murrell2012, Murrell2013}.
+Naturally, both space (site-specific) and time (branch-specific) refinements mentioned above led to the development of the so-called branch-site models~\citep{Yang2002a, Zhang2004, Pond2011, Murrell2012, Murrell2013}.
 The fine-grained tuning of site-branch models increased statistical power by seeking short and strong episodes of adaptive selection on a background of purifying selection.
 However, in the case of Red-Queen processes ongoing on the protein, the episodes detected by branch-site models would merely be a small fraction of the underlying adaptation.
 Indeed the overall tree is under adaptive process and one cannot contrast a branch to the rest of the tree.
