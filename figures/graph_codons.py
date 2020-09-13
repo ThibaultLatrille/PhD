@@ -158,7 +158,7 @@ def amino_acid_circos(cmap='tab20', filetype="pdf", reverse=False):
     assert g_aa.num_vertices() == 20
     dist = gt.shortest_distance(g_aa)
     r = max([max(dist[g_aa.vertex(i)].a) for i in g_aa.vertices()])
-    print('Amino-acids graph radius : {0}'.format(r))
+    print('Amino acids graph radius : {0}'.format(r))
     dict_distance = {1: [], 2: [], 3: []}
     for source in g_aa.vertices():
         for target in g_aa.vertices():
@@ -170,7 +170,7 @@ def amino_acid_circos(cmap='tab20', filetype="pdf", reverse=False):
         print("d={0}: {1} pairs".format(k, len(v)))
         print(", ".join(v))
 
-    print('Amino-acids : {0} transitions out of {1} possibles '.format(g_aa.num_edges(), 20 * 19 / 2))
+    print('Amino acids : {0} transitions out of {1} possibles '.format(g_aa.num_edges(), 20 * 19 / 2))
     state = gt.minimize_nested_blockmodel_dl(g_aa, deg_corr=True)
     t = gt.get_hierarchy_tree(state)[0]
     tpos = gt.radial_tree_layout(t, t.vertex(t.num_vertices() - 1), weighted=True)

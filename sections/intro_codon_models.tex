@@ -6,7 +6,7 @@ More precisely, molecular evolution requires either a given selection coefficien
 In other words, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein coding \acrshort{DNA} sequences.
 To this aim, this chapter will first present the genetic code and classical phylogenetic \glspl{codon} models, which can quantify the strength of selection acting on proteins trough an aggregate parameter (called $\omega$ or $\dnds$).
 Application of these phylogenetic models to empirical \acrshort{DNA} alignments can be extended to model variation of selection across sites of the same protein, or between branches of a phylogenetic tree.
-Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino-acids.
+Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino acids.
 Finally the relationship between classical and mechanistic models is investigated, and the interpretation of the discrepancy between both models is analyzed.
 
 
@@ -14,15 +14,15 @@ Finally the relationship between classical and mechanistic models is investigate
 \label{sec-intro:genetic-code}
 Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyse chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, among other functions.
 This diversity of roles is accomplished by a variety of three-dimensional shapes.
-A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino-acids of which it is made of, with protein sequences ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino-acids.
-Just as \acrshort{DNA} is oriented because of the assymetry of nucleotides, proteins are oriented due to the assymetry of amino-acids. One end is called the \gls{N-ter}, and the other end, the C-terminus, and each amino acid will interact with the other amino acids in its spatial vicinity.
+A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino acids of which it is made of, with protein sequences ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino acids.
+Just as \acrshort{DNA} is oriented because of the assymetry of nucleotides, proteins are oriented due to the assymetry of amino acids. One end is called the \gls{N-ter}, and the other end, the C-terminus, and each amino acid will interact with the other amino acids in its spatial vicinity.
 
 Although each of the 20 different amino acids has unique biochemical properties, they can be classified broadly into four categories determining their solubility and acidity (classification is given in table~\ref{table:genetic_code}).
-Charged amino-acids can be either basic (positively charged) or acidic (negatively charged).
-However, non charged amino-acids can be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
+Charged amino acids can be either basic (positively charged) or acidic (negatively charged).
+However, non charged amino acids can be polar due to an uneven charge distribution, such that they can form hydrogen bonds with water.
 Consequently, polar amino acids are called hydrophilic, and are often found on the outer surface of folded proteins.
-Also, non charged amino-acids can have a uniform charge distribution, and do not form hydrogen bonds with water.
-Reciprocally, these non polar amino-acids are called hydrophobic and tend to be found in the core of folded proteins.
+Also, non charged amino acids can have a uniform charge distribution, and do not form hydrogen bonds with water.
+Reciprocally, these non polar amino acids are called hydrophobic and tend to be found in the core of folded proteins.
 
 \subsection{The genetic code}
 
@@ -30,8 +30,8 @@ Because the $20$ letter alphabet of proteins is different to the $4$ letter alph
 Instead, amino acids are encoded by \glspl{codon}, a consecutive sequences of 3 nucleotides, yielding $4^3=64$ possible permutations, more than sufficient to encode the 20 different amino acids.
 Moreover, three stop \glspl{codon} signal the termination of the protein, such that 61 of the 64 \glspl{codon} are used to encode amino acids.
 Since there are 61 coding \glspl{codon} and only 20 amino acids, there is a necessary redundancy in the code.
-Thus, amino-acids are encoded by synonymous \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe codon.
-Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-acids, which is used almost universally by all organisms is given in table~\ref{table:genetic_code}.
+Thus, amino acids are encoded by synonymous \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe codon.
+Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino acids, which is used almost universally by all organisms is given in table~\ref{table:genetic_code}.
 
 \begin{table}[H]
     \centering
@@ -74,8 +74,8 @@ Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-aci
         \hhline{|-||-|-|-|-|-|-|-|-||-|}
     \end{tabular}}
     \caption[Genetic Code]{
-    The genetic code \acrshort{DNA} table translating \glspl{codon} into amino-acids.
-    Amino-acids are represent into $4$ categories based on the electrochemical properties.
+    The genetic code \acrshort{DNA} table translating \glspl{codon} into amino acids.
+    Amino acids are represent into $4$ categories based on the electrochemical properties.
     Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
     Stop \glspl{codon} are represented in gray (\textcolor{Stop}{\ding{110}}).
     The synonymous \glspl{codon} encoding for the same amino-acid are usually different in their third \gls{codon} position, the wooble base.
@@ -86,7 +86,7 @@ Altogether, the \acrshort{DNA} genetic code translating \gls{codon} to amino-aci
 Biochemical translation from \gls{codon} to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
 More precisely, \glspl{codon} binds to \acrshort{tRNA} via an anticodon, three consecutive bases that are complementary and antiparallel to the associated \gls{codon}.
 On the other end, \acrshort{tRNA} complexes bind uniquely with one the $20$ amino acid, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
-As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating \glspl{codon} into amino-acids .
+As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating \glspl{codon} into amino acids .
 However, there is not a one-to-one correspondence between the $61$ \glspl{codon} and \acrshort{tRNA} genes.
 First, the set of unique sequences of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$~\citep{Goodenbour2006}.
 This subset of anticodon sequences necessary to bind all $61$ \glspl{codon} is due to non canonical base pairing\footnote{Canonical base pairing are A-U and G-C, where thymin (T) is replaced by uracil (U) in RNA}.
@@ -100,7 +100,8 @@ Effectively, many genes can code for the same isoacceptor \acrshort{tRNA}, where
 As a result, in some genes, some \glspl{codon} are more frequently represented than other possible synonymous \glspl{codon}, an effect named \gls{codon} usage bias.
 For genes that are expressed at high levels, the \gls{codon} used is biased in favor of the \glspl{codon} that have an high \acrshort{tRNA} concentration in the cell, ultimately increasing the expression rate and decreasing the rate of mistranslation by reducing the time of occupancy of an open site.
 Thus, at a fine-grained molecular scope, a synonymous change can influence mRNA stability, splicing process and protein-folding during translation~\citep{Plotkin2011, Rak2018}.
-However in the scope of this manuscript, such selection between synonymous \glspl{codon} will not be considered. Selection for proteins will be framed at the amino-acid level in a first approximation, and mutation, at the nucleotide level.
+However in the scope of this manuscript, such selection between synonymous \glspl{codon} will not be considered.
+Selection for proteins will be framed at the amino-acid level in a first approximation, and mutation, at the nucleotide level.
 
 \subsection{Amino-acid transitions}
 
@@ -132,15 +133,16 @@ However in the scope of this manuscript, such selection between synonymous \glsp
         \hline \textbf{F} & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & -\\
         \hline
     \end{tabu}}
-    \caption[Amino-acids adjacency matrix]{
-    Number of possible one nucleotide non-synonymous {transitions} between amino-acids, integrating over the underlying \glspl{codon}.
-    For all the possible $190$ pairs of amino-acids, only $75$ pairs contains at least one non-synonymous {transition}.
+    \caption[Amino acids adjacency matrix]{
+    Number of possible one nucleotide non-synonymous {transitions} between amino acids, integrating over the underlying \glspl{codon}, represented as an adjacency matrix..
+    For all the possible $190$ pairs of amino acids, only $75$ pairs contains at least one non-synonymous {transition}.
     }
     \label{table:adjacency}
 \end{table}
-Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible {transitions} to another \glspl{codon} as illustrated in the left panel of figure~\ref{fig:graph-codons-aa}.
-Moreover, it is possible that some pairs of amino-acids are not accessible through a single non-synonymous {transition} between the underlying \glspl{codon} as illustrated in the right panel of figure~\ref{fig:graph-codons-aa}.
-In fact, most pairs of amino-acids require at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino-acids that are accessible through a single non-synonymous {transition} ($75$ pairs).
+Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible {transitions} to another \glspl{codon} as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
+Moreover, it is possible that some pairs of amino acids are not accessible through a single non-synonymous {transition} between the underlying \glspl{codon}.
+In fact, most pairs of amino acids require at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single non-synonymous {transition} ($75$ pairs).
+More precisely, the number of possible transitions between the underlying codons for a pair of amino acids is determined by the adjacency matrix shown table \ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
 
 \begin{figure}[htbp!]
     \centering
@@ -156,16 +158,16 @@ In fact, most pairs of amino-acids require at least two non-synonymous {transiti
     \label{fig:graph-codons-aa}
     Graphs of possible one nucleotide {transition} between \gls{codon} (left panel) and between amino acids (right panel).
     Nodes correspond to \glspl{codon} (left panel) and amino acids (right panel), and their color represents the encoded amino-acid.
-    Additionally, for amino-acids the size of nodes represents the number of underlying \glspl{codon}.
+    Additionally, for amino acids the size of nodes represents the number of underlying \glspl{codon}.
     An edge between two \glspl{codon} depicts a one nucleotide {transition}, such that a \gls{codon} can have at most $9$ possible {transitions}.
-    Similarly, an edge between two amino-acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the width of the edges represents the number of such possible {transitions}.
+    Similarly, an edge between two amino acids correspond to a one nucleotide non-synonymous {transition} between the underlying \glspl{codon}, and the width of the edges represents the number of such possible {transitions}.
     Non-synonymous {transition} are represented in a color gradient, while synonymous {transitions} are depicted in black.
     The graph of the $61$ \glspl{codon} contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
-    The radius of the graph is three, such that the most distant amino-acids are at most three {transition} away.
+    The radius of the graph is three, such that the most distant amino acids are at most three {transition} away.
     Codons encoding for the same amino-acid are all fully connected by synonymous changes, expect for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence at least two non-synonymous {transitions}.
-    From the perspective of amino-acids, the graph of the $20$ amino-acids contains $75$ non-synonymous {transitions}.
+    From the perspective of amino acids, the graph of the $20$ amino acids contains $75$ non-synonymous {transitions}.
     The graph is not fully connected and does not form a clique. Moreover, the graph radius is three because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
-    Altogether, for all of the possible $190$ pairs of amino-acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
+    Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
     }
 \end{figure}
 
@@ -296,7 +298,7 @@ Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut fo
 
 Classical models of codon substitutions have been extensively applied to protein-coding sequence alignments, to estimate the ratio of non-synonymous over synonymous substitution rates, $\dnds$.
 Such models capture the average effect of selection on non-synonymous mutations, without seeking to discriminate between different types of mutations.
-To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino-acids, measured in terms of the \citet{Grantham1974} distance.
+To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino acids, measured in terms of the \citet{Grantham1974} distance.
 Additionally, models introduced several $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
 
 One particularly important application of classical codon models has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
@@ -443,7 +445,7 @@ In this context, if a specific codon site is responsible for the phenotypic conv
 \subsection{Mutation-selection and codon usage}
 \label{subsec:model-codon-usage}
 
-Another example of mutation-selection mechanistic codon model is modelling codon usage bias, where each synonymous codon of the same amino-acids have different fitness~\citep{Yang2008}.
+Another example of mutation-selection mechanistic codon model is modelling codon usage bias, where each synonymous codon of the same amino acids have different fitness~\citep{Yang2008}.
 It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
 \begin{equation}
     \begin{dcases}
@@ -462,7 +464,7 @@ Such hybrid model have the interest of measuring the average effect of selection
 \label{sec:relationship-between-mechanistic-and-classical-codon-models}
 
 Even though classical codon models have less parameters than mechanistic codon models, it is important to realize they are not nested.
-Indeed, it is impossible to find a given set of parameters for which the two models are equivalent, except by assuming all sites to have a uniform fitness distribution over amino-acids in the Halpern \& Bruno mutation-selection model, and setting $\omega = 1$ in the Muse \& Gaut model, but this is really a trivial case.
+Indeed, it is impossible to find a given set of parameters for which the two models are equivalent, except by assuming all sites to have a uniform fitness distribution over amino acids in the Halpern \& Bruno mutation-selection model, and setting $\omega = 1$ in the Muse \& Gaut model, but this is really a trivial case.
 They are inherently different and proceed from a different philosophy.
 On one hand, mechanistic models rely on an explicit fitness landscape, while on the other hand classical models capture the average effect of selection through a single $\omega$ parameter.
 
@@ -492,7 +494,7 @@ Such equation is also true for any classical codon model formalism, where this i
 This rate of non-synonymous substitution over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}).
 Such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
 
-On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino-acids (see subsection~\ref{subsec:HB-formalism}).
+On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
 Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
 \begin{align}
@@ -560,7 +562,7 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 \subsection{Adaptive evolution}
 \label{subsec:adaptive-evolution}
 
-Firstly, if amino-acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic~\citep{Mustonen2009}.
+Firstly, if amino acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic~\citep{Mustonen2009}.
 Because of the movement of the landscape behind our feet, similarly to a Red-Queen dynamic, it is more likely to slide into a valley rather than on top of a peak when the landscape moving.
 In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward that upwards in the fitness landscape.
 As a result, any changes of the landscape results in lower elevation of the current coordinate.
@@ -579,7 +581,7 @@ Thus breaking the assumption of time independence of amino-acid preferences lead
 
 The \gls{nearly-neutral} assumption can also be broken if there is no independence between sites, known as epistasis between sites.
 Unfortunately, one consequence of epistatic interactions is that even if a mutation is \gls{nearly-neutral} upon fixation, subsequently fixed mutations on other sites make the original \gls{substitution} more and more deleterious to revert over time~\citep{Gong2014, Lunzer2010, Mccandlish2013}.
-This effect called entrenchment result in the current amino-acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
+This effect called entrenchment result in the current amino acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
 In other word, at the moment of a \gls{substitution} the target amino-acid has a nearly equal relative fitness, which can only increases with time~\citep{Goldstein2016, Goldstein2017}.
 Contradictory to adaption, breaking the assumption of independence between sites leads to entrenchment and estimated $\omega$ lower being higher than the induced $\omega_0$~\citep{Rodrigue2016}:
 \begin{equation}
@@ -588,5 +590,5 @@ Contradictory to adaption, breaking the assumption of independence between sites
 \end{equation}
 
 Altogether, a departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever changing adaptation.
-On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino-acids.
+On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino acids.
 But one shortcoming of \gls{nearly-neutral} \gls{codon} \gls{substitution} models is that if one does not get a statistical departure from near-neutrality ($\omega = \omega_0$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be disentangled.

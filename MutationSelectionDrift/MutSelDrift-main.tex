@@ -30,8 +30,8 @@ Specifically, $\dnds$ is a function of $\Ne$ depending on the specific underlyin
 Hence, the predicted relationship between $\dnds$ and $\Ne$ is only obtained under specific apriori assumptions about the selective process.
 
 Instead, mechanistic \gls{codon} models explicitly introduced population-genetics equations into phylogenetic \gls{codon} models~\citep{Halpern1998}.
-These so called mutation-selection \gls{codon} models assign a different fitness for each amino-acid, where the 20 fitness are known as fitness profile, providing a model of purifying selection where the least fit amino-acids are purified away.
-Apart from selective effects between amino-acids, the strength of selection is not typically homogeneous along the protein sequence, and depends on the local physico-chemical requirements~\citep{Echave2016, Goldstein2016,Goldstein2017}.
+These so called mutation-selection \gls{codon} models assign a different fitness for each amino-acid, where the 20 fitness are known as fitness profile, providing a model of purifying selection where the least fit amino acids are purified away.
+Apart from selective effects between amino acids, the strength of selection is not typically homogeneous along the protein sequence, and depends on the local physico-chemical requirements~\citep{Echave2016, Goldstein2016,Goldstein2017}.
 In this context, local change in selective strength is usually taken into account by allowing site-specific amino-acid fitness profiles.
 The sparsity of signal per codon site however requires to aggregate sites together in categories, such as to gather enough signal for each amino-acid fitness profile.
 Conversely, the category assigned to each site is chosen such that the sites aggregated into the same category share patterns of selection and hopefully the same physico-chemical properties.
@@ -65,7 +65,7 @@ Broadly, these framework aims to shade light on the long-term ecological and evo
     Panel B.
     Our Bayesian inference model estimates selection coefficients, mutation rate, intensity of genetic drift and the age of the internal nodes.
     Effective population since~($\Ne$) and mutation rate per unit of time~($\mu$) are considered fluctuating branch-wise, but assumed constant across all sites of the \acrshort{DNA} sequence.
-    Conversely, the selection coefficient of amino-acids are considered changing for sites along the \acrshort{DNA} sequence, but are considered constant across the tree.
+    Conversely, the selection coefficient of amino acids are considered changing for sites along the \acrshort{DNA} sequence, but are considered constant across the tree.
     Branch-heterogeneity is modeled as an auto-correlated log-Brownian process, meaning our model estimates correlation coefficients between quantitative traits (as input), $\Ne$, and $\mu$, where phylogenetic inertia is accounted for.
     Synonymous \glspl{substitution} are leveraged to estimates branch-wise mutation rate~($\mu$).
     Site-specific rates of \glspl{non-synonymous} across the tree is leveraged to estimate site-wise selection coefficient~($\Fit$).
@@ -182,7 +182,7 @@ The simulated branch length and $\Ne$ could be robustly recovered by the inferen
 However, if the results are encouraging to apply the method on empirical data, we rely on the assumption of site-independent fitness landscape, which is almost certainly broken in practice.
 Finally, we implemented a more complex, site-dependent fitness landscape accounting for the $3$-dimensional structure of protein and interaction between sites.
 In such a model, the conformational stability of the protein determines the probability of being in the folded state, a proxy for fitness~\citep{Williams2006, Goldstein2011, Pollock2012}.
-During a simulation, at a particular \gls{codon} site, the fitness landscape is dependent on the actual amino-acids present in the vicinity of this particular site (see section~\ref{subsec:protein-folding-probability} in supplementary materials).
+During a simulation, at a particular \gls{codon} site, the fitness landscape is dependent on the actual amino acids present in the vicinity of this particular site (see section~\ref{subsec:protein-folding-probability} in supplementary materials).
 Our inference framework could recover the simulated branch length (figure~\ref{fig:simulations}, panel C), but hardly retrieves the simulated $\Ne$ in the context of site-dependent epistasis (figure~\ref{fig:simulations}, panel F).
 This effect can however be explained by the predicted independence of $\dnds$ to changes in $\Ne$ in this specific model of protein stability~\citep{Goldstein2013}.
 Such independence between $\dnds$ and $\Ne$ is due to the structure of the fitness landscape, where an decrease in $\Ne$ leads to a sequence further to the optimal protein where the curvature of the fitness landscape is steeper, resulting in a higher selection coefficient exactly compensating the decrease in $\Ne$, and the scaled selection coefficient is (almost) constant.
@@ -402,7 +402,7 @@ For each category $\Setcat$, a $20$-dimensional fitness profile $\Base\catexp$ (
     \label{eq:DistribBase}
     \Base\catexp \sim \mathrm{Dir}\left( \Basecenter,\ \baseconc \right),\ \Setcat.
 \end{equation}
-For an alignment of size $\Nsite$, each site $\Setsite$ is assigned a fitness profile category of amino-acids $\catsite \in \catInterval $.
+For an alignment of size $\Nsite$, each site $\Setsite$ is assigned a fitness profile category of amino acids $\catsite \in \catInterval $.
 The total number of sites falling in each fitness profile category $\cat$ is denoted $\catmultivar_{\cat}$.
 The $\Ncat$-dimensional vector $\catMultiVar$ is distributed as a Multinomial of event probabilities $\StickBreaking$:
 \begin{align}
@@ -626,7 +626,7 @@ Drift is modeled as a multinomial distribution on the \gls{allele} counts.
 We assumed that the \acrshort{DNA} sequence is composed of exons, with no linkage between exons, and total linkage of sites within an exon.
 Moreover, in \textit{SimuPoly} $\Ne$ can also be modeled as a sum of a log-Brownian process and an Ornstein-Uhlenbeck process.
 The log-Brownian motion takes into account long-term fluctuations, while the Ornstein-Uhlenbeck can take into account short fluctuations of $\Ne$.
-In \textit{SimuDiv} and \textit{SimuPoly} each \gls{codon} site contribute independently to the fitness depending on the encoded amino-acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
+In \textit{SimuDiv} and \textit{SimuPoly} each \gls{codon} site contribute independently to the fitness depending on the encoded amino acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
 However, in \textit{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state.
 \textit{SimuFold} is in practice a C++ adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
 Section~\ref{sec:supp-mat-simulations} in supplementary materials describe the models in more details, as well as performance of the inference model against them.

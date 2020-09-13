@@ -8,18 +8,18 @@ Thus, the challenge of molecular evolution is to tease out their respective cont
 One main aspect of this challenge is to correctly evaluate the role of random drift in the long term evolutionary process.
 Population genetics theory implies that the strength of drift, due to the stochastic sampling of mutations, is less pronounced in lineage with large \gls{effective-population-size} ($\Ne$), and as a consequence, the purification by selection of weakly deleterious mutations is more effective.
 This fundamental idea is at the core of the \gls{nearly-neutral} theory of evolution.
-This theory posits that a substantial fraction of \glspl{substitution} are weakly deleterious, and as result predicts that the \gls{substitution} rate of selected sites relative to the \gls{neutral} \gls{substitution} rate, called $\avgpfix$, decreases along a lineage with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
+This theory posits that a substantial fraction of \glspl{substitution} are weakly deleterious, and as result predicts that the fixation probability of mutations (relative to the fixation probability of neutral mutations), called $\avgpfix$, decreases along a lineage with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
 
 This prediction has been more quantitatively examined under the assumption that the selective effects of mutations are drawn from a fixed distribution of fitness effects (\acrshort{DFE})~\citep{Kimura1979, Welch2008}.
 Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\avgpfix$ as a function of $\Ne$ (i.e. $\avgpfix \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
 In practice, DFEs are strongly leptokurtic, thus predicts a weak negative relation between $\avgpfix$ and $\Ne$.
 
-The \gls{substitution} rate of selected mutations relative to \gls{neutral} \gls{substitution} rate ($\avgpfix$) is an observable quantity of the molecular evolutionary process, at least if we can separately estimate the rate of \gls{neutral} and selected mutations in a phylogenetic or comparative context.
+The fixation probability of selected mutations is an observable quantity of the molecular evolutionary process, at least if we can separately estimate the rate of \gls{neutral} and selected mutations in a phylogenetic or comparative context.
 Practically, in the case of protein-coding \acrshort{DNA} sequences, and assuming that synonymous mutations are \gls{neutral}, while non-synonymous changes affecting the amino-acid sequence are under selection, $\avgpfix$ can be identified with the ratio of non-synonymous over \gls{synonymous} rates ($\dnds$).
-Thus the \gls{nearly-neutral} argument translates into a predicted decrease in $\avgpfix = \dnds$ as a function of long-term changes in $\Ne$.
+Thus the \gls{nearly-neutral} argument translates into a predicted decrease in $\dnds$ as a function of long-term changes in $\Ne$.
 
 The context of protein-coding sequences fostered another modeling approach, based on genotype-fitness map instead of distribution of fitness effects.
-In this alternative approach, the selective effect of a mutation depends on the fitness of both source and target amino-acids involved on the mutation~\citep{Halpern1998, Rodrigue2010, Tamuri2012}.
+In this alternative approach, the selective effect of a mutation depends on the fitness of both source and target amino acids involved on the mutation~\citep{Halpern1998, Rodrigue2010, Tamuri2012}.
 For example, if the target amino-acid has a higher fitness than the current amino-acid, the selective effect of the mutation is positive, and reciprocally negative for a lower fitness.
 Such a modeling approach predicts higher \gls{substitution} rates between amino-acid with similar biochemical properties.
 More fundamentally, the fitness depends solely on the current genotype, not on the trajectory of mutations leading to this sequence.
@@ -34,7 +34,7 @@ An explanation proposed for this result is that the distribution of changes in f
 
 However, the equimutability assumption is a relatively strong one, which also conflicts with combinatorial considerations about the relation between sequence and \gls{Phenotype}~\citep{Serohijos2012}.
 For example, if a protein sequence is already maximally stable, only destabilizing (or neutral) mutations can occur.
-More generally, assuming that the stability of a protein sequence reflects an underlying fraction of positions having already accepted destabilizing amino-acids, then the probability of destabilizing mutational events is in turn expected to directly depend on the current stability of the protein.
+More generally, assuming that the stability of a protein sequence reflects an underlying fraction of positions having already accepted destabilizing amino acids, then the probability of destabilizing mutational events is in turn expected to directly depend on the current stability of the protein.
 
 Together, depending on the theoretical model mapping sequence to fitness, $\avgpfix$ can be either independent or negatively correlated to $\Ne$, or even positively if considering adaptive evolution and environmental changes~\citep{Lanfear2014}.
 Empirically, variation in $\avgpfix$ along the branches of phylogenetic trees has been inferred using phylogenetic \gls{codon} models applied to empirical sequences~\citep{Yang1998,Zhang2004}.
@@ -99,14 +99,14 @@ This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Po
 \end{figure}
 In the original biophysical model, the protein stability is the difference in free energy between folded and unfolded conformations, called $\deltaG$ in kcal/mol.
 Technically, free energy of the folded and unfolded conformations are computed based on the $3$D conformations of the protein and statistical potentials.
-In such models, the stabilizing or destabilizing effect of an amino-acid at a particular site depends on amino-acids present in the vicinity in $3$D conformation, taking into account specific epistasis~\citep{Dasmeh2018}.
+In such models, the stabilizing or destabilizing effect of an amino-acid at a particular site depends on amino acids present in the vicinity in $3$D conformation, taking into account specific epistasis~\citep{Dasmeh2018}.
 
 We approximate this model such that destabilizing effect at a particular site does not depend on other neighboring residues, disregarding specific epistasis~\citep{Dasmeh2014}.
 Instead, each site contributes independently to $\deltaG$.
 With such approximation, for each site of the sequence only one amino-acid is stabilizing the protein.
-All $19$ other amino-acids are equally destabilizing, and each site contribute to an excess of $\gamma = \Delta \Delta G > 0$ (in kcal/mol) to $\deltaG$ per destabilizing amino-acids.
-If all amino-acids of the sequence are stabilizing, $\deltaG$ is optimal and equal to $ \DeltaGmin = \Delta G_{\text{min}} < 0$.
-In this model, the most succinct \gls{Phenotype} of a given genotype (i.e. sequence) is just the proportion of destabilizing amino-acids in the sequence, defined as $0 \leq x \leq 1$.
+All $19$ other amino acids are equally destabilizing, and each site contribute to an excess of $\gamma = \Delta \Delta G > 0$ (in kcal/mol) to $\deltaG$ per destabilizing amino acids.
+If all amino acids of the sequence are stabilizing, $\deltaG$ is optimal and equal to $ \DeltaGmin = \Delta G_{\text{min}} < 0$.
+In this model, the most succinct \gls{Phenotype} of a given genotype (i.e. sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
 Thus $\deltaG$ is a linear function of $x$:
 \begin{align}
     \deltaG (x) = \DeltaGmin + \Nsite \gamma x,
@@ -135,8 +135,8 @@ Subsequently, differential calculus on the response of the equilibrium \gls{Phen
 Main results are given in the general case of any phenotype-fitness map, and also derived in the specific case of the biophysical model, where the fitness is proportional to the total amount of folded protein.
 All developments are available in supplementary materials in the most general case.
 
-From a given genotype, mutations of its underlying sequence have various effects, they can increase or decrease the proportion of destabilizing amino-acid, or do nothing if the mutation is between two destabilizing amino-acids.
-To derive probabilities of such events to occur, we also make the simplifying assumption that all {transitions} between amino-acids are equiprobable.
+From a given genotype, mutations of its underlying sequence have various effects, they can increase or decrease the proportion of destabilizing amino-acid, or do nothing if the mutation is between two destabilizing amino acids.
+To derive probabilities of such events to occur, we also make the simplifying assumption that all {transitions} between amino acids are equiprobable.
 Altogether, any mutation in the sequence can then have a phenotypic effect of $0$ or $\dx=\sfrac{1}{\Nsite}$, with probabilities of {transition} equal to:
 \begin{gather}
     \begin{cases}
@@ -146,7 +146,7 @@ Altogether, any mutation in the sequence can then have a phenotypic effect of $0
     \end{cases} \label{eq:proba}
 \end{gather}
 In the extreme case of an optimal \gls{Phenotype} ($x = 0$), only destabilizing mutations are proposed.
-Moreover, the probability to propose a stabilizing mutation (effect $-\dx$), or in between destabilizing amino-acids (effect $0$) is proportional to $x$.
+Moreover, the probability to propose a stabilizing mutation (effect $-\dx$), or in between destabilizing amino acids (effect $0$) is proportional to $x$.
 Or in other words, mutation bias is proportional to $(1-x)/x$, which this is fundamentally a combinatorial effect, due to the number of mutational opportunities available in either direction.
 
 Second, we need to determine the strength of selection acting on mutations.
@@ -199,7 +199,7 @@ At equilibrium we can derive (supplementary materials) the expected \gls{substit
 \begin{gather}
     \avgpfix \simeq x\eq \label{eq:dnds}
 \end{gather}
-This simple approximation is due to \glspl{substitution} at destabilizing sites (proportion $x\eq$) to one of the other destabilizing amino-acids, which are effectively \gls{neutral} and compose the largest proportion of proposed mutations with substantial probability of fixation (equation \ref{eq:proba}).
+This simple approximation is due to \glspl{substitution} at destabilizing sites (proportion $x\eq$) to one of the other destabilizing amino acids, which are effectively \gls{neutral} and compose the largest proportion of proposed mutations with substantial probability of fixation (equation \ref{eq:proba}).
 
 Taken together, implicit derivation of the equilibrium with regards to $\Ne$ yields the susceptibility (equation \ref{eq:chi}) of $\avgpfix$ to a change in $\Ne$:
 \begin{gather}
@@ -256,7 +256,7 @@ In each case, simulations were conducted under a broad range of values of $\Ne$,
 
 Specifically, with respect to mutations, our derivation assumes that all amino-acid {transitions} are equiprobable, in other words, the complexity of the genetic code is not taken into account.
 Simulating evolution of \acrshort{DNA} sequence, and taking into account a matrix a mutation rate between nucleotide allows to test directly the robustness of the results to this assumption.
-Furthermore, with regard to the phenotypic effects of amino-acid changes, we previously assumed that all destabilizing amino-acids are having an identical impact on protein stability.
+Furthermore, with regard to the phenotypic effects of amino-acid changes, we previously assumed that all destabilizing amino acids are having an identical impact on protein stability.
 In reality, one would expect conservative amino-acid replacements to be less destabilizing than radical changes.
 This assumption is relaxed in our simulation, such that destabilizing mutations in each position are now proportional to the Grantham distance~\citep{Grantham1974} between the optimal amino-acid in this position and the amino-acid proposed by the non-synonymous mutation.
 Additionally, the number of sites in the sequence ($\Nsite$) is assumed to be large such that the selection coefficient is well approximated by the fitness derivative (equation \ref{eq:s}).
@@ -385,7 +385,7 @@ Our theoretical work aligned with recent independent empirical studies providing
 
 % Protein-protein interactions
 Notably, the response of $\avgpfix$ to changes in expression level has also theoretically been found to arise due to protein interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
-In non-specific interactions at the protein surface, stabilizing amino-acids are hydrophilic and destabilizing amino-acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
+In non-specific interactions at the protein surface, stabilizing amino acids are hydrophilic and destabilizing amino acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
 Our theoretical results can be applied more broadly to protein-protein interactions using a mean-field argument (supplementary materials).
 Fitting this model with empirical structural estimates~\citep{Janin1995a, Zhang2008}, we obtain a susceptibility of $\chi \simeq -0.2$ thus a much stronger response than under the model based on conformational stability.
 This effect is due to fewer sites in the protein being involved in protein-protein interaction than for conformational stability, in addition to lower energy engaged in contacts between residues.
@@ -440,7 +440,7 @@ For example, in such models, a mutation and its reverse mutation does not have t
 As such they cannot disentangle the potentially confounding effect of mutation, selection and drift.
 Neither can they predict the nature of the functional relationship between population genetics or structural physico-chemical parameters to $\avgpfix$.
 
-% Site specific mechanistic models of evolution 
+% Site specific mechanistic models of evolution
 Contrarily, mechanistic models relate structural, population-genetics and ecological parameters to the \gls{likelihood} of the data.
 As such, mechanistic inference models are suitable to construct an integrative framework relating the signal available in molecular sequences to structural parameters ($\Delta \Delta G$), expression level across genes and \gls{effective-population-size} across lineages.
 Once such models is fitted to the data, the estimated parameters can be confronted to their independent empirical estimate ($\Delta \Delta G, \Ne, ...$), which allow to robustly test the model since orthogonal estimation of biological and ecological parameters should be congruent~\citep{Dasmeh2014}.
@@ -472,7 +472,7 @@ Under a simulation of protein folding with an additive model of free energy, the
     \deltaG\left(\Seqi\right) = \DeltaGmin + \Nsite \gamma * x\left(\Seqi\right),
 \end{equation*}
 where $0 \leq x\left(\Seqi\right) \leq 1$ is the distance of $\Seqi$ to the optimal sequence.
-For each site of sequence, the optimal amino-acids are chosen randomly at initialization, and the distance between the current amino-acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
+For each site of sequence, the optimal amino acids are chosen randomly at initialization, and the distance between the current amino-acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
 Wrightian fitness is defined as the probability of our protein to be in the folded state, given by the Fermi-Dirac distribution:
 \begin{equation}
     \wrightfit (\Seqi) = \dfrac{e^{-\beta \deltaG\left(\Seqi\right) }}{1 + e^{-\beta \deltaG\left(\Seqi\right) }} = \dfrac{1}{1 + e^{\beta \deltaG\left(\Seqi\right) }},

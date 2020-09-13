@@ -1,19 +1,10 @@
-\section{Abstract}
-
-The nucleotide frequencies in protein-coding sequences is the result of the equilibrium between mutation and selection.
-As a consequence, protein-coding sequences subjected to mutational bias at the nucleotide level, and evolving under selection at the amino-acids, will lean toward lower mutational bias when observed at the protein level.
-Unfortunately, parametric \gls{codon} models developed to estimate the rate of evolution on amino-acids use the observed mutational bias at the protein level and don't take into account this effect.
-Thus, such parametric \gls{codon} models are inherently misspecified to untangle mutation and selection, and they don’t estimate the mutational process reliably.
-We also show that even if the mutational process is misspecified, parametric \gls{codon} models are able to estimate reliably the rate of evolution acting on amino-acids.
-But if one wants to also estimate the mutational process, one need to use model where the rate of evolution is a tensor (95 parameters) instead of a single parameter.
-
 
 \section{Introduction}
 
 %%** Introducing codon models and their usefulness **
 Phylogenetic codon models are now routinely used in many domains of bioinformatics and molecular evolutionary studies.
 Most often used to characterize the selective regimes, or genes, or sites, having experienced positive selection.
-More generally, these models highlight the respective contributions of mutation, selection, drift and biased gene conversion (such as gBGC), and the causes of their variation between genes or across species (REFS).
+More generally, these models highlight the respective contributions of mutation, selection, drift and biased gene conversion, and the causes of their variation between genes or across species.
 
 %** introducing the idea of a single $\omega$ **
 Conceptually, codon models take advantage of the fact that synonymous and non-synonymous substitutions are differentially impacted by selection.
@@ -25,7 +16,7 @@ As a result, this parameter $\omega$ capture the net, or aggregate, effect of se
 
 %** elaborating on the phenomenological versus mechanistic, classical versus mutsel, distinction **
 Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through single parameter.
-In reality, the selective effects of associated with non-synonymous mutations depend on the context, and on the initial and final amino-acids.
+In reality, the selective effects of associated with non-synonymous mutations depend on the context, and on the initial and final amino acids.
 In contrast, attempts at an explicitly modeling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism \citep{Halpern1998}.
 However, these models are computationally complex, and robustness issues (violation of assumptions about the fitness landscape).
 Classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
@@ -73,7 +64,7 @@ For the sake of simplicity and illustration, we assume a site-independent, fixed
 Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
 This mean-field $61$x$61$ substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
 Finally, we identify the average fixation probabilities appearing in this expression with the $\omega$ tensor we are looking for.
-What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino-acids that are nearest-neighbors in the genetic code.
+What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino acids that are nearest-neighbors in the genetic code.
 There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor.
 Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
 
@@ -132,25 +123,25 @@ The third position of codons reflects the mutational bias, however the first and
     \label{fig-mut-bias:AT-GC-obs}
 \end{figure}
 
-Beside the observed mutational bias of the alignment, the diversity of amino-acids is an important indicator of the selective constraints that the sequence experiences.
-This diversity is quantified by the frequencies of amino-acids observed across all taxa in the alignment, summarized through a single statistic entropy~\citep{Goldstein2017}, as described in section~\ref{subsec:entropy}.
+Beside the observed mutational bias of the alignment, the diversity of amino acids is an important indicator of the selective constraints that the sequence experiences.
+This diversity is quantified by the frequencies of amino acids observed across all taxa in the alignment, summarized through a single statistic entropy~\citep{Goldstein2017}, as described in section~\ref{subsec:entropy}.
 Entropy can be quantified for a given site of the sequence, and this site-specific entropy can subsequently be averaged over the sequence.
-Alternatively, the entropy can be quantified directly on the whole sequence by the observed frequencies of amino-acids in the alignment.
+Alternatively, the entropy can be quantified directly on the whole sequence by the observed frequencies of amino acids in the alignment.
 These two variants of entropy are computed for alignment under different values of $\alpha$ and $\lambda$, as depicted in figure~\ref{fig-mut-bias:diversity-aa}, .
 Under stringent selection, only a small number of amino acids are actually permissible any given site resulting in low site-specific entropy.
 Yet all amino acids occur at comparable frequencies in the alignment resulting in high sequence entropy. %~\citep{Ramsey2011}.
 This analysis highlights how important it is to distinguish between averaged site-specific entropy (left panel) and sequence entropy (right panel).
-Moreover, the mutational bias (either toward AT or toward GC) greatly reduces both site-specific and sequence entropy, such that the composition of amino-acids is highly dependent on the underlying mutational bias.
+Moreover, the mutational bias (either toward AT or toward GC) greatly reduces both site-specific and sequence entropy, such that the composition of amino acids is highly dependent on the underlying mutational bias.
 This effect is less visible whenever selection is more stringent (decreasing $\alpha$), but can still be observed even for stringent selection.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth] {diversity-aa}
-    \caption[Diversity of amino-acids]{
-    Diversity of amino-acids, quantified as the entropy of the amino-acid frequencies in vertical axis, either as site-specific entropy in left panel or as sequence entropy in right panel.
+    \caption[Diversity of amino acids]{
+    Diversity of amino acids, quantified as the entropy of the amino-acid frequencies in vertical axis, either as site-specific entropy in left panel or as sequence entropy in right panel.
     Sequence entropy is higher than site-specific entropy, because at any given site only a small number of amino acids are actually permissible.
     From a mutational perspective, entropy decreases with mutational bias toward AT ($\lambda$ in horizontal axis) because mutation bias increases the frequency of AT rich amino-acid, while reducing the frequency of GC rich.
-    From a selective perspective, site-specific entropy decreases with stringency of selection (decreasing $\alpha$ represented by 5 different solid lines) because at given site only a few amino-acids are permitted.
+    From a selective perspective, site-specific entropy decreases with stringency of selection (decreasing $\alpha$ represented by 5 different solid lines) because at given site only a few amino acids are permitted.
     Conversely, because site-specific fitness profiles are randomly drawn, each site has different permitted amino-acid, increasing the sequence entropy as the stringency of selection increases.
     Moreover, under stringent selection, entropy is less sensitive to mutational bias.}
     \label{fig-mut-bias:diversity-aa}
@@ -164,11 +155,11 @@ Because the sequences are not independent but related together by a specie tree,
 Moreover, this measure of stringency of selection does not relate directly to the fixation probability of proposed mutations.
 Instead, the mean scaled fixation probability of non-synonymous mutations ($\avgpfix$), which measures the rate at which mutations arise and go to fixation relatively to neutral mutation, is an aggregate parameter measuring the overall strength of selection throughout the process.
 Moreover, $\avgpfix$ can be quantified from the \glspl{substitution} recorded along the simulation (see section~\ref{subsec:fixation-bias}).
-As expected, $\avgpfix$ depends strongly on the stringency of selection ($\alpha$), but however depends weakly on the mutational bias ($\lambda$), as depicted in left panel of figure~\ref{fig-mut-bias:omega}).
+As expected, $\avgpfix$ depends strongly on the stringency of selection ($\alpha$), but however depends weakly on the mutational bias ($\lambda$), as depicted in left panel of figure~\ref{fig-mut-bias:omega-WS}).
 Mean scaled fixation probability ($\avgpfix$) concerns all non-synonymous mutations, but we can consider only the subset of non-synonymous mutations from weak nucleotides (A or T) to strong nucleotides (G or C), called $\avgpfix_{AT \rightarrow GC}$.
-With increased mutational bias toward AT ($\alpha$), the mean scaled fixation probability toward GC ($\avgpfix_{AT \rightarrow GC}$) increases in response, as seen in right panel of figure~\ref{fig-mut-bias:omega-WS-SW}.
+With increased mutational bias toward AT ($\alpha$), the mean scaled fixation probability toward GC ($\avgpfix_{AT \rightarrow GC}$) increases in response, as seen in right panel of figure~\ref{fig-mut-bias:omega-WS}.
 The effect is stronger whenever the stringency of selection increases ($\alpha$ decreases).
-In other words, selection is opposed to mutational bias, which had pushed sites toward less fit amino-acids.
+In other words, selection is opposed to mutational bias, which had pushed sites toward less fit amino acids.
 
 \begin{figure}[H]
     \centering
@@ -224,7 +215,7 @@ We can also estimate the parameter ${\widehat{\omega}_{\text{MG}}}$, which is cl
 \subsubsection{$\omega$ as a tensor: mean-field derivation}
 
 Alternatively, gene-wide parameters of fixation should attempt to capture and aggregate site-specific parameterization of evolution.
-As a result, projecting site-specific processes into a gene-wise process can be seen as a mean-field approximation, accounting for mean scaled fixation probability between amino-acids, even though done at the level of the gene.
+As a result, projecting site-specific processes into a gene-wise process can be seen as a mean-field approximation, accounting for mean scaled fixation probability between amino acids, even though done at the level of the gene.
 
 \begin{align}
     \langle \avgpfix \rangle_{\itoj} & \simeq \langle \avgpfix_{\itoj} \rangle \\
@@ -232,7 +223,7 @@ As a result, projecting site-specific processes into a gene-wise process can be 
     & = \dfrac{ \sum\limits_{\site}  \pi_{\ci}\dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \pi_{\ci} }
 \end{align}
 
-Under projected mutation-selection model, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \gls{codon} is defined entirely by the mutation matrix ($\Mutmatrix$), the mean scaled fixation probability between all pairs of amino-acids $\omega_{\aai, \aaj}$ and the genetic code:
+Under projected mutation-selection model, the $61$-by-$61$ \gls{codon} \gls{substitution} matrix of \gls{codon} is defined entirely by the mutation matrix ($\Mutmatrix$), the mean scaled fixation probability between all pairs of amino acids $\omega_{\aai, \aaj}$ and the genetic code:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors}, \\
@@ -242,8 +233,8 @@ Under projected mutation-selection model, the $61$-by-$61$ \gls{codon} \gls{subs
     \end{dcases}
     \label{eq:codon-mean-field}
 \end{equation}
-For $20$ amino-acids, the total number of pairs of amino-acid is $190$.
-However, because of the structure of the genetic code, they are $75$ pairs one nucleotide away, because some amino-acids are not directly accessible trough a single non-synonymous mutation.
+For $20$ amino acids, the total number of pairs of amino-acid is $190$.
+However, because of the structure of the genetic code, they are $75$ pairs one nucleotide away, because some amino acids are not directly accessible trough a single non-synonymous mutation.
 As a result, the number of parameters necessary to determines all mean scaled fixation probability ($\omega_{\aai, \aaj}$) in both direction is $150$.
 However, under the assumption of a reversible process, the number of parameters can be reduced to $75$ parameters of exchangeabilities ($\beta_{\aai, \aaj}$) and $20$ parameters of stationary distribution ($\epsilon_{\aai}$).
 \begin{align}
@@ -290,8 +281,8 @@ Also, in empirical data we observed that the mean scaled fixation probability be
         \hline
     \end{tabu}}
     \caption[Estimated parameters]{
-    Nucleoprotein alignment of 498 amino-acids available for 180 species (left column).
-    Lactamase alignment of 263 amino-acids available for 85 species (right column).
+    Nucleoprotein alignment of 498 amino acids available for 180 species (left column).
+    Lactamase alignment of 263 amino acids available for 85 species (right column).
     }
     \label{table-mut-bias:estimation}
 \end{table}
@@ -305,6 +296,15 @@ Mutational bias toward AT is balanced by selection in the opposite direction tow
 Reliable inference of mutational bias thus requires to model selection in different directions.
 Our mean-field parametric model use gene-wise parameters of mean scaled fixation probabilities, even though the underlying selective landscape is changing site-wise, but such approximation can nonetheless be used to disentangle mutation and selection.
 
+\section{Abstract}
+
+The nucleotide frequencies in protein-coding sequences is the result of the equilibrium between mutation and selection.
+As a consequence, protein-coding sequences subjected to mutational bias at the nucleotide level, and evolving under selection at the amino acids, will lean toward lower mutational bias when observed at the protein level.
+Unfortunately, parametric \gls{codon} models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level and don't take into account this effect.
+Thus, such parametric \gls{codon} models are inherently misspecified to untangle mutation and selection, and they don’t estimate the mutational process reliably.
+We also show that even if the mutational process is misspecified, parametric \gls{codon} models are able to estimate reliably the rate of evolution acting on amino acids.
+But if one wants to also estimate the mutational process, one need to use model where the rate of evolution is a tensor (95 parameters) instead of a single parameter.
+
 
 \section{Materials \& Methods}
 
@@ -316,7 +316,7 @@ At the end of the simulation, we get one sequence for each leaf of the tree, mea
 Such evolutionary process is an idealized version of the reality, in the sens that the whole heterogeneity of sequences in the population is wiped away, with only one sequence representing the whole population.
 For a protein-coding \acrshort{DNA} sequence, a \gls{substitution} is modeled as the product of mutation at the nucleotide level, and selection of the amino-acid level.
 On one hand, the mutation rate between nucleotides as assumed to be shared by all sites of the sequences.
-On the other hand, the selection for amino-acids is assumed to be varying along the sequences.
+On the other hand, the selection for amino acids is assumed to be varying along the sequences.
 During the simulation, from a given sequence, the \gls{substitution} rate toward all possible mutant (one nucleotide change) is computed and the next \gls{substitution} at the waiting time until such event is obtained by Gillespie algorithm.
 
 \subsubsection{Mutational bias at the nucleotide level}
@@ -364,7 +364,7 @@ However, we subsequently take into the selection acting on \gls{codon} by modeli
 By modeling fitness at the amino-acid level, we assume that all \glspl{codon} encoding for one particular amino-acid are selectively \gls{neutral}.
 In this modeling framework, the genetic code is of particular importance since the number of \glspl{codon} encoding for a particular amino-acid varies greatly.
 As an example, Tryptophan is encoded by one \gls{codon}, while Leucine is encoded by 6 \glspl{codon}.
-Intuitively, this variation makes the mutation bias more effective in \glspl{codon} encoding for many amino-acids since there are many mutations possible that are selectively \gls{neutral} (same amino-acid).
+Intuitively, this variation makes the mutation bias more effective in \glspl{codon} encoding for many amino acids since there are many mutations possible that are selectively \gls{neutral} (same amino-acid).
 While the other hand, the mutation bias is more constrained if the amino-acid is encoded by a few \glspl{codon} since there is only a few mutations possible that are selectively \gls{neutral}.\\
 
 To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is evolving under a different fitness landscape ($\Fiti\siteexp$).

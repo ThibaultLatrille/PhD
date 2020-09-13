@@ -107,7 +107,7 @@ Then, we derive the mean substitution process implied across all sites by this s
 This mean-field 61x61 substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
 Finally, we identify the average fixation probabilities appearing in this expression with the omega tensor we are looking for.
 What we show is that we should in fact invoke as many distinct omega parameters
-as there are pairs of amino-acids that are nearest-neighbors in the genetic code.
+as there are pairs of amino acids that are nearest-neighbors in the genetic code.
 There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor.
 Using simulations, we show that the model correctly estimates the mutation rates.
 
