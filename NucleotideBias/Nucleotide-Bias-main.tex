@@ -18,16 +18,14 @@ As a result, this parameter $\omega$ capture the net, or aggregate, effect of se
 Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through single parameter.
 In reality, the selective effects of associated with non-synonymous mutations depend on the context, and on the initial and final amino acids.
 In contrast, attempts at an explicitly modeling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism \citep{Halpern1998}.
-However, these models are computationally complex, and robustness issues (violation of assumptions about the fitness landscape).
-Classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
+However, these models are computationally complex \citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
 %** bringing in the key issue here: correctly teasing apart mutation and selection **
 This simple parametric design of current classical models raises an important question.
 By capturing selection through a single parameter, $\omega$, is the mutational process estimated reliably?
 There are indications that this is not the case.
-In their simplest form, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
+In their simplest form \citep{Muse1994}, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
 In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC \citep{Singer2000}.
-As shown below, this pattern can also be reproduced in simulations assuming a protein-coding sequence at mutation-selection balance under a fixed fitness landscape.
 
 %** Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent **
 These modulations across the three coding positions has been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
@@ -38,11 +36,11 @@ Instead, what these matrices are capturing is the result of the compromise betwe
 
 %** potential impact of these problems: both practical and conceptual **
 For detecting selection, this problem is probably minor.
-Conceptually, however, this is a clear symptom of a more fundamental problem: mutation rates and mean scaled fixation probabilities are not correctly teased apart.
+Conceptually, however, this is a clear symptom of a more fundamental problem, mutation rates and fixation probabilities are not correctly teased apart.
 Practically, could have important consequences in other contexts than tests of positive selection.
 In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences.
-A particularly important factor here is biased gene conversion toward GC (named gBGC), which can confound the tests for detecting positive selection.
-Even in the absence of gBGC, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection, through $\omega$ (REFS).
+A particularly important factor here is biased gene conversion toward GC (named gBGC), which can confound the tests for detecting positive selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
+Even in the absence of gBGC, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
 All this suggests that, even before introducing gBGC in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
 
 %** the mut-sel balance revisited: an equilibrium between two net forces **
@@ -58,19 +56,13 @@ However, how many components should this tensor contain?
 More generally, what is the simplest parametric structure able to correctly tease apart mutation rates on one hand, and net mean fixation probabilities caused by selection on the other hand, and this, without having to explicitly model the underlying fitness landscape?
 
 %** end of introduction: outline of the mean-field approach and of the results — à compléter à la fin **
-In the present work, we address this question.
-In order to derive a codon model along those lines, our strategy is to first assume a true evolutionary process, following the mutation-selection formalism.
-For the sake of simplicity and illustration, we assume a site-independent, fixed fitness landscape, however, the argument is more general.
-Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
-This mean-field $61$x$61$ substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
-Finally, we identify the average fixation probabilities appearing in this expression with the $\omega$ tensor we are looking for.
-What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino acids that are nearest-neighbors in the genetic code.
-There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor.
+In the present work, we address these questions.
+In order to derive a codon model along those lines, our strategy is to first assume a true site-specific evolutionary process, following the mutation-selection formalism.
+Then, we derive the mean substitution process implied across all sites by this mechanistic model.
 Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
 
-Improved inference of site-specific positive selection under a generalized parametric codon model when there are multinucleotide mutations and multiple nonsynonymous rates~\citep{Dunn2019}.
-
-Influence of mutation bias and hydrophobicity on the substitution rates and sequence entropies of protein evolution~\citep{Santos2018}.
+% Improved inference of site-specific positive selection under a generalized parametric codon model when there are multinucleotide mutations and multiple nonsynonymous rates~\citep{Dunn2019}.
+% Influence of mutation bias and hydrophobicity on the substitution rates and sequence entropies of protein evolution~\citep{Santos2018}.
 
 \section{Results}
 
@@ -290,21 +282,30 @@ Also, in empirical data we observed that the mean scaled fixation probability be
 
 \section{Discussion}
 
-Simulations of protein-coding DNA sequence evolution are conducted under site-specific fitness landscape tuned by a stringency parameter ($\alpha$), and under a shared mutation matrix tuned a mutational bias parameter ($\lambda$).
-The observed composition of the alignment is the result of the interplay between mutation and selection, such that observed mutational bias in the alignment is different to the underlying mutational bias.
-Mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with gBGC.
+The observed composition DNA is the result of the interplay between mutation and selection, such that observed mutational bias in the alignment is different to the underlying mutational bias.
+In protein coding DNA sequence, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
+For example, mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with gBGC.
+
+Unfortunately, parametric \gls{codon} models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level, discarding the effect of selection.
+We show that even if the mutational process is misspecified, parametric \gls{codon} models are able to estimate reliably the rate of evolution acting on amino acids.
+However, such parametric \gls{codon} models are inherently misspecified to untangle mutation and selection, and they don’t estimate the mutational process reliably.
 Reliable inference of mutational bias thus requires to model selection in different directions.
-Our mean-field parametric model use gene-wise parameters of mean scaled fixation probabilities, even though the underlying selective landscape is changing site-wise, but such approximation can nonetheless be used to disentangle mutation and selection.
 
-\section{Abstract}
+In this work we seek to find the simplest parametric codon model able to correctly tease apart mutation rates on one hand, and net mean fixation probabilities without having to explicitly model the underlying fitness landscape.
+In order to derive a codon model along those lines, our strategy is to first assume a true site-specific evolutionary process, following the mutation-selection formalism.
+For the sake of simplicity and illustration, we assume a site-specific, fixed fitness landscape.
+Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
+This mean-field $61$x$61$ substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
+Finally, we identify the average fixation probabilities appearing in this expression with the $\omega$ tensor we are looking for.
+What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino acids that are nearest-neighbors in the genetic code.
+There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor ($95$ parameters for selection).
 
-The nucleotide frequencies in protein-coding sequences is the result of the equilibrium between mutation and selection.
-As a consequence, protein-coding sequences subjected to mutational bias at the nucleotide level, and evolving under selection at the amino acids, will lean toward lower mutational bias when observed at the protein level.
-Unfortunately, parametric \gls{codon} models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level and don't take into account this effect.
-Thus, such parametric \gls{codon} models are inherently misspecified to untangle mutation and selection, and they don’t estimate the mutational process reliably.
-We also show that even if the mutational process is misspecified, parametric \gls{codon} models are able to estimate reliably the rate of evolution acting on amino acids.
-But if one wants to also estimate the mutational process, one need to use model where the rate of evolution is a tensor (95 parameters) instead of a single parameter.
+Our model
+Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
+Our mean-field parametric model use gene-wise parameters of mean scaled fixation probabilities, and even though the underlying selective landscape is site-specific, such approximation can nonetheless be used to disentangle mutation and selection.
 
+Our model infer gBGC
+Applied to empirical data, we observe that selection toward GC absorbed in the $\dnds$ is also
 
 \section{Materials \& Methods}
 
