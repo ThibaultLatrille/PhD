@@ -2,9 +2,9 @@
 \subsection{Genotype to {phenotype} map}
 Define $\Nsite$ as the number of sites in the genotype sequence.
 Each site can be in one of $\Nstate \geq 2$ states, where only $1$ state is defined the stable state, and $\Nstate - 1$ states are unstable.
-For a given genotype sequence, define \gls{Phenotype} $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
+For a given genotype sequence, define phenotype $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
 After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=\sfrac{1}{\Nsite}$.
-Define $\rho_{x}(\dx)$ as the probability to get a change of \gls{Phenotype} equal to $\dx$, if the current \gls{Phenotype} is $x$:\\
+Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to $\dx$, if the current phenotype is $x$:\\
 \begin{gather}
 \begin{cases}
 \dx &\text{ with probability } \rho_{x}(\dx) = 1-x, \\
@@ -13,14 +13,14 @@ Define $\rho_{x}(\dx)$ as the probability to get a change of \gls{Phenotype} equ
 \end{cases} \label{eq:proba-pheno}
 \end{gather}
 \subsection{Selection coefficient}
-$s(x, \dx)$ is the selection coefficient of an effect $\dx$ if the current \gls{Phenotype} is $x$:
+$s(x, \dx)$ is the selection coefficient of an effect $\dx$ if the current phenotype is $x$:
 \begin{align}
 s(x, \dx) &= \frac{ \wrightfit (x + \dx) - \wrightfit (x)}{ \wrightfit ( x)}, \\
  &\simeq \frac{1}{ \wrightfit (x)}\frac{ \partial \wrightfit (x) }{\partial x} \dx, \\
  &\simeq \frac{ \partial \ln (\wrightfit (x))}{\partial x} \dx, \\
  &\simeq \frac{ \partial \logfit (x) }{\partial x} \dx, \label{eq:s_from_fitness}
 \end{align}
-where $ \wrightfit ( x)$ is the Wrightian fitness of \gls{Phenotype} $x$, and $ \logfit  = \ln \wrightfit$ is the log-fitness (or malthusian fitness).
+where $ \wrightfit ( x)$ is the Wrightian fitness of phenotype $x$, and $ \logfit  = \ln \wrightfit$ is the log-fitness (or Malthusian fitness).
 And the selective effect of the opposite change ($-\dx$) is the opposite selection coefficient:
 \begin{gather}
 s(x, -\dx) \simeq - s(x, \dx) \text{ from eq. \ref{eq:s_from_fitness}} \label{eq:s_minus_deltax}, \\
@@ -28,23 +28,23 @@ s(x, -\dx) \simeq - s(x, \dx) \text{ from eq. \ref{eq:s_from_fitness}} \label{eq
 \end{gather}
 where $S(x\eq, \dx) = 4\Ne s (x\eq, \dx)$ is the scaled selection coefficient.
 \subsection{Probability of fixation}
-The probability of fixation of a mutation with effect $\dx$, for a resident \gls{Phenotype} $x$ is :
+The probability of fixation of a mutation with effect $\dx$, for a resident phenotype $x$ is :
 \begin{align}
 p_{\text{fix}}(x, \dx) &= \frac{ 1 - \e^{-2 s(x, \dx)}}{1 - \e^{-4\Ne s(x, \dx)}}, \\
  &\simeq \frac{ 2 s(x, \dx)}{1 - \e^{-4\Ne s(x, \dx)}}, \\
  &= \frac{ 2 s(x, \dx)}{1 - \e^{-S(x, \dx)}}. \label{eq:pfix}
 \end{align}
-And in the case of \gls{neutral} mutations, the probability of fixation is:
+And in the case of neutral mutations, the probability of fixation is:
 \begin{gather}
 p_{\text{fix}}(x, 0) = \frac{ 1}{2 \Ne} \label{eq:pfix0}.
 \end{gather}
-And the ratio of probability of fixation between selected and \gls{neutral} mutations is:
+And the ratio of probability of fixation between selected and neutral mutations is:
 \begin{align}
 \frac{p_{\text{fix}}(x, \dx)}{p_{\text{fix}}(x, 0)} & = \frac{ 2 \Ne 2 s(x, \dx)}{1 - \e^{-S(x, \dx)}} \text{ from eq. \ref{eq:pfix} and \ref{eq:pfix0}},\\
 & = \frac{S(x, \dx)}{1 - \e^{-S(x, \dx)}} \label{eq:pfixratio}.
 \end{align}
 \subsection{Equilibrium phenotype}
-At equilibrium \gls{Phenotype} $x\eq$, the expected selection coefficient of mutation that reached fixation must be $0$:
+At equilibrium phenotype $x\eq$, the expected selection coefficient of mutation that reached fixation must be $0$:
 \begin{gather}
  0 = \E_{\dx} \left[ s(x\eq, \dx) p_{\text{fix}}(x\eq, \dx) \right], \\
 \iff 0 = \frac{ 2 s(x\eq, \dx)^2}{1 - \e^{-S(x\eq, \dx)}}   \rho_{x\eq}(\dx) + s(x\eq, 0) \frac{ \rho_{x\eq}(0)}{2\Ne} + \frac{ 2s(x\eq, -\dx)^2}{1 - \e^{-S(x\eq, -\dx)}} \rho_{x\eq}(-\dx)\text{ from eq. \ref{eq:pfix} and \ref{eq:pfix0}}, \\
@@ -55,13 +55,13 @@ At equilibrium \gls{Phenotype} $x\eq$, the expected selection coefficient of mut
 \end{gather}
 where  $\lambda_{K}(x\eq) = \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (\Nstate-1)$.
 \subsection{Mean scaled fixation probability (\texorpdfstring{$\avgpfix$}{φ}) at equilibrium}
-The mean fixation probability relative to the fixation probability of \gls{neutral} mutations, also called the mean scaled fixation probability ($\avgpfix$) is by definition:
+The mean fixation probability relative to the fixation probability of neutral mutations, also called the mean scaled fixation probability ($\avgpfix$) is by definition:
 \begin{align}
 \avgpfix & = \E_{\dx} \left[ \frac{p_{\text{fix}}(x, \dx)}{p_{\text{fix}}(x, 0)} \right], \\
  & = (1 - x) \frac{ S(x, \dx)}{1 - \e^{-S(x, \dx)}} + x \left(\frac{\Nstate - 2}{\Nstate - 1}\right) + \frac{x}{\Nstate-1} \frac{ S(x, -\dx)}{1 - \e^{-S(x, -\dx)}} \text{ from eq. \ref{eq:proba-pheno}, \ref{eq:pfix} and \ref{eq:pfix0}}, \\
  & = (1 - x) \frac{ S(x, \dx)}{1 - \e^{-S(x, \dx)}} - \frac{x}{\Nstate-1}  \frac{ S(x, \dx)}{1 - \e^{S(x, \dx)}} +  x \left(\frac{\Nstate - 2}{\Nstate - 1}\right) \text{ from eq. \ref{eq:S_minus_deltax}}.
 \end{align}
-$\avgpfix\eq$ at equilibrium is then determined by the \gls{Phenotype} at equilibrium $x\eq$:
+$\avgpfix\eq$ at equilibrium is then determined by the phenotype at equilibrium $x\eq$:
 \begin{align}
 \avgpfix\eq &= (1 - x\eq) \frac{ S(x\eq, \dx)}{1 - \e^{-S(x\eq, \dx)}} - \frac{x\eq}{\Nstate-1} \frac{ S(x\eq, \dx)}{1 - \e^{S(x\eq, \dx)}} + x\eq \left(\frac{\Nstate - 2}{\Nstate - 1}\right) , \\
  &= x\eq \left[ \frac{2 (x\eq-1)  \lambda_{K}(x\eq) }{\Nstate (x\eq-1)+1} + \frac{\Nstate - 2}{\Nstate - 1}\right] \text{ from eq. \ref{eq:equilibrium-pheno}}.
@@ -81,7 +81,7 @@ And the derivative of $\avgpfix\eq$ w.r.t to $x\eq$ is:
 \begin{center}
  \includegraphics[width=0.8\textwidth, page=3] {analytical-relaxation}
 \end{center}
-Moreover, given that the number of state if large enough $\Nstate \gg 1$, the response in equilibrium $\avgpfix$ due to change in \gls{Phenotype} can be approximated as:
+Moreover, given that the number of state if large enough $\Nstate \gg 1$, the response in equilibrium $\avgpfix$ due to change in phenotype can be approximated as:
 \begin{align}
 \frac{ \der \avgpfix\eq}{\der x\eq}  & = 2 \left[ \frac{\Nstate (x\eq- 1) + 1+\left[\Nstate (x\eq-1)^2+2 x\eq-1\right] \lambda_{K}(x\eq) }{(\Nstate (x\eq-1)+1)^2}\right] + \frac{\Nstate - 2}{\Nstate - 1}, \\
 & \simeq \frac{2 \lambda_{K}(x\eq)}{\Nstate} + 1, \\
@@ -101,13 +101,13 @@ G(x\eq(\Ne), \Ne ) = 0, \\
 \iff 4 \dx \left[ \frac{1}{4 \dx \Ne } \frac{\partial \lambda_K (x\eq) }{\partial x\eq } + \frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2} \right] \Ne \frac{ \der x\eq}{\der \Ne}  = - 4 \dx \frac{ \partial \logfit (x\eq) }{\partial {x\eq}}, \\
 \iff \frac{ \der x\eq}{\der \ln (\Ne)}  = - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{1}{4 \dx \Ne} \frac{\partial \lambda_K (x\eq) }{\partial x\eq } + \frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}  \label{eq:dx_dlnNe}.
 \end{gather}
-Giving the equation for the response of \gls{Phenotype} at equilibrium after a change of \gls{effective-population-size}.
-Together, the response of \gls{substitution} rate at equilibrium, after a change of \gls{effective-population-size} can be obtain as:
+Giving the equation for the response of phenotype at equilibrium after a change of effective population size.
+Together, the response of substitution rate at equilibrium, after a change of effective population size can be obtained as:
 \begin{align}
 \frac{\der \avgpfix\eq}{\der \ln (\Ne)} & = \frac{\der \avgpfix\eq}{\der x\eq} \frac{ \der x\eq}{\der \ln (\Ne)}, \\
  &= - \frac{\der \avgpfix\eq}{\der x\eq} \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{1}{4 \dx \Ne } \frac{\partial \lambda_K (x\eq) }{\partial x\eq } + \frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}} \text{ from eq. \ref{eq:dx_dlnNe}} \label{eq:dw_dlnNe}.
 \end{align}
-Moreover, with the approximation that $\left| 4 \Ne \frac{ \partial s(x\eq, \dx) }{\partial x\eq } \right| \gg \left| \frac{\partial \lambda_K (x\eq) }{\partial x\eq } \right|$, meaning that a change in \gls{Phenotype} causes a higher change in scaled selection coefficient than mutational bias, we have:
+Moreover, with the approximation that $\left| 4 \Ne \frac{ \partial s(x\eq, \dx) }{\partial x\eq } \right| \gg \left| \frac{\partial \lambda_K (x\eq) }{\partial x\eq } \right|$, meaning that a change in phenotype causes a higher change in scaled selection coefficient than mutational bias, we have:
 \begin{gather}
 \frac{ \der x\eq}{\der \ln (\Ne)}  = - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{1}{4 \dx \Ne} \frac{\partial \lambda_K (x\eq) }{\partial x\eq } + \frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}},\\
 \Longrightarrow \frac{ \der x\eq}{\der \ln (\Ne)}  \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}. \label{eq:approx_dx_dlnNe}
@@ -118,7 +118,7 @@ Together, these approximations leads to the following susceptibility in equilibr
 \end{align}
 \section{Models for the log-fitness function}
 \subsection{Folded fraction}
-All phenotype-fitness functions considered below are log-concave, and as a result, $\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}$ is an decreasing function of $x$; the less stable the protein already is, the stronger the purifying selection against additional destabilizing mutations. More precisely, fitness functions depends on the folded fraction of the protein of interest, which is given by the Fermi-Dirac distribution:
+All phenotype-fitness functions considered below are log-concave, and as a result, $\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}$ is a decreasing function of $x$; the less stable the protein already is, the stronger the purifying selection against additional destabilizing mutations. More precisely, fitness functions depends on the folded fraction of the protein of interest, which is given by the Fermi-Dirac distribution:
 \begin{align}
 P_{F} (x) & = \frac{1}{1 + e^{\beta(\alpha + \gamma \Nsite x)}}
 \end{align}
@@ -136,13 +136,13 @@ A first model is to assume that the fitness is equal to the folded fraction~\cit
 \begin{gather}
  \wrightfit (x) = \frac{1}{1 + \e^{\beta(\alpha + \Nsite \gamma x)}}. \label{eq:fitness}
 \end{gather}
-The derivative of fitness w.r.t to \gls{Phenotype} is:
+The derivative of fitness w.r.t to phenotype is:
 \begin{align}
 \frac{\partial  \logfit (x)}{\partial x}  & = - \frac{\partial \ln \left( 1 + \e^{\beta(\alpha + \Nsite \gamma x)} \right)}{\partial x} \text{ from eq. \ref{eq:fitness}}, \\
 & = - \beta \Nsite \gamma \frac{\e^{\beta(\alpha + \Nsite \gamma x)}}{1 + \e^{\beta(\alpha + \Nsite \gamma x)}} \label{eq:df_dx},\\
 & \simeq - \beta \Nsite \gamma \e^{\beta(\alpha + \Nsite \gamma x)}.
 \end{align}
-The equilibrium \gls{Phenotype} ($x\eq$) is :
+The equilibrium phenotype ($x\eq$) is :
 \begin{gather}
 \lambda_{K}(x\eq) = 4\Ne \beta \gamma \frac{\e^{\beta(\alpha + \Nsite \gamma x\eq)}}{1 + \e^{\beta(\alpha + \Nsite \gamma x\eq)}}  \text{ from eq. \ref{eq:equilibrium_lambda} and \ref{eq:df_dx}}.
 \end{gather}
@@ -150,8 +150,8 @@ Using $\Ne=10^4$, $\beta=1.686$, $\alpha = -118$, $\Nsite=300$, $\gamma=1$, we h
 \begin{center}
 \includegraphics[width=0.8\textwidth, page=4] {analytical-relaxation}
 \end{center}
-Where in this example we can visually appreciate that the a change in \gls{Phenotype} causes a higher change in scaled selection coefficient than mutational bias (eq. \ref{eq:approx_dx_dlnNe}).
-And the second derivative of fitness w.r.t to \gls{Phenotype} is:
+Where in this example we can visually appreciate that the a change in phenotype causes a higher change in scaled selection coefficient than mutational bias (eq. \ref{eq:approx_dx_dlnNe}).
+And the second derivative of fitness w.r.t to phenotype is:
 \begin{align}
 \frac{\partial^2  \logfit (x)}{\partial x^2} & = - \beta \Nsite \gamma \frac{\partial}{\partial x} \left( \frac{\e^{\beta(\alpha + \Nsite \gamma x)}}{1 + \e^{\beta(\alpha + \Nsite \gamma x)}} \right) \text{ from eq. \ref{eq:df_dx}}, \\
  & = - \beta \Nsite \gamma  \beta \Nsite \gamma \frac{\e^{\beta(\alpha + \Nsite \gamma x)}}{\left( 1 + \e^{\beta(\alpha + \Nsite \gamma x)}\right)^2}, \\
@@ -173,7 +173,7 @@ where $A$ is the cost per misfolded macromolecule. Then,
 \begin{align}
 \frac{\partial  \logfit (x)}{\partial x} & \simeq -A y \beta \gamma \Nsite e^{\beta(\alpha + \gamma \Nsite x)}.
 \end{align}
-Under this model, the \gls{Phenotype} at equilibrium is given by:
+Under this model, the phenotype at equilibrium is given by:
 \begin{align}
 \lambda_{K}(x\eq) = 4\Ne y A \beta \gamma \Nsite e^{\beta(\alpha + \gamma \Nsite x\eq)} \text{ from eq. \ref{eq:equilibrium_lambda} and \ref{eq:df_dx}}.
 \end{align}
@@ -187,7 +187,7 @@ Since $\Ne$ and $y$ are confounded factors, meaning they only appear in the equa
 \end{align}
 
 \subsection{Translational errors}
-An other variant account for translational errors. Translational errors occur at a rate $\rho$ per residue. These errors contribute additional destabilizing mutations, each with effect size $\delta x = 1/n$. The total number of translational errors per macromolecule is approximately Poisson distributed:
+Another variant account for translational errors. Translational errors occur at a rate $\rho$ per residue. These errors contribute additional destabilizing mutations, each with effect size $\delta x = 1/n$. The total number of translational errors per macromolecule is approximately Poisson distributed:
 \begin{align}
 \pi_k & = e^{-\rho \Nsite} \frac{(\rho \Nsite)^k}{k!}
 \end{align}
@@ -229,7 +229,7 @@ Then, the log-fitness is given by:
 \\
 & = -by (1 + e^{\beta(\alpha + \gamma\Nsite x)})
 \end{align}
-where $b = A /B$. Compared to model 2 and 3, the log-fitness now has an additional term that depends on the target expression level $y$, but not on trait $x$. The scaled strength of selection on mutations affecting $x$ has thus the same functional form as for the two previous models:
+where $b = A /B$. Compared to models 2 and 3, the log-fitness now has an additional term that depends on the target expression level $y$, but not on trait $x$. The scaled strength of selection on mutations affecting $x$ has thus the same functional form as for the two previous models:
 \begin{align}
 4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\alpha + \gamma\Nsite x)}
 \end{align}
@@ -272,7 +272,10 @@ We assume that the log fitness is proportional to the total amount of protein se
 \end{align}
 where $b>0$ is a parameter determining the overall stringency of selection against non-specific interactions.
 \subsection{Mean field, weak-interaction limit}
-To make the model tractable and compact, we assume that non-specific interactions are weak, i.e. $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s. In addition, we use a mean-field approximation, such that, when considering a specific protein species $i$, we assume that all other proteins have the same fraction $\bar x$ of hydrophobic residues at their surface. The value of $\bar x$ could in principle be found using a self-consistent argument, essentially by (1) explicitly calculating the net \gls{substitution} flux for protein $i$ with fraction $x_i$, under mean field $\bar x$, and (2) expressing the constraint that this \gls{substitution} process for protein $i$ is stationary at $x_i = \bar x$. This derivation is not conducted here, as it is not needed.
+To make the model tractable and compact, we assume that non-specific interactions are weak, i.e. $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
+In addition, we use a mean-field approximation, such that, when considering a specific protein species $i$, we assume that all other proteins have the same fraction $\bar x$ of hydrophobic residues at their surface.
+The value of $\bar x$ could in principle be found using a self-consistent argument, essentially by (1) explicitly calculating the net substitution flux for protein $i$ with fraction $x_i$, under mean field $\bar x$, and (2) expressing the constraint that this substitution process for protein $i$ is stationary at $x_i = \bar x$.
+This derivation is not conducted here, as it is not needed.
 Using these approximations, we can re-express the conservation of total mass as:
 \begin{align}
 C & = [i] + (m-1) [i] \frac{C}{C_0} \, e^{\beta (\alpha + \gamma \Nsite (\bar x + x_i))}
@@ -308,7 +311,9 @@ Finally, applying the main result of this work to the present case allows us to 
 \end{align}
 Note that, here, we have used $K=2$ (hydrophobic and polar residues are roughly equally likely to occur by mutation), and assumed $x^* << 1$. A more accurate formula could be used without this latter assumption. In any case, $\chi$ is now dependent on $x^*$, through $\lambda$.
 \subsection{Empirical calibration}
-Based on empirical estimates~\citep{Zhang2008}. The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$. The mean value for $E_{ij}$ is 7 kT, with a standard deviation of $\sigma = 1.8$ kT. Assuming that this standard deviation of $\pm 1.8$ kT is contributed by $\pm 6$ mutations gives $\gamma = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole. Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a much stronger response than under the model based on conformational stability.
+Based on empirical estimates~\citep{Zhang2008}. The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$.
+The mean value for $E_{ij}$ is 7 kT, with a standard deviation of $\sigma = 1.8$ kT. Assuming that this standard deviation of $\pm 1.8$ kT is contributed by $\pm 6$ mutations gives $\gamma = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole.
+Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a much stronger response than under the model based on conformational stability.
 
 \section{Empirical estimation of susceptibility}
 
@@ -347,12 +352,12 @@ In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\avgpfix)$
 \end{align}
 
 \section{Simulation using the 3d structure of protein}
-We simulated \glspl{substitution} in the protein phosphatase ($\Nsite=300$ \gls{codon} sites).
-From a \acrshort{DNA} sequence $\ci$ after $t$ \glspl{substitution}, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\ci\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
+We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites).
+From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\ci\right)$, using the $3$-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
 \begin{equation}
 G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
-where $I(a,b)$ is the pair-wise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+where $I(a,b)$ is the pairwise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miyazawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 The free energy of unfolded states $G_{\mathrm{U}}\left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
 G_{\mathrm{U}}\left(\ci\right) = \langle G\left(\ci\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \frac{2 \left[ \langle G\left(\ci\right)^2 \rangle - \langle G\left(\ci\right) \rangle^2\right] }{kT}
@@ -377,8 +382,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\end{minipage}
 	\caption[$\Delta G$ susceptibility to changes in $\Ne$]{
 		$\Delta G$ susceptibility to changes in $\Ne$.
-		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighboring amino-acid residues. 
-		Right Panel: Additive \gls{Phenotype} model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues. 
+		Right Panel: Additive phenotype model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
 		Scaling experiment simulating sequence evolution and recording the average $\Delta G$ (y-axis) observed at equilibrium as a function of $\Ne$ (x-axis).
 		Along the x-axis, $200$ replicate simulations are performed for each different $\Ne$, the average (solid lines) and $90\%$ confidence interval (shaded area) of $\avgpfix$ are shown.
 		$\Delta G$ is linearly dependent on log-$\Ne$, with a slope equal to $1/\beta=0.593$.
@@ -397,8 +402,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 
 	\caption[$\Delta \Delta G$ correlation to $\Delta G$]{
 		$\Delta \Delta G$ correlation to $\Delta G$.
-		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighboring amino-acid residues. 
-		Right Panel: Additive \gls{Phenotype} model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues. 
+		Right Panel: Additive phenotype model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
 		Simulations are performed for $\Ne$ varying from $10^2$ to $10^8$, where each dot is an independent simulation at equilibrium.
 		Along each simulation, the average $\Delta \Delta G$ of all proposed mutations is recorded (y-axis), and represented as a function of the average $\Delta G$ (x-axis).
 		$\Delta \Delta G$ is negatively correlated to $\Delta$, which is expected since protein under higher $\Ne$ are more stable (lower $\Delta G$, see above), and mutations are more destabilizing on average.
@@ -480,18 +485,18 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
 	The parameters are $\alpha=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\gamma$ with mean $1$ and standard deviation given in the legend. $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
-	Increasing the variance of $\gamma$ increases $\avgpfix$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\gamma$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\avgpfix$ is higher since non-synonymous mutations between unstable states are effectively \gls{neutral}. However the slope of the $\avgpfix$-$\Ne$ relationship is not sensibly changed.
+	Increasing the variance of $\gamma$ increases $\avgpfix$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\gamma$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\avgpfix$ is higher since non-synonymous mutations between unstable states are effectively neutral. However the slope of the $\avgpfix$-$\Ne$ relationship is not sensibly changed.
 	}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth] {SimuStab-GammaStd-Elasticity.pdf}
-	\caption[Effect of site variance on the susceptibility without grantham distance]{
-	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance under a model considering grantham distances.
+	\caption[Effect of site variance on the susceptibility without Grantham distance]{
+	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance under a model considering Grantham distances.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
 	The parameters are $\alpha=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\gamma$ with mean $1$ and standard deviation given in the legend.
-	Increasing the variance of $\gamma$ increases $\avgpfix$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\gamma$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\avgpfix$ is higher since non-synonymous mutations between unstable states are effectively \gls{neutral}. However the slope of the $\avgpfix$-$\Ne$ relationship is not sensibly changed.
+	Increasing the variance of $\gamma$ increases $\avgpfix$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\gamma$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\avgpfix$ is higher since non-synonymous mutations between unstable states are effectively neutral. However the slope of the $\avgpfix$-$\Ne$ relationship is not sensibly changed.
 	}
 \end{figure}
 
@@ -552,8 +557,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 \end{figure}
 
 \section{Distribution of fitness effects}
-DNA mutations changing a genotype can result in a change of \gls{Phenotype}, and ultimately a change in fitness.
-From a specific genotype, all the possible mutations thus result in a distribution a phenotypic effect (DPE) and fitness effects (\acrshort{DFE}).
+DNA mutations changing a genotype can result in a change of phenotype, and ultimately a change in fitness.
+From a specific genotype, all the possible mutations thus result in a distribution of phenotypic effect (DPE) and fitness effects (\acrshort{DFE}).
 The DPE and \acrshort{DFE} are not known a priori, but are the resulting consequence of the mutation-selection-drift balance.
 Empirically, these distributions are of particular importance since they can be obtained experimentally or inferred with other data.
 As an example, \acrshort{DFE} can be inferred from polymorphism dataset~\citep{Eyre-walker2007, Galtier2016}.

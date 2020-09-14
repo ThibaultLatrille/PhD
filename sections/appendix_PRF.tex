@@ -1,5 +1,5 @@
-The first strategy is to augment information about interspecies conservation with information about genetic polymorphism.
-$g(x, \scaledselcoef) \der x $ is the expected time for which the population frequency of the derived \gls{allele}, at the site, is in the range $(x, x+\der x)$ before eventual absorption:
+The first strategy is to augment information about interspecies conservation with information about genetic polymorphisms.
+$g(x, \scaledselcoef) \der x $ is the expected time for which the population frequency of the derived allele, at the site, is in the range $(x, x+\der x)$ before eventual absorption:
 \begin{align}
 	g(x, \scaledselcoef) & \approx \dfrac{2 \left[ 1 - \e^{-\scaledselcoef (1-x)}\right]}{(1 - \e^{-\scaledselcoef})x(1-x)}
 \end{align}
@@ -11,22 +11,22 @@ The model makes the following assumptions:
 	\item Each mutation occurs at a new site (infinite sites, irreversible)
 	\item Each mutant follows an independent Wright-Fisher process (no linkage)
 \end{itemize}
-In a sample of size $n$, the expected number of sites with $k$ (which ranges from $1$ to $n-1$) copies of the derived \gls{allele} is defined as a function of $g(x)$:
+In a sample of size $n$, the expected number of sites with $k$ (which ranges from $1$ to $n-1$) copies of the derived allele is defined as a function of $g(x)$:
 \begin{align}
 	G(i, n, \theta, \scaledselcoef) & = 2 \Ne u \int_{0}^{1} g(x, \scaledselcoef) \binom{n}{i} x^{i} (1-x)^{n-i} \der x \nonumber \\
 	& = \theta \int_{0}^{1} \dfrac{1 - \e^{-\scaledselcoef (1-x)}}{(1 - \e^{-\scaledselcoef})x(1-x)} \binom{n}{i} x^{i} (1-x)^{n-i} \der x\text{, where } \theta=4\Ne u \nonumber \\
 	& = \binom{n}{i} \dfrac{\theta }{1 - \e^{-\scaledselcoef}} \int_{0}^{1} \left( 1 - \e^{-\scaledselcoef (1-x)} \right) x^{i-1} (1-x)^{n-i-1} \der x
 \end{align}
-In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$). Thus the coefficient ($\scaledselcoef=4\Ne \selcoef $) associated to a mutation is a function of the amino acids encoded by the ancestral ($\ci$) and derived ($\cj$) \gls{codon}. Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
+In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$). Thus the coefficient ($\scaledselcoef=4\Ne \selcoef $) associated to a mutation is a function of the amino acids encoded by the ancestral ($\ci$) and derived ($\cj$) codon. Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
 \begin{align}
 	\scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) &= 4 \Ne (f_\cj\siteexp-f_\ci\siteexp) \nonumber \\
 	& = \scaledfit_\cj\siteexp-\scaledfit_\ci\siteexp
 \end{align}
-Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$) \gls{codon} is a function of the nucleotide changes between the \glspl{codon}. If the \glspl{codon} are not neighbor, meaning a single mutation is not sufficient to jump from $\ci$) to $\cj$, the mutation rate is equal to $0$. If the \glspl{codon} are neighbors, the mutation rate is given by the nucleotide rate matrix ($ \bm{u} $). Altogether, the scaled mutation rate $\theta_{\itoj}$ from $\ci$ to $\cj$ is:
+Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$) codon is a function of the nucleotide changes between the codons. If the codons are not neighbor, meaning a single mutation is not sufficient to jump from $\ci$) to $\cj$, the mutation rate is equal to $0$. If the codons are neighbors, the mutation rate is given by the nucleotide rate matrix ($ \bm{u} $). Altogether, the scaled mutation rate $\theta_{\itoj}$ from $\ci$ to $\cj$ is:
 \begin{equation}
 	\theta_{\itoj}(\Ne, u, \Mutmatrix) = 4 \Ne u \mutmatrix_{\itoj}
 \end{equation}
-If a site is \gls{polymorphic} and the ancestral ($\ci$) and derived ($\cj$) \glspl{codon} are neighbors, the probability of observing $i$ copies ($n \geq i > 0$) of the derived \gls{codon} ($\cj$), in a sample of size $n$, at site $\site$, is given by:
+If a site is polymorphic and the ancestral ($\ci$) and derived ($\cj$) codons are neighbors, the probability of observing $i$ copies ($n \geq i > 0$) of the derived codon ($\cj$), in a sample of size $n$, at site $\site$, is given by:
 \begin{equation}
 	P(\ci=n-i,\cj=i \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
 \end{equation}
@@ -40,4 +40,5 @@ $\bullet$ This method has been implemented into BayesCode and proved to be compu
 
 $\bullet$ Moreover, it doesn't solve the issue of the site specific fitness landscape.
 
-$\bullet$ As a result, altough theoretically interesting in this form, such model would have limited practical application.
+$\bullet$ As a result, although theoretically interesting in this form, such model would have limited practical application.
+
