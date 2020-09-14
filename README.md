@@ -1,3 +1,5 @@
+ [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # Thesis 
 
 ## Compilation
@@ -50,3 +52,6 @@ After the acronyms have been included in the preamble, they can be used by means
 \acrfull{ } 
     Prints both, the acronym and its definition. In the example the output of \acrfull{lcm} is Least Common Multiple (LCM). 
 ````
+
+## License
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). Voir [LICENSE.md](https://github.com/ThibaultLatrille/PhD/blob/master/LICENSE.md) pour plus d'informations.
