@@ -30,7 +30,7 @@ Specifically, $\dnds$ is a function of $\Ne$ depending on the specific underlyin
 Hence, the predicted relationship between $\dnds$ and $\Ne$ is only obtained under specific a priori assumptions about the selective process.
 
 Instead, mechanistic codon models explicitly introduced population-genetics equations into phylogenetic codon models~\citep{Halpern1998}.
-These so-called mutation-selection codon models assign a different fitness for each amino-acid, where the vector of 20 fitnesses is known as fitness profile, providing a model of purifying selection where the least fit amino acids are purified away.
+These so-called mutation-selection codon models assign a different fitness for each amino acid, where the vector of 20 fitnesses is known as fitness profile, providing a model of purifying selection where the least fit amino acids are purified away.
 Apart from selective effects between amino acids, the strength of selection is not typically homogeneous along the protein sequence, and depends on the local physicochemical requirements~\citep{Echave2016, Goldstein2016,Goldstein2017}.
 In this context, local change in selective strength is usually taken into account by allowing site-specific amino-acid fitness profiles.
 The sparsity of signal per codon site, however, requires to aggregate sites in categories, such as to gather enough signal for each amino-acid fitness profile.
@@ -74,7 +74,7 @@ Broadly, this framework aims to shade light on the long-term ecological and evol
     \label{fig:modelSummary}
 \end{figure}
 
-Formally, DNA coding sequences are modelled at the level of the codon, where for each codon site (triplet of nucleotides), a change of codon means a change in \acrshort{DNA} but not necessarily in amino-acid.
+Formally, DNA coding sequences are modelled at the level of the codon, where for each codon site (triplet of nucleotides), a change of codon means a change in \acrshort{DNA} but not necessarily in amino acid.
 The substitution rate (per unit of time) from codon $\ci$ to $\cj$, denoted $\submatrix_{\itoj}$, is equal to the total rate of mutation (per unit of time) at the level of the population~($2\Ne\mu_{\itoj}$) multiplied by the probability of fixation of the mutation:
 \begin{equation}
 {\submatrix_{\itoj}}
@@ -90,12 +90,12 @@ First, if codon $\ci$ to $\cj$ are not neighbours, $\mu_{\itoj}$ is equal to $0$
 Second, if codon $\ci$ and $\cj$ are only one mutation away, $\mu_{\itoj}$ is given by the nucleotide relative rate~(${\mutmatrix_{\nucitoj}}$) scaled by the mutation rate per time~($\mu$).
 Technically, the $4$-dimensional nucleotide relative rate matrix~($\Mutmatrix$) is normalized such that we expect $1$ substitution per unit of time, hence the scaling by $\mu$.
 
-In the case of non-synonymous mutations, the probability of fixation depends on the difference in fitness~\citep{Ohta1992} between the amino-acid encoded by the initial and final codons:
+In the case of non-synonymous mutations, the probability of fixation depends on the difference in fitness~\citep{Ohta1992} between the amino acid encoded by the initial and final codons:
 \begin{equation}
     \label{eq:mutationSelection}
     {\submatrix_{\itoj}} = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}
 \end{equation}
-where $\Fit$ is a $20$-dimensional vector specifying the log-fitness for each amino-acid, and $\aai$ is the amino-acid encoded by codon $i$.
+where $\Fit$ is a $20$-dimensional vector specifying the log-fitness for each amino acid, and $\aai$ is the amino acid encoded by codon $i$.
 We see from this equation that, $\fit$ and $\Ne$ are confounded, such that increasing the effective population size while decreasing the fitnesses by the same factor leads to the same substitution rate.
 
 In the model presented in this manuscript, $\Ne$ and $\mu$ are allowed to vary between species (across branches) as a multivariate log-Brownian process, but assumed constant along the \acrshort{DNA} sequence.

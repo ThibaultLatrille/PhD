@@ -20,8 +20,8 @@ Thus the nearly-neutral argument translates into a predicted decrease in $\dnds$
 
 The context of protein-coding sequences fostered another modelling approach, based on genotype-fitness map instead of distribution of fitness effects.
 In this alternative approach, the selective effect of a mutation depends on the fitness of both source and target amino acids involved on the mutation~\citep{Halpern1998, Rodrigue2010, Tamuri2012}.
-For example, if the target amino-acid has a higher fitness than the current amino-acid, the selective effect of the mutation is positive, and reciprocally negative for a lower fitness.
-Such a modelling approach predicts higher substitution rates between amino-acid with similar biochemical properties.
+For example, if the target amino acid has a higher fitness than the current amino acid, the selective effect of the mutation is positive, and reciprocally negative for a lower fitness.
+Such a modelling approach predicts higher substitution rates between amino acid with similar biochemical properties.
 More fundamentally, the fitness depends solely on the current genotype, not on the trajectory of mutations leading to this sequence.
 Even though this modelling approach differs substantially from the one assuming a fixed \acrshort{DFE}, it also predicts a negative correlation between $\avgpfix$ and $\Ne$~\citep{Spielman2015, DosReis2015}.
 
@@ -99,11 +99,11 @@ This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Po
 \end{figure}
 In the original biophysical model, the protein stability is the difference in free energy between folded and unfolded conformations, called $\deltaG$ in kcal/mol.
 Technically, free energy of the folded and unfolded conformations are computed based on the $3$D conformations of the protein and statistical potentials.
-In such models, the stabilizing or destabilizing effect of an amino-acid at a particular site depends on amino acids present in the vicinity in $3$D conformation, taking into account specific epistasis~\citep{Dasmeh2018}.
+In such models, the stabilizing or destabilizing effect of an amino acid at a particular site depends on amino acids present in the vicinity in $3$D conformation, taking into account specific epistasis~\citep{Dasmeh2018}.
 
 We approximate this model such that destabilizing effect at a particular site does not depend on other neighbouring residues, disregarding specific epistasis~\citep{Dasmeh2014}.
 Instead, each site contributes independently to $\deltaG$.
-With such approximation, for each site of the sequence only one amino-acid is stabilizing the protein.
+With such approximation, for each site of the sequence only one amino acid is stabilizing the protein.
 All $19$ other amino acids are equally destabilizing, and each site contribute to an excess of $\gamma = \Delta \Delta G > 0$ (in kcal/mol) to $\deltaG$ per destabilizing amino acids.
 If all amino acids of the sequence are stabilizing, $\deltaG$ is optimal and equal to $ \DeltaGmin = \Delta G_{\text{min}} < 0$.
 In this model, the most succinct phenotype of a given genotype (i.e. sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
@@ -136,7 +136,7 @@ Subsequently, differential calculus on the response of the equilibrium phenotype
 Main results are given in the general case of any phenotype-fitness map, and also derived in the specific case of the biophysical model, where the fitness is proportional to the total amount of folded protein.
 All developments are available in supplementary materials in the most general case.
 
-From a given genotype, mutations of its underlying sequence have various effects, they can increase or decrease the proportion of destabilizing amino-acid, or do nothing if the mutation is between two destabilizing amino acids.
+From a given genotype, mutations of its underlying sequence have various effects, they can increase or decrease the proportion of destabilizing amino acid, or do nothing if the mutation is between two destabilizing amino acids.
 To derive probabilities of such events to occur, we also make the simplifying assumption that all {transitions} between amino acids are equiprobable.
 Altogether, any mutation in the sequence can then have a phenotypic effect of $0$ or $\dx=\sfrac{1}{\Nsite}$, with probabilities of {transition} equal to:
 \begin{gather}
@@ -259,7 +259,7 @@ Specifically, with respect to mutations, our derivation assumes that all amino-a
 Simulating evolution of \acrshort{DNA} sequence, and taking into account a matrix a mutation rate between nucleotide allows to test directly the robustness of the results to this assumption.
 Furthermore, with regard to the phenotypic effects of amino-acid changes, we previously assumed that all destabilizing amino acids are having an identical impact on protein stability.
 In reality, one would expect conservative amino-acid replacements to be less destabilizing than radical changes.
-This assumption is relaxed in our simulation, such that destabilizing mutations in each position are now proportional to the Grantham distance~\citep{Grantham1974} between the optimal amino-acid in this position and the amino-acid proposed by the non-synonymous mutation.
+This assumption is relaxed in our simulation, such that destabilizing mutations in each position are now proportional to the Grantham distance~\citep{Grantham1974} between the optimal amino acid in this position and the amino acid proposed by the non-synonymous mutation.
 Additionally, the number of sites in the sequence ($\Nsite$) is assumed to be large such that the selection coefficient is well approximated by the fitness derivative (equation \ref{eq:s}).
 The robustness of such approximation is tested in the simulations with finite sequences ($\Nsite=300$).
 % Finally, the substitution rate is known to vary among sites within a protein, and each site does not contribute equally to the stability of the protein~\citep{Echave2016}.
@@ -286,7 +286,7 @@ In such experiment, $\DeltaGmin=-118$ kcal/mol as it is the $\deltaG$ of the opt
     Along the x-axis, $200$ replicate simulations are performed for each different $\Ne$, the average (solid lines) and $90\%$ confidence interval (shaded area) of $\avgpfix$ are shown.
     Linear regression (dashed lines) allows to estimate the susceptibility ($\hat{\chi}$), which is compared to theoretical expectation.
     The fixed parameters are $\Nsite=300$, $\beta=1.686$.
-    Simulations are conducted under our additive phenotype model (expect panel C), and for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+    Simulations are conducted under our additive phenotype model (expect panel C), and for each non-optimal amino acid $\gamma$ is scaled by the Grantham distance to the optimal amino acid.
     Panel A; $\DeltaGmin$ and $\gamma$ are given in the legend.
     $\gamma$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation \ref{eq:equilibrium}.
     The estimated susceptibility ($\hat{\chi}$) decreases proportionally to the inverse of $\gamma$, as predicted by our theoretical model.
@@ -339,7 +339,7 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to a temporari
     As such, whatever the exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
     We observe that increasing the number of sites implies a reduced time to reach the new equilibrium.
     Panel B.
-    In context of a fixed fitness landscape, where each amino-acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\avgpfix$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
+    In context of a fixed fitness landscape, where each amino acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\avgpfix$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
     In the context of a fixed distribution of fitness effects (\acrshort{DFE}), the relaxation time is non-existent and the new equilibrium value of $\avgpfix$ is reached instantaneously.
     }
     \label{fig:relaxStability}
@@ -410,7 +410,7 @@ As an example, in the Ising model the magnetization is a macroscopic resultant o
 At equilibrium when system reaches minimum potential energy, the observable magnetization is controlled by variable such as temperature, and by external forces such as a magnetic field forcing the system.
 By analogy, our atoms are sites of the sequence which can be in stabilizing or destabilizing state, and the macroscopic emerging observable is the relative substitution rate of selected mutation ($\avgpfix$), which is controlled by effective population size ($\Ne$) analogous to temperature~\citep{Sella2005}.
 Ultimately, the susceptibility of macroscopic observable ($\avgpfix$) to a control variable ($\Ne$) can be tied to the microscopic parameters.
-Another example of observable macroscopic property, though not considered in this manuscript, could be for example site entropy, i.e. the effective number of observed amino-acid at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
+Another example of observable macroscopic property, though not considered in this manuscript, could be for example site entropy, i.e. the effective number of observed amino acid at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
 
 % Mechanical analogy
 % Elasticity with springs ? Surface tension with molecule and radius of the
@@ -473,15 +473,15 @@ Under a simulation of protein folding with an additive model of free energy, the
     \deltaG\left(\Seqi\right) = \DeltaGmin + \Nsite \gamma * x\left(\Seqi\right),
 \end{equation*}
 where $0 \leq x\left(\Seqi\right) \leq 1$ is the distance of $\Seqi$ to the optimal sequence.
-For each site of sequence, the optimal amino acids are chosen randomly at initialization, and the distance between the current amino-acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
+For each site of sequence, the optimal amino acids are chosen randomly at initialization, and the distance between the current amino acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
 Wrightian fitness is defined as the probability of our protein to be in the folded state, given by the Fermi-Dirac distribution:
 \begin{equation}
     \wrightfit (\Seqi) = \dfrac{e^{-\beta \deltaG\left(\Seqi\right) }}{1 + e^{-\beta \deltaG\left(\Seqi\right) }} = \dfrac{1}{1 + e^{\beta \deltaG\left(\Seqi\right) }},
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
-Under a simulation with site-independent fitness profiles, a fitness profile give a fitness for each amino-acid (vector of size $20$).
+Under a simulation with site-independent fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
-Overall, the protein phenotype is computed as the sum of site-specific selection coefficient, obtained by accessing the amino-acid present at each site of the protein.
+Overall, the protein phenotype is computed as the sum of site-specific selection coefficient, obtained by accessing the amino acid present at each site of the protein.
 The selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
     s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{G_{\site} \left(\Seqj(\site) \right)}{G_{\site} \left(\Seqi(\site) \right)} \right) ,

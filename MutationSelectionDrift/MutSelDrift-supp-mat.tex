@@ -21,7 +21,7 @@ For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile i
 \begin{equation}
     \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
 \end{equation}
-The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino-acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino-acid has the same fitness.
+The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
 The Shannon entropy can be averaged over all sites as:
 \begin{equation}
@@ -33,9 +33,9 @@ The Shannon entropy can be averaged over all sites as:
 \label{sec:supp-mat-simulations}
 
 \subsection{Independent fitness profiles}
-Under a simulation with site-independent fitness profiles, a fitness profile give a fitness for each amino-acid (vector of size $20$).
+Under a simulation with site-independent fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
-Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino-acid present at each site of the protein.
+Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino acid present at each site of the protein.
 For each possible mutant, we compute the selection coefficient of the mutant:
 \begin{equation}
     s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Base_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{\Base_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
@@ -100,10 +100,10 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         SimuDiv, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
         SimuDiv, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
     \end{tabu}}
-    \caption[Inferred amino acids entropy for SimuDiv]{
-    Estimated amino acids entropy.
+    \caption[Inferred amino-acids entropy for SimuDiv]{
+    Estimated amino-acids entropy.
     Simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
-    Estimated with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Estimated with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
 \subsection{Wright-Fisher with polymorphism}
@@ -162,8 +162,8 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
         SimuPoly, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Inferred amino-acid entropy for SimuPoly]{
-    Estimated amino acids entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
-    Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Estimated amino-acids entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
 \subsection{Fisher geometric landscape}
@@ -178,9 +178,9 @@ Mutations are seen has displacement of the phenotype in the multidimensional spa
 Beneficial mutations are moving the phenotype closer to $0$, whereas deleterious mutations are moving the phenotype further away.
 In such original context, the distribution of mutational effects is not dependent on the current genotype, but this can be relaxed using a genotype-phenotype map.\\
 
-In a protein context, the genotype-phenotype map can be defined by assigning to each of the $20$ amino-acid a vector in the multidimensional space.
+In a protein context, the genotype-phenotype map can be defined by assigning to each of the $20$ amino acid a vector in the multidimensional space.
 Since different sites of the protein do not have the same physico-chimical properties, we can define a specific genotype-phenotype map for each position of the sequence.
-Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino-acid present at each site of the protein.
+Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino acid present at each site of the protein.
 From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ substitutions, the protein's phenotype is given by:
 \begin{equation}
     \phenoGeo\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
@@ -239,9 +239,9 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         SimuGeo, chain~1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
         SimuGeo, chain 2 & $2.23 \pm 0.04$ & $2.46 \pm 0.02$\\ \hline
     \end{tabu}}
-    \caption[Entropy of amino acids for SimuGeo]{
-    Estimated amino acids entropy under simulation accounting for site epistasis (geometric landscape), thus fluctuation of the selection coefficient along the phylogeny.
-    Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \caption[Amino-acid entropy for SimuGeo]{
+    Estimated amino-acid entropy under simulation accounting for site epistasis (geometric landscape), thus fluctuation of the selection coefficient along the phylogeny.
+    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
 \subsection{Protein folding probability}
@@ -252,7 +252,7 @@ From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ substitutions, we comput
 \begin{equation}
     G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
 \end{equation}
-where $I(a,b)$ is the pair-wise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 
 The free energy of unfolded states $G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
@@ -316,9 +316,9 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         SimuFold, chain~1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
         SimuFold, chain 2 & $1.30 \pm 0.04$ & $1.60 \pm 0.03$\\ \hline
     \end{tabu}}
-    \caption[Entropy of amino acids in SimuFold]{
-    Estimated amino acids entropy under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
-    Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \caption[Amino-acid entropy in SimuFold]{
+    Estimated amino-acid entropy under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
+    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
 
@@ -327,7 +327,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 
 \subsection{Chain convergence}
 \label{subsec:chain-convergence}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -342,7 +342,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Traits estimation \& correlation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCovariance.tex}
@@ -378,7 +378,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -450,12 +450,12 @@ Obtained with the inference model of site selection for amino-acid, and branch f
         Mammals 36 CDS, replicate 6, Chain 2 & $0.97 \pm 0.11$ & $1.10 \pm 0.10$\\ \hline
     \end{tabu}}
     \caption[Entropy of amino acids in mammals]{Estimated amino acids entropy in mammals.
-    Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
     \label{tab:table-entropy-aa-mutselne}
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
+Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
 
 \begin{figure}[H]
     \centering
@@ -489,7 +489,7 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 \label{sec:empirical-data-in-isopods}
 
 \subsection{Traits estimation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -504,7 +504,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -587,7 +587,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Statistical test}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -656,7 +656,7 @@ Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 
 \label{sec:empirical-data-in-primates}
 
 \subsection{Chain convergence}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -671,7 +671,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Traits estimation (chain~1)}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
     \input{primates/SiteMutSelBranchNe_TraitsCorrelation.tex}
@@ -754,12 +754,12 @@ Obtained with the inference model of site selection for amino-acid, and branch f
         Primates, chain~1 & $1.41 \pm 0.10$ & $1.49 \pm 0.08$\\ \hline
         Primates, chain 2 & $1.40 \pm 0.10$ & $1.48 \pm 0.08$\\ \hline
     \end{tabu}}
-    \caption[Entropy of amino acids in primates]{Estimated amino acids entropy in primates.
-    Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \caption[Amino-acid entropy in primates]{Estimated amino acids entropy in primates.
+    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
+Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
 
 \begin{figure}[H]
     \centering
@@ -799,7 +799,7 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 \label{sec:empirical-data-in-drosophila}
 
 \subsection{Traits estimation \& correlation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
@@ -841,7 +841,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino-acid, and branch fluctuation of $\Ne$.
+Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
 
 \begin{figure}[H]
     \centering
@@ -910,7 +910,7 @@ Obtained with the inference model of site selection for amino-acid, and branch f
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino-acid).
+Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
 
 \begin{figure}[H]
     \centering

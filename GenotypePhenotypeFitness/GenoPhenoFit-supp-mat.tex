@@ -357,7 +357,7 @@ From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the fre
 \begin{equation}
 G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
-where $I(a,b)$ is the pairwise contact energies between amino-acid $a$ and $b$, using contact potentials estimated by Miyazawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by Miyazawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 The free energy of unfolded states $G_{\mathrm{U}}\left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
 G_{\mathrm{U}}\left(\ci\right) = \langle G\left(\ci\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \frac{2 \left[ \langle G\left(\ci\right)^2 \rangle - \langle G\left(\ci\right) \rangle^2\right] }{kT}
@@ -383,7 +383,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[$\Delta G$ susceptibility to changes in $\Ne$]{
 		$\Delta G$ susceptibility to changes in $\Ne$.
 		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues. 
-		Right Panel: Additive phenotype model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+		Right Panel: Additive phenotype model, where for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid.
 		Scaling experiment simulating sequence evolution and recording the average $\Delta G$ (y-axis) observed at equilibrium as a function of $\Ne$ (x-axis).
 		Along the x-axis, $200$ replicate simulations are performed for each different $\Ne$, the average (solid lines) and $90\%$ confidence interval (shaded area) of $\avgpfix$ are shown.
 		$\Delta G$ is linearly dependent on log-$\Ne$, with a slope equal to $1/\beta=0.593$.
@@ -403,7 +403,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[$\Delta \Delta G$ correlation to $\Delta G$]{
 		$\Delta \Delta G$ correlation to $\Delta G$.
 		Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues. 
-		Right Panel: Additive phenotype model, where for each non-optimal amino-acid $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+		Right Panel: Additive phenotype model, where for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid.
 		Simulations are performed for $\Ne$ varying from $10^2$ to $10^8$, where each dot is an independent simulation at equilibrium.
 		Along each simulation, the average $\Delta \Delta G$ of all proposed mutations is recorded (y-axis), and represented as a function of the average $\Delta G$ (x-axis).
 		$\Delta \Delta G$ is negatively correlated to $\Delta$, which is expected since protein under higher $\Ne$ are more stable (lower $\Delta G$, see above), and mutations are more destabilizing on average.
@@ -451,7 +451,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of $\beta$ on the susceptibility]{
 	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various parameter $\beta$.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\alpha=-118$, $\gamma=1$, $\Nsite=300$, and for each non-optimal amino-acid, $\gamma$ is scaled by the Grantham distance to the optimal amino-acid. $\beta$ are given in the legend.
+	The fixed parameters are $\alpha=-118$, $\gamma=1$, $\Nsite=300$, and for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid. $\beta$ are given in the legend.
 	Increasing $\beta$ decreases the slope of the $\avgpfix$-$\Ne$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
@@ -462,7 +462,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of sequence size on the susceptibility]{
 	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various sequence size.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\alpha=-118$, $\gamma=1$, $\beta=1.686$, and for each non-optimal amino-acid, $\gamma$ is scaled by the Grantham distance to the optimal amino-acid. $\Nsite$ are given in the legend.
+	The fixed parameters are $\alpha=-118$, $\gamma=1$, $\beta=1.686$, and for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid. $\Nsite$ are given in the legend.
 	Increasing $\Nsite$ decreases the slope of the $\avgpfix$-$\Ne$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
@@ -473,7 +473,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of $\gamma$ on the susceptibility with regards to expression level]{
 	$\avgpfix$ at equilibrium as a function of the expression level $y$ (log scale), for various value of $\gamma$.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\alpha=-118$, $\beta=1.686$, $\Nsite=300$, and for each non-optimal amino-acid, $\gamma$ is scaled by the Grantham distance to the optimal amino-acid. $\gamma$ are given in the legend.
+	The fixed parameters are $\alpha=-118$, $\beta=1.686$, $\Nsite=300$, and for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid. $\gamma$ are given in the legend.
 	Increasing $\gamma$ increases the slope of the $\avgpfix$-$y$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
@@ -484,7 +484,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of site variance on the susceptibility]{
 	$\avgpfix$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The parameters are $\alpha=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\gamma$ with mean $1$ and standard deviation given in the legend. $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+	The parameters are $\alpha=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\gamma$ with mean $1$ and standard deviation given in the legend. $\gamma$ is scaled by the Grantham distance to the optimal amino acid.
 	Increasing the variance of $\gamma$ increases $\avgpfix$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\gamma$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\avgpfix$ is higher since non-synonymous mutations between unstable states are effectively neutral. However the slope of the $\avgpfix$-$\Ne$ relationship is not sensibly changed.
 	}
 \end{figure}
@@ -569,7 +569,7 @@ Moreover, the distribution of $\deltadeltaG$ for novel mutations can be obtained
 	\includegraphics[width=0.8\textwidth] {DPE-DFE.pdf}
 	\caption[Distribution of fitness effects and phenotypic effect]{
 	Distribution of fitness effects and phenotypic effect for novels non-synonymous mutations observed along a simulation at the mutation-selection balance.
-	$\alpha=-118$, $\gamma=1$, $\Nsite=300$, $\beta=1.686$, and for each non-optimal amino-acid, $\gamma$ is scaled by the Grantham distance to the optimal amino-acid.
+	$\alpha=-118$, $\gamma=1$, $\Nsite=300$, $\beta=1.686$, and for each non-optimal amino acid, $\gamma$ is scaled by the Grantham distance to the optimal amino acid.
 	Each side of the distribution is fitted to a gamma distribution, shown in dotted line.
 	Panel A. Distribution of observed $\deltadeltaG$, which fit adequately the gamma distribution for negative $\deltadeltaG$ (stabilizing mutations).
 	Panel A. Distribution of observed selection coefficient, which fit adequately the gamma distribution for both positive and negative selection coefficient. However the shape parameter estimated is not the same for positive and negative selection coefficients.

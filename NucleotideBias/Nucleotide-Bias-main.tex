@@ -4,7 +4,7 @@
 %%** Introducing codon models and their usefulness **
 Phylogenetic codon models are now routinely used in many domains of bioinformatics and molecular evolutionary studies.
 Most often used to characterize the selective regimes, or genes, or sites, having experienced positive selection.
-More generally, these models highlight the respective contributions of mutation, selection, drift and biased gene conversion, and the causes of their variation between genes or across species.
+More generally, these models highlight the respective contributions of mutation, selection, genetic drift and biased gene conversion, and the causes of their variation between genes or across species.
 
 %** introducing the idea of a single $\omega$ **
 Conceptually, codon models take advantage of the fact that synonymous and non-synonymous substitutions are differentially impacted by selection.
@@ -18,7 +18,7 @@ As a result, this parameter $\omega$ capture the net, or aggregate, effect of se
 Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through a single parameter.
 In reality, the selective effects of associated with non-synonymous mutations depend on the context, and on the initial and final amino acids.
 In contrast, attempts at an explicitly modelling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism \citep{Halpern1998}.
-However, these models are computationally complex \citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
+However, these models are computationally complex~\citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
 %** bringing in the key issue here: correctly teasing apart mutation and selection **
 This simple parametric design of current classical models raises an important question.
@@ -68,13 +68,13 @@ Inferring parameters on simulated alignments, we show that the model correctly e
 
 We first conduct simulation experiments with a mutation-selection substitution model with fixed fitness landscape, based on two parameters tuning the mutation bias and the stringency of selection.
 We explore, through summary statistics the intricate interplay between mutation and selection.
-In a second step, we explore how codon models with alternative parameterization are able to capture the mutation and mean scaled fixation probabilities of the evolutionary process.
+In a second step, we explore how codon models with alternative parameterization are able to capture the mutation and selection of the evolutionary process.
 
 \subsection{Simulations experiments}
 
 Simulations of protein-coding DNA sequences were conducted under an origin-fixation substitution process~\citep{McCandlish2014} at the level of codons, parameterized by two variables (see figure~\ref{fig-mut-bias:parameters}).
 In this context, mutations are defined at the level of nucleotides with a single parameter controlling mutational bias toward AT $\lambda = (\mutequi_A+\mutequi_T)/(\mutequi_C+\mutequi_G)$, which is shared by all sites of the sequence (see section~\ref{sec-mut-bias:mut-matrix}).
-With regards to selection, synonymous mutations are first considered neutral, such that the synonymous substitution rate equal to the underlying mutation rate.
+With regards to selection, synonymous mutations are considered neutral, such that the synonymous substitution rate equal to the underlying mutation rate.
 Alternatively, selection is modelled for non-synonymous mutations, with each codon site of the sequence defined by its own profile of amino-acid fitness (a vector of 20 fitnesses), drawn from a Dirichlet distribution of concentration parameter $\alpha$ (see section~\ref{sec-mut-bias:aa-selection}).
 A low parameter $\alpha$ implies that the amino-acid profile randomly drawn is likely uneven, with some-acid with high fitness while other are with low fitness (for each site of the sequence).
 Ultimately, the stringency of selection increase with decreasing $\alpha$.
@@ -89,13 +89,6 @@ Ultimately, the stringency of selection increase with decreasing $\alpha$.
     Stringency of selection increase with decreasing $\alpha$.}
     \label{fig-mut-bias:parameters}
 \end{figure}
-
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=\textwidth] {simulations-alignment}
-%    \caption[Simulations and analysis]{We can observe composition of the alignment as function of the mutation and selection parameters.}
-%    \label{fig-mut-bias:simulations-alignment}
-%\end{figure}
 
 \subsubsection{Observed behaviour}
 
@@ -117,10 +110,10 @@ However the first and second positions are impacted by the strength of selection
 \end{figure}
 
 Beside the observed mutational bias of the alignment, the diversity of amino acids is an important indicator of the selective constraints that the sequence experiences.
-This diversity is quantified by the frequencies of amino acids observed across all taxa in the alignment, summarized through a single statistic entropy~\citep{Goldstein2017}, as described in section~\ref{subsec:entropy}.
+This diversity is quantified by the frequencies of amino acids observed across all taxa in the alignment, summarized through a single statistic, namely entropy of frequencies~\citep{Goldstein2017}, as described in section~\ref{subsec:entropy}.
 Entropy can be quantified for a given site of the sequence, and this site-specific entropy can subsequently be averaged over the sequence.
 Alternatively, the entropy can be quantified directly on the whole sequence by the observed frequencies of amino acids in the alignment.
-These two variants of entropy are computed for alignment under different values of $\alpha$ and $\lambda$, as depicted in figure~\ref{fig-mut-bias:diversity-aa}, .
+These two variants of entropy are computed for alignment under different values of $\alpha$ and $\lambda$, as depicted in figure~\ref{fig-mut-bias:diversity-aa}.
 Under stringent selection, only a small number of amino acids are actually permissible any given site resulting in low site-specific entropy.
 Yet all amino acids occur at comparable frequencies in the alignment resulting in high sequence entropy. %~\citep{Ramsey2011}.
 This analysis highlights how important it is to distinguish between averaged site-specific entropy (left panel) and sequence entropy (right panel).
@@ -133,9 +126,9 @@ This effect is less visible whenever selection is more stringent (decreasing $\a
     \caption[Diversity of amino acids]{
     Diversity of amino acids quantified as the entropy of the amino-acid frequencies in the vertical axis, either as site-specific entropy in left panel or as sequence entropy in the right panel.
     Sequence entropy is higher than site-specific entropy, because at any given site only a small number of amino acids are actually permissible.
-    From a mutational perspective, entropy decreases with mutational bias toward AT ($\lambda$ in horizontal axis) because mutation bias increases the frequency of AT rich amino-acid, while reducing the frequency of GC rich.
+    From a mutational perspective, entropy decreases with mutational bias toward AT ($\lambda$ in horizontal axis) because mutation bias increases the frequency of AT rich amino acids, while reducing the frequency of GC rich amino acids.
     From a selective perspective, site-specific entropy decreases with stringency of selection (decreasing $\alpha$ represented by 5 different solid lines) because at given site only a few amino acids are permitted.
-    Conversely, because site-specific fitness profiles are randomly drawn, each site has different permitted amino-acid, increasing the sequence entropy as the stringency of selection increases.
+    Conversely, because site-specific fitness profiles are randomly drawn, each site has different permitted amino acid, increasing the sequence entropy as the stringency of selection increases.
     Moreover, under stringent selection, entropy is less sensitive to mutational bias.}
     \label{fig-mut-bias:diversity-aa}
 \end{figure}
@@ -226,7 +219,7 @@ Under projected mutation-selection model, the $61$-by-$61$ codon substitution ma
     \end{dcases}
     \label{eq:codon-mean-field}
 \end{equation}
-For $20$ amino acids, the total number of pairs of amino-acid is $190$.
+For $20$ amino acids, the total number of pairs of amino acid is $190$.
 However, because of the structure of the genetic code, they are $75$ pairs one nucleotide away, because some amino acids are not directly accessible through a single non-synonymous mutation.
 As a result, the number of parameters necessary to determine all mean scaled fixation probability ($\omega_{\aai, \aaj}$) in both directions is $150$.
 However, under the assumption of a reversible process, the number of parameters can be reduced to $75$ parameters of exchangeabilities ($\beta_{\aai, \aaj}$) and $20$ parameters of stationary distribution ($\epsilon_{\aai}$).
@@ -316,7 +309,7 @@ We seek to simulate the evolution of protein-coding sequences along a specie tre
 Starting with one sequence at the root of the tree, the sequences evolves independently along the different branches of the tree by point substitutions, until they reach the leaves.
 At the end of the simulation, we get one sequence for each leaf of the tree, meaning one sequence per specie.
 Such evolutionary process is an idealized version of the reality, in the sense that the whole heterogeneity of sequences in the population is wiped away, with only one sequence representing the whole population.
-For a protein-coding \acrshort{DNA} sequence, a substitution is modelled as the product of mutation at the nucleotide level, and selection of the amino-acid level.
+For a protein-coding \acrshort{DNA} sequence, a substitution is modelled as the product of mutation at the nucleotide level, and selection at the amino-acid level.
 On one hand, the mutation rate between nucleotides as assumed to be shared by all sites of the sequences.
 On the other hand, the selection for amino acids is assumed to be varying along the sequences.
 During the simulation, from a given sequence, the substitution rate toward all possible mutant (one nucleotide change) is computed and the next substitution at the waiting time until such event is obtained by Gillespie algorithm.
@@ -362,12 +355,12 @@ It is important to note that ratio of weak over strong nucleotides frequency at 
 The mutation rate between a pair of codons is given by the underlying mutation rates between nucleotides.
 However the rate mutation rate is null if the pair of codons differs by more than one nucleotide:
 To note, the substitution rate between codons would be equal to the mutation rate if codons are selectively neutral.
-However, we subsequently take into the selection acting on codon by modelling it at the amino-acid level, where each amino-acid $\aai$ encoded by codons $\ci $are given a fitness ($\Fiti$).
-By modelling fitness at the amino-acid level, we assume that all codons encoding for one particular amino-acid are selectively neutral.
-In this modelling framework, the genetic code is of particular importance since the number of codons encoding for a particular amino-acid varies greatly.
+However, we subsequently take into the selection acting on codon by modelling it at the amino-acid level, where each amino acid $\aai$ encoded by codons $\ci $are given a fitness ($\Fiti$).
+By modelling fitness at the amino-acid level, we assume that all codons encoding for one particular amino acid are selectively neutral.
+In this modelling framework, the genetic code is of particular importance since the number of codons encoding for a particular amino acid varies greatly.
 As an example, tryptophan is encoded by one codon, while leucine is encoded by 6 codons.
-Intuitively, this variation makes the mutation bias more effective in codons encoding for the same amino acids, since there are more mutations possible that are selectively neutral (same amino-acid).
-While the other hand, the mutation bias is more constrained if the amino-acid is encoded by a few codons since there are only a few selectively neutral mutations.\\
+Intuitively, this variation makes the mutation bias more effective in codons encoding for the same amino acids, since there are more mutations possible that are selectively neutral (same amino acid).
+While the other hand, the mutation bias is more constrained if the amino acid is encoded by a few codons since there are only a few selectively neutral mutations.\\
 
 To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is evolving under a different fitness landscape ($\Fiti\siteexp$).
 At one particular site, under a static fitness landscape, the substitution rate between codons is given by the product of the mutation rate and the probability of fixation:
@@ -408,7 +401,7 @@ For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile i
 \begin{equation}
     \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
 \end{equation}
-The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino-acid is present), and a value of $\ln(20)\simeq3$ corresponding to a neutral landscape, where each amino-acid has the same fitness.
+The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $\ln(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
 The Shannon entropy can be averaged over all sites as:
 \begin{equation}

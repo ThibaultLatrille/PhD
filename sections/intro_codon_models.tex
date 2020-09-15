@@ -79,12 +79,12 @@ Altogether, the \acrshort{DNA} genetic code translating codon to amino acids, wh
     Amino acids are represented into $4$ categories based on the electrochemical properties.
     Non-polar in yellow (\textcolor{Nonpolar}{\ding{110}}), polar in green (\textcolor{Polar}{\ding{110}}), basic in blue (\textcolor{Basic}{\ding{110}}) and finally acidic in red (\textcolor{Acidic}{\ding{110}}).
     Stop codons are represented in gray (\textcolor{Stop}{\ding{110}}).
-    The synonymous codons encoding for the same amino-acid are usually different in their third codon position, the wooble base.
+    The synonymous codons encoding for the same amino acid are usually different in their third codon position, the wooble base.
     }
     \label{table:genetic_code}
 \end{table}
 
-Biochemical translation from codon to amino-acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
+Biochemical translation from codon to amino acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
 More precisely, codons binds to \acrshort{tRNA} via an anticodon, three consecutive bases that are complementary and antiparallel to the associated codon.
 On the other end, \acrshort{tRNA} complexes bind uniquely with one of the $20$ amino acids, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
 As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating codons into amino acids .
@@ -158,14 +158,14 @@ More precisely, the number of possible transitions between the underlying codons
     \caption[Graphs of {codon} and amino-acid transitions]{
     \label{fig:graph-codons-aa}
     Graphs of possible one nucleotide {transition} between codon (left panel) and between amino acids (right panel).
-    Nodes correspond to codons (left panel) and amino acids (right panel), and their colour represents the encoded amino-acid.
+    Nodes correspond to codons (left panel) and amino acids (right panel), and their colour represents the encoded amino acid.
     Additionally, for amino acids, the size of nodes represents the number of underlying codons.
     An edge between two codons depicts a one nucleotide {transition} such that a codon can have at most $9$ possible {transitions}.
     Similarly, an edge between two amino acids correspond to a one nucleotide non-synonymous {transition} between the underlying codons, and the width of the edges represents the number of such possible {transitions}.
     Non-synonymous {transitions} are represented in a colour gradient, while synonymous {transitions} are depicted in black.
     The graph of the $61$ codons contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
     The radius of the graph is three such that the most distant amino acids are at most three {transitions} away.
-    Codons encoding for the same amino-acid are all fully connected by synonymous changes, except for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino-acid, hence at least two non-synonymous {transitions}.
+    Codons encoding for the same amino acid are all fully connected by synonymous changes, except for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino acid, hence at least two non-synonymous {transitions}.
     From the perspective of amino acids, the graph of the $20$ amino acids contains $75$ non-synonymous {transitions}.
     The graph is not fully connected and does not form a clique. Moreover, the graph radius is three because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
     Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
@@ -377,12 +377,12 @@ In contrast, mechanistic codon models seek to predict individually all substitut
 \label{subsec:HB-formalism}
 
 The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
-As a result, the fitness landscape is characterized by a fitness vector over the 20 amino-acid at each site.
+As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acid at each site.
 Furthermore, the substitution process at each position is independent of the current state at all other positions.
 On the other hand, it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
 
 In the following equations, we omit the dependence on sites, such that fact that this process is site-specific is implicit.
-Consider a given site, the probability of fixation depends on the difference of fitness between the amino-acid encoded by the mutated codon ($\fitj$) and the fitness of the amino-acid encoded by the original codon ($\fiti$), where $\aai$ denotes the amino-acid encoded by codon $i$.
+Consider a given site, the probability of fixation depends on the difference of fitness between the amino acid encoded by the mutated codon ($\fitj$) and the fitness of the amino acid encoded by the original codon ($\fiti$), where $\aai$ denotes the amino acid encoded by codon $i$.
 The rate of substitution from codon $\ci$ to $\cj$ is derived from equation~\ref{eq:sub-transion-rates}:
 \begin{align}
     \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}, \\
@@ -570,7 +570,7 @@ As a result, any changes of the landscape results in lower elevation of the curr
 The resulting dynamic is that selection pushes the sequence to climb up the landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
 
 Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since substitutions are accepted preferentially if they are in the direction of this target, substitutions are on average adaptive.
-In other words, at the moment of a substitution the target amino-acid has a high relative fitness, which can only then decrease through time.
+In other words, at the moment of a substitution the target amino acid has a high relative fitness, which can only then decrease through time.
 Thus breaking the assumption of time independence of amino-acid preferences leads to estimation of induced $\omega_0$ lower than realized $\omega$:
 \begin{equation}
     \omega > \omega_0 \\
@@ -583,7 +583,7 @@ Thus breaking the assumption of time independence of amino-acid preferences lead
 The nearly-neutral assumption can also be broken if there is no independence between sites, known as epistasis between sites.
 Unfortunately, one consequence of epistatic interactions is that even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time~\citep{Gong2014, Lunzer2010, Mccandlish2013}.
 This effect called entrenchment result in the current amino acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
-In other words, at the moment of a substitution the target amino-acid has a nearly equal relative fitness, which can only increase with time~\citep{Goldstein2016, Goldstein2017}.
+In other words, at the moment of a substitution the target amino acid has a nearly equal relative fitness, which can only increase with time~\citep{Goldstein2016, Goldstein2017}.
 Contradictory to adaptation, breaking the assumption of independence between sites leads to entrenchments and estimated $\omega$ lower being higher than the induced $\omega_0$~\citep{Rodrigue2016}:
 \begin{equation}
     \omega > \omega_0 \\
