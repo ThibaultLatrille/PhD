@@ -14,7 +14,7 @@ Finally, the relationship between classical and mechanistic models is investigat
 \label{sec-intro:genetic-code}
 Proteins have a variety of molecular and cellular roles, they are the enzymes that catalyse chemical bonds, they regulate cell processes and control their rates, they carry signals within the cell and across membranes, they bind and transport small molecules, they form cellular structures, among other functions.
 This diversity of roles is accomplished by a variety of three-dimensional shapes.
-A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino acids of which it is made of, with protein sequences ranging from fewer than $20$ to more than $5000$ amino acids, with an average of about 350 amino acids.
+A protein's three-dimensional shape is in turn determined by the linear one-dimensional sequence of amino acids of which it is made of, with protein sequences ranging from fewer than $20$ to more than $5000$ amino acids across the tree of life, with an average of about 350 amino acids.
 Just as \acrshort{DNA} is oriented because of the asymmetry of nucleotides, proteins are oriented due to the asymmetry of amino acids.
 One end is called the N-terminus, and the other end, the C-terminus, and each amino acid will interact with the other amino acids in its spatial vicinity.
 
@@ -86,7 +86,7 @@ Altogether, the \acrshort{DNA} genetic code translating codon to amino acids, wh
 
 Biochemical translation from codon to amino acid mechanistically emanates from transfer \acrshort{RNA} (\acrshort{tRNA}).
 More precisely, codons binds to \acrshort{tRNA} via an anticodon, three consecutive bases that are complementary and antiparallel to the associated codon.
-On the other end, \acrshort{tRNA} complexes bind uniquely with one of the $20$ amino acids, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
+On the other end, a given \acrshort{tRNA} bind uniquely with one of the $20$ amino acids, where the catalytic reaction is performed by aminoacyl-tRNA synthetase~\citep{Rich1976}.
 As a result, \acrshort{tRNA} genes along with aminoacyl-tRNA synthetase genes constitute the machinery necessary for translating codons into amino acids .
 However, there is not a one-to-one correspondence between the $61$ codons and \acrshort{tRNA} genes.
 First, the set of unique sequences of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$~\citep{Goodenbour2006}.
@@ -106,7 +106,7 @@ Selection for proteins will be framed at the amino-acid level in a first approxi
 
 \subsection{Amino-acid transitions}
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -164,10 +164,9 @@ More precisely, the number of possible transitions between the underlying codons
     Similarly, an edge between two amino acids correspond to a one nucleotide non-synonymous {transition} between the underlying codons, and the width of the edges represents the number of such possible {transitions}.
     Non-synonymous {transitions} are represented in a colour gradient, while synonymous {transitions} are depicted in black.
     The graph of the $61$ codons contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
-    The radius of the graph is three such that the most distant amino acids are at most three {transitions} away.
     Codons encoding for the same amino acid are all fully connected by synonymous changes, except for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino acid, hence at least two non-synonymous {transitions}.
     From the perspective of amino acids, the graph of the $20$ amino acids contains $75$ non-synonymous {transitions}.
-    The graph is not fully connected and does not form a clique. Moreover, the graph radius is three because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
+    The graph is not fully connected and does not form a clique. Moreover, the most distant amino acids are at most three {transitions} away, because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
     Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
     }
 \end{figure}
@@ -216,7 +215,7 @@ Most often, this matrix is assumed to be a general time-reversible (GTR) and thu
 \end{equation}
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
 Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
-With this notation, the mutation rate from codon $\ci$ to $\cj$ is:
+With this notation, the mutation rate $\mu_{\itoj}$ from codon $\ci$ to $\cj$ is:
 \begin{equation}
     \mu_{\itoj} =
     \begin{dcases}
@@ -224,6 +223,7 @@ With this notation, the mutation rate from codon $\ci$ to $\cj$ is:
         0 \text{ else.}
     \end{dcases}
 \end{equation}
+In other words, the mutation rate between codons is simply the mutation rate between the underlying nucleotide change.
 
 At the codon level, synonymous mutations are deemed neutral and the rate of synonymous substitutions ${\submatrix_{\itoj}}$ is equal to the mutation rate:
 \begin{align}
@@ -255,13 +255,13 @@ With the definition given above, $\omega$ identifies with the ratio of the rate 
 More globally, given how its parameterization carefully distinguishes between synonymous and non-synonymous substitutions, the model can be seen as trying to separate the effects of the mutation rates (captured by $\Mutmatrix$) and those of selection at the non-synonymous level (captured by $\omega$).
 
 All non-synonymous mutations are considered equivalent, and $\omega$ encompasses the average strength of selection exercised on them.
-Most importantly, $\omega>1$ is absorbing the signal of an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution.
+Most importantly, $\omega>1$ is due to an excess in the rate of non-synonymous substitutions, indicating that the protein is under adaptive evolution.
 Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, means the protein is globally under purifying selection.
 
 \subsection{Equilibrium properties}
 \label{subsec:equilibrium-properties}
 
-Under the Muse \& Gaut formalism, the codon equilibrium frequencies depend only on the equilibrium nucleotide frequencies ($\bm{\mutequi}$), but not on $\omega$:
+Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\bm{\pi}$ depend only on the equilibrium nucleotide frequencies ($\bm{\mutequi}$), but not on $\omega$:
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
     & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{(1 - \mutequi_{T}\mutequi_{A}\mutequi_{A} - \mutequi_{T}\mutequi_{A}\mutequi_{G} - \mutequi_{T}\mutequi_{G}\mutequi_{A} )}, \label{eq:equilibrium-MG}
@@ -377,19 +377,18 @@ In contrast, mechanistic codon models seek to predict individually all substitut
 \label{subsec:HB-formalism}
 
 The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
-As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acid at each site.
-Furthermore, the substitution process at each position is independent of the current state at all other positions.
-On the other hand, it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
+As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acids at each site.
+Furthermore, the substitution process at each position is independent of the current state at all other positions, and it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
 
-In the following equations, we omit the dependence on sites, such that fact that this process is site-specific is implicit.
-Consider a given site, the probability of fixation depends on the difference of fitness between the amino acid encoded by the mutated codon ($\fitj$) and the fitness of the amino acid encoded by the original codon ($\fiti$), where $\aai$ denotes the amino acid encoded by codon $i$.
+In the following equations, I omit the dependence on sites, such that the fact that this process is site-specific is implicit.
+Consider a given site, the probability of fixation depends on the difference in fitness between the amino acid encoded by the mutated codon ($\fitj$) and the amino acid encoded by the original codon ($\fiti$), where $\aai$ denotes the amino acid encoded by codon $i$.
 The rate of substitution from codon $\ci$ to $\cj$ is derived from equation~\ref{eq:sub-transion-rates}:
 \begin{align}
     \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{4 \Ne \left({\fitj - \fiti}\right)}{{1 - \e^{4 \Ne \left({\fiti - \fitj}\right)} }}, \\
     & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }.
 \end{align}
 
-Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon models is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
+Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon models $\Submatrix$ is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
@@ -400,11 +399,11 @@ Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon mode
     \label{eq:propensities-models}
 \end{equation}
 
-Because the process is time-reversible (see previous chapter), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
+Because the process is time-reversible (see chapter \ref{chap:intro-formalism}), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
-The stationary frequency of codon is ultimately the product of the nucleotide frequencies at three positions ($\bm{\mutequi}$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
+The stationary frequency of a codon is ultimately the product of the nucleotide frequencies at its three positions ($\bm{\mutequi}$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
 
 \subsection{Empirical calibration of the model}
 \label{subsec:empirical-calibration-HB}
@@ -429,7 +428,7 @@ And finally the substitution rate between codon $\ci$ and $\cj$ is:
     & = \mu_{\itoj} \frac{ \ln \left( \frac{\pi_{\cj} \mu_{\jtoi}}{\pi_{\ci} \mu_{\itoj} } \right) }{ 1 -  \frac{\pi_{\ci} \mu_{\itoj} }{\pi_{\cj} \mu_{\jtoi}} }
 \end{align}
 As a result, the substitution rate from codon $\ci$ to $\cj$ can be approximated based on a plugin estimator for both the mutational process and the amino-acid frequencies, independently estimated.
-Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}, .
+Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}.
 Comparison of both inference approaches yields similar results in terms of estimated profiles and their induced selective constraint on protein-coding DNA sequences~\citep{Spielman2016a}.
 Finally, instead of estimating the fitness landscape directly on the multiple sequence alignment, deep mutational scanning approaches can be used to estimate fitness profiles experimentally~\citep{Bloom2014,Bloom2014a}, as presented in chapter~\ref{chap:intro-physic-proteins}.
 
@@ -438,15 +437,15 @@ Finally, instead of estimating the fitness landscape directly on the multiple se
 
 Thus far, in the mutation-selection formalism, fitness landscape has been considered static.
 In practice, fitness landscapes are dynamic and changing with time~\citep{Naumenko2012, Bazykin2015}.
-In particular, selective pressure may change following one (or more) transitions to a new environment (eg: new host).
-That changes in selection pressure induced by environmental changes can be modelled in a mutation-selection framework by introducing different fitness profiles in different parts of the tree~\citep{Tamuri2009}.
+In particular, selective pressures may change following one (or more) transitions to a new environment (e.g.: a new host).
+Changes in selective pressures induced by environmental changes can be modelled in a mutation-selection framework by introducing different fitness profiles in different parts of the tree~\citep{Tamuri2009}.
 Similarly, phenotypic convergent evolution has been investigated in relation to underlying molecular convergence at the level of codons.
-In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence of amino-acid profiles at this specific site~\citep{Parto2018,Parto2018a}
+In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence in amino-acid profiles at this specific site~\citep{Parto2018,Parto2018a}
 
 \subsection{Mutation-selection and codon usage}
 \label{subsec:model-codon-usage}
 
-Another example of mutation-selection mechanistic codon model is modelling codon usage bias, where each synonymous codon of the same amino acids have different fitness~\citep{Yang2008}.
+Another example of a mutation-selection mechanistic codon model is one in which codon usage bias is modelled, in particular, a model in which each synonymous codon of the same amino acids have different fitness~\citep{Yang2008}.
 It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
 \begin{equation}
     \begin{dcases}
@@ -457,8 +456,8 @@ It is important to note that contrarily to the Halpern \& Bruno formalism, codon
     \end{dcases}
     \label{eq:yang-codon-models}
 \end{equation}
-With such definition, this model is hybrid between classical model (due to $\omega$) and mechanistic mutation-selection codon models (due to selection coefficient for codon $\Fitci$).
-Such hybrid models have the interest of measuring the average effect of selection on non-synonymous through $\dnds$ without making the assumption that synonymous mutations are neutral.
+With such a definition, this model is hybrid between the classical model (due to $\omega$) and the mechanistic mutation-selection codon model (due to the selection coefficients for codons $\Fitci$).
+Such hybrid models have the interest of measuring the average effect of selection on non-synonymous mutations through $\dnds$ without making the assumption that synonymous mutations are neutral.
 
 
 \section{Relationship between mechanistic and classical codon models}
@@ -467,20 +466,20 @@ Such hybrid models have the interest of measuring the average effect of selectio
 Even though classical codon models have fewer parameters than mechanistic codon models, it is important to realize they are not nested.
 Indeed, it is impossible to find a given set of parameters for which the two models are equivalent, except by assuming all sites to have a uniform fitness distribution over amino acids in the Halpern \& Bruno mutation-selection model, and setting $\omega = 1$ in the Muse \& Gaut model, but this is really a trivial case.
 They are inherently different and proceed from a different philosophy.
-On one hand, mechanistic models rely on an explicit fitness landscape, while, on the other hand, classical models capture the average effect of selection through a single $\omega$ parameter.
+On the one hand, mechanistic models rely on an explicit fitness landscape, while, on the other hand, classical models capture the average effect of selection through a single $\omega$ parameter.
 
 The difference can be highlighted by considering the case of reverse mutations.
 In a mechanistic model (section~\ref{sec:intro-mechanistic-codon-models}), a negative selection coefficient associated with a given non-synonymous mutation is always matched by a positive selection coefficient for the reverse mutation.
 As a result, the rate of substitution will be lower than the mutation rate in one direction, but higher in the other direction.
-In contrast, in classical codon models (section~\ref{sec:intro-classical-codon-models}), if $\omega < 1$ (respectively $\omega> 1$), the rate of substitution is lower (respectively higher) than the synonymous substitution rate in the two directions.
+In contrast, in classical codon models (section~\ref{sec:intro-classical-codon-models}), if $\omega < 1$ (respectively, $\omega> 1$), the rate of substitution is lower (respectively, higher) than the synonymous substitution rate in the two directions.
 
 Nevertheless, it is possible to make conceptual and quantitative connections between these two modelling paradigms.
 This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015} and \citet{Jones2016}.
 
-\subsection{Halpern \& Bruno mechanistic codon model as a nearly-neutral model}
+\subsection{The Halpern \& Bruno mechanistic codon model as a nearly-neutral model}
 \label{subsec:HB-formalism-nearly-neutral-model}
 
-Once fitted to the data, the classical Muse \& Gaut (MG) formalism return estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
+Once fitted to the data, the classical Muse \& Gaut (MG) formalism returns estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
 From there, one can compute the substitution and mutation rates of each codon substitution.
 Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
 \begin{align}
@@ -492,8 +491,7 @@ Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutati
 where $\NonSyn_{\ci}$ is the set of non-synonymous codons neighbours to codon $\ci$.
 Such equation is also true for any classical codon model formalism, where this identity between $\avgpfix$ and $\dnds$ bears much importance.
 
-This rate of non-synonymous substitution over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}).
-Such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
+This rate of non-synonymous substitutions over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}), such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
 
 On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
@@ -502,21 +500,21 @@ Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonym
     \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
-Such that for mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
+Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
-To note, inference under Muse \& Gaut formalism showed the best agreement compared to other formalism of classical codon models.
+To note, inference under the Muse \& Gaut formalism showed the best agreement compared to other formalisms of classical codon models.
 
 Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a fixed fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{HB}}$ induced by the model will always be lower than $1$.
-In other words, that mechanistic mutation-selection codon models display the important feature of genuinely accounting for purifying selection.
+In other words, they showed that mechanistic mutation-selection codon models display the important feature of genuinely accounting for purifying selection.
 From a dynamic perspective, a non-synonymous mutation from a codon with high fitness to another codon will have a low probability of fixation, since the mutated codon will have a lower fitness.
-At equilibrium this low probability of fixation of the other codon result into high frequency of the codon with high fitness.
+At equilibrium, this low probability of fixation of the other codon results in a high frequency of the codon with higher fitness.
 Essentially, at equilibrium the codon frequencies only fluctuate at the mutation-selection balance, and all the mutations are neutral on average, but slightly deleterious or advantageous, hence the name nearly-neutral models~\citep{Ohta1973, Ohta1992, Rodrigue2016}.
-This justifies to interpret the Halpern \& Bruno mechanistic codon models as an implementation of the nearly-neutral regime.
+This justifies the interpretation of the Halpern \& Bruno mechanistic codon models as an implementation of the nearly-neutral regime.
 
-Altogether, classical codon substitution model will interpret a mechanistic mutation-selection model as purifying selection ($\omega < 1$).
+Altogether, classical codon substitution models will interpret a mechanistic mutation-selection model as purifying selection ($\omega < 1$).
 Accordingly, the mean scaled probability of fixation $\avgpfix_{\text{HB}}$ has also been denoted $\omega_0$~\citep{Rodrigue2016}.
 
-\subsection{Halpern \& Bruno mechanistic codon model as a nearly-neutral null model}
+\subsection{The Halpern \& Bruno mechanistic codon model as a nearly-neutral null model}
 \label{subsec:HB-formalism-nearly-neutral-null-model}
 
 As seen above, under the assumption that the protein is under a nearly-neutral regime, the predicted $\omega_0$ (mutation-selection model) and the estimated $\omega$ (classical model) should be the same~\citep{Spielman2015}.
@@ -550,10 +548,10 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
         $\ds$ & Synonymous substitution rate. \\ \hline
         $\dnds$ & Ratio of non-synonymous over synonymous substitution rate. \\ \hline
         $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
-        \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in \citet{Muse1994} formalism. \\
-        & Also, $\avgpfix_{\text{MG}}=\omega$ in Muse \& Gaut formalism. \\ \hline
-        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in \citet{Halpern1998} mechanistic formalism. \\ \hline
-        \multirow{2}{*}{$\omega_*$} & Scaling factor for all non-synonymous substitutions in \citet{Halpern1998} formalism. \\
+        \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in the \citet{Muse1994} formalism. \\
+        & Also, $\avgpfix_{\text{MG}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
+        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
+        \multirow{2}{*}{$\omega_*$} & Scaling factor for all non-synonymous substitutions in the \citet{Halpern1998} formalism. \\
         & Hence $\avgpfix = \omega = \omega_* \omega_0 $ \\ \hline
     \end{tabu}}
     \caption[Parameters of classical and mechanistic codon models]{Relationship between classical and mechanistic codon models}
@@ -563,15 +561,16 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 \subsection{Adaptive evolution}
 \label{subsec:adaptive-evolution}
 
-Firstly, if amino acids are under a fluctuating fitness landscape, known as seascape, fitness landscape is not static but dynamic~\citep{Mustonen2009}.
-Because of the movement of the landscape behind our feet, similarly to a Red-Queen dynamic, it is more likely to slide into a valley rather than on top of a peak when the landscape moving.
+The Halpern \& Bruno formalism assumes that the fitness landscape is not dependent on time.
+Alternatively, fitness landscapes changing with time are known as seascape~\citep{Mustonen2009}.
+Because of the movement of the fitness landscape, similarly to Red-Queen dynamics, the current is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
 In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward than upward in the fitness landscape.
 As a result, any changes of the landscape results in lower elevation of the current coordinate.
-The resulting dynamic is that selection pushes the sequence to climb up the landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
+The resulting dynamics is that selection pushes the sequence to climb up the landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
 
 Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since substitutions are accepted preferentially if they are in the direction of this target, substitutions are on average adaptive.
 In other words, at the moment of a substitution the target amino acid has a high relative fitness, which can only then decrease through time.
-Thus breaking the assumption of time independence of amino-acid preferences leads to estimation of induced $\omega_0$ lower than realized $\omega$:
+Thus, breaking the assumption of time independence of amino-acid preferences leads to the estimation of an induced $\omega_0$ lower than the realized $\omega$:
 \begin{equation}
     \omega > \omega_0 \\
     \iff \omega_* > 1
@@ -580,16 +579,16 @@ Thus breaking the assumption of time independence of amino-acid preferences lead
 \subsection{Epistasis and entrenchment}
 \label{subsec:epistasis-and-entrenchment}
 
-The nearly-neutral assumption can also be broken if there is no independence between sites, known as epistasis between sites.
+The nearly-neutral assumption of the Halpern \& Bruno formalism can also be broken if there is no independence between sites, known as epistasis between sites.
 Unfortunately, one consequence of epistatic interactions is that even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time~\citep{Gong2014, Lunzer2010, Mccandlish2013}.
-This effect called entrenchment result in the current amino acids reinforcing its relative fitness with time, in opposition to constantly lagging behind a moving target.
-In other words, at the moment of a substitution the target amino acid has a nearly equal relative fitness, which can only increase with time~\citep{Goldstein2016, Goldstein2017}.
-Contradictory to adaptation, breaking the assumption of independence between sites leads to entrenchments and estimated $\omega$ lower being higher than the induced $\omega_0$~\citep{Rodrigue2016}:
+This effect called entrenchment results in the current amino acids reinforcing their relative fitness with time, in opposition to constantly lagging behind a moving target.
+In other words, at the moment of a substitution, the target amino acid has a nearly equal relative fitness, which can only increase with time~\citep{Goldstein2016, Goldstein2017}.
+Contradictory to what happens during adaptation, breaking the assumption of independence between sites leads to entrenchment and the realized $\omega$ being lower than the induced $\omega_0$~\citep{Rodrigue2016}:
 \begin{equation}
-    \omega > \omega_0 \\
+    \omega < \omega_0 \\
     \iff \omega_* < 1
 \end{equation}
 
 Altogether, a departure from near-neutrality with a $\omega \geq \omega_0$ is a signature of an ongoing Red-Queen process and that the protein is under ever-changing adaptation.
 On the other hand, a $\omega \leq \omega_0$ is a signature of epistatic interaction between amino acids.
-But one shortcoming of nearly-neutral codon substitution models is that if one does not get a statistical departure from near-neutrality ($\omega = \omega_0$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be disentangled.
+However, one shortcoming of nearly-neutral codon substitution models is that if one does not get a statistical departure from near-neutrality ($\omega = \omega_0$), it could be due to a mixture of both Red-Queen and epistatic processes that cannot be disentangled.
