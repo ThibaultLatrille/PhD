@@ -1,4 +1,5 @@
 \newacronym{AA}{AA}{Amino-Acid}
+\newacronym{AIC}{AIC}{Akaike information criterion}
 \newacronym{A}{A}{Adenine}
 \newacronym{HB}{HB}{Halpern \& Bruno}
 \newacronym{gBGC}{gBGC}{GC Biased Gene Conversion}
@@ -13,8 +14,9 @@
 \newacronym{G}{G}{Guanine}
 \newacronym{GTR}{GTR}{General Time Reversible}
 \newacronym{GY}{GY}{Goldman \& Yang}
-\newacronym{LHT}{LHT}{life-History Traits}
-\newacronym{MCMC}{MCMC}{Monte Carlo Markov Chain}
+\newacronym{LHT}{LHT}{Life-History Traits}
+\newacronym{LRT}{LRT}{Likelihood Ratio Test}
+\newacronym{MCMC}{MCMC}{Markov Chain Monte Carlo}
 \newacronym{MC}{MC}{Markov Chain}
 \newacronym{MG}{MG}{Muse \& Gaut}
 \newacronym{MK}{MK}{McDonald \& Kreitman}
@@ -29,12 +31,12 @@
 \newacronym{WS}{WS}{Mutation from a ‘weak’ (W) to ‘strong’ (S) nucleotide}
 
 \newglossaryentry{allele}{name={allele},description={A variant form of a given gene}}
+\newglossaryentry{GC-biased gene conversion}{name={GC-biased gene conversion},description={The process by which the GC-content increases because of biased gene conversion}}
 \newglossaryentry{biased gene conversion}{name={biased gene conversion},description={Process by which gene conversion is biased towards a given outcome. It occurs when one haplotype has a higher probability of being the donor}}
 \newglossaryentry{codon usage bias}{name={codon usage bias},description={Unequal frequency of the alternative codons that specify the same amino acid}}
 \newglossaryentry{codon}{name={codon},description={Sequence of three nucleotides coding for a given amino acid}}
-\newglossaryentry{diploid}{name={diploid},description={Organism (or phase) displaying a ploidy of 2 ($n=2$), i.e.\ two sets of chromosomes (which are paired)}}
-\newglossaryentry{effective-population-size}{name={effective population size},description={The number of individuals in a population who contribute to the next generation}}
-\newglossaryentry{GC-biased gene conversion}{name={GC-biased gene conversion},description={The process by which the GC-content increases because of biased gene conversion}}
+\newglossaryentry{diploid}{name={diploid},description={Organism (or phase) displaying a ploidy of 2 ($n=2$), \textit{i.e.}\ two sets of chromosomes (which are paired)}}
+\newglossaryentry{effective population size}{name={effective population size},description={The number of individuals in a population who contribute to the next generation}}
 \newglossaryentry{GC-content}{name={GC-content},description={The percentage of G or C nucleotidic bases in a DNA sequence}}
 \newglossaryentry{gamete}{name={gamete},description={Product of meiosis}}
 \newglossaryentry{gene conversion}{name={gene conversion},description={A non-reciprocal recombination process that results in one sequence being converted into the other}}
@@ -43,7 +45,7 @@
 \newglossaryentry{genetic interference}{name={genetic interference},description={The fact that the formation of a recombination event can affect that of others in adjacent regions}}
 \newglossaryentry{genetic linkage}{name={genetic linkage},description={Non-independent assortment of genes}}
 \newglossaryentry{genotyping}{name={genotyping},description={The process by which DNA is analyzed to determine which genetic variant (allele) is present for a given marker}}
-\newglossaryentry{haploid}{name={haploid},description={Organism (or phase) displaying a ploidy of 1 ($n=1$), i.e.\ a single set of chromosomes}}
+\newglossaryentry{haploid}{name={haploid},description={Organism (or phase) displaying a ploidy of 1 ($n=1$), \textit{i.e.}\ a single set of chromosomes}}
 \newglossaryentry{N-terminus}{name={N-terminus},description={End of an amino acid chain terminated by a free amine group}}
 \newglossaryentry{non-synonymous}{name={non-synonymous},description={transition that modifies the amino acid produced}}
 \newglossaryentry{phenotype}{name={phenotype},description={The composite of observable traits}}
@@ -51,19 +53,15 @@
 \newglossaryentry{polymorphic}{name={polymorphic},description={Which presents several forms. Subject to inter-individual variability}}
 \newglossaryentry{recombination}{name={recombination},description={Exchange of DNA sequence information}}
 \newglossaryentry{synonymous}{name={synonymous},description={substitution that does not modify the amino acid produced}}
-\newglossaryentry{transition}{name={transition},description={Mutation between two nucleotidic bases of the same family (purine or pyrimidine), i.e.\ either a A~$\leftrightarrow$~G or a C~$\leftrightarrow$~T mutation}}
-\newglossaryentry{transversion}{name={transversion},description={Mutation involving a change of nucleotidic family (from a purine to a pyrimidine or the other way round), i.e.\ either a A~$\leftrightarrow$~C, a A~$\leftrightarrow$~T, a G~$\leftrightarrow$~C or a G~$\leftrightarrow$~T mutation}}
-\newglossaryentry{Akaike}{name={Akaike information criterion},description={Measure of the relative quality of a maximum likelihood estimated given the data, penalizing for too many parameters in the model}}
-\newglossaryentry{Bayes}{name={Bayes factor},description={Ratio of the posterior probability of two competing hypotheses, usually a null and an alternative. The posterior probability is conditioned on randomly observed data and on the prior distribution of the parameters of the competing hypotheses}}
-\newglossaryentry{Codon}{name={codon usage bias},description={Differences in the frequency of occurrence of synonymous codons in protein coding DNA, reflecting a balance between mutational biases and natural selection for translational optimization}}
-\newglossaryentry{Dirichlet-process}{name={Dirichlet process},description={Family of stochastic processes whose realizations are probability distributions. In other words, a Dirichlet process is a probability distribution whose range is itself a set of probability distributions. It is often used in Bayesian inference to describe the prior knowledge about the distribution of random variables. Meaning, how likely it is that the random variables are distributed according to one or another particular distribution}}
-\newglossaryentry{LRT}{name={Likelihood ratio test},description={Statistical test used to compare the goodness of fit of two models, one of which (the null model) is a special case of the other (the alternative model)}}
+\newglossaryentry{Akaike information criterion}{name={Akaike information criterion},description={Measure of the relative quality of a maximum likelihood estimated given the data, penalizing for too many parameters in the model}}
+\newglossaryentry{Bayes factor}{name={Bayes factor},description={Ratio of the posterior probability of two competing hypotheses, usually a null and an alternative. The posterior probability is conditioned on randomly observed data and on the prior distribution of the parameters of the competing hypotheses}}
+\newglossaryentry{Dirichlet process}{name={Dirichlet process},description={Family of stochastic processes whose realizations are probability distributions. In other words, a Dirichlet process is a probability distribution whose range is itself a set of probability distributions. It is often used in Bayesian inference to describe the prior knowledge about the distribution of random variables. Meaning, how likely it is that the random variables are distributed according to one or another particular distribution}}
+\newglossaryentry{Likelihood ratio test}{name={Likelihood ratio test},description={Statistical test used to compare the goodness of fit of two models, one of which (the null model) is a special case of the other (the alternative model)}}
 \newglossaryentry{likelihood}{name={likelihood},description={Probability of observing the data given the parameters of the statistical model. Note this is a function of solely the parameters of the model, the observed data are fixed}}
-\newglossaryentry{MKtest}{name={Mc-Donald Kreitman test},description={Test that compares the amount of variation within a species (polymorphism) to the divergence between species (substitutions) at two types of sites, neutral and selected}}
-\newglossaryentry{mcmc}{name={Monte Carlo Markov Chain},description={Class of algorithms for sampling from a probability distribution (usually posterior distribution in Bayesian inference) based on constructing a Markov chain that has the desired distribution of its equilibrium distribution}}
-\newglossaryentry{mc}{name={Markov chain},description={Stochastic process with property that the next state of the process depends only on the present state of the process and not on its past}}
-\newglossaryentry{ml}{name={maximum likelihood},description={Method of estimating the parameters of a model given the data, by finding the parameter value that maximize the likelihood function}}
-\newglossaryentry{mixture}{name={mixture model},description={Probabilistic model for representing the presence of subpopulations within an overall population, without requiring that an observed data set should identify the sub-population to which an individual observation belongs}}
+\newglossaryentry{Markov chain Monte-Carlo}{name={Markov chain Monte-Carlo},description={Class of algorithms for sampling from a probability distribution (usually posterior distribution in Bayesian inference) based on constructing a Markov chain that has the desired distribution of its equilibrium distribution}}
+\newglossaryentry{Markov chain}{name={Markov chain},description={Stochastic process with property that the next state of the process depends only on the present state of the process and not on its past}}
+\newglossaryentry{maximum likelihood}{name={maximum likelihood},description={Method of estimating the parameters of a model given the data, by finding the parameter value that maximize the likelihood function}}
+\newglossaryentry{mixture model}{name={mixture model},description={Probabilistic model for representing the presence of subpopulations within an overall population, without requiring that an observed data set should identify the sub-population to which an individual observation belongs}}
 \newglossaryentry{nearly-neutral}{name={nearly-neutral},description={Slightly deleterious or advantageous mutations are effectively neutral when their selection coefficient are lower than one divided by the effective population size}}
 \newglossaryentry{neutral}{name={neutral},description={Mutations are nor deleterious neither advantageous, their probability of fixation is one divided by twice the effective population size (for diploids)}}
 \newglossaryentry{prior}{name={prior},description={Probability distribution that would express one's beliefs about a parameter of the model before the data is taken into account}}

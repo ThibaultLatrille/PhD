@@ -44,7 +44,7 @@ In practice, time is measured in units of branch length, expressing the expected
 For example of branch length of $2$ imply that $2$ changes are expected to be seen on average along the branch under the condition that substitutions are neutral.
 Consequently, the substitution rate matrix must be normalized to be measured in units of branch length, where in practice instead of normalizing the codon substitution matrix, the nucleotide mutation matrix is normalized since mutation are considered neutral.
 The mathematical details of this transformation from rate matrix to probability matrix are described from first order derivation of the Markov process.
-At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength$, the codon probability matrix $\Probmatrix\siteexp(\branchlength)$ is related to the {transition} matrix ($\Submatrix\siteexp$ at site $\site$) through the first-order differential equation:
+At a give site ($\site$) of the sequence, and along a given branch ($\branch$) with branch length $\branchlength$, the codon probability matrix $\Probmatrix\siteexp(\branchlength)$ is related to the transition matrix ($\Submatrix\siteexp$ at site $\site$) through the first-order differential equation:
 
 The Point substitution process implied by the codon model defines the instantaneous rates of change between the different codons through the substitution matrix $\Submatrix$.
 Given a starting (ancestral) codon state and a given amount of time over which the substitution process runs, the first task is to derive the probability of the descendant sequence presenting each of the $61$ possible codon states.
@@ -276,8 +276,8 @@ Because dimensionality is high (proportional to the number of particles), numeri
 Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration by sampling randomly the prior (uniform) distribution over configurations fails to correctly approximate this integral.
 
 This problem can, however, be formalized in terms of a Markov chain, where each state of the process is a particular configuration of particles.
-The {transition} probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
-Given this requirement, and given one can also sample from the {transition} probabilities, the Monte Carlo Markov chain starts from an arbitrary state and can be updated by random sampling from the {transition} probabilities.
+The transition probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
+Given this requirement, and given one can also sample from the transition probabilities, the Markov chain Monte-Carlo starts from an arbitrary state and can be updated by random sampling from the transition probabilities.
 After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed and the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
 
 \subsection{Metropolis-Hastings sampling}

@@ -57,7 +57,7 @@ Thus, in order for a protein to fold into the native state with high probability
 \end{figure}
 
 In this context, mutations of the proteins stabilize the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
-For example, a {transition} to an amino acid that decreases by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
+For example, a transition to an amino acid that decreases by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
 As a result, protein stability can be increased by stabilizing folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design).
 We can thus characterize the destabilizing effect of a mutation by its:
 \begin{equation}
@@ -121,7 +121,7 @@ In the specific case of conformational stability, the phenotype is the free ener
 \begin{equation}
     \Seqi \rightarrow \Delta G (\Seqi) \rightarrow f \left( \Delta G \right).
 \end{equation}
-Withing this ternary relationship, the fitness effect of a mutation is site-independent in only one specific case, namely that the phenotype is additive and that the log-fitness is linear with the phenotype.
+Withing this ternary relationship, the fitness effect of a mutation is site-specific in only one specific case, namely that the phenotype is additive and that the log-fitness is linear with the phenotype.
 Whenever one of these two assumptions is not valid, the fitness effect of a mutation at a specific site depends on the overall sequence.
 This site interdependence represents a challenge for phylogenetic codons, generally not modelled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics} below).
 
@@ -201,7 +201,7 @@ I argue that some work is still needed toward a better integration and unificati
 In section~\ref{sec:classical-codon-biophysics}, I reviewed how the selective patterns inferred using classical models could then be confronted with insights from biophysics.
 In the case of mutation-selection codon models, on the other hand, knowledge obtained from biophysics can be more directly introduced into the model.
 
-\subsection{Experimentally informed site-independent codon models}
+\subsection{Experimentally informed site-specific codon models}
 
 In experimental context, it is possible to mutate DNA of an organism and establish an experiment where the mutant compete with the resident in a specific medium, and the difference in growth of the two variants allows to determine the fitness impact of the mutation.
 In the case of free-living unicellular organisms, such process can be automated to estimate selection coefficient of a wide variety of mutant, an experiment called deep mutational scanning.
@@ -235,10 +235,10 @@ In particular, models explicitly treating protein structure and site interdepend
 
 Subsequently, methods to assess the statistical fit of such computationally complex models had been developed~\citep{Rodrigue2009}, as well as refinement of statistical potentials~\citep{Kleinman2010}.
 These structurally constrained models have been shown to fit data better than the corresponding models that ignore protein structure.
-However, some of the available site-independent phylogenetic codon models still better fit to the data than structurally constrained models, possibly indicating that alternative models should be explored in order to better incorporate structural constrain and protein biophysics.
+However, some of the available site-specific phylogenetic codon models still better fit to the data than structurally constrained models, possibly indicating that alternative models should be explored in order to better incorporate structural constrain and protein biophysics.
 
 Alternatively, assumption of site independence can be understood as considering that substitution process at the level of sites are averaged over time, where the dependencies to other sites are integrated over the course of the process.
-As a result, statistical method relying on site-independent processes while accounting for epistasis consists in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
+As a result, statistical method relying on site-specific processes while accounting for epistasis consists in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
 Projecting a joint process of several sites into a single site process leverages mean-field theory developed in statistical physics, and has been used to develop phylogenetic models accounting for protein structure~\citep{Chi2018} and protein stability~\citep{Arenas2015a, Arenas2017}.
 Unfortunately, these methods are not parameterized directly in terms of parameters of evolution, namely mutation and effective population size, and the estimated fitness parameters cannot be related to empirically determined parameters.
 

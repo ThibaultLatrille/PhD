@@ -19,7 +19,7 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 
 For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \ln \left( \base\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
@@ -32,8 +32,9 @@ The Shannon entropy can be averaged over all sites as:
 \section{Simulations}
 \label{sec:supp-mat-simulations}
 
-\subsection{Independent fitness profiles}
-Under a simulation with site-independent fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
+\subsection{Site-specific fitness profiles (SimuDiv)}
+\label{subsec:independent-fitness-profiles}
+Under a simulation with site-specific fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
 Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino acid present at each site of the protein.
 For each possible mutant, we compute the selection coefficient of the mutant:
@@ -72,7 +73,8 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
     \caption[Inferred branch parameters for SimuDiv]{
-    Inferred branch parameters under simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Inferred branch parameters under simulations accounting for site-specific amino-acid profiles, long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
 \end{figure}
 
@@ -86,8 +88,9 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSel_ProfileCorrelation.png}
     \end{minipage}
     \caption[Inferred site amino-acid profiles for SimuDiv]{
-    Inferred and simulated site specific amino-acid profiles under simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
-    Estimation with fluctuating branch $\Ne$ (left panel) or constant $\Ne$ (right panel).}
+    Inferred and simulated site-specific amino-acid profiles under simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left panel), or under the assumption of constant $\Ne$ (in the right panel).
+    }
 \end{figure}
 
 \begin{table}[H]
@@ -101,12 +104,13 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         SimuDiv, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Inferred amino-acids entropy for SimuDiv]{
-    Estimated amino-acids entropy.
-    Simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
-    Estimated with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Estimated amino-acid entropy under simulations accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
+    }
 \end{table}
 
-\subsection{Wright-Fisher with polymorphism}
+\subsection{Wright-Fisher with polymorphism (SimuPoly)}
+\label{subsec:wright-fisher-with-polymorphism}
 
 The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift
 The population is assumed to be panmictic, with effective population size $\Ne$ and with non-overlapping generations.
@@ -134,6 +138,7 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
     \end{minipage} \hfill
     \caption[Inferred branch parameters for SimuPoly]{
     Inferred branch parameters under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
 \end{figure}
 
@@ -147,8 +152,8 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
         \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSel_ProfileCorrelation.png}
     \end{minipage}
     \caption[Inferred site amino-acid profiles for SimuPoly]{
-    Inferred and simulated site specific amino-acid profiles under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
-    Estimation with fluctuating branch $\Ne$ (left panel) or constant $\Ne$ (right panel).}
+    Inferred and simulated site-specific amino-acid profiles under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left panel), or under the assumption of constant $\Ne$ (in the right panel).}
 \end{figure}
 
 \begin{table}[H]
@@ -162,11 +167,11 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
         SimuPoly, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
     \end{tabu}}
     \caption[Inferred amino-acid entropy for SimuPoly]{
-    Estimated amino-acids entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
-    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Estimated amino-acid entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
 \end{table}
 
-\subsection{Fisher geometric landscape}
+\subsection{Fisher geometric landscape (SimuGeo)}
 \label{subsec:fisher-geometric-landscape}
 
 We simulated substitutions in a protein using an adaptation of Fisher's geometric landscape.
@@ -225,6 +230,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \end{minipage} \hfill
     \caption[Inferred branch parameters for SimuGeo]{
     Inferred branch parameters under simulation accounting for site epistasis in geometric landscape, thus fluctuation of the selection coefficient along the phylogeny.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
 \end{figure}
 
@@ -241,10 +247,11 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \end{tabu}}
     \caption[Amino-acid entropy for SimuGeo]{
     Estimated amino-acid entropy under simulation accounting for site epistasis (geometric landscape), thus fluctuation of the selection coefficient along the phylogeny.
-    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
+    }
 \end{table}
 
-\subsection{Protein folding probability}
+\subsection{Protein folding probability (SimuFold)}
 \label{subsec:protein-folding-probability}
 
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in Goldstein \& Pollock (2017).
@@ -303,6 +310,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \end{minipage} \hfill
     \caption[Inferred branch parameters for SimuFold]{
     Inferred branch parameters under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
+    Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
 \end{figure}
 
@@ -318,7 +326,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \end{tabu}}
     \caption[Amino-acid entropy in SimuFold]{
     Estimated amino-acid entropy under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
-    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
 \end{table}
 
 
@@ -327,7 +335,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 
 \subsection{Chain convergence}
 \label{subsec:chain-convergence}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -342,7 +350,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Traits estimation \& correlation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{table}[H]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCovariance.tex}
@@ -378,7 +386,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -449,38 +457,38 @@ Obtained with the inference model of site selection for amino acid, and branch f
         Mammals 36 CDS, replicate 6, Chain 1 & $1.05 \pm 0.10$ & $1.10 \pm 0.08$\\ \hline
         Mammals 36 CDS, replicate 6, Chain 2 & $0.97 \pm 0.11$ & $1.10 \pm 0.10$\\ \hline
     \end{tabu}}
-    \caption[Entropy of amino acids in mammals]{Estimated amino acids entropy in mammals.
-    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \caption[Entropy of amino acids in mammals]{Estimated amino-acid entropy in mammals.
+    Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
     \label{tab:table-entropy-aa-mutselne}
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{mammals/18CDS_BranchOmega_R1_LogdNdS}
-    \caption[$\dnds$ estimation in mammals]{{Non-synonymous substitution} rate ($\dnds$) estimation in mammals}
+    \caption[$\omega$ estimation in mammals]{{Non-synonymous substitution} rate ($\omega$) estimation in mammals}
 \end{figure}
 
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in mammals ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Correlation coefficient matrix in mammals ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsCovariance.tex}
-    \caption[Covariance matrix in mammals ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Covariance matrix in mammals ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
-    \caption[Partial correlation coefficient matrix in mammals ($\dnds$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Partial correlation coefficient matrix in mammals ($\omega$)]{
+    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -489,7 +497,7 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 \label{sec:empirical-data-in-isopods}
 
 \subsection{Traits estimation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -504,7 +512,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -587,7 +595,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Statistical test}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -598,10 +606,10 @@ Obtained with the inference model of site selection for amino acid, and branch f
 Analysis of Variance Table
 
 Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F) 
+Df Sum Sq Mean Sq F value Pr(>F)
 Habitat 1 2.4899 2.48991 83.2450 < 2.2e-16 ***
 Replicate 5 0.6446 0.12892 4.3102 0.0007908 ***
-Residuals 389 11.6352 0.02991 
+Residuals 389 11.6352 0.02991
 ---
 Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 \end{verbatim}
@@ -614,10 +622,10 @@ Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 
 Analysis of Variance Table
 
 Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F) 
+Df Sum Sq Mean Sq F value Pr(>F)
 Pigmentation 2 2.8413 1.42067 48.850 < 2.2e-16 ***
 Replicate 5 0.6446 0.12892 4.433 0.0006135 ***
-Residuals 388 11.2838 0.02908 
+Residuals 388 11.2838 0.02908
 ---
 Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 \end{verbatim}
@@ -630,10 +638,10 @@ Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 
 Analysis of Variance Table
 
 Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F) 
+Df Sum Sq Mean Sq F value Pr(>F)
 Ocular.structure 2 2.8463 1.42314 48.9571 < 2.2e-16 ***
 Replicate 5 0.6446 0.12892 4.4349 0.000611 ***
-Residuals 388 11.2789 0.02907 
+Residuals 388 11.2789 0.02907
 ---
 Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 \end{verbatim}
@@ -656,7 +664,7 @@ Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 
 \label{sec:empirical-data-in-primates}
 
 \subsection{Chain convergence}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -671,7 +679,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Traits estimation (chain~1)}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{table}[H]
     \input{primates/SiteMutSelBranchNe_TraitsCorrelation.tex}
@@ -727,13 +735,13 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogpiS}
-    \caption[$\pi_{S}$ estimation in primates]{$\pi_{S}$ estimation in primates}
+    \caption[$\ps$ estimation in primates]{$\ps$ estimation in primates}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{primates/SiteMutSelBranchNe_LogpiNpiS}
-    \caption[$\pi_{N} / \pi_{S}$ estimation in primates]{$\pi_{N} / \pi_{S}$ estimation in primates}
+    \caption[$\pnps$ estimation in primates]{$\pnps$ estimation in primates}
 \end{figure}
 
 \begin{figure}[H]
@@ -754,17 +762,17 @@ Obtained with the inference model of site selection for amino acid, and branch f
         Primates, chain~1 & $1.41 \pm 0.10$ & $1.49 \pm 0.08$\\ \hline
         Primates, chain 2 & $1.40 \pm 0.10$ & $1.48 \pm 0.08$\\ \hline
     \end{tabu}}
-    \caption[Amino-acid entropy in primates]{Estimated amino acids entropy in primates.
-    Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$ (left column), or under the assumption of constant $\Ne$ (right column)}
+    \caption[Amino-acid entropy in primates]{Estimated amino-acid entropy in primates.
+    Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{primates/BranchOmega_LogOmega}
-    \caption[$\dnds$ estimation in primates]{{Non-synonymous substitution} rate ($\dnds$) estimation in primates}
+    \caption[$\omega$ estimation in primates]{{Non-synonymous substitution} rate ($\omega$) estimation in primates}
 \end{figure}
 
 \begin{figure}[H]
@@ -775,22 +783,22 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in primates ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Correlation coefficient matrix in primates ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCovariance.tex}
-    \caption[Covariance matrix in primates ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Covariance matrix in primates ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsPartialCorrelation.tex}
-    \caption[Partial correlation coefficient matrix in primates ($\dnds$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    \caption[Partial correlation coefficient matrix in primates ($\omega$)]{
+    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -799,11 +807,11 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 \label{sec:empirical-data-in-drosophila}
 
 \subsection{Traits estimation \& correlation (replicate~1, chain~1)}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in drosophila ($\dnds$)]{
+    \caption[Correlation coefficient matrix in drosophila ($\omega$)]{
     Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
@@ -841,7 +849,7 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the inference model of site selection for amino acid, and branch fluctuation of $\Ne$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{figure}[H]
     \centering
@@ -910,12 +918,12 @@ Obtained with the inference model of site selection for amino acid, and branch f
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the model of branch fluctuation of $\dnds$ (without site selection for amino acid).
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_BranchOmega_R1_LogdNdS}
-    \caption[Non-synonymous {substitution} rate estimation in drosophila]{Non-synonymous {substitution} rate ($\dnds$) estimation in drosophila}
+    \caption[Non-synonymous substitution rate estimation in drosophila]{Non-synonymous substitution rate ($\omega$) estimation in drosophila}
 \end{figure}
 
 \begin{figure}[H]
@@ -927,22 +935,22 @@ Obtained with the model of branch fluctuation of $\dnds$ (without site selection
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in drosophila ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Correlation coefficient matrix in drosophila ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCovariance.tex}
-    \caption[Covariance matrix in drosophila ($\dnds$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Covariance matrix in drosophila ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
-    \caption[Partial correlation coefficient matrix in drosophila ($\dnds$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\dnds$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Partial correlation coefficient matrix in drosophila ($\omega$)]{
+    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -991,7 +999,7 @@ From the independent contrast $\contrast\branchexp$ of the Brownian process $\Br
 \begin{equation}
     \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
 \end{equation}
-By Bayes theorem, the posterior  on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
+By Bayes theorem, the posterior on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
     \CovarianceMatrix \sim \mathrm{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
 \end{equation}

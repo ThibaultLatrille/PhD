@@ -92,7 +92,7 @@ However, there is not a one-to-one correspondence between the $61$ codons and \a
 First, the set of unique sequences of anticodon found in tRNAs genes is actually lower than $61$, and depends on the species but varies from $41$ to $55$~\citep{Goodenbour2006}.
 This subset of anticodon sequences necessary to bind all $61$ codons is due to non-canonical base pairing\footnote{Canonical base pairing are A-U and G-C, where thymine (T) is replaced by uracil (U) in RNA}.
 More precisely, the first two positions in the codon bond strongly to the anticodon of the \acrshort{tRNA} (second and third positions), while the third base of the codon can be subject to non-standard pairing with the first base of the anticodon.
-If the anticodon contains a guanine at first position, codons with either U or C at the third position can bind to this anticodon, and this phenomenon explains why there is not any non-synonymous {transition} from only U to C at the third position, and why synonymous codons usually ends with T or C.
+If the anticodon contains a guanine at first position, codons with either U or C at the third position can bind to this anticodon, and this phenomenon explains why there is not any non-synonymous transition from only U to C at the third position, and why synonymous codons usually ends with T or C.
 Also, if the anticodon contains an inosine at the first position, codons with either C, U or A at the third position can bind to this anticodon, such that for example leucine encoded by three codons (AUU, AUC, AUA) can be bound by the unique anticodon IAU.
 Altogether, non-standard pairing explains why the number of unique anticodons is lower than the number of possible codons, and also explains some part of the structure of the genetic code.
 
@@ -135,14 +135,14 @@ Selection for proteins will be framed at the amino-acid level in a first approxi
         \hline
     \end{tabu}}
     \caption[Amino acids adjacency matrix]{
-    Number of possible one nucleotide non-synonymous {transitions} between amino acids, integrating over the underlying codons, represented as an adjacency matrix..
-    For all the possible $190$ pairs of amino acids, only $75$ pairs contains at least one non-synonymous {transition}.
+    Number of possible one nucleotide non-synonymous transitions between amino acids, integrating over the underlying codons, represented as an adjacency matrix..
+    For all the possible $190$ pairs of amino acids, only $75$ pairs contains at least one non-synonymous transition.
     }
     \label{table:adjacency}
 \end{table}
-Because mutations are at the nucleotide level and affect only one base, any codon can have at most $9$ possible {transitions} to another codons as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
-Moreover, it is possible that some pairs of amino acids are not accessible through a single non-synonymous {transition} between the underlying codons.
-In fact, most pairs of amino acids require at least two non-synonymous {transitions} ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single non-synonymous {transition} ($75$ pairs).
+Because mutations are at the nucleotide level and affect only one base, any codon can have at most $9$ possible transitions to another codons as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
+Moreover, it is possible that some pairs of amino acids are not accessible through a single non-synonymous transition between the underlying codons.
+In fact, most pairs of amino acids require at least two non-synonymous transitions ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single non-synonymous transition ($75$ pairs).
 More precisely, the number of possible transitions between the underlying codons for a pair of amino acids is determined by the adjacency matrix shown table \ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
 
 \begin{figure}[htbp!]
@@ -157,17 +157,17 @@ More precisely, the number of possible transitions between the underlying codons
 
     \caption[Graphs of {codon} and amino-acid transitions]{
     \label{fig:graph-codons-aa}
-    Graphs of possible one nucleotide {transition} between codon (left panel) and between amino acids (right panel).
+    Graphs of possible one nucleotide transition between codon (left panel) and between amino acids (right panel).
     Nodes correspond to codons (left panel) and amino acids (right panel), and their colour represents the encoded amino acid.
     Additionally, for amino acids, the size of nodes represents the number of underlying codons.
-    An edge between two codons depicts a one nucleotide {transition} such that a codon can have at most $9$ possible {transitions}.
-    Similarly, an edge between two amino acids correspond to a one nucleotide non-synonymous {transition} between the underlying codons, and the width of the edges represents the number of such possible {transitions}.
-    Non-synonymous {transitions} are represented in a colour gradient, while synonymous {transitions} are depicted in black.
-    The graph of the $61$ codons contains $263$ {transitions}, $67$ of them are synonymous while $196$ are non-synonymous.
-    Codons encoding for the same amino acid are all fully connected by synonymous changes, except for serine where a {transition} from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino acid, hence at least two non-synonymous {transitions}.
-    From the perspective of amino acids, the graph of the $20$ amino acids contains $75$ non-synonymous {transitions}.
-    The graph is not fully connected and does not form a clique. Moreover, the most distant amino acids are at most three {transitions} away, because a {transition} from methionine to tyrosine requires at least three non-synonymous {transitions}.
-    Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous {transitions}, and one pair (M-Y) requires at least three non-synonymous {transitions}.
+    An edge between two codons depicts a one nucleotide transition such that a codon can have at most $9$ possible transitions.
+    Similarly, an edge between two amino acids correspond to a one nucleotide non-synonymous transition between the underlying codons, and the width of the edges represents the number of such possible transitions.
+    Non-synonymous transitions are represented in a colour gradient, while synonymous transitions are depicted in black.
+    The graph of the $61$ codons contains $263$ transitions, $67$ of them are synonymous while $196$ are non-synonymous.
+    Codons encoding for the same amino acid are all fully connected by synonymous changes, except for serine where a transition from the set {TCT, TCG, TCC, TCA} to the set {AGT, AGC} requires passing through another amino acid, hence at least two non-synonymous transitions.
+    From the perspective of amino acids, the graph of the $20$ amino acids contains $75$ non-synonymous transitions.
+    The graph is not fully connected and does not form a clique. Moreover, the most distant amino acids are at most three transitions away, because a transition from methionine to tyrosine requires at least three non-synonymous transitions.
+    Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous transitions, and one pair (M-Y) requires at least three non-synonymous transitions.
     }
 \end{figure}
 
@@ -214,7 +214,7 @@ Most often, this matrix is assumed to be a general time-reversible (GTR) and thu
     \end{pmatrix}
 \end{equation}
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
-Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
+Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (\textit{e.g.} $\nuc(AAT, AAG) = TG$).
 With this notation, the mutation rate $\mu_{\itoj}$ from codon $\ci$ to $\cj$ is:
 \begin{equation}
     \mu_{\itoj} =
@@ -302,7 +302,7 @@ Such models capture the average effect of selection on non-synonymous mutations,
 To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino acids, measured in terms of the \citet{Grantham1974} distance.
 Additionally, models introduced several $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
 
-One particularly important application of classical codon models has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
+One particularly important application of classical codon models has been to characterize genes under positive selection (\textit{i.e.} with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
 As a result, variants of codon models have been developed that can provide estimates of $\dnds$ for each site within a gene, or for each branch within a phylogenetic tree.
 Moreover, these codon models have also proved to be valuable to quantify and assess the modulation of the selective constraints more generally imposed on protein-coding sequences (see \ref{sec:classical-codon-biophysics}).
 
@@ -311,7 +311,7 @@ Moreover, these codon models have also proved to be valuable to quantify and ass
 
 The strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that it could be useful to estimate the $\dnds$ for each site individually, as opposed to globally over the entire sequence.
 This turns out to be particularly important for detecting recurrent positive selection.
-Indeed, recurrent positive selection might often be concentrated in a small region of the protein (e.g. domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
+Indeed, recurrent positive selection might often be concentrated in a small region of the protein (\textit{e.g.} domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
 Estimating $\dnds$ at the site level will make it possible to detect such regions under positive selection.
 In contrast, the gene-level $\dnds$ will generally be below $1$.
 
@@ -376,7 +376,7 @@ In contrast, mechanistic codon models seek to predict individually all substitut
 \subsection{The Halpern \& Bruno formalism}
 \label{subsec:HB-formalism}
 
-The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
+The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (\textit{i.e.} without epistasis).
 As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acids at each site.
 Furthermore, the substitution process at each position is independent of the current state at all other positions, and it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
 
@@ -437,7 +437,7 @@ Finally, instead of estimating the fitness landscape directly on the multiple se
 
 Thus far, in the mutation-selection formalism, fitness landscape has been considered static.
 In practice, fitness landscapes are dynamic and changing with time~\citep{Naumenko2012, Bazykin2015}.
-In particular, selective pressures may change following one (or more) transitions to a new environment (e.g.: a new host).
+In particular, selective pressures may change following one (or more) transitions to a new environment (\textit{e.g.}: a new host).
 Changes in selective pressures induced by environmental changes can be modelled in a mutation-selection framework by introducing different fitness profiles in different parts of the tree~\citep{Tamuri2009}.
 Similarly, phenotypic convergent evolution has been investigated in relation to underlying molecular convergence at the level of codons.
 In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence in amino-acid profiles at this specific site~\citep{Parto2018,Parto2018a}

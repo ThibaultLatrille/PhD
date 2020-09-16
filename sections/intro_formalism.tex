@@ -111,9 +111,9 @@ As a result, the probability $\mathcal{P}_{ij}$, that there are $j$ copies of th
     & = \binom{2 N}{j} \left( p\dfrac{1+s(1+p)}{1 + 2ps} \right)^j \left(1 - p\dfrac{1+s(1+p)}{1 + 2ps} \right)^{2 N -j} \label{eq:binomial-WF}
 \end{align}
 
-These {transition} probabilities define a discrete-space and discrete-time Markov process.
+These transition probabilities define a discrete-space and discrete-time Markov process.
 It has also been shown to be extremely difficult to explicitly derive formulas for several quantities of evolutionary interest.
-However, as the size of the population approaches infinity (i.e. $ N \to \infty$), and assuming that the scaled selection pressure ($N s $) remains constant, the discrete Markov process given above can be closely approximated by a continuous-time and continuous-space diffusion process.\\
+However, as the size of the population approaches infinity (\textit{i.e.} $ N \to \infty$), and assuming that the scaled selection pressure ($N s $) remains constant, the discrete Markov process given above can be closely approximated by a continuous-time and continuous-space diffusion process.\\
 
 Of note, the fluctuations induced by the binomial sampling (equation~\ref{eq:binomial-WF}) are the underlying cause of random drift.
 Quantitatively, the expected frequency change from one adult generation to the next adult generation is:
@@ -282,7 +282,7 @@ For example, \citet{Halpern1998} constructed a model for the evolution of coding
 
 \subsection{Substitution rate}
 The continuous-time Markov chain is defined by the instantaneous rate at which transitions occur between pairs of states.
-Given the current state of allele $A$, the rate of {transition} to other states can be derived using the population-genetic equations introduced above.
+Given the current state of allele $A$, the rate of transition to other states can be derived using the population-genetic equations introduced above.
 At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutants has a probability $P_{\mathrm{fix}}$ to result in a substitution.
 Altogether, the instantaneous rate of substitution from allele $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $P_{\mathrm{fix}}(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
 \begin{align}
@@ -312,19 +312,19 @@ If the difference of log-fitness tends to $0$, the substitution rate is equal to
     & =  \mu_{A \to B}
 \end{align}
 
-Taken together, the {transition} rates which generate the substitution history and ultimately the interspecific diversity is parameterized solely by mutation, selection and drift.
+Taken together, the transition rates which generate the substitution history and ultimately the interspecific diversity is parameterized solely by mutation, selection and drift.
 Consequently, from a particular history of substitutions, one can theoretically estimate the parameters of selection, mutation and drift, although it is important to keep in mind that selection and drift are confounded.
 
 \subsection{Reversibility of the process}
-The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles, when the number of alleles is discrete and when {transition} from any allele to any other allele is possible in one or more substitutions.
-In this configuration, the {transition} rates between all possible pairs of alleles is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step {transitions} are not possible.
+The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles, when the number of alleles is discrete and when transition from any allele to any other allele is possible in one or more substitutions.
+In this configuration, the transition rates between all possible pairs of alleles is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step transitions are not possible.
 Because any state is ultimately connected to any other state, the continuous-time Markov chain is irreducible.
-Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive {transition} rate is matched by a strictly positive {transition} for the reverse substitution.
-More precisely, the substitution rate between two alleles is null only if the underlying mutation rate is null, in which case the {transition} rate for the reverse mutation is also null, hence the {transition} rate for the reverse substitution is also null.
+Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive transition rate is matched by a strictly positive transition for the reverse substitution.
+More precisely, the substitution rate between two alleles is null only if the underlying mutation rate is null, in which case the transition rate for the reverse mutation is also null, hence the transition rate for the reverse substitution is also null.
 
 Theoretically, for an irreducible, positive recurrent and aperiodic continuous-time Markov chain, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
-Kolmogorov's criterion implies that the product of {transition} rates through any closed loop is the same whenever the traversing is done forward or in reverse.
-As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the {transition} rates must satisfy the equality:
+Kolmogorov's criterion implies that the product of transition rates through any closed loop is the same whenever the traversing is done forward or in reverse.
+As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the transition rates must satisfy the equality:
 \begin{equation}
     Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
 \end{equation}
@@ -348,11 +348,11 @@ As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the 
         (A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
     \end{tikzpicture}
     \caption[Kolmogorov's criterion]{
-    The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion, such that the product of the {transition} rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
+    The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion, such that the product of the transition rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
     \label{fig:reversible-circuit}%
 \end{figure}
 
-From {transition} rates of the substitution process (\ref{eq:sub-transion-rates}), Kolmogorov's criterion can be derived as:
+From transition rates of the substitution process (\ref{eq:sub-transion-rates}), Kolmogorov's criterion can be derived as:
 \begin{align}
     \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}
     ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}
@@ -458,7 +458,7 @@ I argue that this creation and reduction processes are found at the core of seve
 
 \subsection{Metropolis-Hastings sampling}
 Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
-However, the Metropolis-Hastings procedure based on a Monte Carlo Markov chain can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
+However, the Metropolis-Hastings procedure based on a Markov chain Monte-Carlo can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
 This stochastic procedure which is based on three steps bears many similarities with the mutation-selection process:
 \begin{itemize}
     \item Generate a stochastic candidate from the current state, analogous to mutation.

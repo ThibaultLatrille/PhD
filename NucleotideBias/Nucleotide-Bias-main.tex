@@ -50,7 +50,7 @@ However, this implies that, at equilibrium, there will be a net mutation pressur
 As a result, the net $\dnds$ toward AT will be lower than the net $\dnds$ toward GC.
 
 %** introducing $\omega$ as a tensor **
-All this suggests that, in order for a codon model to correctly formalize this subtle interplay between mutation and selection, the component of the parameter vector responsible for absorbing the net effect of selection (i.e. $\omega$) should not be a scalar, as is currently the case.
+All this suggests that, in order for a codon model to correctly formalize this subtle interplay between mutation and selection, the component of the parameter vector responsible for absorbing the net effect of selection (\textit{i.e.} $\omega$) should not be a scalar, as is currently the case.
 Instead, it should be a tensor, an array of $\omega$ values unfolding along multiple directions.
 However, how many components should this tensor contain?
 More generally, what is the simplest parametric structure able to correctly tease apart mutation rates on one hand, and net mean fixation probabilities caused by selection, on the other hand, and this, without having to explicitly model the underlying fitness landscape?
@@ -134,7 +134,7 @@ This effect is less visible whenever selection is more stringent (decreasing $\a
 \end{figure}
 
 %Evolutionary rate, which measures the rate at which mutations at individual sites arise and go to fixation, is governed by the amino acid distribution of individual sites, not the average distribution over a broad class of sites.
-%The substitution rate (e.g., Grishin, Wolf \& Koonin, 2000).
+%The substitution rate (\textit{e.g.}, Grishin, Wolf \& Koonin, 2000).
 %These two measures of evolutionary variability are considered to be essentially equivalent~\citep{Halpern1998}, though they are differently influenced by the mutational process~\citep{Santos2018}.
 
 Because the sequences are not independent but related together by a specie tree, entropy obtained from the observed alignment does not converge to entropy of the substitution process.
@@ -399,7 +399,7 @@ Moreover, the substitution process is reversible and fulfils detailed balance co
 
 For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \log \left( \base\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \ln \left( \base\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $\ln(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 

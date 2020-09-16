@@ -1,9 +1,11 @@
 \section{\texorpdfstring{$\omega$}{ω} susceptibility after a change in \texorpdfstring{$\Ne$}{Nₑ}}
+\label{sec:susceptibility-after-a-change-in-Ne}
+
 \subsection{Genotype to {phenotype} map}
-Define $\Nsite$ as the number of sites in the genotype sequence.
+Define $\NbrSites$ as the number of sites in the genotype sequence.
 Each site can be in one of $\Nstate \geq 2$ states, where only $1$ state is defined the stable state, and $\Nstate - 1$ states are unstable.
 For a given genotype sequence, define phenotype $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
-After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=\sfrac{1}{\Nsite}$.
+After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=\sfrac{1}{\NbrSites}$.
 Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to $\dx$, if the current phenotype is $x$:\\
 \begin{gather}
 \begin{cases}
@@ -120,49 +122,49 @@ Together, these approximations leads to the following susceptibility in equilibr
 \subsection{Folded fraction}
 All phenotype-fitness functions considered below are log-concave, and as a result, $\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}$ is a decreasing function of $x$; the less stable the protein already is, the stronger the purifying selection against additional destabilizing mutations. More precisely, fitness functions depends on the folded fraction of the protein of interest, which is given by the Fermi-Dirac distribution:
 \begin{align}
-P_{F} (x) & = \frac{1}{1 + e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite x)}}
+P_{F} (x) & = \frac{1}{1 + e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}}
 \end{align}
 where $x$ is the fraction of destabilizing mutations, each contributing to $\DeltaDeltaG$ in free energy of folding, and $\beta = 1 / kT$.
-Thus, $\DeltaGmin < 0$ is the difference in free energy between folded and unfolded state when all sites are stable. $\Nsite \DeltaDeltaG$ is the expected change in $\DeltaG$ when all sites are unstable.
+Thus, $\DeltaGmin < 0$ is the difference in free energy between folded and unfolded state when all sites are stable. $\NbrSites \DeltaDeltaG$ is the expected change in $\DeltaG$ when all sites are unstable.
 The misfolded fraction is  $P_{U} = 1-P_{F}$. In addition, $P_{F}$ is typically close to 1 (or $P_{U} \ll 1$), so that we can use a first-order approximation:
 \begin{align}
 P_{F}(x) & = 1 - P_{U}(x) \\
-& \simeq 1 - e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite x)}
+& \simeq 1 - e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}
 \end{align}
 or equivalently
 \begin{align}
-P_{U}(x) & \simeq e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite x)}
+P_{U}(x) & \simeq e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}
 \end{align}
 \subsection{Fitness equal to folded fraction}
 A first model is to assume that the fitness is equal to the folded fraction~\citep{Goldstein2013}:
 \begin{gather}
- \wrightfit (x) = \frac{1}{1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}}. \label{eq:fitness}
+ \wrightfit (x) = \frac{1}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}. \label{eq:fitness}
 \end{gather}
 The derivative of fitness w.r.t to phenotype is:
 \begin{align}
-\frac{\partial  \logfit (x)}{\partial x}  & = - \frac{\partial \ln \left( 1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)} \right)}{\partial x} \text{ from eq.~\ref{eq:fitness}}, \\
-& = - \beta \Nsite \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}}{1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}} \label{eq:df_dx},\\
-& \simeq - \beta \Nsite \DeltaDeltaG \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}.
+\frac{\partial  \logfit (x)}{\partial x}  & = - \frac{\partial \ln \left( 1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)} \right)}{\partial x} \text{ from eq.~\ref{eq:fitness}}, \\
+& = - \beta \NbrSites \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}} \label{eq:df_dx},\\
+& \simeq - \beta \NbrSites \DeltaDeltaG \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}.
 \end{align}
 The equilibrium phenotype ($x\eq$) is :
 \begin{gather}
-\lambda_{K}(x\eq) = 4\Ne \beta \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x\eq)}}{1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x\eq)}}  \text{ from eq.~\ref{eq:equilibrium_lambda} and~\ref{eq:df_dx}}.
+\lambda_{K}(x\eq) = 4\Ne \beta \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x\eq)}}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x\eq)}}  \text{ from eq.~\ref{eq:equilibrium_lambda} and~\ref{eq:df_dx}}.
 \end{gather}
-Using $\Ne=10^4$, $\beta=1.686$, $\DeltaGmin = -118$, $\Nsite=300$, $\DeltaDeltaG=1$, we have the following :
+Using $\Ne=10^4$, $\beta=1.686$, $\DeltaGmin = -118$, $\NbrSites=300$, $\DeltaDeltaG=1$, we have the following :
 \begin{center}
 \includegraphics[width=0.8\textwidth, page=4] {analytical-relaxation}
 \end{center}
 Where in this example we can visually appreciate that the a change in phenotype causes a higher change in scaled selection coefficient than mutational bias (eq.~\ref{eq:approx_dx_dlnNe}).
 And the second derivative of fitness w.r.t to phenotype is:
 \begin{align}
-\frac{\partial^2  \logfit (x)}{\partial x^2} & = - \beta \Nsite \DeltaDeltaG \frac{\partial}{\partial x} \left( \frac{\e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}}{1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}} \right) \text{ from eq.~\ref{eq:df_dx}}, \\
- & = - \beta \Nsite \DeltaDeltaG  \beta \Nsite \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}}{\left( 1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}\right)^2}, \\
- & = \frac{\beta \Nsite \DeltaDeltaG}{1 + \e^{\beta(\DeltaGmin + \Nsite \DeltaDeltaG x)}} \frac{ \partial \logfit (x) }{\partial x} \text{ from eq.~\ref{eq:df_dx}} \label{eq:df2_dx2}, \\
- & \simeq \beta \Nsite \DeltaDeltaG \frac{ \partial \logfit (x) }{\partial x} 
+\frac{\partial^2  \logfit (x)}{\partial x^2} & = - \beta \NbrSites \DeltaDeltaG \frac{\partial}{\partial x} \left( \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}} \right) \text{ from eq.~\ref{eq:df_dx}}, \\
+ & = - \beta \NbrSites \DeltaDeltaG  \beta \NbrSites \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}{\left( 1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}\right)^2}, \\
+ & = \frac{\beta \NbrSites \DeltaDeltaG}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}} \frac{ \partial \logfit (x) }{\partial x} \text{ from eq.~\ref{eq:df_dx}} \label{eq:df2_dx2}, \\
+ & \simeq \beta \NbrSites \DeltaDeltaG \frac{ \partial \logfit (x) }{\partial x} 
 \end{align}
 Finally, $\omega$ susceptibility after a change in $\Ne$ is simply:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \Nsite \DeltaDeltaG} \text{from eq.~\ref{eq:df2_dx2} and~\ref{eq:approx_domega_dx}},
+\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG} \text{from eq.~\ref{eq:df2_dx2} and~\ref{eq:approx_domega_dx}},
 \end{align}
 which is independent of $x\eq$, meaning $\omega$ is linearly decreasing with $\Ne$ in log space.
 This model, however, does not express the fact that selection is typically stronger for proteins characterized by higher levels of expression. 
@@ -173,46 +175,46 @@ A slight variation is to assume that the selective cost itself is proportional t
 \end{align}
 where $A$ is the cost per misfolded macromolecule. Then, 
 \begin{align}
-\frac{\partial  \logfit (x)}{\partial x} & \simeq -A y \beta \DeltaDeltaG \Nsite e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite x)}.
+\frac{\partial  \logfit (x)}{\partial x} & \simeq -A y \beta \DeltaDeltaG \NbrSites e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}.
 \end{align}
 Under this model, the phenotype at equilibrium is given by:
 \begin{align}
-\lambda_{K}(x\eq) = 4\Ne y A \beta \DeltaDeltaG \Nsite e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite x\eq)} \text{ from eq.~\ref{eq:equilibrium_lambda} and~\ref{eq:df_dx}}.
+\lambda_{K}(x\eq) = 4\Ne y A \beta \DeltaDeltaG \NbrSites e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x\eq)} \text{ from eq.~\ref{eq:equilibrium_lambda} and~\ref{eq:df_dx}}.
 \end{align}
 And the susceptibility of $\omega$ after a change in $\Ne$ is the same as before:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \Nsite \DeltaDeltaG}.
+\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
 Since $\Ne$ and $y$ are confounded factors, meaning they only appear in the equation as a product between the two, implicit derivation leads to the same result whenever the derivation is w.r.t $\Ne$ or $y$, leading to same compact susceptibility:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (y)} = \frac{ \der \omega\eq}{\der \ln (\Ne)} \simeq - \frac{1}{\beta \Nsite \DeltaDeltaG}.
+\frac{ \der \omega\eq}{\der \ln (y)} = \frac{ \der \omega\eq}{\der \ln (\Ne)} \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
 
 \subsection{Translational errors}
 Another variant account for translational errors. Translational errors occur at a rate $\rho$ per residue. These errors contribute additional destabilizing mutations, each with effect size $\delta x = 1/n$. The total number of translational errors per macromolecule is approximately Poisson distributed:
 \begin{align}
-\pi_k & = e^{-\rho \Nsite} \frac{(\rho \Nsite)^k}{k!}
+\pi_k & = e^{-\rho \NbrSites} \frac{(\rho \NbrSites)^k}{k!}
 \end{align}
 and the total selective cost is now an average over all possible values of $k$:
 \begin{align}
-\logfit (x) & = - A y \sum_k \pi_k e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x + \DeltaDeltaG k)}
+\logfit (x) & = - A y \sum_k \pi_k e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x + \DeltaDeltaG k)}
 \\
-& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)} \sum_k e^{-\rho n} \frac{(\rho n)^k}{k!} e^{\beta \DeltaDeltaG k}
+& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)} \sum_k e^{-\rho n} \frac{(\rho n)^k}{k!} e^{\beta \DeltaDeltaG k}
 \\
-& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x) + \rho \Nsite (e^{\beta \DeltaDeltaG} -1 )}
+& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x) + \rho \NbrSites (e^{\beta \DeltaDeltaG} -1 )}
 \\
-& \simeq - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x) + \rho \beta \DeltaDeltaG \Nsite}
+& \simeq - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x) + \rho \beta \DeltaDeltaG \NbrSites}
 \\
-& =- A y  e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite (x + \rho))}
+& =- A y  e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites (x + \rho))}
 \end{align}
 In words, the fitness function is the same the previous model, except that the trait $x$ (fraction of destabilizing mutations) is shifted by $\rho$, the mean fraction of additional mutations contributed by translation errors. This additional factor is independent of $x$, and as a result, the scaled selection strength is essentially the same, up to a proportionality constant (contributed by the shift):
 \begin{align}
-4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG \Nsite (x + \rho))}
-\\ & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)}
+4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites (x + \rho))}
+\\ & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
 \end{align}
 Moreover, $\omega$ susceptibility after a change in $\Ne$ is again the same as before:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \Nsite \DeltaDeltaG}.
+\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
 \subsection{Cost-benefit argument}
 The cost-benefit argument~\citep{Beaulieu2018} is based on two assumptions
@@ -227,22 +229,22 @@ C(x) & = \frac{y}{P_{F}(x)}
 \end{align}
 Then, the log-fitness is given by:
 \begin{align}
-\logfit (x) & = -A \frac{y}{B} \left( 1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)} \right)
+\logfit (x) & = -A \frac{y}{B} \left( 1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)} \right)
 \\
-& = -by (1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)})
+& = -by (1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)})
 \end{align}
 where $b = A /B$. Compared to models 2 and 3, the log-fitness now has an additional term that depends on the target expression level $y$, but not on trait $x$. The scaled strength of selection on mutations affecting $x$ has thus the same functional form as for the two previous models:
 \begin{align}
-4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)}
+4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
 \end{align}
-Alternative cost-expression models could also be used, allowing for a non-linear cost function for expression or for some susceptibility of the realized equilibrium expression level, as a function of the number of mutations. Under these models, the strength of selection is still expected to be an increasing function of $y$, although not linear, e.g.
+Alternative cost-expression models could also be used, allowing for a non-linear cost function for expression or for some susceptibility of the realized equilibrium expression level, as a function of the number of mutations. Under these models, the strength of selection is still expected to be an increasing function of $y$, although not linear, \textit{e.g.}
 \begin{align}
-4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne g(y) e^{\beta(\DeltaGmin + \DeltaDeltaG\Nsite x)}
+4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne g(y) e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
 \end{align}
 where $g$ is some function of $y$.
 Moreover, $\omega$ susceptibility after a change in $\Ne$ is again the same as before:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \Nsite \DeltaDeltaG}.
+\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
 \section{Model of protein-protein interactions}
 The proteome is assumed to be composed of $m$ protein species, all with same abundance $C$. Each macromolecule may either be in free form or engaged in a non-specific interaction. Only pairwise interactions are considered, and higher-order interactions are ignored.
@@ -254,7 +256,7 @@ where $[i]$ and $[j]$ are the concentrations of protein species $i$ and $j$, and
 \begin{align}
 E_{ij} & = \DeltaGmin + E_i + E_j 
 \\
-& = \DeltaGmin + \DeltaDeltaG \Nsite (x_i + x_j)
+& = \DeltaGmin + \DeltaDeltaG \NbrSites (x_i + x_j)
 \end{align}
 where we assume that each protein has $n=100$ residues at its surface, $x_i$ stands for the fraction of hydrophobic residues at the surface of protein $i$, and each hydrophobic residue makes an additive contribution of $\DeltaDeltaG$ to the total.
 
@@ -274,35 +276,35 @@ We assume that the log fitness is proportional to the total amount of protein se
 \end{align}
 where $b>0$ is a parameter determining the overall stringency of selection against non-specific interactions.
 \subsection{Mean field, weak-interaction limit}
-To make the model tractable and compact, we assume that non-specific interactions are weak, i.e. $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
+To make the model tractable and compact, we assume that non-specific interactions are weak, \textit{i.e.} $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
 In addition, we use a mean-field approximation, such that, when considering a specific protein species $i$, we assume that all other proteins have the same fraction $\bar x$ of hydrophobic residues at their surface.
 The value of $\bar x$ could in principle be found using a self-consistent argument, essentially by (1) explicitly calculating the net substitution flux for protein $i$ with fraction $x_i$, under mean field $\bar x$, and (2) expressing the constraint that this substitution process for protein $i$ is stationary at $x_i = \bar x$.
 This derivation is not conducted here, as it is not needed.
 Using these approximations, we can re-express the conservation of total mass as:
 \begin{align}
-C & = [i] + (m-1) [i] \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \Nsite (\bar x + x_i))}
+C & = [i] + (m-1) [i] \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \NbrSites (\bar x + x_i))}
 \end{align}
 Here, we have used the fact that $[j] = C(1 - \epsilon_j)$ can be approximated as $[j] \simeq C$ since it is involved in a term already of the order of $\epsilon_i$. As a result, all $m-1$ terms of the sum over $j\neq i$ are identical.
 Next, solving for $[i]$ gives:
 \begin{align}
-[i] & = \frac{C} {1 + (m-1) \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \Nsite (\bar x + x_i))}}
-\\ & \simeq C \left( 1 - m \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \Nsite (\bar x + x_i))} \right)
+[i] & = \frac{C} {1 + (m-1) \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \NbrSites (\bar x + x_i))}}
+\\ & \simeq C \left( 1 - m \frac{C}{C_0} \, e^{\beta (\DeltaGmin + \DeltaDeltaG \NbrSites (\bar x + x_i))} \right)
 \\ & =
 C (1 - \epsilon_i)
 \end{align}
 and thus $\epsilon_i$ can be identified with:
 \begin{align}
-\epsilon_i  & = m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \Nsite (\bar x + x_i))}
+\epsilon_i  & = m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \NbrSites (\bar x + x_i))}
 \end{align}
 Now, assume that the system is at equilibrium (thus $x_i = \bar x$). The strength of selection acting on mutations occurring at the surface of protein $i$, of effect size $\delta x = \pm 1/n$, is given by $s = \kappa \delta x$ where:
 \begin{align}
 \kappa_i & = b \frac{\der\epsilon_i} {\der x_i} 
 \\ & =
-b \beta \DeltaDeltaG \Nsite m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \Nsite (\bar x + x_i))}
+b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \NbrSites (\bar x + x_i))}
 \end{align}
 and thus:
 \begin{align}
-\ln \kappa_i & = \ln \left( b \beta \DeltaDeltaG \Nsite m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \Nsite \bar x) \, + \, \beta \DeltaDeltaG\Nsite x_i
+\ln \kappa_i & = \ln \left( b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \NbrSites \bar x) \, + \, \beta \DeltaDeltaG\NbrSites x_i
 \end{align}
 where only the last term depends on $x_i$.
 Finally, applying the main result of this work to the present case allows us to express the susceptibility of $\omega$ as a function of $\Ne$ as:
@@ -354,10 +356,10 @@ In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\omega)$ a
 \end{align}
 
 \section{Simulation using the 3d structure of protein}
-We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites).
+We simulated substitutions in the protein phosphatase ($\NbrSites=300$ codon sites).
 From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\ci\right)$, using the $3$-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
 \begin{equation}
-G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
+G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
 where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by Miyazawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 The free energy of unfolded states $G_{\mathrm{U}}\left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
@@ -441,8 +443,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[$\omega$ susceptibility with additive free energy of folding]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), for a model of additive free energy of folding.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\Nsite=300$, $\beta=1.686$.
-	The simulations of our additive free energy model match the theoretical prediction that the slope of the linear relation (dashed line) is equal to $\beta \Nsite \DeltaDeltaG)^{-1} = 0.00198 \simeq = 0.00199$.
+	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\NbrSites=300$, $\beta=1.686$.
+	The simulations of our additive free energy model match the theoretical prediction that the slope of the linear relation (dashed line) is equal to $\beta \NbrSites \DeltaDeltaG)^{-1} = 0.00198 \simeq = 0.00199$.
 	The non-monotony is suspected to be due to the discrete number of sites and states, such that the changes in $\DeltaG$ after a mutation is either $-1$, $0$ or $1$. Such non-monotony is not observed with the Grantham model, in which the $\omega$ is lower and the slope of susceptibility lower, closer to the empirical 3D model.
 	}
 \end{figure}
@@ -453,7 +455,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of $\beta$ on the susceptibility]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), for various parameter $\beta$.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\Nsite=300$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\beta$ are given in the legend.
+	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\NbrSites=300$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\beta$ are given in the legend.
 	Increasing $\beta$ decreases the slope of the $\omega$-$\Ne$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
@@ -464,8 +466,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of sequence size on the susceptibility]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), for various sequence size.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\beta=1.686$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\Nsite$ are given in the legend.
-	Increasing $\Nsite$ decreases the slope of the $\omega$-$\Ne$ relationship, as predicted in our theoretical model.
+	The fixed parameters are $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\beta=1.686$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\NbrSites$ are given in the legend.
+	Increasing $\NbrSites$ decreases the slope of the $\omega$-$\Ne$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
 
@@ -475,7 +477,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of $\DeltaDeltaG$ on the susceptibility with regards to expression level]{
 	$\omega$ at equilibrium as a function of the expression level $y$ (log scale), for various value of $\DeltaDeltaG$.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The fixed parameters are $\DeltaGmin=-118$, $\beta=1.686$, $\Nsite=300$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\DeltaDeltaG$ are given in the legend.
+	The fixed parameters are $\DeltaGmin=-118$, $\beta=1.686$, $\NbrSites=300$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid. $\DeltaDeltaG$ are given in the legend.
 	Increasing $\DeltaDeltaG$ increases the slope of the $\omega$-$y$ relationship, as predicted in our theoretical model.
 	}
 \end{figure}
@@ -486,7 +488,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of site variance on the susceptibility]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The parameters are $\DeltaGmin=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\DeltaDeltaG$ with mean $1$ and standard deviation given in the legend. $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
+	The parameters are $\DeltaGmin=-118$, $\NbrSites=300$, $\beta=1.686$ and each site has its own gamma distributed $\DeltaDeltaG$ with mean $1$ and standard deviation given in the legend. $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
 	Increasing the variance of $\DeltaDeltaG$ increases $\omega$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\DeltaDeltaG$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\omega$ is higher since non-synonymous mutations between unstable states are effectively neutral. However the slope of the $\omega$-$\Ne$ relationship is not sensibly changed.
 	}
 \end{figure}
@@ -497,7 +499,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	\caption[Effect of site variance on the susceptibility without Grantham distance]{
 	$\omega$ at equilibrium as a function of $\Ne$ (log scale), for various between site variance under a model considering Grantham distances.
 	For each population size, $200$ simulations were performed and the average (solid line) and $90\%$ confidence interval (shaded area) are shown.
-	The parameters are $\DeltaGmin=-118$, $\Nsite=300$, $\beta=1.686$ and each site has its own gamma distributed $\DeltaDeltaG$ with mean $1$ and standard deviation given in the legend.
+	The parameters are $\DeltaGmin=-118$, $\NbrSites=300$, $\beta=1.686$ and each site has its own gamma distributed $\DeltaDeltaG$ with mean $1$ and standard deviation given in the legend.
 	Increasing the variance of $\DeltaDeltaG$ increases $\omega$, by shifting the equilibrium to higher $x\eq$ since more unstable sites with low $\DeltaDeltaG$ are fixed before reaching sensible deleterious selection coefficient against unstable mutations. Once many sites are unstable, the $\omega$ is higher since non-synonymous mutations between unstable states are effectively neutral. However the slope of the $\omega$-$\Ne$ relationship is not sensibly changed.
 	}
 \end{figure}
@@ -507,40 +509,40 @@ From the energy of folded and unfolded states, we can compute the difference in 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth] {Relaxation-Stability-Alpha.pdf}
-	\caption[Relaxation time of $\omega$ dependence on $\Nsites$, while correction for $\DeltaGmin$]{
-	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\Nsites$ while correcting for $\DeltaGmin$.
+	\caption[Relaxation time of $\omega$ dependence on $\NbrSites$, while correction for $\DeltaGmin$]{
+	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\NbrSites$ while correcting for $\DeltaGmin$.
 	The left and right panel correspond to low $\Ne$ ($1e^{5}$) and the middle panel corresponds to high $\Ne$ ($2e^{6}$).
 	Solid line corresponds to the average over replicates ($r$) and the shaded area correspond to the $90\%$ interval among replicates.
 	The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total time of the computation is $900$ million years.
-	$\beta=1.686$, $\DeltaDeltaG=0.2$ for all simulations. The number of sites is changed from $\Nsite=15$ to $\Nsite=158$, and the number of replicates is changed accordingly such that the total number of sites ($\Nsite*r$) is kept constant.
-	Moreover, $\DeltaGmin$ is changed according to $\Nsite$ and $\DeltaDeltaG$ such that the equilibrium value $x\eq$ is kept constant, by solving numerically equation~\ref{eq:equilibrium-pheno}.
-	Increasing $\Nsite$ implies a higher rate of relaxation.}
+	$\beta=1.686$, $\DeltaDeltaG=0.2$ for all simulations. The number of sites is changed from $\NbrSites=15$ to $\NbrSites=158$, and the number of replicates is changed accordingly such that the total number of sites ($\NbrSites*r$) is kept constant.
+	Moreover, $\DeltaGmin$ is changed according to $\NbrSites$ and $\DeltaDeltaG$ such that the equilibrium value $x\eq$ is kept constant, by solving numerically equation~\ref{eq:equilibrium-pheno}.
+	Increasing $\NbrSites$ implies a higher rate of relaxation.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth] {Relaxation-Stability.pdf}
-	\caption[Relaxation time of $\omega$ dependence on $\Nsites$]{
-	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\Nsites$.
+	\caption[Relaxation time of $\omega$ dependence on $\NbrSites$]{
+	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\NbrSites$.
 	The left and right panel correspond to low $\Ne$ ($1e^{5}$) and the middle panel corresponds to high $\Ne$ ($2e^{6}$).
 	Solid line corresponds to the average over replicates ($r$) and the shaded area correspond to the $90\%$ interval among replicates.
 	The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total time of the computation is $900$ million years.
-	$\beta=1.686$, $\DeltaDeltaG=0.2$ and $\DeltaGmin=-10$ for all simulations. The number of sites is changed from $\Nsite=15$ to $\Nsite=158$, and the number of replicates is changed accordingly such that the total number of sites ($\Nsite*r$) is kept constant.
-	Increasing $\Nsite$ implies a higher $\omega$ at equilibrium, a lower susceptibility of the $\omega$ to changes in $\Ne$ and a higher rate of relaxation.
+	$\beta=1.686$, $\DeltaDeltaG=0.2$ and $\DeltaGmin=-10$ for all simulations. The number of sites is changed from $\NbrSites=15$ to $\NbrSites=158$, and the number of replicates is changed accordingly such that the total number of sites ($\NbrSites*r$) is kept constant.
+	Increasing $\NbrSites$ implies a higher $\omega$ at equilibrium, a lower susceptibility of the $\omega$ to changes in $\Ne$ and a higher rate of relaxation.
 	}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth] {Relaxation-Stability-Gamma.pdf}
-	\caption[Relaxation time of $\omega$ dependence on $\Nsites$, while correction for $\DeltaDeltaG$]{
-	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\Nsites$ while correcting for $\DeltaDeltaG$.
+	\caption[Relaxation time of $\omega$ dependence on $\NbrSites$, while correction for $\DeltaDeltaG$]{
+	$\omega$ Relaxation after a brutal change in $\Ne$, for various $\NbrSites$ while correcting for $\DeltaDeltaG$.
 	The left and right panel correspond to low $\Ne$ ($1e^{5}$) and the middle panel corresponds to high $\Ne$ ($2e^{6}$).
 	Solid line corresponds to the average over replicates ($r$) and the shaded area correspond to the $90\%$ interval among replicates.
 	The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total time of the computation is $900$ million years.
-	$\beta=1.686$, $\DeltaGmin=-10$ for all simulations. The number of sites is changed from $\Nsite=15$ to $\Nsite=158$, and the number of replicates is changed accordingly such that the total number of sites ($\Nsite*r$) is kept constant.
-	Moreover, $\DeltaDeltaG$ is changed according to $\Nsite$ such that the product $\DeltaDeltaG\Nsite$ is kept constant, thus the  susceptibility of the $\omega$ to changes in $\Ne$ is kept constant.
-	Increasing $\Nsite$ implies a higher $\omega$ at equilibrium, and a higher rate of relaxation.
+	$\beta=1.686$, $\DeltaGmin=-10$ for all simulations. The number of sites is changed from $\NbrSites=15$ to $\NbrSites=158$, and the number of replicates is changed accordingly such that the total number of sites ($\NbrSites*r$) is kept constant.
+	Moreover, $\DeltaDeltaG$ is changed according to $\NbrSites$ such that the product $\DeltaDeltaG\NbrSites$ is kept constant, thus the  susceptibility of the $\omega$ to changes in $\Ne$ is kept constant.
+	Increasing $\NbrSites$ implies a higher $\omega$ at equilibrium, and a higher rate of relaxation.
 	}
 \end{figure}
 
@@ -552,10 +554,10 @@ From the energy of folded and unfolded states, we can compute the difference in 
 	The left and right panel correspond to low $\Ne$ ($1e^{5}$) and the middle panel corresponds to high $\Ne$ ($2e^{6}$).
 	Solid line corresponds to the average over replicates ($r$) and the shaded area correspond to the $90\%$ interval among replicates.
 	The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total time of the computation is $900$ million years.
-	$\beta=1.686$, $\DeltaDeltaG=-10$ for all simulations. The number of sites is changed from $\Nsite=15$ to $\Nsite=158$, and the number of replicates is changed accordingly such that the total number of sites ($\Nsite*r$) is kept constant.
-	Moreover, $\DeltaDeltaG$ is changed according to $\Nsite$ such that the product $\DeltaDeltaG\Nsite$ is kept constant, thus the  susceptibility of the $\omega$ to changes in $\Ne$ is kept constant.
-	Finally, $\DeltaGmin$ is changed according to $\Nsite$ and $\DeltaDeltaG$ such that the equilibrium value $x\eq$ is kept constant, by solving numerically equation~\ref{eq:equilibrium-pheno}.
-	Increasing $\Nsite$ implies a higher rate of relaxation.}
+	$\beta=1.686$, $\DeltaDeltaG=-10$ for all simulations. The number of sites is changed from $\NbrSites=15$ to $\NbrSites=158$, and the number of replicates is changed accordingly such that the total number of sites ($\NbrSites*r$) is kept constant.
+	Moreover, $\DeltaDeltaG$ is changed according to $\NbrSites$ such that the product $\DeltaDeltaG\NbrSites$ is kept constant, thus the  susceptibility of the $\omega$ to changes in $\Ne$ is kept constant.
+	Finally, $\DeltaGmin$ is changed according to $\NbrSites$ and $\DeltaDeltaG$ such that the equilibrium value $x\eq$ is kept constant, by solving numerically equation~\ref{eq:equilibrium-pheno}.
+	Increasing $\NbrSites$ implies a higher rate of relaxation.}
 \end{figure}
 
 \section{Distribution of fitness effects}
@@ -571,7 +573,7 @@ Moreover, the distribution of $\\EmpiricalDeltadeltaG$ for novel mutations can b
 	\includegraphics[width=0.8\textwidth] {DPE-DFE.pdf}
 	\caption[Distribution of fitness effects and phenotypic effect]{
 	Distribution of fitness effects and phenotypic effect for novels non-synonymous mutations observed along a simulation at the mutation-selection balance.
-	$\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\Nsite=300$, $\beta=1.686$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
+	$\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\NbrSites=300$, $\beta=1.686$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
 	Each side of the distribution is fitted to a gamma distribution, shown in dotted line.
 	Panel A. Distribution of observed $\\EmpiricalDeltadeltaG$, which fit adequately the gamma distribution for negative $\\EmpiricalDeltadeltaG$ (stabilizing mutations).
 	Panel A. Distribution of observed selection coefficient, which fit adequately the gamma distribution for both positive and negative selection coefficient. However the shape parameter estimated is not the same for positive and negative selection coefficients.

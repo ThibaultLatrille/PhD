@@ -179,7 +179,7 @@ Fluctuations of $\Ne$ and mutation rate were also fluctuating continuously along
 Moreover, noise was added by accounting for short-term fluctuations of $\Ne$ on the order of $20\%$ per generation.
 The simulated branch length and $\Ne$ could be robustly recovered by the inference framework in this context, as depicted in figure~\ref{fig:simulations}, panel B \& E.
 
-However, if the results are encouraging to apply the method on empirical data, we rely on the assumption of site-independent fitness landscape, which is almost certainly broken in practice.
+However, if the results are encouraging to apply the method on empirical data, we rely on the assumption of site-specific fitness landscape, which is almost certainly broken in practice.
 Finally, we implemented a more complex, site-dependent fitness landscape accounting for the $3$-dimensional structure of protein and interaction between sites.
 In such a model, the conformational stability of the protein determines the probability of being in the folded state, a proxy for fitness~\citep{Williams2006, Goldstein2011, Pollock2012}.
 During a simulation, at a particular codon site, the fitness landscape is dependent on the actual amino acids present in the vicinity of this particular site (see section~\ref{subsec:protein-folding-probability} in supplementary materials).
@@ -235,7 +235,11 @@ We performed other empirical experiments using a group of isopod species that ha
 Protein coding DNA sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphthalmia, or ocular) are available for these species~\citep{Saclier2018}.
 Estimation of $\Ne$ reveals a correlation between qualitative life-history traits and $\Ne$, presented section~\ref{sec:empirical-data-in-isopods} in supplementary materials.
 However, these correlations are sensitive to phylogenetic inertia since multivariate log-Brownian does not accommodate qualitative traits, although this particular dataset is composed of surface and subterranean species reducing biases.
-Finally, our empirical framework was also applied in drosophila and related to genome size  (see~\ref{sec:empirical-data-in-primates} and~\ref{sec:empirical-data-in-drosophila} in supplementary materials).
+
+Additionally, our empirical framework was also applied in primates (see~\ref{sec:empirical-data-in-primates} and in supplementary materials).
+Reconstructed $\Ne$ and $\mu$ are related to LHT (mass, female maturity, generation time and longevity), synonymous diversity ($\ps$) and non-synonymous over synonymous ($\pnps$).
+Finally, our empirical framework was also applied in drosophila and related to genome size (see~\ref{sec:empirical-data-in-drosophila} and in supplementary materials).
+These experiments however did not uncover statistically significant correlation between $\Ne$ and life-history traits.
 
 \begin{table}[htbp]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
@@ -262,7 +266,7 @@ In placental mammals, $\Ne$ correlates negatively with longevity, weight and mat
 Our observations suggest that the empirical signal is strong enough such that we can infer the directional trends in changes.
 
 % Longvariance in Ne 
-If the trend of variations in $\Ne$ is in right direction, the magnitude of change across the phylogeny with a ratio of $2.5$ is greatly inferior to the expected variation observed in mammals~\citep{Galtier2016}.
+If the trend of variations in $\Ne$ is in right direction, the magnitude of change across the phylogeny with a ratio of $2.5$ is greatly inferior to the expected variation observed in mammals~\citep{Galtier2016, Brevet2019}.
 Different mechanisms not accounted for by the model could explain such a low variation of reconstructed $\Ne$.
 
 First, genetic hitchhiking, Hill-Robertson interference, and short-term fluctuations of $\Ne$ could generate this effect.
@@ -410,7 +414,7 @@ The $\Ncat$-dimensional vector $\catMultiVar$ is distributed as a multinomial of
     \label{eq:DistribMultinomial}
     \catMultiVar \sim \mathrm{Multinomial}\left( \StickBreaking \right).
 \end{align}
-The event probabilities $\Ncat$-dimensional vector~($\StickBreaking$) of falling into each category is distributed as a stick-breaking Dirichlet process:
+The event probabilities $\Ncat$-dimensional vector~($\StickBreaking$) of falling into each category is distributed as a stick-breaking \gls{Dirichlet process}:
 \begin{align}
     \label{eq:DistribStickBreaking}
     \begin{split}
@@ -427,7 +431,7 @@ from a beta distribution
 The Malthusian fitness selection coefficients $\Fit\siteexp$ at site $\site$, are obtained by taking the logarithm of the fitness profile assigned to this site:
 \begin{equation}
     \label{eq:sitefitness}
-    \Fit\siteexp = \log \left( \Base^{\left( \catsite \right)} \right),\ \Setsite.
+    \Fit\siteexp = \ln \left( \Base^{\left( \catsite \right)} \right),\ \Setsite.
 \end{equation}
 
 \subsection{Dated tree}
@@ -563,7 +567,7 @@ The prior on the covariance matrix is an invert Wishart distribution, parameteri
     \CovarianceMatrix \sim \mathrm{Wishart}^{-1} (\covariancekappa \Identitymatrix, \covariancedf)
 \end{equation}
 
-\subsection{Codon {substitution} rates}
+\subsection{Codon substitution rates}
 For a given branch $\branch$ and a given site $\site$, the codon substitution rate (per unit of time) matrix $\Submatrix\branchsiteexp$ is given by:
 \begin{equation}
     \label{eq:subrates}
@@ -579,7 +583,7 @@ The branch lengths $\branchlength\branchexp$ are defined as the expected number 
     \label{eq:branchlength}
     \branchlength\branchexp = \mu\branchexp \branchtime\branchexp
 \end{equation}
-Together, the probability of {transition} between codons for a given branch $\branch$ and site $\site$ is:
+Together, the probability of transition between codons for a given branch $\branch$ and site $\site$ is:
 \begin{equation}
     \label{eq:Probmatrix}
     \Probmatrix\branchsiteexp = \e^{\branchlength\branchexp \Submatrix\branchsiteexp},
@@ -588,7 +592,7 @@ which are the matrices necessary to compute the likelihood of the data ($\data$)
 
 \subsection{Bayesian implementation}
 \label{sec:Bayesian}
-Monte Carlo Markov chains (\acrshort{MCMC}) are run for 4000 points and the first 1000 points are discarded as burn-in, the convergence is then assessed (see section~\ref{subsec:chain-convergence} in supplementary materials), as both site-specific fitness and branch $\Ne$ have the same posterior mean.
+Markov chain Monte-Carlo (\acrshort{MCMC}) are run for 4000 points and the first 1000 points are discarded as burn-in, the convergence is then assessed (see section~\ref{subsec:chain-convergence} in supplementary materials), as both site-specific fitness and branch $\Ne$ have the same posterior mean.
 Most phylogenetic MCMC samplers target the distribution over the model parameters, which means that they have to repeatedly invoke the pruning algorithm to recalculate the pruning-based likelihood which is most often the limiting step of the \acrshort{MCMC}.
 An alternative, which is used here, is to do the \acrshort{MCMC} conditionally on the detailed substitution history $\subhistory$, thus doing the \acrshort{MCMC} over the augmented configuration~($\subhistory$, $\data$), under the target distribution obtained by combining the mapping-based likelihood with the prior over model parameters.
 
