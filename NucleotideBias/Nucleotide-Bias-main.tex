@@ -40,8 +40,8 @@ Conceptually, however, this is a clear symptom of a more fundamental problem, mu
 Practically, could have important consequences in other contexts than tests of positive selection.
 In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences.
 A particularly important factor here is biased gene conversion toward GC (named gBGC), which can confound the tests for detecting positive selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
-Even in the absence of gBGC, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
-All this suggests that, even before introducing gBGC in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
+Even in the absence of \acrshort{gBGC}, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
+All this suggests that, even before introducing \acrshort{gBGC} in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
 
 %** the mut-sel balance revisited: an equilibrium between two net forces **
 In this direction, the key point that needs to be correctly formalized is that the nucleotide's realized frequencies are the result of a compromise between mutation and selection, then this implies that the strength of selection is not the same between all nucleotide or amino-acid pairs.
@@ -72,7 +72,7 @@ In a second step, we explore how codon models with alternative parameterization 
 
 \subsection{Simulations experiments}
 
-Simulations of protein-coding DNA sequences were conducted under an origin-fixation substitution process~\citep{McCandlish2014} at the level of codons, parameterized by two variables (see figure~\ref{fig-mut-bias:parameters}).
+Simulations of protein-coding \acrshort{DNA} sequences were conducted under an origin-fixation substitution process~\citep{McCandlish2014} at the level of codons, parameterized by two variables (see figure~\ref{fig-mut-bias:parameters}).
 In this context, mutations are defined at the level of nucleotides with a single parameter controlling mutational bias toward AT $\lambda = (\mutequi_A+\mutequi_T)/(\mutequi_C+\mutequi_G)$, which is shared by all sites of the sequence (see section~\ref{sec-mut-bias:mut-matrix}).
 With regards to selection, synonymous mutations are considered neutral, such that the synonymous substitution rate equal to the underlying mutation rate.
 Alternatively, selection is modelled for non-synonymous mutations, with each codon site of the sequence defined by its own profile of amino-acid fitness (a vector of 20 fitnesses), drawn from a Dirichlet distribution of concentration parameter $\alpha$ (see section~\ref{sec-mut-bias:aa-selection}).
@@ -92,7 +92,7 @@ Ultimately, the stringency of selection increase with decreasing $\alpha$.
 
 \subsubsection{Observed behaviour}
 
-Simulation of this origin-fixation process along a species tree result in a multiple sequence alignment of DNA for the extant species (see section~\ref{sec-mut-bias:simu}), from which summary statistics can be computed.
+Simulation of this origin-fixation process along a species tree result in a multiple sequence alignment of \acrshort{DNA} for the extant species (see section~\ref{sec-mut-bias:simu}), from which summary statistics can be computed.
 One such straightforward summary statistic is the frequency of the different nucleotides, and the resulting observed mutational bias $\atgc$ of the alignment.
 Such observed mutational bias is compared to underlying mutational bias $\lambda$ at different positions of the codon (first, second and third), as depicted in figure~\ref{fig-mut-bias:AT-GC-obs}).
 The third position of codons reflects the mutational bias.
@@ -158,7 +158,7 @@ In other words, selection is opposed to mutational bias, which had pushed sites 
     In right panel, the mean scaled fixation probability of non-synonymous mutations restricted to mutations from weak nucleotides (AT) to strong nucleotides (GC), $\avgpfix_{AT \rightarrow GC}$ is represented in the vertical axis.
     Mutation biased from GC to AT leads to a mean scaled fixation probability in the opposite direction.
     More generally, mutation bias is balanced by selection, even more strongly that the stringency of selection is strong.
-    This is confounding factor with gBGC.}
+    This is confounding factor with \acrshort{gBGC}.}
     \label{fig-mut-bias:omega-WS}
 \end{figure}
 
@@ -181,7 +181,7 @@ Two models of inference are proposed, the first is based on Muse \& Gaut formali
 
 \subsubsection{$\omega$ as a scalar: the Muse \& Gaut formalism}
 
-The $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entirely by the GTR mutation matrix ($\Mutmatrix$), a single parameter of selective strength $\omega$, and the genetic code:
+The $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entirely by the \acrshort{GTR} mutation matrix ($\Mutmatrix$), a single parameter of selective strength $\omega$, and the genetic code:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are not one mutation away} \\
@@ -193,7 +193,7 @@ The $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entire
 \end{equation}
 where $\nucitoj$ denotes the nucleotide change between codon $\ci$ and codon $\cj$.
 Phenomenological codon models are not designed to tease out mutational bias, but firstly to estimate the global strength of selection.
-From the maximum likelihood estimates of the $4 \times 4$ GTR mutation matrix ($\widehat{\Mutmatrix}$), we can estimate of the mutational bias toward $\mathrm{AT}$ $\left({\widehat{\lambda}_{\text{MG}}} \right)$.
+From the maximum likelihood estimates of the $4 \times 4$ \acrshort{GTR} mutation matrix ($\widehat{\Mutmatrix}$), we can estimate of the mutational bias toward $\mathrm{AT}$ $\left({\widehat{\lambda}_{\text{MG}}} \right)$.
 As shown in the left panel of figure \ref{fig-mut-bias:inference}, estimate of the mutational bias is halfway between observed bias of the alignment and the true value used during the simulation.
 As a result, this model cannot reliably infer the mutational bias, and is doing a compromise between estimating the selection coefficients and mutational bias.
 We can also estimate the parameter ${\widehat{\omega}_{\text{MG}}}$, which is close to the underlying mean scaled fixation probability $\avgpfix$ of the simulation, with an error rate of 1.8\%.
@@ -233,7 +233,7 @@ The process is reversible:
     & = \epsilon_{\aaj} \omega_{\aaj, \aai}
 \end{align}
 
-From the maximum likelihood estimates of the GTR mutation matrix ($\widehat{\Mutmatrix}$), we can estimate the mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$ as previously.
+From the maximum likelihood estimates of the \acrshort{GTR} mutation matrix ($\widehat{\Mutmatrix}$), we can estimate the mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$ as previously.
 As shown in the right panel of figure \ref{fig-mut-bias:inference}, estimate of the mutational bias can tease out observed bias of the alignment and true value.
 We can also estimate the mean scaled fixation probability of non-synonymous mutations $\left({\widehat{\omega}_{\text{MF}}} \right)$ (see section~\ref{sec-mut-bias:mean-field-omega}) which is a compound parameter of the mutation matrix and the mean scaled fixation probability in the different direction.
 Error of the estimated non-synonymous mean scaled fixation probability is 3.0\%.
@@ -276,9 +276,9 @@ Also, in empirical data we observed that the mean scaled fixation probability be
 
 \section{Discussion}
 
-The observed composition DNA is the result of the interplay between mutation and selection, such that observed mutational bias in the alignment is different to the underlying mutational bias.
-In protein-coding DNA sequence, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
-For example, mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with gBGC.
+The observed composition \acrshort{DNA} is the result of the interplay between mutation and selection, such that observed mutational bias in the alignment is different to the underlying mutational bias.
+In protein-coding \acrshort{DNA} sequence, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
+For example, mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with \acrshort{gBGC}.
 
 Unfortunately, parametric codon models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level, discarding the effect of selection.
 We show that even if the mutational process is misspecified, parametric codon models are able to estimate reliably the rate of evolution acting on amino acids.

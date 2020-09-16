@@ -7,7 +7,7 @@ One component of this process is creating diversity through mutation, while anot
 In the long term, this stochastic process results in a history of substitution events along species trees, inducing complex patterns of molecular divergence between species.
 By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
 
-In this context, this thesis has been focused on phylogenetic codon models, and on modelling the interplay between mutation, selection and drift shaping protein-coding DNA sequences.
+In this context, this thesis has been focused on phylogenetic codon models, and on modelling the interplay between mutation, selection and drift shaping protein-coding \acrshort{DNA} sequences.
 As an introduction of this conclusive chapter, I first recall the main results of this thesis in section~\ref{sec:summary-of-main-results}.
 Subsequently, I attempt to discuss the limitations of this work.
 One main limitation concerns the problem of modelling site interdependence, which is discussed in section~\ref{sec:epistasis-and-entrenchment}.
@@ -19,7 +19,7 @@ Finally, before concluding, I discuss the question and issue of reproducible sci
 \section{Summary of main results}
 \label{sec:summary-of-main-results}
 
-Because the composition of protein-coding DNA sequences does not reflect the underlying mutational process, but its filtering by selection at the level of amino acids, a careful modelling is necessary to tease apart the mutational process and the nucleotide biases on one side, and selection on the other side.
+Because the composition of protein-coding \acrshort{DNA} sequences does not reflect the underlying mutational process, but its filtering by selection at the level of amino acids, a careful modelling is necessary to tease apart the mutational process and the nucleotide biases on one side, and selection on the other side.
 Unfortunately, current phenomenological codon models, originally developed to estimate the rate of evolution on amino acids ($\dnds$), do not correctly model this mutation-selection balance.
 In effect, they use the observed nucleotide compositional bias as a proxy for the nucleotide mutation bias.
 As a result, they do not provide an accurate estimate of the mutational process, even if they are able to estimate quite reliably the global strength of selection acting on amino acids.
@@ -28,13 +28,13 @@ To address this problem, in chapter~\ref{chap:NucleotideBias}, I developed a phy
 Tensor captures the small differences in fixation rate (or $\dnds$) in different directions, which gives an accurate representation of how mutation and selection oppose each other at equilibrium.
 This parameterization is the simplest parametric form, in a phenomenological context, capable of making the mutation-selection separation exactly (or asymptotically exact).
 Thanks to this, this modelling approach yields a reliable estimate of the mutational process, while disentangling fixation probabilities in different directions.
-This offers tools to better understand how mutation-mutation will work together with biased gene conversion (gBGC), and therefore also yields better understanding of how gBGC will impact both nucleotide composition and $\dnds$.
+This offers tools to better understand how mutation-mutation will work together with biased gene conversion (\acrshort{gBGC}), and therefore also yields better understanding of how \acrshort{gBGC} will impact both nucleotide composition and $\dnds$.
 
 The first manuscript articulated mutation and mutation in the context of a phenomenological codon model.
 However, the balance between the forces of mutation and selection is arbitrated by genetic drift, which in turn is modulated by effective population size ($\Ne$).
 As a result, theoretically, variation of $\Ne$ along of a phylogeny can be inferred from the trails of substitutions along the lineages.
 
-In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscape, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of DNA coding sequences.
+In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscape, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of \acrshort{DNA} coding sequences.
 Simultaneously, the approach estimates the correlation between life-history traits, mutation rate and effective population size, intrinsically accounting for phylogenetic inertia.
 Our framework was tested against simulated data and then applied to empirical data in mammals, isopods, primates and drosophila.
 Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to past history of $\Ne$, whose trends correspond to expected direction of correlation with life-history traits or ecological variables.
@@ -90,7 +90,7 @@ We argue that epistasis also has an important role in the response of $\dnds$ to
 This is a conceptual point that, to your knowledge, had never been really identified until now.
 
 Moreover, the very long slow dynamic time constants implied by site-specific models are of the order of the depth of phylogeny ($100$ to $1000$ My).
-As such, in the absence of epistasis, we shouldn't even see $\dnds$ correlations with either LHT or $\Ne$ because of it.
+As such, in the absence of epistasis, we shouldn't even see $\dnds$ correlations with either \acrshort{LHT} or $\Ne$ because of it.
 Conversely, the fact that we see it is in itself an important indication of the presence of epistasis.
 
 Ultimately, accounting for epistasis in mechanistic models of evolutions is necessary but challenging from a computational and statistical perspective.
@@ -140,7 +140,7 @@ Thus, do bats, compared to other mammals, have both stronger purifying selection
 
 Phylogenetic codon models are only one of the methods currently available to detect adaptation.
 There are other approaches that are widely used in population genetics, and that make use of the signal contained in polymorphism data, such as originally pioneered by \citet{McDonald1991}.
-The idea behind the McDonald \& Kreitman (MK) approach is to decompose the rate of selected substitutions ($\omega_{\text{Tot}}$), as a mixture of both advantageous substitutions and non-adaptive (nearly-neutral) substitutions:
+The idea behind the McDonald \& Kreitman (\acrshort{MK}) approach is to decompose the rate of selected substitutions ($\omega_{\text{Tot}}$), as a mixture of both advantageous substitutions and non-adaptive (nearly-neutral) substitutions:
 \begin{align}
     \omega_{\text{Tot}} & = \omega_{\text{A}} + \omega_{\text{NA}}, \\
     \iff \omega_{\text{A}} & = \omega_{\text{Tot}} - \omega_{\text{NA}},
@@ -167,15 +167,15 @@ This method, and subsequent developments~\citep{Galtier2016} provides a better e
 \label{subsec:confronting-methods-for-detecting-adaptation}
 
 The availability of independent phylogenetic methods for detecting adaptation, with both classical and mechanistic codon models, raises the question whether they detect congruent signals of adaptation.
-In addition, both phylogenetic methods should be confronted to McDonald \& Kreitman (MK) methods leveraging polymorphism within species, such as to also assert whether results are congruent.
-In the case of the overlap between positively selected genes detected with classical codon models and with MK methods, the set of genes detected does not seem to overlap beyond random expectation~\citep{He2020}.
-Contrarily, at the site level, classical codon models are congruent with MK methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
-These results still need be refined across clades and genes, and the availability of polymorphism and divergence DNA sequences that are aligned will make this comparison possible.
+In addition, both phylogenetic methods should be confronted to McDonald \& Kreitman (\acrshort{MK}) methods leveraging polymorphism within species, such as to also assert whether results are congruent.
+In the case of the overlap between positively selected genes detected with classical codon models and with \acrshort{MK} methods, the set of genes detected does not seem to overlap beyond random expectation~\citep{He2020}.
+Contrarily, at the site level, classical codon models are congruent with \acrshort{MK} methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
+These results still need be refined across clades and genes, and the availability of polymorphism and divergence \acrshort{DNA} sequences that are aligned will make this comparison possible.
 
-However, positively selected genes or sites detected by classical codon models and MK methods can theoretically be different, since non-adaptive part of substitution ($\omega_{\text{NA}}$) is subtracted in MK test while classical codon models are not accounting for it.
+However, positively selected genes or sites detected by classical codon models and \acrshort{MK} methods can theoretically be different, since non-adaptive part of substitution ($\omega_{\text{NA}}$) is subtracted in \acrshort{MK} test while classical codon models are not accounting for it.
 Interestingly, another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon model is $\omega_0$ induced by the mutation-selection null model (see~\ref{subsec:HB-formalism-nearly-neutral-model}).
-As a result, mechanistic mutation-selection codon models ($\omega_0$) and MK test ($\pnps$) should theoretically be congruent.
-From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models and MK methods are congruent.
+As a result, mechanistic mutation-selection codon models ($\omega_0$) and \acrshort{MK} test ($\pnps$) should theoretically be congruent.
+From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models and \acrshort{MK} methods are congruent.
 And if not the reason for such discrepancy should be understood.
 
 \begin{figure}[H]
@@ -205,7 +205,7 @@ Such an integration between phylogenetic and population genetics as already been
 For example, \citet{Wilson2011} modelled codon evolution in a joint framework with $3$ species, allowing them to analyse the variation in selection pressures spatially along the genome and temporally between lineages.
 However, this methodology proved to be computationally intensive and does not scale well with the number of extant species.
 Alternatively, modelling substitutions as mutational events followed by a gradual fixation, using an explicit Wright-Fisher or Moran process along the phylogeny makes it possible to estimate nucleotide mutation rates and mean fixation probabilities from genetic variation within and between species, while accounting for shared ancestral polymorphisms and incomplete lineage sorting~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019}.
-In particular, this methodology was used to disentangle gBGC and mutational bias~\citep{Borges2019, Borges2020}.
+In particular, this methodology was used to disentangle \acrshort{gBGC} and mutational bias~\citep{Borges2019, Borges2020}.
 However, this methodology does not scale well with the number of states of the models.
 For that reason, it would be particularly difficult to translate from a nucleotide matrix (4 states) to a codon matrix (61 states).
 
@@ -225,7 +225,7 @@ Indeed, what sense would it make to integrate empirical data about genetic diver
 Once incorporating branch specific $\Ne$ , the original goal was to add polymorphism data in the context of this improved mutation-selection codon model.
 As it turns out, however, there are other issues that need to be addressed, before achieving this integration.
 In particular, the fact that the range of $\Ne$ inferred by the model is too narrow (see~\ref{chap:MutSelDrift}), as well as computational issues.
-Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the MCMC became prohibitive.
+Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the \acrshort{MCMC} became prohibitive.
 
 Retrospectively, even though site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating empirical data about polymorphism, as I have started to do in Bayescode, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
 Before doing this, I believe phylogenetic codon models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
@@ -319,11 +319,11 @@ Finally, explaining to others our choices of algorithms, implementation and data
 \section{Concluding remarks}
 \label{sec:concluding-remarks}
 
-To conclude, this work is an encouraging, although still unsuccessful attempt to build integrated models of the evolution of DNA sequences encoding proteins.
+To conclude, this work is an encouraging, although still unsuccessful attempt to build integrated models of the evolution of \acrshort{DNA} sequences encoding proteins.
 This work succeeds in consolidating the idea that the patterns of substitutions inform us on the long-term fluctuations in genetic drift along branches and selection along sequences.
 This thesis demonstrates that the assumptions made on the structure of the fitness landscape have a critical importance on the sensitivity of changes in substitution rates to changes in ecological ($\Ne$) or molecular variables (protein expression level).
 Conversely, empirical observations of the patterns of substitutions in response to changes in molecular or ecological variables inform us about the underlying structure of the fitness landscape.
 By basing itself on the mutation-selection balance and by explicitly integrating the effective size of the population, this work is a building block to bridge phylogeny and population genetics.
 Constructing an integrated framework is theoretically possible but with limited scope so far.
-However, confronting the estimation of phylogenetic codon and population-genetics model, through for example the rate of adaptive substitution, is a path forward in an integrated view of protein-coding DNA evolution.
+However, confronting the estimation of phylogenetic codon and population-genetics model, through for example the rate of adaptive substitution, is a path forward in an integrated view of protein-coding \acrshort{DNA} evolution.
 Finally, I believe this thesis is not providing disruptive results, but instead is consolidating theoretical models on which molecular evolution is based, and points out the pitfall to avoid.

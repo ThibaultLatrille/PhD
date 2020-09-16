@@ -79,7 +79,7 @@
 \end{alwayssingle}
 
 %%%%% ABSTRACT FRENCH
-\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
+\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 
 \begin{alwayssingle}
 	\input{sections/abstract_fr}
@@ -93,7 +93,7 @@
 \hypersetup{pageanchor=true}
 \begin{romanpages}
 
-\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
+\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 \begin{alwayssingle}
 	\input{sections/abstract}
 \end{alwayssingle}
@@ -107,7 +107,7 @@
 \flushbottom
 % This is where the whole-document ToC appears:
 {
-	\setlength{\baselineskip}{\frontmatterbaselineskip}
+	\setlength{\baselineskip}{1.2\frontmatterbaselineskip}
 	\hypersetup{linkcolor=GREYDARK}
 	\tableofcontents
 	\listoffigures
@@ -116,14 +116,14 @@
 	\mtcaddchapter
 }
 {
-	\setlength{\baselineskip}{\frontmatterbaselineskip}
+	\setlength{\baselineskip}{1.2\frontmatterbaselineskip}
 	\input{sections/glossary}
 }
 
 \end{romanpages}
 
 %%%% CHAPTERS
-\setlength{\baselineskip}{1.4\frontmatterbaselineskip}
+\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 \pagenumbering{arabic}
 \flushbottom
 \input{sections/preamble}
@@ -249,13 +249,14 @@ This work was performed using the computing facilities of the CC LBBE/PRABI.
 \phantomsection
 \label{sec-appendix:PRF}
 \input{sections/appendix_PRF}
+\newpage
 
 \thispagestyle{empty}
 %\chapter*{Detecting site-specific adaptation with mutation-selection models}
 \addcontentsline{toc}{part}{Detecting site-specific adaptation with mutation-selection models}
 \phantomsection
 \label{sec-appendix:MutSelM3starMBE}
-\includepdf[pages=-]{sections/MutSelM3starMBE.pdf}
+\includepdf[pages=1-]{sections/MutSelM3starMBE.pdf}
 
 %%%%% REFERENCES
 \thispagestyle{empty}

@@ -35,10 +35,3 @@ Moreover the probability that a site is monomorphic is given by:
 	P(\ci= n \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = 1 - \sum\limits_{\cj \in \Ni} \sum\limits_{i=1}^{n} G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right)
 \end{equation}
 And all other probabilities equal to $0.0$.
-
-$\bullet$ This method has been implemented into BayesCode and proved to be computationally intensive, even though optimizing the computation with sufficient statistics.
-
-$\bullet$ Moreover, it doesn't solve the issue of the site specific fitness landscape.
-
-$\bullet$ As a result, although theoretically interesting in this form, such model would have limited practical application.
-

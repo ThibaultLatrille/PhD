@@ -3,7 +3,7 @@
 \label{chap:intro-inference}
 
 The previous chapter treated how substitution rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
-In contrast, the goal of this chapter is to present the methodology for estimating the parameters from a set of observed protein-coding DNA sequences in different species or lineages.
+In contrast, the goal of this chapter is to present the methodology for estimating the parameters from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
 To do so, I will first introduce the concept of likelihood and how the likelihood is computed in the context of phylogenetic models.
 Then, I will briefly introduce the maximum likelihood method and, finally, the principles of Bayesian inference using Markov Chain Monte Carlo.
 
@@ -216,7 +216,7 @@ This expressivity in model structure, combined with generic Monte Carlo approach
 \subsection{Hierarchical model}
 \label{sec:intro-hierarchical-models}
 The relationship between the random variables defining a hierarchical model can be formalized as a Bayesian network, which is a probabilistic graphical representation of the set of variables and their conditional dependencies via a directed acyclic graph (DAG).
-In the example of the prior distribution for the rate substitution matrix in the case of the mutation-selection model, the prior is defined as the joint distribution of the prior over the selection coefficient over amino acids and the mutation rate matrix, which itself is a deterministic function of the equilibrium frequencies of nucleotides and the exchangeability rates for the general-time-reversible (GTR) mutation matrix (see figure~\ref{fig:DAG}).
+In the example of the prior distribution for the rate substitution matrix in the case of the mutation-selection model, the prior is defined as the joint distribution of the prior over the selection coefficient over amino acids and the mutation rate matrix, which itself is a deterministic function of the equilibrium frequencies of nucleotides and the exchangeability rates for the general-time-reversible (\acrshort{GTR}) mutation matrix (see figure~\ref{fig:DAG}).
 Seeing the DAG the other way around (following the arrows), simple prior distributions are combined together to form more complex joint prior distribution which ultimately defines the prior distribution over the model parameter vector ($\theta$).
 This hierarchy can naturally be extended across sites, across branches or across genes, and include the data, which are themselves a random variable produced by the substitution process.
 \begin{figure}[H]
@@ -264,7 +264,7 @@ This hierarchy can naturally be extended across sites, across branches or across
 Once realizing that the prior distribution can be boiled down to a set of simpler distributions over the components of the parameter vector, the difficulty in computing the posterior distribution arises from the high dimensionality of the parameter space, known as the curse of dimensionality.
 More precisely, the number of states increases exponentially with the number of dimensions of the space, such that the explicit evaluation for both the prior and the likelihood for a sufficiently fine-grained set of parameter values is unrealistic.
 In addition, the posterior distribution takes negligibly small values over most of the parameter space.
-Reduction in the exploration of the state space, and focusing of most of the computational effort in the relevant region, is obtained by employing Monte Carlo (MC) methods, which effectively approximate the target posterior distribution by sampling from it.
+Reduction in the exploration of the state space, and focusing of most of the computational effort in the relevant region, is obtained by employing Monte Carlo (\acrshort{MC}) methods, which effectively approximate the target posterior distribution by sampling from it.
 
 Historically, the first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952.
 Both a physicist and a mathematician, Nicolas Metropolis was one of the first scientists to work on the Manhattan Project that led to the production of the atomic bomb.
@@ -282,7 +282,7 @@ After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and
 
 \subsection{Metropolis-Hastings sampling}
 
-One specific algorithm designed such that MCMC stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
+One specific algorithm designed such that \acrshort{MCMC} stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
 This algorithm is composed of an acceptance/rejection rule such that the algorithm proceeds as follows at each step of the Markov chain.
 Starting from a state $X_t$ at step $t$:
 \begin{itemize}
@@ -314,7 +314,7 @@ Various algorithms can be used to sample these individual variables, depending o
 \label{subsec:suffstats-data-augmentation}
 
 MCMC samplers target the distribution over the model parameters by repeatedly invoking the pruning algorithm to recalculate the pruning-based likelihood.
-This is most often the limiting step of the MCMC.
+This is most often the limiting step of the \acrshort{MCMC}.
 An alternative is to augment the observed sequence data with a realization of the random process resulting in a detailed substitution history over the tree~\citep{Nielsen2002,Rodrigue2008}.
 Conditionally on the detailed substitution history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \data$), under the target distribution obtained by combining the mapping-based likelihood with the prior over model parameters.
 The key idea that makes this strategy efficient is that the mapping-based likelihood depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the likelihood~\citep{Lartillot2006,DeKoning2010,Romiguier2012,Irvahn2014,Davydov2016,Gueguen2018}.

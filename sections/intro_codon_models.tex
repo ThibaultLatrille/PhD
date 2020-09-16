@@ -6,7 +6,7 @@ More precisely, molecular evolution requires either a given selection coefficien
 In other words, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein-coding \acrshort{DNA} sequences.
 To this aim, this chapter will first present the genetic code and classical phylogenetic codons models, which can quantify the strength of selection acting on proteins through an aggregate parameter (called $\omega$ or $\dnds$).
 Application of these phylogenetic models to empirical \acrshort{DNA} alignments can be extended to model variation of selection across sites of the same protein, or between branches of a phylogenetic tree.
-Subsequently, mechanistic codon models are presented, assuming that the DNA sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino acids.
+Subsequently, mechanistic codon models are presented, assuming that the \acrshort{DNA} sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino acids.
 Finally, the relationship between classical and mechanistic models is investigated, and the interpretation of the discrepancy between both models is analysed.
 
 
@@ -202,7 +202,7 @@ In its most general form:
         {\mutmatrix_{TA}} & {\mutmatrix_{TC}} & {\mutmatrix_{TG}} & -
     \end{pmatrix}
 \end{equation}
-Most often, this matrix is assumed to be a general time-reversible (GTR) and thus defined by nucleotide equilibrium frequencies ($\bm{\mutequi}$) and by symmetric exchangeability rates ($\bm{\exchan}$):
+Most often, this matrix is assumed to be a general time-reversible (\acrshort{GTR}) and thus defined by nucleotide equilibrium frequencies ($\bm{\mutequi}$) and by symmetric exchangeability rates ($\bm{\exchan}$):
 \begin{equation}
     \label{eq:mutrates-GTR}
     \Mutmatrix =
@@ -429,7 +429,7 @@ And finally the substitution rate between codon $\ci$ and $\cj$ is:
 \end{align}
 As a result, the substitution rate from codon $\ci$ to $\cj$ can be approximated based on a plugin estimator for both the mutational process and the amino-acid frequencies, independently estimated.
 Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}.
-Comparison of both inference approaches yields similar results in terms of estimated profiles and their induced selective constraint on protein-coding DNA sequences~\citep{Spielman2016a}.
+Comparison of both inference approaches yields similar results in terms of estimated profiles and their induced selective constraint on protein-coding \acrshort{DNA} sequences~\citep{Spielman2016a}.
 Finally, instead of estimating the fitness landscape directly on the multiple sequence alignment, deep mutational scanning approaches can be used to estimate fitness profiles experimentally~\citep{Bloom2014,Bloom2014a}, as presented in chapter~\ref{chap:intro-physic-proteins}.
 
 \subsection{Modulating the fitness landscape across branches}
@@ -479,7 +479,7 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015} a
 \subsection{The Halpern \& Bruno mechanistic codon model as a nearly-neutral model}
 \label{subsec:HB-formalism-nearly-neutral-model}
 
-Once fitted to the data, the classical Muse \& Gaut (MG) formalism returns estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
+Once fitted to the data, the classical Muse \& Gaut (\acrshort{MG}) formalism returns estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
 From there, one can compute the substitution and mutation rates of each codon substitution.
 Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
 \begin{align}
@@ -493,7 +493,7 @@ Such equation is also true for any classical codon model formalism, where this i
 
 This rate of non-synonymous substitutions over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}), such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
 
-On the other hand, the mechanistic codon models in the Halpern \& Bruno (HB) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
+On the other hand, the mechanistic codon models in the Halpern \& Bruno (\acrshort{HB}) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
 Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
 \begin{align}

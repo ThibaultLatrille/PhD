@@ -3,8 +3,8 @@ import argparse
 import inflect
 
 p = inflect.engine()
-input_list = ["intro_historical.tex", "intro_formalism.tex", "intro_inference.tex", "intro_selection.tex",
-              "discussion.tex", "conclusion.tex",
+input_list = ["intro_historical.tex", "intro_formalism.tex", "intro_inference.tex", "intro_codon_models.tex",
+              "intro_thermodynamic.tex", "intro_goal.tex", "conclusion.tex",
               "../MutationSelectionDrift/MutSelDrift-main.tex", "../MutationSelectionDrift/MutSelDrift-supp-mat.tex",
               "../GenotypePhenotypeFitness/GenoPhenoFit-main.tex",
               "../GenotypePhenotypeFitness/GenoPhenoFit-supp-mat.tex", "../NucleotideBias/Nucleotide-Bias-main.tex"]
@@ -28,6 +28,7 @@ if __name__ == '__main__':
                 glossary[glos.replace("name={", "")] = key.replace("\\newglossaryentry{", "")
 
     print(glossary)
+    glossary = {}
     print(acronym)
     context_list = [" {0} ", " {0}.", " {0},", " {0}:", " {0};", "({0})"]
     for file in args.input:
