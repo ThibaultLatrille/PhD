@@ -1,11 +1,13 @@
 \section{\texorpdfstring{$\omega$}{ω} susceptibility after a change in \texorpdfstring{$\Ne$}{Nₑ}}
 \label{sec:susceptibility-after-a-change-in-Ne}
 
-\subsection{Genotype to {phenotype} map}
+\subsection{Genotype to phenotype map}
+\label{subsec:genotype-to-phenotype-map}
+
 Define $\NbrSites$ as the number of sites in the genotype sequence.
 Each site can be in one of $\Nstate \geq 2$ states, where only $1$ state is defined the stable state, and $\Nstate - 1$ states are unstable.
 For a given genotype sequence, define phenotype $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
-After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=\sfrac{1}{\NbrSites}$.
+After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=1/\NbrSites$.
 Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to $\dx$, if the current phenotype is $x$:\\
 \begin{gather}
 \begin{cases}
@@ -14,7 +16,10 @@ Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to 
 -\dx &\text{ with probability } \rho_{x}(-\dx) = \frac{x}{\Nstate - 1}.\\
 \end{cases} \label{eq:proba-pheno}
 \end{gather}
+
 \subsection{Selection coefficient}
+\label{subsec:selection-coefficient}
+
 $s(x, \dx)$ is the selection coefficient of an effect $\dx$ if the current phenotype is $x$:
 \begin{align}
 s(x, \dx) &= \frac{ \wrightfit (x + \dx) - \wrightfit (x)}{ \wrightfit ( x)}, \\
@@ -29,26 +34,32 @@ s(x, -\dx) \simeq - s(x, \dx) \text{ from eq.~\ref{eq:s_from_fitness}} \label{eq
 \iff S(x, -\dx) \simeq - S(x, \dx), \label{eq:S_minus_deltax}
 \end{gather}
 where $S(x\eq, \dx) = 4\Ne s (x\eq, \dx)$ is the scaled selection coefficient.
+
 \subsection{Probability of fixation}
+\label{subsec:probability-of-fixation}
+
 The probability of fixation of a mutation with effect $\dx$, for a resident phenotype $x$ is :
 \begin{align}
-p_{\text{fix}}(x, \dx) &= \frac{ 1 - \e^{-2 s(x, \dx)}}{1 - \e^{-4\Ne s(x, \dx)}}, \\
+\pfix(x, \dx) &= \frac{ 1 - \e^{-2 s(x, \dx)}}{1 - \e^{-4\Ne s(x, \dx)}}, \\
  &\simeq \frac{ 2 s(x, \dx)}{1 - \e^{-4\Ne s(x, \dx)}}, \\
  &= \frac{ 2 s(x, \dx)}{1 - \e^{-S(x, \dx)}}. \label{eq:pfix}
 \end{align}
 And in the case of neutral mutations, the probability of fixation is:
 \begin{gather}
-p_{\text{fix}}(x, 0) = \frac{ 1}{2 \Ne} \label{eq:pfix0}.
+\pfix(x, 0) = \frac{ 1}{2 \Ne} \label{eq:pfix0}.
 \end{gather}
 And the ratio of probability of fixation between selected and neutral mutations is:
 \begin{align}
-\frac{p_{\text{fix}}(x, \dx)}{p_{\text{fix}}(x, 0)} & = \frac{ 2 \Ne 2 s(x, \dx)}{1 - \e^{-S(x, \dx)}} \text{ from eq.~\ref{eq:pfix} and~\ref{eq:pfix0}},\\
+\frac{\pfix(x, \dx)}{\pfix(x, 0)} & = \frac{ 2 \Ne 2 s(x, \dx)}{1 - \e^{-S(x, \dx)}} \text{ from eq.~\ref{eq:pfix} and~\ref{eq:pfix0}},\\
 & = \frac{S(x, \dx)}{1 - \e^{-S(x, \dx)}} \label{eq:pfixratio}.
 \end{align}
+
 \subsection{Equilibrium phenotype}
+\label{subsec:equilibrium-phenotype}
+
 At equilibrium phenotype $x\eq$, the expected selection coefficient of mutation that reached fixation must be $0$:
 \begin{gather}
- 0 = \E_{\dx} \left[ s(x\eq, \dx) p_{\text{fix}}(x\eq, \dx) \right], \\
+ 0 = \E_{\dx} \left[ s(x\eq, \dx) \pfix(x\eq, \dx) \right], \\
 \iff 0 = \frac{ 2 s(x\eq, \dx)^2}{1 - \e^{-S(x\eq, \dx)}}   \rho_{x\eq}(\dx) + s(x\eq, 0) \frac{ \rho_{x\eq}(0)}{2\Ne} + \frac{ 2s(x\eq, -\dx)^2}{1 - \e^{-S(x\eq, -\dx)}} \rho_{x\eq}(-\dx)\text{ from eq.~\ref{eq:pfix} and~\ref{eq:pfix0}}, \\
 \Longrightarrow \frac{ 2s(x\eq, \dx)^2}{1 - \e^{-S(x\eq, \dx)}}   \rho_{x\eq}(\dx) \simeq \frac{ - 2s(x\eq, \dx)^2}{1 - \e^{S(x\eq, \dx)}}   \rho_{x\eq}(-\dx) \text{ from eq.~\ref{eq:S_minus_deltax}}, \\
 \iff \frac{ \rho_{x\eq}(\dx)}{\rho_{x\eq}(-\dx)} \simeq \e^{-S(x\eq, \dx)} \frac{ \e^{-S(x\eq, \dx)} - 1}{ \e^{-S(x\eq, \dx)} \left( 1 - \e^{S(x\eq, \dx)} \right)}, \\
@@ -56,10 +67,13 @@ At equilibrium phenotype $x\eq$, the expected selection coefficient of mutation 
 \iff \lambda_{K}(x\eq) \simeq -S(x\eq, \dx) \label{eq:equilibrium_lambda},
 \end{gather}
 where  $\lambda_{K}(x\eq) = \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (\Nstate-1)$.
-\subsection{Mean scaled fixation probability (\texorpdfstring{$\omega$}{ω}) at equilibrium}
-The mean fixation probability relative to the fixation probability of neutral mutations, also called the mean scaled fixation probability ($\omega$) is by definition:
+
+\subsection{Relative substitution rate (\texorpdfstring{$\omega$}{ω}) at equilibrium}
+\label{subsec:mean-scaled-fixation-probability-omega-at-equilibrium}
+
+The substitution rate of all selected relative to the substitution rate of neutral mutations is denoted $\omega$, which can also be interpreted as the the mean fixation probability of mutations scaled by the fixation probability of neutral mutations $p = 1 / {2 \Ne}$.
 \begin{align}
-\omega & = \E_{\dx} \left[ \frac{p_{\text{fix}}(x, \dx)}{p_{\text{fix}}(x, 0)} \right], \\
+\omega & = \E_{\dx} \left[ \frac{\pfix(x, \dx)}{\pfix(x, 0)} \right], \\
  & = (1 - x) \frac{ S(x, \dx)}{1 - \e^{-S(x, \dx)}} + x \left(\frac{\Nstate - 2}{\Nstate - 1}\right) + \frac{x}{\Nstate-1} \frac{ S(x, -\dx)}{1 - \e^{-S(x, -\dx)}} \text{ from eq.~\ref{eq:proba-pheno},~\ref{eq:pfix} and~\ref{eq:pfix0}}, \\
  & = (1 - x) \frac{ S(x, \dx)}{1 - \e^{-S(x, \dx)}} - \frac{x}{\Nstate-1}  \frac{ S(x, \dx)}{1 - \e^{S(x, \dx)}} +  x \left(\frac{\Nstate - 2}{\Nstate - 1}\right) \text{ from eq.~\ref{eq:S_minus_deltax}}.
 \end{align}
@@ -76,7 +90,7 @@ Moreover, given that the number of state if large enough $\Nstate \gg 1$, the eq
 \omega\eq  & = x\eq \left[ \frac{2 (x\eq-1)  \lambda_{K}(x\eq) }{\Nstate (x\eq-1)+1} + \frac{\Nstate - 2}{\Nstate - 1}\right], \\
 & \simeq x\eq
 \end{align}
-And the derivative of $\omega\eq$ w.r.t to $x\eq$ is: 
+And the derivative of $\omega\eq$ w.r.t to $x\eq$ is:
 \begin{gather}
 \frac{\der \omega\eq}{\der x\eq} = 2 \left[ \frac{\Nstate (x\eq- 1) + 1+\left[\Nstate (x\eq-1)^2+2 x\eq-1\right] \lambda_{K}(x\eq) }{(\Nstate (x\eq-1)+1)^2}\right] + \frac{\Nstate - 2}{\Nstate - 1} \label{eq:dw_dx}.
 \end{gather}
@@ -89,10 +103,13 @@ Moreover, given that the number of state if large enough $\Nstate \gg 1$, the re
 & \simeq \frac{2 \lambda_{K}(x\eq)}{\Nstate} + 1, \\
 & \simeq 1. \label{eq:approx_domega_dx}
 \end{align}
+
 \subsection{\texorpdfstring{$\omega$}{ω} susceptibility after a change in \texorpdfstring{$\Ne$}{Nₑ}}
+\label{subsec:omega-susceptibility-after-a-change-in-Ne}
+
 Define the function $G(x, \Ne )$ as:
 \begin{gather}
-G(x, \Ne ) \equiv \lambda_K (x\eq) + 4 \Ne s(x, \dx), 
+G(x, \Ne ) \equiv \lambda_K (x\eq) + 4 \Ne s(x, \dx),
 \end{gather}
 The equilibrium equation (eq.~\ref{eq:equilibrium-pheno}) states that $G(x\eq, \Ne )=0$, meaning that $x\eq$ is implicitly a function of $\Ne$:
 \begin{gather}
@@ -116,26 +133,36 @@ Moreover, with the approximation that $\left| 4 \Ne \frac{ \partial s(x\eq, \dx)
 \end{gather}
 Together, these approximations leads to the following susceptibility in equilibrium $\omega$ after change in $\Ne$ as:
 \begin{align}
-\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}\label{eq:approx_dw_dlnNe}
+\frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}
+\label{eq:approx_dw_dlnNe}
 \end{align}
+
 \section{Models for the log-fitness function}
+\label{sec:models-for-the-log-fitness-function}
+
 \subsection{Folded fraction}
+\label{subsec:folded-fraction}
+
 All phenotype-fitness functions considered below are log-concave, and as a result, $\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}$ is a decreasing function of $x$; the less stable the protein already is, the stronger the purifying selection against additional destabilizing mutations. More precisely, fitness functions depends on the folded fraction of the protein of interest, which is given by the Fermi-Dirac distribution:
 \begin{align}
-P_{F} (x) & = \frac{1}{1 + e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}}
+\probaFold (x) & = \frac{1}{1 + e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}},
 \end{align}
 where $x$ is the fraction of destabilizing mutations, each contributing to $\DeltaDeltaG$ in free energy of folding, and $\beta = 1 / kT$.
 Thus, $\DeltaGmin < 0$ is the difference in free energy between folded and unfolded state when all sites are stable. $\NbrSites \DeltaDeltaG$ is the expected change in $\DeltaG$ when all sites are unstable.
-The misfolded fraction is  $P_{U} = 1-P_{F}$. In addition, $P_{F}$ is typically close to 1 (or $P_{U} \ll 1$), so that we can use a first-order approximation:
+The misfolded fraction is  $\probaUnfold = 1-\probaFold$.
+In addition, $\probaFold$ is typically close to 1 (or $\probaUnfold \ll 1$), so that we can use a first-order approximation:
 \begin{align}
-P_{F}(x) & = 1 - P_{U}(x) \\
+\probaFold(x) & = 1 - \probaUnfold(x) \\
 & \simeq 1 - e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}
 \end{align}
 or equivalently
 \begin{align}
-P_{U}(x) & \simeq e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}
+\probaUnfold(x) & \simeq e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}
 \end{align}
+
 \subsection{Fitness equal to folded fraction}
+\label{subsec:fitness-equal-to-folded-fraction}
+
 A first model is to assume that the fitness is equal to the folded fraction~\citep{Goldstein2013}:
 \begin{gather}
  \wrightfit (x) = \frac{1}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}. \label{eq:fitness}
@@ -160,20 +187,24 @@ And the second derivative of fitness w.r.t to phenotype is:
 \frac{\partial^2  \logfit (x)}{\partial x^2} & = - \beta \NbrSites \DeltaDeltaG \frac{\partial}{\partial x} \left( \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}} \right) \text{ from eq.~\ref{eq:df_dx}}, \\
  & = - \beta \NbrSites \DeltaDeltaG  \beta \NbrSites \DeltaDeltaG \frac{\e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}{\left( 1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}\right)^2}, \\
  & = \frac{\beta \NbrSites \DeltaDeltaG}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}} \frac{ \partial \logfit (x) }{\partial x} \text{ from eq.~\ref{eq:df_dx}} \label{eq:df2_dx2}, \\
- & \simeq \beta \NbrSites \DeltaDeltaG \frac{ \partial \logfit (x) }{\partial x} 
+ & \simeq \beta \NbrSites \DeltaDeltaG \frac{ \partial \logfit (x) }{\partial x}
 \end{align}
 Finally, $\omega$ susceptibility after a change in $\Ne$ is simply:
 \begin{align}
 \frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG} \text{from eq.~\ref{eq:df2_dx2} and~\ref{eq:approx_domega_dx}},
 \end{align}
 which is independent of $x\eq$, meaning $\omega$ is linearly decreasing with $\Ne$ in log space.
-This model, however, does not express the fact that selection is typically stronger for proteins characterized by higher levels of expression. 
+This model, however, does not express the fact that selection is typically stronger for proteins characterized by higher levels of expression.
+
 \subsection{Selective cost proportional to amount of misfolded protein}
+\label{subsec:selective-cost-proportional-to-amount-of-misfolded-protein}
+
 A slight variation is to assume that the selective cost itself is proportional to the total amount of misfolded protein~\citep{Drummond2005a, Wilke2006, Drummond2008, Serohijos2012}. For a given protein with expression level $y$:
 \begin{align}
-\logfit (x) = - A y P_{U} (x)
+\logfit (x) = - A y \probaUnfold (x),
 \end{align}
-where $A$ is the cost per misfolded macromolecule. Then, 
+where $A$ is the cost per misfolded macromolecule.
+Then,
 \begin{align}
 \frac{\partial  \logfit (x)}{\partial x} & \simeq -A y \beta \DeltaDeltaG \NbrSites e^{\beta(\DeltaGmin + \DeltaDeltaG \NbrSites x)}.
 \end{align}
@@ -191,7 +222,12 @@ Since $\Ne$ and $y$ are confounded factors, meaning they only appear in the equa
 \end{align}
 
 \subsection{Translational errors}
-Another variant account for translational errors. Translational errors occur at a rate $\rho$ per residue. These errors contribute additional destabilizing mutations, each with effect size $\delta x = 1/n$. The total number of translational errors per macromolecule is approximately Poisson distributed:
+\label{subsec:translational-errors}
+
+Another variant account for translational errors.
+Translational errors occur at a rate $\rho$ per residue.
+These errors contribute additional destabilizing mutations, each with effect size $\dx = 1/\NbrSites$.
+The total number of translational errors per macromolecule is approximately Poisson distributed:
 \begin{align}
 \pi_k & = e^{-\rho \NbrSites} \frac{(\rho \NbrSites)^k}{k!}
 \end{align}
@@ -199,7 +235,7 @@ and the total selective cost is now an average over all possible values of $k$:
 \begin{align}
 \logfit (x) & = - A y \sum_k \pi_k e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x + \DeltaDeltaG k)}
 \\
-& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)} \sum_k e^{-\rho n} \frac{(\rho n)^k}{k!} e^{\beta \DeltaDeltaG k}
+& = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)} \sum_k e^{-\rho \NbrSites} \frac{(\rho \NbrSites)^k}{k!} e^{\beta \DeltaDeltaG k}
 \\
 & = - A y  e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x) + \rho \NbrSites (e^{\beta \DeltaDeltaG} -1 )}
 \\
@@ -216,47 +252,56 @@ Moreover, $\omega$ susceptibility after a change in $\Ne$ is again the same as b
 \begin{align}
 \frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
+
 \subsection{Cost-benefit argument}
+\label{subsec:cost-benefit-argument}
+
 The cost-benefit argument~\citep{Beaulieu2018} is based on two assumptions
 \begin{enumerate}
  \item the expression level is regulated so that the total number of \emph{functional} macromolecules is maintained at a target level $y$;
  \item the log-fitness is proportional to the ratio of the \emph{total} cost of expression over the benefit contributed by the protein.
 \end{enumerate}
-Specifically, the protein is assumed to be regulated so as to reach a level of expression of functional proteins of $y$, and contributes a total benefit $B$ (which depends on its specific function). Given that only a fraction $P_{F}(x) = 1-P_{U}(x)$ of the total amount of protein expressed by the cell is functional, the total cost of expression $C$ is then equal to:
+Specifically, the protein is assumed to be regulated so as to reach a level of expression of functional proteins of $y$, and contributes a total benefit $B$ (which depends on its specific function). Given that only a fraction $\probaFold(x) = 1-\probaUnfold(x)$ of the total amount of protein expressed by the cell is functional, the total cost of expression $C$ is then equal to:
 \begin{align}
-C(x) & = \frac{y}{P_{F}(x)}
-\\ & \simeq y (1 + P_{U}(x))
+C(x) & = \frac{y}{\probaFold(x)}
+\\ & \simeq y (1 + \probaUnfold(x))
 \end{align}
 Then, the log-fitness is given by:
 \begin{align}
 \logfit (x) & = -A \frac{y}{B} \left( 1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)} \right)
 \\
-& = -by (1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)})
+& = -by (1 + e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}),
 \end{align}
-where $b = A /B$. Compared to models 2 and 3, the log-fitness now has an additional term that depends on the target expression level $y$, but not on trait $x$. The scaled strength of selection on mutations affecting $x$ has thus the same functional form as for the two previous models:
+where $b = A /B$.
+Compared to models 2 (section~\ref{subsec:selective-cost-proportional-to-amount-of-misfolded-protein}) and 3 (section~\ref{subsec:translational-errors}), the log-fitness now has an additional term that depends on the target expression level $y$, but not on trait $x$. The scaled strength of selection on mutations affecting $x$ has thus the same functional form as for the two previous models:
 \begin{align}
 4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
 \end{align}
 Alternative cost-expression models could also be used, allowing for a non-linear cost function for expression or for some susceptibility of the realized equilibrium expression level, as a function of the number of mutations. Under these models, the strength of selection is still expected to be an increasing function of $y$, although not linear, \textit{e.g.}
 \begin{align}
-4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne g(y) e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
+4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne g(y) e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)},
 \end{align}
 where $g$ is some function of $y$.
 Moreover, $\omega$ susceptibility after a change in $\Ne$ is again the same as before:
 \begin{align}
 \frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}.
 \end{align}
+
 \section{Model of protein-protein interactions}
-The proteome is assumed to be composed of $m$ protein species, all with same abundance $C$. Each macromolecule may either be in free form or engaged in a non-specific interaction. Only pairwise interactions are considered, and higher-order interactions are ignored.
+\label{sec:model-of-protein-protein-interactions}
+
+The proteome is assumed to be composed of $m$ protein species, all with same abundance $C$.
+Each macromolecule may either be in free form or engaged in a non-specific interaction.
+Only pairwise interactions are considered, and higher-order interactions are ignored.
 The equilibrium is characterized by:
 \begin{align}
-[ij] & = \frac{[i][j]}{C_0} \, e^{\beta E_{ij}}
+[ij] & = \frac{[i][j]}{C_0} \, e^{\beta E_{ij}},
 \end{align}
 where $[i]$ and $[j]$ are the concentrations of protein species $i$ and $j$, and $[ij]$ is the concentration of their (non-specific) dimer. Here, $E_{ij}$ is the interaction free energy, which can itself be decomposed as a sum of three terms:
 \begin{align}
-E_{ij} & = \DeltaGmin + E_i + E_j 
+E_{ij} & = \DeltaGmin + E_i + E_j
 \\
-& = \DeltaGmin + \DeltaDeltaG \NbrSites (x_i + x_j)
+& = \DeltaGmin + \DeltaDeltaG \NbrSites (x_i + x_j),
 \end{align}
 where we assume that each protein has $n=100$ residues at its surface, $x_i$ stands for the fraction of hydrophobic residues at the surface of protein $i$, and each hydrophobic residue makes an additive contribution of $\DeltaDeltaG$ to the total.
 
@@ -272,10 +317,13 @@ and we note:
 the fraction of protein $i$ sequestered in non-specific interactions.
 We assume that the log fitness is proportional to the total amount of protein sequestered in non-specific interactions:
 \begin{align}
-\logfit (x) & = -b \sum_i \epsilon_i
+\logfit (x) & = -b \sum_i \epsilon_i,
 \end{align}
 where $b>0$ is a parameter determining the overall stringency of selection against non-specific interactions.
+
 \subsection{Mean field, weak-interaction limit}
+\label{subsec:mean-field,-weak-interaction-limit}
+
 To make the model tractable and compact, we assume that non-specific interactions are weak, \textit{i.e.} $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
 In addition, we use a mean-field approximation, such that, when considering a specific protein species $i$, we assume that all other proteins have the same fraction $\bar x$ of hydrophobic residues at their surface.
 The value of $\bar x$ could in principle be found using a self-consistent argument, essentially by (1) explicitly calculating the net substitution flux for protein $i$ with fraction $x_i$, under mean field $\bar x$, and (2) expressing the constraint that this substitution process for protein $i$ is stationary at $x_i = \bar x$.
@@ -296,50 +344,57 @@ and thus $\epsilon_i$ can be identified with:
 \begin{align}
 \epsilon_i  & = m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \NbrSites (\bar x + x_i))}
 \end{align}
-Now, assume that the system is at equilibrium (thus $x_i = \bar x$). The strength of selection acting on mutations occurring at the surface of protein $i$, of effect size $\delta x = \pm 1/n$, is given by $s = \kappa \delta x$ where:
+Now, assume that the system is at equilibrium (thus $x_i = \bar x$).
+The strength of selection acting on mutations occurring at the surface of protein $i$, of effect size $\dx = \pm 1/\NbrSites$, is given by $s = \kappa \dx$ where:
+
 \begin{align}
-\kappa_i & = b \frac{\der\epsilon_i} {\der x_i} 
+\kappa_i & = b \frac{\der\epsilon_i} {\der x_i}
 \\ & =
 b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDeltaG \NbrSites (\bar x + x_i))}
 \end{align}
 and thus:
 \begin{align}
-\ln \kappa_i & = \ln \left( b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \NbrSites \bar x) \, + \, \beta \DeltaDeltaG\NbrSites x_i
+\ln \kappa_i & = \ln \left( b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \NbrSites \bar x) \, + \, \beta \DeltaDeltaG\NbrSites x_i,
 \end{align}
 where only the last term depends on $x_i$.
 Finally, applying the main result of this work to the present case allows us to express the susceptibility of $\omega$ as a function of $\Ne$ as:
 \begin{align}
-\chi & = \frac{\der\omega} {\der \ln \Ne} 
-\\ & =  2(\lambda - 1) \, \frac{\der\ln \kappa_i}{\der x_i} 
-\\ & =  2 (\lambda - 1) \, \frac{1}{\beta \DeltaDeltaG n}
+\chi & = \frac{\der\omega} {\der \ln \Ne}
+\\ & =  2(\lambda - 1) \, \frac{\der\ln \kappa_i}{\der x_i}
+\\ & =  2 (\lambda - 1) \, \frac{1}{\beta \DeltaDeltaG \NbrSites}
 \end{align}
 Note that, here, we have used $K=2$ (hydrophobic and polar residues are roughly equally likely to occur by mutation), and assumed $x^* << 1$. A more accurate formula could be used without this latter assumption. In any case, $\chi$ is now dependent on $x^*$, through $\lambda$.
+
 \subsection{Empirical calibration}
-Based on empirical estimates~\citep{Zhang2008}. The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$.
+\label{subsec:empirical-calibration}
+
+Based on empirical estimates~\citep{Zhang2008}.
+The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$.
 The mean value for $E_{ij}$ is 7 kT, with a standard deviation of $\sigma = 1.8$ kT. Assuming that this standard deviation of $\pm 1.8$ kT is contributed by $\pm 6$ mutations gives $\DeltaDeltaG = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole.
 Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a much stronger response than under the model based on conformational stability.
 
 \section{Empirical estimation of susceptibility}
+\label{sec:empirical-estimation-of-susceptibility}
 
 \begin{table}[H]
 	\centering
 	\noindent\adjustbox{max width=\textwidth}{%
 	\begin{tabu}{|l|l|c|c|}
 		\hline
-		\textbf{Type} & \textbf{Specie} & $\bm\hat{\chi}{}$ & $\bm{r^2}$ \\ 
+		\textbf{Type} & \textbf{Specie} & $\bm\hat{\chi}{}$ & $\bm{r^2}$ \\
 		\hline
-		\hline Plant & Oryza sativa & -0.008 & 0.047 \\ 
-		\hline Plant & Arabidopsis thaliana & -0.012 & 0.128 \\ 
-		\hline Archaea & Sulfolobus solfataricus & -0.037 & 0.097 \\ 
-		\hline Archaea & Thermococcus kodakarensis & -0.026 & 0.058 \\ 
-		\hline Fungi & Saccharomyces cerevisiae & -0.029 & 0.211 \\ 
-		\hline Fungi & Aspergillus nidulans & -0.034 & 0.124 \\ 
-		\hline Bacteria & Escherichia coli & -0.021 & 0.151 \\ 
-		\hline Bacteria & Bacillus subtilis & -0.046 & 0.151 \\ 
-		\hline Animal & Caenorhabditis elegans & -0.026 & 0.039 \\ 
-		\hline Animal & Drosophila melanogaster & -0.005 & 0.021 \\ 
-		\hline Animal & Mus musculus & -0.008 & 0.085 \\ 
-		\hline Animal & Homo sapiens & -0.004 & 0.031 \\ 
+		\hline Plant & Oryza sativa & -0.008 & 0.047 \\
+		\hline Plant & Arabidopsis thaliana & -0.012 & 0.128 \\
+		\hline Archaea & Sulfolobus solfataricus & -0.037 & 0.097 \\
+		\hline Archaea & Thermococcus kodakarensis & -0.026 & 0.058 \\
+		\hline Fungi & Saccharomyces cerevisiae & -0.029 & 0.211 \\
+		\hline Fungi & Aspergillus nidulans & -0.034 & 0.124 \\
+		\hline Bacteria & Escherichia coli & -0.021 & 0.151 \\
+		\hline Bacteria & Bacillus subtilis & -0.046 & 0.151 \\
+		\hline Animal & Caenorhabditis elegans & -0.026 & 0.039 \\
+		\hline Animal & Drosophila melanogaster & -0.005 & 0.021 \\
+		\hline Animal & Mus musculus & -0.008 & 0.085 \\
+		\hline Animal & Homo sapiens & -0.004 & 0.031 \\
 		\hline
 	\end{tabu}}
 	\caption[Substitution rate as a function of expression level]{Substitution rate as a function of expression level compiled by \citet{Zhang2015}.}
@@ -348,28 +403,30 @@ Also, with $x=0.22$, $\lambda \simeq 4$, and thus $\chi = 6  / 30 = 0.2$, thus a
 
 In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\omega)$ as entries allows to approximate $\chi$:
 \begin{align}
-	\widehat{\frac{\der \ln (\omega)}{\der \ln (\Ne)}} & = \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]}\text{ from linear regression.} \\
-	\Rightarrow \widehat{\frac{\der \omega}{\omega \der \ln (\Ne)}} & = \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]} \\
-	\Rightarrow \widehat{\chi} & \simeq \widehat{\omega} \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]} \\
-	\Rightarrow \widehat{\chi} & \simeq 0.2 \dfrac{-0.45}{4.45} \\
-	\Rightarrow \widehat{\chi} & \simeq - 0.02 
+	\widehat{\frac{\der \ln (\omega)}{\der \ln (\Ne)}} & = \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]}, \\
+	\Rightarrow \widehat{\frac{\der \omega}{\omega \der \ln (\Ne)}} & = \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]}, \\
+	\Rightarrow \widehat{\chi} & \simeq \widehat{\omega} \dfrac{\text{Cov}[\ln(\omega), \ln(\Ne)]}{\text{Var}[\ln(\Ne)]}, \\
+	\Rightarrow \widehat{\chi} & \simeq 0.2 \dfrac{-0.45}{4.45}, \\
+	\Rightarrow \widehat{\chi} & \simeq - 0.02
 \end{align}
 
 \section{Simulation using the 3d structure of protein}
+\label{sec:simulation-using-the-3d-structure-of-protein}
+
 We simulated substitutions in the protein phosphatase ($\NbrSites=300$ codon sites).
-From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $G_{\mathrm{F}}\left(\ci\right)$, using the $3$-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
+From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $\GFold \left(\ci\right)$, using the $3$-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
 \begin{equation}
-G_{\mathrm{F}}\left(\ci\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
+\GFold \left(\ci\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
-where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by Miyazawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
-The free energy of unfolded states $G_{\mathrm{U}}\left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
+where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+The free energy of unfolded states $\GUnfold \left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
-G_{\mathrm{U}}\left(\ci\right) = \langle G\left(\ci\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \frac{2 \left[ \langle G\left(\ci\right)^2 \rangle - \langle G\left(\ci\right) \rangle^2\right] }{kT}
+\GUnfold \left(\ci\right) = \left\langle G\left(\ci\right) \right\rangle - kT \ln (1.0\mathrm{E}^{160}) - \frac{2 \left[ \left\langle G\left(\ci\right)^2 \right\rangle - \left\langle G\left(\ci\right) \right\rangle^2\right] }{kT},
 \end{equation}
-where the average $\langle . \rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
+where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:
 \begin{equation}
-\DeltaG\left(\ci\right) = G_{\mathrm{F}}\left(\ci\right) - G_{\mathrm{U}}\left(\ci\right)
+\DeltaG\left(\ci\right) = \GFold \left(\ci\right) - \GUnfold \left(\ci\right)
 \end{equation}
 \begin{center}
  \includegraphics[width=\textwidth] {ModelSimuFold.pdf}
@@ -416,6 +473,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 \end{figure}
 
 \section{Simulated \texorpdfstring{$\omega$}{ω} susceptibility to changes in \texorpdfstring{$\Ne$}{Nₑ}}
+\label{sec:simulated-omega-susceptibility-to-changes-Ne}
 
 \begin{figure}[H]
 	\centering
@@ -505,6 +563,7 @@ From the energy of folded and unfolded states, we can compute the difference in 
 \end{figure}
 
 \section{Simulated relaxation time of \texorpdfstring{$\omega$}{ω}}
+\label{sec:simulated-relaxation-time-of-omega}
 
 \begin{figure}[H]
 	\centering
@@ -561,6 +620,8 @@ From the energy of folded and unfolded states, we can compute the difference in 
 \end{figure}
 
 \section{Distribution of fitness effects}
+\label{sec:distribution-of-fitness-effects}
+
 DNA mutations changing a genotype can result in a change of phenotype, and ultimately a change in fitness.
 From a specific genotype, all the possible mutations thus result in a distribution of phenotypic effect (DPE) and fitness effects (\acrshort{DFE}).
 The DPE and \acrshort{DFE} are not known a priori, but are the resulting consequence of the mutation-selection-drift balance.

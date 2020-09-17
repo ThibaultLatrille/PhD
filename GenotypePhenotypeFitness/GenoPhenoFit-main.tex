@@ -117,20 +117,20 @@ For a given $\DeltaG$, thermodynamic equations allows to derive the proportion o
 This fitness function is motivated in part that a protein must be folded to perform its function.
 However this a strong assumption which will be relaxed subsequently to take into account protein expression level.
 Analytically, this fitness is given by Fermi Dirac distribution and is typically close to $1$, leading to a first-order approximation~\citep{Goldstein2011}:
-\begin{align}
+\begin{gather}
     \wrightfit (x) = \dfrac{1}{1 + e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)}},\\
     \Rightarrow \wrightfit (x) \simeq 1 - e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)},\\
-    \Rightarrow \logfit (x) \simeq e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)},
-\end{align}
-where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit = \ln ( \wrightfit )$ is the Malthusian fitness.
+    \Rightarrow \logfit (x) = \ln ( \wrightfit (x) ) \simeq e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)},
+\end{gather}
+where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
 Additionally, $\DeltaGmin$ and $\DeltaDeltaG$ are defined as above, and the parameter $\beta$ is $1.686$ mol/kcal at room temperature.
 
 \subsection{Reponse of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
 
-For a given effective population size $\Ne$, the evolutionary process as depicted in the middle panel of figure \ref{fig:Summary} results in an equilibrium substitution rate.
+For a given effective population size $\Ne$, the evolutionary process as depicted in the middle panel of figure~\ref{fig:Summary} results in an equilibrium substitution rate.
 This substitution rate is normalized by the substitution rate of neutral of mutations to discard the influence of the underlying mutation rate, where the resulting parameter is denoted $\omega$, which can also be interpreted as the the mean fixation probability of mutations scaled by the fixation probability of neutral alleles $p = 1 / {2 \Ne}$.
 As a result, $\omega < 1$ indicates that mutations are overall negatively selected, and decreases with the strength of purifying selection.
-In this section we present an analytical approximate solution for the response of $\omega$ after a change in $\Ne$ (in log space), as depicted in the right panel of figure \ref{fig:Summary}.
+In this section we present an analytical approximate solution for the response of $\omega$ after a change in $\Ne$ (in log space), as depicted in the right panel of figure~\ref{fig:Summary}.
 We call this response the susceptibility of $\omega$ to changes in $\Ne$, and denote it as $\chi$:
 \begin{align}
     \chi = \frac{ \der \omega}{\der \ln (\Ne)} \label{eq:chi}
@@ -139,7 +139,7 @@ Broadly, deriving $\chi$ is done in two steps.
 First, we determine the phenotype at equilibrium, when evolutionary forces of mutation, selection and genetic drift compensate each other.
 Subsequently, differential calculus on the response of the equilibrium phenotype to a change in $\Ne$ allows to ultimately derive an equation for $\chi$.
 Main results are given in the general case of any phenotype-fitness map, and also derived in the specific case of the biophysical model, where the fitness is proportional to the total amount of folded protein.
-All developments are available in supplementary materials (section \ref{sec:susceptibility-after-a-change-in-Ne}) for the most general case.
+All developments are available in supplementary materials (section~\ref{sec:susceptibility-after-a-change-in-Ne}) for the most general case.
 
 From a given genotype, mutations of its underlying sequence have various effects, they can increase or decrease the proportion of destabilizing amino acid, or do nothing if the mutation is between two destabilizing amino acids.
 To derive probabilities of such events to occur, we also make the simplifying assumption that all transitions between amino acids are equiprobable.
@@ -462,9 +462,12 @@ Protein sequence evolution is simulated under an origin-fixation model~\citep{Mc
 From the resident \acrshort{DNA} sequence $\Seqi$, we define $\setNeighbors$ as the set of all possible mutant that are one nucleotide away from $\Seqi$, and were mutant sequences containing a stop codon are excluded.
 For a protein of $\NbrSites$ amino-acid sites, $\left| \setNeighbors \right| \leq 9 \NbrSites$, since each codon has a maximum of $9$ possible mutant codons that are one mutation away and that are not stop codon.
 For each mutant sequence $\Seqj \in \setNeighbors$, we compute its fitness and subsequently the selection coefficient of the mutant:
-\begin{equation}
-    s \left( \Seqi,\Seqj\right) = \dfrac{ f \left(\Seqj \right) - f \left(\Seqi\right) }{f\left( \Seqi\right)}.
-\end{equation}
+\begin{align}
+    s \left( \Seqi,\Seqj\right) & = \dfrac{ \wrightfit \left(\Seqj \right) - \wrightfit \left(\Seqi\right) }{ \wrightfit \left( \Seqi\right)}, \\
+   \Rightarrow s \left( \Seqi,\Seqj\right) & \simeq  \logfit \left(\Seqj \right) -   \logfit \left(\Seqj \right),
+\end{align}
+where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
+
 The next event of mutant invading the population, and the time to reach such event is chosen using Gillespie algorithm, according to the rates of substitution between sequences:
 \begin{equation}
     \submatrix_{\Seqitoj} = \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{1 - \e^{-4 \Ne s \left( \Seqi,\Seqj\right)}},
@@ -487,14 +490,14 @@ Wrightian fitness is defined as the probability of our protein to be in the fold
     \wrightfit (\Seqi) = \dfrac{e^{-\beta \DeltaG\left(\Seqi\right) }}{1 + e^{-\beta \DeltaG\left(\Seqi\right) }} = \dfrac{1}{1 + e^{\beta \DeltaG\left(\Seqi\right) }},
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
-Under a simulation with site-specific fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
+Under a simulation with site-specific fitness profiles, a fitness profile gives a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
 Overall, the protein phenotype is computed as the sum of site-specific selection coefficient, obtained by accessing the amino acid present at each site of the protein.
 The selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \ln \left( \dfrac{G_{\site} \left(\Seqj(\site) \right)}{G_{\site} \left(\Seqi(\site) \right)} \right) ,
+    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \ln \left( \dfrac{\profile_{\site} \left(\Seqj(\site) \right)}{\profile_{\site} \left(\Seqi(\site) \right)} \right) ,
 \end{equation}
-where $G_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment~\citep{Bloom2017}.
+where $\Profile_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment~\citep{Bloom2017}.
 
 Under simulation with a fixed distribution of fitness effects (\acrshort{DFE}), the selection coefficient of the mutant $\Seqj$ is gamma distributed (shape $k > 0$):
 \begin{equation}

@@ -78,7 +78,7 @@ Formally, \acrshort{DNA} coding sequences are modelled at the level of the codon
 The substitution rate (per unit of time) from codon $\ci$ to $\cj$, denoted $\submatrix_{\itoj}$, is equal to the total rate of mutation (per unit of time) at the level of the population~($2\Ne\mu_{\itoj}$) multiplied by the probability of fixation of the mutation:
 \begin{equation}
 {\submatrix_{\itoj}}
-    = 2 \Ne \mu_{\itoj} p_{\mathrm{fix}}(\itoj)
+    = 2 \Ne \mu_{\itoj} \pfix(\itoj)
 \end{equation}
 In the case of synonymous mutations, which we assumed are neutral, the probability of fixation is independent of the original and target codon, and equal $1/2 \Ne$.
 Finally, ${\submatrix_{\itoj}}$ simplifies to:
@@ -402,10 +402,10 @@ The general time-reversible nucleotide matrix is normalized such that the total 
 
 \subsection{Site-dependent selection}
 \label{sec:profiles}
-For each category $\Setcat$, a $20$-dimensional fitness profile $\Base\catexp$ (summing to $1$) is distributed as a Dirichlet of center $\Basecenter$ and concentration $\baseconc$:
+For each category $\Setcat$, a $20$-dimensional fitness profile $\Profile\catexp$ (summing to $1$) is distributed as a Dirichlet of center $\centerProfile$ and concentration $\concentrationProfile$:
 \begin{equation}
     \label{eq:DistribBase}
-    \Base\catexp \sim \mathrm{Dir}\left( \Basecenter,\ \baseconc \right),\ \Setcat.
+    \Profile\catexp \sim \mathrm{Dir}\left( \centerProfile,\ \concentrationProfile \right),\ \Setcat.
 \end{equation}
 For an alignment of size $\Nsite$, each site $\Setsite$ is assigned a fitness profile category of amino acids $\catsite \in \catInterval $.
 The total number of sites falling in each fitness profile category $\cat$ is denoted $\catmultivar_{\cat}$.
@@ -431,7 +431,7 @@ from a beta distribution
 The Malthusian fitness selection coefficients $\Fit\siteexp$ at site $\site$, are obtained by taking the logarithm of the fitness profile assigned to this site:
 \begin{equation}
     \label{eq:sitefitness}
-    \Fit\siteexp = \ln \left( \Base^{\left( \catsite \right)} \right),\ \Setsite.
+    \Fit\siteexp = \ln \left( \Profile^{\left( \catsite \right)} \right),\ \Setsite.
 \end{equation}
 
 \subsection{Dated tree}
@@ -500,14 +500,14 @@ Moreover, the rate of change of the log-Brownian process per unit of time is con
         \node[state] (Equi) [BLUE, right=of R] {$\Mutequi$};
         \node[state] (dT) [above left=of Bb] {$\branchtime\branchexp $};
         \node[state] (T) [BLUE, right=of dT] {$\age\nodeexp$};
-        \node[state] (Base) [BLUE, above right=of f] {$\Base\catexp$};
+        \node[state] (Base) [BLUE, above right=of f] {$\Profile\catexp$};
         \node[state] (cat) [BLUE, right=of f] {$\catsite$};
         \node[state] (ExH) [RED, right=of Ex] {$\dfrac{1}{6}, 6$};
         \node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
         \node[state] (Unif) [RED, right=of T] {$\uniform$};
         \node[state] (C) [BLUE, right=of Bb] {$\contrast\branchexp$};
         \node[state] (Cov) [BLUE, right=of C] {$\Covariancematrix$};
-        \node[state] (baseH) [RED, right=of Base] {$\baseconc, \Basecenter $};
+        \node[state] (baseH) [RED, right=of Base] {$\concentrationProfile, \centerProfile $};
         \node[state] (sb) [BLUE, right=of cat] {$\StickBreaking$};
         \node[state] (CovH) [RED, right=of Cov] {$\covariancekappa, \covariancedf$};
         \node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};

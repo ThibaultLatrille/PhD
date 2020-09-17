@@ -10,22 +10,22 @@ More generally, these models highlight the respective contributions of mutation,
 Conceptually, codon models take advantage of the fact that synonymous and non-synonymous substitutions are differentially impacted by selection.
 Assuming synonymous mutations are neutral, the synonymous substitution rate equal to the underlying mutation rate.
 Non-synonymous substitutions, on the other hand, reflect the combined effect of mutation and selection.
-Classical codon models formalize this idea by invoking a single parameter $\omega$, acting multiplicatively on non-synonymous substitutions rates \citep{Muse1994, Goldman1994}.
+Classical codon models formalize this idea by invoking a single parameter $\omega$, acting multiplicatively on non-synonymous substitutions rates~\citep{Muse1994, Goldman1994}.
 Using a parametric model automatically corrects for the multiplicity issues created by the complex structure of the genetic code and by uneven mutation rates between nucleotides.
 As a result, this parameter $\omega$ capture the net, or aggregate, effect of selection on non-synonymous mutations.
 
 %** elaborating on the phenomenological versus mechanistic, classical versus mutsel, distinction **
 Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through a single parameter.
 In reality, the selective effects of associated with non-synonymous mutations depend on the context, and on the initial and final amino acids.
-In contrast, attempts at an explicitly modelling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism \citep{Halpern1998}.
+In contrast, attempts at an explicitly modelling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism~\citep{Halpern1998}.
 However, these models are computationally complex~\citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
 %** bringing in the key issue here: correctly teasing apart mutation and selection **
 This simple parametric design of current classical models raises an important question.
 By capturing selection through a single parameter, $\omega$, is the mutational process estimated reliably?
 There are indications that this is not the case.
-In their simplest form \citep{Muse1994}, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
-In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC \citep{Singer2000}.
+In their simplest form~\citep{Muse1994}, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
+In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC~\citep{Singer2000}.
 
 %** Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent **
 These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
@@ -194,7 +194,7 @@ The $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entire
 where $\nucitoj$ denotes the nucleotide change between codon $\ci$ and codon $\cj$.
 Phenomenological codon models are not designed to tease out mutational bias, but firstly to estimate the global strength of selection.
 From the maximum likelihood estimates of the $4 \times 4$ \acrshort{GTR} mutation matrix ($\widehat{\Mutmatrix}$), we can estimate of the mutational bias toward $\mathrm{AT}$ $\left({\widehat{\lambda}_{\text{MG}}} \right)$.
-As shown in the left panel of figure \ref{fig-mut-bias:inference}, estimate of the mutational bias is halfway between observed bias of the alignment and the true value used during the simulation.
+As shown in the left panel of figure~\ref{fig-mut-bias:inference}, estimate of the mutational bias is halfway between observed bias of the alignment and the true value used during the simulation.
 As a result, this model cannot reliably infer the mutational bias, and is doing a compromise between estimating the selection coefficients and mutational bias.
 We can also estimate the parameter ${\widehat{\omega}_{\text{MG}}}$, which is close to the underlying mean scaled fixation probability $\avgpfix$ of the simulation, with an error rate of 1.8\%.
 
@@ -204,8 +204,8 @@ Alternatively, gene-wide parameters of fixation should attempt to capture and ag
 As a result, projecting site-specific processes into a gene-wise process can be seen as a mean-field approximation, accounting for mean scaled fixation probability between amino acids, even though done at the level of the gene.
 
 \begin{align}
-    \langle \avgpfix \rangle_{\itoj} & \simeq \langle \avgpfix_{\itoj} \rangle \\
-    & = \dfrac{ \langle \pi_{\ci} 2\Ne P_{\mathrm{fix}}(\itoj) \rangle }{ \langle \pi_{\ci} \rangle } \\
+    \left\langle \avgpfix \right\rangle_{\itoj} & \simeq \left\langle \avgpfix_{\itoj} \right\rangle \\
+    & = \dfrac{ \left\langle \pi_{\ci} 2\Ne \pfix(\itoj) \right\rangle }{ \left\langle \pi_{\ci} \right\rangle } \\
     & = \dfrac{ \sum\limits_{\site}  \pi_{\ci}\dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \pi_{\ci} }
 \end{align}
 
@@ -234,7 +234,7 @@ The process is reversible:
 \end{align}
 
 From the maximum likelihood estimates of the \acrshort{GTR} mutation matrix ($\widehat{\Mutmatrix}$), we can estimate the mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$ as previously.
-As shown in the right panel of figure \ref{fig-mut-bias:inference}, estimate of the mutational bias can tease out observed bias of the alignment and true value.
+As shown in the right panel of figure~\ref{fig-mut-bias:inference}, estimate of the mutational bias can tease out observed bias of the alignment and true value.
 We can also estimate the mean scaled fixation probability of non-synonymous mutations $\left({\widehat{\omega}_{\text{MF}}} \right)$ (see section~\ref{sec-mut-bias:mean-field-omega}) which is a compound parameter of the mutation matrix and the mean scaled fixation probability in the different direction.
 Error of the estimated non-synonymous mean scaled fixation probability is 3.0\%.
 
@@ -399,20 +399,20 @@ Moreover, the substitution process is reversible and fulfils detailed balance co
 
 For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \ln \left( \base\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\aSetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $\ln(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
 The Shannon entropy can be averaged over all sites as:
 \begin{equation}
-    \langle \entropy \rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
+    \left\langle \entropy \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
 \end{equation}
 
-\subsection{Mean scaled fixation probability \texorpdfstring{$\avgpfix$}{φ}}
+\subsection{Mean scaled fixation probability}
 \label{subsec:fixation-bias}
 The mean scaled fixation probability is:
 \begin{align}
-    \avgpfix & = & = \dfrac{ \sum\limits_{B} Q_{A \to B}}{ \sum\limits_{B} \mu_{A \to B}}
+    \avgpfix & = \dfrac{ \sum\limits_{B} Q_{A \to B}}{ \sum\limits_{B} \mu_{A \to B}}
 \end{align}
 
 \subsection{Mean scaled fixation probability under the mean-field model}

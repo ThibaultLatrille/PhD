@@ -11,15 +11,15 @@
 % Codons
 \newcommand{\e}{\mathrm{e}}
 \begin{document}
-From the difference in energy of folded and unfolded states ($\Delta G$), the probability of being folded $p(\Delta G)$ is:
+From the difference in energy of folded and unfolded states ($\Delta G$), the probability of being folded $\proba (\Delta G)$ is:
 \begin{equation*}
 p(\Delta G) = \dfrac{1}{1 + e^{\beta \Delta G(\mathbb{S}) }}, \text{ where }
-\Delta G = G_{\mathrm{F}}(\mathbb{S}) - G_{\mathrm{U}}(\mathbb{S}) \text{ and $\beta$ is the inverse temperature}.
+\Delta G = \GFold (\mathbb{S}) - \GUnfold (\mathbb{S}) \text{ and $\beta$ is the inverse temperature}.
 \end{equation*}
 
 The selection coefficient of a mutant sequence is:
 \begin{equation*}
-s  = \dfrac{p(\Delta G') - p(\Delta G)}{p(\Delta G)} \simeq \dfrac{ \e^{\beta \left( \Delta G - \Delta G' \right) } - 1}{ \e^{- \beta \Delta G }}.
+s  = \dfrac{\proba (\Delta G') - \proba (\Delta G)}{\proba (\Delta G)} \simeq \dfrac{ \e^{\beta \left( \Delta G - \Delta G' \right) } - 1}{ \e^{- \beta \Delta G }}.
 \end{equation*}
 
 \begin{center}

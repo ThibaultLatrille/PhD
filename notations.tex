@@ -21,6 +21,8 @@
 \newcommand{\pn}{\pi_N}
 \newcommand{\ps}{\pi_S}
 \newcommand{\pnps}{\pn / \ps}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\pfix}{\proba_{\mathrm{fix}}}
 \newcommand{\indice}{a}
 \newcommand{\indiceexp}{^{(\indice)}}
 % Time, effective population size and mutation rate.
@@ -83,7 +85,7 @@
 \newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
 \newcommand{\wrightfit}{W}
 \newcommand{\logfit}{f}
-\newcommand{\avgpfix}{\phi}
+\newcommand{\avgpfix}{\nu}
 \newcommand{\fit}{f}
 \newcommand{\Fit}{\bm{\fit}}
 \newcommand{\fiti}{\fit_{\aai}}
@@ -97,7 +99,7 @@
 \newcommand{\scaledfiti}{\scaledfit_{\aai}}
 \newcommand{\scaledfitj}{\scaledfit_{\aaj}}
 \newcommand{\selcoef}{{\delta_{\fit}}}
-\newcommand{\scaledselcoef}{{\Delta \scaledfit}}
+\newcommand{\scaledselcoef}{S}
 \newcommand{\entropy}{{\Omega}}
 % Tree
 \newcommand{\Tree}{\mathcal{T}}
@@ -144,17 +146,17 @@
 \newcommand{\Setcat}{\cat \in \catInterval }
 \newcommand{\branchcatexp}{^{(\branch, \cat)}}
 \newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
-\newcommand{\base}{W}
-\newcommand{\Base}{\bm{\base}}
-\newcommand{\baseconc}{\alpha}
-\newcommand{\Basecenter}{\bm{\gamma}}
+\newcommand{\profile}{\phi}
+\newcommand{\Profile}{\bm{\profile}}
+\newcommand{\concentrationProfile}{\alpha}
+\newcommand{\centerProfile}{\bm{\gamma}}
 \newcommand{\catVar}{\kappa}
 \newcommand{\catsite}{\catVar\left(\site\right)}
 \newcommand{\catmultivar}{m}
 \newcommand{\catMultiVar}{\bm{\catmultivar}}
 \newcommand{\stickbreaking}{\theta}
 \newcommand{\StickBreaking}{\bm{\stickbreaking}}
-\newcommand{\stick}{\phi}
+\newcommand{\stick}{\psi}
 \newcommand{\stickbreakinghyper}{\beta}
 % Traits
 \newcommand{\traiti}{a}
@@ -185,8 +187,14 @@
 \newcommand{\eq}{^{*}}
 \newcommand{\NbrSites}{n}
 \newcommand{\dx}{\delta x}
-\newcommand{\s}{s}
-\newcommand{\DeltaG}{\Delta G}
+\newcommand{\Fold}{\textrm{F}}
+\newcommand{\Unfold}{\textrm{U}}
+\newcommand{\probaFold}{\proba_{\Fold}}
+\newcommand{\probaUnfold}{\proba_{\Unfold}}
+\newcommand{\G}{G}
+\newcommand{\GFold}{\G_{\Fold}}
+\newcommand{\GUnfold}{\G_{\Unfold}}
+\newcommand{\DeltaG}{\Delta \G}
 \newcommand{\DeltaGmin}{\alpha}
 \newcommand{\DeltaDeltaG}{\gamma}
 \newcommand{\EmpiricalDeltaDeltaG}{\Delta \DeltaG}

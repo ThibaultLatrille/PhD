@@ -36,19 +36,19 @@ Furthermore, in the following, we will assume additive effects (co-dominance), s
 Altogether, fitness of the three diploid genotypes are defined as:
 \begin{equation}
     \begin{dcases}
-        w_{AA} & = 1 \\
-        w_{AB} & = 1 + s \\
-        w_{BB} & = 1 + 2s \\
+        \wrightfit_{AA} & = 1 \\
+        \wrightfit_{AB} & = 1 + s \\
+        \wrightfit_{BB} & = 1 + 2s \\
     \end{dcases}
 \end{equation}
 
 More generally than the previous equations, under the assumption that selection is weak $|s| \ll 1$, the selection coefficient can be approximated by the difference in Wrightian fitness of the mutant and the resident allele as:
 \begin{align}
-    s & = \dfrac{w_{B} - w_{A}}{w_{A}}, \\
-    & = \dfrac{w_{B}}{w_{A}} - 1, \\
-    & \simeq \ln\left( \dfrac{w_{B}}{w_{A}} \right), \\
-    & \simeq \ln(w_{B}) - \ln(w_{A}), \\
-    & \simeq f_{B} - f_{A},
+    s & = \dfrac{\wrightfit_{B} - \wrightfit_{A}}{\wrightfit_{A}}, \\
+    & = \dfrac{\wrightfit_{B}}{\wrightfit_{A}} - 1, \\
+    & \simeq \ln\left( \dfrac{\wrightfit_{B}}{\wrightfit_{A}} \right), \\
+    & \simeq \ln(\wrightfit_{B}) - \ln(\wrightfit_{A}), \\
+    & \simeq \logfit_{B} - \logfit_{A},
 \end{align}
 where $f = \ln(w)$ is often referred to as the Malthusian fitness, relative fitness or also log-fitness.
 
@@ -82,7 +82,7 @@ Reproduction proceeds in two steps.
 In a first step, a very large pool of gametes is produced, in which adults contribute proportionally to the fitness of their genotype.
 Altogether, the frequency $p'$ of gametes bearing the $B$ allele is:
 \begin{align}
-    p' & = p^2 \dfrac{1+2s}{1+2ps} + p(1-p)\dfrac{1+s}{1+2ps}\\
+    p' & = p^2 \dfrac{1+2s}{1+2ps} + \proba (1-p)\dfrac{1+s}{1+2ps}\\
     & = p\dfrac{1+s(1+p)}{1 + 2ps}
 \end{align}
 
@@ -96,26 +96,28 @@ Altogether, the frequency $p'$ of gametes bearing the $B$ allele is:
     It is worth noting that even for strong selection coefficients ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
 \end{figure}
 
-Under the assumption that selection is weak $|s| \ll 1$, $p'$ reduces to:
-\begin{align}
-    p' & \simeq p (1 + s + ps - 2ps) \\
-    & = p + sp(1-p)
-    & = p + \Delta p
-\end{align}
-where, $\Delta p = sp(1-p)$
 
 In a second step, the $N$ individuals of the next generation are obtained by randomly sampling from the pool of gametes.
-As a result, the probability $\mathcal{P}_{ij}$, that there are $j$ copies of the derived allele $B$ present at the next generation, given that there were $i$ copies in the current generation is given by the binomial distribution, with mean given by $p'$:
+As a result, the probability $\proba_{ij}$, that there are $j$ copies of the derived allele $B$ present at the next generation, given that there were $i$ copies in the current generation is given by the binomial distribution, with mean given by $p'$:
 \begin{align}
-    \mathcal{P}_{ij} & = \binom{2 N}{j} \left( p' \right)^j \left(1 - p' \right)^{2 N -j} \\
-    & = \binom{2 N}{j} \left( p\dfrac{1+s(1+p)}{1 + 2ps} \right)^j \left(1 - p\dfrac{1+s(1+p)}{1 + 2ps} \right)^{2 N -j} \label{eq:binomial-WF}
+\proba_{ij} & = \binom{2 N}{j} \left( p' \right)^j \left(1 - p' \right)^{2 N -j} \\
+& = \binom{2 N}{j} \left( p\dfrac{1+s(1+p)}{1 + 2ps} \right)^j \left(1 - p\dfrac{1+s(1+p)}{1 + 2ps} \right)^{2 N -j} \label{eq:binomial-WF}
 \end{align}
 
 These transition probabilities define a discrete-space and discrete-time Markov process.
 It has also been shown to be extremely difficult to explicitly derive formulas for several quantities of evolutionary interest.
 However, as the size of the population approaches infinity (\textit{i.e.} $ N \to \infty$), and assuming that the scaled selection pressure ($N s $) remains constant, the discrete Markov process given above can be closely approximated by a continuous-time and continuous-space diffusion process.\\
 
-Of note, the fluctuations induced by the binomial sampling (equation~\ref{eq:binomial-WF}) are the underlying cause of random drift.
+
+Of note, under the assumption that selection is weak $|s| \ll 1$, $p'$ reduces to:
+\begin{align}
+    p' & \simeq p (1 + s + ps - 2ps) \\
+    & = p + sp(1-p) \\
+    & = p + \Delta p,
+\end{align}
+where $\Delta p = sp(1-p)$
+
+Intuitively, fluctuations induced by the binomial sampling (equation~\ref{eq:binomial-WF}) are the underlying cause of random drift.
 Quantitatively, the expected frequency change from one adult generation to the next adult generation is:
 \begin{equation}
     \E[\Delta p] = s p (1-p).
@@ -126,10 +128,10 @@ The variance of this binomial distribution is given by:
 \end{equation}
 Since the change in frequency between two generations is small ($p \simeq p'$), the variance is very close to:
 \begin{equation}
-    \Var[\Delta p] \simeq \frac{p(1-p)}{2N}
+    \Var[\Delta p] \simeq \frac{p (1-p)}{2N}
 \end{equation}
 Thus, the variance induced by random drift is inversely proportional to the population size $N$.
-Also, if $s \gg 1/2N$, then $E[\Delta p] \gg Var[\Delta p]$, or, in other words, the systematic trend imprinted by selection dominates over drift, describing the strong selection regime.
+Also, if $s \gg 1/2N$, then $\E[\Delta p] \gg Var[\Delta p]$, or, in other words, the systematic trend imprinted by selection dominates over drift, describing the strong selection regime.
 In contrast, if $s \ll 1 / 2N$, drift dominates over selection, describing the effectively neutral regime.
 
 \subsection{Effective population size}
@@ -143,9 +145,9 @@ The same population may have multiple effective population sizes, for different 
 
 Starting from an initial frequency, the Wright-Fisher process eventually reaches absorption: the derived allele either invades the population or dies out.
 Under the continuous-time and continuous-space diffusion approximation, a partial differential equation known as the Kolmogorov backward equation can be used to derive the probability of these two alternative events.
-\citet{Kimura1962} derived the probability of fixation ($P_{\mathrm{fix}}$) of a derived allele with selection coefficient $s$ and initial frequency $p$ if the selection coefficient is small ($|s| \ll 1$):
+\citet{Kimura1962} derived the probability of fixation ($\pfix$) of a derived allele with selection coefficient $s$ and initial frequency $p$ if the selection coefficient is small ($|s| \ll 1$):
 \begin{align}
-    P_{\mathrm{fix}}(s, \Ne, p) & = \dfrac{1 - \e^{-4 \Ne p s }}{1 - \e^{-4 \Ne s}},\\
+    \pfix(s, \Ne, p) & = \dfrac{1 - \e^{-4 \Ne p s }}{1 - \e^{-4 \Ne s}},\\
     & = \dfrac{1 - \e^{- p S }}{1 - \e^{-S}},
 \end{align}
 where $S = 4 \Ne s$ is the scaled selection coefficient.
@@ -160,18 +162,18 @@ where $S = 4 \Ne s$ is the scaled selection coefficient.
 \end{figure}
 
 An interesting special case is obtained for a new mutation appearing in the population.
-Because it is a single mutant, the initial frequency of the derived allele is $p = 1 / 2 \Ne$, and the probability of fixation ($P_{\mathrm{fix}}$) is given by:
+Because it is a single mutant, the initial frequency of the derived allele is $p = 1 / 2 \Ne$, and the probability of fixation ($\pfix$) is given by:
 \begin{align}
-    P_{\mathrm{fix}}(s, \Ne) & = \dfrac{1 - \e^{-2 s}}{1 - \e^{-4 \Ne s}} \\
+    \pfix(s, \Ne) & = \dfrac{1 - \e^{-2 s}}{1 - \e^{-4 \Ne s}} \\
     & \simeq  \dfrac{2 s }{1 - \e^{-4 \Ne s}}
 \end{align}
 The special case of a neutral allele can be obtained by taking the limit when $s$ goes to $0$.
 \begin{align}
-    P_{\mathrm{fix}}(0, \Ne) & = \dfrac{1}{2 \Ne}
+    \pfix(0, \Ne) & = \dfrac{1}{2 \Ne}
 \end{align}
 Altogether, the fixation probability of a selected allele relative to a neutral allele is solely dependent on the scaled selection coefficient:
 \begin{align}
-    \dfrac{P_{\mathrm{fix}}(s, \Ne)}{P_{\mathrm{fix}}(0, \Ne)} & \simeq 2 \Ne \dfrac{2s}{1 - \e^{-S}} \\
+    \dfrac{\pfix(s, \Ne)}{\pfix(0, \Ne)} & \simeq 2 \Ne \dfrac{2s}{1 - \e^{-S}} \\
     & \simeq  \dfrac{S}{1 - \e^{-S}} \label{eq:p-fix}
 \end{align}
 \begin{figure}[H]
@@ -283,10 +285,10 @@ For example, \citet{Halpern1998} constructed a model for the evolution of coding
 \subsection{Substitution rate}
 The continuous-time Markov chain is defined by the instantaneous rate at which transitions occur between pairs of states.
 Given the current state of allele $A$, the rate of transition to other states can be derived using the population-genetic equations introduced above.
-At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutants has a probability $P_{\mathrm{fix}}$ to result in a substitution.
-Altogether, the instantaneous rate of substitution from allele $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $P_{\mathrm{fix}}(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
+At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutants has a probability $\pfix$ to result in a substitution.
+Altogether, the instantaneous rate of substitution from allele $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $\pfix(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
 \begin{align}
-    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(s_{A \to B}, \Ne)
+    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  \pfix(s_{A \to B}, \Ne)
 \end{align}
 It is important to note that the substitution rate and the mutation rate are in the same units, such that this equation is valid whether the rate is measured either in units of chronological time or per generation (or in branch length, which will matter later on).
 As a convention, in what follows, mutation rate is denoted $u$ when measured in units of generation, and denoted $\mu$ when measured in units of time.
@@ -295,14 +297,14 @@ As a consequence, $Q$ is measured in units of time in this section.
 In the case of neutral mutations, the probability of fixation is independent of the original and target sequence, and equals $1/2 \Ne$.
 As a consequence, the substitution rate $Q_{A \to B}$ simplifies to:
 \begin{align}
-    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  P_{\mathrm{fix}}(0, \Ne) \\
+    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  \pfix(0, \Ne) \\
     Q_{A \to B} & = 2 \Ne \mu_{A \to B} \dfrac{1}{2\Ne} \\
     Q_{A \to B} & =  \mu_{A \to B} \label{eq:sub-equal-mut}
 \end{align}
-In the case of selected mutations, the probability of fixation depends on the difference in log-fitness ($f_A$ and $f_B$) between the two alleles:
+In the case of selected mutations, the probability of fixation depends on the difference in log-fitness ($\logfit_A$ and $\logfit_B$) between the two alleles:
 \begin{align}
-    Q_{A \to B} & = 2 \Ne \mu_{A \to B} P_{\mathrm{fix}}(s_{A \to B}, \Ne) \\
-    & = 2 \Ne \mu_{A \to B}  \dfrac{2(f_{B} - f_{A})}{1 - \e^{4\Ne(f_{A} - f_{B})} } \\
+    Q_{A \to B} & = 2 \Ne \mu_{A \to B} \pfix(s_{A \to B}, \Ne) \\
+    & = 2 \Ne \mu_{A \to B}  \dfrac{2(\logfit_{B} - \logfit_{A})}{1 - \e^{4\Ne(\logfit_{A} - \logfit_{B})} } \\
     & = \mu_{A \to B} \dfrac{F_{B} - F_{A}}{1 - \e^{F_{A} - F_{B}} }\text{, where } F = 4\Ne f \label{eq:sub-transion-rates}
 \end{align}
 
@@ -407,21 +409,21 @@ One quantity of interest is the ratio of the mean substitution rate over the mea
 where the notation $\langle \cdot \rangle$ denotes the statistical average.
 In other words, $ \avgpfix $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
 
-Moreover, the mean probability fixation, scaled by $2 \Ne$ can be approximated as:
+Moreover, the mean fixation probability of mutations, normalized by the fixation probability of neutral mutations, can be approximated as:
 \begin{align}
-    \langle  2\Ne P_{\mathrm{fix}} \rangle & = \left\langle 2\Ne \dfrac{ 2 s }{1 - \e^{- S}} \right\rangle, \\
+    \left\langle  \dfrac{ \pfix (s, \Ne ) }{\pfix (0, \Ne )}  \right\rangle & = \left\langle 2\Ne \dfrac{ 2 s }{1 - \e^{- S}} \right\rangle, \\
     & = \left\langle  \dfrac{ S }{1 - \e^{- S}} \right\rangle, \\
     & = \left\langle \dfrac{ Q }{\mu} \right\rangle, \\
     & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}.
 \end{align}
-Because of this relation, $\avgpfix$ can thus be seen as an approximation of the mean scaled probability of fixation of mutations.
+Because of this relation, $\avgpfix$ can thus be seen as an approximation of the mean scaled fixation probability of mutations.
 
 As a result of this definition, $\avgpfix=1$ for genes or sites under neutral evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences.
-First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, where $P_{\mathrm{fix}} > 1/2 \Ne$ on average.
-On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection such that the sequence is constrained.
+First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, where $\pfix > 1/2 \Ne$ on average.
+On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection such that the sequence is constrained on average.
 Of note, $ \avgpfix > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
-Moreover, under the assumption of a static fitness landscape, a mutation-selection point substitution process at equilibrium results in $\avgpfix \leq 1$ \footnote{However, I haven't found a proof for this claim in the bibliography.}.
+Moreover, under the assumption of a  fitness landscape, a mutation-selection point substitution process at equilibrium results in $\avgpfix \leq 1$.
 
 \begin{table}[ht]
     \centering
@@ -486,7 +488,7 @@ However, it is more scarcely mentioned that the AlphaGo neural network is combin
 In practice, the convolutional neural network is used as a criterion to measure the advantage of a board configuration\footnote{Convolutional neural networks also use a stochastic gradient descent to reach convergence, inherently leveraging the stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and paths probed and trimmed are done via an exploration-exploitation procedure.
 
 
-Altogether, exploration and exploitation, creation and reduction, mutation and selection, are different names that encompass the inherently same process: efficiently sampling and optimizing whenever the state space is too large to be traversed in a finite amount of time.
+Altogether, exploration and exploitation, creation and reduction, mutation and selection, are different names that encompass the inherently same process: efficiently sampling and optimizing whenever the state space is too large to be traversed in a finite amount of time (see table~\ref{table:intro-mutsel-analogy}).
 I argue that scientific research endeavour is also an exploration-exploitation dilemma, which is arguably externally pressured to pursue exploitation, through funding of impactful research and a \textit{publish-or-perish} systemic culture in the early career stage.
 
 \begin{table}[H]
@@ -505,12 +507,6 @@ I argue that scientific research endeavour is also an exploration-exploitation d
     }
     \label{table:intro-mutsel-analogy}
 \end{table}
-
-% As a side note, it appears that drift and selection are actually confounded, they are both on the side of exploitation, not on exploration.
-As a side note, mutation is a necessary process of evolution, while sex is not mandatory but increases the diversity of genomes between generations.
-Arguably, studying evolution while disregarding mutation is a sufficient approximation whenever the mutation rate and the number of generations are low, which is developed thoroughly through the whole field of quantitative genetics.
-Sex and mutation are both generating new states and are part of the more general exploration facet.
-This explains why sex is favoured in fluctuating environments.
 
 I argue that evolutionary biologists, studying and leveraging the pervasive process of mutation and selection, can gain knowledge by recruiting insight and developments from other fields, much like there has been many crossovers between economics and evolution in the context of game theory.\footnote{Game theory was originally developed to model economic actors' behaviour and strategies~\citep{VonNeumann1947}. It was later adopted within the framework of evolutionary dynamics, helping to explain, for example, the emergence of altruistic behaviour in Darwinian evolution~\citep{Smith1973, Smith1982, Nowak2006}.}.
 

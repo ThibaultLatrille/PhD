@@ -28,10 +28,10 @@ Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$
 \end{equation}
 If a site is polymorphic and the ancestral ($\ci$) and derived ($\cj$) codons are neighbors, the probability of observing $i$ copies ($n \geq i > 0$) of the derived codon ($\cj$), in a sample of size $n$, at site $\site$, is given by:
 \begin{equation}
-	P(\ci=n-i,\cj=i \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
+	\proba (\ci=n-i,\cj=i \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
 \end{equation}
 Moreover the probability that a site is monomorphic is given by:
 \begin{equation}
-	P(\ci= n \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = 1 - \sum\limits_{\cj \in \Ni} \sum\limits_{i=1}^{n} G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right)
+	\proba (\ci= n \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = 1 - \sum\limits_{\cj \in \Ni} \sum\limits_{i=1}^{n} G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right)
 \end{equation}
 And all other probabilities equal to $0.0$.

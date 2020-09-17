@@ -143,7 +143,7 @@ Selection for proteins will be framed at the amino-acid level in a first approxi
 Because mutations are at the nucleotide level and affect only one base, any codon can have at most $9$ possible transitions to another codons as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
 Moreover, it is possible that some pairs of amino acids are not accessible through a single non-synonymous transition between the underlying codons.
 In fact, most pairs of amino acids require at least two non-synonymous transitions ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single non-synonymous transition ($75$ pairs).
-More precisely, the number of possible transitions between the underlying codons for a pair of amino acids is determined by the adjacency matrix shown table \ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
+More precisely, the number of possible transitions between the underlying codons for a pair of amino acids is determined by the adjacency matrix shown table~\ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
 
 \begin{figure}[htbp!]
     \centering
@@ -293,6 +293,7 @@ Altogether, such alternative formalisms are theoretically problematic, and the o
 As a result, throughout this manuscript the symbol $\omega$ will be used specifically for the multiplicative factor appearing in the \citet{Muse1994} formalism (see~\ref{subsec:MG-formalism}), whereas $\dnds$ will be used to refer generically to the ratio of non-synonymous over synonymous substitution rates, regardless of the specific formalism.
 Hence, whenever $\dnds$ is used in this manuscript instead of $\omega$, the underlying specific formalism is not considered necessary to the point raised.
 Contrarily, whenever $\omega$ is used, it refers to the specific Muse \& Gaut formalism of section~\ref{subsec:MG-formalism}.
+A notable exception for this conventions is in the third article (chapter~\ref{chap:GenoPhenoFit} and supplementary materials in chapter~\ref{chap:GenoPhenoFit-SuppMat}), where $\omega$ will be used for readability while having a slightly different meaning (mean scaled fixation probability of non-synonymous mutations) but still identifies with the ratio of non-synonymous over synonymous substitution rates (see section~\ref{subsec:HB-formalism-nearly-neutral-model}).
 
 \subsection{Complexification of classical codon models}
 \label{subsec:classical-codon-models-complexification}
@@ -304,7 +305,7 @@ Additionally, models introduced several $\dnds$ to account for amino-acid chemic
 
 One particularly important application of classical codon models has been to characterize genes under positive selection (\textit{i.e.} with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
 As a result, variants of codon models have been developed that can provide estimates of $\dnds$ for each site within a gene, or for each branch within a phylogenetic tree.
-Moreover, these codon models have also proved to be valuable to quantify and assess the modulation of the selective constraints more generally imposed on protein-coding sequences (see \ref{sec:classical-codon-biophysics}).
+Moreover, these codon models have also proved to be valuable to quantify and assess the modulation of the selective constraints more generally imposed on protein-coding sequences (see~\ref{sec:classical-codon-biophysics}).
 
 \subsection{Variation across sites}
 \label{subsec:variation-across-sites}
@@ -399,7 +400,7 @@ Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon mode
     \label{eq:propensities-models}
 \end{equation}
 
-Because the process is time-reversible (see chapter \ref{chap:intro-formalism}), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
+Because the process is time-reversible (see chapter~\ref{chap:intro-formalism}), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
@@ -491,7 +492,7 @@ Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutati
 where $\NonSyn_{\ci}$ is the set of non-synonymous codons neighbours to codon $\ci$.
 Such equation is also true for any classical codon model formalism, where this identity between $\avgpfix$ and $\dnds$ bears much importance.
 
-This rate of non-synonymous substitutions over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see \ref{subsec:mean-scaled-fixation-probability}), such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
+This rate of non-synonymous substitutions over mutations ($\avgpfix$) can be interpreted as the mean scaled fixation probability of non-synonymous mutations (see~\ref{subsec:mean-scaled-fixation-probability}), such that even if classical codon models are not mechanistic in essence, the parameter $\dnds$ can be interpreted a posteriori as the mean scaled fixation probability of non-synonymous mutations.
 
 On the other hand, the mechanistic codon models in the Halpern \& Bruno (\acrshort{HB}) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
@@ -530,7 +531,7 @@ This deviation can be captured as a gene-wide multiplying factor $\omega_*$~\cit
     \end{dcases}
     \label{eq:propensities-models-omegastar}
 \end{equation}
-Since fitness profiles are capturing $\omega_0$, the resulting  can be interpreted as:
+Since fitness profiles are capturing $\omega_0$, the resulting $\omega$ which is a function of the model parameters, can be interpreted as:
 \begin{equation}
     \omega = \omega_* \omega_0
 \end{equation}

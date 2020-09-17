@@ -17,15 +17,15 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 \subsection{Fitness profile entropy}
 \label{subsec:fitness-profile-entropy}
 
-For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile is defined as:
+For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile ($\Profile$) is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\aSetAa} \base\catexp_{\aminoacid} \ln \left( \base\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\aSetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
 The Shannon entropy can be averaged over all sites as:
 \begin{equation}
-    \langle \entropy \rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
+    \left\langle \entropy \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
 \end{equation}
 
 
@@ -34,14 +34,14 @@ The Shannon entropy can be averaged over all sites as:
 
 \subsection{Site-specific fitness profiles (SimuDiv)}
 \label{subsec:independent-fitness-profiles}
-Under a simulation with site-specific fitness profiles, a fitness profile give a fitness for each amino acid (vector of size $20$).
+Under a simulation with site-specific fitness profiles, a fitness profile gives a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
-Overall, the protein fitness is computed as the sum of site-specific fitness, obtained by accessing the amino acid present at each site of the protein.
+Overall, the protein log-fitness is computed as the sum of site-specific fitness, obtained by accessing the amino acid present at each site of the protein.
 For each possible mutant, we compute the selection coefficient of the mutant:
 \begin{equation}
-    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Base_{\site} \left(\mathbb{S}^{t+1}(\site) \right)}{\Base_{\site} \left(\mathbb{S}^{t}(\site) \right)} \right),
+    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\profile_{\site} \left(\Seqi^{t+1}(\site) \right)}{\profile_{\site} \left(\Seqi^{t}(\site) \right)} \right),
 \end{equation}
-where $\Base_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment \citep{Bloom2017}.
+where $\Profile_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment~\citep{Bloom2017}.
 
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuDiv}
@@ -50,7 +50,7 @@ where $\Base_{\site}$ is the fitness profile at site $\site$, obtained in empiri
 The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
-    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
@@ -98,7 +98,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         SimuDiv, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
         SimuDiv, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
@@ -161,7 +161,7 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         SimuPoly, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
         SimuPoly, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
@@ -186,28 +186,28 @@ In such original context, the distribution of mutational effects is not dependen
 In a protein context, the genotype-phenotype map can be defined by assigning to each of the $20$ amino acid a vector in the multidimensional space.
 Since different sites of the protein do not have the same physico-chimical properties, we can define a specific genotype-phenotype map for each position of the sequence.
 Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino acid present at each site of the protein.
-From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ substitutions, the protein's phenotype is given by:
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, the protein's phenotype is given by:
 \begin{equation}
-    \phenoGeo\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\mathbb{S}^t(\site) \right),
+    \phenoGeo\left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\Seqi^t(\site) \right),
 \end{equation}
 where $\phenoGeo_{\site}$ is the genotype-phenotype map at site $\site$.\\
 
-And the Wrightian fitness of $\mathbb{S}^t$ is :
+And the Wrightian fitness of $\Seqi^t$ is :
 \begin{equation}
-    w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right) = e^{-\alpha \left| \phenoGeo\left(\mathbb{S}^{t}\right) \right|^{\beta}},
+   \wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right) = e^{-\alpha \left| \phenoGeo\left(\Seqi^{t}\right) \right|^{\beta}},
 \end{equation}
 where strength ($\alpha > 0$) and epistasis ($\beta$) are parameters of the fitness function.
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuGeo}
 \end{center}
-For each possible mutant ($t+1$ substitutions), we compute $\phenoGeo\left(\mathbb{S}^{t+1}\right)$ from the updated sequence $\mathbb{S}^{t+1}$, and subsequently the selection coefficient of the mutant:
+For each possible mutant ($t+1$ substitutions), we compute $\phenoGeo\left(\Seqi^{t+1}\right)$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
-    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoGeo\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoGeo\left(\mathbb{S}^{t}\right) \right)}.
+    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoGeo\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}.
 \end{equation}
 The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
-    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
@@ -240,7 +240,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         SimuGeo, chain~1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
         SimuGeo, chain 2 & $2.23 \pm 0.04$ & $2.46 \pm 0.02$\\ \hline
@@ -254,40 +254,40 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 \subsection{Protein folding probability (SimuFold)}
 \label{subsec:protein-folding-probability}
 
-We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in Goldstein \& Pollock (2017).
-From a \acrshort{DNA} sequence $\mathbb{S}^t$ after $t$ substitutions, we compute the free energy of the folded state $\Base_{\mathrm{F}}\left(\mathbb{S}^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
+We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $\Profile_{\mathrm{F}}\left(\Seqi^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
-    G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\mathbb{S}^t(\site), \mathbb{S}^t(r) \right),
+    \GFold \left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
-where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by Miya-zawa and Jernigan, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 
-The free energy of unfolded states $G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
+The free energy of unfolded states $\GUnfold \left(\Seqi^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
-    G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) = \langle G\left(\mathbb{S}^{t}\right) \rangle - kT \ln (1.0\mathrm{E}^{160}) - \dfrac{2 \left[ \langle G\left(\mathbb{S}^{t}\right)^2 \rangle - \langle G\left(\mathbb{S}^{t}\right) \rangle^2\right] }{kT}
+    \GUnfold \left(\Seqi^{t}\right) = \left\langle G\left(\Seqi^{t}\right) \right\rangle - kT \ln (1.0\mathrm{E}^{160}) - \dfrac{2 \left[ \left\langle G\left(\Seqi^{t}\right)^2 \right\rangle - \left\langle G\left(\Seqi^{t}\right) \right\rangle^2\right] }{kT}
 \end{equation}
-where the average $\langle . \rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
+where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:
 \begin{equation}
-    \phenoFold\left(\mathbb{S}^{t}\right) = G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) - G_{\mathrm{U}}\left(\mathbb{S}^{t}\right)
+    \phenoFold\left(\Seqi^{t}\right) = \GFold \left(\Seqi^{t}\right) - \GUnfold \left(\Seqi^{t}\right)
 \end{equation}
 
 Wrightian fitness is defined as the probability of our protein to be in the folded state:
 \begin{equation}
-    w(\phenoFold\left(\mathbb{S}^{t}\right)) = \dfrac{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right)}{P_{\mathrm{F}}\left(\mathbb{S}^{t}\right) + P_{\mathrm{U}}\left(\mathbb{S}^{t}\right)} = \dfrac{e^{-\beta G_{\mathrm{F}}\left(\mathbb{S}^{t}\right) }}{e^{-\beta G_{\mathrm{F}} \left(\mathbb{S}^{t}\right) } + e^{-\beta G_{\mathrm{U}}\left(\mathbb{S}^{t}\right) }} = \dfrac{1}{1 + e^{\beta \phenoFold\left(\mathbb{S}^{t}\right) }},
+    \wrightfit \left( \phenoFold\left(\Seqi^{t}\right) \right) = \probaFold \left(\Seqi^{t}\right) = \dfrac{e^{-\beta \GFold \left(\Seqi^{t}\right) }}{e^{-\beta \GFold  \left(\Seqi^{t}\right) } + e^{-\beta \GUnfold \left(\Seqi^{t}\right) }} = \dfrac{1}{1 + e^{\beta \phenoFold\left(\Seqi^{t}\right) }},
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuFold}
 \end{center}
-For each possible mutant ($t+1$ substitutions), we compute $\phenoFold^{t+1}$ from the updated sequence $\mathbb{S}^{t+1}$, and subsequently the selection coefficient of the mutant:
+For each possible mutant ($t+1$ substitutions), we compute $\phenoFold^{t+1}$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
-    s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right) = \dfrac{ w\left( \phenoFold\left(\mathbb{S}^{t+1}\right) \right) - w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}{w\left( \phenoFold\left(\mathbb{S}^{t}\right) \right)}.
+    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoFold\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}.
 \end{equation}
 The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
-    = \mu_{\itoj} \dfrac{4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \mathbb{S}^{t},\mathbb{S}^{t+1}\right)} }},
+    = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
 where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
 
@@ -319,7 +319,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         SimuFold, chain~1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
         SimuFold, chain 2 & $1.30 \pm 0.04$ & $1.60 \pm 0.03$\\ \hline
@@ -433,7 +433,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         Mammals 18 \acrshort{CDS}, replicate~1, Chain 1 & $1.07 \pm 0.10$ & $1.14 \pm 0.10$\\ \hline
         Mammals 18 \acrshort{CDS}, replicate 2, Chain 2 & $1.07 \pm 0.09$ & $1.14 \pm 0.10$\\ \hline
@@ -757,7 +757,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c|c|c|}
         \hline
-        \textbf{Experiment} & $\langle \entropy \rangle$ (\textbf{branch} $\Ne$) & $\langle \entropy \rangle$ (\textbf{constant} $\Ne$) \\ \hline
+        \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
         Primates, chain~1 & $1.41 \pm 0.10$ & $1.49 \pm 0.08$\\ \hline
         Primates, chain 2 & $1.40 \pm 0.10$ & $1.48 \pm 0.08$\\ \hline
@@ -967,7 +967,7 @@ Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a s
 If we express the probability of the substitution mapping ($\subhistory\branchcatexp$) as a function of the codon substitution process for this category $\cat$, we get the following expression:
 \begin{equation}
     \label{eq:PathSuffStat}
-    p(\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod_{\iSetCodon} \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod_{\iSetCodon} \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp}
+    \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod_{\iSetCodon} \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod_{\iSetCodon} \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp},
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}
@@ -984,7 +984,7 @@ $\subhistory\branchsiteexp$ can also be gathered across all sites along a specif
 Then the probability of the substitution history given the branch lengths ($\branchlength\branchexp = \mu\branchexp \branchtime\branchexp$), takes a very simple form:
 \begin{equation}
     \label{eq:LengthSuffStat}
-    p(\subhistory\branchexp | L\branchexp) \propto \left[ L\branchexp\right]^{u\branchexp} \e^{- r\branchexp L\branchexp}
+    \proba (\subhistory\branchexp | L\branchexp) \propto \left[ L\branchexp\right]^{u\branchexp} \e^{- r\branchexp L\branchexp},
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}
