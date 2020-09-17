@@ -201,7 +201,7 @@ The leftward shift is smaller for selective strength with steeper curve, resulti
 
 Results thus far tie only equilibrium phenotype ($x\eq$) to $\Ne$.
 To capture how $\omega$ varies with $\Ne$, we also need to obtain an expression for $\omega$ as a function of $x\eq$.
-At equilibrium we can derive (supplementary materials) the expected substitution rate of mutations changing the amino-acid sequence, and by normalizing by the substitution rate of neutral mutations, $\omega$ simply approximates to:
+At equilibrium we can derive (section~\ref{subsec:mean-scaled-fixation-probability-omega-at-equilibrium} in supplementary materials) the expected substitution rate of mutations changing the amino-acid sequence, and by normalizing by the substitution rate of neutral mutations, $\omega$ simply approximates to:
 \begin{gather}
     \omega \simeq x\eq \label{eq:dnds}
 \end{gather}
@@ -250,7 +250,7 @@ This means that increasing either $\Ne$ or $y$ leads to same change in equilibri
     \chi = \frac{ \der \omega\eq}{\der \ln (\Ne)} = \frac{ \der \omega\eq}{\der \ln (y)} \simeq - \frac{1}{\beta \NbrSites \DeltaDeltaG}. \label{eq:chi_application_y}
 \end{align}
 Equation~\ref{eq:chi_application_y} can also be proven under more general hypothesis relating phenotype to fitness, for example if the selective cost is due to translational errors.
-If the protein is assumed to be regulated such as to reach a specific level of functional protein abundance under a general cost-benefit argument~\citep{Cherry2010,Gout2010}, a multiplicative factor depending solely on the expression level is prefixed (see supplementary materials).
+If the protein is assumed to be regulated such as to reach a specific level of functional protein abundance under a general cost-benefit argument~\citep{Cherry2010,Gout2010}, a multiplicative factor depending solely on the expression level is prefixed (section~\ref{subsec:selective-cost-proportional-to-amount-of-misfolded-protein} in supplementary materials).
 Altogether, we theoretically obtain the same linear decrease of $\omega$ with regards to either effective population size or expression level (in log space) under a broad variety of hypothesis.
 
 \subsection{Simulation experiments}
@@ -275,7 +275,7 @@ Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an 
 This is due to the fact that decreasing $\DeltaGmin$ shifts the equilibrium to higher $x\eq$, since more destabilizing sites can then reach fixation before reaching the point of marginal stability.
 
 Finally, we relaxed our assumption that each site of the sequence contributes independently to $\DeltaG$, by taking into account the $3$D structure of protein and using a statistical potential to estimate $\DeltaG$.
-We implemented the original model~\citep{Williams2006, Goldstein2011, Pollock2012}, in which the free energy of the folded are unfolded conformations are computed using $3$D structures of the protein conformations and pairwise contact potential energies between neighbouring amino-acid residues~\citep{Miyazawa1985} (supplementary materials).
+We implemented the original model~\citep{Williams2006, Goldstein2011, Pollock2012}, in which the free energy of the folded are unfolded conformations are computed using $3$D structures of the protein conformations and pairwise contact potential energies between neighbouring amino-acid residues~\citep{Miyazawa1985} (section~\ref{sec:simulation-using-the-3d-structure-of-protein} in supplementary materials).
 The original works showed that under such $3$D model, $\omega$ is approximately independent of $\Ne$~\citep{Goldstein2013}.
 Using extensive simulations in order to obtain sufficient resolution, we observe that $\omega$ is in fact weakly dependent on $\Ne$, being approximately linear with log-$\Ne$ (figure~\ref{fig:GoldsteinVsToy}C).
 Moreover, the observed slope matches the theoretical value considering $\EmpiricalDeltaDeltaG = 1.0$ kcal/mol for destabilizing mutations and $\NbrSites=300$.
@@ -379,13 +379,13 @@ To note, the models consider $\omega$ across the entire protein and neglect vari
 Empirically, variation in $\omega$ along the branches of phylogenetic trees has been inferred and correlated to proxies of $\Ne$, such as body size or other life-history traits.
 These promising results showed mitigated confirmation of a negative $\omega$ susceptibility to changes in $\Ne$~\citep{Lanfear2014}.
 More recently, phylogenetic integrative methods refined the estimate of covariation between $\omega$ and $\Ne$ along lineages by leveraging polymorphism data and genetic diversity of supposedly neutral site, such as to estimate $\Ne$ by taking into account confounding factors~\citep{Brevet2019}.
-These methods can give an estimate of $\hat{\chi} \simeq 0.02$ (see supplementary materials) at least one order of magnitude times greater than our theoretical prediction.
+These methods can give an estimate of $\hat{\chi} \simeq 0.02$ (section~\ref{sec:empirical-estimation-of-susceptibility} in supplementary materials) at least one order of magnitude times greater than our theoretical prediction.
 More empirical data across different clades would be required to robustly consolidate such empirical observation, but as of yet are challenging our theoretical predictions.
 
 % Stress the importance that susceptibility is valid for Ne and protein abondance
 Conjointly, the theoretical prediction of a weak negative $\omega$ susceptibility to changes in protein expression level is in stark contrast with various empirical studies~\citep{Duret2000, Rocha2004, Wang2011, Song2017}.
-Furthermore, protein expression level is one of the best predictors of $\omega$ and the empirical estimation of $\chi$ in fungi, archaea and bacteria varies in the range $[-0.046;-0.021]$ (table in supplementary materials) extracted from \citet{Zhang2015}, which is in the best case one order of magnitude times greater than our theoretical prediction ($\simeq -0.002$).
-Interestingly, estimation of $\chi$ in animals and plants varies in the range $[-0.026;-0.004]$, which is closer to theoretical estimate (table in supplementary materials).
+Furthermore, protein expression level is one of the best predictors of $\omega$ and the empirical estimation of $\chi$ in fungi, archaea and bacteria varies in the range $[-0.046;-0.021]$ (table~\ref{tab:table-susceptibility} in supplementary materials) extracted from \citet{Zhang2015}, which is in the best case one order of magnitude times greater than our theoretical prediction ($\simeq -0.002$).
+Interestingly, estimation of $\chi$ in animals and plants varies in the range $[-0.026;-0.004]$, which is closer to theoretical estimate.
 
 % Link to the relationship between Delta G and Delta Delta G
 Our model imply a relationship between the $\DeltaDeltaG$ of mutations and the $\DeltaG$, which is on under the ~\citep{Serohijos2012}.
@@ -395,7 +395,7 @@ Our theoretical work aligned with recent independent empirical studies providing
 % Protein-protein interactions
 Notably, the response of $\omega$ to changes in expression level has also theoretically been found to arise due to protein interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
 In non-specific interactions at the protein surface, stabilizing amino acids are hydrophilic and destabilizing amino acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
-Our theoretical results can be applied more broadly to protein-protein interactions using a mean-field argument (supplementary materials).
+Our theoretical results can be applied more broadly to protein-protein interactions using a mean-field argument (section~\ref{sec:model-of-protein-protein-interactions} in supplementary materials).
 Fitting this model with empirical structural estimates~\citep{Janin1995a, Zhang2008}, we obtain a susceptibility of $\chi \simeq -0.2$ thus a much stronger response than under the model based on conformational stability.
 This effect is due to fewer sites in the protein being involved in protein-protein interaction than for conformational stability, in addition to lower energy engaged in contact between residues.
 
