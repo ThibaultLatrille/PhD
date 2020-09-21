@@ -11,7 +11,7 @@ This fundamental idea is at the core of the nearly-neutral theory of evolution.
 This theory posits that a substantial fraction of mutations are deleterious or weakly deleterious, and as result predicts that the substitution rate (relative to the neutral expectation), called $\omega$, decreases along lineages with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
 
 This prediction has been more quantitatively examined under the assumption that the selective effects of mutations are drawn from a fixed distribution of fitness effects (\acrshort{DFE})~\citep{Kimura1979, Welch2008}.
-Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (\textit{i.e.} $\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
+Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (i.e. $\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
 In practice, DFEs are strongly leptokurtic, thus predicts a weak negative relation between $\omega$ and $\Ne$.
 
 The quantity $\omega$ is an observable of the molecular evolutionary process, at least if we can separately estimate the rate of neutral and selected mutations in a phylogenetic or comparative context.
@@ -106,7 +106,7 @@ All $19$ other amino acids are equally destabilizing, and each site contribute t
 To note, $\DeltaDeltaG$ can also be understood as $\EmpiricalDeltaDeltaG$, however $\DeltaDeltaG$ is preferred for mathematical readability, and $\EmpiricalDeltaDeltaG$ will refer to the empirical estimate.
 If all amino acids of the sequence are stabilizing, $\DeltaG$ is considered optimal and equal to $ \DeltaGmin < 0$.
 Similarly, $\EmpiricalDeltaGmin$ will refer to the empirical estimate of $\DeltaGmin$.
-In this model, the most succinct phenotype of a given genotype (\textit{i.e.} sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
+In this model, the most succinct phenotype of a given genotype (i.e. sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
 Thus $\DeltaG$ is a linear function of $x$:
 \begin{align}
     \DeltaG (x) = \DeltaGmin + \NbrSites \DeltaDeltaG x,
@@ -218,9 +218,9 @@ This simplification lead to a very compact equation for susceptibility $\chi$ in
 \begin{gather}
     \chi \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}
 \end{gather}
-Susceptibility is thus equal to the inverse of the relative curvature, \textit{i.e.} the ratio of the second to the first derivatives, of the log-fitness function, taken at the equilibrium phenotype.
+Susceptibility is thus equal to the inverse of the relative curvature, i.e. the ratio of the second to the first derivatives, of the log-fitness function, taken at the equilibrium phenotype.
 Of note, this susceptibility is strictly negative for decreasing log-concave fitness functions, asserting that $\omega$ is a decreasing function of $\Ne$.
-In addition, susceptibility itself is low (\textit{i.e.} $\omega$ responds more weakly) for strongly concave log-fitness functions, thus quantitatively capturing the intuition developed in figure~\ref{fig:NeChangeInfluence}, explicitly that the amount of change on $\omega$ is very small if the selection coefficient curve is very steep around the equilibrium set point (red curve compared to green curve).
+In addition, susceptibility itself is low (i.e. $\omega$ responds more weakly) for strongly concave log-fitness functions, thus quantitatively capturing the intuition developed in figure~\ref{fig:NeChangeInfluence}, explicitly that the amount of change on $\omega$ is very small if the selection coefficient curve is very steep around the equilibrium set point (red curve compared to green curve).
 
 In the specific case of the biophysical model, the susceptibility ($\chi$) further simplifies to:
 \begin{gather}
@@ -271,7 +271,7 @@ The robustness of such approximation is tested in the simulations with finite se
 
 Simulations demonstrate that the relation between $\omega$ and log-$\Ne$ is indeed linear, at least in the range explored here, and that the slope of the linear regression matches the expected theoretical value (figure~\ref{fig:GoldsteinVsToy}A).
 Secondly, we observe that the parameter $\DeltaGmin$ has virtually no effect on the slope of the linear regression, as also expected theoretically (figure~\ref{fig:GoldsteinVsToy}B).
-Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (\textit{i.e.} has an impact on the intercept, not on the slope).
+Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (i.e. has an impact on the intercept, not on the slope).
 This is due to the fact that decreasing $\DeltaGmin$ shifts the equilibrium to higher $x\eq$, since more destabilizing sites can then reach fixation before reaching the point of marginal stability.
 
 Finally, we relaxed our assumption that each site of the sequence contributes independently to $\DeltaG$, by taking into account the $3$D structure of protein and using a statistical potential to estimate $\DeltaG$.
@@ -418,7 +418,7 @@ As an example, in the Ising model the magnetization is a macroscopic resultant o
 At equilibrium when system reaches minimum potential energy, the observable magnetization is controlled by variable such as temperature, and by external forces such as a magnetic field forcing the system.
 By analogy, our atoms are sites of the sequence which can be in stabilizing or destabilizing state, and the macroscopic emerging observable is the relative substitution rate of selected mutation ($\omega$), which is controlled by effective population size ($\Ne$) analogous to temperature~\citep{Sella2005}.
 Ultimately, the susceptibility of macroscopic observable ($\omega$) to a control variable ($\Ne$) can be tied to the microscopic parameters.
-Another example of observable macroscopic property, though not considered in this manuscript, could be for example site entropy, \textit{i.e.} the effective number of observed amino acid at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
+Another example of observable macroscopic property, though not considered in this manuscript, could be for example site entropy, i.e. the effective number of observed amino acid at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
 
 % Mechanical analogy
 % Elasticity with springs ? Surface tension with molecule and radius of the

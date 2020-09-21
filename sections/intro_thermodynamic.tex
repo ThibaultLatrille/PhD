@@ -179,7 +179,7 @@ Altogether, $\dnds$ changes dramatically between exposed and buried sites in suc
 As already mentioned earlier (chapter~\ref{chap:intro-historical}), the nearly-neutral theory predicts a lower $\dnds$ in species with a higher Ne, due to a better purification of weakly deleterious mutants.
 Biophysical knowledge can be useful here to get more insight about the magnitude of the response of $\dnds$ to changes in $\Ne$.
 Surprisingly, under simple biophysically inspired models assuming that proteins are under selection for their thermodynamic stability, with fitness being proportional to the folded fraction, computational experiments have led to the observation that $\dnds$ is essentially independent of $\Ne$~\citep{Goldstein2013}.
-This observation has been explained by the equimutability of the free energy of folding, namely that the distribution of changes in free energy of folding ($\DeltaDeltaG$) due to mutations is approximately independent of the current free energy ($\DeltaG$), a necessary and sufficient conditions (under the condition that fitness is log-concave) to obtain independence between $\dnds$ and $\Ne$~\citep{Cherry1998}.
+This observation has been explained by the equimutability of the free energy of folding, namely that the distribution of changes in free energy of folding ($\EmpiricalDeltaDeltaG$) due to mutations is approximately independent of the current free energy ($\DeltaG$), a necessary and sufficient conditions (under the condition that fitness is log-concave) to obtain independence between $\dnds$ and $\Ne$~\citep{Cherry1998}.
 In reality, however, the distribution of $\EmpiricalDeltaDeltaG$ is expected to at least weakly depend on $\DeltaG$ due to combinatorial considerations.
 For example, if a protein sequence is already maximally stable, only destabilizing (or neutral) mutations can occur, which has been empirically observed~\citep{Serohijos2012}.
 
@@ -210,7 +210,7 @@ Such experimentally determined fitness landscapes are directly comparable to sta
 \citet{Bloom2014,Bloom2014a} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed non site-specific alternatives in fitting phylogenies of proteins, from humans, swine, equine, and avian influenza~\citep{Doud2015} .
 Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth, page=1] {prefs_plots_lactamase_stiffler.pdf}
     \caption[Deep mutational scanning profile]{

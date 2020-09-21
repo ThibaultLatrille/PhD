@@ -32,7 +32,7 @@ The Shannon entropy can be averaged over all sites as:
 \section{Simulations}
 \label{sec:supp-mat-simulations}
 
-\subsection{Site-specific fitness profiles (SimuDiv)}
+\subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
 Under a simulation with site-specific fitness profiles, a fitness profile gives a fitness for each amino acid (vector of size $20$).
 Each site of the protein has a specific amino-acid fitness profile.
@@ -72,7 +72,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
-    \caption[Inferred branch parameters for SimuDiv]{
+    \caption[Inferred branch parameters for \texttt{SimuDiv}]{
     Inferred branch parameters under simulations accounting for site-specific amino-acid profiles, long term fluctuation of $\Ne$, mutation rate per generation and generation time.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
@@ -87,7 +87,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \begin{minipage}{0.49\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSel_ProfileCorrelation.png}
     \end{minipage}
-    \caption[Inferred site amino-acid profiles for SimuDiv]{
+    \caption[Inferred site amino-acid profiles for \texttt{SimuDiv}]{
     Inferred and simulated site-specific amino-acid profiles under simulation accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left panel), or under the assumption of constant $\Ne$ (in the right panel).
     }
@@ -100,16 +100,16 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         \hline
         \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuDiv, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
-        SimuDiv, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
+        \texttt{SimuDiv}, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
+        \texttt{SimuDiv}, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
     \end{tabu}}
-    \caption[Inferred amino-acids entropy for SimuDiv]{
+    \caption[Inferred amino-acids entropy for \texttt{SimuDiv}]{
     Estimated amino-acid entropy under simulations accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
     }
 \end{table}
 
-\subsection{Wright-Fisher with polymorphism (SimuPoly)}
+\subsection{Wright-Fisher with polymorphism (\texttt{SimuPoly})}
 \label{subsec:wright-fisher-with-polymorphism}
 
 The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift
@@ -136,7 +136,7 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
-    \caption[Inferred branch parameters for SimuPoly]{
+    \caption[Inferred branch parameters for \texttt{SimuPoly}]{
     Inferred branch parameters under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
@@ -151,7 +151,7 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
     \begin{minipage}{0.49\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuPoly_SiteMutSel_ProfileCorrelation.png}
     \end{minipage}
-    \caption[Inferred site amino-acid profiles for SimuPoly]{
+    \caption[Inferred site amino-acid profiles for \texttt{SimuPoly}]{
     Inferred and simulated site-specific amino-acid profiles under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left panel), or under the assumption of constant $\Ne$ (in the right panel).}
 \end{figure}
@@ -163,15 +163,15 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
         \hline
         \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuPoly, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
-        SimuPoly, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
+        \texttt{SimuPoly}, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
+        \texttt{SimuPoly}, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
     \end{tabu}}
-    \caption[Inferred amino-acid entropy for SimuPoly]{
+    \caption[Inferred amino-acid entropy for \texttt{SimuPoly}]{
     Estimated amino-acid entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
 \end{table}
 
-\subsection{Fisher geometric landscape (SimuGeo)}
+\subsection{Fisher geometric landscape (\texttt{SimuGeo})}
 \label{subsec:fisher-geometric-landscape}
 
 We simulated substitutions in a protein using an adaptation of Fisher's geometric landscape.
@@ -228,7 +228,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuGeo_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
-    \caption[Inferred branch parameters for SimuGeo]{
+    \caption[Inferred branch parameters for \texttt{SimuGeo}]{
     Inferred branch parameters under simulation accounting for site epistasis in geometric landscape, thus fluctuation of the selection coefficient along the phylogeny.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
@@ -242,16 +242,16 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         \hline
         \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuGeo, chain~1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
-        SimuGeo, chain 2 & $2.23 \pm 0.04$ & $2.46 \pm 0.02$\\ \hline
+        \texttt{SimuGeo}, chain~1 & $2.27 \pm 0.02$ & $2.46 \pm 0.02$\\ \hline
+        \texttt{SimuGeo}, chain 2 & $2.23 \pm 0.04$ & $2.46 \pm 0.02$\\ \hline
     \end{tabu}}
-    \caption[Amino-acid entropy for SimuGeo]{
+    \caption[Amino-acid entropy for \texttt{SimuGeo}]{
     Estimated amino-acid entropy under simulation accounting for site epistasis (geometric landscape), thus fluctuation of the selection coefficient along the phylogeny.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
     }
 \end{table}
 
-\subsection{Protein folding probability (SimuFold)}
+\subsection{Protein folding probability (\texttt{SimuFold})}
 \label{subsec:protein-folding-probability}
 
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
@@ -308,7 +308,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/SimuFold_SiteMutSelBranchNe_BranchCorrelation_ContrastPopulationSize}
     \end{minipage} \hfill
-    \caption[Inferred branch parameters for SimuFold]{
+    \caption[Inferred branch parameters for \texttt{SimuFold}]{
     Inferred branch parameters under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
     Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
     }
@@ -321,10 +321,10 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
         \hline
         \textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
         \hline
-        SimuFold, chain~1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
-        SimuFold, chain 2 & $1.30 \pm 0.04$ & $1.60 \pm 0.03$\\ \hline
+        \texttt{SimuFold}, chain~1 & $1.31 \pm 0.05$ & $1.61 \pm 0.03$\\ \hline
+        \texttt{SimuFold}, chain 2 & $1.30 \pm 0.04$ & $1.60 \pm 0.03$\\ \hline
     \end{tabu}}
-    \caption[Amino-acid entropy in SimuFold]{
+    \caption[Amino-acid entropy in \texttt{SimuFold}]{
     Estimated amino-acid entropy under simulation accounting for site epistasis (folding stability model), thus fluctuation of the selection coefficient along the phylogeny.
     Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
 \end{table}

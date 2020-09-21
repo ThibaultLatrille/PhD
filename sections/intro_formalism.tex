@@ -135,17 +135,16 @@ In contrast, if $s \ll 1 / 2N$, drift dominates over selection, describing the e
 \subsection{Effective population size}
 
 The notion of effective population size, called $\Ne$, only appears when we apply a panmictic model to a population that is not, or to a real population.
-$\Ne$ was originally defined as \textit{the number of breeding individuals in an idealized population that would show the same amount of dispersion of allele frequencies under random genetic drift or the same amount of inbreeding as the population under consideration}.
+$\Ne$ was originally defined as \textit{"the number of breeding individuals in an idealized population that would show the same amount of dispersion of allele frequencies under random genetic drift or the same amount of inbreeding as the population under consideration"}~\citep{wright_evolution_1931}.
 For most quantities of interest and most real populations, the census population size $N$ of a real population is usually larger than the effective population size $\Ne$.
-The same population may have multiple effective population sizes, for different properties of interest, including for different genetic loci.
-For example in sex chromosomes do not have the same population sizes as autosomes.
+The same population may have multiple effective population sizes for different genetic loci, as for example sex chromosomes do not have the same population sizes as autosomes.
 For the following development, this idealize population with a single effective population $\Ne$ will be assumed.
 
 \subsection{Probability of fixation}
 
 Starting from an initial frequency, the Wright-Fisher process eventually reaches absorption: the derived allele either dies out or invades the population and thus reach fixation.
-As the effective population size ($\Ne$) approaches infinity (\textit{i.e.} $ \Ne \to \infty$), and assuming that the selection coefficient scaled by effective population size ($\Ne s $) remains constant, the discrete Markov process defined above can be closely approximated by a continuous-time and continuous-space diffusion process.
-The parameters of this process are summarize in table \ref{table:params-popgen} for readability.
+As the effective population size ($\Ne$) approaches infinity (i.e. $ \Ne \to \infty$), and assuming that the selection coefficient scaled by effective population size ($\Ne s $) remains constant, the discrete Markov process defined above can be closely approximated by a continuous-time and continuous-space diffusion process.
+The parameters of this process are summarize in table~\ref{table:params-popgen} for readability.
 
 \begin{table}[H]
 	\centering
@@ -499,7 +498,7 @@ AlphaGo has often been publicized and hyped in various media outlets stating tha
 However, it is more scarcely mentioned that the AlphaGo neural network is combined with an exploration-exploitation algorithm, or more specifically a Monte Carlo tree search.
 In practice, the convolutional neural network is used as a criterion to measure the advantage of a board configuration\footnote{Convolutional neural networks also use a stochastic gradient descent to reach convergence, inherently leveraging the stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and paths probed and trimmed are done via an exploration-exploitation procedure.
 
-\subsection{Interactions between analogies}
+\subsection{Interaction between analogies}
 
 Exploration and exploitation, creation and reduction, mutation and selection, are different names (see table~\ref{table:intro-mutsel-analogy}) that ultimately encompass the inherently same process: efficiently sampling and optimizing whenever the state space is too large to be traversed in a finite amount of time.
 
@@ -531,4 +530,4 @@ Altogether, both high mutation rate and a smaller genome are consequences of a h
 An alternative explanation for the negative correlation between mutation rate and genome size is that for each new generation, the genetic diversity of offspring must balance the trade-off between exploration of new genotypes and the reliable transmission of the current one.
 The genetic difference between parents and offspring is the product of mutation rate and genome size, such that individuals who are not robust enough undergo deleterious mutations and disappear, whereas individuals whose genotypes are not variable enough are outcompeted by those that were able to discover innovations~\citep{Knibbe2007, Beslon2010, Hindre2012, Batut2014, Biller2016}.
 
-From a political standpoint, I also argue that scientific research endeavour is also an exploration-exploitation dilemma, which is arguably externally pressured to pursue exploitation, through funding of impactful research and a \textit{publish-or-perish} systemic culture in the early career stage.
+From a political standpoint, I also argue that scientific research endeavour is also an exploration-exploitation dilemma, which is arguably externally pressured to pursue exploitation, through funding of impactful research and a publish-or-perish systemic culture in the early career stage.

@@ -214,7 +214,7 @@ Most often, this matrix is assumed to be a general time-reversible (\acrshort{GT
     \end{pmatrix}
 \end{equation}
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
-Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (\textit{e.g.} $\nuc(AAT, AAG) = TG$).
+Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
 With this notation, the mutation rate $\mu_{\itoj}$ from codon $\ci$ to $\cj$ is:
 \begin{equation}
     \mu_{\itoj} =
@@ -303,7 +303,7 @@ Such models capture the average effect of selection on non-synonymous mutations,
 To circumvent such limitation, \citet{Yang1998a} introduced a codon model in which $\dnds$ depends on the distance between amino acids, measured in terms of the \citet{Grantham1974} distance.
 Additionally, models introduced several $\dnds$ to account for amino-acid chemical properties (polarity, volume, charge, and so on) in classical codon models~\citep{Dutheil2008}.
 
-One particularly important application of classical codon models has been to characterize genes under positive selection (\textit{i.e.} with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
+One particularly important application of classical codon models has been to characterize genes under positive selection (i.e. with a $\dnds > 1$), or sites within genes or specific lineage under accelerated evolution.
 As a result, variants of codon models have been developed that can provide estimates of $\dnds$ for each site within a gene, or for each branch within a phylogenetic tree.
 Moreover, these codon models have also proved to be valuable to quantify and assess the modulation of the selective constraints more generally imposed on protein-coding sequences (see~\ref{sec:classical-codon-biophysics}).
 
@@ -312,7 +312,7 @@ Moreover, these codon models have also proved to be valuable to quantify and ass
 
 The strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that it could be useful to estimate the $\dnds$ for each site individually, as opposed to globally over the entire sequence.
 This turns out to be particularly important for detecting recurrent positive selection.
-Indeed, recurrent positive selection might often be concentrated in a small region of the protein (\textit{e.g.} domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
+Indeed, recurrent positive selection might often be concentrated in a small region of the protein (e.g. domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
 Estimating $\dnds$ at the site level will make it possible to detect such regions under positive selection.
 In contrast, the gene-level $\dnds$ will generally be below $1$.
 
@@ -323,7 +323,7 @@ Both proportions of sites and values of the different $\dnds$ categories are the
 Sites under adaptive evolution are then detected based on their empirical Bayes posterior probability $\dnds > 1$~\citep{Huelsenbeck2004,Yang2005}.
 To note, in this context of site-specific finite mixture models, methods have also proposed to estimate both $\dn$ and $\ds$ separately~\citep{Pond2005a, Spielman2016}.
 
-A long series of site models has been proposed, most of which have been implemented in PAML~\citep{Yang1997a,Yang2007}, but also in MrBayes for the infinite mixture version~\citep{Huelsenbeck2001, Ronquist2012}.
+A long series of site models has been proposed, most of which have been implemented in \texttt{PAML}~\citep{Yang1997a,Yang2007}, but also in MrBayes for the infinite mixture version~\citep{Huelsenbeck2001, Ronquist2012}.
 Specific applications at the level of the entire exome have uncovered sites of the sequence under positive recurrent selection~\citep{kosiol_patterns_2008}.
 Other analyses have revealed the importance of host-pathogen or host-virus interactions in contributing to strong signals of ongoing adaptation in protein-coding sequences~\citep{Enard2016}.
 
@@ -377,7 +377,7 @@ In contrast, mechanistic codon models seek to predict individually all substitut
 \subsection{The Halpern \& Bruno formalism}
 \label{subsec:HB-formalism}
 
-The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (\textit{i.e.} without epistasis).
+The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
 As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acids at each site.
 Furthermore, the substitution process at each position is independent of the current state at all other positions, and it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
 
@@ -438,7 +438,7 @@ Finally, instead of estimating the fitness landscape directly on the multiple se
 
 Thus far, in the mutation-selection formalism, fitness landscape has been considered static.
 In practice, fitness landscapes are dynamic and changing with time~\citep{Naumenko2012, Bazykin2015}.
-In particular, selective pressures may change following one (or more) transitions to a new environment (\textit{e.g.}: a new host).
+In particular, selective pressures may change following one (or more) transitions to a new environment (e.g.: a new host).
 Changes in selective pressures induced by environmental changes can be modelled in a mutation-selection framework by introducing different fitness profiles in different parts of the tree~\citep{Tamuri2009}.
 Similarly, phenotypic convergent evolution has been investigated in relation to underlying molecular convergence at the level of codons.
 In this context, if a specific codon site is responsible for the phenotypic convergence, the species sharing the convergent phenotype should also share convergence in amino-acid profiles at this specific site~\citep{Parto2018,Parto2018a}

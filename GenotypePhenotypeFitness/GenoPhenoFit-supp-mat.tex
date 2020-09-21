@@ -277,7 +277,8 @@ Compared to models 2 (section~\ref{subsec:selective-cost-proportional-to-amount-
 \begin{align}
 4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne y e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)}
 \end{align}
-Alternative cost-expression models could also be used, allowing for a non-linear cost function for expression or for some susceptibility of the realized equilibrium expression level, as a function of the number of mutations. Under these models, the strength of selection is still expected to be an increasing function of $y$, although not linear, \textit{e.g.}
+Alternative cost-expression models could also be used, allowing for a non-linear cost function for expression or for some susceptibility of the realized equilibrium expression level, as a function of the number of mutations.
+Under these models, the strength of selection is still expected to be an increasing function of $y$, although not linear:
 \begin{align}
 4 \Ne \frac{\partial  \logfit (x)}{\partial x} & \propto -4 \Ne g(y) e^{\beta(\DeltaGmin + \DeltaDeltaG\NbrSites x)},
 \end{align}
@@ -324,7 +325,7 @@ where $b>0$ is a parameter determining the overall stringency of selection again
 \subsection{Mean field, weak-interaction limit}
 \label{subsec:mean-field-interaction-limit}
 
-To make the model tractable and compact, we assume that non-specific interactions are weak, \textit{i.e.} $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
+To make the model tractable and compact, we assume that non-specific interactions are weak, i.e. $\epsilon_i << 1$ for all $i$. We then make a first-order approximation in the $\epsilon_i$'s.
 In addition, we use a mean-field approximation, such that, when considering a specific protein species $i$, we assume that all other proteins have the same fraction $\bar x$ of hydrophobic residues at their surface.
 The value of $\bar x$ could in principle be found using a self-consistent argument, essentially by (1) explicitly calculating the net substitution flux for protein $i$ with fraction $x_i$, under mean field $\bar x$, and (2) expressing the constraint that this substitution process for protein $i$ is stationary at $x_i = \bar x$.
 This derivation is not conducted here, as it is not needed.

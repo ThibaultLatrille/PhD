@@ -123,7 +123,7 @@ In particular, if the sequences are under recurrent positive selection, the mean
 This discrepancy between the mean fixation probability and the nearly-neutral expectation can be captured by a gene-wide deviation parameter $\omega_*$, as in \citet{Rodrigue2016}.
 This gene-wide deviation parameter $\omega_*$ can be refined at the site-level.
 In this direction, in a work led by Nicolas Rodrigue, we developed a method to detect site-specific adaptation as a deviation from a null nearly-neutral model of evolution.
-This method has been developed in the framework Bayescode (see~\ref{subsec:implementation}), and the manuscript is available in appendix page~\pageref{sec-appendix:MutSelM3starMBE}.
+This method has been developed in the framework \texttt{\texttt{BayesCode}} (see~\ref{subsec:implementation}), and the manuscript is available in appendix page~\pageref{sec-appendix:MutSelM3starMBE}.
 These methods are relatively new, and must remain to be applied more broadly to empirical data, such as to be compared with classical codon models.
 
 However, in its current form, phylogenetic model seeking adaptation as a deviation from near-neutrality assumes a constant $\Ne$ across the tree.
@@ -213,7 +213,7 @@ Because mechanistic codon models are based on population-genetic first principle
 One strategy would be to augment molecular divergence data between species with information about molecular polymorphism within species.
 Such an attempt has been tried during the first year of the PhD.
 The formalism that was used is based on Poisson Random fields (details can be found in appendices page~\pageref{sec-appendix:PRF}).
-This extension was rather straightforward to implement in BayesCode, in the context of site-specific mechanistic codon models.
+This extension was rather straightforward to implement in \texttt{BayesCode}, in the context of site-specific mechanistic codon models.
 This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
 A first implementation was tested against simulation under a Wright-Fisher model of evolution along the phylogeny.
@@ -227,7 +227,7 @@ As it turns out, however, there are other issues that need to be addressed, befo
 In particular, the fact that the range of $\Ne$ inferred by the model is too narrow (see~\ref{chap:MutSelDrift}), as well as computational issues.
 Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the \acrshort{MCMC} became prohibitive.
 
-Retrospectively, even though site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating empirical data about polymorphism, as I have started to do in Bayescode, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
+Retrospectively, even though site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating empirical data about polymorphism, as I have started to do in \texttt{\texttt{BayesCode}}, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
 Before doing this, I believe phylogenetic codon models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
 The impact of epistasis should also be better understood and characterized.
 Only in a second step, subsequently to this confrontation, could phylogenetic models in principle accommodate extant polymorphism.
@@ -291,17 +291,17 @@ Practically, the availability of the data and source code should simply be enfor
 It is true that such enforcement bears the consequence to weigh more burden on scientists upon publishing.
 However, it avoids the bloating of technical debt, or research debt where we build on the ground of a dangerous and possibly shaky basement.
 It encourages peer collaboration, both helping the team or person who made the code available, and the community as a whole.
-A straightforward way is to provide a \textit{git} versioned repository, with the advantage that collaboration is facilitated through web hosted repositories such as GitLab (hosted by institutions) or GitHub (hosted by Microsoft).
+A straightforward way is to provide a \texttt{git} versioned repository, with the advantage that collaboration is facilitated through web hosted repositories such as \texttt{GitLab} (hosted by institutions) or \texttt{GitHub} (hosted by private company Microsoft).
 
 Nonetheless, code availability is a necessary condition, but not the sole requirement of reproducible research.
 Specific instructions to reproduce the results should also be made available, where many tools are available to this aim~\citep{Wilson2014,Darriba2018}.
 The first step necessary to reproduce a code is to have the required environment, meaning the necessary libraries and dependencies for the code and scripts.
-For script and code written in Python, the package manager anaconda (or conda) provides a readily available environment to configure the necessary libraries with their versions.
-More complex environment requiring code compilation or system-level packages can leverage containerization technology such as Docker or Singularity for example, but any other containers implementing system-level virtualization is very helpful to provide the necessary libraries.
+For script and code written in \texttt{Python}, the package manager \texttt{Anaconda} (or \texttt{Conda}) provides a readily available environment to configure the necessary libraries with their versions.
+More complex environment requiring code compilation or system-level packages can leverage containerization technology such as \texttt{Docker} or \texttt{Singularity} for example, but any other containers implementing system-level virtualization is very helpful to provide the necessary libraries.
 Once the environment is specified, the documentation can be made available as a README with the necessary instructions.
-More generally, notebooks such as \textit{Jupyter Notebook}, \textit{RMarkdown} or \textit{org-mode} to name a few also provide an environment knitting together code and instructions, allowing to follow step-by-step experiments, analysis and results, in a similar fashion as laboratory notebook required in wet labs.
-It is important to note that notebooks can run code from a variety of languages (C++, Haskell, Java, Julia, Python, Wolfram Language, Matlab, Ruby, \ldots).
-These tools are emerging in the community, as well as workflow management system (Nexflow, Snakemake, \ldots) allowing to create reproducible and scalable data analyses running on computing clusters.
+More generally, notebooks such as \texttt{Jupyter Notebook}, \texttt{RMarkdown} or \texttt{Org-mode} to name a few also provide an environment knitting together code and instructions, allowing to follow step-by-step experiments, analysis and results, in a similar fashion as laboratory notebook required in wet labs.
+It is important to note that notebooks can run code from a variety of languages (\texttt{C++}, \texttt{Haskell}, \texttt{Java}, \texttt{Julia}, \texttt{Python}, \texttt{Wolfram Language}, \texttt{Matlab}, \texttt{Ruby}, \ldots).
+These tools are emerging in the community, as well as workflow management system (\texttt{Nexflow}, \texttt{Snakemake}, \ldots) allowing to create reproducible and scalable data analyses running on computing clusters.
 
 Using this range of tools helps other scientists who might want to understand, test or build upon published works.
 Moreover, they are also very helpful for the person or team implementing them since a more rigorous and reproducible environment allows to more easily track down bugs and test programs under different conditions or dataset\footnote{Notebooks are very useful to present work and data analysis, but should not be used during development since they often offer poor integration with debugger and code inspection tools, enforce awkward software design patterns, and often result in bloated versioned repository.}.

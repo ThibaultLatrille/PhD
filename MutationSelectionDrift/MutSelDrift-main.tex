@@ -103,10 +103,10 @@ In a multivariate log-Brownian process, traits are modelled together as a vector
 Altogether, values of the multivariate process at each node of the tree, a covariance matrix and divergence times are jointly estimated.
 Once the traits are sampled at all nodes, traits along each branch is taken as the average between extremities of this branch.
 Technically, the precision matrix (invert of covariance matrix) is distributed as an invert Wishart, meaning the prior matrix is diagonal, pushing the correlation coefficients between traits toward $0$.
-The work presented here implemented the branch heterogeneity in a Bayesian context, as in \textit{CoEvol}~\citep{Lartillot2011}.
+The work presented here implemented the branch heterogeneity in a Bayesian context, as in \texttt{CoEvol}~\citep{Lartillot2011}.
 Conversely, amino-acid fitness profiles $\Fit$ are assumed to vary across sites, but are considered constant along the tree.
-The work presented here relies on the Bayesian nonparametric random-effect approach, developed to estimate site-heterogeneous amino-acid fitnesses as in \textit{PhyloBayes}~\citep{Rodrigue2010}.
-Our Bayesian implementation, written in C++ in the software \textit{BayesCode}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
+The work presented here relies on the Bayesian nonparametric random-effect approach, developed to estimate site-heterogeneous amino-acid fitnesses as in \texttt{PhyloBayes}~\citep{Rodrigue2010}.
+Our Bayesian implementation, written in \texttt{C++} in the software \texttt{\texttt{BayesCode}}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
 
 The phylogenetic codon model presented here makes several additional assumptions on the evolutionary processes generating the observed alignment.
 First, the species tree topology is supposed to be known, and each gene should match the species tree, meaning genes are strict orthologs (no paralogs and no horizontal transfers).
@@ -619,21 +619,21 @@ The correlation between trait $\traiti$ and trait $\traitj \in \traitInterval$ c
 
 \subsection{Simulations}
 \label{sec:Simulation}
-To test the robustness of the model, $4$ parameterized simulators were developed: \textit{SimuDiv}, \textit{SimuPoly}, \textit{SimuFold} \& \textit{SimuGeo}.
+To test the robustness of the model, $4$ parameterized simulators were developed: \texttt{SimuDiv}, \texttt{SimuPoly}, \texttt{SimuFold} \& \texttt{SimuGeo}.
 All $4$ simulators use a log-Brownian multivariate process to model conjointly the changes in the mutation rate per generation, the generation time and $\Ne$, in logarithm space.
-\textit{SimuDiv}, \textit{SimuFold} \& \textit{SimuGeo} all simulate point substitutions along the phylogenetic tree.
+\texttt{SimuDiv}, \texttt{SimuFold} \& \texttt{SimuGeo} all simulate point substitutions along the phylogenetic tree.
 The simulator starts from an initial sequence at equilibrium.
 The change in fitness is computed for all possible mutant, hence computing all strictly positive substitution rates.
 At each point, the next substitution is chosen proportional to the rate as in Gillespie algorithm.
 At each node, the process is split, and finally the process is stopped at the leaves of the tree.
-\textit{SimuPoly} simulates explicitly each generation along the phylogeny under a Wright-Fisher population, consisting of three steps: mutation, selection and genetic drift of alleles.
+\texttt{SimuPoly} simulates explicitly each generation along the phylogeny under a Wright-Fisher population, consisting of three steps: mutation, selection and genetic drift of alleles.
 Mutations are drawn randomly based on the probability of mutation.
 Drift is modelled as a multinomial distribution on the allele counts.
 We assumed that the \acrshort{DNA} sequence is composed of exons, with no linkage between exons, and total linkage of sites within an exon.
-Moreover, in \textit{SimuPoly} $\Ne$ can also be modelled as a sum of a log-Brownian process and an Ornstein-Uhlenbeck process.
+Moreover, in \texttt{SimuPoly} $\Ne$ can also be modelled as a sum of a log-Brownian process and an Ornstein-Uhlenbeck process.
 The log-Brownian motion takes into account long-term fluctuations, while the Ornstein-Uhlenbeck can take into account short fluctuations of $\Ne$.
-In \textit{SimuDiv} and \textit{SimuPoly} each codon site contribute independently to the fitness depending on the encoded amino acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
-However, in \textit{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state.
-\textit{SimuFold} is in practice a C++ adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
+In \texttt{SimuDiv} and \texttt{SimuPoly} each codon site contribute independently to the fitness depending on the encoded amino acids, through site-specific amino-acid fitness profiles experimentally determined~\citep{Bloom2017}.
+However, in \texttt{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state.
+\texttt{SimuFold} is in practice a \texttt{C++} adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
 Section~\ref{sec:supp-mat-simulations} in supplementary materials describes the models in more details, as well as performance of the inference model against them.
-The simulators written in C++ are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}
+The simulators written in \texttt{C++} are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}
