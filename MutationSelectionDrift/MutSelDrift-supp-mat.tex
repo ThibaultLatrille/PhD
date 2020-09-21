@@ -17,13 +17,13 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 \subsection{Fitness profile entropy}
 \label{subsec:fitness-profile-entropy}
 
-For a category $\cat$, the Shannon entropy ($\entropy$) of the fitness profile ($\Profile$) is defined as:
+For a category $\cat$, the Shannon's entropy ($\entropy$) of the fitness profile ($\Profile$) is defined as:
 \begin{equation}
     \entropy\catexp = - \sum\limits_{\aSetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
-The Shannon entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
+The Shannon's entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
-The Shannon entropy can be averaged over all sites as:
+The Shannon's entropy can be averaged over all sites as:
 \begin{equation}
     \left\langle \entropy \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
 \end{equation}
@@ -47,7 +47,7 @@ where $\Profile_{\site}$ is the fitness profile at site $\site$, obtained in emp
     \includegraphics[width=\textwidth] {ModelSimuDiv}
 \end{center}
 
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
@@ -204,7 +204,7 @@ For each possible mutant ($t+1$ substitutions), we compute $\phenoGeo\left(\Seqi
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoGeo\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}.
 \end{equation}
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
@@ -284,7 +284,7 @@ For each possible mutant ($t+1$ substitutions), we compute $\phenoFold^{t+1}$ fr
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoFold\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}.
 \end{equation}
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie algorithm, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},

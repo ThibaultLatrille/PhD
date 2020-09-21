@@ -57,7 +57,7 @@ basd on the mut-sel formalism.
 - There are indications that this is not the case.
 • in their simplest form, classical codon models predict that the nucleotide composition should be the same for all 3 positions of the codons —> and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
 Faut aller jusqu’au bout de l’argument: In reality: composition differ: the 3d position shows more extreme composition, reflecting the underlying mutation bias, compared to 1st and 2d positions, which are typically closer to 50% GC.
-[- As show below, this pattern can also be reproduced in simulations assuming a protein-coding sequence at mutation-selection balance under a fixed fitness landscape (already shown in earlier papers?).]
+[- As show below, this pattern can also be reproduced in simulations assuming a protein-coding sequence at mutation-selection balance under a time-independent fitness landscape (already shown in earlier papers?).]
 
 ** Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent **
 These modulations across the 3 coding positions has been accomodated using the so-called 3x4 formalism: 
@@ -101,7 +101,7 @@ and this, without having to explicitly model the underlying fitness landscape?
 In the present work, we address this question.
 In order to derive a codon model along those lines, 
 our strategy is to first assume a true evolutionary process, follow the mutation-selection formalism. 
-For the sake of simplicity and illustration, we assume a site-independent, fixed fitness landscape,
+For the sake of simplicity and illustration, we assume a site-independent, time-independent fitness landscape,
 however, the argument is more general.
 Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
 This mean-field 61x61 substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
@@ -123,7 +123,7 @@ ce qui donnerait donc:
 7.3. Results
 
 Outline:
-- we first conduct a simulation experiment using a simple mutation-selection model with fixed fitness landscape.
+- we first conduct a simulation experiment using a simple mutation-selection model with time-independent fitness landscape.
 two parameters, tuning the mutation bias and the stirngency of selection; we explore, through summary statistics, the intricate interplay between mutation and selection, as a function of lambda and alpha
 - in a second step, we explore how codon models with alternative parameterizations are able to capture the mutation and fixation biases created by the simulation experiments.
 

@@ -161,7 +161,7 @@ Destabilizing mutations are selected against with a negative selection coefficie
     s & \simeq \frac{1}{\NbrSites}\frac{ \partial \logfit (x) }{\partial x} \label{eq:s} \\
     \Rightarrow s & \simeq - \beta \DeltaDeltaG e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)}, \label{eq:s-unfolded}
 \end{align}
-where $ \logfit = \ln \wrightfit$ is the log-fitness (or malthusian fitness).
+where $ \logfit = \ln (\wrightfit)$ is the log-fitness (or malthusian fitness).
 Conversely, stabilizing mutations will be under positive selection with opposite sign but same absolute value.
 It is important to realize that the selective effect is dependent on $x$, and that because the fitness function is log-concave, the absolute value of $s$ increases with regards to $x$.
 
@@ -343,7 +343,7 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to a temporari
     As such, whatever the exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
     We observe that increasing the number of sites implies a reduced time to reach the new equilibrium.
     Panel B.
-    In context of a fixed fitness landscape, where each amino acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
+    In context of a time-independent fitness landscape, where each amino acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
     In the context of a fixed distribution of fitness effects (\acrshort{DFE}), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
     }
     \label{fig:relaxStability}
@@ -468,7 +468,7 @@ For each mutant sequence $\Seqj \in \setNeighbors$, we compute its fitness and s
 \end{align}
 where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
 
-The next event of mutant invading the population, and the time to reach such event is chosen using Gillespie algorithm, according to the rates of substitution between sequences:
+The next event of mutant invading the population, and the time to reach such event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between sequences:
 \begin{equation}
     \submatrix_{\Seqitoj} = \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{1 - \e^{-4 \Ne s \left( \Seqi,\Seqj\right)}},
 \end{equation}

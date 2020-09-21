@@ -6,7 +6,7 @@ More precisely, molecular evolution requires either a given selection coefficien
 In other words, the relationship between sequence and fitness must be elucidated, which is the focus of the present chapter in the special case of protein-coding \acrshort{DNA} sequences.
 To this aim, this chapter will first present the genetic code and classical phylogenetic codons models, which can quantify the strength of selection acting on proteins through an aggregate parameter (called $\omega$ or $\dnds$).
 Application of these phylogenetic models to empirical \acrshort{DNA} alignments can be extended to model variation of selection across sites of the same protein, or between branches of a phylogenetic tree.
-Subsequently, mechanistic codon models are presented, assuming that the \acrshort{DNA} sequence is at mutation-selection balance under a fixed fitness landscape over the $20$ amino acids.
+Subsequently, mechanistic codon models are presented, assuming that the \acrshort{DNA} sequence is at mutation-selection balance under a time-independent fitness landscape over the $20$ amino acids.
 Finally, the relationship between classical and mechanistic models is investigated, and the interpretation of the discrepancy between both models is analysed.
 
 
@@ -191,7 +191,7 @@ The mathematical formalism is now presented in more detail.
 
 Here, we follow the formalism of codon models pioneered by \citet{Muse1994}, and further developed by \citet{Nielsen1998}.
 A $4 \times 4$ mutation rate matrix $\Mutmatrix$ is first defined at the nucleotide level.
-In its most general form:
+In its most general form consisting of 12 free parameters:
 \begin{equation}
     \label{eq:mutrates}
     \Mutmatrix =
@@ -202,7 +202,12 @@ In its most general form:
         {\mutmatrix_{TA}} & {\mutmatrix_{TC}} & {\mutmatrix_{TG}} & -
     \end{pmatrix}
 \end{equation}
-Most often, this matrix is assumed to be a general time-reversible (\acrshort{GTR}) and thus defined by nucleotide equilibrium frequencies ($\bm{\mutequi}$) and by symmetric exchangeability rates ($\bm{\exchan}$):
+By definition of the instantaneous rate matrix, the sum of the entries in each row of the nucleotide rate matrix $\Mutmatrix$ is equal to $0$, giving the diagonal entries:
+\begin{equation}
+    \mutmatrix_{aa} = - \sum\limits_{ b \neq a} \mutmatrix_{ab}\text{, } \forall a \in \{A,C,G,T\}
+\end{equation}
+
+Most often, this matrix is assumed to be a generalized time-reversible~\citep{Tavare1986}, or in short \acrshort{GTR}, defined by nucleotide equilibrium frequencies ($\Mutequi$) and by symmetric exchangeability rates ($\Exchan$) consisting of 9 free parameters:
 \begin{equation}
     \label{eq:mutrates-GTR}
     \Mutmatrix =
@@ -213,6 +218,7 @@ Most often, this matrix is assumed to be a general time-reversible (\acrshort{GT
         {\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & -
     \end{pmatrix}
 \end{equation}
+
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
 Thus, if codons $\ci$ to $\cj$ are only a mutation away, let $\nucitoj$ denote the nucleotide change between them (e.g. $\nuc(AAT, AAG) = TG$).
 With this notation, the mutation rate $\mu_{\itoj}$ from codon $\ci$ to $\cj$ is:
@@ -240,12 +246,15 @@ In contrast, non-synonymous mutations are considered under selection such that t
 Altogether, the $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entirely by the mutation matrix ($\Mutmatrix$), $\omega$ and the genetic code:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
         \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-synonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:codon-models}
+\end{equation}
+Again, by definition of the instantaneous rate matrix, the sum of the entries in each row of the codon substitution rate matrix $\Submatrix$ is equal to $0$, giving the diagonal entries:
+\begin{equation}
+    \submatrix_{\ci, \ci} = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
 \end{equation}
 
 \subsection{Interpretation of the model}
@@ -261,7 +270,7 @@ Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, me
 \subsection{Equilibrium properties}
 \label{subsec:equilibrium-properties}
 
-Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\bm{\pi}$ depend only on the equilibrium nucleotide frequencies ($\bm{\mutequi}$), but not on $\omega$:
+Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\bm{\pi}$ depend only on the equilibrium nucleotide frequencies ($\Mutequi$), but not on $\omega$:
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
     & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{(1 - \mutequi_{T}\mutequi_{A}\mutequi_{A} - \mutequi_{T}\mutequi_{A}\mutequi_{G} - \mutequi_{T}\mutequi_{G}\mutequi_{A} )}, \label{eq:equilibrium-MG}
@@ -279,7 +288,7 @@ In any case, this suggests that the mutation matrices estimated by codon models 
 \subsection{The Goldman \& Yang formalism}
 \label{subsec:GY-formalism}
 
-In the alternative \citet{Goldman1994} formalism, the mutation rate between two codons does not depend only on the underlying nucleotide change, but also on the frequency of the target codon:
+In the alternative \citet{Goldman1994} formalism, the mutation rate between two codons does not depend only on the exchangeability between the underlying nucleotide change ($\exchan_{\nucitoj}$), but also on the frequency of the target codon ($\pi_{\cj}$):
 \begin{equation}
     \mu_{\itoj} = \exchan_{\nucitoj} \pi_{\cj}.
 \end{equation}
@@ -377,7 +386,7 @@ In contrast, mechanistic codon models seek to predict individually all substitut
 \subsection{The Halpern \& Bruno formalism}
 \label{subsec:HB-formalism}
 
-The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a fixed fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
+The \citet{Halpern1998} formalism assumes that the protein-coding sequence is at mutation-selection balance under a time-independent fitness landscape, with a fitness that is multiplicative across sites (i.e. without epistasis).
 As a result, the fitness landscape is characterized by a fitness vector over the 20 amino acids at each site.
 Furthermore, the substitution process at each position is independent of the current state at all other positions, and it will generally be different at each site~\citep{Rodrigue2010, Tamuri2012}.
 
@@ -392,10 +401,9 @@ The rate of substitution from codon $\ci$ to $\cj$ is derived from equation~\ref
 Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon models $\Submatrix$ is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
+        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:propensities-models}
 \end{equation}
@@ -404,7 +412,7 @@ Because the process is time-reversible (see chapter~\ref{chap:intro-formalism}),
 \begin{align}
     \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
-The stationary frequency of a codon is ultimately the product of the nucleotide frequencies at its three positions ($\bm{\mutequi}$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
+The stationary frequency of a codon is ultimately the product of the nucleotide frequencies at its three positions ($\Mutequi$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
 
 \subsection{Empirical calibration of the model}
 \label{subsec:empirical-calibration-HB}
@@ -450,10 +458,9 @@ Another example of a mutation-selection mechanistic codon model is one in which 
 It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are not one mutation away} \\
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
         \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} }\text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:yang-codon-models}
 \end{equation}
@@ -505,7 +512,7 @@ Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can 
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
 To note, inference under the Muse \& Gaut formalism showed the best agreement compared to other formalisms of classical codon models.
 
-Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a fixed fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{HB}}$ induced by the model will always be lower than $1$.
+Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a time-independent fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{HB}}$ induced by the model will always be lower than $1$.
 In other words, they showed that mechanistic mutation-selection codon models display the important feature of genuinely accounting for purifying selection.
 From a dynamic perspective, a non-synonymous mutation from a codon with high fitness to another codon will have a low probability of fixation, since the mutated codon will have a lower fitness.
 At equilibrium, this low probability of fixation of the other codon results in a high frequency of the codon with higher fitness.
@@ -524,16 +531,15 @@ But assumptions of the models can be broken, resulting in discrepancy between th
 This deviation can be captured as a gene-wide multiplying factor $\omega_*$~\citep{Rodrigue2016}:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are non neighbors} \\
+        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
         \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega_* \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous} \\
-        \submatrix_{\ci, \ci} & = - \sum\limits_{\cj \neq \ci} \submatrix_{\itoj}.
+        \submatrix_{\itoj} & = \omega_* \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:propensities-models-omegastar}
 \end{equation}
 Since fitness profiles are capturing $\omega_0$, the resulting $\omega$ which is a function of the model parameters, can be interpreted as:
 \begin{equation}
-    \omega = \omega_* \omega_0
+    \omega = \omega_* \times \omega_0
 \end{equation}
 This modelling approach is hybrid between mechanistic and phenomenological model, since the parameter $\omega_*$ cannot be interpreted mechanistically.
 Moreover, the deviation of $\omega_*$ can bend upward or downward, where different interpretations can be given of both cases.
@@ -562,12 +568,12 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 \subsection{Adaptive evolution}
 \label{subsec:adaptive-evolution}
 
-The Halpern \& Bruno formalism assumes that the fitness landscape is not dependent on time.
-Alternatively, fitness landscapes changing with time are known as seascape~\citep{Mustonen2009}.
-Because of the movement of the fitness landscape, similarly to Red-Queen dynamics, the current is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
+The Halpern \& Bruno formalism assumes that fitness landscapes are not dependent on time.
+Alternatively, time-dependent fitness landscapes are known as seascape~\citep{Mustonen2009}.
+Because of the movement of the fitness landscape, similarly to Red-Queen dynamics, the current sequence is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
 In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward than upward in the fitness landscape.
-As a result, any changes of the landscape results in lower elevation of the current coordinate.
-The resulting dynamics is that selection pushes the sequence to climb up the landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
+As a result, changes of the landscape results in lower fitness of the current sequence on average.
+The resulting dynamics is that selection pushes the sequence to climb up the time-dependent fitness landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
 
 Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since substitutions are accepted preferentially if they are in the direction of this target, substitutions are on average adaptive.
 In other words, at the moment of a substitution the target amino acid has a high relative fitness, which can only then decrease through time.

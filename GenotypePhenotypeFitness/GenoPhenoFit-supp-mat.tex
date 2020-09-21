@@ -27,7 +27,7 @@ s(x, \dx) &= \frac{ \wrightfit (x + \dx) - \wrightfit (x)}{ \wrightfit ( x)}, \\
  &\simeq \frac{ \partial \ln (\wrightfit (x))}{\partial x} \dx, \\
  &\simeq \frac{ \partial \logfit (x) }{\partial x} \dx, \label{eq:s_from_fitness}
 \end{align}
-where $ \wrightfit ( x)$ is the Wrightian fitness of phenotype $x$, and $ \logfit  = \ln \wrightfit$ is the log-fitness (or Malthusian fitness).
+where $ \wrightfit ( x)$ is the Wrightian fitness of phenotype $x$, and $ \logfit  = \ln (\wrightfit)$ is the log-fitness (or Malthusian fitness).
 And the selective effect of the opposite change ($-\dx$) is the opposite selection coefficient:
 \begin{gather}
 s(x, -\dx) \simeq - s(x, \dx) \text{ from eq.~\ref{eq:s_from_fitness}} \label{eq:s_minus_deltax}, \\
@@ -355,12 +355,12 @@ b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0} \, e^{\beta (\DeltaGmin +\DeltaDe
 \end{align}
 and thus:
 \begin{align}
-\ln \kappa_i & = \ln \left( b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \NbrSites \bar x) \, + \, \beta \DeltaDeltaG\NbrSites x_i,
+\ln (\kappa_i) & = \ln \left( b \beta \DeltaDeltaG \NbrSites m \frac{C}{C_0}  \right) \, + \, \beta (\DeltaGmin +\DeltaDeltaG \NbrSites \bar x) \, + \, \beta \DeltaDeltaG\NbrSites x_i,
 \end{align}
 where only the last term depends on $x_i$.
 Finally, applying the main result of this work to the present case allows us to express the susceptibility of $\omega$ as a function of $\Ne$ as:
 \begin{align}
-\chi & = \frac{\der\omega} {\der \ln \Ne}
+\chi & = \frac{\der\omega} {\der \ln (\Ne)}
 \\ & =  2(\lambda - 1) \, \frac{\der\ln \kappa_i}{\der x_i}
 \\ & =  2 (\lambda - 1) \, \frac{1}{\beta \DeltaDeltaG \NbrSites}
 \end{align}

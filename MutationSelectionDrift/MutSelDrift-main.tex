@@ -367,7 +367,7 @@ The parameterization of the models is described as a Bayesian hierarchical model
 This hierarchical model is formally represented as directed acyclic graph, depicted in figure~\ref{fig:DAG-MutSelNe}.
 
 \subsection{Nucleotide mutation rates}
-The generalized time-reversible nucleotide mutation rate matrix $\Mutmatrix$ is a function of the nucleotide frequencies $\Mutequi$ and the relative rate $\Exchan$.
+The generalized time-reversible nucleotide mutation rate matrix $\Mutmatrix$ is a function of the nucleotide frequencies $\Mutequi$ and the symmetric exchangeability rates $\Exchan$~\citep{Tavare1986}.
 $\Mutequi = (\mutequi_A , \mutequi_C , \mutequi_G , \mutequi_T)$ is the equilibrium base frequency vector, giving the frequency at which each base occurs at each site.
 $\Exchan = \left( \exchan_{AC}, \exchan_{AG}, \exchan_{AT}, \exchan_{CG}, \exchan_{CT}, \exchan_{GT}\right)$ is the vector of exchangeabilities between nucleotides.
 Altogether, the rate matrix is:
@@ -624,7 +624,7 @@ All $4$ simulators use a log-Brownian multivariate process to model conjointly t
 \texttt{SimuDiv}, \texttt{SimuFold} \& \texttt{SimuGeo} all simulate point substitutions along the phylogenetic tree.
 The simulator starts from an initial sequence at equilibrium.
 The change in fitness is computed for all possible mutant, hence computing all strictly positive substitution rates.
-At each point, the next substitution is chosen proportional to the rate as in Gillespie algorithm.
+At each point, the next substitution is chosen proportional to the rate as in Gillespie's algorithm~\citep{Gillespie1977}.
 At each node, the process is split, and finally the process is stopped at the leaves of the tree.
 \texttt{SimuPoly} simulates explicitly each generation along the phylogeny under a Wright-Fisher population, consisting of three steps: mutation, selection and genetic drift of alleles.
 Mutations are drawn randomly based on the probability of mutation.
