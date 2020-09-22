@@ -34,7 +34,7 @@ Since there are 61 coding codons and only 20 amino acids, there is a necessary r
 Thus, amino acids are encoded by synonymous codons, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe codon.
 Altogether, the \acrshort{DNA} genetic code translating codon to amino acids, which is used almost universally by all organisms is given in table~\ref{table:genetic_code}.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabular}{|c||l|c|l|c|l|c|l|c||c|}
@@ -145,7 +145,7 @@ Moreover, it is possible that some pairs of amino acids are not accessible throu
 In fact, most pairs of amino acids require at least two non-synonymous transitions ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single non-synonymous transition ($75$ pairs).
 More precisely, the number of possible transitions between the underlying codons for a pair of amino acids is determined by the adjacency matrix shown table~\ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
 
-\begin{figure}[htbp!]
+\begin{figure}[htbp]
     \centering
     \begin{minipage}{0.49\linewidth}
         \includegraphics[width=\linewidth, page=1]{figures/gt-codon-tab20b.pdf}
@@ -156,7 +156,6 @@ More precisely, the number of possible transitions between the underlying codons
     \end{minipage}
 
     \caption[Graphs of {codon} and amino-acid transitions]{
-    \label{fig:graph-codons-aa}
     Graphs of possible one nucleotide transition between codon (left panel) and between amino acids (right panel).
     Nodes correspond to codons (left panel) and amino acids (right panel), and their colour represents the encoded amino acid.
     Additionally, for amino acids, the size of nodes represents the number of underlying codons.
@@ -169,6 +168,7 @@ More precisely, the number of possible transitions between the underlying codons
     The graph is not fully connected and does not form a clique. Moreover, the most distant amino acids are at most three transitions away, because a transition from methionine to tyrosine requires at least three non-synonymous transitions.
     Altogether, for all of the possible $190$ pairs of amino acids, $114$ pairs require at least two non-synonymous transitions, and one pair (M-Y) requires at least three non-synonymous transitions.
     }
+    \label{fig:graph-codons-aa}
 \end{figure}
 
 
@@ -482,7 +482,28 @@ As a result, the rate of substitution will be lower than the mutation rate in on
 In contrast, in classical codon models (section~\ref{sec:intro-classical-codon-models}), if $\omega < 1$ (respectively, $\omega> 1$), the rate of substitution is lower (respectively, higher) than the synonymous substitution rate in the two directions.
 
 Nevertheless, it is possible to make conceptual and quantitative connections between these two modelling paradigms.
-This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015} and \citet{Jones2016}.
+This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015}, \citet{Jones2016} and \citet{Rodrigue2016}, summarized in table~\ref{table:params-codon-models}.
+
+\begin{table}[htbp]
+    \centering
+    \noindent\adjustbox{max width=\textwidth}{%
+    \begin{tabu}{|c|l|}
+        \hline
+        \textbf{Symbol} & \textbf{Interpretation} \\
+        \hline \hline
+        $\dn$ & Non-synonymous substitution rate. \\ \hline
+        $\ds$ & Synonymous substitution rate. \\ \hline
+        $\dnds$ & Ratio of non-synonymous over synonymous substitution rate. \\ \hline
+        $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
+        \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in the \citet{Muse1994} formalism. \\
+        & Also, $\avgpfix_{\text{MG}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
+        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
+        \multirow{2}{*}{$\omega_*$} & Scaling factor for all non-synonymous substitutions in the \citet{Halpern1998} formalism. \\
+        & Hence $\avgpfix = \omega = \omega_* \omega_0 $ \\ \hline
+    \end{tabu}}
+    \caption[Parameters of classical and mechanistic codon models]{Relationship between classical and mechanistic codon models}
+    \label{table:params-codon-models}
+\end{table}
 
 \subsection{The Halpern \& Bruno mechanistic codon model as a nearly-neutral model}
 \label{subsec:HB-formalism-nearly-neutral-model}
@@ -543,27 +564,6 @@ Since fitness profiles are capturing $\omega_0$, the resulting $\omega$ which is
 \end{equation}
 This modelling approach is hybrid between mechanistic and phenomenological model, since the parameter $\omega_*$ cannot be interpreted mechanistically.
 Moreover, the deviation of $\omega_*$ can bend upward or downward, where different interpretations can be given of both cases.
-
-\begin{table}[H]
-    \centering
-    \noindent\adjustbox{max width=\textwidth}{%
-    \begin{tabu}{|c|l|}
-        \hline
-        \textbf{Symbol} & \textbf{Interpretation} \\
-        \hline \hline
-        $\dn$ & Non-synonymous substitution rate. \\ \hline
-        $\ds$ & Synonymous substitution rate. \\ \hline
-        $\dnds$ & Ratio of non-synonymous over synonymous substitution rate. \\ \hline
-        $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
-        \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in the \citet{Muse1994} formalism. \\
-        & Also, $\avgpfix_{\text{MG}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
-        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
-        \multirow{2}{*}{$\omega_*$} & Scaling factor for all non-synonymous substitutions in the \citet{Halpern1998} formalism. \\
-        & Hence $\avgpfix = \omega = \omega_* \omega_0 $ \\ \hline
-    \end{tabu}}
-    \caption[Parameters of classical and mechanistic codon models]{Relationship between classical and mechanistic codon models}
-    \label{table:params-codon-models}
-\end{table}
 
 \subsection{Adaptive evolution}
 \label{subsec:adaptive-evolution}

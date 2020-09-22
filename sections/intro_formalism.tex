@@ -80,7 +80,7 @@ And the relative fitness of the three different genotypes are also shown in tabl
 
 Reproduction proceeds in two steps.
 In a first step, a very large pool of gametes is produced, in which adults contribute proportionally to the fitness of their genotype.
-Altogether, the frequency $p'$ of gametes bearing the $B$ allele is:
+Altogether, the frequency $p'$ of gametes bearing the $B$ allele is a function of $p$ and $s$, as shown in figure~\ref{fig:frequency-derived-allele}, and formally derived as:
 \begin{align}
     p' & = p^2 \dfrac{1+2s}{1+2ps} + p (1-p)\dfrac{1+s}{1+2ps}\\
     & = p\dfrac{1+s(1+p)}{1 + 2ps}
@@ -90,10 +90,11 @@ Altogether, the frequency $p'$ of gametes bearing the $B$ allele is:
     \centering
     \includegraphics[width=0.8\textwidth, page=1] {figures.pdf}
     \caption[Frequency of derived {allele} after a generation]{
-    Frequency of derived allele after a generation.
+    Frequency of derived allele $p'$ after a generation in the vertical axis a function of the frequency in the previous generation $p$ in the horizontal axis, shown for several selection coefficients in coloured solid lines.
     Positive selection coefficients ($s > 0$) result in increased derived allele frequency at the next generation, which is intuitively expected.
     The effect is stronger when the derived allele frequency is close to $0.5$, intuitively because the poll of both alleles must be sufficiently large such that they can be replaced.
     It is worth noting that even for strong selection coefficients ($s=0.2$), completely unrealistic in real population, the difference in frequency from one generation to the next is subtle.}
+    \label{fig:frequency-derived-allele}
 \end{figure}
 
 
@@ -172,7 +173,7 @@ Formally, for an effective population size $\Ne$, \citet{Kimura1962} derived the
     \pfix(s, \Ne, p) = \dfrac{1 - \e^{-4 \Ne p s }}{1 - \e^{-4 \Ne s}}.
 \end{equation}
 
-Because $s$ and $\Ne$ are confounded parameters, this probability of fixation is denoted $\pfix(S, p)$, as a function the scaled selection coefficient $S = 4 \Ne s$:
+Because $s$ and $\Ne$ are confounded parameters, this probability of fixation is denoted $\pfix(S, p)$, as a function the scaled selection coefficient $S = 4 \Ne s$ and $p$, as shown in figure~\ref{fig:pfix-p}, and formally derived as:
 \begin{equation}
 \pfix(S, p) = \dfrac{1 - \e^{- p S }}{1 - \e^{-S}}.
 \end{equation}
@@ -198,25 +199,42 @@ The special case of a neutral allele can be obtained by taking the limit when $s
 \begin{align}
     \pfix(0, \Ne) & = \dfrac{1}{2 \Ne}
 \end{align}
-Altogether, the fixation probability of a selected single mutant relative to the fixation probability of a selectively neutral single mutant is solely dependent on the scaled selection coefficient $S$:
+Altogether, the fixation probability of a selected single mutant relative to the fixation probability of a selectively neutral single mutant is given as:
 \begin{align}
-    \dfrac{\pfix(s, \Ne)}{\pfix(0, \Ne)} & \simeq 2 \Ne \dfrac{2s}{1 - \e^{-S}} \\
-    & \simeq  \dfrac{S}{1 - \e^{-S}} \label{eq:p-fix}
+    \dfrac{\pfix(s, \Ne)}{\pfix(0, \Ne)} & \simeq 2 \Ne \dfrac{2s}{1 - \e^{-S}}, \\
+    & \simeq  \dfrac{S}{1 - \e^{-S}}, \label{eq:p-fix}
 \end{align}
+where this quantity is solely dependent on the scaled selection coefficient $S$.
+Such essential result has important consequences, random genetic drift and selection are intrinsically confounded factors.
+As a an example, increasing population size by a factor of $2$ while reducing the selection coefficient by the same amount leads to the exact same equation, such that they are indistinguishable.
+Moreover, the equation have different limits as a function of the selection coefficient:
+\begin{gather}
+    \begin{cases}
+        \lim\limits_{S \to -\infty} \dfrac{S}{1 - \e^{-S}} = -S\e^{S} \\
+        \lim\limits_{S \to 0} \dfrac{S}{1 - \e^{-S}} = 1 + \dfrac{S}{2}\\
+        \lim\limits_{S \to + \infty} \dfrac{S}{1 - \e^{-S}} = S.
+    \end{cases} \label{eq:limits-proba-fix}
+\end{gather}
+More precisely, the scaled fixation probability has different regimes depending on the value of the scaled selection coefficient, as illustrated in figure~\ref{fig:relative-fixation-probability}.
+In the regime of a weak selection coefficient, usually defined as $|s| \leq 1 / \Ne$, known as the drift barrier, the mutant allele is behaving as a neutral allele.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth, page=2] {figures.pdf}
-    \caption[Relative fixation probability]{Fixation probability of a selected {allele} relative to a {neutral} {allele}.
-    For a substantial negative scaled selection coefficient ($s \leq -1/\Ne$, red-filled area), the probability of fixation is greatly reduced (by an exponential factor), and the allele will not likely reach fixation. On the other hand, for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear with regard to $S$. In between, whenever the absolute value of $s$ is close to $1 / \Ne$ (yellow filled area), the allele behaves approximately neutrally.}
+    \caption[Relative fixation probability]{
+    Fixation probability of a selected allele relative to a neutral allele, shown in the vertical axis, as function of the scaled selection coefficient $S=4 \Ne s$ in the horizontal axis.
+    For a substantial negative scaled selection coefficient ($s \leq -1/\Ne$, red-filled area), the probability of fixation is greatly reduced (by an exponential factor), and the allele will not likely reach fixation.
+    On the other hand, for a positive scaled selection coefficient ($s \geq 1 / \Ne$, green filled area), the ratio is approximately linear with regard to $S$.
+    In between, whenever the absolute value of $s$ is close to $1 / \Ne$ (yellow filled area), the allele behaves approximately neutrally.}
+    \label{fig:relative-fixation-probability}
 \end{figure}
-This essential result has important consequences, random genetic drift and selection are intrinsically confounded factors.
-As a an example, increasing population size by a factor of $2$ while reducing the selection coefficient by the same amount leads to the exact same equation, such that they are indistinguishable.
+
 
 \subsection{Site frequency spectrum}
 The probability of fixation of an allele can be empirically observable, and in the context of a Wright-Fisher processes it is related to selection and drift.
 However, this absorbing fate is not the sole characteristic of the process that relates empirical observable quantities to parameters of the process.
 Along the whole trajectory of an allele, before fixation or extinction, the probability of this allele to be at a certain frequency can be related to its selection coefficient and to the effective population size.
-More precisely, $g(x) \der x $ is the expected time for which the population frequency of derived allele is in the range $(x, x+\der x)$ before eventual absorption, and can be derived using the Kolmogorov forward equation as a function of $S$:
+More precisely, $g(x) \der x $ is the expected time for which the population frequency of derived allele is in the range $(x, x+\der x)$ before eventual absorption, as shown in figure~\ref{fig:expected-time-at-f}, which is derived using the Kolmogorov forward equation as a function of $x$ and $S$:
 \begin{align}
     g(x, s, \Ne) & = \dfrac{\left( 1 - \e^{- 2 s }\right) \left( 1 - \e^{-4 \Ne s(1-x)}\right)}{ s (1 - \e^{-4 \Ne s})x(1-x)} \\
     \Rightarrow g(x, S) & \approx \dfrac{2 \left[ 1 - \e^{-S(1-x)}\right]}{(1 - \e^{-S})x(1-x)} \label{eq:expected_time}
@@ -226,8 +244,9 @@ More precisely, $g(x) \der x $ is the expected time for which the population fre
     \centering
     \includegraphics[width=0.8\textwidth, page=4] {figures.pdf}
     \caption[Expected time at a derived frequency]{
-    Expected time at a derived frequency.
+    Expected time at a derived frequency $g(x, S)$ in the vertical axis as a function of the frequency $x$, shown for different scaled selection coefficient.
     Alleles with a positive selection coefficient can be observed at high frequency, while alleles with negative selection coefficients are unlikely to be observed at high frequency.}
+    \label{fig:expected-time-at-f}
 \end{figure}
 
 This equation is solely valid for a gene with two alleles, a configuration which is rarely observed in empirical data since more than two variants of a gene are usually present in the population.
@@ -292,7 +311,7 @@ For example, \citet{Halpern1998} constructed a model for the evolution of coding
 
 \subsection{Substitution rate}
 The continuous-time Markov chain is defined by the instantaneous rate at which transitions occur between pairs of states.
-Parameters of this process are summarized in table \ref{table:params-mutsel} for readability.
+Parameters of this process are summarized in table~\ref{table:params-mutsel} for readability.
 
 \begin{table}[H]
 	\centering
@@ -341,7 +360,7 @@ Q_{A \to B}^{0} & = 2 \Ne \mu_{A \to B}  \pfix(0, \Ne) \\
 
 If the difference of log-fitness tends to $0$, the substitution rate is equal to the mutation rate, retrieving equation~\ref{eq:sub-equal-mut}:
 \begin{align}
-    \lim_{|F_{B} - F_{A}| \to 0} Q_{A \to B} & = \mu_{A \to B}   \dfrac{F_{B} - F_{A}}{{1 - (1 + {F_{A} - F_{B}}) }} \nonumber \\
+    \lim\limits_{|F_{B} - F_{A}| \to 0} Q_{A \to B} & = \mu_{A \to B}   \dfrac{F_{B} - F_{A}}{{1 - (1 + {F_{A} - F_{B}}) }} \nonumber \\
     & =  \mu_{A \to B}
 \end{align}
 
@@ -357,12 +376,12 @@ More precisely, the substitution rate between two alleles is null only if the un
 
 Theoretically, for an irreducible, positive recurrent and aperiodic continuous-time Markov chain, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
 Kolmogorov's criterion implies that the product of transition rates through any closed loop is the same whenever the traversing is done forward or in reverse.
-As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the transition rates must satisfy the equality:
+As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$), as illustrated in figure~\ref{fig:reversible-circuit}, the transition rates must satisfy the equality:
 \begin{equation}
     Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
 \end{equation}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[->,>=stealth',auto,node distance=1.2cm and 1.6cm,semithick]
         \tikzstyle{every state}=[]
@@ -381,23 +400,24 @@ As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$) the 
         (A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
     \end{tikzpicture}
     \caption[Kolmogorov's criterion]{
-    The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion, such that the product of the transition rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
+    The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion.
+    Namely, the product of the transition rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
     \label{fig:reversible-circuit}%
 \end{figure}
 
-From transition rates of the substitution process (\ref{eq:sub-transion-rates}), Kolmogorov's criterion can be derived as:
+Kolmogorov's criterion is satisfied under specific conditions for the substitution process (\ref{eq:sub-transion-rates}):
 \begin{align}
-    \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}
-    \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})}
-    \notag \\
-    &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
-    ={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
-    &\ \times \dfrac{\e^{F_{A}}( \e^{-F_{A}} - \e^{ - F_{C}} )\e^{F_{C}}( \e^{-F_{C}}
-    - \e^{ - F_{B}} )\e^{F_{B}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\e^{F_{A}}( \e^{-F_{A}} - \e^{ - F_{B}} )\e^{F_{B}}( \e^{-F_{B}} - \e^{ - F_{C}} )\e^{F_{C}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}.
+1 ={}& \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}\\
+  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})} \notag \\
+     &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
+  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times -\dfrac{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}}{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}} \notag \\
+     &\ \times \dfrac{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{A}} )}{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{A}} )}, \\
+  ={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
+     &\ \times \dfrac{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\
+  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \dfrac{\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}}{\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}}, \\
+  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}.
 \end{align}
-As a result, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
+Namely, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
 \begin{equation}
     \mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}.
 \end{equation}

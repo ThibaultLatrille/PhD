@@ -198,6 +198,7 @@
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
 %\numberwithin{equation}{subsection}
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{cancel}
 \usepackage{xfrac, nicefrac}
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,arrows,automata,calc}

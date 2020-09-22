@@ -19,7 +19,7 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 
 For a category $\cat$, the Shannon's entropy ($\entropy$) of the fitness profile ($\Profile$) is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\aSetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits_{\SetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon's entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
@@ -255,7 +255,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 \label{subsec:protein-folding-probability}
 
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
-From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $\Profile_{\mathrm{F}}\left(\Seqi^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $\Profile_{\text{F}}\left(\Seqi^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
     \GFold \left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
@@ -263,7 +263,7 @@ where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$,
 
 The free energy of unfolded states $\GUnfold \left(\Seqi^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
-    \GUnfold \left(\Seqi^{t}\right) = \left\langle G\left(\Seqi^{t}\right) \right\rangle - kT \ln (1.0\mathrm{E}^{160}) - \dfrac{2 \left[ \left\langle G\left(\Seqi^{t}\right)^2 \right\rangle - \left\langle G\left(\Seqi^{t}\right) \right\rangle^2\right] }{kT}
+    \GUnfold \left(\Seqi^{t}\right) = \left\langle G\left(\Seqi^{t}\right) \right\rangle - kT \ln (1.0\text{E}^{160}) - \dfrac{2 \left[ \left\langle G\left(\Seqi^{t}\right)^2 \right\rangle - \left\langle G\left(\Seqi^{t}\right) \right\rangle^2\right] }{kT}
 \end{equation}
 where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 
@@ -997,11 +997,11 @@ Thus, formally, the probability of the substitution mapping can be summarized by
 \subsection{Scatter sufficient statistics}
 From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$ scatter sufficient statistic matrix, $\Scattermatrix$ as:
 \begin{equation}
-    \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\mathrm{T}}
+    \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\text{T}}
 \end{equation}
 By Bayes theorem, the posterior on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
-    \CovarianceMatrix \sim \mathrm{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
+    \CovarianceMatrix \sim \text{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
 \end{equation}
 This invert Wishart distribution can be obtained by sampling $\Nbranch + 3$ independent and identically distributed multivariate normal random variables $\Multivariate\indiceexp$ defined by
 \begin{equation}
@@ -1009,6 +1009,6 @@ This invert Wishart distribution can be obtained by sampling $\Nbranch + 3$ inde
 \end{equation}
 And from these multivariate samples, $\CovarianceMatrix$ is Gibbs sampled as:
 \begin{equation}
-    \CovarianceMatrix = \left( \sum\limits_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\mathrm{T}} \right)^{-1}
+    \CovarianceMatrix = \left( \sum\limits_{k=1}^{\Nbranch + 3} \Multivariate\indiceexp \cdot \left[\Multivariate\indiceexp \right] ^{\text{T}} \right)^{-1}
 \end{equation}
 

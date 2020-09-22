@@ -40,10 +40,11 @@ where $\GUnfold$ encompasses the free energy of all the possible unfolded confor
 Altogether, the probability of observing the protein in folded conformation can then be re-expressed as:
 \begin{align}
 \probaFold & = \frac{\e^{-\GFold / kT}}{\e^{-\GFold / kT} + \e^{-\GUnfold / kT}}, \\
-     & = \frac{\e^{-\DeltaG/kT}}{ 1 + \e^{-\DeltaG/kT} }
+     & = \frac{\e^{-\DeltaG/kT}}{ 1 + \e^{-\DeltaG/kT} }, \\
+     & = \frac{1}{ 1 + \e^{\DeltaG/kT} }.
 \end{align}
 where $\DeltaG = \GFold - \GUnfold$.
-Thus, in order for a protein to fold into the native state with high probability, the free energy gap ($\DeltaG$) has to be both negative and large in absolute value (see figure~\ref{fig:intro-proba-folding}).
+Thus, in order for a protein to fold into the native state with high probability, the free energy gap ($\DeltaG$) has to be both negative and large in absolute value, as depicted in figure~\ref{fig:intro-proba-folding}.
 
 \begin{figure}[H]
     \centering
@@ -169,7 +170,7 @@ The major determinant of site-specific $\dnds$ proved to be relative solvent acc
 It was later shown that the number of native inter-residue contacts formed by a protein site, which is negatively correlated with the RSA, is a stronger predictor of site-specific $\dnds$~\citep{Yeh2013}.
 
 The observations that surface residues of globular proteins undergo substitution more rapidly than those in the core is generally attributed to the fact that natural selection imposes stronger constraints on buried sites.
-In fact, selection for protein stability induces stronger constrains on amino acid residues located inside a protein structure (that is, core residues), which have more central roles than surface residues in the Gibbs free energy of folding.
+In fact, selection for protein stability induces stronger constrains on amino-acid residues located inside a protein structure (that is, core residues), which have more central roles than surface residues in the Gibbs free energy of folding.
 
 Altogether, $\dnds$ changes dramatically between exposed and buried sites in such a way that buried sites tend to evolve more slowly than exposed sites, compatible with models of selection for protein stability~\citep{Echave2016}.
 

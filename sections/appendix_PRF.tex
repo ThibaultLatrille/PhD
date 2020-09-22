@@ -13,9 +13,9 @@ The model makes the following assumptions:
 \end{itemize}
 In a sample of size $n$, the expected number of sites with $k$ (which ranges from $1$ to $n-1$) copies of the derived allele is defined as a function of $g(x)$:
 \begin{align}
-	G(i, n, \theta, \scaledselcoef) & = 2 \Ne u \int_{0}^{1} g(x, \scaledselcoef) \binom{n}{i} x^{i} (1-x)^{n-i} \der x \nonumber \\
-	& = \theta \int_{0}^{1} \dfrac{1 - \e^{-\scaledselcoef (1-x)}}{(1 - \e^{-\scaledselcoef})x(1-x)} \binom{n}{i} x^{i} (1-x)^{n-i} \der x\text{, where } \theta=4\Ne u \nonumber \\
-	& = \binom{n}{i} \dfrac{\theta }{1 - \e^{-\scaledselcoef}} \int_{0}^{1} \left( 1 - \e^{-\scaledselcoef (1-x)} \right) x^{i-1} (1-x)^{n-i-1} \der x
+	G(k, n, \theta, \scaledselcoef) & = 2 \Ne u \int_{0}^{1} g(x, \scaledselcoef) \binom{n}{k} x^{k} (1-x)^{n-k} \der x \nonumber \\
+	& = \theta \int_{0}^{1} \dfrac{1 - \e^{-\scaledselcoef (1-x)}}{(1 - \e^{-\scaledselcoef})x(1-x)} \binom{n}{k} x^{k} (1-x)^{n-k} \der x\text{, where } \theta=4\Ne u \nonumber \\
+	& = \binom{n}{k} \dfrac{\theta }{1 - \e^{-\scaledselcoef}} \int_{0}^{1} \left( 1 - \e^{-\scaledselcoef (1-x)} \right) x^{k-1} (1-x)^{n-k-1} \der x
 \end{align}
 In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$). Thus the coefficient ($\scaledselcoef=4\Ne \selcoef $) associated to a mutation is a function of the amino acids encoded by the ancestral ($\ci$) and derived ($\cj$) codon. Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
 \begin{align}
@@ -28,10 +28,11 @@ Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$
 \end{equation}
 If a site is polymorphic and the ancestral ($\ci$) and derived ($\cj$) codons are neighbors, the probability of observing $i$ copies ($n \geq i > 0$) of the derived codon ($\cj$), in a sample of size $n$, at site $\site$, is given by:
 \begin{equation}
-	\proba (\ci=n-i,\cj=i \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
+	\proba (\ci=n-k,\cj=i \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = G\left(k, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) \right)
 \end{equation}
-Moreover the probability that a site is monomorphic is given by:
+Altogether, the probability that a site is monomorphic is given by:
 \begin{equation}
-	\proba (\ci= n \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = 1 - \sum\limits_{\cj \in \Ni} \sum\limits_{i=1}^{n} G\left(i, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right)
+	\proba (\ci= n \ |\ \Ne, u, \Mutmatrix, \Fit\siteexp) = 1 - \sum\limits_{\cj \in \Neighbor (\ci)} \sum\limits_{k=1}^{n} G\left(k, n, \theta_{\itoj}(\Ne, u, \Mutmatrix), \scaledselcoef_{\itoj}(\Ne, \Fit\siteexp)\right),
 \end{equation}
+where $ \Neighbor (\ci)$ is the set of codons neighbors of codon $\ci$ (i.e. one mutation away).
 And all other probabilities equal to $0.0$.

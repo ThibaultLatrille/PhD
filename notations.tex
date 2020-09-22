@@ -11,10 +11,10 @@
 	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \DeclareMathOperator{\E}{\mathbb{E}}
-\DeclareMathOperator{\Var}{\textrm{Var}}
+\DeclareMathOperator{\Var}{\text{Var}}
 \newcommand{\der}{\mathrm{d}}
 \newcommand{\angstrom}{\text{\normalfont\AA}}
-\newcommand{\e}{\mathrm{e}}
+\newcommand{\e}{\text{e}}
 \newcommand{\dn}{d_N}
 \newcommand{\ds}{d_S}
 \newcommand{\dnds}{\dn / \ds}
@@ -22,15 +22,14 @@
 \newcommand{\ps}{\pi_S}
 \newcommand{\pnps}{\pn / \ps}
 \newcommand{\proba}{\mathbb{P}}
-\newcommand{\pfix}{\proba_{\mathrm{fix}}}
+\newcommand{\pfix}{\proba_{\text{fix}}}
 \newcommand{\indice}{a}
 \newcommand{\indiceexp}{^{(\indice)}}
 % Time, effective population size and mutation rate.
-\newcommand{\Ne}{N_{\textrm{e}}}
+\newcommand{\Ne}{N_{\text{e}}}
 % \acrshort{DNA}
-\newcommand{\SetNuc}{\Omega_{\mathrm{N}}}
-\newcommand{\SetWeak}{\Omega_{\mathrm{W}}}
-\newcommand{\SetStrong}{\Omega_{\mathrm{S}}}
+\newcommand{\atgc}{\text{AT/GC}}
+\newcommand{\ATtoGC}{\text{AT} \rightarrow \text{GC}}
 \newcommand{\mutmatrix}{R}
 \newcommand{\Mutmatrix}{\bm{\mutmatrix}}
 \newcommand{\exchan}{\rho}
@@ -38,7 +37,6 @@
 \newcommand{\mutequi}{\sigma}
 \newcommand{\Mutequi}{\bm{\mutequi}}
 % Codons
-\newcommand{\SetCodon}{\Omega_{\mathrm{C}}}
 \newcommand{\ci}{{i}}
 \newcommand{\cj}{{j}}
 \newcommand{\iSetCodon}{1 \leq \ci \leq 61}
@@ -57,32 +55,12 @@
 \newcommand{\Probmatrix}{\bm{\probmatrix}}
 % Amino acids
 \newcommand{\aminoacid}{\text{a}}
-\newcommand{\aSetAa}{1 \leq \aminoacid \leq 20}
-\newcommand{\SetAa}{\Omega_{\mathrm{A}}}
+\newcommand{\SetAa}{1 \leq \aminoacid \leq 20}
 \newcommand{\Neighbor}{\mathcal{V}}
 \newcommand{\NonSyn}{\mathcal{N}}
 \newcommand{\Syn}{\mathcal{S}}
-\newcommand{\Nx}{\Neighbor_x}
-\newcommand{\NxAB}{\Neighbor_x^{\mathrm{A} \rightarrow \mathrm{B}}}
-\newcommand{\NyBA}{\Neighbor_x^{\mathrm{B} \rightarrow \mathrm{A}}}
-\newcommand{\NxWS}{\Neighbor_x^{\mathrm{W} \rightarrow \mathrm{S}}}
-\newcommand{\NxSS}{\Neighbor_x^{\mathrm{S} \rightarrow \mathrm{S}}}
-\newcommand{\NxSW}{\Neighbor_x^{\mathrm{S} \rightarrow \mathrm{W}}}
-\newcommand{\NxWW}{\Neighbor_x^{\mathrm{W} \rightarrow \mathrm{W}}}
-\newcommand{\NyWS}{\Neighbor_y^{\mathrm{W} \rightarrow \mathrm{S}}}
-\newcommand{\NySS}{\Neighbor_y^{\mathrm{S} \rightarrow \mathrm{S}}}
-\newcommand{\NySW}{\Neighbor_y^{\mathrm{S} \rightarrow \mathrm{W}}}
-\newcommand{\NyWW}{\Neighbor_y^{\mathrm{W} \rightarrow \mathrm{W}}}
-\newcommand{\atgc}{AT/GC}
-\newcommand{\NxNonSyn}{\NonSyn_x}
-\newcommand{\NyNonSyn}{\NonSyn_y}
-\newcommand{\NxSyn}{\Syn_x}
-\newcommand{\NySyn}{\Syn_y}
 \newcommand{\aai}{\mathcal{A}(\ci)}
 \newcommand{\aaj}{\mathcal{A}(\cj)}
-\newcommand{\Ni}{\mathcal{N}_{\mathrm{eighbors}}\left(\ci\right)}
-\newcommand{\NiNonSyn}{\mathcal{N}_{\mathrm{onSyn}}\left(\ci\right)}
-\newcommand{\NiSyn}{\mathcal{S}_{\mathrm{yn}}\left(\ci\right)}
 \newcommand{\wrightfit}{W}
 \newcommand{\logfit}{f}
 \newcommand{\avgpfix}{\nu}
@@ -187,8 +165,8 @@
 \newcommand{\eq}{^{*}}
 \newcommand{\NbrSites}{n}
 \newcommand{\dx}{\delta x}
-\newcommand{\Fold}{\textrm{F}}
-\newcommand{\Unfold}{\textrm{U}}
+\newcommand{\Fold}{\text{F}}
+\newcommand{\Unfold}{\text{U}}
 \newcommand{\probaFold}{\proba_{\Fold}}
 \newcommand{\probaUnfold}{\proba_{\Unfold}}
 \newcommand{\G}{G}
@@ -203,5 +181,7 @@
 \newcommand{\Seqj}{\mathbb{S}'}
 \newcommand{\Seqitoj}{\ci, \cj}
 \newcommand{\setNeighbors}{\mathcal{M}\left(\ci\right)}
-\newcommand{\setNonSynNeighbors}{\mathcal{N}\left(\ci\right)}
-\newcommand{\setSynNeighbors}{\mathcal{S}\left(\ci\right)}
+\newcommand{\NonSynNeighbors}{\mathcal{N}}
+\newcommand{\setNonSynNeighbors}{\NonSynNeighbors\left(\ci\right)}
+\newcommand{\SynNeighbors}{\mathcal{S}}
+\newcommand{\setSynNeighbors}{\SynNeighbors\left(\ci\right)}

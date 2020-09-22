@@ -423,7 +423,7 @@ From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the fre
 where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
 The free energy of unfolded states $\GUnfold \left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
-\GUnfold \left(\ci\right) = \left\langle G\left(\ci\right) \right\rangle - kT \ln (1.0\mathrm{E}^{160}) - \frac{2 \left[ \left\langle G\left(\ci\right)^2 \right\rangle - \left\langle G\left(\ci\right) \right\rangle^2\right] }{kT},
+\GUnfold \left(\ci\right) = \left\langle G\left(\ci\right) \right\rangle - kT \ln (1.0\text{E}^{160}) - \frac{2 \left[ \left\langle G\left(\ci\right)^2 \right\rangle - \left\langle G\left(\ci\right) \right\rangle^2\right] }{kT},
 \end{equation}
 where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:

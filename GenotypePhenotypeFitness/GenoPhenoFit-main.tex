@@ -77,7 +77,7 @@ As a specific example, we more specifically consider a model of protein evolutio
 This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Pollock2012}, except that we make several simplifying assumptions, allowing us to derive analytical equations.
 %Throughout our derivation, we present the results both for the general case and for the more specific example.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth, page=1] {summary.pdf}
     \caption[Outline of the theoretical results]{
@@ -125,7 +125,7 @@ Analytically, this fitness is given by Fermi Dirac distribution and is typically
 where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
 Additionally, $\DeltaGmin$ and $\DeltaDeltaG$ are defined as above, and the parameter $\beta$ is $1.686$ mol/kcal at room temperature.
 
-\subsection{Reponse of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
+\subsection{Response of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
 
 For a given effective population size $\Ne$, the evolutionary process as depicted in the middle panel of figure~\ref{fig:Summary} results in an equilibrium substitution rate.
 This substitution rate is normalized by the substitution rate of neutral of mutations to discard the influence of the underlying mutation rate, where the resulting parameter is denoted $\omega$, which can also be interpreted as the the mean fixation probability of mutations scaled by the fixation probability of neutral alleles $p = 1 / {2 \Ne}$.
@@ -183,7 +183,7 @@ Mutation bias (left-hand side of equation~\ref{eq:equilibrium}) decreases with $
 An increase in $\Ne$ leads to shifting the selective response upward, which then results in a leftward shift of the equilibrium phenotype, closer to $0$.
 The leftward shift is smaller for selective strength with steeper curve, resulting in qualitatively weaker susceptibility of the equilibrium phenotype to changes in $\Ne$
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth, page=1] {theoretical.pdf}
 
@@ -232,7 +232,7 @@ In practice, the slope of the linear relationship between $\omega$ and $\Ne$ is 
 Additionally, only relative values of $\Ne$ (multiplicative) and $\omega$ (additive) are sufficient to estimate empirical value of $\chi$, absolute values are not necessary.
 % Although the general equation seems to suggest in appearance that elasticity only depends on the fitness function, in fact, what the biophysical model shows is that the elasticity can actually be modulated in two ways: by playing on the genotype / phenotype relationship (here, $\DeltaDeltaG$), or by playing on the fitness phenotype relationship (here, beta). All the more reason to consider beta as a potentially free parameter too.
 
-\subsection{Repsonse of \texorpdfstring{$\omega$}{ω} to changes in protein expression level}
+\subsection{Response of \texorpdfstring{$\omega$}{ω} to changes in protein expression level}
 \label{sec:expression}
 
 Effective population size is not the sole predictor of $\omega$, and expression level (or protein abundance) is also negatively correlated to $\omega$.
@@ -280,7 +280,7 @@ The original works showed that under such $3$D model, $\omega$ is approximately 
 Using extensive simulations in order to obtain sufficient resolution, we observe that $\omega$ is in fact weakly dependent on $\Ne$, being approximately linear with log-$\Ne$ (figure~\ref{fig:GoldsteinVsToy}C).
 Moreover, the observed slope matches the theoretical value considering $\EmpiricalDeltaDeltaG = 1.0$ kcal/mol for destabilizing mutations and $\NbrSites=300$.
 In such experiment, $\DeltaGmin=-118$ kcal/mol as it is the $\DeltaG$ of the optimal sequence of $300$ sites~\citep{Goldstein2011} (figure~\ref{fig:GoldsteinVsToy}D).
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth] {elasticity-low.pdf}
 
@@ -326,7 +326,7 @@ A sudden increase in $\Ne$ result first in a short traction toward a more optima
 Conversely, under high $\Ne$ the phenotype is closer to optimal and the purification of deleterious mutations is stronger.
 The reaction to a decrease in $\Ne$ is a relaxation of the purification and thus a $\omega$ closer to the neutral case, which results into higher $\omega$ until the point of marginal stability.
 To note, an increase in $\Ne$ can theoretically and possibly lead to a temporarily $\omega > 1$ due to adaptive evolution~\citep{Jones2016}, while an decrease in $\Ne$ always imply $\omega < 1$ due to at most a neutral regime of relaxed selection.
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth] {Relaxation.pdf}
 

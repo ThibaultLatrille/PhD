@@ -54,7 +54,7 @@ Our model can be seen as the integration between the mutation-selection framewor
 We test our model and inference framework against simulated data made under more realistic assumptions, and with empirical data while correlating life-history traits and population-genetics parameters of evolution.
 Broadly, this framework aims to shade light on the long-term ecological and evolutionary process shaping the history of molecular sequences.
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth] {model_summary.pdf}
     \caption[Model summary]{
@@ -388,12 +388,12 @@ By definition, the sum of the entries in each row of the nucleotide rate matrix 
 The prior on the exchangeabilities $\Exchan$ is a uniform Dirichlet distribution of dimension $6$:
 \begin{equation}
     \label{eq:DistribExchan}
-    \Exchan \sim \mathrm{Dir}\left( \dfrac{1}{6} , 6\right).
+    \Exchan \sim \text{Dir}\left( \dfrac{1}{6} , 6\right).
 \end{equation}
 The prior on the equilibrium base frequencies $\Mutequi$ is a uniform Dirichlet distribution of dimension $4$:
 \begin{equation}
     \label{eq:DistribMutequi}
-    \Mutequi \sim \mathrm{Dir}\left( \dfrac{1}{4} , 4\right)
+    \Mutequi \sim \text{Dir}\left( \dfrac{1}{4} , 4\right)
 \end{equation}
 The general time-reversible nucleotide matrix is normalized such that the total flow equals to $1$:
 \begin{equation}
@@ -405,20 +405,20 @@ The general time-reversible nucleotide matrix is normalized such that the total 
 For each category $\Setcat$, a $20$-dimensional fitness profile $\Profile\catexp$ (summing to $1$) is distributed as a Dirichlet of center $\centerProfile$ and concentration $\concentrationProfile$:
 \begin{equation}
     \label{eq:DistribBase}
-    \Profile\catexp \sim \mathrm{Dir}\left( \centerProfile,\ \concentrationProfile \right),\ \Setcat.
+    \Profile\catexp \sim \text{Dir}\left( \centerProfile,\ \concentrationProfile \right),\ \Setcat.
 \end{equation}
 For an alignment of size $\Nsite$, each site $\Setsite$ is assigned a fitness profile category of amino acids $\catsite \in \catInterval $.
 The total number of sites falling in each fitness profile category $\cat$ is denoted $\catmultivar_{\cat}$.
 The $\Ncat$-dimensional vector $\catMultiVar$ is distributed as a multinomial of event probabilities $\StickBreaking$:
 \begin{align}
     \label{eq:DistribMultinomial}
-    \catMultiVar \sim \mathrm{Multinomial}\left( \StickBreaking \right).
+    \catMultiVar \sim \text{Multinomial}\left( \StickBreaking \right).
 \end{align}
 The event probabilities $\Ncat$-dimensional vector~($\StickBreaking$) of falling into each category is distributed as a stick-breaking \gls{Dirichlet process}:
 \begin{align}
     \label{eq:DistribStickBreaking}
     \begin{split}
-        & \StickBreaking \sim \mathrm{StickBreaking}\left( \Ncat, \stickbreakinghyper \right)\\
+        & \StickBreaking \sim \text{StickBreaking}\left( \Ncat, \stickbreakinghyper \right)\\
         \iff & \stickbreaking_{\cat} = \stick_{\cat}\cdot \prod _{{\indice=1}}^{{\cat-1}}\left(1-\stick_{\indice}\right),\ \Setcat,
     \end{split}
 \end{align}
@@ -426,7 +426,7 @@ where $\stick_{\cat}$ are i.i.d.
 from a beta distribution
 \begin{equation}
     \label{eq:Beta}
-    \stick_{\cat} \sim \mathrm{Beta}\left( 1, \stickbreakinghyper \right),\ \Setcat.
+    \stick_{\cat} \sim \text{Beta}\left( 1, \stickbreakinghyper \right),\ \Setcat.
 \end{equation}
 The Malthusian fitness selection coefficients $\Fit\siteexp$ at site $\site$, are obtained by taking the logarithm of the fitness profile assigned to this site:
 \begin{equation}
@@ -440,7 +440,7 @@ The model estimates the dates at which branches split, thus the dated tree requi
 The node ages $\age\nodeexp,\ \Setinternal$ are drawn uniformly such that a node cannot be younger than the oldest of its $2$ descendant children, and must also be younger than its parent:
 \begin{equation}
     \label{eq:Distribage}
-    \age\nodeexp \ \sim \mathcal{U}\left( \mathrm{max}\left(\age^{(\mathrm{children})} \right), \age^{(\mathrm{parent})} \right)
+    \age\nodeexp \ \sim \mathcal{U}\left( \text{max}\left(\age^{(\text{children})} \right), \age^{(\text{parent})} \right)
 \end{equation}
 By definition, leaf ages are all set to $0$. The root age is set arbitrarily to $1$, but if fossils data are also available the dated tree can be rescaled into absolute time using cross-multiplication.\\
 The duration of the branch~($\branchtime\branchexp$), for each branch $\Setbranch$ is defined as the difference in ages between the oldest node at the tip of the branch $\age^{(\nodeUp)}$, and the youngest node $\age^{(\nodeDown)}$:
@@ -483,7 +483,7 @@ Moreover, the rate of change of the log-Brownian process per unit of time is con
     \Brownian^{(\nodeDown)} \sim \mathcal{N}\left(\Brownian^{(\nodeUp)}, \branchtime\branchexp \CovarianceMatrix \right),\ \Setbranch
 \end{equation}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
         \tikzstyle{every state}=[]
@@ -564,7 +564,7 @@ from a multivariate normal distribution:
 The prior on the covariance matrix is an invert Wishart distribution, parameterized by $\covariancekappa=1$ and with $\covariancedf=\Ntrait + 1$ degrees of freedom:
 \begin{equation}
     \label{eq:Distribcovariance}
-    \CovarianceMatrix \sim \mathrm{Wishart}^{-1} (\covariancekappa \Identitymatrix, \covariancedf)
+    \CovarianceMatrix \sim \text{Wishart}^{-1} (\covariancekappa \Identitymatrix, \covariancedf)
 \end{equation}
 
 \subsection{Codon substitution rates}

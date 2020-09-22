@@ -60,15 +60,18 @@
 	xlabel={Scaled selection coefficient ($S=4 \Ne s$)},
 	cycle list name=colors,
 	domain=-20:20,
+	ymin=0.0, ymax=20.0,
 	samples=200,
-	legend entries={$\frac{\pfix(s, \Ne)}{\pfix(0, \Ne)} = \frac{S}{1 - \e^{-S}}$,$|s| = 1 / \Ne$ (drift barrier)},
+	legend entries={$\frac{\pfix(s, \Ne)}{\pfix(0, \Ne)} = \frac{S}{1 - \e^{-S}}$,$\simeq 1+S/2 \ (S \rightarrow 0)$,$ \simeq S\ (S \gg 1)$,$|s| = 1 / \Ne$ (drift barrier)},
 	legend cell align=left,
 	minor tick num=2,
 	axis x line=bottom,
 	axis y line=left,
 	legend style={at={(0.1,0.9)},anchor=north west}
 	]
-	\addplot[line width=1.5pt, BLUE]{ x / (1 - exp(- x))};
+	\addplot[line width=2.0pt, BLUE]{ x / (1 - exp(- x))};
+	\addplot[line width=0.75pt,domain=-4:4, LIGHTGREEN]{ 1 + x/2};
+	\addplot[line width=0.75pt,domain=0:20, PINK]{ x };
 	\addplot[name path=B, dashed, YELLOW, line width=0.5pt] coordinates {(-4, 0) (-4, 20)};
 	\addplot[name path=A, line width=0pt] coordinates {(-20, 0) (-20, 20)};
 	\addplot[black, dashed, line width=1.0pt]{1.0};
@@ -154,7 +157,7 @@
 	cycle list name=colors,
 	domain=-10:5,
 	ymin=0.0, ymax=1.0,
-	legend entries={$\frac{\e^{-\DeltaG/kT}}{ 1 + \e^{-\DeltaG/kT} }$},
+	legend entries={$\frac{1}{ 1 + \e^{\DeltaG/kT} }$},
 	legend cell align=left,
 	samples=200,
 	minor tick num=2,
