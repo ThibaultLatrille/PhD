@@ -106,12 +106,12 @@ Technically, the precision matrix (invert of covariance matrix) is distributed a
 The work presented here implemented the branch heterogeneity in a Bayesian context, as in \texttt{CoEvol}~\citep{Lartillot2011}.
 Conversely, amino-acid fitness profiles $\Fit$ are assumed to vary across sites, but are considered constant along the tree.
 The work presented here relies on the Bayesian nonparametric random-effect approach, developed to estimate site-heterogeneous amino-acid fitnesses as in \texttt{PhyloBayes}~\citep{Rodrigue2010}.
-Our Bayesian implementation, written in \texttt{C++} in the software \texttt{\texttt{BayesCode}}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
+Our Bayesian implementation, written in \texttt{C++} in the software \texttt{BayesCode}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
 
 The phylogenetic codon model presented here makes several additional assumptions on the evolutionary processes generating the observed alignment.
 First, the species tree topology is supposed to be known, and each gene should match the species tree, meaning genes are strict orthologs (no paralogs and no horizontal transfers).
 Second, there is no epistasis (interaction between sites), such that any position of the sequence has its own independent evolutionary process and a substitution at one position does not affect the substitution process at other positions.
-Third, from a population genetic perspective, we assumed sites of the protein to be unlinked, or equivalently the mutation rate is low enough such that there is no Hill-Robertson interference nor genetic hitchhiking.
+Third, from a population genetics perspective, we assumed sites of the protein to be unlinked, or equivalently the mutation rate is low enough such that there is no Hill-Robertson interference nor genetic hitchhiking.
 Fourth, we assume \acrshort{DNA} sequences to be representative of the species, not taking into account the sampling effect tending to over-represent weakly deleterious mutations present at low frequencies.
 
 
@@ -236,9 +236,9 @@ Protein coding \acrshort{DNA} sequences alignment and qualitative life-history t
 Estimation of $\Ne$ reveals a correlation between qualitative life-history traits and $\Ne$, presented section~\ref{sec:empirical-data-in-isopods} in supplementary materials.
 However, these correlations are sensitive to phylogenetic inertia since multivariate log-Brownian does not accommodate qualitative traits, although this particular dataset is composed of surface and subterranean species reducing biases.
 
-Additionally, our empirical framework was also applied in primates (see~\ref{sec:empirical-data-in-primates} and in supplementary materials).
+Additionally, our empirical framework was also applied in primates (see section~\ref{sec:empirical-data-in-primates} in supplementary materials).
 Reconstructed $\Ne$ and $\mu$ are related to \acrshort{LHT} (mass, female maturity, generation time and longevity), synonymous diversity ($\ps$) and non-synonymous over synonymous ($\pnps$).
-Finally, our empirical framework was also applied in drosophila and related to genome size (see~\ref{sec:empirical-data-in-drosophila} and in supplementary materials).
+Finally, our empirical framework was also applied in drosophila and related to genome size (see section~\ref{sec:empirical-data-in-drosophila} in supplementary materials).
 These experiments however did not uncover statistically significant correlation between $\Ne$ and life-history traits.
 
 \begin{table}[htbp]

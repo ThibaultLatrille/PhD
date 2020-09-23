@@ -4,8 +4,8 @@
 
 The previous chapter treated how substitution rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
 In contrast, the goal of this chapter is to present the methodology for estimating the parameters from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
-To do so, I will first introduce the concept of likelihood and how the likelihood is computed in the context of phylogenetic models.
-Then, I will briefly introduce the maximum likelihood method and, finally, the principles of Bayesian inference using Markov Chain Monte Carlo.
+To do so, I will first introduce the concept of likelihood and how the likelihood is computed in the context of phylogenetic models (section~\ref{sec-intro:likelihood}).
+Then, I will briefly introduce the maximum likelihood method of inference (section~\ref{subsec:maximum-likelihood}) and, finally, the principles of Bayesian inference using Markov Chain Monte Carlo (section~\ref{sec:intro-bayesian}).
 
 
 \section{Likelihood of the data}
@@ -34,9 +34,13 @@ Importantly, the models of sequence evolution considered in this thesis all assu
 This assumption of independence between sites allows the probability of an observed alignment to be expressed as the product over alignment columns of the probability of observing each of them.
 This independence assumption is a simplification.
 However it greatly facilitates likelihood-based inference.
-The section is divided into first integrating over all trajectory along a single branch of the tree, and subsequently over the entire tree, while finally efficiently computing the probability of the data given the parameters.
+
+This development of likelihood computation is divided into three sections, first integrating over all trajectory along a single branch of the tree (section~\ref{subsec:finite-time-transition-probabilities-over-a-branch-at-a-given-site}),
+and subsequently over the entire tree (section~\ref{subsec:integrating-over-ancestral-states}),
+while finally efficiently computing the probability of the data given the parameters (section~\ref{subsec:pruning-algorithm}).
 
 \subsection{Finite-time transition probabilities over a branch at a given site}
+\label{subsec:finite-time-transition-probabilities-over-a-branch-at-a-given-site}
 
 The point substitution process implied by the codon model defines the instantaneous rates of change between the different codons through the substitution matrix $\Submatrix$.
 Given a starting (ancestral) codon state and a given amount of time over which the substitution process runs, the first task is to derive the probability of the descendant sequence presenting each of the $61$ possible codon states.
@@ -54,6 +58,7 @@ This integration of the substitution rate matrix over the branch takes into acco
 In practice, exponentiating the rate matrix is usually performed using decomposition in eigenvalues and eigenvectors.
 
 \subsection{Integrating over ancestral states}
+\label{subsec:integrating-over-ancestral-states}
 The challenge for generalizing this argument from a single branch to a complete tree is that only the data at the tips of the tree are observed whereas the states at the internal nodes are not.
 If they were known, the likelihood would be readily calculated, by taking the product of the transition probabilities over all branches.
 As an example, and for better readability, a simple illustrative tree given in figure~\ref{fig:tree} will be used prior to giving to general formulas.
@@ -131,6 +136,7 @@ And finally, the assumption of independence between sites allows the probability
 \end{align}
 
 \subsection{Pruning algorithm}
+\label{subsec:pruning-algorithm}
 The likelihood at a specific column of a multiple sequence alignment given by equation~\ref{eq:likelihood} requires extensive computation, but can, however, be computed in linear time (as a function of the number of branches) using the pruning algorithm of \citet{Felsenstein1981}.
 \begin{align}
     \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right),
@@ -152,6 +158,7 @@ And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \end{align}
 
 \subsection{Maximum likelihood}
+\label{subsec:maximum-likelihood}
 
 The previous sections introduced the computational procedure to compute the likelihood.
 Combining this procedure with numerical optimization methods allows one to find the parameter values $\widehat{\theta}$ maximizing the likelihood.
@@ -184,9 +191,11 @@ For that reason, Bayes theorem can also be presented as:
 Simply stating that posterior is proportional to likelihood multiplied by prior.
 In other words, updating our knowledge, such as initially represented by our prior, is done multiplicatively, using the likelihood, and renormalizing to obtain a proper probability distribution (the posterior).
 
-\subsection{Bayesian statistics and {Maximum likelihood}}
+\subsection{Bayesian statistics and maximum likelihood}
+\label{subsec:bayesian-statistics-and-maximum-likelihood}
 Bayesian statistics and maximum likelihood are often opposed to each other and sometimes fiercely defended by their respective proponents.
-There are indeed fundamental philosophical differences.In particular, Bayesian inference is potentially sensitive to the prior, although, practically, prior sensitivity can be investigated.
+There are indeed fundamental philosophical differences.
+In particular, Bayesian inference is potentially sensitive to the prior, although, practically, prior sensitivity can be investigated.
 In addition posterior and prior can be presented next to each other, such that differences between the two can be interpreted as the amount of signal extracted from the data, and potential issues with the choice of the prior can be pointed out.
 
 However, the recent success of Bayesian inference relates more fundamentally to the way it deals with model complexity~\citep{Huelsenbeck2000a,Lartillot2020}.
@@ -206,7 +215,7 @@ This expressivity in model structure, combined with generic Monte Carlo approach
 
 
 \subsection{Hierarchical model}
-\label{sec:intro-hierarchical-models}
+\label{subsec:intro-hierarchical-models}
 The relationship between the random variables defining a hierarchical model can be formalized as a Bayesian network, which is a probabilistic graphical representation of the set of variables and their conditional dependencies via a directed acyclic graph (DAG).
 In the example of the prior distribution for the rate substitution matrix in the case of the mutation-selection model, the prior is defined as the joint distribution of the prior over the selection coefficient over amino acids and the mutation rate matrix, which itself is a deterministic function of the equilibrium frequencies of nucleotides and the exchangeability rates for the general-time-reversible (\acrshort{GTR}) mutation matrix (see figure~\ref{fig:DAG}).
 Seeing the DAG the other way around (following the arrows), simple prior distributions are combined together to form more complex joint prior distribution which ultimately defines the prior distribution over the model parameter vector ($\theta$).
@@ -252,6 +261,7 @@ This hierarchy can naturally be extended across sites, across branches or across
 \end{figure}
 
 \subsection{Markov Chain Monte Carlo (MCMC)}
+\label{subsec:markov-chain-monte-carlo}
 
 Once realizing that the prior distribution can be boiled down to a set of simpler distributions over the components of the parameter vector, the difficulty in computing the posterior distribution arises from the high dimensionality of the parameter space, known as the curse of dimensionality.
 More precisely, the number of states increases exponentially with the number of dimensions of the space, such that the explicit evaluation for both the prior and the likelihood for a sufficiently fine-grained set of parameter values is unrealistic.
@@ -273,6 +283,7 @@ Given this requirement, and given one can also sample from the transition probab
 After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed and the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
 
 \subsection{Metropolis-Hastings sampling}
+\label{subsec:metropolis-hastings-sampling}
 
 One specific algorithm designed such that \acrshort{MCMC} stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
 This algorithm is composed of an acceptance/rejection rule such that the algorithm proceeds as follows at each step of the Markov chain.
@@ -290,6 +301,7 @@ In addition, the last step above requires the generation of a uniform random num
 The Metropolis procedure has been initially developed in the context of a symmetric distribution $g(X'\mid X) = g(X \mid X')$, and was later generalized to incorporate any proposal distribution, in which case an additional factor named the Hastings ratio ($g(X'\mid X) / g(X \mid X')$) as to be accounted for.
 
 \subsection{Gibbs sampling}
+\label{subsec:gibbs-sampling}
 
 Whenever a joint distribution of variables is not known explicitly or is difficult to sample from directly, but the conditional distribution of each variable is easier to sample from, a specific algorithm known as Gibbs sampling is applicable.
 The original implementation of the Gibbs sampler by \citet{Geman1984} was applied to a discrete image processing problem, a problem somewhat remote from statistical inference in the classical sense.
@@ -325,6 +337,6 @@ The software implementation of Bayesian phylogenetic models is globally a diffic
 They must be flexible to adapt to different models of variations, while at the same time be reliable, reproducible, maintainable and fast.
 This is even more true for models integrating variation across sites, across branches or across genes.
 All these constraints led to the (still ongoing) development of a new Bayesian phylogenetic software platform called \texttt{BayesCode}, conducted by multiple maintainers with different goals and different models of evolution in mind.
-\texttt{BayesCode} adopts a modular design, using the graphical model formalism (see~\ref{sec:intro-hierarchical-models}) at a coarse-grained level, resulting in a flexible approach for model design by combining building blocks, corresponding to the fundamental distributions, the stochastic processes, and the likelihood computation routines that form the basis of a large family of phylogenetic models.
+\texttt{BayesCode} adopts a modular design, using the graphical model formalism (see section~\ref{subsec:intro-hierarchical-models}) at a coarse-grained level, resulting in a flexible approach for model design by combining building blocks, corresponding to the fundamental distributions, the stochastic processes, and the likelihood computation routines that form the basis of a large family of phylogenetic models.
 Historically, the development of this software platform was initiated concurrently to the beginning of this thesis, and chapter~\ref{chap:MutSelDrift} which model variation of selection across sites and drift across branches has been implemented under this framework.
 This software written in modern \texttt{C++} (version 14) is available at \url{https://github.com/bayesiancook/bayescode}.
