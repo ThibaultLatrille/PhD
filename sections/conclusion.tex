@@ -213,7 +213,7 @@ This extension was rather straightforward to implement in \texttt{BayesCode}, in
 A first implementation was tested against simulation under a Wright-Fisher model of evolution along the phylogeny.
 It yields an accurate estimation of diversity ($\theta = 4 \Ne u$) in extant species, and is able to better tease out mutation and selection by leveraging both divergence and polymorphism signal.
 However, it was found to be computationally intensive, even with the use of sufficient statistics to accelerate the computation (see section~\ref{subsec:suffstats-data-augmentation}).
-Moreover, the assumption of a constant $\Ne$ along the phylogeny assumed by mutation-selection codon models was arguably the strongest assumption to relax in this context.
+Moreover, the assumption of a constant $\Ne$ along the phylogeny assumed by mutation-selection codon models was arguably the strongest assumption to relax in this context~\citep{Rousselle2018}.
 Indeed, what sense would it make to integrate empirical data about genetic diversity in extant species that generally have quite different levels of diversity if $\Ne$ is considered constant along the phylogeny.
 This was historically the reason why I decided to first extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 

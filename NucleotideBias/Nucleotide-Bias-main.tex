@@ -2,20 +2,20 @@
 
 %%Introducing codon models and their usefulness
 Phylogenetic codon models are now routinely used in many domains of bioinformatics and molecular evolutionary studies.
-Most often used to characterize the selective regimes, or genes, or sites, having experienced positive selection.
-More generally, these models highlight the respective contributions of mutation, selection, genetic drift and biased gene conversion, and the causes of their variation between genes or across species.
+Most often used to characterize the genes, sites~\citep{Nielsen1998}, or lineages~\citep{Zhang2004} having experienced positive selection.
+More generally, these models highlight the respective contributions of mutation, selection, genetic drift and biased gene conversion~\citep{Kosiol2019}, and the causes of their variation between genes~\citep{Zhang2015} or across species~\citep{Lartillot2011}.
 
 %introducing the idea of a single $\omega$
 Conceptually, codon models take advantage of the fact that synonymous and non-synonymous substitutions are differentially impacted by selection.
-Assuming synonymous mutations are neutral, the synonymous substitution rate equal to the underlying mutation rate.
-Non-synonymous substitutions, on the other hand, reflect the combined effect of mutation and selection.
+Assuming synonymous mutations are neutral, the synonymous substitution rate equal to the underlying mutation rate~\citep{kimura1983neutral}.
+Non-synonymous substitutions, on the other hand, reflect the combined effect of mutation and selection~\citep{Ohta1995}.
 Classical codon models formalize this idea by invoking a single parameter $\omega$, acting multiplicatively on non-synonymous substitutions rates~\citep{Muse1994, Goldman1994}.
 Using a parametric model automatically corrects for the multiplicity issues created by the complex structure of the genetic code and by uneven mutation rates between nucleotides.
 As a result, this parameter $\omega$ capture the net, or aggregate, effect of selection on non-synonymous mutations.
 
 %elaborating on the phenomenological versus mechanistic, classical versus mutsel, distinction
-Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through a single parameter.
-In reality, the selective effects associated with non-synonymous mutations depend on the context (site-specificity) and the amino acids involved in the transition.
+Classical codon models, so defined, are phenomenological, they capture a complex mixture of selective effects through a single parameter~\citep{Rodrigue2010a}.
+In reality, the selective effects associated with non-synonymous mutations depend on the context (site-specificity) and the amino acids involved in the transition~\citep{Kosiol2007}.
 Attempts at an explicitly modelling of these complex selective landscapes have been formulated, named mechanistic codon models, based on the mutation-selection formalism~\citep{Halpern1998}.
 However, these models are computationally complex~\citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
@@ -27,19 +27,20 @@ In their simplest form~\citep{Muse1994}, classical codon models predict that the
 In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC~\citep{Singer2000}.
 
 %Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent
-These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
-However, this is problematic, this modelling has the consequence that synonymous substitutions, say, from A to C, occur at different rates at the first and third positions.
+These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism~\citep{Goldman1994, Pond2005a}, allowing for different nucleotide rate matrices at the three positions.
+However, this is also problematic, since this modelling approach has the consequence that synonymous substitutions, say, from A to C, occur at different rates at the first and third positions.
 Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions, and if neutral, all mutations from A to C should have the same rate.
 
 %Potential impact of these problems: both practical and conceptual
-In any case, these observations suggest that the mutation matrix (F1x4) or matrices (F3x4) estimated by codon models are not correctly reflecting the mutation rates between nucleotides.
+In any case, these observations suggest that the mutation matrix (1x4) or matrices (3x4) estimated by codon models are not correctly reflecting the mutation rates between nucleotides~\citep{Rodrigue2008a}.
 Instead, what these matrices are capturing is the result of the compromise between mutation and selection at the level of the realized nucleotide frequencies.
-For detecting selection, this problem is probably minor.
+For detecting selection, this problem is probably minor, although still bears consequences on the estimation of $\omega$~\citep{Spielman2015}.
 Conceptually, however, this is a clear symptom of a more fundamental problem: mutation rates and fixation probabilities are not correctly teased apart.
+
 Practically, this misconception could have important consequences in other contexts than tests of positive selection.
-In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences.
+In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences~\citep{Bolivar2019}.
 An important factor here is biased gene conversion toward GC (named gBGC), which can confound the tests for detecting positive selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
-Even in the absence of \acrshort{gBGC}, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
+Even in the absence of \acrshort{gBGC}, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection.
 All this suggests that, even before introducing \acrshort{gBGC} in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
 
 %The mut-sel balance revisited: an equilibrium between two net forces
@@ -293,8 +294,8 @@ Also, in empirical data we observed that the mean scaled fixation probability be
 
 \section{Discussion}\label{sec:discussion}
 
-The observed composition \acrshort{DNA} is the result of the interplay between mutation and selection, such that observed mutational bias in the alignment is different to the underlying mutational bias.
-In protein-coding \acrshort{DNA} sequence, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
+The observed composition of \acrshort{DNA} sequences is the result of the interplay between mutation and selection, such that the observed mutational bias in the alignment is different to the underlying mutational bias.
+In protein-coding \acrshort{DNA} sequences, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
 For example, mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with \acrshort{gBGC}.
 
 Unfortunately, parametric codon models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level, discarding the effect of selection.

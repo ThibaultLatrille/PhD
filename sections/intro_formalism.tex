@@ -216,7 +216,7 @@ Moreover, the equation have different limits as a function of the selection coef
     \end{cases} \label{eq:limits-proba-fix}
 \end{gather}
 More precisely, the scaled fixation probability has different regimes depending on the value of the scaled selection coefficient, as illustrated in figure~\ref{fig:relative-fixation-probability}.
-In the regime of a weak selection coefficient, usually defined as $|s| \leq 1 / \Ne$, known as the drift barrier, the mutant allele is behaving as a neutral allele.
+In the regime of a weak selection coefficient, usually defined as $|S| \ll 1$ or $|s| \ll 1 / \Ne$, known as the drift barrier, the mutant allele is behaving mostly as a neutral allele.
 
 \begin{figure}[H]
     \centering
@@ -410,7 +410,7 @@ Kolmogorov's criterion is satisfied under specific conditions for the substituti
 1 ={}& \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}\\
   ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})} \notag \\
      &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
-  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times -\dfrac{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}}{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}} \notag \\
+  ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times -\dfrac{\cancel{(F_{A} - F_{B})}\cancel{(F_{B} - F_{C})}\cancel{(F_{C} - F_{A})}}{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}} \notag \\
      &\ \times \dfrac{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{A}} )}{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{A}} )}, \\
   ={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
      &\ \times \dfrac{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\

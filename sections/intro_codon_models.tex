@@ -279,7 +279,7 @@ where $\ci[1]$ denotes the nucleotide at position $1$ of codon $i$.
 
 As a result of equation~\ref{eq:equilibrium-MG}, the Muse \& Gaut formalism predicts that the nucleotide composition is the same for all $3$ positions of the codons.
 However it has empirically been observed that the nucleotide compositions are in fact not identical~\citep{Singer2000}.
-These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism, allowing for different nucleotide rate matrices at the three positions.
+These modulations across the three coding positions have been accommodated using the so-called 3x4 formalism~\citep{Muse1994, Goldman1994}, allowing for different nucleotide rate matrices at the three positions.
 However, this is problematic, since this modelling has the consequence that synonymous substitutions occur at different rates at the first and third positions.
 For instance, mutations from codon CTC to CTT or from CTA to TTA are both synonymous (leucine) and from C to T, but the 3x4 formalism would give them different rates.
 Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions, and if neutral, all mutations from C to T should have the same rate.
@@ -333,7 +333,7 @@ Sites under adaptive evolution are then detected based on their empirical Bayes 
 To note, in this context of site-specific finite mixture models, methods have also proposed to estimate both $\dn$ and $\ds$ separately~\citep{Pond2005a, Spielman2016}.
 
 A long series of site models has been proposed, most of which have been implemented in \texttt{PAML}~\citep{Yang1997a,Yang2007}, but also in MrBayes for the infinite mixture version~\citep{Huelsenbeck2001, Ronquist2012}.
-Specific applications at the level of the entire exome have uncovered sites of the sequence under positive recurrent selection~\citep{kosiol_patterns_2008}.
+Specific applications at the level of the entire exome have uncovered sites of the sequence under positive recurrent selection~\citep{Kosiol2008}.
 Other analyses have revealed the importance of host-pathogen or host-virus interactions in contributing to strong signals of ongoing adaptation in protein-coding sequences~\citep{Enard2016}.
 
 Finally, independently of the question of detecting positive selection, site models also turn out to be very valuable models, in the aim of uncovering selective pressures acting on specific sites.
