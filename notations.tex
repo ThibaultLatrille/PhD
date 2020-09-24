@@ -10,6 +10,9 @@
 \newcommand{\specialcell}[2][c]{%
 	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
+\newcommand{\UniDimArray}[1]{\bm{#1}}
+\newcommand{\BiDimArray}[1]{\bm{#1}}
+
 \DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\Var}{\text{Var}}
 \newcommand{\der}{\mathrm{d}}
@@ -25,17 +28,20 @@
 \newcommand{\pfix}{\proba_{\text{fix}}}
 \newcommand{\indice}{a}
 \newcommand{\indiceexp}{^{(\indice)}}
-% Time, effective population size and mutation rate.
 \newcommand{\Ne}{N_{\text{e}}}
+
+\newcommand{\vecZero}{\UniDimArray{0}}
+\newcommand{\vecOne}{\UniDimArray{1}}
 % \acrshort{DNA}
 \newcommand{\atgc}{\text{AT/GC}}
 \newcommand{\ATtoGC}{\text{AT} \rightarrow \text{GC}}
+\newcommand{\GCtoAT}{\text{GC} \rightarrow \text{AT}}
 \newcommand{\mutmatrix}{R}
-\newcommand{\Mutmatrix}{\bm{\mutmatrix}}
+\newcommand{\Mutmatrix}{\BiDimArray{\mutmatrix}}
 \newcommand{\exchan}{\rho}
-\newcommand{\Exchan}{\bm{\exchan}}
+\newcommand{\Exchan}{\UniDimArray{\exchan}}
 \newcommand{\mutequi}{\sigma}
-\newcommand{\Mutequi}{\bm{\mutequi}}
+\newcommand{\Mutequi}{\UniDimArray{\mutequi}}
 % Codons
 \newcommand{\ci}{{i}}
 \newcommand{\cj}{{j}}
@@ -48,11 +54,11 @@
 \newcommand{\nucitoj}{\nuc(\itoj)}
 \newcommand{\nbrWeak}{{z}}
 \newcommand{\submatrix}{Q}
-\newcommand{\Submatrix}{\bm{\submatrix}}
+\newcommand{\Submatrix}{\BiDimArray{\submatrix}}
 \newcommand{\subequi}{\pi}
-\newcommand{\Subequi}{\bm{\subequi}}
+\newcommand{\Subequi}{\UniDimArray{\subequi}}
 \newcommand{\probmatrix}{P}
-\newcommand{\Probmatrix}{\bm{\probmatrix}}
+\newcommand{\Probmatrix}{\BiDimArray{\probmatrix}}
 % Amino acids
 \newcommand{\aminoacid}{\text{a}}
 \newcommand{\SetAa}{1 \leq \aminoacid \leq 20}
@@ -67,7 +73,7 @@
 \newcommand{\logfit}{f}
 \newcommand{\avgpfix}{\nu}
 \newcommand{\fit}{f}
-\newcommand{\Fit}{\bm{\fit}}
+\newcommand{\Fit}{\UniDimArray{\fit}}
 \newcommand{\fiti}{\fit_{\aai}}
 \newcommand{\fitj}{\fit_{\aaj}}
 \newcommand{\scaledfit}{F}
@@ -75,12 +81,16 @@
 \newcommand{\Fitj}{\scaledfit_{\aaj}}
 \newcommand{\Fitci}{\scaledfit_{\ci}}
 \newcommand{\Fitcj}{\scaledfit_{\cj}}
-\newcommand{\ScaledFit}{\bm{\scaledfit}}
+\newcommand{\ScaledFit}{\UniDimArray{\scaledfit}}
 \newcommand{\scaledfiti}{\scaledfit_{\aai}}
 \newcommand{\scaledfitj}{\scaledfit_{\aaj}}
 \newcommand{\selcoef}{{\delta_{\fit}}}
 \newcommand{\scaledselcoef}{S}
 \newcommand{\entropy}{{\Omega}}
+\newcommand{\AAexchan}{\beta}
+\newcommand{\AAExchan}{\UniDimArray{\AAexchan}}
+\newcommand{\AAequi}{\epsilon}
+\newcommand{\AAEqui}{\UniDimArray{\AAequi}}
 % Tree
 \newcommand{\Tree}{\mathcal{T}}
 \newcommand{\state}{\mathcal{S}}
@@ -109,7 +119,7 @@
 \newcommand{\branchlength}{l}
 % Alignment
 \newcommand{\data}{D}
-\newcommand{\Data}{\bm{\data}}
+\newcommand{\Data}{\BiDimArray{\data}}
 \newcommand{\site}{\text{z}}
 \newcommand{\Nsite}{\text{Z}}
 \newcommand{\siteexp}{^{(\site)}}
@@ -127,15 +137,15 @@
 \newcommand{\branchcatexp}{^{(\branch, \cat)}}
 \newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
 \newcommand{\profile}{\phi}
-\newcommand{\Profile}{\bm{\profile}}
+\newcommand{\Profile}{\UniDimArray{\profile}}
 \newcommand{\concentrationProfile}{\alpha}
-\newcommand{\centerProfile}{\bm{\gamma}}
+\newcommand{\centerProfile}{\UniDimArray{\gamma}}
 \newcommand{\catVar}{\kappa}
 \newcommand{\catsite}{\catVar\left(\site\right)}
 \newcommand{\catmultivar}{m}
-\newcommand{\catMultiVar}{\bm{\catmultivar}}
+\newcommand{\catMultiVar}{\UniDimArray{\catmultivar}}
 \newcommand{\stickbreaking}{\theta}
-\newcommand{\StickBreaking}{\bm{\stickbreaking}}
+\newcommand{\StickBreaking}{\UniDimArray{\stickbreaking}}
 \newcommand{\stick}{\psi}
 \newcommand{\stickbreakinghyper}{\beta}
 % Traits
@@ -145,20 +155,20 @@
 \newcommand{\traitInterval}{\{1, \hdots, \Ntrait\}}
 \newcommand{\lhtInterval}{\{3, \hdots, \Ntrait\}}
 \newcommand{\Settrait}{\traiti \in \traitInterval}
-\newcommand{\contrast}{\bm{C}}
+\newcommand{\contrast}{\BiDimArray{C}}
 \newcommand{\Covariancematrix}{\Sigma}
-\newcommand{\CovarianceMatrix}{\bm{\Covariancematrix}}
+\newcommand{\CovarianceMatrix}{\BiDimArray{\Covariancematrix}}
 \newcommand{\Precisionmatrix}{\Omega}
-\newcommand{\PrecisionMatrix}{\bm{\Precisionmatrix}}
-\newcommand{\Identitymatrix}{\bm{I}}
+\newcommand{\PrecisionMatrix}{\BiDimArray{\Precisionmatrix}}
+\newcommand{\Identitymatrix}{\BiDimArray{I}}
 \newcommand{\brownian}{B}
-\newcommand{\Brownian}{\bm{\brownian}}
+\newcommand{\Brownian}{\UniDimArray{\brownian}}
 \newcommand{\covariancedf}{q}
 \newcommand{\covariancekappa}{\kappa}
-\newcommand{\Scattermatrix}{\bm{A}}
+\newcommand{\Scattermatrix}{\BiDimArray{A}}
 % Random variables
 \newcommand{\pruning}{\psi}
-\newcommand{\Multivariate}{\bm{Z}}
+\newcommand{\Multivariate}{\UniDimArray{Z}}
 \newcommand{\subhistory}{\mathcal{H}}
 
 % Genotype-Phenotype-Fitness

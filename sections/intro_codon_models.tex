@@ -278,8 +278,8 @@ Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, me
 
 Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\Subequi$ depend only on the equilibrium nucleotide frequencies ($\Mutequi$), but not on $\omega$:
 \begin{align}
-    \subequi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
-    & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{(1 - \mutequi_{T}\mutequi_{A}\mutequi_{A} - \mutequi_{T}\mutequi_{A}\mutequi_{G} - \mutequi_{T}\mutequi_{G}\mutequi_{A} )}, \label{eq:equilibrium-MG}
+    \subequi_{\ci} & = \dfrac{\left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right]}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
+    & = \dfrac{\left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right]}{(1 - \mutequi_{T}\mutequi_{A}\mutequi_{A} - \mutequi_{T}\mutequi_{A}\mutequi_{G} - \mutequi_{T}\mutequi_{G}\mutequi_{A} )}, \label{eq:equilibrium-MG}
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.
 
@@ -416,9 +416,9 @@ Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon mode
 
 Because the process is time-reversible (see chapter~\ref{chap:intro-formalism}), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
 \begin{align}
-    \subequi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
+    \subequi_{\ci} & = \dfrac{\left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right]\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
-The stationary frequency of a codon is ultimately the product of the nucleotide frequencies at its three positions ($\Mutequi$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
+The stationary frequency of a codon is ultimately the product of the nucleotide frequencies ($\Mutequi$) at its three positions and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
 
 \subsection{Empirical calibration of the model}
 \label{subsec:empirical-calibration-HB}

@@ -20,9 +20,7 @@ Attempts at an explicitly modelling of these complex selective landscapes have b
 However, these models are computationally complex~\citep{Rodrigue2010, Tamuri2012}, and classical codon models therefore remain an attractive, potentially more robust, although still perfectible, approach.
 
 %bringing in the key issue here: correctly teasing apart mutation and selection
-The parametric design of current classical models relying on aggregates parameters raises an important question.
-By capturing selection through a single parameter, $\omega$, is the mutational process estimated reliably?
-There are indications that this is not the case.
+The parametric design of current classical models, relying on a single aggregate parameter $\omega$, raises the question whether they estimate reliably the underlying mutational process.
 In their simplest form~\citep{Muse1994}, classical codon models predict that the nucleotide composition should be the same for all three positions of the codons, and should be equal to the nucleotide equilibrium frequencies implied by the underlying nucleotide substitution rate matrix.
 In reality, composition differ, the third position shows more extreme composition, reflecting the underlying mutation bias, compared to first and second positions, which are typically closer to 50\% GC~\citep{Singer2000}.
 
@@ -39,8 +37,8 @@ Conceptually, however, this is a clear symptom of a more fundamental problem: mu
 
 Practically, this misconception could have important consequences in other contexts than tests of positive selection.
 In particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences~\citep{Bolivar2019}.
-An important factor here is biased gene conversion toward GC (named gBGC), which can confound the tests for detecting positive selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
-Even in the absence of \acrshort{gBGC}, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection.
+An important factor here is biased gene conversion toward GC (called gBGC), which can confound the tests for detecting positive selection~\citep{Galtier2009,Ratnakumar2010, Figuet2014}.
+Even in the absence of \acrshort{gBGC}, however, uneven mutation rates varying across species can have an important impact on the estimation of the strength of selection.
 All this suggests that, even before introducing \acrshort{gBGC} in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
 
 %The mut-sel balance revisited: an equilibrium between two net forces
@@ -51,10 +49,8 @@ However, this implies that, at equilibrium, there will be a net mutation pressur
 %introducing $\omega$ as a tensor
 All this suggests that, in order for a codon model to correctly formalize this subtle interplay between mutation and selection, the component of the parameter vector responsible for absorbing the net effect of selection (i.e. $\omega$) should not be a scalar, as is currently the case.
 Instead, it should be a tensor, an array of $\omega$ values unfolding along multiple directions.
-What is the parametric structure being able correctly tease apart mutation rates and selection, and this, without having to explicitly model the underlying fitness landscape?
+In the present work, we address the question of whether we can derive a parametric structure being able correctly tease apart mutation rates and selection, and this, without having to explicitly model the underlying fitness landscape?
 
-%end of introduction: outline of the mean-field approach and of the results — à compléter à la fin
-In the present work, we address this question.
 In order to derive a codon model along those lines, our strategy is to first assume a true site-specific evolutionary process, following the mutation-selection formalism.
 Then, we derive the mean substitution process implied across all sites by this mechanistic model.
 Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
@@ -81,6 +77,7 @@ Alternatively, selection is modelled for non-synonymous mutations, with site-spe
 A low parameter $\alpha$ implies that each site-specific profile randomly drawn is likely uneven, with some amino acids with high fitness while other are with low fitness (for each site of the sequence).
 Ultimately, the stringency of selection increase with decreasing $\alpha$.
 Altogether, two parameters are necessary to tune the mutation bias ($\lambda$) and the stringency of selection ($\alpha$), as depicted in figure~\ref{fig:mut-bias-parameters}.
+All simulations are obtained using the same underlying topology of 180 species and 400 codon sites.
 
 \begin{figure}[htbp]
     \centering
@@ -219,12 +216,12 @@ Because selection between codons reduces to selection between pairs of amino-aci
 For $20$ amino acids, the total number of pairs of amino acid is $190$, hence $380$ parameters by counting in both directions.
 However, because of the structure of the genetic code, they are $75$ pairs that are one nucleotide away, since some amino acids are not directly accessible through a single non-synonymous mutation.
 As a result, the number of parameters necessary to determine all mean scaled fixation probability ($\omega_{\aaSource, \aaTarget}$) in both directions is $150$.
-However, under the assumption of a reversible process, the number of parameters can be reduced to $75$ parameters of exchangeabilities ($\beta_{\aaSource, \aaTarget}$) and $20$ parameters of stationary distribution ($\epsilon_{\aaSource}$).
+However, under the assumption of a reversible process, the number of parameters can be reduced to $75$ parameters of exchangeabilities ($\AAexchan_{\aaSource, \aaTarget}$) and $20$ parameters of stationary distribution ($\AAequi_{\aaSource}$).
 \begin{align}
-    \omega_{\aaSource, \aaTarget} = \epsilon_{\aaTarget} \beta_{\aaSource, \aaTarget}\text{, where } \beta_{\aaSource, \aaTarget} = \beta_{\aaTarget, \aaSource}.
+    \omega_{\aaSource, \aaTarget} = \AAequi_{\aaTarget} \AAexchan_{\aaSource, \aaTarget}\text{, where } \AAexchan_{\aaSource, \aaTarget} = \AAexchan_{\aaTarget, \aaSource}.
 \end{align}
 
-Under projected mutation-selection model, the substitution rates between codons $\submatrix_{\itoj}$ are defined from a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$, the selection coefficients $\bm{\omega}(\bm{\beta}, \bm{\epsilon})$ and the genetic code:
+Under projected mutation-selection model, the substitution rates between codons $\submatrix_{\itoj}$ are defined from a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$, the selection coefficients $\UniDimArray{\omega}(\AAExchan, \AAEqui)$ and the genetic code:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are non neighbors}, \\
@@ -237,7 +234,7 @@ where $\aai$ is the amino acid encoded by codons $\ci$.
 
 From the maximum likelihood estimates of the \acrshort{GTR} mutation matrix ($\widehat{\Mutmatrix}$), we can estimate the mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$ as previously.
 As shown in the right panel of figure~\ref{fig:mut-bias-inference}, this model can tease out observed $\atgc$ of the alignment and the underlying mutational bias.
-We can also estimate the mean scaled fixation probability of non-synonymous mutations $\widehat{\avgpfix}_{\text{MF}}$ (see section~\ref{sec:mut-bias-mean-field-omega}) which is a compound parameter of $\Mutmatrix(\Mutequi, \Exchan)$ and $\bm{\omega}$.
+We can also estimate the mean scaled fixation probability of non-synonymous mutations $\widehat{\avgpfix}_{\text{MF}}$ (see section~\ref{sec:mut-bias-mean-field-omega}) which is a compound parameter of $\Mutmatrix(\Mutequi, \Exchan)$ and $\UniDimArray{\omega}$.
 Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the $\avgpfix$ computed during the simulation, with a precision of 97.0\%.
 
 \begin{figure}[htbp]
@@ -247,12 +244,12 @@ Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the $\avgpfix$ co
     Different proxies of estimated mutational bias in the vertical axis are represented as a function of the underlying mutational bias ($\lambda$) of the simulation in the horizontal axis.
     Mutational bias can be estimated directly from the observed nucleotide frequencies in the alignment ($\atgc$ in blue solid line), similarly to figure~\ref{fig:mut-bias-AT-GC-obs}, which is skewed by selection and always less extreme than the underlying mutational bias.
     The robustness of mutational bias estimation of two different inference models are shown.
-    Selection is modelled as a single $\omega$ parameters in the Muse \& Gaut formalism in the left panel, while selection is modelled as a tensor of $\omega$ parameters in different directions using a mean-field approximation in the right panel.
+    Selection is modelled as a single $\omega$ parameters in the Muse \& Gaut formalism (MG) in the left panel, while selection is modelled as a tensor of $\omega$ parameters in different directions using a mean-field (MF) approximation in the right panel.
     In both panels, the true value of the mutational bias is represent in black solid line.
-    The estimated mutational bias $\widehat{\omega}_{\text{MG}}$ (in yellow dotted line) in the Muse \& Gaut formalism is between the true value and the observed $\atgc$.
-    Conversely, estimated mutational bias $\widehat{\omega}_{\text{MG}}$ (in yellow dotted line) in the mean-field approximation equal to the underlying value.
-    Moreover, the expected $\widehat{\atgc}$ from the parameter of the model fits the observed value in the mean-field approximation, while being skewed in the Muse \& Gaut formalism.
-    Altogether, the mean-field approximation can tease apart mutation and selection, while the Muse \& Gaut formalism has to reach a compromise between observed $\atgc$ and underlying mutational bias.
+    The estimated mutational bias $\widehat{\omega}_{\text{MG}}$ (in yellow dotted line) in the MG formalism is between the true value and the observed $\atgc$.
+    Conversely, estimated mutational bias $\widehat{\omega}_{\text{MG}}$ (in yellow dotted line) in the MF approximation equal to the underlying value.
+    Moreover, the expected $\widehat{\atgc}$ from the parameter of the model fits the observed value in the MF approximation, while being skewed in the MG formalism.
+    Altogether, the MF approximation can tease apart mutation and selection, while the MG formalism has to reach a compromise between observed $\atgc$ and underlying mutational bias.
     }
     \label{fig:mut-bias-inference}
 \end{figure}
@@ -260,8 +257,24 @@ Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the $\avgpfix$ co
 \subsection{Estimation of empirical sequence data}
 \label{subsec:estimation-of-empirical-sequence-data}
 
-The two models of inference (classical Muse \& Gaut and mean-field) can be applied to empirical alignment.
-Also, in empirical data we observed that the mean scaled fixation probability between weak and strong nucleotide is not equal, and is opposite of the nucleotide bias (see table~\ref{tab:mut-bias-estimation}).
+The two implemented models of inference, namely classical Muse \& Gaut (MG) and mean-field (MF) are also applied to empirical protein-coding DNA alignment of nucleoprotein \& lactamase found in \citet{Bloom2017}, as shown in table~\ref{tab:mut-bias-estimation}.
+
+The nucleoprotein alignment of 498 amino acids is available for 180 species, and is globally biased toward AT.
+Similarly to our simulation, underlying mutational bias estimated with codon models is greater than this observation (i.e $1 < \atgc < \widehat{\lambda}$).
+This effect is as previously due to selection at the level of amino acids concealing mutational bias in the alignment.
+Moreover, the mutational bias estimated by the MF model is more extreme than the MG estimate (i.e. $1 < \widehat{\lambda}_{\text{MG}} < \widehat{\lambda}_{\text{MF}}$), also showing that MG is underestimating the underlying bias.
+This example behaves identically to observation made with simulated alignments, where the MF model estimates a stronger mutational bias, which is supposedly closer to the real value.
+
+Additionally, the estimated mean scaled fixation probability of non-synonymous mutations, denoted $\widehat{\avgpfix}_{\text{MF}}$, can be restricted to mutations from weak nucleotides (AT) to strong (GC), or vice-versa (see section~\ref{sec:mut-bias-mean-field-omega}).
+We observe that under a mutational bias favouring AT (i.e. $\lambda > 1$), the fixation probability non-synonymous mutations is higher toward GC than toward AT (i.e. $\widehat{\avgpfix}_{MF,\ATtoGC} > \widehat{\avgpfix}_{MF,\GCtoAT}$).
+
+Reciprocally, for the gene lactamase, the alignment of 263 amino acids available for 85 species is globally biased toward GC.
+Expectedly, the mean-field estimate is even more strongly biased toward GC (i.e $\widehat{\lambda}_{\text{MF}} < \atgc < 1$).
+Curiously, the MG model estimates a weaker underlying mutational bias than the observed bias (i.e $ \atgc < \widehat{\lambda}_{\text{MG}} < 1$).
+Likewise, we observe that under a mutational bias favouring GC (i.e. $\lambda < 1$), the fixation probability of non-synonymous mutations is higher toward AT than toward GC (i.e. $\widehat{\avgpfix}_{MF,\GCtoAT} > \widehat{\avgpfix}_{MF,\ATtoGC}$).
+
+Altogether, empirical results are in agreement with observation on simulated results, namely that mutational bias results in skewed fixation probability of non-synonymous mutations opposing the mutational bias.
+Our MF model estimates mutational bias more extremal than the MG model, and articulates mutation and selection such as to estimate reliably both mutation and selection.
 
 \begin{table}[htbp]
     \centering
@@ -270,16 +283,18 @@ Also, in empirical data we observed that the mean scaled fixation probability be
         \hline
         \textbf{Estimated parameter} & Nucleoprotein & Lactamase \\
         \hline \textbf{$\atgc$ of the alignment} & 1.15 & 0.79 \\
-        \hline \textbf{Muse-Gaut mutational bias $\left({\widehat{\lambda}_{\text{MG}}} \right)$ } & 1.39 & 0.85 \\
-        \hline \textbf{Mean-field mutational bias $\left({\widehat{\lambda}_{\text{MF}}} \right)$} & 1.64 & 0.68 \\
-        \hline \textbf{Mean-field fixation ratio from AT to GC $\left(\widehat{\avgpfix}_{\ATtoGC}\right)$} & 0.14 & 0.31 \\
-        \hline \textbf{Mean-field fixation ratio from GC to AT $\left(\widehat{\avgpfix}_{\textbf{GC} \rightarrow \textbf{AT}}\right)$} & 0.10 & 0.44 \\
+        \hline \textbf{Muse \& Gaut mutational bias ($\widehat{\lambda}_{\text{MG}}$)} & 1.39 & 0.85 \\
+        \hline \textbf{Mean-field mutational bias ($\widehat{\lambda}_{\text{MF}}$)} & 1.64 & 0.68 \\
+        \hline \textbf{Mean-field scaled fixation probability from AT to GC ($\widehat{\avgpfix}_{MF,\ATtoGC}$)} & 0.14 & 0.31 \\
+        \hline \textbf{Mean-field scaled fixation probability from GC to AT ($\widehat{\avgpfix}_{MF,\GCtoAT}$)} & 0.10 & 0.44 \\
         \hline
     \end{tabu}}
     \caption[Estimated parameters]{
-    Estimated parameters
-    Nucleoprotein alignment of 498 amino acids available for 180 species (left column).
-    Lactamase alignment of 263 amino acids available for 85 species (right column).
+    Estimated parameters of mutational bias ($\widehat{\lambda}$) from two models of inference, namely classical Muse \& Gaut (MG) and mean-field (MF).
+    These models are applied to two distinct dataset of protein-coding DNA alignment, nucleoprotein in the left column and lactamase in the right column.
+    By taking into account selection in multiple direction, MG models estimates stronger mutational bias than the MG model.
+    For the MG model the mean scaled fixation probability of non-synonymous mutations ($\widehat{\avgpfix}_{MF}$) can obtained either from weak (AT) to strong nucleotides (GC), or vice-versa.
+    The fixation probability of non-synonymous mutations is opposed to the underlying mutational bias, such that a skewed mutational process results in a skewed selection, justifying that they must be articulated together.
     }
     \label{tab:mut-bias-estimation}
 \end{table}
@@ -289,48 +304,34 @@ Also, in empirical data we observed that the mean scaled fixation probability be
 
 The observed composition of \acrshort{DNA} sequences is the result of the interplay between mutation and selection, such that the observed mutational bias in the alignment is different to the underlying mutational bias.
 In protein-coding \acrshort{DNA} sequences, the nucleic composition result in the subtle interplay between mutation at the nucleic level and selection at the protein level.
-For example, mutational bias toward AT is balanced by selection in the opposite direction toward GC, potentially a confounding effect with \acrshort{gBGC}.
-
-Unfortunately, parametric codon models developed to estimate the rate of evolution on amino acids use the observed mutational bias at the protein level, discarding the effect of selection.
-We show that even if the mutational process is misspecified, parametric codon models are able to estimate reliably the rate of evolution acting on amino acids.
-However, such parametric codon models are inherently misspecified to untangle mutation and selection, and they don't estimate the mutational process reliably.
-Reliable inference of mutational bias thus requires to model selection in different directions.
+Unfortunately, parametric codon models are inherently misspecified to untangle mutation and selection, and they don't estimate the mutational process reliably.
 
 In this work we seek to find the simplest parametric codon model able to correctly tease apart mutation rates on one hand, and net mean fixation probabilities without having to explicitly model the underlying fitness landscape.
-In order to derive a codon model along those lines, our strategy is to first assume a true site-specific evolutionary process, following the mutation-selection formalism.
-For the sake of simplicity and illustration, we assume a site-specific, time-independent fitness landscape.
-Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
-This mean-field $61$x$61$ substitution matrix is expressed in terms of mutation rates and average fixation probabilities.
-Finally, we identify average fixation probabilities appearing in this expression with the $\omega$ tensor we are looking for.
-What we show is that we should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino acids that are nearest neighbours in the genetic code.
+In order to derive a codon model along those lines, our strategy is to first assume an underlying site-specific, time-independent fitness landscape.
+Then, we derive the gene-wise mean fixation probabilities between all pairs of codons, implied across all sites by the underlying process.
+Finally, we observe that this mean-field process should in fact invoke as many distinct $\omega$ parameters as there are pairs of amino acids that are nearest neighbours in the genetic code.
 There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor ($95$ parameters for selection).
 
-Inferring parameters on simulated alignments, we show that the model correctly estimates the mutation rates.
+Inferring parameters on simulated alignments, we show that the model correctly estimates the underlying mutational bias and selective pressure.
+Applied to empirical alignments, we also observed that their is a selective pressure for certain amino acid opposed to the underlying mutational bias, justifying that selection and mutation must be articulated together.
+
+This work first points to a fundamental behavior of molecular sequences, namely that they are not optimized but are the result of an equilibrium between forces.
+In the specific case highlighted in this work, mutational bias at the nucleotide level results in suboptimal amino-acid being overrepresented in the sequence, leading to selection favouring amino acids that where underrepresented.
+As an example of this pervasive effect, observed selective effect toward GC is mimicking biased gene conversion toward GC (\acrshort{gBGC}).
+As a result, experiments observing fixation bias toward GC must also rule out that this fixation bias is not an artifact or byproduct of an underlying mutational bias toward AT.
+Altogether, our observations and modelling principles offers tools to better understand how mutation-mutation will work together with biased gene conversion (\acrshort{gBGC}), and therefore also yields better understanding of how \acrshort{gBGC} will impact both nucleotide composition and $\dnds$.
+It worth mentioning that in our result focused on the fixation probability from AT to GC ($\widehat{\avgpfix}_{\ATtoGC}$) because of the relationship to gBGC, while in practice, the same analysis and methods can be applied to any subset of nucleotides or codons.
+
 Our mean-field parametric model use gene-wise parameters of mean scaled fixation probabilities, and even though the underlying selective landscape is site-specific, such approximation can nonetheless be used to disentangle mutation and selection.
+As a result, this study demonstrates that phenomenological models derived out of mechanistic models are more compact (i.e. not site-specific), and in certain cases are sufficient to extract relevant parameters.
+This methodology for deriving inference models is done in two steps, first assuming an underlying mechanistic model of sequence evolution, parameterized by variables that are derived from first principles (fitness landscape, mutations rates, $\hdots$).
+Subsequently, the phenomenological inference model is obtained by matching aggregate parameters derived out of the mechanistic model.
+Altogether, inference model can be phenomenological in practice, but should nonetheless be derived for mechanistic models such as to articulate the interplay between, mutation, selection, drift and other evolutionary forces.
 
-This work points to a fundamental behavior of molecular sequences, namely that they are not optimized but are the result of an equilibrium between forces.
-Fixation bias or selective effects can be a response to another underlying mechanism, in this case mutational bias.
-
-As an example, observed selective effect toward GC, mimicking biased gene conversion toward GC (\acrshort{gBGC}) can be a byproduct of an underlying mutational bias toward AT.
-Our observations and modelling principles offers tools to better understand how mutation-mutation will work together with biased gene conversion (\acrshort{gBGC}), and therefore also yields better understanding of how \acrshort{gBGC} will impact both nucleotide composition and $\dnds$.
-
-This study demonstrates that phenomenological models derived out of mechanistic models are more compact, and in certain cases are sufficient to extract relevant parameters.
-Models of inference are classified broadly into phenomenological and mechanistic~\citep{Rodrigue2010a}.
-Mechanistic models dissect the detailed causal chain of events responsible for each substitution event and then use this to construct a detailed model from first principles.
-By doing this, they relate structural, population genetics and ecological parameters to the likelihood function (see chapter~\ref{chap:MutSelDrift}).
-As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and varying effective population size across lineages.
-Once such models have been fitted to empirical data, the estimated parameters can then be confronted with independent estimations, which allow one to robustly test the model since independent estimates of biological and ecological parameters should of course be congruent~\citep{Dasmeh2014}.
-However mechanistic models are computationally very intensive, to a point where they can reach the current limits in available computing power.
-Apart from this physical limit of resource available, the use of computing resources bears ecological consequences on environmental degradation and $C0_2$.
-Moreover, increased complexity of the models bears another consequence: the liability of the code and software decreases, compromising the reproducibility of the results obtained with such models.
-For these reasons (and primarily the computational limitations), mechanistic models tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter~\ref{chap:MutSelDrift}).
-In contrast, phenomenological models are formulated in terms of aggregate parameters, capturing the average rate of synonymous or non-synonymous substitutions, or their ratio.
-Their aim is to determine the statistical distribution of these aggregate quantities across the tree, across genes, or across sites, but without deriving them from first principles.
-Compared to mechanistic models, they are computationally much more efficient.
-On the other hand, they do not give direct access to the population-genetic parameters.
-This raises the question of how to benefit from the advantages of the two approaches.
-Observations and experiments done throughout this thesis led me to crystallize the conception that models of inference should be mechanistic in essence, in the sense that they should be parameterized by variables that are derived from first principles.
-But should be phenomenological in practice, in the sense that these variables should nevertheless be aggregate parameters.
+Finally, this work is preliminary result, and this model should be tested against a more diverse range of empirical data, in terms of phylogenetic depth, strength of selection, codon usage bias to assert for the validity of our empirical results.
+Also, the empirical fit to the data between the models (e.g. using AIC) should be more carefully examined.
+Indeed, by setting $\AAEqui = \vecOne$ and $\AAExchan = \omega \vecOne$ in our mean-field models, we retrieve the nested Muse \& Gaut model, hence both models are directly comparable.
+In addition, severals other codon models~\citep{Rodrigue2008a,KosakovskyPond2020} should be included in a broader comparison of estimation of underlying mutational bias and strength of selection on protein-coding DNA sequence.
 
 
 \section{Materials \& Methods}
@@ -368,7 +369,7 @@ The mutation rate matrix is:
 \end{equation}
 The stationary distribution $ \Subequi$ must be annihilated by the mutation matrix $\Mutmatrix$, which gives the stationary distribution:
 \begin{align}
-    \Mutequi \Mutmatrix & = 0, \\
+    \Mutequi \Mutmatrix & = \vecOne, \\
     \iff \Mutequi & = \left( \dfrac{\lambda}{2+2\lambda}, \dfrac{1}{2+2\lambda}, \dfrac{1}{2+2\lambda}, \dfrac{\lambda}{2+2\lambda} \right).
     \label{nucStationarity}
 \end{align}
@@ -409,11 +410,13 @@ At one particular site, under a time-independent fitness landscape, the substitu
 At the root the tree, the sequence is obtained by sampling from the equilibrium stationary distribution.
 The stationary distribution $\Subequi$ at site $\site$ can be obtained as:
 \begin{align}
-    \subequi_{\ci}\siteexp & = \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \text{ where } \ \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \lambda^{\nbrWeak_{\cj}} \e^{\Fitj\siteexp} \right)^{-1},
+    \subequi_{\ci}\siteexp & = \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp},
     \label{codonStationarity}
 \end{align}
-and $\nbrWeak_{\ci}$ is the number of weak nucleotides (A or T) in the codon (between 0 and 3).
-
+where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$, and $\mathcal{Z}\siteexp $ is the normalizing constant:
+\begin{align}
+    \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\cj[k]}\right] \e^{\Fitj\siteexp} \right)^{-1}
+\end{align}
 Moreover, the substitution process is reversible and fulfils detailed balance conditions at each site $\site$:
 \begin{align}
     \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp = \subequi_{\cj}\siteexp \submatrix_{\cj, \ci}\siteexp
@@ -462,7 +465,7 @@ Averaged over the all tree, the mean scaled fixation probability is :
 \end{align}
 where the integral is taken over all branches of the tree, while the integrand ($\avgpfix (t)$) is a piece-wise function changing after every point substitution event.
 
-Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides is $\avgpfix_{\ATtoGC}$ is obtained similarly by restricting the sums (in numerator and denominator) to one nucleotide mutations only from weak to strong.
+Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{\ATtoGC}$ is obtained similarly by restricting the sums (in numerator and denominator) to one nucleotide mutations only from weak to strong.
 
 \subsection{Derivation of mean-field model}
 \label{subsec:mean-field-derivation}
@@ -470,11 +473,11 @@ The average fixation probability between codon $\ci$ and codon $\cj$ is given as
 \begin{align}
     \left\langle \avgpfix_{\itoj} \right\rangle & = \dfrac{ \left\langle \subequi_{\ci} 2\Ne \pfix(\itoj) \right\rangle }{ \left\langle \subequi_{\ci} \right\rangle }, \\
     & = \dfrac{ \sum\limits_{\site} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \subequi_{\ci}\siteexp }, \\
-    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} \e^{\Fiti\siteexp} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \mathcal{Z}\siteexp \lambda^{\nbrWeak_{\ci}} }, \\
-    & = \dfrac{ \lambda^{\nbrWeak_{\ci}} \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{ \lambda^{\nbrWeak_{\ci}} \sum\limits_{\site} \mathcal{Z}\siteexp  }, \\
-    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }. \\
+    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} }, \\
+    & = \dfrac{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }, \\
+    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} },  \\
 \end{align}
-Which is independent of the codon but solely on the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
+As a result, $\left\langle \avgpfix_{\itoj} \right\rangle$ is depends on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
 \begin{align}
     \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }. \\
 \end{align}
@@ -482,13 +485,16 @@ Which is independent of the codon but solely on the source amino acid ($\aai$) a
 \subsection{Mean scaled fixation probability under the mean-field model}
 \label{sec:mut-bias-mean-field-omega}
 
-The mean-field model is parameterized by a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\bm{\omega}(\bm{\beta}, \bm{\epsilon})$
-The mean scaled fixation probability is:
+The mean-field model is parameterized by a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\UniDimArray{\omega}(\AAExchan, \AAEqui)$
+As a result, the mean scaled fixation probability of non-synonymous mutations is:
 \begin{align}
-    \avgpfix_{\text{MF}} & = \dfrac{  \sum\limits_{\cj \in \setNonSynNeighbors} \subequi_{\ci} Q_{\itoj}}{ \sum\limits_{\cj \in \setNonSynNeighbors} \subequi_{\ci} \mu_{\itoj}}, \\
-    & = \dfrac{ \sum\limits_{i} \sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]} \epsilon_{\aaj} \sum\limits_{j \in \NonSyn_{\ci}} \mutmatrix_{\nucitoj} \epsilon_{\aaj} \beta_{\aai, \aaj} }{\sum\limits_{i} \sigma_{\ci[1]}\sigma_{\ci[2]}\sigma_{\ci[3]} \epsilon_{\aaj} \sum\limits_{j \in \NonSyn_{\ci} } \mutmatrix_{\nucitoj}},
+    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
+    & = \dfrac{ \sum\limits_{\ci} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits_{\ci} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.
+
+Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{MF, \ATtoGC}$ is obtained similarly by restricting the sums (in numerator and denominator) to one nucleotide mutations only from weak to strong.
+Conversely, by restricting the sum from strong (GC) to weak (AT), we obtain $\avgpfix_{MF, \GCtoAT}$.
 
 \subsection{Inference method with \texttt{Hyphy}}
 \label{subsec:inference-method-with-hyphy}

@@ -1005,7 +1005,7 @@ By Bayes theorem, the posterior on $\CovarianceMatrix$, conditional on a particu
 \end{equation}
 This invert Wishart distribution can be obtained by sampling $\Nbranch + 3$ independent and identically distributed multivariate normal random variables $\Multivariate\indiceexp$ defined by
 \begin{equation}
-    \Multivariate\indiceexp \sim \mathcal{N} \left( \bm{0}, \left[\covariancekappa \Identitymatrix + \Scattermatrix\right]^{-1} \right).
+    \Multivariate\indiceexp \sim \mathcal{N} \left( \vecZero, \left[\covariancekappa \Identitymatrix + \Scattermatrix\right]^{-1} \right).
 \end{equation}
 And from these multivariate samples, $\CovarianceMatrix$ is Gibbs sampled as:
 \begin{equation}

@@ -119,7 +119,7 @@ In the case of the illustrative example, the total probability is given as:
 
 And because the process is reversible, the codon equilibrium frequencies satisfy the equations:
 \begin{align}
-    \bm{0} & = \Subequi\branchsiteexp \Submatrix\branchsiteexp \\
+    \vecZero & = \Subequi\branchsiteexp \Submatrix\branchsiteexp \\
     \iff \Subequi\branchsiteexp & = \Subequi\branchsiteexp \Probmatrix\branchsiteexp \\
     \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
 \end{align}
@@ -177,16 +177,16 @@ More specifically, the parameters of the model (collectively denoted $\theta$) a
 The probability of those parameters are going to be modified after acquisition of information supplied by observed data.
 Formally, this update of our knowledge is captured by the computation of the posterior distribution, which is obtained by conditioning the random variable theta on the observed value for the data:
 \begin{equation}
-    \proba (\theta \mid \data)=\frac{\proba (\data \mid \theta)\proba (\theta)}{\proba (\data)}.
+    \proba (\theta \mid \Data)=\frac{\proba (\Data \mid \theta)\proba (\theta)}{\proba (\Data)}.
 \end{equation}
 Where the denominator is the marginal likelihood, meaning the likelihood integrated over the prior:
 \begin{equation}
-    \proba (\data) = \int \proba (D \mid \theta) \proba (\theta) \der \theta,
+    \proba (\Data) = \int \proba (D \mid \theta) \proba (\theta) \der \theta,
 \end{equation}
 In an inference context, because we are only interested in the relative posterior probabilities of alternative values of $\theta$, the marginal likelihood is a constant.
 For that reason, Bayes theorem can also be presented as:
 \begin{equation}
-    \proba (\theta \mid \data) \propto \proba (\data \mid \theta)\proba (\theta).
+    \proba (\theta \mid \Data) \propto \proba (\Data \mid \theta)\proba (\theta).
 \end{equation}
 Simply stating that posterior is proportional to likelihood multiplied by prior.
 In other words, updating our knowledge, such as initially represented by our prior, is done multiplicatively, using the likelihood, and renormalizing to obtain a proper probability distribution (the posterior).
@@ -229,7 +229,7 @@ This hierarchy can naturally be extended across sites, across branches or across
         \node[state] (Q) [below right=of P] {$\Submatrix\siteexp$};
         \node[state] (BL) [BLUE, above right=of P] {$\branchlength\branchexp$};
         \node[state] (Exp) [RED, right=of BL] {$1$};
-        \node[state] (F) [below right=of Q] {$\bm{F}\siteexp$};
+        \node[state] (F) [below right=of Q] {$\ScaledFit\siteexp$};
         \node[state] (sb) [BLUE, right=of F] {$\Profile$};
         \node[state] (sbH) [RED, right=of sb] {$\stickbreakinghyper$};
         \node[state] (R) [above right=of Q] {$\Mutmatrix$};
@@ -320,7 +320,7 @@ Various algorithms can be used to sample these individual variables, depending o
 MCMC samplers target the distribution over the model parameters by repeatedly invoking the pruning algorithm to recalculate the pruning-based likelihood.
 This is most often the limiting step of the \acrshort{MCMC}.
 An alternative is to augment the observed sequence data with a realization of the random process resulting in a detailed substitution history over the tree~\citep{Nielsen2002,Rodrigue2008}.
-Conditionally on the detailed substitution history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \data$), under the target distribution obtained by combining the mapping-based likelihood with the prior over model parameters.
+Conditionally on the detailed substitution history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \Data$), under the target distribution obtained by combining the mapping-based likelihood with the prior over model parameters.
 The key idea that makes this strategy efficient is that the mapping-based likelihood depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the likelihood~\citep{Lartillot2006,DeKoning2010,Romiguier2012,Irvahn2014,Davydov2016,Gueguen2018}.
 On the other hand, this requires to implement more complex \acrshort{MC} procedures that have to alternate between:
 \begin{enumerate}

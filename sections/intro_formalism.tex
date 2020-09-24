@@ -426,7 +426,7 @@ This example can be generalized for any closed loop, such that the reversibility
 \subsection{Stationary distribution}
 
 A realization of the Markov chain for a long period of time results in a given proportion of the time for which the process is fixed for a specific allele, where this proportion depends of the allele fitness, the mutational process and $\Ne$.
-Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\bm{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time.
+Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\UniDimArray{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time.
 
 Moreover, under the condition that the Markov chain is time-reversible, the detailed balance for the stationary distribution is satisfied:
 \begin{align}
@@ -435,7 +435,7 @@ Moreover, under the condition that the Markov chain is time-reversible, the deta
     & = - \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{ \e^{F_{A}}(\e^{-F_{A}} - \e^{- F_{B}}) }{ \e^{F_{B}}(\e^{-F_{B}} - \e^{- F_{A}})}  \\
     & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}} \dfrac{\e^{F_{A}}}{\e^{F_{B}}} \\
 \end{align}
-Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\bm{\sigma}$) is satisfied:
+Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\UniDimArray{\sigma}$) is satisfied:
 \begin{align}
     \dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}}
 \end{align}

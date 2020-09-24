@@ -22,7 +22,10 @@ In the mutation selection-framework developed, the fitness of a given genotype i
 	\scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) &= 4 \Ne (f_\cj\siteexp-f_\ci\siteexp) \nonumber \\
 	& = \scaledfit_\cj\siteexp-\scaledfit_\ci\siteexp
 \end{align}
-Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$) codon is a function of the nucleotide changes between the codons. If the codons are not neighbor, meaning a single mutation is not sufficient to jump from $\ci$) to $\cj$, the mutation rate is equal to $0$. If the codons are neighbors, the mutation rate is given by the nucleotide rate matrix ($ \bm{u} $). Altogether, the scaled mutation rate $\theta_{\itoj}$ from $\ci$ to $\cj$ is:
+Similarly, the mutation rate between by the ancestral ($\ci$) and derived ($\cj$) codon is a function of the nucleotide changes between the codons.
+If the codons are not neighbor, meaning a single mutation is not sufficient to jump from $\ci$) to $\cj$, the mutation rate is equal to $0$.
+If the codons are neighbors, the mutation rate is given by the nucleotide rate matrix ($\UniDimArray{u}$).
+Altogether, the scaled mutation rate $\theta_{\itoj}$ from $\ci$ to $\cj$ is:
 \begin{equation}
 	\theta_{\itoj}(\Ne, u, \Mutmatrix) = 4 \Ne u \mutmatrix_{\itoj}
 \end{equation}
