@@ -195,12 +195,15 @@ In its most general form consisting of 12 free parameters:
 \begin{equation}
     \label{eq:mutrates}
     \Mutmatrix =
-    \begin{pmatrix}
-        - & {\mutmatrix_{AC}} & {\mutmatrix_{AG}} & {\mutmatrix_{AT}} \\
-        {\mutmatrix_{CA}} &                 - & {\mutmatrix_{CG}} & {\mutmatrix_{CT}} \\
-        {\mutmatrix_{GA}} & {\mutmatrix_{GC}} &                 - & {\mutmatrix_{GT}} \\
-        {\mutmatrix_{TA}} & {\mutmatrix_{TC}} & {\mutmatrix_{TG}} & -
-    \end{pmatrix}
+    \begin{blockarray}{ccccc}
+        & A & C & G & T \\
+        \begin{block}{c(cccc)}
+            A & - & {\mutmatrix_{AC}} & {\mutmatrix_{AG}} & {\mutmatrix_{AT}} \\
+            C & {\mutmatrix_{CA}} &                 - & {\mutmatrix_{CG}} & {\mutmatrix_{CT}} \\
+            G & {\mutmatrix_{GA}} & {\mutmatrix_{GC}} &                 - & {\mutmatrix_{GT}} \\
+            T & {\mutmatrix_{TA}} & {\mutmatrix_{TC}} & {\mutmatrix_{TG}} & - \\
+        \end{block}
+    \end{blockarray}
 \end{equation}
 By definition of the instantaneous rate matrix, the sum of the entries in each row of the nucleotide rate matrix $\Mutmatrix$ is equal to $0$, giving the diagonal entries:
 \begin{equation}
@@ -211,12 +214,15 @@ Most often, this matrix is assumed to be a generalized time-reversible~\citep{Ta
 \begin{equation}
     \label{eq:mutrates-GTR}
     \Mutmatrix =
-    \begin{pmatrix}
-        - & {\exchan_{AC}\mutequi_C} & {\exchan_{AG}\mutequi_G} & {\exchan_{AT}\mutequi_T} \\
-        {\exchan_{AC}\mutequi_A} &                        - & {\exchan_{CG}\mutequi_G} & {\exchan_{CT}\mutequi_T} \\
-        {\exchan_{AG}\mutequi_A} & {\exchan_{CG}\mutequi_C} &                        - & {\exchan_{GT}\mutequi_T} \\
-        {\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & -
-    \end{pmatrix}
+    \begin{blockarray}{ccccc}
+        & A & C & G & T \\
+        \begin{block}{c(cccc)}
+            A & - & {\exchan_{AC}\mutequi_C} & {\exchan_{AG}\mutequi_G} & {\exchan_{AT}\mutequi_T} \\
+            C & {\exchan_{AC}\mutequi_A} &                        - & {\exchan_{CG}\mutequi_G} & {\exchan_{CT}\mutequi_T} \\
+            G & {\exchan_{AG}\mutequi_A} & {\exchan_{CG}\mutequi_C} &                        - & {\exchan_{GT}\mutequi_T} \\
+            T & {\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & - \\
+        \end{block}
+    \end{blockarray}
 \end{equation}
 
 Then, grouping nucleotides into codons, the mutation rate induced by this nucleotide process from codon $\ci$ to $\cj$ depends on the underlying nucleotide change between the two codons.
@@ -225,7 +231,7 @@ With this notation, the mutation rate $\mu_{\itoj}$ from codon $\ci$ to $\cj$ is
 \begin{equation}
     \mu_{\itoj} =
     \begin{dcases}
-        \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are one mutation away,} \\
+        \mutmatrix_{\nucitoj} \text{ if codons $\ci$ and $\cj$ are one mutation away,} \\
         0 \text{ else.}
     \end{dcases}
 \end{equation}
@@ -246,9 +252,9 @@ In contrast, non-synonymous mutations are considered under selection such that t
 Altogether, the $61$-by-$61$ codon substitution matrix of \citet{Muse1994} is defined entirely by the mutation matrix ($\Mutmatrix$), $\omega$ and the genetic code:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
-        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if $\ci$ and $\cj$ are non-synonymous}.
+        \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
+        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \text{ if codons $\ci$ and $\cj$ are synonymous,} \\
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:codon-models}
 \end{equation}
@@ -270,12 +276,12 @@ Conversely, a default of non-synonymous substitutions, leading to $\omega<1$, me
 \subsection{Equilibrium properties}
 \label{subsec:equilibrium-properties}
 
-Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\bm{\pi}$ depend only on the equilibrium nucleotide frequencies ($\Mutequi$), but not on $\omega$:
+Under the Muse \& Gaut formalism, the codon equilibrium frequencies ($\Subequi$ depend only on the equilibrium nucleotide frequencies ($\Mutequi$), but not on $\omega$:
 \begin{align}
-    \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
+    \subequi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]} } \\
     & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}}{(1 - \mutequi_{T}\mutequi_{A}\mutequi_{A} - \mutequi_{T}\mutequi_{A}\mutequi_{G} - \mutequi_{T}\mutequi_{G}\mutequi_{A} )}, \label{eq:equilibrium-MG}
 \end{align}
-where $\ci[1]$ denotes the nucleotide at position $1$ of codon $i$.
+where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.
 
 As a result of equation~\ref{eq:equilibrium-MG}, the Muse \& Gaut formalism predicts that the nucleotide composition is the same for all $3$ positions of the codons.
 However it has empirically been observed that the nucleotide compositions are in fact not identical~\citep{Singer2000}.
@@ -288,9 +294,9 @@ In any case, this suggests that the mutation matrices estimated by codon models 
 \subsection{The Goldman \& Yang formalism}
 \label{subsec:GY-formalism}
 
-In the alternative \citet{Goldman1994} formalism, the mutation rate between two codons does not depend only on the exchangeability between the underlying nucleotide change ($\exchan_{\nucitoj}$), but also on the frequency of the target codon ($\pi_{\cj}$):
+In the alternative \citet{Goldman1994} formalism, the mutation rate between two codons does not depend only on the exchangeability between the underlying nucleotide change ($\exchan_{\nucitoj}$), but also on the frequency of the target codon ($\subequi_{\cj}$):
 \begin{equation}
-    \mu_{\itoj} = \exchan_{\nucitoj} \pi_{\cj}.
+    \mu_{\itoj} = \exchan_{\nucitoj} \subequi_{\cj}.
 \end{equation}
 
 Careful examination of this model reveals a number of peculiar properties, which seem undesirable.
@@ -401,16 +407,16 @@ The rate of substitution from codon $\ci$ to $\cj$ is derived from equation~\ref
 Altogether, the $61$-by-$61$ codon substitution matrix of mechanistic codon models $\Submatrix$ is defined entirely by the mutation matrix ($\Mutmatrix$), the vector of $20$ amino-acid relative fitness ($\Fit$) and the genetic code:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
+        \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if codons $\ci$ and $\cj$ are synonymous,} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:propensities-models}
 \end{equation}
 
 Because the process is time-reversible (see chapter~\ref{chap:intro-formalism}), from equation~\ref{eq:equilibrium-mut-sel}, the stationary distribution equals to:
 \begin{align}
-    \pi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
+    \subequi_{\ci} & = \dfrac{\mutequi_{\ci[1]}\mutequi_{\ci[2]}\mutequi_{\ci[3]}\e^{\Fiti}}{\sum\limits_{\cj}\mutequi_{\cj[1]}\mutequi_{\cj[2]}\mutequi_{\cj[3]}\Fitj }.
 \end{align}
 The stationary frequency of a codon is ultimately the product of the nucleotide frequencies at its three positions ($\Mutequi$) and the scaled Wrightian fitness of the amino-acid ($\e^{\Fiti}$).
 
@@ -421,7 +427,7 @@ Fitting the mutation-selection model on a sequence alignment, via equation (\ref
 Several approaches have been used to do this.
 In the original approach, \citet{Halpern1998} leveraged the detailed balance:
 \begin{align}
-    \frac{\pi_{\ci}}{\pi_{\cj}} & = \frac{\submatrix_{\jtoi}}{\submatrix_{\itoj}} \\
+    \frac{\subequi_{\ci}}{\subequi_{\cj}} & = \frac{\submatrix_{\jtoi}}{\submatrix_{\itoj}} \\
     & = \frac{\mu_{\jtoi} \left( \Fiti - \Fitj \right) \left(1 - \e^{\Fiti - \Fitj} \right)}{\mu_{\itoj}\left( \Fitj - \Fiti \right) \left(1 - \e^{\Fitj - \Fiti} \right)} \\
     & =  \frac{\mu_{\jtoi} \left(\e^{\Fiti - \Fitj} - 1 \right)}{\mu_{\itoj} \left(1 - \e^{\Fitj - \Fiti} \right)} \\
     & =  \frac{\mu_{\jtoi} \e^{\Fiti} \left(\e^{- \Fitj} - \e^{- \Fiti} \right)}{\mu_{\itoj}  \e^{\Fitj} \left(\e^{- \Fitj} - \e^{- \Fiti} \right)} \\
@@ -429,12 +435,12 @@ In the original approach, \citet{Halpern1998} leveraged the detailed balance:
 \end{align}
 Such that the scaled selection coefficients are related to the stationary codon frequencies:
 \begin{equation}
-    \Fiti - \Fitj = \ln \left( \frac{\pi_{\ci} \mu_{\itoj} }{\pi_{\cj} \mu_{\jtoi}} \right)
+    \Fiti - \Fitj = \ln \left( \frac{\subequi_{\ci} \mu_{\itoj} }{\subequi_{\cj} \mu_{\jtoi}} \right)
 \end{equation}
 And finally the substitution rate between codon $\ci$ and $\cj$ is:
 \begin{align}
     \submatrix_{\itoj} & = \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \\
-    & = \mu_{\itoj} \frac{ \ln \left( \frac{\pi_{\cj} \mu_{\jtoi}}{\pi_{\ci} \mu_{\itoj} } \right) }{ 1 -  \frac{\pi_{\ci} \mu_{\itoj} }{\pi_{\cj} \mu_{\jtoi}} }
+    & = \mu_{\itoj} \frac{ \ln \left( \frac{\subequi_{\cj} \mu_{\jtoi}}{\subequi_{\ci} \mu_{\itoj} } \right) }{ 1 -  \frac{\subequi_{\ci} \mu_{\itoj} }{\subequi_{\cj} \mu_{\jtoi}} }
 \end{align}
 As a result, the substitution rate from codon $\ci$ to $\cj$ can be approximated based on a plugin estimator for both the mutational process and the amino-acid frequencies, independently estimated.
 Alternatively, site-specific amino-acid preferences have been estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010, Rodrigue2014}.
@@ -458,9 +464,9 @@ Another example of a mutation-selection mechanistic codon model is one in which 
 It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
-        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} }\text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
+        \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
+        \submatrix_{\itoj} & = \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} }\text{ if codons $\ci$ and $\cj$ are synonymous,} \\
+        \submatrix_{\itoj} & = \omega \mutmatrix_{\nucitoj} \dfrac{\Fitcj - \Fitci}{1 - \e^{\Fitci - \Fitcj} } \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:yang-codon-models}
 \end{equation}
@@ -512,9 +518,9 @@ Once fitted to the data, the classical Muse \& Gaut (\acrshort{MG}) formalism re
 From there, one can compute the substitution and mutation rates of each codon substitution.
 Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
 \begin{align}
-    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \omega \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \omega \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \omega,
 \end{align}
 where $\NonSyn_{\ci}$ is the set of non-synonymous codons neighbours to codon $\ci$.
@@ -526,8 +532,8 @@ On the other hand, the mechanistic codon models in the Halpern \& Bruno (\acrsho
 From there, one can also compute the fixation probability individually for each codon substitution.
 Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
 \begin{align}
-    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \pi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \dfrac{ \sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \pi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
+    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \dfrac{ \sum\limits_{i} \subequi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \subequi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
 Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
@@ -552,9 +558,9 @@ But assumptions of the models can be broken, resulting in discrepancy between th
 This deviation can be captured as a gene-wide multiplying factor $\omega_*$~\citep{Rodrigue2016}:
 \begin{equation}
     \begin{dcases}
-        \submatrix_{\itoj} & = 0 \text{ if $\ci$ and $\cj$ are more than one mutation away} \\
-        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if $\ci$ and $\cj$ are synonymous} \\
-        \submatrix_{\itoj} & = \omega_* \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if $\ci$ and $\cj$ are non-synonymous}.
+        \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
+        \submatrix_{\itoj} & = \mu_{\itoj} \text{ if codons $\ci$ and $\cj$ are synonymous,} \\
+        \submatrix_{\itoj} & = \omega_* \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} } \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:propensities-models-omegastar}
 \end{equation}

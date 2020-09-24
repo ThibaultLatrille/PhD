@@ -200,6 +200,7 @@
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
 \usepackage{cancel}
 \usepackage{xfrac, nicefrac}
+\usepackage{blkarray}
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,arrows,automata,calc}
 \usepackage{bm}

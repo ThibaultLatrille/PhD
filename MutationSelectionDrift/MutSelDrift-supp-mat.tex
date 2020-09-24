@@ -684,21 +684,21 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 \begin{table}[H]
     \input{primates/SiteMutSelBranchNe_TraitsCorrelation.tex}
     \caption[Correlation coefficient matrix in primates ($\Ne$)]{
-    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/SiteMutSelBranchNe_TraitsCovariance.tex}
     \caption[Covariance matrix in primates ($\Ne$)]{
-    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/SiteMutSelBranchNe_TraitsPartialCorrelation.tex}
     \caption[Partial correlation coefficient matrix in primates ($\Ne$)]{
-    Partial correlation coefficient between Neffective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Partial correlation coefficient between Neffective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -784,21 +784,21 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCorrelation.tex}
     \caption[Correlation coefficient matrix in primates ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCovariance.tex}
     \caption[Covariance matrix in primates ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsPartialCorrelation.tex}
     \caption[Partial correlation coefficient matrix in primates ($\omega$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -979,7 +979,7 @@ where we define the sufficient statistics:
 Once these sufficient statistics have been computed, the parameters of the substitution matrix $\Submatrix\branchcatexp$ can be resampled conditional on $\subhistory\branchcatexp$,
 using equation~\ref{eq:PathSuffStat} each time the likelihood needs to be recomputed. This leads to relatively fast \acrshort{MCMC} strategy.
 
-\subsubsection{Length sufficient statistics}
+\subsection{Length sufficient statistics}
 $\subhistory\branchsiteexp$ can also be gathered across all sites along a specific branch, giving $\subhistory\branchexp$.
 Then the probability of the substitution history given the branch lengths ($\branchlength\branchexp = \mu\branchexp \branchtime\branchexp$), takes a very simple form:
 \begin{equation}
@@ -999,7 +999,7 @@ From the independent contrast $\contrast\branchexp$ of the Brownian process $\Br
 \begin{equation}
     \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\text{T}}
 \end{equation}
-By Bayes theorem, the posterior on $\Sigma$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
+By Bayes theorem, the posterior on $\CovarianceMatrix$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
     \CovarianceMatrix \sim \text{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
 \end{equation}

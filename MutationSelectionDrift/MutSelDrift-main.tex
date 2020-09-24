@@ -195,8 +195,8 @@ Additionally, under a Fisher geometric landscape developed in supplementary mate
     \begin{minipage}{0.411\linewidth}
         \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 0.15cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
     \end{minipage}
-    \begin{minipage}{0.158\linewidth}
-        \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm -2.2cm 0cm 0cm]{mammals_species}
+    \begin{minipage}{0.159\linewidth}
+        \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm -2.25cm 0cm 0cm]{mammals_species}
     \end{minipage}
     \begin{minipage}{0.411\linewidth}
         \reflectbox{\includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 4.48cm 15.35cm 0cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}}
@@ -374,12 +374,15 @@ Altogether, the rate matrix is:
 \begin{equation}
     \label{eq:gtr-mutrates}
     \Mutmatrix =
-    \begin{pmatrix}
-        - & {\exchan_{AC}\mutequi_C} & {\exchan_{AG}\mutequi_G} & {\exchan_{AT}\mutequi_T} \\
-        {\exchan_{AC}\mutequi_A} &                        - & {\exchan_{CG}\mutequi_G} & {\exchan_{CT}\mutequi_T} \\
-        {\exchan_{AG}\mutequi_A} & {\exchan_{CG}\mutequi_C} &                        - & {\exchan_{GT}\mutequi_T} \\
-        {\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & -
-    \end{pmatrix}
+    \begin{blockarray}{ccccc}
+        & A & C & G & T \\
+        \begin{block}{c(cccc)}
+             A & - & {\exchan_{AC}\mutequi_C} & {\exchan_{AG}\mutequi_G} & {\exchan_{AT}\mutequi_T} \\
+             C & {\exchan_{AC}\mutequi_A} &                        - & {\exchan_{CG}\mutequi_G} & {\exchan_{CT}\mutequi_T} \\
+             G & {\exchan_{AG}\mutequi_A} & {\exchan_{CG}\mutequi_C} &                        - & {\exchan_{GT}\mutequi_T} \\
+             T & {\exchan_{AT}\mutequi_A} & {\exchan_{CT}\mutequi_C} & {\exchan_{GT}\mutequi_G} & - \\
+        \end{block}
+    \end{blockarray}
 \end{equation}
 By definition, the sum of the entries in each row of the nucleotide rate matrix $\Mutmatrix$ is equal to $0$, giving the diagonal entries:
 \begin{equation}
@@ -572,8 +575,8 @@ For a given branch $\branch$ and a given site $\site$, the codon substitution ra
 \begin{equation}
     \label{eq:subrates}
     \begin{dcases}
-        \submatrix\branchsiteexp_{\itoj} = 0\text{ if $\ci$ and $\cj$ are not neighbors,} \\
-        \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj}\text{ if $\ci$ and $\cj$ are synonymous,} \\
+        \submatrix\branchsiteexp_{\itoj} = 0\text{ if codons $\ci$ and $\cj$ are not neighbors,} \\
+        \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj}\text{ if codons $\ci$ and $\cj$ are synonymous,} \\
         \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj} \dfrac{4\Ne\branchexp \left({\fitj\siteexp - \fiti\siteexp}\right)}{{1 - \e^{4\Ne\branchexp\left({\fiti\siteexp - \fitj\siteexp}\right)} }} \text{ if non-syn.,}\\
         \submatrix\branchsiteexp_{\ci, \ci} = - \sum\limits_{ \cj \neq \ci, \jSetCodon} \submatrix\branchsiteexp_{\itoj},
     \end{dcases}
