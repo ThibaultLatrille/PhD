@@ -10,7 +10,7 @@
 \newcommand{\specialcell}[2][c]{%
 	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
-\newcommand{\UniDimArray}[1]{\bm{#1}}
+\newcommand{\UniDimArray}[1]{\vec{#1}}
 \newcommand{\BiDimArray}[1]{\bm{#1}}
 
 \DeclareMathOperator{\E}{\mathbb{E}}
@@ -172,7 +172,7 @@
 \newcommand{\subhistory}{\mathcal{H}}
 
 % Genotype-Phenotype-Fitness
-\newcommand{\phenoGeo}{\vec{\bm{P}}}
+\newcommand{\phenoGeo}{\UniDimArray{P}}
 \newcommand{\phenoFold}{\Delta G}
 \newcommand{\eq}{^{*}}
 \newcommand{\NbrSites}{n}

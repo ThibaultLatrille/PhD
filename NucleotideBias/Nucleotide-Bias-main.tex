@@ -216,9 +216,9 @@ For $20$ amino acids, the total number of pairs of amino acids is $190$, hence $
 However, because of the structure of the genetic code, they are $75$ pairs that are one nucleotide away, since some amino acids are not directly accessible through a single non-synonymous mutation.
 As a result, the number of parameters necessary to determine all mean scaled fixation probability ($\omega_{\aaSource, \aaTarget}$) in both directions is $150$.
 However, under the assumption of a reversible process, the number of parameters can be reduced to the exchangeabilities $75$  ($\AAexchan_{\aaSource, \aaTarget}$) and $20$ the stationary distribution ($\AAequi_{\aaSource}$).
-\begin{align}
+\begin{equation}
     \omega_{\aaSource, \aaTarget} = \AAequi_{\aaTarget} \AAexchan_{\aaSource, \aaTarget}\text{, where } \AAexchan_{\aaSource, \aaTarget} = \AAexchan_{\aaTarget, \aaSource}.
-\end{align}
+\end{equation}
 
 Under projected mutation-selection model, the substitution rates between codons $\submatrix_{\itoj}$ are defined from a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$, the selection coefficients $\UniDimArray{\omega}(\AAExchan, \AAEqui)$ and the genetic code:
 \begin{equation}
@@ -373,10 +373,10 @@ The stationary distribution $ \Subequi$ must be annihilated by the mutation matr
     \label{nucStationarity}
 \end{align}
 The process is reversible and fulfils detailed balance conditions for any pair of different nucleotides:
-\begin{align}
+\begin{equation}
     \mutequi_a \mutmatrix_{a, b} =\mutequi_b \mutmatrix_{b, a}.
     \label{nucMutBalance}
-\end{align}
+\end{equation}
 It is important to note that ratio of weak over strong nucleotides frequency at stationarity is equal to $\lambda$:
 \begin{align}
     \label{lambda}
@@ -474,12 +474,12 @@ The average fixation probability between codon $\ci$ and codon $\cj$ is given as
     & = \dfrac{ \sum\limits_{\site} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \subequi_{\ci}\siteexp }, \\
     & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} }, \\
     & = \dfrac{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }, \\
-    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} },  \\
+    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} },
 \end{align}
 As a result, $\left\langle \avgpfix_{\itoj} \right\rangle$ is dependent on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
-\begin{align}
-    \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }. \\
-\end{align}
+\begin{equation}
+    \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }.
+\end{equation}
 
 \subsection{Mean scaled fixation probability under the mean-field model}
 \label{sec:mut-bias-mean-field-omega}
