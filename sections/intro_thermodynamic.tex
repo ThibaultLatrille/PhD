@@ -1,47 +1,47 @@
-\chapter{Protein thermodynamic}
+\chapter{Protein thermodynamics}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:intro-physic-proteins}
 
-The previous chapters introduced codon models and methodology for parameters of mutation, selection and drift from empirical data.
-But so far, remained elusive on the nature of the fitness landscape underlying proteins, and did not yet question the causal determining factor for the strength of selection.
-This chapter, on the other hand, will seek to clarify the relationship between phylogenetic codon models and biophysics of protein, such as to uncover the underlying properties of the selective pressures shaping protein-coding \acrshort{DNA} sequences.
-Consequently, this chapter will present works at the interface between phylogenetic codon models and protein biophysics, where both fields at this interface are informed and augmented by the other. 
-At this interface, are the prediction of biophysical model of protein evolution compatible and confirmed by application of phylogenetic codon models on empirical data?
-Or the other way around, can phylogenetic codon model be informed by the underlying biophysics of protein?
-To answer such questions, the first section will present the theoretical foundations of protein biophysics, focusing on protein stability imposed by structural constrains.
-Subsequently, the second section will present how these models can explain in part the observed variation of selective constrains across genes, across sites and across branches observed with classical codon models.
-Thirdly, moving from classical to mechanistic codon model, the next section will discuss how fitness landscape estimated by mechanistic codon models can also be related to the underlying protein biophysics.
-Finally, phylogenetic models augmented and incorporating the underlying biophysics are presented and the implication of such models discussed.
+The previous chapters introduced codon models and methodology for estimating parameters of mutation, selection and drift from empirical data, but remained elusive on the nature of the fitness landscape underlying proteins and did not question the causal determining factor for the strength of selection.
+This chapter will seek to clarify the relationship between phylogenetic codon models and biophysics of protein, such as to uncover the underlying properties of the selective pressures shaping protein-coding \acrshort{DNA} sequences.
+Consequently, this chapter will present works at the interface between phylogenetic codon models and protein biophysics, where both fields are corroborated and consolidated by the other.
+Within this interface, many questions arise regarding the compatibility and feedback between these fields.
+Are the predictions of biophysical models of protein evolution compatible and confirmed by the application of phylogenetic codon models on empirical data?
+Or the other way around, can phylogenetic codon models be informed by the underlying biophysics of proteins?
+To answer such questions, the first section of this chapter will present the theoretical foundations of protein biophysics, focusing on protein stability imposed by structural constraints.
+Subsequently, the second section will present how these models can explain in part the observed variation of selective constraints across genes, across sites and across branches observed with classical codon models.
+Thirdly, moving from classical to mechanistic codon model, the next section will discuss how fitness landscapes estimated by mechanistic codon models can also be related to the underlying protein biophysics.
+Finally, phylogenetic models augmented and incorporating the underlying biophysics are presented and the implication of such models is discussed.
 
-Although several reviews discussed this interface~\citep{Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}, this chapter is aimed at evolutionary biologists familiar with phylogenetic codon models, already presented chapter~\ref{chap:intro-codon-models}, and how such models fit within the prediction of protein biophysics.
+Several authors have adequately reviewed the interface between both fields from a broad perspective~\citep{Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}. This chapter, being aimed at evolutionary biologists familiar with phylogenetic codon models (already presented in chapter~\ref{chap:intro-codon-models}), addresses more specifically how such models fit within the prediction of protein biophysics.
 
-% Also Sikosek T, Chan HS. 2014. Biophysics ofprotein evolution and evolutionary protein biophysics. J. R. Soc. Interface 11:20140419
+% Also Sikosek T, Chan HS. 2014. Biophysics of protein evolution and evolutionary protein biophysics. J. R. Soc. Interface 11:20140419
 \section{The link between protein biophysics and molecular evolution}
 \label{sec:intro-protein-biophysics}
 
-The ability of a protein to performs its function depends on the stability of its 3-dimensional folding structure, but also on its ability to bind ligands and/or interact with other proteins, both in terms of kinetic and stability.
-Theoretically, thermodynamics and kinetic of protein are expected to be related to its function, hence to selective constrains~\citep{Bastolla2017}.
+The ability of a protein to perform its function depends on the stability of its 3-dimensional folding structure, but also on its ability to bind ligands and/or interact with other proteins, both in terms of kinetics and stability.
+Theoretically, thermodynamics and kinetics of proteins are expected to be related to their function, and hence to selective constraints~\citep{Bastolla2017}.
 
 \subsection{Conformational stability of proteins}
 
-In thermodynamics, stability of a protein is determined by the Gibbs free energy of its folded conformation, in comparison to the free energy of its possible unfolded conformations.
-Similarly to the mutation-selection Markov process defined in the previous chapter, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformation are more stable) and population size to inverse temperature.
-As a result, probabilities of observing the protein in folded conformation, given by Boltzmann equation, is proportional to the exponential of free energy of the folded conformation ($\GFold$):
+In thermodynamics, the stability of a protein is determined by the Gibbs free energy of its folded conformation, in comparison to the free energy of its possible unfolded conformations.
+Similarly to the mutation-selection Markov process defined in the chapter~\ref{chap:intro-formalism}, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformations are more stable) and population size is analogous to inverse temperature.
+As a result, the probability of observing a protein in its folded conformation, given by the Boltzmann equation, is proportional to the exponential of the free energy of its folded conformation ($\GFold$):
 \begin{equation}
-\probaFold = \frac{\e^{-\GFold / kT}}{\mathcal{Z}},
+    \probaFold = \frac{\e^{-\GFold / kT}}{\mathcal{Z}},
 \end{equation}
 where $k$ is the Boltzmann constant and $T$ is temperature in Kelvin, $\mathcal{Z}$ is a normalizing constant summed over all possible conformations, also called the conformational {partition function}.
 The conformational partition function is related to the free energy of the folded state and of all the possible unfolded states:
 \begin{align}
-\mathcal{Z} & = \e^{-\GFold / kT} + \sum\limits_{\text{unfolded}} \e^{-\G_{\text{unfolded}} / kT} \\
-            & = \e^{-\GFold / kT} + \e^{-\GUnfold / kT},
+    \mathcal{Z} & = \e^{-\GFold / kT} + \sum\limits_{\text{unfolded}} \e^{-\G_{\text{unfolded}} / kT} \\
+    & = \e^{-\GFold / kT} + \e^{-\GUnfold / kT},
 \end{align}
 where $\GUnfold$ encompasses the free energy of all the possible unfolded conformations.
 Altogether, the probability of observing the protein in folded conformation can then be re-expressed as:
 \begin{align}
-\probaFold & = \frac{\e^{-\GFold / kT}}{\e^{-\GFold / kT} + \e^{-\GUnfold / kT}}, \\
-     & = \frac{\e^{-\DeltaG/kT}}{ 1 + \e^{-\DeltaG/kT} }, \\
-     & = \frac{1}{ 1 + \e^{\DeltaG/kT} }.
+    \probaFold & = \frac{\e^{-\GFold / kT}}{\e^{-\GFold / kT} + \e^{-\GUnfold / kT}}, \\
+    & = \frac{\e^{-\DeltaG/kT}}{ 1 + \e^{-\DeltaG/kT} }, \\
+    & = \frac{1}{ 1 + \e^{\DeltaG/kT} }.
 \end{align}
 where $\DeltaG = \GFold - \GUnfold$.
 Thus, in order for a protein to fold into the native state with high probability, the free energy gap ($\DeltaG$) has to be both negative and large in absolute value, as depicted in figure~\ref{fig:intro-proba-folding}.
@@ -54,7 +54,7 @@ Thus, in order for a protein to fold into the native state with high probability
     $\DeltaG$ is in kcal/mol and $1/kT=1.686$ mol/kcal at room temperature.
     The free energy gap has to be both negative and large in absolute value for the protein to be folded.
     }
-	\label{fig:intro-proba-folding}
+    \label{fig:intro-proba-folding}
 \end{figure}
 
 In this context, mutations of the proteins stabilize the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
@@ -81,12 +81,6 @@ Alternatively, in order to explicitly sum over all possible conformations, some 
 Lattice models are designed to sum over all possible conformations, and are useful as a theoretical construct to gain new insights about biophysics and protein evolution.
 However, lattice models are empirically less directly usable.
 In between these two extremes, many models can approximate with various degrees of liberties and parametrization the relationship from sequence to stability.
-
-%- Ashenberg O, Gong LI, Bloom JD. 2013. Mutational effects on stability are largely conserved during protein evolution.
-%- Ding F, Dokholyan NV. 2006. Emergence of protein fold families through rational design.
-%- Echave J, Jackson EL, Wilke CO. 2015. Relationship between protein thermodynamic constraints and variation of evolutionary rates among sites.
-%- Kachroo AH, Laurent JM, Yellman CM, Meyer AG, Wilke CO, Marcotte EM. 2015. Systematic humanization of yeast genes reveals conserved functions and genetic modularity.
-%- Shah P, McCandlish DM, Plotkin JB. 2015. Contingency and entrenchment in protein evolution under purifying selection.
 
 \subsection{From stability to fitness}
 

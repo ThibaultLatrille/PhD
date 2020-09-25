@@ -91,11 +91,11 @@ As an example, and for better readability, a simple illustrative tree given in f
 In the example of the illustrated tree, from the observed data for the extant nodes $\Data\siteexp = \{ \state_1,\state_2, \state_3, \state_4 \}$, at site $\site$, given that the states of the internal nodes are known, the likelihood is computed as:
 \begin{align}
     \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
-    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
+    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}), \\
     & \quad \quad \quad
     \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
     \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
-    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}) \notag
+    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}). \notag
 \end{align}
 In the general case of an arbitrary topology, $\Data\siteexp = \{ \state_P \hdots \state_{2P-1} \}$, where $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denote the parent and descendant nodes of a branch, the likelihood conditional on internal states is given as:
 \begin{align}
@@ -110,24 +110,24 @@ In the case of the illustrative example, the total probability is given as:
 \begin{align}
     \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
     & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
-    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}) \\
+    \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}), \\
     & \qquad \qquad \qquad
     \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
     \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
-    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)})\notag
+    \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}).\notag
 \end{align}
 
 And because the process is reversible, the codon equilibrium frequencies satisfy the equations:
 \begin{align}
-    \vecZero & = \Subequi\branchsiteexp \Submatrix\branchsiteexp \\
-    \iff \Subequi\branchsiteexp & = \Subequi\branchsiteexp \Probmatrix\branchsiteexp \\
-    \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}
+    \vecZero & = \Subequi\branchsiteexp \Submatrix\branchsiteexp, \\
+    \iff \Subequi\branchsiteexp & = \Subequi\branchsiteexp \Probmatrix\branchsiteexp, \\
+    \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}.
 \end{align}
 
 In the general topology, the likelihood is thus given as:
 \begin{align}
     \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
-    & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}), \label{eq:likelihood-site}
+    & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}). \label{eq:likelihood-site}
 \end{align}
 
 And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns:
@@ -144,9 +144,9 @@ The likelihood at a specific column of a multiple sequence alignment given by eq
 where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
     \pruning\siteexp_{\node} \left( \ci \right) =
-    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right]
+    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right],
     \cdot
-    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right]
+    \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{2})}) \pruning\siteexp_{\node_{2}} \left( \cj \right) \right].
 \end{align}
 And if the node $\node$ is a node with no descendant, meaning an extant taxa:
 \begin{align}
@@ -179,9 +179,9 @@ Formally, this update of our knowledge is captured by the computation of the pos
 \begin{equation}
     \proba (\theta \mid \Data)=\frac{\proba (\Data \mid \theta)\proba (\theta)}{\proba (\Data)}.
 \end{equation}
-Where the denominator is the marginal likelihood, meaning the likelihood integrated over the prior:
+Here the denominator is the marginal likelihood, meaning the likelihood integrated over the prior:
 \begin{equation}
-    \proba (\Data) = \int \proba (D \mid \theta) \proba (\theta) \der \theta,
+    \proba (\Data) = \int \proba (D \mid \theta) \proba (\theta) \der \theta.
 \end{equation}
 In an inference context, because we are only interested in the relative posterior probabilities of alternative values of $\theta$, the marginal likelihood is a constant.
 For that reason, Bayes theorem can also be presented as:
@@ -207,12 +207,11 @@ In the worst possible case of over-parametrization, namely that of confounded pa
 However, over-parameterized models are still a misappropriate use of computing resources, which results in a greater environmental cost.
 
 Second, and most importantly, Bayesian inference gives a natural language to combine multiple levels of random variables, in the form of hierarchical models.
-Thus, for instance, in Bayesian molecular daring, the substitution process depends on divergence times and substitution rate variation across the tree.
+Thus, for instance, in Bayesian molecular dating, the substitution process depends on divergence times and substitution rate variation across the tree.
 In turn, divergence times, such as specified by the phylogeny, are the result of a birth-death process, while variation in the substitution rate across branches is naturally expressed by modelling the rate itself as a log-Brownian process.
 Finally, the parameters of the birth-death and log-Brownian processes are endowed with a prior.
 The model is thus hierarchical, with four levels.
-This expressivity in model structure, combined with generic Monte Carlo approaches for dealing with complex random effects and multi-level evolutionary processes, has played a fundamental role in the recent success and popularity of Bayesian inference in evolutionary genetics.
-
+This expressiveness in model structure, combined with generic Monte Carlo approaches for dealing with complex random effects and multi-level evolutionary processes, has played a fundamental role in the recent success and popularity of Bayesian inference in evolutionary genetics.
 
 \subsection{Hierarchical model}
 \label{subsec:intro-hierarchical-models}
@@ -268,24 +267,23 @@ More precisely, the number of states increases exponentially with the number of 
 In addition, the posterior distribution takes negligibly small values over most of the parameter space.
 Reduction in the exploration of the state space, and focusing of most of the computational effort in the relevant region, is obtained by employing Monte Carlo (\acrshort{MC}) methods, which effectively approximate the target posterior distribution by sampling from it.
 
-Historically, the first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952.
-Both a physicist and a mathematician, Nicolas Metropolis was one of the first scientists to work on the Manhattan Project that led to the production of the atomic bomb.
-Almost as early, he became obsessed with the hydrogen bomb, which he eventually contributed to make.
-
+Historically, the first \acrshort{MC} algorithm is associated with the army laboratory in Los Alamos under the direction of Metropolis in early 1952
+\footnote{Both a physicist and a mathematician, Nicolas Metropolis was one of the first scientists to work on the Manhattan Project that led to the production of the atomic bomb. Almost as early, he became obsessed with the hydrogen bomb, which he eventually contributed to make.}.
 Published by \citet{Metropolis1953}, the primary focus of \acrshort{MC} algorithm is on computing the mean energy of random configurations for a system of many particles.
-This energy is not available analytically and requires integration across for all realizations of the random configurations of the particle system.
+This energy is not available analytically and requires integration across all realizations of the random configurations of the particle system.
 Because dimensionality is high (proportional to the number of particles), numerical integration is impossible using a deterministic algorithm.
 Moreover, because the probability of a given configuration can be very small, even Monte Carlo integration by sampling randomly the prior (uniform) distribution over configurations fails to correctly approximate this integral.
 
 This problem can, however, be formalized in terms of a Markov chain, where each state of the process is a particular configuration of particles.
 The transition probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
 Given this requirement, and given one can also sample from the transition probabilities, the Markov chain Monte-Carlo starts from an arbitrary state and can be updated by random sampling from the transition probabilities.
-After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed and the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
+After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed.
+Finally, the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
 
 \subsection{Metropolis-Hastings sampling}
 \label{subsec:metropolis-hastings-sampling}
 
-One specific algorithm designed such that \acrshort{MCMC} stationary distribution match to the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
+One specific algorithm designed such that the \acrshort{MCMC} stationary distribution match the specified target distribution is the Metropolis algorithm, presented in the original paper~\citep{Metropolis1953}.
 This algorithm is composed of an acceptance/rejection rule such that the algorithm proceeds as follows at each step of the Markov chain.
 Starting from a state $X_t$ at step $t$:
 \begin{itemize}
@@ -304,15 +302,14 @@ The Metropolis procedure has been initially developed in the context of a symmet
 \label{subsec:gibbs-sampling}
 
 Whenever a joint distribution of variables is not known explicitly or is difficult to sample from directly, but the conditional distribution of each variable is easier to sample from, a specific algorithm known as Gibbs sampling is applicable.
-The original implementation of the Gibbs sampler by \citet{Geman1984} was applied to a discrete image processing problem, a problem somewhat remote from statistical inference in the classical sense.
-This paper is also responsible for the name Gibbs sampling, because it implemented this method for the Bayesian study of Gibbs random fields, which in turn, derive their name from the physicist Josiah Willard Gibbs (1839-1903).
+The original implementation of the Gibbs sampler by \citet{Geman1984} was applied to a discrete image processing problem, a problem somewhat remote from statistical inference in the classical sense\footnote{This paper is also responsible for the name Gibbs sampling, because it implemented this method for the Bayesian study of Gibbs random fields, which in turn, derive their name from the physicist Josiah Willard Gibbs (1839-1903).}.
 
 The individual random variables are sampled one at a time, with each variable being conditioned on the most recent values for all other variables.
 It can be shown that the sequence of samples constitutes a Markov chain, and the stationary distribution of that Markov chain is just the joint distribution.
 Gibbs sampling is particularly well adapted to sampling the posterior distribution of a Bayesian network, since they are composed of a set of individual random variables in which each variable is conditioned on only a small number of other variables.
 
 Gibbs sampling, or more generally conditional Metropolis-Hastings can be considered a general framework for sampling from a large set of variables by sampling each variable (or in some cases, each group of variables) in turn.
-Various algorithms can be used to sample these individual variables, depending on the exact form of the multivariate distribution, it can incorporate the Metropolis–Hastings algorithm, or more sophisticated methods such as slice sampling, adaptive rejection sampling and adaptive rejection Metropolis.
+Various algorithms can be used to sample these individual variables, depending on the exact form of the multivariate distribution, it can incorporate the Metropolis–Hastings algorithm, or more sophisticated methods such as slice sampling, adaptive rejection sampling or adaptive rejection Metropolis.
 
 \subsection{Sufficient statistics \& data augmentation}
 \label{subsec:suffstats-data-augmentation}
@@ -320,7 +317,7 @@ Various algorithms can be used to sample these individual variables, depending o
 MCMC samplers target the distribution over the model parameters by repeatedly invoking the pruning algorithm to recalculate the pruning-based likelihood.
 This is most often the limiting step of the \acrshort{MCMC}.
 An alternative is to augment the observed sequence data with a realization of the random process resulting in a detailed substitution history over the tree~\citep{Nielsen2002,Rodrigue2008}.
-Conditionally on the detailed substitution history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \Data$), under the target distribution obtained by combining the mapping-based likelihood with the prior over model parameters.
+Conditionally on the detailed substitution history $\subhistory$, compatible with the data $\Data$, the \acrshort{MC} can be performed over the augmented configuration~($\subhistory, \theta \mid \Data$).
 The key idea that makes this strategy efficient is that the mapping-based likelihood depends on compact summary statistics of $\subhistory$, leading to very fast evaluation of the likelihood~\citep{Lartillot2006,DeKoning2010,Romiguier2012,Irvahn2014,Davydov2016,Gueguen2018}.
 On the other hand, this requires to implement more complex \acrshort{MC} procedures that have to alternate between:
 \begin{enumerate}
@@ -333,7 +330,7 @@ This strategy plays an essential role in the case of the complex phylogenetic co
 \subsection{Implementation}
 \label{subsec:implementation}
 
-The software implementation of Bayesian phylogenetic models is globally a difficult endeavour.
+The software implementation of Bayesian phylogenetic models is generally a difficult endeavour.
 They must be flexible to adapt to different models of variations, while at the same time be reliable, reproducible, maintainable and fast.
 This is even more true for models integrating variation across sites, across branches or across genes.
 All these constraints led to the (still ongoing) development of a new Bayesian phylogenetic software platform called \texttt{BayesCode}, conducted by multiple maintainers with different goals and different models of evolution in mind.
