@@ -1,6 +1,7 @@
 voici mes retours concernant l’introduction de ton article 1, pour lequel il me semble que beaucoup reste encore à construire.
 
-Tu as proposé un petit script pour l’intro, mais je crois que tu ne pars pas forcément du bon bout, donc j’y vais franchement.. :)
+Tu as proposé un petit script pour l’intro, mais je crois que tu ne pars pas forcément du bon bout, donc j’y vais franchement.
+:)
 
 Il me semble qu'il faut motiver de façon beaucoup plus concrète: en partant des modèles à codons tels qu’ils sont utilisés.
 Par ailleurs, il faut bien faire ressortir les problèmes, également en s’appuyant sur les pratiques courantes en la matière 
@@ -16,10 +17,14 @@ On.y reviendra dans un deuxième temps, mais il me semble qu’il faudra bien re
 petite remarque en passant:
 tu invoques souvent le fait de correctement séparer mutation, sélection * et dérive *.
 mais je trouve que ca rend le discours inutilement compliqué.
-En plus, quand on y pense, la dérive est partout. Après tout, les mutations synonymes sont elles-aussi sujettes à la dérive,
-et pourtant Ne n’apparaît pas du tout dans leur cas. Donc, c’est faux de voir la dérive et la sélection conjointement encapsulée uniquement dans le paramètre omega, comme tu as l’air de le sous-entendre.
+En plus, quand on y pense, la dérive est partout
+Après tout, les mutations synonymes sont elles-aussi sujettes à la dérive,
+et pourtant Ne n’apparaît pas du tout dans leur cas
+Donc, c’est faux de voir la dérive et la sélection conjointement encapsulée uniquement dans le paramètre omega, comme tu as l’air de le sous-entendre.
 
-Personnellement, je verrais plutôt la dérive, ou plus exactement la taille de pop, comme ce qui détermine la température d’arbitrage entre mutation et sélection. Mais je ne verrais pas la dérive comme une ‘force évolutive’, aux côtés de la mutation et de la sélection. Si ca permet de clarifier un peu son statut ...
+Personnellement, je verrais plutôt la dérive, ou plus exactement la taille de pop, comme ce qui détermine la température d’arbitrage entre mutation et sélection
+Mais je ne verrais pas la dérive comme une ‘force évolutive’, aux côtés de la mutation et de la sélection
+Si ca permet de clarifier un peu son statut ...
 
 ==
 
@@ -62,14 +67,20 @@ Faut aller jusqu’au bout de l’argument: In reality: composition differ: the 
 ** Ici, je pense qu’il faut un peu développer sur le formalisme 3x4, qui est directement pertinent **
 These modulations across the 3 coding positions has been accomodated using the so-called 3x4 formalism: 
 allowing for different nucleotide rate matrices at the three positions.
-However, this is problematic: has the consequence that synonymous substitutions, say, from A to C, occurr at different rates at the 1st and 3d positions. Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions. If neutral, all synonymous A->C should have same rate. 
-In any case: this suggests that the mutation matrix (F1x4) or matrices (F3x4) estimated by codon models are not correctly reflecting the mutation rates between nucleotides. Instead, what these matrices are capturing is the result of the compromise between mutation and selection at the level of the realized nucleotide frequencies.
+However, this is problematic: has the consequence that synonymous substitutions, say, from A to C, occurr at different rates at the 1st and 3d positions
+Yet, in reality, the mutation process is blind to the coding structure, and should be homogeneous across coding positions
+If neutral, all synonymous A->C should have same rate
+
+In any case: this suggests that the mutation matrix (F1x4) or matrices (F3x4) estimated by codon models are not correctly reflecting the mutation rates between nucleotides
+Instead, what these matrices are capturing is the result of the compromise between mutation and selection at the level of the realized nucleotide frequencies.
 
 ** potential impact of these problems: both practical and conceptual **
-- For detecting selection, this problem is probably minor. 
+- For detecting selection, this problem is probably minor
+
 - Conceptually, however: a clear symptom of a more fundamental problem: mutation rates and fixation biases are not correctly teased apart.
 - Practically, could have important consequences in other contexts than tests of positive selection:
-- in particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences. 
+- in particular, there is a current interest in investigating the variation between species in GC content, and its effect on the evolution of protein-coding sequences
+
 - A particularly important factor here: gBGC, which can confound the tests for detecting positive selection.
 - Even in the absence of gBGC, however, uneven mutation rates, varying across species, can have an important impact on the estimation of the strength of selection, through omega (ref).
 - All this suggests that, even before introducing gBGC in codon models, correctly formalizing the interplay between mutation and selection in current codon models would be an important thing to do.
@@ -82,13 +93,15 @@ For instance, if the mutation process is AT-biased, because of selection,
 the realized nucleotide frequencies at equilibrium will be less AT-biased than expected under the mutation process.
 However, this implies that, at equilibrium, there will be a net mutation pressure towards AT,
 which has to be compensated for by a net selection differential towards GC,
-i.e. mutations towards AT will be more deleterious on average than those towards GC.
+i.e
+mutations towards AT will be more deleterious on average than those towards GC.
 As a result, the net dN/dS towards AT will be lower than the net dN/dS towards GC.
 
 ** introducing omega as a tensor **
 All this suggests that,
 in order for a codon model to correctly formalize this subtle interplay between mutation and selection,
-the component of the parameter vector responsible for absorbing the net effect of selection (i.e. omega)
+the component of the parameter vector responsible for absorbing the net effect of selection (i.e
+omega)
 should not be a scalar, as is currently the case.
 Instead, it should be a tensor: an array of omega values unfolding along multiple directions.
 However, how many components should this tensor contain?
@@ -100,7 +113,8 @@ and this, without having to explicitly model the underlying fitness landscape?
 ** end of introduction: outline of the mean-field approach and of the results — à compléter à la fin **
 In the present work, we address this question.
 In order to derive a codon model along those lines, 
-our strategy is to first assume a true evolutionary process, follow the mutation-selection formalism. 
+our strategy is to first assume a true evolutionary process, follow the mutation-selection formalism
+
 For the sake of simplicity and illustration, we assume a site-independent, time-independent fitness landscape,
 however, the argument is more general.
 Then, we derive the mean substitution process implied across all sites by this site-specific mechanistic model.
@@ -111,16 +125,24 @@ as there are pairs of amino acids that are nearest-neighbors in the genetic code
 There are reversibility conditions, reducing the dimensionality and allowing for a GTR-like parameterization of this tensor.
 Using simulations, we show that the model correctly estimates the mutation rates.
 
-Je me rends compte que le reste de l’article 1 est encore insuffisamment développé pour pouvoir faire des remarques de détail. Je vais donc te laisser développer tout cela. En fait, je me rends compte que c’était également vrai pour l’intro. J’aurais pu te laisser la développer un peu avant de t’envoyer le mail précédent. Mais bon, d’un autre côté, mes suggestions te donnent un support pour avancer plus vite sur cet article.
+Je me rends compte que le reste de l’article 1 est encore insuffisamment développé pour pouvoir faire des remarques de détail
+Je vais donc te laisser développer tout cela
+En fait, je me rends compte que c’était également vrai pour l’intro
+J’aurais pu te laisser la développer un peu avant de t’envoyer le mail précédent
+Mais bon, d’un autre côté, mes suggestions te donnent un support pour avancer plus vite sur cet article.
 
-Pour la structure d’ensemble, ce que tu proposes actuellement me semble globalement correct. Peut-être juste:
+Pour la structure d’ensemble, ce que tu proposes actuellement me semble globalement correct
+Peut-être juste:
 - bien faire un outline du papier au début des résultats.
-- par ailleurs, il me semble que le modèle champ-moyen est un cas de modèle phénoménologique. Il faudrait donc le mettre dans la même sous-section que le modèle Muse and Gaut. 
+- par ailleurs, il me semble que le modèle champ-moyen est un cas de modèle phénoménologique
+Il faudrait donc le mettre dans la même sous-section que le modèle Muse and Gaut
+
 - enfin, je mettrais les inférences sur des données empiriques dans une section à part.
 
 ce qui donnerait donc:
 
-7.3. Results
+7.3
+Results
 
 Outline:
 - we first conduct a simulation experiment using a simple mutation-selection model with time-independent fitness landscape.
@@ -139,12 +161,14 @@ two parameters, tuning the mutation bias and the stirngency of selection; we exp
 7.3.2.2: Omega as a tensor: mean-field derivation
 7.3.2.3: Results under the mean field model
 
-7.3.3. Estimation on empirical sequence data.
+7.3.3
+Estimation on empirical sequence data.
 
 ==
 
 Également dans les méthodes:
-Pas clair, comme cela, que tout ce que tu dis au début (‘modeling mutation bias’, ‘modeling selection’) est en contexte de simulation. 
+Pas clair, comme cela, que tout ce que tu dis au début (‘modeling mutation bias’, ‘modeling selection’) est en contexte de simulation
+
 Il faudrait avoir 4 sections bien distinctes:
 - Simulation model
 - Summary statistics:
