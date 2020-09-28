@@ -25,7 +25,7 @@ Theoretically, thermodynamics and kinetics of proteins are expected to be relate
 \subsection{Conformational stability of proteins}
 
 In thermodynamics, the stability of a protein is determined by the Gibbs free energy of its folded conformation, in comparison to the free energy of its possible unfolded conformations.
-Similarly to the mutation-selection Markov process defined in the chapter~\ref{chap:intro-formalism}, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformations are more stable) and population size is analogous to inverse temperature.
+Similarly to the mutation-selection Markov process defined in chapter~\ref{chap:intro-formalism}, it is possible to derive the equilibrium distribution of conformations, where fitness is analogous to the opposite of free energy (less energetic conformations are more stable) and population size is analogous to inverse temperature.
 As a result, the probability of observing a protein in its folded conformation, given by the Boltzmann equation, is proportional to the exponential of the free energy of its folded conformation ($\GFold$):
 \begin{equation}
     \probaFold = \frac{\e^{-\GFold / kT}}{\mathcal{Z}},
@@ -44,13 +44,13 @@ Altogether, the probability of observing the protein in folded conformation can 
     & = \frac{1}{ 1 + \e^{\DeltaG/kT} }.
 \end{align}
 where $\DeltaG = \GFold - \GUnfold$.
-Thus, in order for a protein to fold into the native state with high probability, the free energy gap ($\DeltaG$) has to be both negative and large in absolute value, as depicted in figure~\ref{fig:intro-proba-folding}.
+Thus, in order for a protein to fold into its native state with high probability, the free energy gap ($\DeltaG$) has to be both negative and large in absolute value, as depicted in figure~\ref{fig:intro-proba-folding}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth, page=5] {figures.pdf}
     \caption[Probability of folding]{
-    Probability of folding ($\probaFold$) as a function of free energy gap ($\DeltaG = \GFold - \GUnfold$).
+    Probability of folding ($\probaFold$) as a function of the free energy gap ($\DeltaG = \GFold - \GUnfold$).
     $\DeltaG$ is in kcal/mol and $1/kT=1.686$ mol/kcal at room temperature.
     The free energy gap has to be both negative and large in absolute value for the protein to be folded.
     }
@@ -59,44 +59,44 @@ Thus, in order for a protein to fold into the native state with high probability
 
 In this context, mutations of the proteins stabilize the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
 For example, a transition to an amino acid that decreases by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
-As a result, protein stability can be increased by stabilizing folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design).
+As a result, protein stability can be increased by stabilizing the folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design).
 We can thus characterize the destabilizing effect of a mutation by its:
 \begin{equation}
     \EmpiricalDeltaDeltaG = \DeltaG \left( \text{Mutant} \right) - \DeltaG  \left( \text{Wild type} \right),
 \end{equation}
-Where by definition $\EmpiricalDeltaDeltaG <0 $ are stabilizing mutations, and conversely $\EmpiricalDeltaDeltaG > 0 $ are destabilizing mutations.
+where by definition $\EmpiricalDeltaDeltaG <0 $ for stabilizing mutations, and conversely $\EmpiricalDeltaDeltaG > 0 $ for destabilizing mutations.
 
-Free energy gaps $\DeltaG$ can be experimentally measured, which lies in the range of $-25$ to $-5$ kcal/mol~\citep{Kumar2006, Gromiha2016}.
-Moreover, empirical measurements of folding stability changes due to single point mutations can also be obtained experimentally, this process is costly, and has to be done for each single mutation~\citep{Rocklin2017}.
+Free energy gaps $\DeltaG$ can be experimentally measured, and fall within the range of $-25$ to $-5$ kcal/mol~\citep{Kumar2006, Gromiha2016}.
+Moreover, empirical measurements of folding stability changes due to single point mutations can also be obtained experimentally. This process is costly and has to be done for each single mutation~\citep{Rocklin2017}.
 
-Alternatively, the free energy gap of a protein can be computed with biophysical model of protein, by modelling the atomic structure and the potential energy of contact between residues at the atomic level in 3-dimensional structure.
-Computing the free energy gap for a given protein sequence is challenging, for a given conformation of the backbone, it also depends on the conformation of the side chains, as well as the solvent (water).
+Alternatively, the free energy gap of a protein can be computed with a biophysical model of the protein, by modelling the atomic structure and the potential energy of contact between residues at the atomic level in a 3-dimensional structure.
+Computing the free energy gap for a given protein sequence is challenging for any given conformation of the backbone, since it also depends on the conformation of the side chains as well as the solvent (water).
 To allow for faster computation, coarse-grained approximations have been proposed, in the form of statistical potentials, which approximate free energy ($G$) as a sum of free energy terms over all pairwise contacts between residues across the protein~\citep{Miyazawa1985}.
 
 For a given folded conformation of the protein, the statistical potential gives $\GFold$.
 However, in order to get $\DeltaG$, one still needs to sum over all unfolded conformations to compute $\mathcal{Z}$, or $\GUnfold$.
-Models typically approximate the distribution of unfolded Gibbs free energy using representative decoy conformations for which energy is computed, assuming a quasi-chemical or normal approximations~\citep{Goldstein2011}.
+Models typically approximate the distribution of unfolded Gibbs free energy using representative decoy conformations for which energy is computed, assuming a quasi-chemical or normal approximation~\citep{Goldstein2011}.
 
-Alternatively, in order to explicitly sum over all possible conformations, some models approximate the structure and dynamic of protein by 2-dimensional lattice models with regular pavement~\citep{Taverna2002, Noivirt-Brik2009}.
+Alternatively, in order to explicitly sum over all possible conformations, some models approximate the structure and dynamics of proteins by 2-dimensional lattice models with regular pavement~\citep{Taverna2002, Noivirt-Brik2009}.
 Lattice models are designed to sum over all possible conformations, and are useful as a theoretical construct to gain new insights about biophysics and protein evolution.
 However, lattice models are empirically less directly usable.
-In between these two extremes, many models can approximate with various degrees of liberties and parametrization the relationship from sequence to stability.
+In between these two extremes, many models can approximate with various degrees of freedom and parametrization the relationship from sequence to stability.
 
 \subsection{From stability to fitness}
 
 Empirically, a large body of evidence indicates that the stability, or, in other words, the ability to fold in globular conformation, is a target of natural selection~\citep{Sikosek2014}.
-If the relationship from protein sequence to protein stability is within reach and can be obtained with various degrees of approximations, relationship from stability to fitness is more elusive and difficult to apprehend.
-First, it is known the protein stability relates to fitness, as demonstrated by a study of beta-lactamase TEM-1 mutants~\citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations~\citep{Araya2012}.
-However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that result in purifying selection for destabilizing mutations.
-Finally, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
+Even though the association between protein sequence and protein stability is within reach and can be obtained with various degrees of approximations, the association between protein stability and fitness is more elusive and difficult to apprehend.
+It is known that protein stability is related to fitness, as demonstrated by a study of beta-lactamase TEM-1 mutants~\citep{Jacquier2013}, or illustrated by the use of functional assays to identify stabilizing mutations~\citep{Araya2012}.
+However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that results in purifying selection for destabilizing mutations.
+Additionally, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
 
-The relationship from stability to fitness raises the more general question of why proteins are marginally stable.
-Indeed the optimal stability is never achieved, and two types of explanation have been proposed.
-Firstly, this could the consequence of the stability-activity trade-off such that proteins are selected for an intermediate stability.
-Secondly, and more fundamentally, it is an expectation of mutation-selection equilibrium even under directional selection for stability~\citep{Taverna2002}.
+The relationship between stability and fitness raises the more general question of why proteins are marginally stable.
+Indeed, the optimal stability is never achieved, and two types of explanation have been proposed.
+Firstly, that it could be the consequence of the stability-activity trade-off such that proteins are selected for an intermediate stability.
+Secondly, and more fundamentally, that it is an expectation of the mutation-selection equilibrium even under directional selection for stability~\citep{Taverna2002}.
 These two explanations are not mutually incompatible, and can both explain the observed marginal stability of proteins.
 
-Additionally, translation errors act like point mutations, with a fairly high translation error rate.
+Furthermore, translation errors act like point mutations, with a fairly high translation error rate.
 They have measurable destabilizing effects in terms of $\EmpiricalDeltaDeltaG$, just like non-synonymous mutations.
 The fitness associated with a sequence variant at the \acrshort{DNA} level thus integrates the average effect of these destabilizing mutations induced at the translation level.
 For this reason, at mutation-selection equilibrium, the protein encoded at the \acrshort{DNA} level tends to have a more negative $\DeltaG$ than without error, as if to anticipate these additional destabilizing effects.
@@ -106,7 +106,7 @@ For this reason, at mutation-selection equilibrium, the protein encoded at the \
 
 Computing the free energy gap $\DeltaG$ requires knowledge of interacting energy contact between amino acids in close proximity.
 As a result, the $\DeltaG$ impact of a mutation at a specific position of the protein depends on the context and the amino acids at other positions.
-Specifically, an amino-acid changes can be stabilizing or destabilizing depending on the amino acids at other positions.
+Specifically, amino-acid changes can be stabilizing or destabilizing depending on the amino acids present at other positions.
 Moreover, even if $\DeltaG$ would be an additive trait, in the sense that each position contributes independently to $\DeltaG$ without pairwise interaction terms, the selective effect of a mutation would still depend on the amino acids at other positions.
 The reason is that even if $\DeltaG$ is an additive trait, the log-fitness is still not a linear function of $\DeltaG$.
 The former case of site interdependence due to interacting terms is called specific epistasis, while the latter case of non-linearity of the fitness function is called by contrast non-specific epistasis.
@@ -118,14 +118,14 @@ In the specific case of conformational stability, the phenotype is the free ener
 \end{equation}
 Withing this ternary relationship, the fitness effect of a mutation is site-specific in only one specific case, namely that the phenotype is additive and that the log-fitness is linear with the phenotype.
 Whenever one of these two assumptions is not valid, the fitness effect of a mutation at a specific site depends on the overall sequence.
-This site interdependence represents a challenge for phylogenetic codons, generally not modelled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics} below).
+This site interdependence represents a challenge for phylogenetic codons, generally not modelled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics}).
 
 Site interdependence has important consequences on molecular evolution  of protein sequences, and results in entrenchment and Stokes shifts~\citep{Pollock2012, Shah2015}
 Briefly speaking, even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time~\citep{Lunzer2010, Naumenko2012, Mccandlish2013}.
 
 \subsection{Aggregation avoidance}
 
-So far, proteins have been seen as independent machinery of the cells, however, within the crowded intracellular space, proteins are not independent entities but are interactions with the proteome, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
+So far, proteins have been seen as independent machinery of cells, however, within the crowded intracellular space, proteins are not independent entities but are interactions with the proteome, where proteins may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
 In non-specific interactions at the protein surface, stabilizing amino acids are hydrophilic and destabilizing amino acids are hydrophobic, sticking to hydrophobic residues in other proteins~\citep{Dixit2013,Manhart2015}.
 The misinteraction avoidance hypothesis predicts that, compared with lowly expressed proteins, highly expressed proteins disfavour residues that promote misinteraction, exhibit a lower misinteraction probability per molecule and have higher conservation for misinteraction avoiding residues.
 
