@@ -68,8 +68,9 @@
 \newcommand{\Syn}{\mathcal{S}}
 \newcommand{\aaSource}{x}
 \newcommand{\aaTarget}{y}
-\newcommand{\aai}{\mathcal{A}(\ci)}
-\newcommand{\aaj}{\mathcal{A}(\cj)}
+\newcommand{\aaMap}{\mathcal{A}}
+\newcommand{\aai}{\aaMap(\ci)}
+\newcommand{\aaj}{\aaMap(\cj)}
 \newcommand{\wrightfit}{W}
 \newcommand{\logfit}{f}
 \newcommand{\avgpfix}{\nu}
@@ -192,9 +193,13 @@
 \newcommand{\EmpiricalDeltaGmin}{\DeltaG_{\text{min}}}
 \newcommand{\Seqi}{\mathbb{S}}
 \newcommand{\Seqj}{\mathbb{S}'}
-\newcommand{\Seqitoj}{\ci, \cj}
-\newcommand{\setNeighbors}{\mathcal{M}\left(\ci\right)}
+\newcommand{\Seqitoj}{\Seqi, \Seqj}
+\newcommand{\Neighbors}{\mathcal{M}}
+\newcommand{\setNeighbors}{\Neighbors\left(\ci\right)}
+\newcommand{\setSeqNeighbors}{\Neighbors\left(\Seqi\right)}
 \newcommand{\NonSynNeighbors}{\mathcal{N}}
 \newcommand{\setNonSynNeighbors}{\NonSynNeighbors\left(\ci\right)}
+\newcommand{\setSeqNonSynNeighbors}{\NonSynNeighbors\left(\Seqi\right)}
 \newcommand{\SynNeighbors}{\mathcal{S}}
 \newcommand{\setSynNeighbors}{\SynNeighbors\left(\ci\right)}
+\newcommand{\setSeqSynNeighbors}{\SynNeighbors\left(\Seqi\right)}

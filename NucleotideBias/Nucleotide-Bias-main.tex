@@ -244,18 +244,16 @@ Specifically, at each site, the true codon process is:
     \label{eq:codon-site-processs}
 \end{equation}
 Where $\Pfix\siteexp(\itoj)$ is the scaled fixation probability of codon $\cj$ against codon $\ci$, at site $\site$.
-Averaging over sites gives the mean-field gene-level process:
-
+At equilibrium of the process, averaging over sites gives the mean-field gene-level process:
 \begin{equation}
     \begin{dcases}
         \left\langle \submatrix_{\itoj} \right\rangle & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
         \left\langle \submatrix_{\itoj} \right\rangle & = \mutmatrix_{\nucitoj} \text{ if codons $\ci$ and $\cj$ are synonymous,} \\
-        \left\langle \submatrix_{\itoj} \right\rangle & = \mutmatrix_{\nucitoj} \left\langle \Pfix(\itoj) \right\rangle \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
+        \left\langle \submatrix_{\itoj} \right\rangle & = \mutmatrix_{\nucitoj} \left\langle \Pfix (\itoj) \right\rangle \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
     \end{dcases}
     \label{eq:codon-avg-process}
 \end{equation}
-
-However, because selection between codons reduces to selection between pairs of amino-acids, $\left\langle \Pfix(\itoj) \right\rangle$ only depends on the amino-acids encoded by $\ci$ and $\cj$.
+However, because selection between codons reduces to selection between pairs of amino-acids, $\left\langle \Pfix (\itoj) \right\rangle$ only depends on the amino-acids encoded by $\ci$ and $\cj$ (section~\ref{subsec:mean-field-derivation} in methods).
 Thus, by identification, the inference model should be parameterized by a set of $\omega$ values for all pairs of amino acids, denoted $\omega_{\aaSource, \aaTarget}$.
 For $20$ amino acids, the total number of pairs of amino acids is $190$, hence $380$ parameters by counting in both directions.
 However, because of the structure of the genetic code, they are $75$ pairs that are one nucleotide away, since some amino acids are not directly accessible through a single non-synonymous mutation.
@@ -386,13 +384,14 @@ This derivation, and its validation on simulated data, shows that, even though t
 As a result, this study demonstrates that phenomenological models derived out of mechanistic models are more compact (i.e. not site-specific), and in certain cases are sufficient to extract the relevant parameters.
 
 The methodology proposed here for deriving inference models consists in proceeding in two steps, first assuming an underlying mechanistic model of sequence evolution, parameterized by variables that are derived from first principles (fitness landscape, mutations rates, $\hdots$).
-Subsequently, the phenomenological inference model is obtained by matching its parameters (here, the entries of the $\omega$ tensor) with the aggregate parameters derived from the application of the mean-field procedure to the the mechanistic model.
+Subsequently, the phenomenological inference model is obtained by matching its parameters (here, the entries of the $\omega$ tensor) with the aggregate parameters derived from the application of the mean-field procedure to the mechanistic model.
 Altogether, we believe that the approach used here could be applied more generally: inference model can be phenomenological in practice, but should nonetheless be derived from an underlying mechanistic model, so as to correctly formalize the interplay between, mutation, selection, drift and other evolutionary forces.
 
 Finally, this work is still preliminary, and the mean-field model should be tested against a more diverse range of empirical data, in terms of phylogenetic depth, strength of selection, codon usage bias to assert for the validity of our empirical results.
 Also, the empirical fit to the data between the models (e.g. using AIC) should be more carefully examined.
 Indeed, by setting $\AAEqui = \vecOne$ and $\AAExchan = \omega \vecOne$ in our mean-field models, we retrieve the nested Muse \& Gaut model, hence both models are directly comparable.
 In addition, several other codon models~\citep{Rodrigue2008a,KosakovskyPond2020} should be included in a broader comparison of the accuracy of the estimation of the underlying mutational bias and strength of selection on protein-coding DNA sequences.
+
 
 \section{Materials \& Methods}
 
@@ -523,21 +522,20 @@ Averaged over all branches of the tree, the mean scaled fixation probability is 
     \avgpfix & = \left\langle \avgpfix (t) \right\rangle, \\
     & = \int_{t} \avgpfix (t) \der t,
 \end{align}
-where the integral is taken over all branches of the tree, while the integrand ($\avgpfix (t)$) is a piece-wise function changing after every point substitution event.
+where the integral is taken over all branches of the tree, while the integrand $\avgpfix (t)$ is a piece-wise function changing after every point substitution event.
 
 Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{\ATtoGC}$ is obtained similarly by restricting the sums (in the numerator and the denominator) to one nucleotide mutations only from weak to strong.
 
 \subsection{Derivation of mean-field model}
 \label{subsec:mean-field-derivation}
-The average fixation probability between codon $\ci$ and codon $\cj$ is given as:
+Assuming an underlying site-specific mutation-selection process at equilibrium, the average substitution rate between codon $\ci$ and codon $\cj$ is given as:
 \begin{align}
-    \left\langle \avgpfix_{\itoj} \right\rangle & = \dfrac{ \left\langle \subequi_{\ci} 2\Ne \pfix(\itoj) \right\rangle }{ \left\langle \subequi_{\ci} \right\rangle }, \\
-    & = \dfrac{ \sum\limits_{\site} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \subequi_{\ci}\siteexp }, \\
+    \left\langle \Pfix (\itoj) \right\rangle & = \dfrac{ \sum\limits_{\site} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \subequi_{\ci}\siteexp }, \\
     & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} }, \\
     & = \dfrac{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }, \\
     & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} },
 \end{align}
-As a result, $\left\langle \avgpfix_{\itoj} \right\rangle$ is dependent on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
+As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
 \begin{equation}
     \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }.
 \end{equation}
