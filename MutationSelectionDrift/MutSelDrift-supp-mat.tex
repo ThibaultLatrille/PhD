@@ -34,14 +34,14 @@ The Shannon's entropy can be averaged over all sites as:
 
 \subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
-Under a simulation with site-specific fitness profiles, a fitness profile gives a fitness for each amino acid (vector of size $20$).
-Each site of the protein has a specific amino-acid fitness profile.
-Overall, the protein log-fitness is computed as the sum of site-specific fitness, obtained by accessing the amino acid present at each site of the protein.
-For each possible mutant, we compute the selection coefficient of the mutant:
+Under a simulation with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitnesses along the sequence.
+In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \Profile\siteexp_{\aaSource}, \forall 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
+Since $\Seqi[ \site ]$ is the codon at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
+Altogether, for each possible mutant, we compute the selection coefficient of the mutant as:
 \begin{equation}
-    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\profile_{\site} \left(\Seqi^{t+1}(\site) \right)}{\profile_{\site} \left(\Seqi^{t}(\site) \right)} \right),
+    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqi^{t+1}[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
 \end{equation}
-where $\Profile_{\site}$ is the fitness profile at site $\site$, obtained in empirical experiment~\citep{Bloom2017}.
+where $\Profile_{\site}$ used in this study are extracted from \citet{Bloom2017}, empirically determined in the context of deep mutational scanning.
 
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuDiv}
@@ -200,7 +200,7 @@ where strength ($\alpha > 0$) and epistasis ($\beta$) are parameters of the fitn
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuGeo}
 \end{center}
-For each possible mutant ($t+1$ substitutions), we compute $\phenoGeo\left(\Seqi^{t+1}\right)$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
+For each possible mutant (at time $t+1$ substitutions), we compute $\phenoGeo\left(\Seqi^{t+1}\right)$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoGeo\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}.
 \end{equation}
@@ -259,13 +259,13 @@ From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the
 \begin{equation}
     \GFold \left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
-where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
+where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the 3D structure.\\
 
-The free energy of unfolded states $\GUnfold \left(\Seqi^{t}\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
+The free energy of unfolded states $\GUnfold \left(\Seqi^{t}\right)$ is approximated using $55$ decoy 3D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
     \GUnfold \left(\Seqi^{t}\right) = \left\langle G\left(\Seqi^{t}\right) \right\rangle - kT \ln (1.0\text{E}^{160}) - \dfrac{2 \left[ \left\langle G\left(\Seqi^{t}\right)^2 \right\rangle - \left\langle G\left(\Seqi^{t}\right) \right\rangle^2\right] }{kT}
 \end{equation}
-where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
+where the average $\left\langle . \right\rangle$ runs other the $55$ decoy 3D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:
 \begin{equation}
@@ -280,7 +280,7 @@ where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuFold}
 \end{center}
-For each possible mutant ($t+1$ substitutions), we compute $\phenoFold^{t+1}$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
+For each possible mutant (at time $t+1$ substitutions), we compute $\phenoFold^{t+1}$ from the updated sequence $\Seqi^{t+1}$, and subsequently the selection coefficient of the mutant:
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoFold\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}.
 \end{equation}
