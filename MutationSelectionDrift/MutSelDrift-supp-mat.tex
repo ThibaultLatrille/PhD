@@ -35,7 +35,7 @@ The Shannon's entropy can be averaged over all sites as:
 \subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
 Under a simulation with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitnesses along the sequence.
-In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \Profile\siteexp_{\aaSource}, \forall 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
+In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \Profile\siteexp_{\aaSource},\ 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
 Since $\Seqi[ \site ]$ is the codon at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
 Altogether, for each possible mutant, we compute the selection coefficient of the mutant as:
 \begin{equation}

@@ -522,13 +522,13 @@ Wrightian fitness is defined as the probability of our protein to be in the fold
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 
 Under a simulation with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitnesses along the sequence.
-In this model, each codon site $\i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \Profile^{(i)}_{\aaSource}, \forall 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
-Since $\Seqi[ \i ]$ is the codon at site $\i$, the encoded amino acid is $\aaMap \left( \Seqi[ \i ] \right)$, hence the fitness at site $\i$ is $\Profile^{(i)}_{\aaMap \left( \Seqi[ \i ] \right)}$.
+In this model, each codon site $i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \Profile^{(i)}_{\aaSource},\ 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
+Since $\Seqi[ i ]$ is the codon at site $i$, the encoded amino acid is $\aaMap \left( \Seqi[ i ] \right)$, hence the fitness at site $i$ is $\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \i \leq \Nsite} \ln \left( \dfrac{\Profile^{(i)}_{\aaMap \left( \Seqj[ \i ] \right)}}{\Profile^{(i)}_{\aaMap \left( \Seqi[ \i ] \right)}} \right),
+    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq i \leq \NbrSites} \ln \left( \dfrac{\Profile^{(i)}_{\aaMap \left( \Seqj[ i ] \right)}}{\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}} \right),
 \end{equation}
-where $\Profile_{\i}$ used in this study are extracted from \citet{Bloom2017}, empirically determined in the context of deep mutational scanning.
+where $\Profile_{i}$ used in this study are extracted from \citet{Bloom2017}, empirically determined in the context of deep mutational scanning.
 
 Under simulation with a fixed distribution of fitness effects (\acrshort{DFE}), the selection coefficient of the mutant $\Seqj$ is gamma distributed (shape $k > 0$):
 \begin{equation}
