@@ -12,7 +12,7 @@ This fundamental idea is at the core of the nearly-neutral theory of evolution.
 This theory posits that a substantial fraction of mutations are deleterious or weakly deleterious, and as result predicts that the substitution rate (relative to the neutral expectation), called $\omega$, decreases along lineages with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
 
 This prediction has been more quantitatively examined under the assumption that the selective effects of mutations are drawn from a fixed distribution of fitness effects (\acrshort{DFE})~\citep{Kimura1979, Welch2008}.
-Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (i.e. $\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
+Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (i.e.~$\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
 In practice, DFEs are strongly leptokurtic, which thus predicts a weak negative relation between $\omega$ and $\Ne$.
 
 The quantity $\omega$ is an observable of the molecular evolutionary process, at least if we can separately estimate the rate of neutral and selected substitutions in a phylogenetic or comparative context.
@@ -111,7 +111,7 @@ Each site bearing a destabilizing amino acid contributes an excess of $\DeltaDel
 To note, $\DeltaDeltaG$ and $\EmpiricalDeltaDeltaG$ are equivalent, however $\DeltaDeltaG$ is preferred for mathematical readability, and $\EmpiricalDeltaDeltaG$ will refer to the empirical estimate.
 The smallest achievable value of $\DeltaG$, obtained when all amino acids of the sequence are stabilizing, is noted $ \DeltaGmin < 0$.
 Similarly, $\EmpiricalDeltaGmin$ will refer to the empirical estimate of $\DeltaGmin$.
-In this model, the most succinct phenotype of a given genotype (i.e. sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
+In this model, the most succinct phenotype of a given genotype (i.e.~sequence) is just the proportion of destabilizing amino acids in the sequence, defined as $0 \leq x \leq 1$.
 Thus $\DeltaG$ is a linear function of $x$:
 \begin{align}
     \DeltaG (x) = \DeltaGmin + \NbrSites \DeltaDeltaG x,
@@ -131,7 +131,7 @@ Analytically, the fitness function is given by the Fermi Dirac distribution and 
 where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
 Here, $\DeltaGmin$ and $\DeltaDeltaG$ are defined as above, and the parameter $\beta$ is $1.686$ mol/kcal at $25 \degree C$ (or $298.2 \degree K$).
 
-Of note, even though the phenotypic effect of a mutation at a given site does not depend on the amino-acids that are present at other sites (i.e. the trait is additive), the fitness effect of a mutation still depends on other sites (i.e. the log-fitness is not additive).
+Of note, even though the phenotypic effect of a mutation at a given site does not depend on the amino-acids that are present at other sites (i.e.~the trait is additive), the fitness effect of a mutation still depends on other sites (i.e.~the log-fitness is not additive).
 As a result, the molecular evolutionary process is site-interdependent, a property referred to as non-specific epistasis~\citep{Dasmeh2018}.
 
 \subsection{Response of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
@@ -195,7 +195,7 @@ This equation essentially expresses the mutation-selection equilibrium: the left
 This equation cannot be solved explicitly for $x\eq$, but a qualitative intuition on the consequences of change in $\Ne$ to the equilibrium phenotype $x\eq$ is given in figure~\ref{fig:NeChangeInfluence}.
 Intuitively, an increase in $\Ne$ results in a more optimal phenotype, closer to $0$.
 The mutation bias (left-hand side of equation~\ref{eq:equilibrium}) decreases with $x$ while the strength of selection (right-hand side of equation~\ref{eq:equilibrium}) increases with $x$, and the equilibrium phenotype is obtained at their intersection.
-An increase in $\Ne$ leads to shifting the selective response upward, which then results in a leftward shift of the equilibrium phenotype (i.e. closer to $0$).
+An increase in $\Ne$ leads to shifting the selective response upward, which then results in a leftward shift of the equilibrium phenotype (i.e.~closer to $0$).
 The leftward shift is smaller for selective strengths characterized by a steeper curve, resulting in qualitatively weaker susceptibility of the equilibrium phenotype to changes in $\Ne$
 
 \begin{figure}[htbp]
@@ -230,14 +230,14 @@ Combined together, these analytical approximations yield the susceptibility (equ
 \end{gather}
 The two terms of the denominator correspond to the derivative of respectively the mutational bias and the scaled selection coefficient, respectively.
 However, the mutational bias decreases weakly with $x$ (blue curve on figure~\ref{fig:NeChangeInfluence}) while the strength of selection increases sharply with $x$ (red and green curves).
-As a consequence, the derivative of the mutational bias is much lower than the derivative of the selection coefficient around the equilibrium point (i.e. the phenotype is \textit{nearly} equimutable).
+As a consequence, the derivative of the mutational bias is much lower than the derivative of the selection coefficient around the equilibrium point (i.e.~the phenotype is \textit{nearly} equimutable).
 The second term can therefore be ignored, which leads to a very compact equation for susceptibility $\chi$ in the general case:
 \begin{gather}
     \chi \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}
 \end{gather}
-The susceptibility is thus equal to the inverse of the relative curvature, i.e. the ratio of the second to the first derivatives, of the log-fitness function, taken at the equilibrium phenotype.
+The susceptibility is thus equal to the inverse of the relative curvature, i.e.~the ratio of the second to the first derivatives, of the log-fitness function, taken at the equilibrium phenotype.
 Of note, this susceptibility is strictly negative for decreasing log-concave fitness functions, asserting that $\omega$ is a decreasing function of $\Ne$.
-In addition, the susceptibility itself is low in absolute value (i.e. $\omega$ responds more weakly) for strongly concave log-fitness functions.
+In addition, the susceptibility itself is low in absolute value (i.e.~$\omega$ responds more weakly) for strongly concave log-fitness functions.
 This equation quantitatively captures the intuition developed in figure~\ref{fig:NeChangeInfluence}, namely that the response of $\omega$ is very weak if the selection curve is very steep around the equilibrium set point (red curve compared to green curve).
 
 In the specific case of the biophysical model, the susceptibility ($\chi$) further simplifies to:
@@ -297,7 +297,7 @@ The robustness of this approximation was tested by conducting simulations with f
 
 These simulation experiments demonstrate, first, that the relation between $\omega$ and log-$\Ne$ is indeed linear, at least in the range explored here, and that the slope of the linear regression matches the expected theoretical value (figure~\ref{fig:GoldsteinVsToy}A).
 Secondly, we observe that the parameter $\DeltaGmin$ has virtually no effect on the slope of the linear regression, as also expected theoretically (figure~\ref{fig:GoldsteinVsToy}B).
-Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (i.e. has an impact on the intercept, not on the slope of the relation).
+Instead, decreasing $\DeltaGmin$ (to more negative values) merely results in an overall increase in $\omega$ over the whole range of $\Ne$ (i.e.~has an impact on the intercept, not on the slope of the relation).
 This is due to the fact that decreasing $\DeltaGmin$ shifts the equilibrium to higher $x\eq$, since more destabilizing sites can then reach fixation before reaching the point of marginal stability.
 
 Finally, we relaxed our assumption that each site of the sequence contributes independently to $\DeltaG$, by taking into account the 3D structure of protein and using a statistical potential to estimate $\DeltaG$ (section~\ref{sec:simulation-using-the-3d-structure-of-protein} in supplementary materials).
@@ -447,7 +447,7 @@ As an example, in the Ising model, the magnetization is a macroscopic outcome of
 At equilibrium when the system reaches minimum potential energy, the observable magnetization is controlled by variables such as temperature, and by external forces such as the magnetic field forcing the system.
 By analogy, our atoms are sites of the sequence which can be in stabilizing or destabilizing state, and the macroscopic emerging observable is the relative substitution rate of selected mutation ($\omega$), which is controlled by effective population size ($\Ne$) analogous to temperature~\citep{Sella2005}.
 Ultimately, the susceptibility of macroscopic observable ($\omega$) to a control variable ($\Ne$) can be tied to the microscopic parameters.
-Another example of observable macroscopic properties, though not considered in this manuscript, could be for example site entropy, i.e. the effective number of observed amino acids per site at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
+Another example of observable macroscopic properties, though not considered in this manuscript, could be for example site entropy, i.e.~the effective number of observed amino acids per site at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
 
 % Mechanical analogy
 % Elasticity with springs ? Surface tension with molecule and radius of the
