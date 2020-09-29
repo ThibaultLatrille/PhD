@@ -8,7 +8,7 @@ Define $\NbrSites$ as the number of sites in the genotype sequence.
 Each site can be in one of $\Nstate \geq 2$ states, where only $1$ state is defined the stable state, and $\Nstate - 1$ states are unstable.
 For a given genotype sequence, define phenotype $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
 After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=1/\NbrSites$.
-Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to $\dx$, if the current phenotype is $x$:\\
+Define $\rho_{x}(\dx)$ as the probability to get a change of phenotype equal to $\dx$, if the current phenotype is $x$:
 \begin{gather}
     \begin{cases}
         \dx &\text{ with probability } \rho_{x}(\dx) = 1-x, \\
@@ -71,7 +71,7 @@ where  $\lambda_{K}(x\eq) = \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (\Nst
 \subsection{Relative substitution rate (\texorpdfstring{$\omega$}{ω}) at equilibrium}
 \label{subsec:mean-scaled-fixation-probability-omega-at-equilibrium}
 
-The substitution rate of all selected relative to the substitution rate of neutral mutations is denoted $\omega$, which can also be interpreted as the the mean fixation probability of mutations scaled by the fixation probability of neutral mutations $p = 1 / {2 \Ne}$.
+The substitution rate of all selected relative to the substitution rate of neutral mutations is denoted $\omega$, which can also be interpreted as the mean fixation probability of mutations scaled by the fixation probability of neutral mutations $p = 1 / {2 \Ne}$.
 \begin{align}
     \omega & = \E_{\dx} \left[ \frac{\pfix(x, \dx)}{\pfix(x, 0)} \right], \\
     & = (1 - x) \frac{ S(x, \dx)}{1 - \e^{-S(x, \dx)}} + x \left(\frac{\Nstate - 2}{\Nstate - 1}\right) + \frac{x}{\Nstate-1} \frac{ S(x, -\dx)}{1 - \e^{-S(x, -\dx)}} \text{ from eq.~\ref{eq:proba-pheno},~\ref{eq:pfix} and~\ref{eq:pfix0}}, \\
@@ -377,7 +377,7 @@ In any case, $\chi$ is now dependent on $x^*$, through $\lambda$.
 \subsection{Empirical calibration}
 \label{subsec:empirical-calibration}
 
-Based on empirical estimates~\citep{Zhang2008}.
+Based on empirical estimates found in \citet{Zhang2008}.
 The mean fraction of hydrophobic residues at the surface of proteins is $0.22 \pm 0.06$. With $n=100$ residues, this makes $22 \pm 6$.
 The mean value for $E_{ij}$ is $7kT$, with a standard deviation of $\sigma = 1.8kT$.
 Assuming that this standard deviation of $\pm 1.8kT$ is contributed by $\pm 6$ mutations gives $\EmpiricalDeltaDeltaG = 1.8 / 6 = 0.3$ kT or $0.18$ kcal per mole.
@@ -423,7 +423,7 @@ In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\omega)$ a
 \end{align}
 
 
-\section{Simulation using the 3d structure of protein}
+\section{Simulation using the 3D structure of protein}
 \label{sec:simulation-using-the-3d-structure-of-protein}
 
 We simulated substitutions in the protein phosphatase ($\NbrSites=300$ codon sites).
@@ -431,12 +431,12 @@ From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the fre
 \begin{equation}
     \GFold \left(\ci\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
-where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the $3$D structure.\\
-The free energy of unfolded states $\GUnfold \left(\ci\right)$ is approximated using $55$ decoy $3$D structures that supposedly represent a sample of possible unfolded states:
+where $I(a,b)$ is the pairwise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbour residues of site $\site$ (closer than $7\angstrom$) in the 3D structure.\\
+The free energy of unfolded states $\GUnfold \left(\ci\right)$ is approximated using $55$ decoy 3D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
     \GUnfold \left(\ci\right) = \left\langle G\left(\ci\right) \right\rangle - kT \ln (1.0\text{E}^{160}) - \frac{2 \left[ \left\langle G\left(\ci\right)^2 \right\rangle - \left\langle G\left(\ci\right) \right\rangle^2\right] }{kT},
 \end{equation}
-where the average $\left\langle . \right\rangle$ runs other the $55$ decoy $3$D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
+where the average $\left\langle . \right\rangle$ runs other the $55$ decoy 3D structures, and $k$ is the Boltzmann constant and $T$ the temperature in Kelvin.\\
 From the energy of folded and unfolded states, we can compute the difference in free energy between the states:
 \begin{equation}
     \DeltaG\left(\ci\right) = \GFold \left(\ci\right) - \GUnfold \left(\ci\right)
@@ -477,12 +477,14 @@ From the energy of folded and unfolded states, we can compute the difference in 
     \caption[$\EmpiricalDeltaDeltaG$ correlation to $\DeltaG$]{
     $\EmpiricalDeltaDeltaG$ correlation to $\DeltaG$.
     Left Panel: Model of folding free energy computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues.
-    Right Panel: Additive phenotype model, where for each non-optimal amino acid, $\EmpiricalDeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
+    Right Panel: Additive phenotype model, where for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
     Simulations are performed for $\Ne$ varying from $10^2$ to $10^8$, where each dot is an independent simulation at equilibrium.
     Along each simulation, the average $\EmpiricalDeltaDeltaG$ of all proposed mutations is recorded (y-axis), and represented as a function of the average $\DeltaG$ (x-axis).
     $\EmpiricalDeltaDeltaG$ is negatively correlated to $\Delta$, which is expected since protein under higher $\Ne$ are more stable (lower $\DeltaG$, see above), and mutations are more destabilizing on average.
-    To be more precise, the negative correlation between $\EmpiricalDeltaDeltaG$ and $\DeltaG$ is a necessary condition for observing a response of $\omega$ to changes in $\Ne$ and protein expression level\citep{Serohijos2012, Goldstein2013}.
+    To be more precise, the negative correlation between $\EmpiricalDeltaDeltaG$ and $\DeltaG$ is observed empirically with a linear fit of $\EmpiricalDeltaDeltaG = -0.13\DeltaG + 0.23$~\citep{Serohijos2012}.
+    This correlation is a necessary condition for observing a response of $\omega$ to changes in $\Ne$~\citep{Goldstein2013} and protein expression level~\citep{Serohijos2012}.
     }
+    \label{fig:DG-vs-DDG}
 \end{figure}
 
 
@@ -643,7 +645,7 @@ From a specific genotype, all the possible mutations thus result in a distributi
 The DPE and \acrshort{DFE} are not known a priori, but are the resulting consequence of the mutation-selection-drift balance.
 Empirically, these distributions are of particular importance since they can be obtained experimentally or inferred with other data.
 As an example, \acrshort{DFE} can be inferred from polymorphism dataset~\citep{Eyre-walker2007, Galtier2016}.
-Moreover, the distribution of $\\EmpiricalDeltadeltaG$ for novel mutations can be obtained experimentally.
+Moreover, the distribution of $\EmpiricalDeltaDeltaG$ for novel mutations can be obtained experimentally.
 
 \begin{figure}[H]
     \centering
@@ -652,7 +654,7 @@ Moreover, the distribution of $\\EmpiricalDeltadeltaG$ for novel mutations can b
     Distribution of fitness effects and phenotypic effect for novels non-synonymous mutations observed along a simulation at the mutation-selection balance.
     $\DeltaGmin=-118$, $\DeltaDeltaG=1$, $\NbrSites=300$, $\beta=1.686$, and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
     Each side of the distribution is fitted to a gamma distribution, shown in dotted line.
-    Panel A. Distribution of observed $\\EmpiricalDeltadeltaG$, which fit adequately the gamma distribution for negative $\\EmpiricalDeltadeltaG$ (stabilizing mutations).
+    Panel A. Distribution of observed $\EmpiricalDeltaDeltaG$, which fit adequately the gamma distribution for negative $\EmpiricalDeltaDeltaG$ (stabilizing mutations).
     Panel A. Distribution of observed selection coefficient, which fit adequately the gamma distribution for both positive and negative selection coefficient. However the shape parameter estimated is not the same for positive and negative selection coefficients.
     }
 \end{figure}
