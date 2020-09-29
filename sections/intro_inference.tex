@@ -5,7 +5,7 @@
 The previous chapter treated how substitution rates are defined and parameterized in phylogenetic codon models, either classical or mechanistic, but not how these parameters are inferred and estimated.
 In contrast, the goal of this chapter is to present the methodology for estimating the parameters from a set of observed protein-coding \acrshort{DNA} sequences in different species or lineages.
 To do so, I will first introduce the concept of likelihood and how the likelihood is computed in the context of phylogenetic models (section~\ref{sec-intro:likelihood}).
-Then, I will briefly introduce the maximum likelihood method of inference (section~\ref{subsec:maximum-likelihood}) and, finally, the principles of Bayesian inference using Markov Chain Monte Carlo (section~\ref{sec:intro-bayesian}).
+Then, I will briefly introduce the maximum likelihood method of inference (section~\ref{subsec:maximum-likelihood}) and, finally, the principles of Bayesian inference using Markov chain Monte Carlo (section~\ref{sec:intro-bayesian}).
 
 
 \section{Likelihood of the data}
@@ -259,7 +259,7 @@ This hierarchy can naturally be extended across sites, across branches or across
     \label{fig:DAG}
 \end{figure}
 
-\subsection{Markov Chain Monte Carlo (MCMC)}
+\subsection{Markov chain Monte Carlo (MCMC)}
 \label{subsec:markov-chain-monte-carlo}
 
 Once realizing that the prior distribution can be boiled down to a set of simpler distributions over the components of the parameter vector, the difficulty in computing the posterior distribution arises from the high dimensionality of the parameter space, known as the curse of dimensionality.
