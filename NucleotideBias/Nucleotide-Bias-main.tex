@@ -104,12 +104,23 @@ This differential effect across the three coding positions is explained by nucle
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth] {AT-GC-obs}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{at_over_gc_1}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize A\hspace{0.35cm}}}\hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{at_over_gc_2}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize B\hspace{0.35cm}}}\hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{at_over_gc_3}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize C\hspace{0.35cm}}}\hfill
     \caption[$\atgc$ composition of the alignment]{
     Observed $\atgc$ composition of the alignment, represented at the different positions of codons (first, second and third), summed over all sites.
     The horizontal axis represents the underlying mutational bias ($\lambda$) of the nucleotide matrix, and the vertical axis represent the observed $\atgc$ of the codon position across the alignment.
     Stringency of selection is represented by 5 coloured solid lines with decreasing $\alpha$.
-    $\atgc$ at the third codon position matches the mutational bias, whereas in contrast first and second positions are less extreme than the underlying bias.
+    $\atgc$ at the third codon position (panel C) matches the mutational bias, whereas in contrast first and second positions (panel A and B) are less extreme than the underlying bias.
     With increase stringency of selection (i.e.~with decreasing $\alpha$), the observed bias is less reflecting the underlying mutational bias such that selection is opposing the mutational bias.}
     \label{fig:mut-bias-AT-GC-obs}
 \end{figure}
@@ -132,9 +143,16 @@ This effect is less visible whenever selection is more stringent (i.e.~with decr
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth] {diversity-aa}
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{site_diversity_aa}
+    \end{minipage}
+    \llap{\raisebox{-1.6cm}{\scriptsize A\hspace{0.35cm}}}\hfill
+    \begin{minipage}{0.49\linewidth}
+        \includegraphics[width=\linewidth, page=1]{diversity_aa}
+    \end{minipage}
+    \llap{\raisebox{-1.6cm}{\scriptsize B\hspace{0.35cm}}}\hfill
     \caption[Diversity of amino acids]{
-    Diversity of the amino-acid frequencies is quantified as the exponential of Shannon's entropy in the vertical axis, either as site-specific diversity in the left panel or as sequence diversity in the right panel.
+    Diversity of the amino-acid frequencies is quantified as the exponential of Shannon's entropy in the vertical axis, either as site-specific diversity in the panel A or as sequence diversity in the panel B.
     Sequence diversity is higher than site-specific diversity, because at any given site only a small number of amino acids are actually permissible.
     From a selective perspective, site-specific diversity decreases with stringency of selection (decreasing $\alpha$ represented by 5 different solid lines) because at given site only a few amino acids are permitted.
     Conversely, because site-specific fitness profiles are randomly drawn, each site has different permitted amino acid, increasing the sequence diversity as the stringency of selection increases.
@@ -149,29 +167,38 @@ An alternative statistic, more directly relevant for measuring the intrinsic eff
 This summary statistic $\avgpfix$ can be quantified from the substitutions recorded along the simulation trajectory (see section~\ref{subsec:fixation-bias}).
 For very long trajectories, it identifies with the ratio of non-synonymous over synonymous substitution rates (or $\dnds$) induced by the underlying mutation-selection model~\citep{Spielman2015, DosReis2015, Jones2016}.
 As expected, $\avgpfix$ is always lower than 1 for simulations at equilibrium, under a time-independent fitness landscape~\citep{Spielman2015}.
-Quite expectedly (figure~\ref{fig:mut-bias-omega-WS}, left panel) $\avgpfix$ depends strongly on the stringency of selection ($\alpha$), which it is meant to measure.
+Quite expectedly (figure~\ref{fig:mut-bias-omega-WS}, panel A) $\avgpfix$ depends strongly on the stringency of selection ($\alpha$), which it is meant to measure.
 On the other hand, $\avgpfix$ depends weakly on the mutational bias ($\lambda$).
-This is in stark contrast with the amino-acid diversity, which is highly dependent on $\lambda$ (figure~\ref{fig:mut-bias-diversity-aa}).
+This is in stark contrast with the amino-acid diversity, which is dependent on $\lambda$ (figure~\ref{fig:mut-bias-diversity-aa}).
 
 The proxy of selection represented by $\avgpfix$ concerns all non-synonymous mutations, but we can also consider the mean scaled fixation probability only for the subset of non-synonymous mutations from weak nucleotides (A or T) to strong nucleotides (G or C), called $\avgpfix_{\ATtoGC}$.
-Interestingly, $\avgpfix_{\ATtoGC}$ increases with the strength of the mutational bias toward AT (i.e.~with increasing $\lambda$, figure~\ref{fig:mut-bias-omega-WS}, right panel).
+Interestingly, $\avgpfix_{\ATtoGC}$ increases with the strength of the mutational bias toward AT (i.e.~with increasing $\lambda$, figure~\ref{fig:mut-bias-omega-WS}, panel B).
 This distortion of the selective effects toward GC is stronger under an increased stringency of selection (i.e.~under a lower $\alpha$).
-
-This proxy of selection concerns all non-synonymous mutations, but we can consider the mean scaled fixation probability only for the subset of non-synonymous mutations from weak nucleotides (A or T) to strong nucleotides (G or C), called $\avgpfix_{\ATtoGC}$.
-In this context, $\avgpfix_{\ATtoGC}$) increases in response to stronger mutational bias toward AT (i.e.~with increasing $\lambda$), which had pushed codon containing favoured nucleotides toward less fit amino acid, as seen in the right panel of figure~\ref{fig:mut-bias-omega-WS}.
-This distortion of selective effects toward GC is stronger with increased stringency of selection (i.e.~with decreasing $\alpha$) .
+Furthermore, the non-synonymous mutations could also be restricted from strong (GC) to weak nucleotides (AT), and the ratio between $\avgpfix_{\ATtoGC}$ and $\avgpfix_{\ATtoGC}$ is monotonously increasing with the mutational bias toward AT (i.e.~with increasing $\lambda$, figure~\ref{fig:mut-bias-omega-WS}, panel C).
 Altogether, fixation probabilities are opposed to mutational bias, where the sequence is at an equilibrium point between these two forces.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth] {omega-AT-to-GC}
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{omega}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize A\hspace{0.35cm}}}\hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{omega_WS}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize B\hspace{0.35cm}}}\hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{omega_WS_over_SW}
+    \end{minipage}
+    \llap{\raisebox{-1.0cm}{\scriptsize C\hspace{0.35cm}}}\hfill
     \caption[Mean scaled fixation probability as a function of the parameters]{
     Mean scaled fixation probability ($\avgpfix$) in vertical axis as a function of mutational bias ($\lambda$) in the horizontal axis, for different stringency of selection ($\alpha$) in coloured solid lines.
-    In the left panel, expectedly, $\avgpfix$ decrease with increased strength of selection (i.e.~with decreasing $\alpha$).
+    In panel A, expectedly, $\avgpfix$ decrease with increased strength of selection (i.e.~with decreasing $\alpha$).
     However, $\avgpfix$ is relatively unaffected by the mutational bias ($\lambda$).
-    In the right panel, the mean scaled fixation probability of non-synonymous mutations is restricted to mutations from weak nucleotides (AT) to strong nucleotides (GC), called $\avgpfix_{\ATtoGC}$, represented in the vertical axis.
+    In panel B, $\avgpfix$ is restricted to mutations from weak nucleotides (AT) to strong nucleotides (GC), called $\avgpfix_{\ATtoGC}$, represented in the vertical axis.
     A mutational process biased towards AT leads to an increased fixation probability toward GG, in the opposite direction.
-    More generally, mutation bias is balanced by selection, where this effect increases with the stringency of selection.
+    In panel C, $\avgpfix_{\ATtoGC}$ is divided by the fixation probabilities in the opposing direction $\avgpfix_{\GCtoAT}$, represented in the vertical axis and increasing monotonously with $\lambda$.
+    Altogether, mutational bias is balanced by selection in the opposite direction, where this effect increases with the stringency of selection.
     }
     \label{fig:mut-bias-omega-WS}
 \end{figure}
@@ -223,7 +250,7 @@ As for the mean strength of selection $\widehat{\avgpfix}_{\text{MG}}$, a direct
 
 As shown in the left panel of figure~\ref{fig:mut-bias-inference}, estimate of the mutational bias is halfway between the nucleotide bias observed in the alignment and the true mutational bias used during the simulation.
 Thus, the MG model cannot reliably infer the mutational bias.
-On the other hand, $\widehat{\omega}$ is close to the underlying mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 98.2\%.
+On the other hand, $\widehat{\omega}$ is close to the underlying mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 98.2\% (not shown).
 Thus, the failure to correctly estimate the mutation process does not seem to have a strong impact on the inference of selection, at least in the present case.
 
 \subsubsection{\texorpdfstring{$\omega$}{ω} as a tensor: mean-field derivation}
@@ -282,7 +309,7 @@ In other words, the MF model can tease out the observed $\atgc$ bias of the alig
 
 The mean scaled fixation probability of non-synonymous mutations $\widehat{\avgpfix}_{\text{MF}}$ can also be computed.
 It is now a compound parameter, expressed as a function of $\widehat{\Mutmatrix}$, $\widehat{\AAExchan}$ and $\widehat{\AAEqui}$ (see section~\ref{sec:mut-bias-mean-field-omega}).
-Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the true mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 97.0%.
+Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the true mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 97.0\% (not shown).
 
 \begin{figure}[htbp]
     \centering
@@ -314,7 +341,8 @@ More importantly, the mutational bias estimated by the MF model is more extreme 
 This example behaves identically to the observations made with simulated alignments, where, compared to MG, the MF model estimates a stronger mutational bias, which was also closer to the real value.
 Thus, a reasonable interpretation is that MG is also underestimating the underlying mutational bias in the present case, and that the estimate of the MF model is more accurate.
 
-Additionally, the estimated mean scaled fixation probability of non-synonymous mutations, denoted $\widehat{\avgpfix}_{\text{MF}}$, can be restricted to mutations from weak nucleotides (AT) to strong (GC), or vice versa (see section~\ref{sec:mut-bias-mean-field-omega}).
+Concerning selection, the estimated mean scaled fixation probability of non-synonymous mutations, denoted $\widehat{\avgpfix}$, is similarly estimated in the MG and MF models ($\widehat{\avgpfix}_{\text{MG}} \simeq \widehat{\avgpfix}_{\text{MF}}$).
+Additionally, in the MF model, $\widehat{\avgpfix}_{\text{MF}}$ can be restricted to mutations from weak nucleotides (AT) to strong (GC), or vice versa (see section~\ref{sec:mut-bias-mean-field-omega}).
 We observe that under a mutational bias favouring AT (i.e.~$\lambda > 1$), the mean fixation probability of non-synonymous mutations is higher toward GC than toward AT (i.e.~$\widehat{\avgpfix}_{MF,\ATtoGC} > \widehat{\avgpfix}_{MF,\GCtoAT}$), as expected if the mutational bias is toward AT.
 
 Reciprocally, for the $\beta$-lactamase, the alignment of 263 amino acids available for 85 species is globally biased toward GC.
@@ -330,12 +358,23 @@ Our MF model detects this effect and simultaneously estimates more extreme (and 
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c||c|c|}
         \hline
-        \textbf{Estimated parameter} & Nucleoprotein & Lactamase \\
+        & \textbf{Nucleoprotein} & \textbf{Lactamase} \\
+        \hline \textbf{Number of sites} & 498 & 263 \\
+        \hline \textbf{Number of taxa} & 180 & 85 \\
         \hline \textbf{$\atgc$ of the alignment} & 1.15 & 0.79 \\
+        \hline \textbf{$\atgc$ at first coding position} & 1.06 & 0.58 \\
+        \hline \textbf{$\atgc$ at second coding position} & 1.22 & 1.18 \\
+        \hline \textbf{$\atgc$ at third coding position} & 1.19 & 0.71 \\
         \hline \textbf{Muse \& Gaut mutational bias ($\widehat{\lambda}_{\text{MG}}$)} & 1.39 & 0.85 \\
         \hline \textbf{Mean-field mutational bias ($\widehat{\lambda}_{\text{MF}}$)} & 1.64 & 0.68 \\
-        \hline \textbf{Mean-field scaled fixation probability from AT to GC ($\widehat{\avgpfix}_{\text{MF},\ATtoGC}$)} & 0.14 & 0.31 \\
-        \hline \textbf{Mean-field scaled fixation probability from GC to AT ($\widehat{\avgpfix}_{\text{MF},\GCtoAT}$)} & 0.10 & 0.44 \\
+        \hline \textbf{Site diversity} & 1.10 & 1.37 \\
+        \hline \textbf{Muse \& Gaut scaled fixation probability ($\widehat{\avgpfix}_{\text{MG}}$)} & 0.085 & 0.29 \\
+        \hline \textbf{Mean-field scaled fixation probability ($\widehat{\avgpfix}_{\text{MF}}$)} & 0.086 & 0.30 \\
+        \hline \textbf{Mean-field scaled fixation probability} & \multirow{2}{*}{0.14} & \multirow{2}{*}{0.31} \\
+        \textbf{from AT to GC ($\widehat{\avgpfix}_{\text{MF},\ATtoGC}$)} & & \\
+        \hline \textbf{Mean-field scaled fixation probability} & \multirow{2}{*}{0.10} & \multirow{2}{*}{0.44} \\
+        \textbf{from GC to AT ($\widehat{\avgpfix}_{\text{MF},\GCtoAT}$)} & & \\
+        \hline \textbf{$\widehat{\avgpfix}_{\text{MF},\ATtoGC} / \widehat{\avgpfix}_{\text{MF},\GCtoAT}$ } & 1.36 & 0.71 \\
         \hline
     \end{tabu}}
     \caption[Estimated parameters]{
@@ -558,4 +597,4 @@ Conversely, by restricting the sum from strong (GC) to weak (AT), we obtain $\av
 \label{subsec:inference-method-with-hyphy}
 
 Maximum likelihood estimation has been performed with the software \texttt{Hyphy}~\citep{Pond2005}.
-The \texttt{Python} scripts generating the \texttt{Hyphy} batch files (for both Muse \& Gaut and mean-field), as well as scripts to analyse experiments are available at \url{https://github.com/ThibaultLatrille/NucleotideBias} under MIT license.
+The \texttt{Python} scripts generating the \texttt{Hyphy} batch files (for both Muse \& Gaut and mean-field), as well as the pipeline to generate the simulation and empirical experiments are available at \url{https://github.com/ThibaultLatrille/NucleotideBias} under MIT license.
