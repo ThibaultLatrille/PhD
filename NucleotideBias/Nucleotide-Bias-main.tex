@@ -437,21 +437,19 @@ In addition, several other codon models~\citep{Rodrigue2008a,KosakovskyPond2020}
 \subsection{Simulation model}
 \label{sec:mut-bias-simu}
 We seek to simulate the evolution of protein-coding sequences along a specie tree.
-Starting with one sequence at the root of the tree, the sequences evolves independently along the different branches of the tree by point substitutions, until they reach the leaves.
-At the end of the simulation, we get one sequence for each leaf of the tree, meaning one sequence per specie.
-Such evolutionary process is an idealized version of the reality, in the sense that the whole heterogeneity of sequences in the population is discarded, with only one sequence representing the whole population.
-For a protein-coding \acrshort{DNA} sequence, a substitution is modelled as the product of mutation at the nucleotide level, and selection at the amino-acid level.
+Starting with one sequence at the root of the tree, the sequences evolve independently along the different branches of the tree by point substitutions, until they reach the leaves.
+At the end of the simulation, we get one sequence for each leaf of the tree, meaning one sequence per species.
+The substitution is modelled using the origination-fixation approximation, i.e.~substitution rates are the product of the mutation rate at the nucleotide level, and fixation probabilities, based on selection at the amino-acid level.
 
-On one hand, the mutation rate between nucleotides as assumed to be shared by all sites of the sequences.
-On the other hand, the selection for amino acids is assumed to be varying along the sequences.
-During the simulation, from a given sequence, the substitution rate toward all possible mutant (one nucleotide change) is computed and the next substitution at the waiting time until such event is obtained by Gillespie's algorithm~\citep{Gillespie1977}.
+The mutation process is assumed homogeneous across sites.
+On the other hand, selection is assumed to be varying along the sequence.
+During the simulation, given the current sequence, the substitution rates toward all possible mutants (one nucleotide change) are computed and the next substitution event is drawn randomly based on Gillespie’s algorithm ~\citep{Gillespie1977}.
 
 \subsection{Mutational bias at the nucleotide level}
 \label{sec:mut-bias-mut-matrix}
 The mutation rate between nucleotides is always proportional to $\mu$.
 Moreover, mutations from any nucleotide to another weak nucleotide is increased by the factor $\lambda$ compared with mutations to another strong nucleotide.
-The rate at which a nucleotide doesn't change is given such as the sum of all rates is zero.
-The mutation rate matrix is:
+The mutation rate matrix is thus:
 \begin{equation}
     \label{nucMatrix}
     \Mutmatrix =
@@ -465,18 +463,18 @@ The mutation rate matrix is:
         \end{block}
     \end{blockarray}
 \end{equation}
-The stationary distribution $ \Subequi$ must be annihilated by the mutation matrix $\Mutmatrix$, which gives the stationary distribution:
+Which has the following stationary distribution:
 \begin{align}
     \Mutequi \Mutmatrix & = \vecOne, \\
     \iff \Mutequi & = \left( \dfrac{\lambda}{2+2\lambda}, \dfrac{1}{2+2\lambda}, \dfrac{1}{2+2\lambda}, \dfrac{\lambda}{2+2\lambda} \right).
     \label{nucStationarity}
 \end{align}
-The process is reversible and fulfils detailed balance conditions for any pair of different nucleotides:
+The process is reversible and fulfills the detailed balance condition, i.e.~for any pair of distinct nucleotides:
 \begin{equation}
     \mutequi_a \mutmatrix_{a, b} =\mutequi_b \mutmatrix_{b, a}.
     \label{nucMutBalance}
 \end{equation}
-It is important to note that ratio of weak over strong nucleotides frequency at stationarity is equal to $\lambda$:
+As a result, the ratio of weak over strong nucleotide frequencies at stationarity is equal to $\lambda$:
 \begin{align}
     \label{lambda}
     \dfrac{ \mutequi_A + \mutequi_T }{ \mutequi_C + \mutequi_G }
@@ -486,63 +484,62 @@ It is important to note that ratio of weak over strong nucleotides frequency at 
 
 \subsection{Selection at the amino-acid level}
 \label{sec:mut-bias-aa-selection}
-The substitution rate is considered null if the pair of codons differs by more than one nucleotide.
-Otherwise, the mutation rate between a pair of codons is given by the mutation rate of the underlying nucleotides.
-We subsequently take into account the selection at the amino-acid level, where each amino acid $\aai$ encoded by codons $\ci$ are given a fitness ($\Fiti$).
-By modelling fitness at the amino-acid level, we assume that all codons encoding for one particular amino acid are selectively neutral.
-In this modelling framework, the genetic code is of particular importance since the number of codons encoding for a particular amino acid varies greatly.
-As an example, tryptophan is encoded by one codon, while leucine is encoded by 6 codons.
-Intuitively, this variation makes the mutation bias more pronounced in codons encoding for the same amino acids, since there are more mutations possible that are selectively neutral (i.e.~synonymous).
-On the other hand, the mutation bias is more constrained if the amino acid is encoded by a few codons since there are only a few (or not any) synonymous mutations.
 
-To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is evolving under a different fitness landscape ($\Fiti\siteexp$).
-At one particular site, under a time-independent fitness landscape, the substitution rate between codons is given by the product of the mutation rate and the probability of fixation:
+The substitution rate is considered null between any two codons differing by more than one nucleotide.
+Otherwise, the mutation rate between a pair of codons is given by the mutation rate of the underlying single nucleotide change.
+Selection is modelled at the amino-acid level, i.e.~we assume that all codons encoding for one particular amino acid are selectively neutral.
+
+To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is independently evolving under a site-specific fitness landscape, characterized by a 20-dimensional frequency vector of scaled fitness parameters ($\Fit\siteexp$).
+The fitness vectors across sites are drawn IID from a uniform Dirichlet distribution prior to the simulation over the tree:
 \begin{equation}
-    \begin{dcases}
-        \submatrix_{\itoj}\siteexp & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,}\\
-        \submatrix_{\itoj}\siteexp & = \mutmatrix_{\nucitoj} \text{ if codons $\ci$ and $\cj$ are synonymous,} \\
-        \submatrix_{\itoj}\siteexp & = \mutmatrix_{\nucitoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp} } \text{ if codons $\ci$ and $\cj$ are non-synonymous}.
-    \end{dcases}
-    \label{eq:codonsubrates}
+    \Fit\siteexp \sim \text{Dirichlet} (\alpha, \hdots, \alpha), \Setsite
 \end{equation}
-At the root the tree, the sequence is obtained by sampling from the equilibrium stationary distribution.
-The stationary distribution $\Subequi$ at site $\site$ can be obtained as:
+At site $\site$, the substitution rate between non-synonymous codons $\ci$ and $\cj$ is given by the product of the mutation rate and the probability of fixation:
+\begin{equation}
+    \submatrix_{\itoj}\siteexp = \mutmatrix_{\nucitoj} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp} } \label{eq:codonsubrates}
+\end{equation}
+where $\aai$ denotes the amino-acid encoded by codon $\ci$.
+At the root of the tree, for each site $\site$, the sequence is drawn from the stationary distribution of the process specified by $\Subequi\siteexp$, which is given by:
 \begin{align}
     \subequi_{\ci}\siteexp & = \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp},
     \label{codonStationarity}
 \end{align}
-where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$, and $\mathcal{Z}\siteexp $ is the normalizing constant:
+where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $\ci$, and $\mathcal{Z}\siteexp $ is the normalizing constant at site $\site$:
 \begin{align}
-    \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\cj[k]}\right] \e^{\Fitj\siteexp} \right)^{-1}
+    \mathcal{Z}\siteexp = \left( \sum\limits_{\jSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\cj[k]}\right] \e^{\Fitj\siteexp} \right)^{-1}
 \end{align}
-Moreover, the substitution process is reversible and fulfils detailed balance conditions at each site $\site$:
+The substitution process is reversible and fulfils detailed balance conditions at each site $\site$ and between each pair of codons ($\ci$, $\cj$):
 \begin{align}
     \subequi_{\ci}\siteexp \submatrix_{\itoj}\siteexp = \subequi_{\cj}\siteexp \submatrix_{\cj, \ci}\siteexp
     \label{codonSubBalance}
 \end{align}
 
-The next substitution event, and the time to reach such event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution ($\submatrix_{\itoj}$) between sequences.
+Of note, by modelling fitness at the amino-acid level, we assume that all codons encoding for one particular amino acid are selectively neutral.
+In addition, in this modelling framework, the genetic code is of particular importance since the number of codons encoding for a particular amino acid varies greatly.
+As an example, tryptophan is encoded by one codon, while leucine is encoded by 6 codons.
+Intuitively, this variation makes the mutation bias more pronounced among codons encoding for the same amino acid, since there are more mutations possible that are selectively neutral (i.e. synonymous).
+On the other hand, the mutation bias is more constrained if the amino acid is encoded by few codons.
 
-\subsection{Diversity of amino-frequencies}
+\subsection{Site and sequence diversity of amino-acids}
 \label{subsec:entropy}
 
-For a site $\site$, the diversity $D\siteexp$ is computed as the exponential of Shannon's entropy from the frequencies of the different amino-acids ($\profile\siteexp$):
+For a site $\site$, the diversity $D\siteexp$ (or effective number of amino acids) is computed as the exponential of Shannon's entropy from the frequencies of the different amino-acids ($\profile\siteexp$):
 \begin{equation}
     D(\profile\siteexp) = \exp \left[ - \sum\limits_{\SetAa} \profile\siteexp_{\aminoacid} \ln \left( \profile\siteexp_{\aminoacid} \right) \right]
     \label{eq:diversity-site-specific}
 \end{equation}
-The diversity is a measure of the flatness of the fitness profile, with a value of $1$ corresponding to a single peak fitness landscape (i.e.~with only one amino acid permissible), and a value of $20$ corresponding to a neutral landscape, where each amino acid has the same fitness.
-The diversity can be averaged over all sites as:
+The diversity is a measure of the sparsity of the fitness profile, with a value of $1$ corresponding to a single peak (i.e.~with only one amino acid permissible), and a value of $20$ corresponding to a neutral landscape, where each amino acid has the same frequency.
+The diversity can be first computed for each site and then averaged over all sites as:
 \begin{equation}
     \left\langle D(\profile) \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} D(\profile\siteexp)
     \label{eq:diversity-site-specific-avg}
 \end{equation}
-Otherwise, frequencies of the different amino-acids can first be averaged over all sites:
+Alternatively, average frequencies of the different amino acids can first be computed over the alignment and then used to compute the global sequence diversity:
 \begin{equation}
     \left\langle \profile \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \profile\siteexp
     \label{eq:profile-gene-wise}
 \end{equation}
-Then the gene-wise diversity is simply:
+Then the sequence diversity is simply:
 \begin{equation}
     D \left(  \left\langle \profile \right\rangle \right) = \exp \left[ - \sum\limits_{\SetAa} \left\langle \profile \right\rangle_{\aminoacid} \ln \left( \left\langle \profile \right\rangle_{\aminoacid} \right) \right]
     \label{eq:diversity-gene-wise}
@@ -551,9 +548,9 @@ Then the gene-wise diversity is simply:
 \subsection{Mean scaled fixation probability}
 \label{subsec:fixation-bias}
 The sequence at time $t$ is denoted $\Seqi(t)$ and the codon present at site $\site$ is denoted $\Seqi_{\site}(t)$.
-For a given sequence, the mean scaled fixation probability of mutations is the ratio :
+For a given sequence, the mean scaled fixation probability over mutations away from $\Seqi(t)$ (weighted by their probability of occurrence) is given by the ratio:
 \begin{align}
-    \avgpfix (t) & = \dfrac{ \sum\limits_{\site} \sum\limits_{\cj \in \NonSynNeighbors \left ( \Seqi_{\site}(t) \right)} Q_{\Seqi_{\site}(t) \to \cj}}{ \sum\limits_{\site} \sum\limits_{\left ( \cj \in \Seqi_{\site}(t) \right)} \mu_{\Seqi_{\site}(t) \to \cj}},
+    \avgpfix (t) & = \dfrac{ \sum\limits_{\Setsite} \sum\limits_{\cj \in \NonSynNeighbors \left ( \Seqi_{\site}(t) \right)} Q_{\Seqi_{\site}(t) \to \cj}}{ \sum\limits_{\Setsite} \sum\limits_{\left ( \cj \in \Seqi_{\site}(t) \right)} \mu_{\Seqi_{\site}(t) \to \cj}},
 \end{align}
 where $\setNonSynNeighbors$ is the set of non-synonymous codons neighbours of codon $\ci$ and $\submatrix_{\itoj}\siteexp$ are defined as in equation~\ref{eq:codonsubrates}.
 Averaged over all branches of the tree, the mean scaled fixation probability is :
@@ -562,39 +559,47 @@ Averaged over all branches of the tree, the mean scaled fixation probability is 
     & = \int_{t} \avgpfix (t) \der t,
 \end{align}
 where the integral is taken over all branches of the tree, while the integrand $\avgpfix (t)$ is a piece-wise function changing after every point substitution event.
-
-Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{\ATtoGC}$ is obtained similarly by restricting the sums (in the numerator and the denominator) to one nucleotide mutations only from weak to strong.
+The mean scaled fixation probability from weak (AT) to strong (GC) nucleotides, denoted $\avgpfix_{\ATtoGC}$, is obtained similarly by restricting the sums (in the numerator and the denominator) from weak to strong mutations.
+A similar computation can be done from strong to weak.
 
 \subsection{Derivation of mean-field model}
 \label{subsec:mean-field-derivation}
-Assuming an underlying site-specific mutation-selection process at equilibrium, the average substitution rate between codon $\ci$ and codon $\cj$ is given as:
+Assuming an underlying site-specific mutation-selection process at equilibrium, given we know that a mutation is from codon $\ci$, the probability that this mutation is occuring at site $\site$ is:
 \begin{align}
-    \left\langle \Pfix (\itoj) \right\rangle & = \dfrac{ \sum\limits_{\site} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \subequi_{\ci}\siteexp }, \\
-    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\site} \mathcal{Z}\siteexp \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \e^{\Fiti\siteexp} }, \\
-    & = \dfrac{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{ \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }, \\
-    & = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} },
+    \proba (\site \mid \ci) = \dfrac{ \subequi_{\ci}\siteexp }{\sum\limits_{\Setsite} \subequi_{\ci}\siteexp }
+\end{align}
+The site-averaged (mean-field) substitution rate from codon $\ci$ to $\cj$ is as result given as:
+\begin{align}
+    \left\langle \submatrix_{\itoj} \right\rangle = \sum\limits_{\Setsite} \proba (\site \mid \ci) \submatrix_{\itoj}
+\end{align}
+If codon $\ci$ and codon $\cj$ are synonymous, this equation simplifies to the underlying mutation rate $\mutmatrix_{\nucitoj}$.
+Otherwise, if codon $\ci$ and codon $\cj$ are non-synonymous, the mean-field substitution rate is:
+\begin{align}
+    \left\langle \submatrix_{\itoj} \right\rangle & = \left\langle \mutmatrix_{\nucitoj} \Pfix (\itoj) \right\rangle, \\
+    & = \mutmatrix_{\nucitoj} \left\langle \Pfix (\itoj) \right\rangle, \\
+    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits_{\Setsite} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\Setsite} \subequi_{\ci}\siteexp }, \\
+    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits_{\Setsite} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\Setsite} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }
 \end{align}
 As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
 \begin{equation}
-    \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\site} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\site} \mathcal{Z}\siteexp  }.
+    \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\Setsite} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\Setsite} \mathcal{Z}\siteexp  }.
 \end{equation}
 
-\subsection{Mean scaled fixation probability under the mean-field model}
+\subsection{Mean scaled fixation probability (\texorpdfstring{$\avgpfix$}{ν}) under the mean-field model}
 \label{sec:mut-bias-mean-field-omega}
-
 The mean-field model is parameterized by a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\UniDimArray{\omega}(\AAExchan, \AAEqui)$.
 As a result, the mean scaled fixation probability of non-synonymous mutations is:
 \begin{align}
-    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
-    & = \dfrac{ \sum\limits_{\ci} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits_{\ci} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
+    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
+    & = \dfrac{ \sum\limits_{\iSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits_{\iSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.
 
-Moreover, mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{MF, \ATtoGC}$ is obtained similarly by restricting the sums (in the numerator and the denominator) to one nucleotide mutations only from weak to strong.
+Similarly, the mean scaled fixation probability from weak (AT) to strong (GC) nucleotides denoted $\avgpfix_{MF, \ATtoGC}$ is obtained similarly by restricting the sums (in the numerator and the denominator) to one nucleotide mutations only from weak to strong.
 Conversely, by restricting the sum from strong (GC) to weak (AT), we obtain $\avgpfix_{MF, \GCtoAT}$.
 
 \subsection{Inference method with \texttt{Hyphy}}
 \label{subsec:inference-method-with-hyphy}
 
 Maximum likelihood estimation has been performed with the software \texttt{Hyphy}~\citep{Pond2005}.
-The \texttt{Python} scripts generating the \texttt{Hyphy} batch files (for both Muse \& Gaut and mean-field), as well as the pipeline to generate the simulation and empirical experiments are available at \url{https://github.com/ThibaultLatrille/NucleotideBias} under MIT license.
+The \texttt{Python} scripts generating the \texttt{Hyphy} batch files (for both Muse \& Gaut and mean-field), as well as scripts for the post-analysis of the experiments, are available at \url{https://github.com/ThibaultLatrille/NucleotideBias} under MIT license.
