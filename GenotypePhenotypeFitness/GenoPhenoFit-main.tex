@@ -87,21 +87,18 @@ This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Po
     \caption[Outline of the theoretical results]{
     Outline of the theoretical results.
     The genotype to fitness relationship is depicted in the left panel.
-    The genotype is defined as the complete state of the amino-acid sequence.
-    Subsequently, the phenotype ($x$) is a real-valued summary of the genotype, and is defined in our model as the fraction of destabilizing sites in the sequence.
-    Finally, fitness is a decreasing log-concave function of the phenotype, depending on structural parameters of the model.
-    Once defined the relation from genotype to fitness at the individual level, the evolutionary process is presented in the middle panel.
-    The process consists of point substitutions of the amino-acid representative sequence of the population.
-    Substitutions are mutation reaching fixation, thus the rate of substitution depends mechanistically on the interplay between mutation, selection and genetic drift.
-    For a given effective population size $\Ne$, the evolutionary process result in an average value of the phenotype $\smash{x\eq}$ and also an average substitution rate (relative to the neutral rate) $\omega$.
-    Averaging over time is equivalent to determining the statistical equilibrium, by ergodicity of the stochastic process, given we can derive the probabilities of transitions between phenotypes.
-    The scaling of this equilibrium $\omega$ under a range of $\Ne$, presented in the right panel, gives us the slope of this relationship, called the susceptibility $\chi$, as a function of the structural parameters defined in the phenotype-fitness map.
+    The phenotype ($x$) is a real-valued function of the genotype (i.e.~the amino-acid sequence), and is defined in our model as the fraction of destabilizing amino acids in the sequence.
+    Fitness is a decreasing log-concave function of the phenotype, depending on structural parameters of the model.
+    Once the relation from genotype to fitness is defined, the substitution process proceeds as presented in the middle panel.
+    For a given effective population size $\Ne$, the evolutionary process results in an average value of the phenotype $\smash{x\eq}$ and an average substitution rate (relative to the neutral rate) $\omega$.
+    Averaging over time is equivalent to determining the statistical equilibrium, by ergodicity of the stochastic process.
+    The slope of the scaling of the equilibrium $\omega$ as a function of log-$\Ne$ defines the susceptibility $\chi$, which is a function of the structural parameters defined by the phenotype-fitness map.
     }
     \label{fig:Summary}
 \end{figure}
 In the original biophysical model, protein stability is determined by the difference in free energy between the folded and unfolded conformations, called $\DeltaG$ and measured in kcal/mol.
 Technically, free energy is computed based on the 3D conformation of the protein and using statistical potentials.
-As a result, the stabilizing or destabilizing effect of an amino acid at a particular site depends on amino acids present in the vicinity in 3D conformation, thus implementing what has been called specific epistasis~\citep{Dasmeh2018}.
+As a result, the stabilizing or destabilizing effect of an amino acid at a particular site depends on amino acids present in the vicinity in 3D conformation, thus implementing what has been called specific epistasis~\citep{Starr2016}.
 
 Here, we approximate this model such that the (de-)stabilizing effect at a particular site, such as measured by the $\EmpiricalDeltaDeltaG$ of the mutation, does not depend on other neighbouring residues, thus disregarding specific epistasis~\citep{Dasmeh2014}.
 Instead, each site contributes independently and additively to $\DeltaG$.
@@ -132,7 +129,7 @@ where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $
 Here, $\DeltaGmin$ and $\DeltaDeltaG$ are defined as above, and the parameter $\beta$ is $1.686$ mol/kcal at $25 \degree C$ (or $298.2 \degree K$).
 
 Of note, even though the phenotypic effect of a mutation at a given site does not depend on the amino-acids that are present at other sites (i.e.~the trait is additive), the fitness effect of a mutation still depends on other sites (i.e.~the log-fitness is not additive).
-As a result, the molecular evolutionary process is site-interdependent, a property referred to as non-specific epistasis~\citep{Dasmeh2018}.
+As a result, the molecular evolutionary process is site-interdependent, a property referred to as non-specific epistasis~\citep{Starr2016,Dasmeh2018}.
 
 \subsection{Response of \texorpdfstring{$\omega$}{ω} to changes in \texorpdfstring{$\Ne$}{Nₑ}. Analytical approximation}
 
@@ -202,13 +199,13 @@ The leftward shift is smaller for selective strengths characterized by a steeper
     \centering
     \includegraphics[width=\textwidth, page=1] {theoretical.pdf}
 
-    \caption[Phenotype susceptibility after a change in $\Ne$]{
-    Phenotype susceptibility after a change in $\Ne$.
-    The equilibrium phenotype $x\eq$ is determined by the equation $\smash{\ln(\frac{1 - x\eq}{x\eq}) + \ln(19)=4\Ne \beta \DeltaDeltaG e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x\eq)}}$.
+    \caption[Response of the equilibrium phenotype after a change in $\Ne$]{
+    Response of the equilibrium phenotype after a change in $\Ne$.
+    The equilibrium phenotype $x\eq$ is the solution of equation $\smash{\ln(\frac{1 - x\eq}{x\eq}) + \ln(19)=4\Ne \beta \DeltaDeltaG e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x\eq)}}$.
     The right-hand side of the equation increases exponentially with $x$ where $\NbrSites \DeltaDeltaG$ is the exponential growth rate ({\color{RED}red} and {\color{GREEN}green} curves).
     The parameter $\DeltaDeltaG$ is chosen such that $\DeltaDeltaG$ is increased by an order of magnitude in the red compared to the green curve, moreover, the value of $\DeltaGmin$ is chosen such that the equilibrium value $\smash{x\eq}$ is kept constant by solving numerically equation~\ref{eq:equilibrium}.
-    Whenever $\NbrSites \DeltaDeltaG$ is large ({\color{RED}red solid} curve), the exponential growth is steep and increasing $\Ne$ (dotted curve) only changes subtly the equilibrium phenotype by a factor $\smash{\color{RED}\Delta x\eq}$.
-    On the other hand, whenever $\NbrSites \DeltaDeltaG$ is low ({\color{GREEN}green} solid curve), the exponential growth is steadier and increasing $\Ne$ (dotted curve) involve a stronger susceptibility of the equilibrium phenotype by a factor $\smash{\color{GREEN}\Delta x\eq}$.
+    When $\NbrSites \DeltaDeltaG$ is large, increasing $\Ne$ by an order of magnitude ({\color{RED}red} curves) very moderately impacts the equilibrium phenotype (small $\smash{\color{RED}\Delta x\eq}$).
+    In contrast, for small $\NbrSites \DeltaDeltaG$ ({\color{GREEN}green} curves), the equilibrium phenotype is more strongly impacted by a change in $\Ne$ (large $\smash{\color{GREEN}\Delta x\eq}$).
     Moreover, changes in $\smash{x\eq}$ reflects the changes in $\omega$ since both are approximately equal (equation~\ref{eq:dnds}).
     }
     \label{fig:NeChangeInfluence}
@@ -310,23 +307,16 @@ In this experiment (figure~\ref{fig:GoldsteinVsToy}D), $\DeltaGmin$ was set to $
     \centering
     \includegraphics[width=\textwidth] {elasticity-low.pdf}
 
-    \caption[$\omega$ susceptibility to change in $\Ne$]
-    {$\omega$ susceptibility to change in $\Ne$.
-    Scaling experiment simulating sequence evolution and recording the average $\omega$ in the vertical axis observed at equilibrium as a function of $\Ne$ in the horizontal axis.
-    Along the x-axis, $200$ replicate simulations are performed for each different $\Ne$, the average (solid lines) and $90\%$ confidence interval (shaded area) of $\omega$ are shown.
-    Linear regression (dashed lines) allows to estimate the susceptibility ($\hat{\chi}$), which is compared to theoretical expectation.
-    The fixed parameters are $\NbrSites=300$, $\beta=1.686$.
-    Simulations are conducted under our additive phenotype model (expect panel C), and for each non-optimal amino acid, $\DeltaDeltaG$ is scaled by the Grantham distance to the optimal amino acid.
-    Panel A; $\DeltaGmin$ and $\DeltaDeltaG$ are given in the legend.
-    $\DeltaDeltaG$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
+    \caption[Scaling of equilibrium $\omega$ as a function of $\Ne$]
+    {Scaling of equilibrium $\omega$ as a function of log-$Ne$, under the additive phenotype model using Grantham distances (A,B,D) or the explicit biophysical model using a statistical potential (C), with $\NbrSites=300$ and $\beta=1.686$.
+    200 replicates per $\Ne$ value are shown (dots). Solid lines are average over replicates, and shaded areas are 90\% confidence interval.
+    The slope (or susceptibility ($\hat{\chi}$), is estimated by linear regression (dashed lines).
+    (A): $\DeltaDeltaG$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
     The estimated susceptibility ($\hat{\chi}$) decreases proportionally to the inverse of $\DeltaDeltaG$, as predicted by our theoretical model.
-    Panel B; $\DeltaDeltaG=1$ and $\DeltaGmin$ are given in the legend.
-    Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but changes hardly the slope of the linear regression, as expected theoretically.
-    Panel C; Folding free energy that determines the stability of the folded native state is computed using 3D structural conformations and pairwise contact potential energies between neighbouring amino-acid residues.
-    The estimated susceptibility $\hat{\chi}$ is $-0.00124$, and as a result $\omega$ at equilibrium is weakly dependent on log-$\Ne$.
-    Panel D; Simulation under the approximation of an additive free energy model, with empirical estimate of $\DeltaGmin = -118$ kcal/mol and $\DeltaDeltaG = 1$ kcal/mol.
-    Our theoretical prediction of the susceptibility is $\chi = 0.00198$, close to the observation using 3D structural conformations.
-    Under such parametrization, the scaling behaviour is similar to panel C, although with less variance.
+    (B): $\DeltaDeltaG=1$ and $\DeltaGmin$ are given in the legend.
+    Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but does not impact the slope.
+    (C): Stability of the folded native state is computed using 3D structural conformations and pairwise contact potentials.
+    (D): Additive model with $\DeltaGmin = -118$ kcal/mol and $\DeltaDeltaG = 1$ kcal/mol matches structural model shown in C (although with less variance).
     \label{fig:GoldsteinVsToy}
     }
 \end{figure}
@@ -354,21 +344,18 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to an $\omega$
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth] {Relaxation.pdf}
-    \caption[ $\omega$ relaxation after a change in $\Ne$]{
-    $\omega$ relaxation after a change in $\Ne$.
+    \caption[ Relaxation of $\omega$  after a change in $\Ne$]{
+    Relaxation of $\omega$ after a change in $\Ne$
     Solid line corresponds to the average over $1000$ replicates and the shaded area corresponds to the $90\%$ interval among replicates.
-    The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total time of the computation is $700$ million years.
-    Panel A.
-    $\beta=1.686$ for all simulations.
+    The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total evolutionary period is 700 million years.
+    (A): $\beta=1.686$ for all simulations.
     The \acrshort{DNA} sequence of $500$ sites is divided into exons of equal size.
     However the number of sites per exon changes between simulations from $\NbrSites=5$ to $\NbrSites=500$.
-    Moreover, $\DeltaDeltaG$ is changed according to the exon size such that the product is kept constant, and as a consequence the susceptibility of $\omega$ to changes in $\Ne$ is kept constant.
-    Finally, $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
-    As such, whatever the exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
-    We observe that increasing the number of sites implies a reduced time to reach the new equilibrium.
-    Panel B.
-    In context of a time-independent fitness landscape, where each amino acid has different fitness (site-specific profile), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long, such that relaxation rate is on the order of the mutation rate.
-    In the context of a fixed distribution of fitness effects (\acrshort{DFE}), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
+    Moreover, $\DeltaDeltaG$ is changed according to the exon size such that $\NbrSites \DeltaDeltaG$ (and as a result, the susceptibility) are kept constant, and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
+    Thus, regardless of exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
+    We observe that increasing the number of sites leads to a reduced time to reach the new equilibrium.
+    (B): In the context of a time-independent fitness landscape (yellow curve), where each amino acid has different fitness (site-specific profiles), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long.
+    In the context of a fixed distribution of fitness effects (blue curve), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
     }
     \label{fig:relaxStability}
 \end{figure}
@@ -379,11 +366,11 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to an $\omega$
 
 We provide a compact analytical result for the equilibrium response (which, by analogy with thermodynamics, we call the susceptibility) of $\omega$ to changes in $\Ne$, and we relate this response to the parameterization of the genotype-phenotype-fitness map.
 An application to a model of selection against protein misfolding shows that the susceptibility of $\omega$ to variation in $\Ne$ (in log space) is linear with a negative slope.
-Furthermore, this application demonstrates that effective population size and protein expression level are interchangeable in respect to their impact on the response of $\omega$.
+Furthermore, this application demonstrates that effective population size and protein expression level are interchangeable with respect to their impact on the response of $\omega$.
 Our compact theoretical results, which were obtained by making several simplifying assumptions, are supported by more complex simulations of protein evolution relaxing these assumptions.
 In particular, our theoretical predictions are verified under a numerical model of protein evolution in which the free energy is computed based on the 3D structure.
 
-Overall, the susceptibility ($\chi$) is a function of structural parameters of the protein and takes a very simple analytical form, being is inversely proportional to the product of three terms;
+Overall, the susceptibility ($\chi$) is a function of the structural parameters of the protein and takes a very simple analytical form, being is inversely proportional to the product of three terms;
 namely the sequence size, the inverse temperature ($\beta$), and the average change in conformational energy of destabilizing mutations ($\EmpiricalDeltaDeltaG$).
 Quantitatively, this product can be several orders of magnitude greater than $1$ in practice, such that the susceptibility of $\omega$, which is its inverse, is typically small.
 Previous studies using this model presented an apparent lack of response of $\omega$ to changes in $\Ne$~\citep{Goldstein2013}.
@@ -465,32 +452,11 @@ Additional molecular processes could be included, for instance mutational bias, 
 The change in equilibrium composition due to GC bias, and the magnitude of the response, could be investigated, such as to describe their signatures observable on molecular sequence, factoring the effects of mutation, selection and drift.
 Finally, we hope that the results presented in this work, and more broadly the framework outlined here, could foster a better understanding of observable signatures of the long-term evolutionary process emerging from ecological parameters and molecular physicochemical first principles.
 
-\subsection{Building block of inference models}
-
-% Categories of models
-At the crossroad between empirical data and theoretical models, inference models can compute the likelihood of an observation given a model, and also extract interpretable signature from molecular dataset.
-Models of inference are classified broadly into phenomenological and mechanistic~\citep{Rodrigue2010a}.
-Mechanistic models dissect the causation chains and construct a model from first principles, while phenomenological models aims to capture statistical aggregates (such as mean substitution rates) from the data.
-
-% Phenomenological models
-Example of such phenomenological models are the models parameterized directly in $\omega = \dnds$.
-They will for example tell us which branch of the tree, or which site of the sequence has a decrease or increase in $\omega$ but not the underlying reason for such changes, which can be either mutation, selection, drift or another evolutionary force.
-For example, in such models, a mutation and its reverse mutation do not have the opposite selection coefficient.
-As such they cannot disentangle the potentially confounding effect of mutation, selection and drift.
-Neither can they predict the nature of the functional relationship between population genetics or structural physicochemical parameters to $\omega$.
-
-% Site specific mechanistic models of evolution
-In contrast, mechanistic models relate structural, population-genetics and ecological parameters to the likelihood function.
-As such, mechanistic inference models are suitable to construct an integrative framework relating the signal available in molecular sequences to structural parameters ($\EmpiricalDeltaDeltaG$), expression level across genes and effective population size across lineages.
-Once such models are fitted to the data, the estimated parameters can be confronted to their independent empirical estimate ($\EmpiricalDeltaDeltaG, \Ne, \hdots$), which allows one to robustly test the model since orthogonal estimation of biological and ecological parameters should be congruent~\citep{Dasmeh2014}.
-Additionally, once model robustness has been assessed, this inference framework could allow one to estimate unknown variables, for example ancestral effective population sizes, with enough signal and calibration of the other parameters.
-Altogether, we argue that our theoretical results are a building block to construct an integrated inference framework of molecular evolution, since such models are bridging intrinsic biological parameters and the signal extractable from molecular sequences.
-
-
 \section{Materials \& Methods}
-Protein sequence evolution is simulated under an origin-fixation model~\citep{McCandlish2014}, where one sequence represents the whole population.
-From the resident \acrshort{DNA} sequence $\Seqi$, we define $\setSeqNeighbors$ as the set of all possible mutant that are one nucleotide away from $\Seqi$, and were mutant sequences containing a stop codon are excluded.
-For a protein of $\NbrSites$ amino-acid sites, $\left| \setSeqNeighbors \right| \leq 9 \NbrSites$, since each codon has a maximum of $9$ possible mutant codons that are one mutation away and that are not stop codon.
+Protein sequence evolution is simulated under an origin-fixation model~\citep{McCandlish2014}, i.e. the whole population is considered monomorphic and only the succession of fixation events is modeled.
+Given the currently fixed sequence $\Seqi$, we define $\setSeqNeighbors$ as the set of all possible mutant that are one nucleotide away from $\Seqi$.
+Non-sense mutants are not considered.
+For a protein of $\NbrSites$ amino-acid sites, $\left| \setSeqNeighbors \right| \leq 9 \NbrSites$, since each codon has a maximum of $9$ possible nearest neighbors that are not stop codons.
 For each mutant sequence $\Seqj \in \setSeqNeighbors$, we compute its fitness and subsequently the selection coefficient of the mutant:
 \begin{align}
     s \left( \Seqi,\Seqj\right) & = \dfrac{ \wrightfit \left(\Seqj \right) - \wrightfit \left(\Seqi\right) }{ \wrightfit \left( \Seqi\right)}, \\
@@ -498,7 +464,7 @@ For each mutant sequence $\Seqj \in \setSeqNeighbors$, we compute its fitness an
 \end{align}
 where $\wrightfit$ is the Wrightian fitness for a given phenotype and $\logfit $ is the Malthusian fitness (or log-fitness).
 
-The next event of mutant invading the population, and the time to reach such event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between sequences:
+The waiting time before the next mutant invading the population, and the specific mutation involved in this event, are chosen using Gillespie’s algorithm~\citep{Gillespie1977}, according to the rates of substitution between $\Seqi$ and each $\Seqj \in \setSeqNeighbors$, which are given by:
 \begin{equation}
     \submatrix_{\Seqitoj} = \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{1 - \e^{-4 \Ne s \left( \Seqi,\Seqj\right)}},
 \end{equation}
@@ -506,43 +472,43 @@ where $\mu_{\Seqitoj}$ is the mutation rate between $\Seqi$ and $\Seqj$, determi
 Various optimizations are implemented to reduce the computation time of mutant fitness.
 The simulation starts with a burn-in period to reach mutation-selection-drift equilibrium.
 
-\subsection{Models of fitness function}
+\subsection{Models of the fitness function}
 \label{MatMet:folding}
 
-Under a simulation of protein folding with an additive model of free energy, the protein's difference in free energy between folded and unfolded state is given by:
+Under the additive model for the free energy, the difference in free energy between folded and unfolded state is assumed to be given by:
 \begin{equation*}
     \DeltaG\left(\Seqi\right) = \DeltaGmin + \NbrSites \DeltaDeltaG * x\left(\Seqi\right),
 \end{equation*}
-where $0 \leq x\left(\Seqi\right) \leq 1$ is the distance of $\Seqi$ to the optimal sequence.
-For each site of sequence, the optimal amino acids are chosen randomly at initialization, and the distance between the current amino acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
-Wrightian fitness is defined as the probability of our protein to be in the folded state, given by the Fermi-Dirac distribution:
+where $0 \leq x\left(\Seqi\right) \leq 1$ is the distance of $\Seqi$ to the optimal sequence (i.e.~the fraction of sites occupied by a destabilizing amino-acid).
+For each site of the sequence, the optimal amino acids are chosen randomly at initialization, and the distance between the current amino acid and the optimal is scaled by the Grantham amino-acid distance~\citep{Grantham1974}.
+The Wrightian fitness is defined as the probability of our protein to be in the folded state, given by the Fermi-Dirac distribution:
 \begin{equation}
     \wrightfit (\Seqi) = \dfrac{e^{-\beta \DeltaG\left(\Seqi\right) }}{1 + e^{-\beta \DeltaG\left(\Seqi\right) }} = \dfrac{1}{1 + e^{\beta \DeltaG\left(\Seqi\right) }},
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 
-Under a simulation with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitnesses along the sequence.
-In this model, each codon site $i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \Profile^{(i)}_{\aaSource},\ 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
+For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
+In this model, each codon site $i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \profile^{(i)}_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
 Since $\Seqi[ i ]$ is the codon at site $i$, the encoded amino acid is $\aaMap \left( \Seqi[ i ] \right)$, hence the fitness at site $i$ is $\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
     s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq i \leq \NbrSites} \ln \left( \dfrac{\Profile^{(i)}_{\aaMap \left( \Seqj[ i ] \right)}}{\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}} \right),
 \end{equation}
-where $\Profile_{i}$ used in this study are extracted from \citet{Bloom2017}, empirically determined in the context of deep mutational scanning.
+The fitness vectors $\Profile^{(i)}$ used in this study are extracted from \citet{Bloom2017}.
+They were experimentally determined by deep mutational scanning.
 
-Under simulation with a fixed distribution of fitness effects (\acrshort{DFE}), the selection coefficient of the mutant $\Seqj$ is gamma distributed (shape $k > 0$):
+For simulations assuming a fixed distribution of fitness effects (\acrshort{DFE}), the selection coefficient of the mutant $\Seqj$ is gamma distributed (shape $k > 0$):
 \begin{equation}
     - s \left( \Seqi,\Seqj\right) \sim \text{Gamma} \left( \bar{|s|}, k \right)
 \end{equation}
 
-\subsection{\texorpdfstring{$\omega$}{ω} along the simulation}
-From the set of mutants $\setSeqNeighbors$ that is one nucleotide away from $\Seqi$, we define the subsets $\setSeqNonSynNeighbors$ and $\setSeqSynNeighbors$ that are respectively the set of non-synonymous and synonymous mutants, where $\setSeqNonSynNeighbors \cup \setSeqSynNeighbors = \setSeqNeighbors$.
-As in previous works~\citep{Spielman2015, DosReis2015, Jones2016}, the ratio of non-synonymous over synonymous substitution rates of the sequence is defined as :
-\begin{align}
-    \omega(t) &= \dfrac{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \submatrix_{\Seqitoj}}{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \mu_{\Seqitoj}} \left( \dfrac{\sum\limits_{\Seqj \in \setSeqSynNeighbors} \submatrix_{\Seqitoj}}{\sum\limits_{\Seqj \in \setSeqSynNeighbors} \mu_{\Seqitoj}} \right)^{-1}\\
-    &= \dfrac{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{{1 - \e^{-4 \Ne \left( \Seqi,\Seqj\right)} }}}{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \mu_{\Seqitoj}}
-\end{align}
-Averaged over all branches of the tree, the average $\omega$ is :
+\subsection{Computing \texorpdfstring{$\omega$}{ω} along the simulation}
+From the set of mutants $\setSeqNeighbors$ that are one nucleotide away from $\Seqi$, we define the subsets $\setSeqNonSynNeighbors$ of non-synonymous and synonymous mutants ($\setSeqNonSynNeighbors \subseteq \setSeqNeighbors$).
+The ratio of non-synonymous over synonymous substitution rates, given the sequence $\Seqi$ at time $t$ is defined as~\citep{Spielman2015, DosReis2015, Jones2016}:
+\begin{equation}
+    \omega(t) = \dfrac{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \mu_{\Seqitoj} \dfrac{4 \Ne s \left( \Seqi,\Seqj\right)}{{1 - \e^{-4 \Ne \left( \Seqi,\Seqj\right)} }}}{\sum\limits_{\Seqj \in \setSeqNonSynNeighbors} \mu_{\Seqitoj}}
+\end{equation}
+Averaged over all branches of the tree, the average $\omega$ is:
 \begin{align}
     \omega & = \left\langle \omega(t) \right\rangle, \\
     & = \int_{t} \omega (t) \der t,

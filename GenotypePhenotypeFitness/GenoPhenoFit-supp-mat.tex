@@ -427,7 +427,7 @@ In \citet{Brevet2019}, the covariance matrix with $\ln(\Ne)$ and $\ln(\omega)$ a
 \label{sec:simulation-using-the-3d-structure-of-protein}
 
 We simulated substitutions in the protein phosphatase ($\NbrSites=300$ codon sites).
-From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $\GFold \left(\ci\right)$, using the $3$-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
+From a \acrshort{DNA} sequence $\ci$ after $t$ substitutions, we compute the free energy of the folded state $\GFold \left(\ci\right)$, using the 3-dimensional structure of the folded state and pairwise contact energies between neighbouring amino-acid residues:
 \begin{equation}
     \GFold \left(\ci\right) = \sum\limits_{1 \leq \site \leq \NbrSites} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\ci(\site), \ci(r) \right),
 \end{equation}
