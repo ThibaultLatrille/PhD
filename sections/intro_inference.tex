@@ -109,7 +109,7 @@ At the root, the states are produced according to equilibrium frequencies of the
 In the case of the illustrative example, the total probability is given as:
 \begin{align}
     \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp , \forall \branch \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
-    & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+    & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
     \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}), \\
     & \qquad \qquad \qquad
     \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
@@ -276,7 +276,7 @@ Moreover, because the probability of a given configuration can be very small, ev
 
 This problem can, however, be formalized in terms of a Markov chain, where each state of the process is a particular configuration of particles.
 The transition probabilities between states must generate a stationary distribution equal to the target distribution of particle configurations.
-Given this requirement, and given one can also sample from the transition probabilities, the Markov chain Monte-Carlo starts from an arbitrary state and can be updated by random sampling from the transition probabilities.
+Given this requirement, and given one can also sample from the transition probabilities, the Markov chain Monte Carlo starts from an arbitrary state and can be updated by random sampling from the transition probabilities.
 After a period of burn-in, the Markov chain reaches the dynamic equilibrium, and the energy of each configuration can be computed.
 Finally, the average of this energy is an approximate solution for the integral of energy over the thermal equilibrium distribution of atomic configurations.
 

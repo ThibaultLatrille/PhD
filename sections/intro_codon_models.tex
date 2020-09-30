@@ -517,9 +517,9 @@ Once fitted to the data, the classical Muse \& Gaut (\acrshort{MG}) formalism re
 From there, one can compute the substitution and mutation rates of each codon substitution.
 Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
 \begin{align}
-    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \omega \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    & = \omega \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}}{\sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \omega,
 \end{align}
 where $\NonSyn_{\ci}$ is the set of non-synonymous codons neighbours to codon $\ci$.
@@ -531,7 +531,7 @@ On the other hand, the mechanistic codon models in the Halpern \& Bruno (\acrsho
 From there, one can also compute the fixation probability individually for each codon substitution.
 Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
 \begin{align}
-    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\ci} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits_{i} \subequi_{i} \sum\limits_{j \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits_{i} \subequi_{i} \sum\limits_{j \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
 Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.

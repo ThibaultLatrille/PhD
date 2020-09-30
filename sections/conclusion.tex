@@ -3,7 +3,7 @@
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 
 As a legacy of the nearly-neutral theory, the evolution of molecular sequences is seen as a stochastic process.
-One component of this process is creating diversity through mutation, while another antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
+One component of this process is creating diversity through mutation, while an antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
 In the long term, this stochastic process results in a history of substitution events along species trees, inducing complex patterns of molecular divergence between species.
 By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
 
@@ -11,9 +11,9 @@ The focus of this thesis has been the development of new phylogenetic codon mode
 In this conclusive chapter, I first recall the main results of this thesis in section~\ref{sec:summary-of-main-results}.
 Subsequently, I attempt to discuss the limitations of my work.
 One main limitation concerns the problem of modelling site interdependence, which is discussed in section~\ref{sec:epistasis-and-entrenchment}.
-Secondly, in section~\ref{sec:adaptative-landscape}, I draw some important connections between the mechanistic models developed here and the problem of detecting adaptive evolutionary regimes.
+Secondly, in section~\ref{sec:adaptative-landscape}, I draw upon some important connections between the mechanistic models developed here and the problem of detecting adaptive evolutionary regimes.
 As a perspective, I discuss how phylogenetic mechanistic models could be unified with population genetics in section~\ref{sec:mechanistic-and-phenomenological-models}, and the inference methodology that would be adapted to such an endeavour in section~\ref{sec:mechanistic-and-phenomenological-models}.
-Finally, before concluding, I discuss the question and the issue of reproducible sciences in evolutionary biology in section~\ref{sec:reproducible-science}.
+Finally, before some concluding remarks, I discuss the question and the issue of reproducible sciences in evolutionary biology in section~\ref{sec:reproducible-science}.
 
 
 \section{Summary of main results}
@@ -24,13 +24,13 @@ This sensor captures the small differences in fixation rate (or $\omega$) in dif
 This parameterization is the simplest one, in a phenomenological context, capable of correctly teasing apart mutation and selection.
 Thanks to this, this modelling approach yields a reliable estimate of the mutational process, while disentangling fixation probabilities in different directions.
 
-In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscape, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of \acrshort{DNA} coding sequences.
+In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscapes, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of \acrshort{DNA} coding sequences.
 Simultaneously, the approach estimates the correlation between life-history traits, mutation rate and effective population size, intrinsically accounting for phylogenetic inertia.
-Our framework was tested against simulated data and then applied to empirical data in mammals, isopods, primates and drosophila.
-Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to past history of $\Ne$, whose trends correspond to expected direction of correlation with life-history traits or ecological variables.
+Our framework was tested against simulated data and then applied to empirical data in mammals, isopods, primates and Drosophila.
+Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to the past history of $\Ne$, whose trends correspond to the expected direction of correlation with life-history traits or ecological variables.
 However, the magnitude of inferred variation in $\Ne$ across the phylogeny is narrower than expected, which is probably a bias of the approach caused by the assumptions made on the structure of the fitness landscape.
 
-As a way to further investigate this last question, the third manuscript in chapter~\ref{chap:GenoPhenoFit} revisits the question of how the exact structure of the fitness landscape determines the quantitative response of the molecular evolutionary process, and in particular of $\dnds$, to changes in $\Ne$ and in protein expression level.
+As a way to further investigate this last question, the third manuscript in chapter~\ref{chap:GenoPhenoFit} revisits the question of how the exact structure of the fitness landscape determines the quantitative response of the molecular evolutionary process, and in particular of $\dnds$, to changes in $\Ne$ and in protein expression levels.
 Specifically, I derive a theoretical approximation for the quantitative response of $\dnds$ to changes in both $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
 The development is generally valid for an additive trait under a log-concave fitness function, but was applied more specifically to a biophysical model in which proteins are under directional selection for maximizing their conformational stability.
 In this specific case, I predict a weak response of $\dnds$ to changes in either $\Ne$ or expression level (which are interchangeable), a result corroborated by simulations under more complex models.
@@ -263,13 +263,13 @@ Altogether, hybrid models based on mechanistic first principles but obtained by 
 Such hybrid models can be developed with the following procedure:
 \begin{enumerate}
     \item Define a mechanistic microscopic model from molecular first principles (see chapter~\ref{chap:GenoPhenoFit}).
-        This model can be potentially complex, modelling all kinds of variations, such as for example incorporating site interdependence or polymorphism within species.
-        Such model is meant to be implemented in simulations, but never in inference.
+    This model can be potentially complex, modelling all kinds of variations, such as for example incorporating site interdependence or polymorphism within species.
+    Such model is meant to be implemented in simulations, but never in inference.
     \item Use a mean-field argument and calculate aggregate quantities emerging from the microscopic model, leveraging population genetics first principles.
-        Possibly, use theoretical developments such as presented in chapter~\ref{chap:GenoPhenoFit} to approximate the response of the aggregate quantities to changes in the underlying mechanistic parameters.
+    Possibly, use theoretical developments such as presented in chapter~\ref{chap:GenoPhenoFit} to approximate the response of the aggregate quantities to changes in the underlying mechanistic parameters.
     \item Implement the inference phenomenological model whose parameters correspond to the mean-field aggregates.
-        Such phenomenological model is meant to be confronted with simulation under the mechanistic model.
-        And subsequently applied to empirical data to estimate the parameters of interest, and their covariation with variables that might change across species or across genes.
+    Such phenomenological model is meant to be confronted with simulation under the mechanistic model.
+    And subsequently applied to empirical data to estimate the parameters of interest, and their covariation with variables that might change across species or across genes.
 \end{enumerate}
 Such endeavour, however, requires mathematical work to derive the relationship between parameters of interest (such as $\EmpiricalDeltaDeltaG, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\avgpfix$).
 Chapter~\ref{chap:GenoPhenoFit} represents one such mathematical development.

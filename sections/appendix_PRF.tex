@@ -17,7 +17,9 @@ In a sample of size $n$, the expected number of sites with $k$ (which ranges fro
 	& = \theta \int_{0}^{1} \dfrac{1 - \e^{-\scaledselcoef (1-x)}}{(1 - \e^{-\scaledselcoef})x(1-x)} \binom{n}{k} x^{k} (1-x)^{n-k} \der x\text{, where } \theta=4\Ne u \nonumber \\
 	& = \binom{n}{k} \dfrac{\theta }{1 - \e^{-\scaledselcoef}} \int_{0}^{1} \left( 1 - \e^{-\scaledselcoef (1-x)} \right) x^{k-1} (1-x)^{n-k-1} \der x
 \end{align}
-In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$). Thus the coefficient ($\scaledselcoef=4\Ne \selcoef $) associated to a mutation is a function of the amino acids encoded by the ancestral ($\ci$) and derived ($\cj$) codon. Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
+In the mutation selection-framework developed, the fitness of a given genotype is a function of the encoded amino-acid through the site-wise amino-acid fitness profiles ($ \Fit\siteexp $ at site $\site$).
+Thus the coefficient ($\scaledselcoef=4\Ne s$) associated to a mutation is a function of the amino acids encoded by the ancestral ($\ci$) and derived ($\cj$) codon.
+Altogether the selection coefficient from $\ci$ to $\cj$ at site $\site$ is:
 \begin{align}
 	\scaledselcoef_{\itoj}(\Ne, \Fit\siteexp) &= 4 \Ne (f_\cj\siteexp-f_\ci\siteexp) \nonumber \\
 	& = \scaledfit_\cj\siteexp-\scaledfit_\ci\siteexp

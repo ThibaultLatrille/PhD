@@ -334,7 +334,7 @@ Given the current state of allele $A$, the rate of transition to other states ca
 At each generation, the expectation for the number of possible mutants is $2\Ne u$, and each of these mutants has a probability $\pfix(s, \Ne)$ to result in a substitution.
 Altogether, the instantaneous rate of substitution from allele $A$ to $B$, denoted $Q_{A \to B}$, is equal to the rate of mutation ($\mu_{A \to B}$) multiplied by the probability of fixation of the mutation $\pfix(s_{A \to B}, \Ne)$ and scaled by the number of possible mutants at each generation ($2\Ne$):
 \begin{align}
-    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  \pfix(s_{A \to B}, \Ne)
+    Q_{A \to B} & = 2 \Ne \mu_{A \to B}  \pfix(s_{A \to B}, \Ne) \label{eq:q-pfix}
 \end{align}
 It is important to note that the substitution rate and the mutation rate are in the same units, such that this equation is valid whether the rate is measured either in units of chronological time or per generation (or in branch length, which will matter later on).
 As a convention, in what follows, mutation rate is denoted $u$ when measured in units of generation, and denoted $\mu$ when measured in units of time.
@@ -453,25 +453,37 @@ One quantity of interest is the ratio of the mean substitution rate over the mea
 \begin{align}
     \avgpfix & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
     \label{eq:relative-sub-rate} \\
-    & = \dfrac{ \sum\limits_{A} \pi_{A} \sum\limits_{B} Q_{A \to B}}{\sum\limits_{A} \pi_{A}  \sum\limits_{B} \mu_{A \to B}},
+    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}},
 \end{align}
-where the notation $\langle \cdot \rangle$ denotes the statistical average.
+where the notation $\langle \cdot \rangle$ denotes the statistical average, and the sum is over all possible pairs of codons having a certain property.
+In other words, $\avgpfix$ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
 
-In other words, $ \avgpfix $ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
-Moreover, the mean fixation probability of mutations, normalized by the fixation probability of neutral mutations, can be approximated as:
+This definition can in principle be applied to any subset of codon pairs.
+A particularly important case is to sum over all possible pairs of non-synonymous codons (which will be considered in the next chapter).
+In that case, $\avgpfix$ captures the fundamental quantity usually referred to as $\dnds$.
+However, the definition is more general.
+
+This ratio can also be interpreted as the mean scaled fixation probability of all mutations that are being proposed at mutation selection equilibrium.
+Indeed, the scaled fixation probability of a given mutation is the probability of fixation of this mutation, normalized by the fixation probability of neutral mutations:
 \begin{align}
-    \left\langle  \dfrac{ \pfix (s, \Ne ) }{\pfix (0, \Ne )}  \right\rangle & = \left\langle  \dfrac{ S }{1 - \e^{- S}} \right\rangle, \\
-    & = \left\langle \dfrac{ Q }{\mu} \right\rangle, \\
-    & \simeq \dfrac{ \langle Q \rangle }{\langle \mu \rangle}.
+    \dfrac{\pfix (s_{A \to B}, \Ne)}{\pfix (0, \Ne)} = \Pfix (s_{A \to B}, \Ne)
 \end{align}
-Because of this relation, $\avgpfix$ can thus be seen as an approximation of the mean scaled fixation probability of mutations.
-
+In addition, the probability for a given type of mutation, from $A$ to $B$, to be proposed at equilibrium, is given by:
+\begin{align}
+    \proba (A \to B) = \pi_{A}  \mu_{A, B} / \mathcal{Z} \text{, where } \mathcal{Z} = \sum\limits_{A, B} \pi_{A} \mu_{A, B} \label{eq:proba-a-b}
+\end{align}
+And thus, the statistical average at equilibrium is:
+\begin{align}
+    \left\langle \Pfix \right\rangle & = \sum\limits_{A, B}  \proba (A \to B) \Pfix (s_{A \to B}, \Ne), \\
+    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}} \text{, from equation~\ref{eq:q-pfix} and~\ref{eq:proba-a-b}}, \\
+    & = \avgpfix.
+\end{align}
 As a result of this definition, $\avgpfix=1$ for genes or sites under neutral evolution.
 Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences.
-First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, where $\pfix > 1/2 \Ne$ on average.
+First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, since this means that $\pfix > 1/2 \Ne$ on average.
 On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection such that the sequence is constrained on average.
 Of note, $ \avgpfix > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
-Moreover, under the assumption of a fitness landscape, a mutation-selection point substitution process at equilibrium results in $\avgpfix \leq 1$.
+Finally, a mutation-selection point substitution process at equilibrium under a time-independent fitness landscape results in $\avgpfix \leq 1$.
 
 
 \section{Mutation-selection analogy in other scientific fields}
@@ -490,7 +502,7 @@ I argue that this creation and reduction processes are found at the core of seve
 
 \subsection{Metropolis-Hastings sampling}
 Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
-However, the Metropolis-Hastings procedure based on a Markov chain Monte-Carlo can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
+However, the Metropolis-Hastings procedure based on a Markov chain Monte Carlo can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
 This stochastic procedure which is based on three steps bears many similarities with the mutation-selection process:
 \begin{itemize}
     \item Generate a stochastic candidate from the current state, analogous to mutation.

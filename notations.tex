@@ -62,7 +62,7 @@
 \newcommand{\Probmatrix}{\BiDimArray{\probmatrix}}
 % Amino acids
 \newcommand{\aminoacid}{\text{a}}
-\newcommand{\SetAa}{1 \leq \aminoacid \leq 20}
+\newcommand{\SetAa}{\aminoacid \in \{1, \hdots, 20\} }
 \newcommand{\Neighbor}{\mathcal{V}}
 \newcommand{\NonSyn}{\mathcal{N}}
 \newcommand{\Syn}{\mathcal{S}}
@@ -86,7 +86,6 @@
 \newcommand{\ScaledFit}{\UniDimArray{\scaledfit}}
 \newcommand{\scaledfiti}{\scaledfit_{\aai}}
 \newcommand{\scaledfitj}{\scaledfit_{\aaj}}
-\newcommand{\selcoef}{{\delta_{\fit}}}
 \newcommand{\scaledselcoef}{S}
 \newcommand{\entropy}{{\Omega}}
 \newcommand{\AAexchan}{\beta}
@@ -98,7 +97,7 @@
 \newcommand{\state}{\mathcal{S}}
 \newcommand{\node}{\text{n}}
 \newcommand{\taxon}{\node}
-\newcommand{\Settaxon}{1 \leq \taxon \leq \Ntaxa}
+\newcommand{\Settaxon}{\taxon \in \{1, \hdots, \Ntaxa \}}
 \newcommand{\Ntaxa}{P}
 \newcommand{\treeroot}{0}
 \newcommand{\treerootexp}{^{(\treeroot)}}
