@@ -54,36 +54,36 @@ This approximation is therefore problematic, and raises multiple questions.
 What are the consequences of ignoring epistasis in the context of phylogenetic inference?
 Practically, how could we ultimately account for epistasis in the context of inference?
 
-Previous studies have argued that models of molecular evolution should consider the importance of epistasis for its different roles: from the importance in speciation, in modulating the rate of adaptation, in interlocking between sites (Stokes shift), downward impact on the $\dnds$ predicted by the mutation-selection models, and many other factors \citet{Goldstein2017, Miller2018}.
-Based on our analysis presented in chapter~\ref{chap:GenoPhenoFit}, we argue that epistasis also has an important role in the response of $\dnds$ to changes in $\Ne$, both in terms of its susceptibility and dynamic of the response.
-This is a conceptual point that, to your knowledge, had never been really identified until now.
+Previous studies have argued that models of molecular evolution should consider the importance of epistasis for its different roles: from its importance in speciation, in modulating the rate of adaptation, in interlocking between sites (Stokes shift), its downward impact on the $\dnds$ predicted by the mutation-selection models, and many other factors \citet{Goldstein2017, Miller2018}.
+Based on our analysis presented in chapter~\ref{chap:GenoPhenoFit}, we argue that epistasis also has an important role in the response of $\dnds$ to changes in $\Ne$, both in terms of its susceptibility and dynamics of the response.
+This is a conceptual point that, to my knowledge, had never been really identified until now.
 
-More precisely, one key result of chapter~\ref{chap:GenoPhenoFit} is that any model without (or ignoring) epistasis implies a slow dynamic and a strong sensitivity of the mean fixation probability to changes in $\Ne$.
-Intuitively, model without epistasis exhibit a slow return to equilibrium upon a change in $\Ne$ due to the waiting time until the next substitution.
+More precisely, one key result of chapter~\ref{chap:GenoPhenoFit} is that any model without (or ignoring) epistasis implies slow dynamics and a strong sensitivity of the mean fixation probability to changes in $\Ne$.
+Intuitively, a model without epistasis exhibits a slow return to equilibrium upon a change in $\Ne$ due to the waiting time until the next substitution.
 Indeed, the evolutionary process is mainly mutation limited (see section~\ref{subsec:molecular-evolution-is-mutation-limited})
 In addition, the mutation rate per site is very low, from $10^{-8}$ to $10^{-9}$ in mammals.
-As a result, for each site, the expected waiting time until the next mutation is between $100$ to $1000$ million years, .
+As a result, for each site, the expected waiting time until the next mutation is between $100$ to $1000$ million years.
 As for the strong sensitivity of the mean fixation probability to changes in $\Ne$, it originates in the fact that after a change in $\Ne$, each site of the sequence has to adapt independently, and change its position in the fitness landscape.
 
 In contrast, in the presence of epistasis, the burden of adapting to changes in $\Ne$ is shared by more sites, such that not all of them (and possibly, very few of them) have to switch their position in the fitness landscape, in order for the trait to return to equilibrium under the new $\Ne$.
-As a result, adding epistasis to the model implies a faster dynamic and a weaker response of the mean fixation probability to changes in $\Ne$.
+As a result, adding epistasis to the model implies faster dynamics and a weaker response of the mean fixation probability to changes in $\Ne$.
 
 These observations have several implications for empirical analyses.
 First, if epistasis implies a weak response of the $\dnds$ to changes in $\Ne$, such as observed in chapter~\ref{chap:GenoPhenoFit}, for similar reasons, it may also explain the low magnitude of $\Ne$ variation estimated with site-specific mechanistic codon models in chapter~\ref{chap:MutSelDrift}.
 Empirically, it appears that the susceptibility of $\dnds$ to changes in $\Ne$ is between these two extremes, namely that of site-specific fitness landscapes, and the other extreme of a single univariate phenotype controlled by all sites.
 More probably, the ternary relation from sequence to phenotype to fitness implies several sites, but not all sites of the sequences, in a given phenotypic trait.
 
-Second, the very long slow dynamic time constants implied by site-specific models are of the order of the depth of phylogeny ($100$ to $1000$ My).
-As such, in the absence of epistasis, we shouldn't even see $\dnds$ correlations with either \acrshort{LHT} or $\Ne$ because of it.
+Second, the very long relaxation time implied by site-specific models are of the order of the depth of phylogeny ($100$ to $1000$ My).
+As such, in the absence of epistasis, we should not even see $\dnds$ correlations with either \acrshort{LHT} or $\Ne$ because of it.
 Conversely, the fact that we see it is in itself an important indication of the presence of epistasis.
 
-Ultimately, accounting for epistasis in mechanistic models of evolutions is necessary but challenging from a computational and statistical perspective.
+Ultimately, accounting for epistasis in mechanistic models of evolution is necessary but challenging from a computational and statistical perspective.
 Paths for statistical methods that can account for it are developed in section~\ref{sec:mechanistic-and-phenomenological-models}.
 
 \section{Adaptive landscape and positive selection}
 \label{sec:adaptative-landscape}
 
-Another blind spot the mechanistic phylogenetic codon model developed in chapter~\ref{chap:MutSelDrift} is the absence of adaptive evolution (see section~\ref{subsec:where-is-adaptation?}).
+Another blind spot the mechanistic phylogenetic codon model is the absence of adaptive evolution (see section~\ref{subsec:where-is-adaptation?}).
 Indeed, the mutation-selection equilibrium is essentially a nearly-neutral regime.
 As a result, at mutation-selection equilibrium, the sequence is close to the fitness optimum and therefore, most mutations are deleterious or compensate for previous deleterious mutations that reached fixation.
 Adaptation, on the other hand, can be seen as a process where the underlying fitness landscape is not fixed (i.e.~time-independent) but is instead dynamic (i.e.~time-dependent).
@@ -111,10 +111,10 @@ Thus far, however, this idea has been implemented only at the gene level (i.e.~i
 Yet, adaptation often occurs more locally, in specific domains of the protein.
 Accordingly, this gene-wide deviation parameter $\omega_*$ could be refined at the site-level.
 In this direction, in a work led by Nicolas Rodrigue, we developed a method to detect site-specific adaptation as a deviation from a null nearly-neutral model of evolution.
-This method has been developed in the generic programming environment provided by \texttt{BayesCode} (see section~\ref{subsec:implementation}), and the manuscript accepted in the journal \textit{Molecular Biology \& Evolution} is available in appendix page~\pageref{sec-appendix:MutSelM3starMBE}.
+This method has been developed in the generic programming environment provided by \texttt{BayesCode} (see section~\ref{subsec:implementation}), and the manuscript accepted in the journal \textit{Molecular Biology \& Evolution} is available in the Appendix (page~\pageref{sec-appendix:MutSelM3starMBE}).
 These methods are relatively new, and must still be validated, more broadly applied to empirical data, and their predictions more extensively compared with those obtained from with classical codon models.
 
-However, in its current form, phylogenetic model seeking adaptation as a deviation from near-neutrality assumes a constant $\Ne$ across the tree.
+However, in its current form, phylogenetic models seeking adaptation as a deviation from near-neutrality assume a constant $\Ne$ across the tree.
 As already discussed, this assumption is of course not reasonable.
 A simple solution to this problem would be to add a deviation parameter $\omega_*$ in the mechanistic model developed in chapter~\ref{chap:MutSelDrift}.
 The resulting model would potentially be more effective at detecting positive selection.
@@ -122,11 +122,11 @@ The resulting model would potentially be more effective at detecting positive se
 Interestingly, $\omega_*$ could also be allowed to vary across branches, like $\Ne$.
 This could have useful applications.
 For instance, bats are known to be reservoirs of pathogens.
-Recent results suggest they have more efficient immune system~\citep{Baker2013,Pavlovich2018}, such that proteins involved in host-pathogen interactions are under positive selection~\citep{Hawkins2019,Vandewege2020}.
+Recent results suggest they have a more efficient immune system~\citep{Baker2013,Pavlovich2018}, such that proteins involved in host-pathogen interactions are under positive selection~\citep{Hawkins2019,Vandewege2020}.
 But also, bats have large population sizes, compared to other mammals, and thus more efficient purifying selection.
 These two factors have opposing effects on $\dnds$, and teasing them out might therefore be difficult using classical codon models.
 In contrast, the mutation-selection model with both $\Ne$ and $\omega_*$ varying across lineages could offer a way to estimate them separately, which would allow to address the problems mentioned above.
-Thus, do bats, compared to other mammals, have both stronger purifying selection (lower $\dnds$) due to large $\Ne$ and stronger positive selection (larger $\omega_*$)?
+In particular, this would allow us to answer if bats, compared to other mammals, have both stronger purifying selection (lower $\dnds$) due to large $\Ne$ and stronger positive selection (larger $\omega_*$).
 
 \subsection{Detecting adaptation with polymorphism}
 \label{subsec:detecting-adaptation-with-polymorphism}
@@ -138,16 +138,16 @@ The idea behind the McDonald \& Kreitman (\acrshort{MK}) approach is to decompos
     \omega_{\text{Tot}} & = \omega_{\text{A}} + \omega_{\text{NA}}, \\
     \iff \omega_{\text{A}} & = \omega_{\text{Tot}} - \omega_{\text{NA}},
 \end{align}
-where $\omega_{\text{NA}}$ is the rate of substitution contributed by non-adaptive nearly-neutral evolution and $\omega_{\text{A}}$ is the total rate of substitution contributed by adaptive evolution.
-In this context, under the assumption that adaptive mutations are rare, the ratio of non-synonymous over synonymous polymorphism ($\pnps$) mostly contains non-adaptive polymorphism and is a measure of $\omega_{\text{NA}}$:
+where $\omega_{\text{NA}}$ is the rate of substitutions contributed by non-adaptive nearly-neutral evolution and $\omega_{\text{A}}$ is the total rate of substitutions contributed by adaptive evolution.
+In this context, under the assumption that adaptive mutations are rare, the ratio of non-synonymous over synonymous polymorphisms ($\pnps$) mostly contains non-adaptive polymorphisms and is a measure of $\omega_{\text{NA}}$:
 \begin{equation}
     \omega_{\text{NA}} \simeq \pnps.
 \end{equation}
-Moreover, the total rate ratio of non-synonymous over synonymous substitutions ($\dnds$), estimated from divergence data, is a measure of $\omega_{\text{Tot}}$:
+Moreover, the total ratio of non-synonymous over synonymous substitutions ($\dnds$), estimated from divergence data, is a measure of $\omega_{\text{Tot}}$:
 \begin{equation}
     \omega_{\text{Tot}} \simeq \dnds.
 \end{equation}
-Altogether, the rate of adaptive evolution, which contributes disproportionately to the divergence are estimated as the difference between divergence and polymorphism:
+Altogether, the rate of adaptive evolution, which contributes disproportionately to divergence is estimated as the difference between divergence and polymorphism:
 \begin{equation}
     \omega_{\text{A}} \simeq \dnds - \pnps.
 \end{equation}
@@ -162,13 +162,13 @@ This method, and subsequent developments which are reviewed in \citet{Moutinho20
 The availability of independent phylogenetic methods (based on either phenomenological and mechanistic codon models) and population genetics approaches (using the McDonald \& Kreitman ideas) for detecting adaptation raises the question whether they detect congruent signals of adaptation.
 
 Empirically, phenomenological and mechanistic codon methods should be confronted to McDonald \& Kreitman (\acrshort{MK}) methods.
-In the case of the overlap between positively selected genes detected with phenomenological codon models and with \acrshort{MK} methods, the set of genes detected does not seem to overlap beyond random expectation~\citep{He2020}.
+In the case of the overlap between positively selected genes detected with phenomenological codon models and with \acrshort{MK} methods, the set of genes detected does not seem to overlap beyond random expectations~\citep{He2020}.
 In contrast, at the site level, classical codon models are congruent with \acrshort{MK} methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
-These results still need be refined across clades and genes, and the availability of polymorphism and divergence \acrshort{DNA} sequences that are aligned will make this comparison possible.
+These results still need to be refined across clades and genes, and the availability of polymorphism and divergence \acrshort{DNA} sequences that are aligned will make this comparison possible.
 
-However, positively selected genes or sites detected by classical codon models and \acrshort{MK} methods can theoretically be different, since non-adaptive part of substitution ($\omega_{\text{NA}}$) is subtracted in \acrshort{MK} test while classical codon models are not accounting for it.
-Interestingly, another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon model is what was referred to as $\omega_0$ in the context of the mutation-selection null model (see section~\ref{subsec:HB-formalism-nearly-neutral-model}).
-As a result, mechanistic mutation-selection codon models ($\omega_0$) and \acrshort{MK} test ($\pnps$) should theoretically be more directly comparable.
+However, positively selected genes or sites detected by classical codon models and \acrshort{MK} methods can theoretically be different, since the non-adaptive part of substitutions ($\omega_{\text{NA}}$) is subtracted in the \acrshort{MK} test while classical codon models do not account for it.
+Interestingly, another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon models is what was referred to as $\omega_0$ in the context of the mutation-selection null model (see section~\ref{subsec:HB-formalism-nearly-neutral-model}).
+As a result, mechanistic mutation-selection codon models ($\omega_0$) and the \acrshort{MK} test ($\pnps$) should theoretically be more directly comparable.
 From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models and \acrshort{MK} methods are congruent, and if not the reason for such discrepancy should be understood.
 
 \begin{figure}[htbp]
@@ -178,7 +178,7 @@ From the availability of divergence and polymorphism data, it is now possible to
     \label{fig:detecting-adaptation-inter-intra}
 \end{figure}
 
-\section{Unifying phylogenetic and population-genetics model}
+\section{Unifying phylogenetic and population-genetics models}
 \label{sec:unifying-phylogenetic-and-population-genetics-model}
 
 Throughout this manuscript, the phylogenetic codon models that have been presented have so far ignored genetic diversity within species.
