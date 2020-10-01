@@ -489,14 +489,14 @@ The substitution rate is considered null between any two codons differing by mor
 Otherwise, the mutation rate between a pair of codons is given by the mutation rate of the underlying single nucleotide change.
 Selection is modelled at the amino-acid level, i.e.~we assume that all codons encoding for one particular amino acid are selectively neutral.
 
-To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is independently evolving under a site-specific fitness landscape, characterized by a 20-dimensional frequency vector of scaled (Wrightian) fitness parameters ($\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$).
+To take into account the heterogeneity of selection between different sites of the protein, we assume that each site $\site$ of the sequence is independently evolving under a site-specific fitness landscape, characterized by a 20-dimensional frequency vector of scaled (Wrightian) fitness parameters $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$.
 The (Wrigthian) fitness vectors across sites are drawn IID from a uniform Dirichlet distribution prior to the simulation over the tree:
 \begin{equation}
     \Profile\siteexp \sim \text{Dirichlet} (\alpha, \hdots, \alpha), \Setsite,
 \end{equation}
-The malthusian fitness (or log-fitness) of amino acid $\aminoacid$, denoted $\fit\siteexp_{\aminoacid}$, is accordingly:
+The malthusian fitness (or log-fitness) of amino acid $\aminoacid$, denoted $\scaledfit\siteexp_{\aminoacid}$, is accordingly:
 \begin{equation}
-    \fit\siteexp_{\aminoacid} = \ln \left( \profile\siteexp_{\aminoacid} \right),\ \Setsite, \ \SetAa
+    \scaledfit\siteexp_{\aminoacid} = \ln \left( \profile\siteexp_{\aminoacid} \right),\ \Setsite, \ \SetAa
 \end{equation}
 At site $\site$, the substitution rate between non-synonymous codons $\ci$ and $\cj$ is given by the product of the mutation rate and the probability of fixation:
 \begin{equation}
@@ -527,7 +527,7 @@ On the other hand, the mutation bias is more constrained if the amino acid is en
 \subsection{Site and sequence diversity of amino-acids}
 \label{subsec:entropy}
 
-For a site $\site$, the diversity $D\siteexp$ (or effective number of amino acids) is computed as the exponential of Shannon's entropy from the frequencies of the different amino-acids ($\Freq\siteexp = \{ \Freq\siteexp_{\aminoacid},\ \SetAa$):
+For a site $\site$, the diversity $D\siteexp$ (or effective number of amino acids) is computed as the exponential of Shannon's entropy from the frequencies of the different amino-acids $\Freq\siteexp = \{ \freq\siteexp_{\aminoacid},\ \SetAa$, as:
 \begin{equation}
     D(\Freq\siteexp) = \exp \left[ - \sum\limits_{\SetAa} \freq\siteexp_{\aminoacid} \ln \left( \freq\siteexp_{\aminoacid} \right) \right]
     \label{eq:diversity-site-specific}
