@@ -34,15 +34,15 @@ The Shannon's entropy can be averaged over all sites as:
 
 \subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
-Under a simulation with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitnesses along the sequence.
-In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \Profile\siteexp_{\aaSource},\ 1 \leq \aaSource \leq 20 \}$, a vector of 20 amino-acid (Wrightian) fitnesses.
+For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
+In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
 Since $\Seqi[ \site ]$ is the codon at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
-Altogether, for each possible mutant, we compute the selection coefficient of the mutant as:
+Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-    s \left( \Seqi^{t},\Seqi^{t+1}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqi^{t+1}[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
+    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
 \end{equation}
-where $\Profile_{\site}$ used in this study are extracted from \citet{Bloom2017}, empirically determined in the context of deep mutational scanning.
-
+The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}.
+They were experimentally determined by deep mutational scanning.
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuDiv}
 \end{center}
@@ -174,7 +174,7 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
 \subsection{Fisher geometric landscape (\texttt{SimuGeo})}
 \label{subsec:fisher-geometric-landscape}
 
-We simulated substitutions in a protein using an adaptation of Fisher's geometric landscape.
+We simulated substitutions in a protein using an adaptation of Fisher's geometric landscape~\citep{Tenaillon2014,Blanquart2016}.
 In the original context, the phenotype is a vector ($\phenoGeo$) in a multidimensional space, where the number of dimensions is often termed complexity.
 From a phenotype, the fitness is a monotonously decreasing function of the phenotype distance to $0$.
 The exact functional phenotype-fitness map depends on $2$ external parameters controlling for strength ($\alpha$) and epistasis ($\beta$).
@@ -255,7 +255,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 \label{subsec:protein-folding-probability}
 
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
-From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $\Profile_{\text{F}}\left(\Seqi^{t}\right)$, using the $3$-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $ \GFold \left(\Seqi^{t}\right)$, using the 3-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
     \GFold \left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
@@ -366,6 +366,18 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
     \label{tab:table-partcor-mammals}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
+    \caption[$\Ne$ estimation in mammals]{Effective population size ($\Ne$) estimation in mammals}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}
+    \caption[Mutation rate estimation in mammals]{Mutation rate ($\mu$) estimation in mammals}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -803,49 +815,49 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \end{table}
 
 
-\section{Empirical data in drosophila}
-\label{sec:empirical-data-in-drosophila}
+\section{Empirical data in Drosophila}
+\label{sec:empirical-data-in-Drosophila}
 
 \subsection{Traits estimation \& correlation (replicate~1, chain~1)}
 Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in drosophila ($\omega$)]{
-    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Correlation coefficient matrix in Drosophila ($\omega$)]{
+    Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsCovariance.tex}
-    \caption[Covariance matrix in drosophila]{
-    Covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Covariance matrix in Drosophila]{
+    Covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsPartialCorrelation.tex}
-    \caption[Partial correlation coefficient matrix in drosophila]{
-    Partial correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Partial correlation coefficient matrix in Drosophila]{
+    Partial correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
-    \caption[Effective population size estimation in drosophila]{Effective population size ($\Ne$) estimation in drosophila}
+    \caption[Effective population size estimation in Drosophila]{Effective population size ($\Ne$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}
-    \caption[Mutation rate estimation in drosophila]{Mutation rate ($\mu$) estimation in drosophila}
+    \caption[Mutation rate estimation in Drosophila]{Mutation rate ($\mu$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_R1_LogGenomeSize}
-    \caption[Genome size estimation in drosophila]{Genome size estimation in drosophila}
+    \caption[Genome size estimation in Drosophila]{Genome size estimation in Drosophila}
 \end{figure}
 
 \subsection{Repeatability of experiments}
@@ -862,7 +874,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-4}
     \end{minipage}
-    \caption[Repeatability of branch length estimation in drosophila]{Repeatability of branch length ($\branchlength$) estimation in drosophila}
+    \caption[Repeatability of branch length estimation in Drosophila]{Repeatability of branch length ($\branchlength$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
@@ -876,7 +888,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-4}
     \end{minipage}
-    \caption[Repeatability of {effective population size} estimation in drosophila]{Repeatability of {effective population size} ($\Ne$) estimation in drosophila}
+    \caption[Repeatability of {effective population size} estimation in Drosophila]{Repeatability of {effective population size} ($\Ne$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
@@ -890,7 +902,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime-1-4}
     \end{minipage}
-    \caption[Repeatability of mutation rate estimation in drosophila]{Repeatability of mutation rate ($\mu$) estimation in drosophila}
+    \caption[Repeatability of mutation rate estimation in Drosophila]{Repeatability of mutation rate ($\mu$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
@@ -904,7 +916,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_SiteMutSelBranchNe_Rep_BranchTime-1-4}
     \end{minipage}
-    \caption[Repeatability of branch time estimation in drosophila]{Repeatability of branch time ($\Delta T$) estimation in drosophila}
+    \caption[Repeatability of branch time estimation in Drosophila]{Repeatability of branch time ($\Delta T$) estimation in Drosophila}
 \end{figure}
 
 \begin{table}[H]
@@ -912,8 +924,8 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \input{drosophila/18CDS_SiteMutSelBranchNe_R2_TraitsCorrelation.tex} \\
     \input{drosophila/18CDS_SiteMutSelBranchNe_R3_TraitsCorrelation.tex} \\
     \input{drosophila/18CDS_SiteMutSelBranchNe_R4_TraitsCorrelation.tex}
-    \caption[Covariance matrix repeatability in drosophila]{
-    In all four replicates, covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and genome size drosophila.
+    \caption[Covariance matrix repeatability in Drosophila]{
+    In all four replicates, covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and genome size Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -923,34 +935,34 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_BranchOmega_R1_LogdNdS}
-    \caption[Non-synonymous substitution rate estimation in drosophila]{Non-synonymous substitution rate ($\omega$) estimation in drosophila}
+    \caption[Non-synonymous substitution rate estimation in Drosophila]{Non-synonymous substitution rate ($\omega$) estimation in Drosophila}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{drosophila/18CDS_BranchOmega_R1_LogMutationRatePerTime}
-    \caption[Mutation rate estimation in drosophila]{Mutation rate ($\mu$) estimation in drosophila}
+    \caption[Mutation rate estimation in Drosophila]{Mutation rate ($\mu$) estimation in Drosophila}
 \end{figure}
 
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in drosophila ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Correlation coefficient matrix in Drosophila ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCovariance.tex}
-    \caption[Covariance matrix in drosophila ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Covariance matrix in Drosophila ($\omega$)]{
+    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
-    \caption[Partial correlation coefficient matrix in drosophila ($\omega$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in drosophila.
+    \caption[Partial correlation coefficient matrix in Drosophila ($\omega$)]{
+    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
