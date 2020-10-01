@@ -1,0 +1,9 @@
+Analysis of Variance Table
+
+Response: PopulationSize
+           Df Sum Sq Mean Sq F value    Pr(>F)    
+Habitat     1 1.6777 1.67769  89.506 < 2.2e-16 ***
+rep         5 0.4226 0.08452   4.509 0.0005236 ***
+Residuals 389 7.2913 0.01874                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

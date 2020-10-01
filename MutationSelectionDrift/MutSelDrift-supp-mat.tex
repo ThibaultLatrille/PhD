@@ -398,7 +398,49 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 \end{figure}
 
 \subsection{Repeatability of experiments}
+\label{subsec:repeatability-of-experiments-mammals}
+
+$4$ independent inferences were performed on a randomly chosen set of $18$ coding sequences (\acrshort{CDS}) out of $226$.
 Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
+Each plot is a correlation between a pair of experiments for a given parameter.
+For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+Solid red line is the regression line between replicates.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-2}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-3}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_Log10BranchLength-1-4}
+    \end{minipage}
+    \caption[Repeatability of branch length estimation in mammals]{Repeatability of branch length ($\branchlength$) estimation in mammals}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-2}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-3}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\linewidth}
+        \includegraphics[width=\linewidth, page=1]{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize-1-4}
+    \end{minipage}
+    \caption[Repeatability of $\Ne$ estimation in mammals]{Repeatability of {effective population size} ($\Ne$) estimation in mammals}
+\end{figure}
+
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+	\scriptsize \centering
+    \input{mammals/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize.tex}
+    \caption[Repeatability of $\Ne$ estimation in mammals]{Repeatability of {effective population size} ($\Ne$) estimation in mammals, for the extant taxa.}
+    \label{tab:Ne-estimated-mammals}
+\end{table}
 
 \begin{figure}[H]
     \centering
@@ -413,6 +455,13 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \end{minipage}
     \caption[Repeatability of mutation rate estimation in mammals]{Repeatability of mutation rate ($\mu$) estimation in mammals}
 \end{figure}
+
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+	\scriptsize \centering
+    \input{mammals/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime.tex}
+	\caption[Repeatability of mutation rate estimation in mammals]{Repeatability of mutation rate ($\mu$) estimation in mammals, for the extant taxa.}
+\end{table}
 
 \begin{figure}[H]
     \centering
@@ -524,7 +573,12 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
+\label{subsec:repeatability-of-experiments-isopods}
+$6$ independent inferences were performed on a randomly chosen set of $12$ coding sequences (\acrshort{CDS}) out of $135$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$.
+Each plot is a correlation between a pair of experiments for a given parameter.
+For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+Solid red line is the regression line between replicates.
 
 \begin{figure}[H]
     \centering
@@ -566,6 +620,16 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \caption[Repeatability of $\Ne$ estimation in isopods]{Repeatability of {effective population size} ($\Ne$) estimation in isopods}
 \end{figure}
 
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+    \scriptsize
+    \noindent\adjustbox{max width=\textwidth}{%
+    \input{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize.tex}
+	}
+    \caption[Repeatability of $\Ne$ estimation in isopods]{Repeatability of {effective population size} ($\Ne$) estimation in isopods, for the extant taxa.}
+    \label{tab:Ne-estimated-isopods}
+\end{table}
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.32\linewidth}
@@ -585,6 +649,15 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \end{minipage}
     \caption[Repeatability of $\mu$ estimation in isopods]{Repeatability of mutation rate ($\mu$) estimation in isopods}
 \end{figure}
+
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+    \scriptsize
+    \noindent\adjustbox{max width=\textwidth}{%
+    \input{isopods/12CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime.tex}
+	}
+    \caption[Repeatability of mutation rate estimation in isopods]{Repeatability of mutation rate ($\mu$) estimation in isopods, for the extant taxa.}
+\end{table}
 
 \begin{figure}[H]
     \centering
@@ -606,71 +679,26 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \caption[Repeatability of branch time estimation in isopods]{Repeatability of branch time ($\Delta T$) estimation in isopods}
 \end{figure}
 
-\subsection{Statistical test}
-Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eco}
     \caption[$\Ne$ as a function of habitat in isopods]{$\Ne$ as a function of habitat in isopods.}
 \end{figure}
-\begin{verbatim}
-Analysis of Variance Table
+\verbatiminput{isopods/12CDS_SiteMutSelBranchNe_anova_habitat.txt}
 
-Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F)
-Habitat 1 2.4899 2.48991 83.2450 < 2.2e-16 ***
-Replicate 5 0.6446 0.12892 4.3102 0.0007908 ***
-Residuals 389 11.6352 0.02991
----
-Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-\end{verbatim}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_pig}
     \caption[$\Ne$ as a function of pigmentation in isopods]{$\Ne$ as a function of pigmentation in isopods}
 \end{figure}
-\begin{verbatim}
-Analysis of Variance Table
+\verbatiminput{isopods/12CDS_SiteMutSelBranchNe_anova_pigmentation.txt}
 
-Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F)
-Pigmentation 2 2.8413 1.42067 48.850 < 2.2e-16 ***
-Replicate 5 0.6446 0.12892 4.433 0.0006135 ***
-Residuals 388 11.2838 0.02908
----
-Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-\end{verbatim}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eye}
     \caption[$\Ne$ as a function of ocular structure in isopods]{$\Ne$ as a function of ocular structure in isopods}
 \end{figure}
-\begin{verbatim}
-Analysis of Variance Table
-
-Response: PopulationSize
-Df Sum Sq Mean Sq F value Pr(>F)
-Ocular.structure 2 2.8463 1.42314 48.9571 < 2.2e-16 ***
-Replicate 5 0.6446 0.12892 4.4349 0.000611 ***
-Residuals 388 11.2789 0.02907
----
-Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-\end{verbatim}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.32\linewidth}
-        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eco_merged}
-    \end{minipage} \hfill
-    \begin{minipage}{0.32\linewidth}
-        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_pig_merged}
-    \end{minipage} \hfill
-    \begin{minipage}{0.32\linewidth}
-        \includegraphics[width=\linewidth, page=1]{isopods/12CDS_SiteMutSelBranchNe_Rep_LogPopulationSize_eye_merged}
-    \end{minipage}
-    \caption[$\Ne$ as a function of traits in isopods]{$\Ne$ as a function of traits in isopods}
-\end{figure}
-
+\verbatiminput{isopods/12CDS_SiteMutSelBranchNe_anova_ocular_structure.txt}
 
 \section{Empirical data in Primates}
 \label{sec:empirical-data-in-primates}
@@ -823,7 +851,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 
 \begin{table}[H]
     \input{drosophila/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
-    \caption[Correlation coefficient matrix in Drosophila ($\omega$)]{
+    \caption[Correlation coefficient matrix in Drosophila ($\Ne$)]{
     Correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
@@ -861,7 +889,11 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 \end{figure}
 
 \subsection{Repeatability of experiments}
-Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
+$4$ independent inferences were performed on a randomly chosen set of $18$ coding sequences (\acrshort{CDS}) out of $368$.
+Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and genome size.
+Each plot is a correlation between a pair of experiments for a given parameter.
+For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+Solid red line is the regression line between replicates.
 
 \begin{figure}[H]
     \centering
@@ -891,6 +923,14 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \caption[Repeatability of {effective population size} estimation in Drosophila]{Repeatability of {effective population size} ($\Ne$) estimation in Drosophila}
 \end{figure}
 
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+    \scriptsize \centering
+    \input{drosophila/18CDS_SiteMutSelBranchNe_Rep_LogPopulationSize.tex}
+    \caption[Repeatability of $\Ne$ estimation in Drosophila]{Repeatability of {effective population size} ($\Ne$) estimation in Drosophila, for the extant taxa.}
+    \label{tab:Ne-estimated-drosophila}
+\end{table}
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.32\linewidth}
@@ -904,6 +944,13 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \end{minipage}
     \caption[Repeatability of mutation rate estimation in Drosophila]{Repeatability of mutation rate ($\mu$) estimation in Drosophila}
 \end{figure}
+
+\begin{table}[htbp]
+    \renewcommand{\arraystretch}{0.5}
+    \scriptsize \centering
+    \input{drosophila/18CDS_SiteMutSelBranchNe_Rep_LogMutationRatePerTime.tex}
+    \caption[Repeatability of mutation rate estimation in Drosophila]{Repeatability of mutation rate ($\mu$) estimation in Drosophila, for the extant taxa.}
+\end{table}
 
 \begin{figure}[H]
     \centering
@@ -924,8 +971,8 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
     \input{drosophila/18CDS_SiteMutSelBranchNe_R2_TraitsCorrelation.tex} \\
     \input{drosophila/18CDS_SiteMutSelBranchNe_R3_TraitsCorrelation.tex} \\
     \input{drosophila/18CDS_SiteMutSelBranchNe_R4_TraitsCorrelation.tex}
-    \caption[Covariance matrix repeatability in Drosophila]{
-    In all four replicates, covariance coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and genome size Drosophila.
+    \caption[Correlation matrix repeatability in Drosophila]{
+    In all four replicates, correlation coefficient between effective population size~($\Ne$), mutation rate per site per unit of time~($\mu$), and genome size in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
