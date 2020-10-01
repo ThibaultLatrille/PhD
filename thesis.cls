@@ -49,9 +49,9 @@
 % Define text area of page and margin offsets
 %
 \ifmc@nobind
-\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={1.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \else
-\usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={1.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \fi
 
 \usepackage{xcolor, colortbl}
@@ -216,7 +216,9 @@
 \usepackage{multicol,multirow,array}
 \usepackage{etoolbox}
 \AtBeginEnvironment{tabu}{\footnotesize}
+\usepackage{booktabs}
 
+\usepackage{verbatim}
 \usepackage[nottoc]{tocbibind}
 % Used for inserting the Bibliography, List of Figures, indices, etc into the table of contents.
 \usepackage{notoccite}
