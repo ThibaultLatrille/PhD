@@ -452,6 +452,7 @@ Additional molecular processes could be included, for instance mutational bias, 
 The change in equilibrium composition due to GC bias, and the magnitude of the response, could be investigated, such as to describe their signatures observable on molecular sequence, factoring the effects of mutation, selection and drift.
 Finally, we hope that the results presented in this work, and more broadly the framework outlined here, could foster a better understanding of observable signatures of the long-term evolutionary process emerging from ecological parameters and molecular physicochemical first principles.
 
+
 \section{Materials \& Methods}
 Protein sequence evolution is simulated under an origin-fixation model~\citep{McCandlish2014}, i.e. the whole population is considered monomorphic and only the succession of fixation events is modeled.
 Given the currently fixed sequence $\Seqi$, we define $\setSeqNeighbors$ as the set of all possible mutant that are one nucleotide away from $\Seqi$.
@@ -487,12 +488,14 @@ The Wrightian fitness is defined as the probability of our protein to be in the 
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 
+For simulations under a 3D model of protein conformations, we adapted the model developed in \citet{Goldstein2017} to our C++ simulator (see~\ref{sec:simulation-using-the-3d-structure-of-protein} in supplementary).
+
 For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
 In this model, each codon site $i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \profile^{(i)}_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
 Since $\Seqi[ i ]$ is the codon at site $i$, the encoded amino acid is $\aaMap \left( \Seqi[ i ] \right)$, hence the fitness at site $i$ is $\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq i \leq \NbrSites} \ln \left( \dfrac{\Profile^{(i)}_{\aaMap \left( \Seqj[ i ] \right)}}{\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}} \right),
+    s \left( \Seqi,\Seqj\right) = \sum\limits_{ i = 1 }^{\NbrSites} \ln \left( \dfrac{\Profile^{(i)}_{\aaMap \left( \Seqj[ i ] \right)}}{\Profile^{(i)}_{\aaMap \left( \Seqi[ i ] \right)}} \right),
 \end{equation}
 The fitness vectors $\Profile^{(i)}$ used in this study are extracted from \citet{Bloom2017}.
 They were experimentally determined by deep mutational scanning.

@@ -470,7 +470,7 @@ Indeed, the scaled fixation probability of a given mutation is the probability o
 \end{align}
 In addition, the probability for a given type of mutation, from $A$ to $B$, to be proposed at equilibrium, is given by:
 \begin{align}
-    \proba (A \to B) = \pi_{A}  \mu_{A, B} / \mathcal{Z} \text{, where } \mathcal{Z} = \sum\limits_{A, B} \pi_{A} \mu_{A, B} \label{eq:proba-a-b}
+    \proba (A \to B) = \dfrac{\pi_{A}  \mu_{A, B}}{ \mathcal{Z}} \text{, where } \mathcal{Z} = \sum\limits_{A, B} \pi_{A} \mu_{A, B} \label{eq:proba-a-b}
 \end{align}
 And thus, the statistical average at equilibrium is:
 \begin{align}
@@ -483,7 +483,7 @@ Most importantly, departure from $1$ would be interpreted as a signature of sele
 First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, since this means that $\pfix > 1/2 \Ne$ on average.
 On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection such that the sequence is constrained on average.
 Of note, $ \avgpfix > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
-Finally, a mutation-selection point substitution process at equilibrium under a time-independent fitness landscape results in $\avgpfix \leq 1$.
+Finally, a mutation-selection point substitution process at equilibrium under a time-independent fitness landscape results in $\avgpfix \leq 1$, as demonstrated in \citet{Spielman2015}.
 
 
 \section{Mutation-selection analogy in other scientific fields}

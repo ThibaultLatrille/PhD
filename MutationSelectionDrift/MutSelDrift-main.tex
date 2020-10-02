@@ -233,7 +233,7 @@ In addition, since the mutation-selection model considered here assumes a mostly
 The reconstructed long-term changes in effective population size ($\Ne$) is displayed in figure~\ref{fig:mammals_popsize_and_mutrate}.
 We visually observe a global trend of increased $\Ne$ throughout the tree around 90 and 60 My.
 We also observe $\Ne$ to be lower in some clades, such as \textit{cetacea} and \textit{camelidae}, while being higher in other clades, such as \textit{rodentia} and \textit{pecora}.
-In some cases, a decrease in $\Ne$ can be observed along an isolated branch of the tree, for example on the branches leading to the Alpaca (\textit{Vicugna pacos}) or theIn some cases, a decrease in $\Ne$ can be observed along an isolated branch of the tree, for example on the branches leading to the naked mole-rat (\textit{Heterocephalus glaber}) or to the cheetah \textit{Acinonyx jubatus}.
+In some cases, a decrease in $\Ne$ can be observed along an isolated branch of the tree, for example on the branches leading to the Alpaca (\textit{Vicugna pacos}) or the cheetah \textit{Acinonyx jubatus}.
 
 \begin{table}[htbp]
     \input{mammals/18CDS_SiteMutSelBranchNe_R1_TraitsCorrelation.tex}
@@ -447,7 +447,7 @@ Altogether, the rate matrix is:
 \end{equation}
 By definition, the sum of the entries in each row of the nucleotide rate matrix $\Mutmatrix$ is equal to $0$, giving the diagonal entries:
 \begin{equation}
-    \mutmatrix_{a,a} = - \sum\limits_{ b \neq a} \mutmatrix_{a,b}
+    \mutmatrix_{a,a} = - \sum\limits_{ b \neq a, b \in \{A, C, G, T\} } \mutmatrix_{a,b}
 \end{equation}
 The prior on the exchangeabilities $\Exchan$ is a uniform Dirichlet distribution of dimension $6$:
 \begin{equation}
@@ -570,7 +570,7 @@ Moreover, the rate of change of the log-Brownian process per unit of time is con
         \node[state] (EquiH) [RED, right=of Equi] {$\dfrac{1}{4}, 4$};
         \node[state] (Unif) [RED, right=of T] {$\uniform$};
         \node[state] (C) [BLUE, right=of Bb] {$\contrast\branchexp$};
-        \node[state] (Cov) [BLUE, right=of C] {$\Covariancematrix$};
+        \node[state] (Cov) [BLUE, right=of C] {$\CovarianceMatrix$};
         \node[state] (baseH) [RED, right=of Base] {$\concentrationProfile, \centerProfile $};
         \node[state] (sb) [BLUE, right=of cat] {$\StickBreaking$};
         \node[state] (CovH) [RED, right=of Cov] {$\covariancekappa, \covariancedf$};
@@ -615,15 +615,15 @@ Moreover, the rate of change of the log-Brownian process per unit of time is con
 
 We make a change of variable as to define the branch-wise independent contrast $\contrast\branchexp$:
 \begin{align}
-    \contrast\branchexp &= \dfrac{\brownian^{(\nodeDown)} - \brownian^{(\nodeUp)}}{\sqrt{\branchtime\branchexp}} \\
+    \contrast\branchexp &= \dfrac{\Brownian^{(\nodeDown)} - \Brownian^{(\nodeUp)}}{\sqrt{\branchtime\branchexp}} \\
     \label{eq:independent_contrast}
-    \iff \brownian^{(\nodeDown)} &= \brownian^{(\nodeUp)} + \sqrt{\branchtime\branchexp}\contrast\branchexp
+    \iff \Brownian^{(\nodeDown)} &= \Brownian^{(\nodeUp)} + \sqrt{\branchtime\branchexp}\contrast\branchexp
 \end{align}
 And these contrasts are i.i.d.
 from a multivariate normal distribution:
 \begin{equation}
     \label{eq:Distribcontrast}
-    \contrast\branchexp \sim \mathcal{N}\left(\vecZero, \Covariancematrix \right), \Setbranch
+    \contrast\branchexp \sim \mathcal{N}\left(\vecZero, \CovarianceMatrix \right), \Setbranch
 \end{equation}
 The prior on the covariance matrix is an invert Wishart distribution, parameterized by $\covariancekappa=1$ and with $\covariancedf=\Ntrait + 1$ degrees of freedom:
 \begin{equation}
@@ -645,7 +645,7 @@ For a given branch $\branch$ and a given site $\site$, the codon substitution ra
         \submatrix\branchsiteexp_{\itoj} = 0\text{ if codons $\ci$ and $\cj$ are not neighbors,} \\
         \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj}\text{ if codons $\ci$ and $\cj$ are synonymous,} \\
         \submatrix\branchsiteexp_{\itoj} = \mutmatrix_{\nucitoj} \dfrac{4\Ne\branchexp \left({\fitj\siteexp - \fiti\siteexp}\right)}{{1 - \e^{4\Ne\branchexp\left({\fiti\siteexp - \fitj\siteexp}\right)} }} \text{ if non-syn.,}\\
-        \submatrix\branchsiteexp_{\ci, \ci} = - \sum\limits_{ \cj \neq \ci, \jSetCodon} \submatrix\branchsiteexp_{\itoj},
+        \submatrix\branchsiteexp_{\ci, \ci} = - \sum\limits_{ \cj \neq \ci, \cj=1}^{61} \submatrix\branchsiteexp_{\itoj},
     \end{dcases}
 \end{equation}
 We see from this equation that, $\fit$ and $\Ne$ are confounded, such that increasing the effective population size while decreasing the fitnesses by the same factor leads to the same substitution rate.

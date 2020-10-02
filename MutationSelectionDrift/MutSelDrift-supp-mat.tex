@@ -19,13 +19,13 @@ where the precision matrix $\PrecisionMatrix$ is the inverse of the covariance m
 
 For a category $\cat$, the Shannon's entropy ($\entropy$) of the fitness profile ($\Profile$) is defined as:
 \begin{equation}
-    \entropy\catexp = - \sum\limits_{\SetAa} \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
+    \entropy\catexp = - \sum\limits\sumSetAa \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
 The Shannon's entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
 
 The Shannon's entropy can be averaged over all sites as:
 \begin{equation}
-    \left\langle \entropy \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \entropy^{\catsite}
+    \left\langle \entropy \right\rangle = \dfrac{1}{\Nsite}\sum\limits\sumSetsite \entropy^{\catsite}
 \end{equation}
 
 
@@ -39,7 +39,7 @@ In this model, each codon site $\site$ has its own fitness profile, denoted $\Pr
 Since $\Seqi[ \site ]$ is the codon at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
-    s \left( \Seqi,\Seqj\right) = \sum\limits_{1 \leq \site \leq \Nsite} \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
+    s \left( \Seqi,\Seqj\right) = \sum\limits\sumSetsite \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
 \end{equation}
 The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}.
 They were experimentally determined by deep mutational scanning.
@@ -188,7 +188,7 @@ Since different sites of the protein do not have the same physico-chimical prope
 Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino acid present at each site of the protein.
 From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, the protein's phenotype is given by:
 \begin{equation}
-    \phenoGeo\left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \phenoGeo_{\site} \left(\Seqi^t(\site) \right),
+    \phenoGeo\left(\Seqi^{t}\right) = \sum\limits\sumSetsite \phenoGeo_{\site} \left(\Seqi^t(\site) \right),
 \end{equation}
 where $\phenoGeo_{\site}$ is the genotype-phenotype map at site $\site$.\\
 
@@ -257,9 +257,9 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
 From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $ \GFold \left(\Seqi^{t}\right)$, using the 3-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
-    \GFold \left(\Seqi^{t}\right) = \sum\limits_{1 \leq \site \leq \Nsite} \sum\limits_{r \in \mathcal{N}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
+    \GFold \left(\Seqi^{t}\right) = \sum\limits\sumSetsite \sum\limits_{r \in \mathcal{V}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
-where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{N}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the 3D structure.\\
+where $I(a,b)$ is the pair-wise contact energies between amino acid $a$ and $b$, using contact potentials estimated by \citet{Miyazawa1985}, and $\mathcal{V}(\site)$ are the neighbor residues of site $\site$ (closer than $7\angstrom$) in the 3D structure.\\
 
 The free energy of unfolded states $\GUnfold \left(\Seqi^{t}\right)$ is approximated using $55$ decoy 3D structures that supposedly represent a sample of possible unfolded states:
 \begin{equation}
@@ -1026,7 +1026,7 @@ Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a s
 If we express the probability of the substitution mapping ($\subhistory\branchcatexp$) as a function of the codon substitution process for this category $\cat$, we get the following expression:
 \begin{equation}
     \label{eq:PathSuffStat}
-    \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod_{\iSetCodon} \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod_{\iSetCodon} \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp},
+    \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod\limits\sumOverCodons \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod\limits_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod\limits\sumOverCodons \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp},
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}

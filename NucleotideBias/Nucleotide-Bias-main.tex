@@ -261,7 +261,7 @@ The link between the two can be formalized by projecting the site-specific proce
 The gene-wise process obtained by this procedure is expressed in terms of mutation rates and mean scaled fixation probabilities.
 Finally, the mean scaled fixation probabilities can be identified with the $\omega$-tensor.
 
-Specifically, at each site, the true codon process is:
+Specifically, at each site $\site$, the true codon process is:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj}\siteexp & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\
@@ -443,7 +443,7 @@ The substitution is modelled using the origination-fixation approximation, i.e.~
 
 The mutation process is assumed homogeneous across sites.
 On the other hand, selection is assumed to be varying along the sequence.
-During the simulation, given the current sequence, the substitution rates toward all possible mutants (one nucleotide change) are computed and the next substitution event is drawn randomly based on Gillespie’s algorithm ~\citep{Gillespie1977}.
+During the simulation, given the current sequence, the substitution rates toward all possible mutants (one nucleotide change) are computed and the next substitution event is drawn randomly based on Gillespie’s algorithm~\citep{Gillespie1977}.
 
 \subsection{Mutational bias at the nucleotide level}
 \label{sec:mut-bias-mut-matrix}
@@ -510,7 +510,7 @@ At the root of the tree, for each site $\site$, the sequence is drawn from the s
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $\ci$, and $\mathcal{Z}\siteexp $ is the normalizing constant at site $\site$:
 \begin{align}
-    \mathcal{Z}\siteexp = \left( \sum\limits_{\jSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\cj[k]}\right] \e^{\Fitj\siteexp} \right)^{-1}
+    \mathcal{Z}\siteexp = \left( \sum\limits_{\cj=1}^{61} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\cj[k]}\right] \e^{\Fitj\siteexp} \right)^{-1}
 \end{align}
 The substitution process is reversible and fulfils detailed balance conditions at each site $\site$ and between each pair of codons ($\ci$, $\cj$):
 \begin{align}
@@ -529,23 +529,23 @@ On the other hand, the mutation bias is more constrained if the amino acid is en
 
 For a site $\site$, the diversity $D\siteexp$ (or effective number of amino acids) is computed as the exponential of Shannon's entropy from the frequencies of the different amino-acids $\Freq\siteexp = \{ \freq\siteexp_{\aminoacid},\ \SetAa$, as:
 \begin{equation}
-    D(\Freq\siteexp) = \exp \left[ - \sum\limits_{\SetAa} \freq\siteexp_{\aminoacid} \ln \left( \freq\siteexp_{\aminoacid} \right) \right]
+    D(\Freq\siteexp) = \exp \left[ - \sum\limits\sumSetAa \freq\siteexp_{\aminoacid} \ln \left( \freq\siteexp_{\aminoacid} \right) \right]
     \label{eq:diversity-site-specific}
 \end{equation}
 The diversity is a measure of the sparsity of the amino-acid frequencies, with a value of $1$ corresponding to the minimum diversity (i.e.~with only one amino acid permissible), and a value of $20$ corresponding to maximum diversity, where each amino acid has the same frequency.
 The diversity can be first computed for each site and then averaged over all sites as:
 \begin{equation}
-    \left\langle D(\Freq) \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} D(\Freq\siteexp)
+    \left\langle D(\Freq) \right\rangle = \dfrac{1}{\Nsite}\sum\limits\sumSetsite D(\Freq\siteexp)
     \label{eq:diversity-site-specific-avg}
 \end{equation}
 Alternatively, average frequencies of the different amino acids can first be computed over the alignment and then used to compute the global sequence diversity:
 \begin{equation}
-    \left\langle \Freq \right\rangle = \dfrac{1}{\Nsite}\sum\limits_{\Setsite} \Freq\siteexp
+    \left\langle \Freq \right\rangle = \dfrac{1}{\Nsite}\sum\limits\sumSetsite \Freq\siteexp
     \label{eq:profile-gene-wise}
 \end{equation}
 Then the sequence diversity is simply:
 \begin{equation}
-    D \left(  \left\langle \Freq \right\rangle \right) = \exp \left[ - \sum\limits_{\SetAa} \left\langle \freq \right\rangle_{\aminoacid} \ln \left( \left\langle \freq \right\rangle_{\aminoacid} \right) \right]
+    D \left(  \left\langle \Freq \right\rangle \right) = \exp \left[ - \sum\limits\sumSetAa \left\langle \freq \right\rangle_{\aminoacid} \ln \left( \left\langle \freq \right\rangle_{\aminoacid} \right) \right]
     \label{eq:diversity-gene-wise}
 \end{equation}
 
@@ -554,7 +554,7 @@ Then the sequence diversity is simply:
 The sequence at time $t$ is denoted $\Seqi(t)$ and the codon present at site $\site$ is denoted $\Seqi_{\site}(t)$.
 For a given sequence, the mean scaled fixation probability over mutations away from $\Seqi(t)$ (weighted by their probability of occurrence) is given by the ratio:
 \begin{align}
-    \avgpfix (t) & = \dfrac{ \sum\limits_{\Setsite} \sum\limits_{\cj \in \NonSynNeighbors \left ( \Seqi_{\site}(t) \right)} Q_{\Seqi_{\site}(t) \to \cj}}{ \sum\limits_{\Setsite} \sum\limits_{\left ( \cj \in \Seqi_{\site}(t) \right)} \mu_{\Seqi_{\site}(t) \to \cj}},
+    \avgpfix (t) & = \dfrac{ \sum\limits\sumSetsite \sum\limits_{\cj \in \NonSynNeighbors \left ( \Seqi_{\site}(t) \right)} Q_{\Seqi_{\site}(t) \to \cj}}{ \sum\limits\sumSetsite \sum\limits_{\left ( \cj \in \Seqi_{\site}(t) \right)} \mu_{\Seqi_{\site}(t) \to \cj}},
 \end{align}
 where $\setNonSynNeighbors$ is the set of non-synonymous codons neighbours of codon $\ci$ and $\submatrix_{\itoj}\siteexp$ are defined as in equation~\ref{eq:codonsubrates}.
 Averaged over all branches of the tree, the mean scaled fixation probability is :
@@ -570,23 +570,23 @@ A similar computation can be done from strong to weak.
 \label{subsec:mean-field-derivation}
 Assuming an underlying site-specific mutation-selection process at equilibrium, given we know that a mutation is from codon $\ci$, the probability that this mutation is occuring at site $\site$ is:
 \begin{align}
-    \proba (\site \mid \ci) = \dfrac{ \subequi_{\ci}\siteexp }{\sum\limits_{\Setsite} \subequi_{\ci}\siteexp }
+    \proba (\site \mid \ci) = \dfrac{ \subequi_{\ci}\siteexp }{\sum\limits\sumSetsite \subequi_{\ci}\siteexp }
 \end{align}
 The site-averaged (mean-field) substitution rate from codon $\ci$ to $\cj$ is as result given as:
 \begin{align}
-    \left\langle \submatrix_{\itoj} \right\rangle = \sum\limits_{\Setsite} \proba (\site \mid \ci) \submatrix_{\itoj}
+    \left\langle \submatrix_{\itoj} \right\rangle = \sum\limits\sumSetsite \proba (\site \mid \ci) \submatrix_{\itoj}
 \end{align}
 If codon $\ci$ and codon $\cj$ are synonymous, this equation simplifies to the underlying mutation rate $\mutmatrix_{\nucitoj}$.
 Otherwise, if codon $\ci$ and codon $\cj$ are non-synonymous, the mean-field substitution rate is:
 \begin{align}
     \left\langle \submatrix_{\itoj} \right\rangle & = \left\langle \mutmatrix_{\nucitoj} \Pfix (\itoj) \right\rangle, \\
     & = \mutmatrix_{\nucitoj} \left\langle \Pfix (\itoj) \right\rangle, \\
-    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits_{\Setsite} \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits_{\Setsite} \subequi_{\ci}\siteexp }, \\
-    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits_{\Setsite} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\Setsite} \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }
+    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits\sumSetsite \subequi_{\ci}\siteexp \dfrac{\Fitj\siteexp - \Fiti\siteexp}{1 - \e^{\Fiti\siteexp - \Fitj\siteexp}} }{ \sum\limits\sumSetsite \subequi_{\ci}\siteexp }, \\
+    & = \mutmatrix_{\nucitoj} \dfrac{ \sum\limits\sumSetsite \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits\sumSetsite \mathcal{Z}\siteexp \e^{\Fiti\siteexp} }
 \end{align}
 As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the source and target codon solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
 \begin{equation}
-    \omega_{\aai, \aaj} = \dfrac{ \sum\limits_{\Setsite} \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits_{\Setsite} \mathcal{Z}\siteexp  }.
+    \omega_{\aai, \aaj} = \dfrac{ \sum\limits\sumSetsite \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits\sumSetsite \mathcal{Z}\siteexp  }.
 \end{equation}
 
 \subsection{Mean scaled fixation probability (\texorpdfstring{$\avgpfix$}{ν}) under the mean-field model}
@@ -594,8 +594,8 @@ As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the sour
 The mean-field model is parameterized by a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\UniDimArray{\omega}(\AAExchan, \AAEqui)$.
 As a result, the mean scaled fixation probability of non-synonymous mutations is:
 \begin{align}
-    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits_{\iSetCodon} \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
-    & = \dfrac{ \sum\limits_{\iSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits_{\iSetCodon} \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
+    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
+    & = \dfrac{ \sum\limits\sumOverCodons \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits\sumOverCodons \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.
 
