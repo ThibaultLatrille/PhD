@@ -1,6 +1,6 @@
 
 \subsection{Reversibility of the process}
-The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles ($\NbrSites$), when the number of alleles is discrete and when transition from any allele to any other allele is possible in one or more substitutions.
+The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles, when the number of alleles is discrete ($\NbrSites$) and when transition from any allele to any other allele is possible in one or more substitutions.
 In this configuration, the transition rates between all possible pairs of alleles is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step transitions are not possible.
 Because any state is ultimately connected to any other state, the continuous-time Markov chain is irreducible.
 Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive transition rate is matched by a strictly positive transition for the reverse substitution.
@@ -8,9 +8,9 @@ More precisely, the substitution rate between two alleles is null only if the un
 
 Theoretically, for an irreducible, positive recurrent and aperiodic continuous-time Markov chain, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
 Kolmogorov's criterion implies that the product of transition rates through any closed loop is the same whenever the traversing is done forward or in reverse.
-As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$), as illustrated in figure~\ref{fig:reversible-circuit}, the transition rates must satisfy the equality:
+As an example for a Markov chain composed of $3$ alleles ($\ci$, $\cj$ and $\ck$), as illustrated in figure~\ref{fig:reversible-circuit}, the transition rates must satisfy the equality:
 \begin{equation}
-    Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
+    Q_{\ci to \cj}Q_{\cj to \ck}Q_{\ck to \ci} = Q_{\ci to \ck}Q_{\ck to \cj}Q_{\cj to \ci}
 \end{equation}
 
 \begin{figure}[htbp]
@@ -19,17 +19,17 @@ As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$), as 
         \tikzstyle{every state}=[]
 
         \node[] (0) {};
-        \node[state] (A) [above=of 0] {$A$};
-        \node[state] (B) [below left=of 0] {$B$};
-        \node[state] (C) [below right=of 0] {$C$};
+        \node[state] (A) [above=of 0] {$\ci$};
+        \node[state] (B) [below left=of 0] {$\cj$};
+        \node[state] (C) [below right=of 0] {$\ck$};
 
         \path[->]
-        (A) edge [BLUE,bend right=45] node [left] {$Q_{A \to B}$} (B)
-        (B) edge [BLUE,bend right=45] node [below] {$Q_{B \to C}$} (C)
-        (C) edge [BLUE,bend right=45] node [right] {$Q_{C \to A}$} (A)
-        (B) edge [RED,bend right=15] node [left] {$Q_{B \to A}$} (A)
-        (C) edge [RED,bend right=15] node [below] {$Q_{C \to B}$} (B)
-        (A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
+        (A) edge [BLUE,bend right=45] node [left] {$Q_{\ci to \cj}$} (B)
+        (B) edge [BLUE,bend right=45] node [below] {$Q_{\cj to \ck}$} (C)
+        (C) edge [BLUE,bend right=45] node [right] {$Q_{\ck to \ci}$} (A)
+        (B) edge [RED,bend right=15] node [left] {$Q_{\cj to \ci}$} (A)
+        (C) edge [RED,bend right=15] node [below] {$Q_{\ck to \cj}$} (B)
+        (A) edge [RED,bend right=15] node [right] {$Q_{\ci to \ck}$} (C);
     \end{tikzpicture}
     \caption[Kolmogorov's criterion]{
     The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion.
@@ -39,42 +39,42 @@ As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$), as 
 
 Kolmogorov's criterion is satisfied under specific conditions for the substitution process (\ref{eq:sub-transion-rates}):
 \begin{align}
-    1 ={}& \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}\\
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})} \notag \\
-    &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times -\dfrac{\cancel{(F_{A} - F_{B})}\cancel{(F_{B} - F_{C})}\cancel{(F_{C} - F_{A})}}{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}} \notag \\
-    &\ \times \dfrac{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{A}} )}{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{A}} )}, \\
-    ={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
-    &\ \times \dfrac{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \dfrac{\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}}{\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}}, \\
-    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}.
+    1 ={}& \dfrac{Q_{\ci to \cj}Q_{\cj to \ck}Q_{\ck to \ci}}{Q_{\ci to \ck}Q_{\ck to \cj}Q_{\cj to \ci}}\\
+    ={}& \dfrac{\mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}}{\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}} \times \dfrac{(F_{\cj} - F_{\ci})(F_{\ck} - F_{\cj})(F_{\ci} - F_{\ck})}{(F_{\ck} - F_{\ci})(F_{\cj} - F_{\ck})(F_{\ci} - F_{\cj})} \notag \\
+    &\ \times \dfrac{( 1 - \e^{F_{\ci} - F_{\ck}} )( 1 - \e^{F_{\ck} - F_{\cj}} )( 1 - \e^{F_{\cj} - F_{\ci}} )}{( 1 - \e^{F_{\ci} - F_{\cj}} )( 1 - \e^{F_{\cj} - F_{\ck}} )( 1 - \e^{F_{\ck} - F_{\ci}} )}, \\
+    ={}& \dfrac{\mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}}{\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}} \times -\dfrac{\cancel{(F_{\ci} - F_{\cj})}\cancel{(F_{\cj} - F_{\ck})}\cancel{(F_{\ck} - F_{\ci})}}{\cancel{(F_{\ck} - F_{\ci})}\cancel{(F_{\cj} - F_{\ck})}\cancel{(F_{\ci} - F_{\cj})}} \notag \\
+    &\ \times \dfrac{( \e^{F_{\ci} - F_{\ci}} - \e^{F_{\ci} - F_{\ck}} )( \e^{F_{\ck} - F_{\ck}} - \e^{F_{\ck} - F_{\cj}} )( \e^{F_{\cj} - F_{\cj}} - \e^{F_{\cj} - F_{\ci}} )}{( \e^{F_{\ci} - F_{\ci}} - \e^{F_{\ci} - F_{\cj}} )( \e^{F_{\cj} - F_{\cj}} - \e^{F_{\cj} - F_{\ck}} )( \e^{F_{\ck} - F_{\ck}} - \e^{F_{\ck} - F_{\ci}} )}, \\
+    ={}& - \dfrac{\mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}}{\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}} \notag \\
+    &\ \times \dfrac{\cancel{\e^{F_{\ci}}}( \e^{-F_{\ci}} - \e^{ - F_{\ck}} )\cancel{\e^{F_{\ck}}}( \e^{-F_{\ck}} - \e^{ - F_{\cj}} )\cancel{\e^{F_{\cj}}}( \e^{-F_{\cj}} - \e^{ - F_{\ci}} )}{\cancel{\e^{F_{\ci}}}( \e^{-F_{\ci}} - \e^{ - F_{\cj}} )\cancel{\e^{F_{\cj}}}( \e^{-F_{\cj}} - \e^{ - F_{\ck}} )\cancel{\e^{F_{\ck}}}( \e^{-F_{\ck}} - \e^{ - F_{\ci}} )}, \\
+    ={}& \dfrac{\mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}}{\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}} \dfrac{\cancel{( \e^{-F_{\ck}} - \e^{ - F_{\ci}} )}\cancel{( \e^{-F_{\cj}} - \e^{ - F_{\ck}} )}\cancel{( \e^{-F_{\ci}} - \e^{ - F_{\cj}} )}}{\cancel{( \e^{-F_{\ci}} - \e^{ - F_{\cj}} )}\cancel{( \e^{-F_{\cj}} - \e^{ - F_{\ck}} )}\cancel{( \e^{-F_{\ck}} - \e^{ - F_{\ci}} )}}, \\
+    ={}& \dfrac{\mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}}{\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}}.
 \end{align}
 Namely, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
 \begin{equation}
-    \mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}.
+    \mu_{\ci to \cj}\mu_{\cj to \ck}\mu_{\ck to \ci}=\mu_{\ci to \ck}\mu_{\ck to \cj}\mu_{\cj to \ci}.
 \end{equation}
 This example can be generalized for any closed loop, such that the reversibility of the substitution process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
 
 \subsection{Stationary distribution}
 
 A realization of the Markov chain for a long period of time results in a given proportion of the time for which the process is fixed for a specific allele, where this proportion depends of the allele fitness, the mutational process and $\Ne$.
-Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\UniDimArray{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time.
+Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\UniDimArray{\pi}$, where $\pi_{\ci}$ corresponds to the proportion of time spent in allele $\ci$ ($1 \leq \leq \NbrSites$) after the Markov chain has run for an infinite amount of time.
 
 Moreover, under the condition that the Markov chain is time-reversible, the detailed balance for the stationary distribution is satisfied for every pair $\ci$ and $\cj$:
 \begin{align}
-    \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{Q_{B \to A}}{Q_{A \to B}} \\
-    & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{F_{A}-F_{B}}{ 1 - \e^{F_{B}-F_{B}}}  \dfrac{1 - \e^{F_{A} - F_{B}} }{F_{B} - F_{A}}\\
-    & = - \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{ \e^{F_{A}}(\e^{-F_{A}} - \e^{- F_{B}}) }{ \e^{F_{B}}(\e^{-F_{B}} - \e^{- F_{A}})}  \\
-    & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}} \dfrac{\e^{F_{A}}}{\e^{F_{B}}} \\
+    \dfrac{\pi_{\ci}}{\pi_{\cj}} & = \dfrac{Q_{\cj to \ci}}{Q_{\ci to \cj}} \\
+    & = \dfrac{\mu_{\cj to \ci}}{\mu_{\ci to \cj}}  \dfrac{F_{\ci}-F_{\cj}}{ 1 - \e^{F_{\cj}-F_{\cj}}}  \dfrac{1 - \e^{F_{\ci} - F_{\cj}} }{F_{\cj} - F_{\ci}}\\
+    & = - \dfrac{\mu_{\cj to \ci}}{\mu_{\ci to \cj}}  \dfrac{ \e^{F_{\ci}}(\e^{-F_{\ci}} - \e^{- F_{\cj}}) }{ \e^{F_{\cj}}(\e^{-F_{\cj}} - \e^{- F_{\ci}})}  \\
+    & = \dfrac{\mu_{\cj to \ci}}{\mu_{\ci to \cj}} \dfrac{\e^{F_{\ci}}}{\e^{F_{\cj}}} \\
 \end{align}
-Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\UniDimArray{\sigma}$) is satisfied:
+Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\UniDimArray{\sigma}$) is satisfied for every pair $\ci$ and $\cj$:
 \begin{align}
-    \dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}}
+    \dfrac{\mu_{\cj to \ci}}{\mu_{\ci to \cj}} & = \dfrac{\sigma_{\ci}}{\sigma_{\cj}}
 \end{align}
-Altogether, the probability $\pi_{A}$ to find the population in allele $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $A$, the population size, and details of the mutation process~\citep{Sella2005,Mustonen2005}:
+Altogether, the probability $\pi_{\ci}$ to find the population in allele $\ci$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $\ci$, the population size, and details of the mutation process~\citep{Sella2005,Mustonen2005}:
 \begin{align}
-    \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum\limits_{A}\pi_{A} = 1, \\
-    \iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum\limits_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
+    \dfrac{\pi_{\ci}}{\pi_{\cj}} & = \dfrac{\sigma_{\ci}\e^{F_{\ci}}}{\sigma_{\cj}\e^{F_{\cj}}} \text{ and } \sum\limits_{\ci=1}^{\NbrSites}\pi_{\ci} = 1, \\
+    \iff \pi_{\ci} & = \dfrac{\sigma_{\ci}\e^{F_{\ci}}}{\sum\limits_{\cj=1}^{\NbrSites} \sigma_{\cj}\e^{F_{\cj}} }, \label{eq:equilibrium-mut-sel}
 \end{align}
 where the denominator is a normalizing constant such that the sum of probabilities is equal to $1$.
 By analogy with thermodynamic systems, the evolutionary system thus reaches a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of genetic drift.}.
@@ -87,7 +87,7 @@ One quantity of interest is the ratio of the mean substitution rate over the mea
 \begin{align}
     \avgpfix & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
     \label{eq:relative-sub-rate} \\
-    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}},
+    & = \dfrac{ \sum\limits_{1 \leq \ci, \cj \leq \NbrSites} \pi_{\ci} Q_{\ci to \cj}}{\sum\limits_{1 \leq \ci, \cj \leq \NbrSites} \pi_{\ci} \mu_{\ci to \cj}},
 \end{align}
 where the notation $\langle \cdot \rangle$ denotes the statistical average, and the sum is over all possible pairs of codons having a certain property.
 In other words, $\avgpfix$ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
@@ -100,16 +100,16 @@ However, the definition is more general.
 This ratio can also be interpreted as the mean scaled fixation probability of all mutations that are being proposed at mutation selection equilibrium.
 Indeed, the scaled fixation probability of a given mutation is the probability of fixation of this mutation, normalized by the fixation probability of neutral mutations:
 \begin{align}
-    \dfrac{\pfix (s_{A \to B}, \Ne)}{\pfix (0, \Ne)} = \Pfix (s_{A \to B}, \Ne)
+    \dfrac{\pfix (s_{\ci to \cj}, \Ne)}{\pfix (0, \Ne)} = \Pfix (s_{\ci to \cj}, \Ne)
 \end{align}
-In addition, the probability for a given type of mutation, from $A$ to $B$, to be proposed at equilibrium, is given by:
+In addition, the probability for a given type of mutation, from $\ci$ to $\cj$, to be proposed at equilibrium, is given by:
 \begin{align}
-    \proba (A \to B) = \dfrac{\pi_{A}  \mu_{A, B}}{ \mathcal{Z}} \text{, where } \mathcal{Z} = \sum\limits_{A, B} \pi_{A} \mu_{A, B} \label{eq:proba-a-b}
+    \proba (\ci to \cj) = \dfrac{\pi_{\ci}  \mu_{1 \leq \ci, \cj \leq \NbrSites}}{ \mathcal{Z}} \text{, where } \mathcal{Z} = \sum\limits_{1 \leq \ci, \cj \leq \NbrSites} \pi_{\ci} \mu_{1 \leq \ci, \cj \leq \NbrSites} \label{eq:proba-a-b}
 \end{align}
 And thus, the statistical average at equilibrium is:
 \begin{align}
-    \left\langle \Pfix \right\rangle & = \sum\limits_{A, B}  \proba (A \to B) \Pfix (s_{A \to B}, \Ne), \\
-    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}} \text{, from equation~\ref{eq:q-pfix} and~\ref{eq:proba-a-b}}, \\
+    \left\langle \Pfix \right\rangle & = \sum\limits_{1 \leq \ci, \cj \leq \NbrSites}  \proba (\ci to \cj) \Pfix (s_{\ci to \cj}, \Ne), \\
+    & = \dfrac{ \sum\limits_{1 \leq \ci, \cj \leq \NbrSites} \pi_{\ci} Q_{\ci to \cj}}{\sum\limits_{1 \leq \ci, \cj \leq \NbrSites} \pi_{\ci} \mu_{\ci to \cj}} \text{, from equation~\ref{eq:q-pfix} and~\ref{eq:proba-a-b}}, \\
     & = \avgpfix.
 \end{align}
 As a result of this definition, $\avgpfix=1$ for genes or sites under neutral evolution.
