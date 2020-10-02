@@ -1,0 +1,120 @@
+
+\subsection{Reversibility of the process}
+The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles ($\NbrSites$), when the number of alleles is discrete and when transition from any allele to any other allele is possible in one or more substitutions.
+In this configuration, the transition rates between all possible pairs of alleles is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step transitions are not possible.
+Because any state is ultimately connected to any other state, the continuous-time Markov chain is irreducible.
+Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive transition rate is matched by a strictly positive transition for the reverse substitution.
+More precisely, the substitution rate between two alleles is null only if the underlying mutation rate is null, in which case the transition rate for the reverse mutation is also null, hence the transition rate for the reverse substitution is also null.
+
+Theoretically, for an irreducible, positive recurrent and aperiodic continuous-time Markov chain, a necessary and sufficient condition to be reversible is given by Kolmogorov's criterion.
+Kolmogorov's criterion implies that the product of transition rates through any closed loop is the same whenever the traversing is done forward or in reverse.
+As an example for a Markov chain composed of $3$ alleles ($A$, $B$ and $C$), as illustrated in figure~\ref{fig:reversible-circuit}, the transition rates must satisfy the equality:
+\begin{equation}
+    Q_{A \to B}Q_{B \to C}Q_{C \to A} = Q_{A \to C}Q_{C \to B}Q_{B \to A}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',auto,node distance=1.2cm and 1.6cm,semithick]
+        \tikzstyle{every state}=[]
+
+        \node[] (0) {};
+        \node[state] (A) [above=of 0] {$A$};
+        \node[state] (B) [below left=of 0] {$B$};
+        \node[state] (C) [below right=of 0] {$C$};
+
+        \path[->]
+        (A) edge [BLUE,bend right=45] node [left] {$Q_{A \to B}$} (B)
+        (B) edge [BLUE,bend right=45] node [below] {$Q_{B \to C}$} (C)
+        (C) edge [BLUE,bend right=45] node [right] {$Q_{C \to A}$} (A)
+        (B) edge [RED,bend right=15] node [left] {$Q_{B \to A}$} (A)
+        (C) edge [RED,bend right=15] node [below] {$Q_{C \to B}$} (B)
+        (A) edge [RED,bend right=15] node [right] {$Q_{A \to C}$} (C);
+    \end{tikzpicture}
+    \caption[Kolmogorov's criterion]{
+    The continuous-time Markov chain is reversible if the process fulfils Kolmogorov's criterion.
+    Namely, the product of the transition rates for a closed loop is equal whether traversed in one sense (blue arrows) or the other (red arrows).}
+    \label{fig:reversible-circuit}%
+\end{figure}
+
+Kolmogorov's criterion is satisfied under specific conditions for the substitution process (\ref{eq:sub-transion-rates}):
+\begin{align}
+    1 ={}& \dfrac{Q_{A \to B}Q_{B \to C}Q_{C \to A}}{Q_{A \to C}Q_{C \to B}Q_{B \to A}}\\
+    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times \dfrac{(F_{B} - F_{A})(F_{C} - F_{B})(F_{A} - F_{C})}{(F_{C} - F_{A})(F_{B} - F_{C})(F_{A} - F_{B})} \notag \\
+    &\ \times \dfrac{( 1 - \e^{F_{A} - F_{C}} )( 1 - \e^{F_{C} - F_{B}} )( 1 - \e^{F_{B} - F_{A}} )}{( 1 - \e^{F_{A} - F_{B}} )( 1 - \e^{F_{B} - F_{C}} )( 1 - \e^{F_{C} - F_{A}} )}, \\
+    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \times -\dfrac{\cancel{(F_{A} - F_{B})}\cancel{(F_{B} - F_{C})}\cancel{(F_{C} - F_{A})}}{\cancel{(F_{C} - F_{A})}\cancel{(F_{B} - F_{C})}\cancel{(F_{A} - F_{B})}} \notag \\
+    &\ \times \dfrac{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{A}} )}{( \e^{F_{A} - F_{A}} - \e^{F_{A} - F_{B}} )( \e^{F_{B} - F_{B}} - \e^{F_{B} - F_{C}} )( \e^{F_{C} - F_{C}} - \e^{F_{C} - F_{A}} )}, \\
+    ={}& - \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \notag \\
+    &\ \times \dfrac{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{A}} )}{\cancel{\e^{F_{A}}}( \e^{-F_{A}} - \e^{ - F_{B}} )\cancel{\e^{F_{B}}}( \e^{-F_{B}} - \e^{ - F_{C}} )\cancel{\e^{F_{C}}}( \e^{-F_{C}} - \e^{ - F_{A}} )}, \\
+    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}} \dfrac{\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}}{\cancel{( \e^{-F_{A}} - \e^{ - F_{B}} )}\cancel{( \e^{-F_{B}} - \e^{ - F_{C}} )}\cancel{( \e^{-F_{C}} - \e^{ - F_{A}} )}}, \\
+    ={}& \dfrac{\mu_{A \to B}\mu_{B \to C}\mu_{C \to A}}{\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}}.
+\end{align}
+Namely, Kolmogorov's criterion for the substitution process is satisfied only if the mutation process is also reversible, in which case Kolmogorov's criterion is also fulfilled:
+\begin{equation}
+    \mu_{A \to B}\mu_{B \to C}\mu_{C \to A}=\mu_{A \to C}\mu_{C \to B}\mu_{B \to A}.
+\end{equation}
+This example can be generalized for any closed loop, such that the reversibility of the substitution process is conditioned on the reversibility of the underlying mutation process, which is often assumed.
+
+\subsection{Stationary distribution}
+
+A realization of the Markov chain for a long period of time results in a given proportion of the time for which the process is fixed for a specific allele, where this proportion depends of the allele fitness, the mutational process and $\Ne$.
+Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\UniDimArray{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time.
+
+Moreover, under the condition that the Markov chain is time-reversible, the detailed balance for the stationary distribution is satisfied for every pair $\ci$ and $\cj$:
+\begin{align}
+    \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{Q_{B \to A}}{Q_{A \to B}} \\
+    & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{F_{A}-F_{B}}{ 1 - \e^{F_{B}-F_{B}}}  \dfrac{1 - \e^{F_{A} - F_{B}} }{F_{B} - F_{A}}\\
+    & = - \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{ \e^{F_{A}}(\e^{-F_{A}} - \e^{- F_{B}}) }{ \e^{F_{B}}(\e^{-F_{B}} - \e^{- F_{A}})}  \\
+    & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}} \dfrac{\e^{F_{A}}}{\e^{F_{B}}} \\
+\end{align}
+Under the assumption that the mutational process is also reversible, the detailed balance for the stationary distribution of the mutation process ($\UniDimArray{\sigma}$) is satisfied:
+\begin{align}
+    \dfrac{\mu_{B \to A}}{\mu_{A \to B}} & = \dfrac{\sigma_{A}}{\sigma_{B}}
+\end{align}
+Altogether, the probability $\pi_{A}$ to find the population in allele $A$ is proportional to a function (also called a Boltzmann factor) that depends only on the fitness of allele $A$, the population size, and details of the mutation process~\citep{Sella2005,Mustonen2005}:
+\begin{align}
+    \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sigma_{B}\e^{F_{B}}} \text{ and } \sum\limits_{A}\pi_{A} = 1, \\
+    \iff \pi_{A} & = \dfrac{\sigma_{A}\e^{F_{A}}}{\sum\limits_{B} \sigma_{B}\e^{F_{B}} }, \label{eq:equilibrium-mut-sel}
+\end{align}
+where the denominator is a normalizing constant such that the sum of probabilities is equal to $1$.
+By analogy with thermodynamic systems, the evolutionary system thus reaches a Boltzmann-like distribution with $\Ne^{-1}$ playing the role of evolutionary temperature, and the log-fitness $f$ the role of energy\footnote{At high mutation rates, the quasi-species theory provides another analogy with statistical mechanics, in which the mutation rate plays the role of temperature instead of genetic drift.}.
+
+\subsection{Mean scaled fixation probability}
+\label{subsec:mean-scaled-fixation-probability}
+
+Occurrence probabilities given by the stationary distribution allows one to calculate all observable quantities of interest, such as the mean fitness, or the mean mutation and substitution rates, using standard probability theory.
+One quantity of interest is the ratio of the mean substitution rate over the mean mutation rate, called $ \avgpfix $:
+\begin{align}
+    \avgpfix & = \dfrac{ \langle Q \rangle }{\langle \mu \rangle},
+    \label{eq:relative-sub-rate} \\
+    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}},
+\end{align}
+where the notation $\langle \cdot \rangle$ denotes the statistical average, and the sum is over all possible pairs of codons having a certain property.
+In other words, $\avgpfix$ represents the flow of substitutions at equilibrium, normalized by the mutational flow (or mutational opportunities).
+
+This definition can in principle be applied to any subset of codon pairs.
+A particularly important case is to sum over all possible pairs of non-synonymous codons (which will be considered in the next chapter).
+In that case, $\avgpfix$ captures the fundamental quantity usually referred to as $\dnds$.
+However, the definition is more general.
+
+This ratio can also be interpreted as the mean scaled fixation probability of all mutations that are being proposed at mutation selection equilibrium.
+Indeed, the scaled fixation probability of a given mutation is the probability of fixation of this mutation, normalized by the fixation probability of neutral mutations:
+\begin{align}
+    \dfrac{\pfix (s_{A \to B}, \Ne)}{\pfix (0, \Ne)} = \Pfix (s_{A \to B}, \Ne)
+\end{align}
+In addition, the probability for a given type of mutation, from $A$ to $B$, to be proposed at equilibrium, is given by:
+\begin{align}
+    \proba (A \to B) = \dfrac{\pi_{A}  \mu_{A, B}}{ \mathcal{Z}} \text{, where } \mathcal{Z} = \sum\limits_{A, B} \pi_{A} \mu_{A, B} \label{eq:proba-a-b}
+\end{align}
+And thus, the statistical average at equilibrium is:
+\begin{align}
+    \left\langle \Pfix \right\rangle & = \sum\limits_{A, B}  \proba (A \to B) \Pfix (s_{A \to B}, \Ne), \\
+    & = \dfrac{ \sum\limits_{A, B} \pi_{A} Q_{A \to B}}{\sum\limits_{A, B} \pi_{A} \mu_{A \to B}} \text{, from equation~\ref{eq:q-pfix} and~\ref{eq:proba-a-b}}, \\
+    & = \avgpfix.
+\end{align}
+As a result of this definition, $\avgpfix=1$ for genes or sites under neutral evolution.
+Most importantly, departure from $1$ would be interpreted as a signature of selection on sequences.
+First, $\avgpfix>1$ is interpreted as a signal of adaptive recurrent evolution, since this means that $\pfix > 1/2 \Ne$ on average.
+On the other hand, $\avgpfix<1$ is a signal of underlying purifying selection such that the sequence is constrained on average.
+Of note, $ \avgpfix > 1$ (or $ < 1$) does not necessarily mean that the selection coefficients are positive (or negative) on average.
+Finally, a mutation-selection point substitution process at equilibrium under a time-independent fitness landscape results in $\avgpfix \leq 1$, as demonstrated in \citet{Spielman2015}.

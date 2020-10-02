@@ -1026,7 +1026,7 @@ Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a s
 If we express the probability of the substitution mapping ($\subhistory\branchcatexp$) as a function of the codon substitution process for this category $\cat$, we get the following expression:
 \begin{equation}
     \label{eq:PathSuffStat}
-    \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \prod\limits\sumOverCodons \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \prod\limits_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \prod\limits\sumOverCodons \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp},
+    \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \left[  \prod\limits\sumOverCodons \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \right] \cdot \left[ \prod\limits_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \right] \cdot \left[ \prod\limits\sumOverCodons \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp}\right],
 \end{equation}
 where we define the sufficient statistics:
 \begin{itemize}

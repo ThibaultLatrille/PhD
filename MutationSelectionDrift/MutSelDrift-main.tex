@@ -196,16 +196,7 @@ On the other hand, and very importantly, epistasis, which is ignored by the infe
 \label{sec:ResultsEmpirical}
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.411\linewidth}
-        \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 0.45cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogPopulationSize}
-    \end{minipage}
-    \begin{minipage}{0.159\linewidth}
-        \includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm -2.25cm 0cm 0cm]{mammals_species}
-    \end{minipage}
-    \begin{minipage}{0.411\linewidth}
-        \reflectbox{\includegraphics[valign=t, width=\linewidth, page=1, clip, trim=0cm 5.05cm 15.35cm 0cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}}
-        \includegraphics[valign=b,width=\linewidth, page=1, clip, trim=0cm 0cm 15.35cm 32.3cm]{mammals/18CDS_SiteMutSelBranchNe_R1_LogMutationRatePerTime}
-    \end{minipage}
+    \includegraphics[width=\linewidth, page=1]{mammals/mammals_mirrors_low.pdf}
     \caption[Example of inferred $\Ne$ and $\mu$ on placental mammals dataset]{
     Example of inferred $\Ne$ and $\mu$ on placental mammals dataset.
     Inferences were performed on a randomly chosen set of $18$ coding sequences (\acrshort{CDS}) out of $226$ highly conserved CDS~($<1\%$ of gaps).
@@ -635,7 +626,7 @@ The prior on the covariance matrix is an invert Wishart distribution, parameteri
 
 The mutation rate between codons $\ci$ and $\cj$, denoted $\mu_{\itoj}$ depends on the underlying nucleotide change between the codons.
 First, if codons $\ci$ and $\cj$ are not neighbours, $\mu_{\itoj}$ is equal to $0$.
-Second, if codons $\ci$ and $\cj$ are only one mutation away, $\mu_{\itoj}$ is given by the nucleotide relative rate~(${\mutmatrix_{\nucitoj}}$) scaled by the mutation rate per time~($\mu$).
+Second, if codons $\ci$ and $\cj$ are only one mutation away, $\nucitoj$ denotes the nucleotide change (e.g.~$\nuc(AAT, AAG) = TG$), and $\mu_{\itoj}$ is given by the underlying nucleotide relative rate~(${\mutmatrix_{\nucitoj}}$) scaled by the mutation rate per time~($\mu$).
 Technically, the $4$-dimensional nucleotide relative rate matrix~($\Mutmatrix$) is normalized such that we expect $1$ substitution per unit of time, hence the scaling by $\mu$.
 
 For a given branch $\branch$ and a given site $\site$, the codon substitution rate (per unit of time) matrix $\Submatrix\branchsiteexp$ is given by:

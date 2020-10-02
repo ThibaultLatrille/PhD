@@ -58,7 +58,7 @@ Under the Hardy-Weinberg equilibrium of the population, the diploid genotype fre
 
 As a result, the mean fitness in the population is a function of the selection coefficient and the frequency of two alleles as:
 \begin{align}
-    \overline{\wrightfit} &= (1+2s)p^2 + (1+s)2pq + q^2 \\
+    \overline{\wrightfit} &= (1+2s)p^2 + (1+s)2p(1-p) + (1-p)^2 \\
     &= 1 + 2ps,
 \end{align}
 And the relative fitness of the three different genotypes are also shown in table~\ref{table:fitnesses}.
@@ -71,7 +71,7 @@ And the relative fitness of the three different genotypes are also shown in tabl
         \textbf{Genotype} & $AA$ & $AB$ & $BB$ \\
         \hline
         \textbf{Wrightian fitness ($\bm{\wrightfit}$)}  & $1$ & $1+s$ & $1+2s$ \\
-        \hline \textbf{Hardy-Weinberg frequency}  & $2p(1-p)$ & $(1-p)^2$ & $p^2$\\
+        \hline \textbf{Hardy-Weinberg frequency}  & $(1-p)^2$ & $2p(1-p)$ & $p^2$\\
         \hline \textbf{Relative Wrightian fitness}  & $\dfrac{1}{1+2ps}$ & $\dfrac{1+s}{1+2ps}$ & $\dfrac{1+2s}{1+2ps}$\\
         \hline
     \end{tabu}}
@@ -147,7 +147,7 @@ Starting from an initial frequency, the Wright-Fisher process eventually reaches
 As the effective population size ($\Ne$) approaches infinity (i.e.~$ \Ne \to \infty$), and assuming that the selection coefficient scaled by effective population size ($\Ne s $) remains constant, the discrete Markov process defined above can be closely approximated by a continuous-time and continuous-space diffusion process.
 The parameters of this process are summarize in table~\ref{table:params-popgen} for readability.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|l|c|c|c|}
@@ -236,7 +236,7 @@ Along the whole trajectory of an allele, before fixation or extinction, the prob
 More precisely, $g(x) \der x $ is the expected time for which the population frequency of derived allele is in the range $(x, x+\der x)$ before eventual absorption, as shown in figure~\ref{fig:expected-time-at-f}, which is derived using the Kolmogorov forward equation as a function of $x$ and $S$:
 \begin{align}
     g(x, s, \Ne) & = \dfrac{\left( 1 - \e^{- 2 s }\right) \left( 1 - \e^{-4 \Ne s(1-x)}\right)}{ s (1 - \e^{-4 \Ne s})x(1-x)} \\
-    \Rightarrow g(x, S) & \approx \dfrac{2 \left[ 1 - \e^{-S(1-x)}\right]}{(1 - \e^{-S})x(1-x)} \label{eq:expected_time}
+    \Rightarrow g(x, S) & \approx \dfrac{2 \left( 1 - \e^{-S(1-x)}\right)}{(1 - \e^{-S})x(1-x)} \label{eq:expected_time}
 \end{align}
 
 \begin{figure}[H]
@@ -357,16 +357,15 @@ As a consequence, the substitution rate denoted $Q_{A \to B}^{0}$ simplifies to:
 
 
 If the difference of log-fitness tends to $0$, the substitution rate is equal to the mutation rate, retrieving equation~\ref{eq:sub-equal-mut}:
-\begin{align}
-    \lim\limits_{|F_{B} - F_{A}| \to 0} Q_{A \to B} & = \mu_{A \to B}   \dfrac{F_{B} - F_{A}}{{1 - (1 + {F_{A} - F_{B}}) }} \nonumber \\
-    & =  \mu_{A \to B}
-\end{align}
+\begin{equation}
+    \lim\limits_{|F_{B} - F_{A}| \to 0} Q_{A \to B} =  \mu_{A \to B}
+\end{equation}
 
 Taken together, the transition rates which generate the substitution history and ultimately the interspecific diversity is parameterized solely by mutation, selection and drift.
 Consequently, from a particular history of substitutions, one can theoretically estimate the parameters of selection, mutation and drift, although it is important to keep in mind that selection and drift are confounded.
 
 \subsection{Reversibility of the process}
-The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles, when the number of alleles is discrete and when transition from any allele to any other allele is possible in one or more substitutions.
+The continuous-time Markov chain has so far been defined for $2$ alleles but can be generalized to any number of alleles ($\NbrSites$), when the number of alleles is discrete and when transition from any allele to any other allele is possible in one or more substitutions.
 In this configuration, the transition rates between all possible pairs of alleles is defined by equation~\ref{eq:sub-transion-rates}, and equals $0$ whenever single step transitions are not possible.
 Because any state is ultimately connected to any other state, the continuous-time Markov chain is irreducible.
 Moreover, this substitution process is positive recurrent and aperiodic since any strictly positive transition rate is matched by a strictly positive transition for the reverse substitution.
@@ -426,7 +425,7 @@ This example can be generalized for any closed loop, such that the reversibility
 A realization of the Markov chain for a long period of time results in a given proportion of the time for which the process is fixed for a specific allele, where this proportion depends of the allele fitness, the mutational process and $\Ne$.
 Because the continuous-time Markov chain is irreducible, positive recurrent and aperiodic, it has a unique stationary distribution $\UniDimArray{\pi}$, where $\pi_{A}$ corresponds to the proportion of time spent in allele $A$ after the Markov chain has run for an infinite amount of time.
 
-Moreover, under the condition that the Markov chain is time-reversible, the detailed balance for the stationary distribution is satisfied:
+Moreover, under the condition that the Markov chain is time-reversible, the detailed balance for the stationary distribution is satisfied for every pair $\ci$ and $\cj$:
 \begin{align}
     \dfrac{\pi_{A}}{\pi_{B}} & = \dfrac{Q_{B \to A}}{Q_{A \to B}} \\
     & = \dfrac{\mu_{B \to A}}{\mu_{A \to B}}  \dfrac{F_{A}-F_{B}}{ 1 - \e^{F_{B}-F_{B}}}  \dfrac{1 - \e^{F_{A} - F_{B}} }{F_{B} - F_{A}}\\
