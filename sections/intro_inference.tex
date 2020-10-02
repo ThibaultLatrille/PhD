@@ -62,7 +62,7 @@ In practice, exponentiating the rate matrix is usually performed using decomposi
 The challenge for generalizing this argument from a single branch to a complete tree is that only the data at the tips of the tree are observed whereas the states at the internal nodes are not.
 If they were known, the likelihood would be readily calculated, by taking the product of the transition probabilities over all branches.
 As an example, and for better readability, a simple illustrative tree given in figure~\ref{fig:tree} will be used prior to giving to general formulas.
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
         \tikzstyle{every state}=[]
@@ -90,25 +90,25 @@ As an example, and for better readability, a simple illustrative tree given in f
 
 In the example of the illustrated tree, from the observed data for the extant nodes $\Data\siteexp = \{ \state_1,\state_2, \state_3, \state_4 \}$, at site $\site$, given that the states of the internal nodes are known, the likelihood is computed as:
 \begin{align}
-    \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
+    \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) & = \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
     \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}), \\
     & \quad \quad \quad
     \times \Probmatrix\siteexp_{\state_5, \state_3}(\branchlength^{(3)})
     \Probmatrix\siteexp_{\state_5, \state_4}(\branchlength^{(4)})
     \Probmatrix\siteexp_{\state_0, \state_5}(\branchlength^{(5)}). \notag
 \end{align}
-In the general case of an arbitrary topology with $\Ntaxa$ taxa, $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denote the parent and descendant nodes of a branch, the likelihood conditional on internal states is given as:
+In the general case of an arbitrary topology with $B$ branches, $\state_{\nodeUp}$ and $\state_{\nodeDown}$ are used to denote the parent and descendant nodes of a branch, the likelihood conditional on internal states is given as:
 \begin{align}
-    \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \Setbranch \right) & = \prod\limits_{\branch=1}^{2 \Ntaxa - 2} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
+    \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp \right) & = \prod\limits_{\branch=1}^{B} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
 \end{align}
-where $I$ runs over all the internal nodes, and they are $2 \Ntaxa - 2$ branches.
+where $I$ runs over all the internal nodes, and they are $B$ branches.
 
 Because the states of the internal nodes are actually unknown, the likelihood must be summed over all possible configurations for them, including at the root.
 At the root, the states are produced according to equilibrium frequencies of the process ($\pi\siteexp$).
 
 In the case of the illustrative example, the total probability is given as:
 \begin{align}
-    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp , \branch \in \{1, \hdots, 4\} \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
+    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp  \right) & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \proba \left(\Data\siteexp \mid \state_0, \state_5, \Submatrix\siteexp, \branchlength\branchexp \right) \\
     & = \sum\limits_{\state_0=1}^{61} \subequi_{\state_0} \sum\limits_{\state_5=1}^{61} \subequi_{\state_5} \Probmatrix\siteexp_{\state_0, \state_1}(\branchlength^{(1)})
     \Probmatrix\siteexp_{\state_0, \state_2}(\branchlength^{(2)}), \\
     & \qquad \qquad \qquad
@@ -121,25 +121,25 @@ And because the process is reversible, the codon equilibrium frequencies satisfy
 \begin{align}
     \vecZero & = \Subequi\branchsiteexp \Submatrix\branchsiteexp, \\
     \iff \Subequi\branchsiteexp & = \Subequi\branchsiteexp \Probmatrix\branchsiteexp, \\
-    \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp}.
+    \iff \dfrac{\subequi_{\ci}\siteexp}{\subequi_{\cj}\siteexp} & = \dfrac{\submatrix_{\cj, \ci}\siteexp}{\submatrix_{\ci, \cj}\siteexp} \text{ for all pairs }\ci,\cj.
 \end{align}
 
-In the general topology with $\Ntaxa$ taxa, the likelihood is thus given as:
+In the general topology with $B$ branches, the likelihood is thus given as:
 \begin{align}
-    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp, \forall (I, \branch) \right), \\
-    & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod\limits_{b} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}). \label{eq:likelihood-site}
+    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp \right) & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp \right), \\
+    & = \sum\limits_{\state_{0}=1}^{61} \subequi_{\state_{0}} \hdots \sum\limits_{\state_{k}=1}^{61} \subequi_{\state_{k}} \prod\limits_{b=1}^{B} \Probmatrix\siteexp_{\state_{\branch^{+}}, \state_{\branch^{-}}}(\branchlength^{(\branch)}). \label{eq:likelihood-site}
 \end{align}
 
-And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns of the observed nucleotides or amino acids in those columns:
+And finally, the assumption of independence between sites allows the probability of an observed set of aligned sequences at the tips of an evolutionary tree to be expressed as the product over alignment columns ($\Nsite$ sites) of the observed nucleotides or amino acids in those columns:
 \begin{align}
-    \proba \left(\Data \mid \Submatrix\siteexp, \branchlength\branchexp, \forall (\site, \branch) \right) & = \prod\limits_{\site} \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) \label{eq:likelihood}
+    \proba \left(\Data \mid \Submatrix\siteexp, \branchlength\branchexp \right) & = \prod\limits_{\site=1}^{\Nsite} \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp \right) \label{eq:likelihood}
 \end{align}
 
 \subsection{Pruning algorithm}
 \label{subsec:pruning-algorithm}
 The likelihood at a specific column of a multiple sequence alignment given by equation~\ref{eq:likelihood} requires extensive computation, but can, however, be computed in linear time (as a function of the number of branches) using the pruning algorithm of \citet{Felsenstein1981}.
 \begin{align}
-    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp, \forall \branch \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right),
+    \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right),
 \end{align}
 where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
 \begin{align}
