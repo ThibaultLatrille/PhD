@@ -181,21 +181,21 @@ From the availability of divergence and polymorphism data, it is now possible to
 \section{Unifying phylogenetic and population-genetics models}
 \label{sec:unifying-phylogenetic-and-population-genetics-model}
 
-Throughout this manuscript, the phylogenetic codon models that have been presented have so far ignored genetic diversity within species.
+Throughout this manuscript, the phylogenetic codon models that have been presented have ignored genetic diversity within species.
 As a result, all differences observed in the alignment are assumed to be substitutions.
 However some of the differences observed in the alignment might in fact be polymorphisms segregating in the population.
-Moreover, substitutions are not instantaneous and ancestral shared polymorphisms can result in incomplete lineage sorting~\citep{Charlesworth2010}.
+Moreover, substitutions are not instantaneous and ancestral polymorphisms can result in shared polymorphisms across species due to incomplete lineage sorting~\citep{Charlesworth2010}.
 
 Mistaking polymorphisms for substitutions is problematic, since both are not sensitive to mutation, selection and drift to the same extent~\citep{Mugal2014}.
 For example, the neutral diversity increases with $\Ne$, while the rate of neutral substitutions is insensitive to $\Ne$.
-Also, mildly deleterious can be present in polymorphism while being filtered out by selection and not present in substitutions.
+Also, polymorphisms involving mildly deleterious mutations are very common but are normally filtered out by selection and thus, are not often seen as substitutions.
 
-Finally, substitution rates are much more strongly influenced by selection, and more generally by fixation biases (such as gBGC) than polymorphisms, which are primarily reflecting mutation biases.
+More generally, substitution rates are much more strongly influenced by fixation biases (such as gBGC) than polymorphisms, which are primarily reflecting mutation biases.
 
 Interestingly, this suggests that polymorphism and divergence could be leveraged together to help disentangle mutation, selection and drift.
 In other words, phylogenetic and population-genetic approaches could be unified, in the context of a single modelling framework~\citep{Thorne2012}.
 
-Such an integration between phylogenetic and population genetics as already been attempted in several studies.
+Such an integration between phylogenetic and population genetics has already been attempted in several studies.
 For example, \citet{Wilson2011} modelled codon evolution in a joint framework with $3$ species, which allowed them to analyse the variation in selection pressure spatially along the genome and temporally between lineages.
 However, this methodology proved to be computationally intensive and does not scale well with the number of extant species.
 Alternatively, modelling substitutions as mutational events followed by a gradual fixation, using an explicit Wright-Fisher or Moran process along the phylogeny, makes it possible to estimate nucleotide mutation rates and mean fixation probabilities from genetic variation within and between species, while accounting for shared ancestral polymorphisms and incomplete lineage sorting~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019}.
@@ -205,28 +205,27 @@ For that reason, it would be particularly difficult to translate the approach fr
 
 Because mechanistic codon models are based on population-genetic first principles, they can theoretically be extended to account for within species diversity.
 One strategy would be to augment molecular divergence data between species with information about molecular polymorphism within species.
-Such an attempt has been tried during the first year of the PhD.
+Such an approach was attempted during the first year of my PhD training.
 The formalism that was used is based on Poisson Random fields (details can be found in appendices page~\pageref{sec-appendix:PRF}).
 This extension was rather straightforward to implement in \texttt{BayesCode}, in the context of site-specific mechanistic codon models.
 % This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
-A first implementation was tested against simulation under a Wright-Fisher model of evolution along the phylogeny.
-It yields an accurate estimation of diversity ($\theta = 4 \Ne u$) in extant species, and is able to better tease out mutation and selection by leveraging both divergence and polymorphism signal.
+A first implementation was tested against simulations under a Wright-Fisher model of evolution along the phylogeny.
+It yielded an accurate estimation of diversity ($\theta = 4 \Ne u$) in extant species, and was able to better tease out mutation and selection by leveraging both divergence and polymorphism signals.
 However, it was found to be computationally intensive, even with the use of sufficient statistics to accelerate the computation (see section~\ref{subsec:suffstats-data-augmentation}).
-Moreover, the assumption of a constant $\Ne$ along the phylogeny assumed by mutation-selection codon models was arguably the strongest assumption to relax in this context~\citep{Rousselle2018}.
+Moreover, the assumption of a constant $\Ne$ along the phylogeny in mutation-selection codon models was arguably the strongest restriction to relax in this context~\citep{Rousselle2018}.
 Indeed, what sense would it make to integrate empirical data about genetic diversity in extant species that generally have quite different levels of diversity if $\Ne$ is considered constant along the phylogeny.
 This was historically the reason why I decided to first extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
-Once incorporating branch specific $\Ne$ , the original goal was then to add polymorphism data in the context of this improved mutation-selection codon model.
-As it turns out, however, there are other issues that needed to be addressed, before achieving this integration.
-In particular, the fact that the range of $\Ne$ inferred by the model turns out to be too narrow (see section~\ref{chap:MutSelDrift}), as well as computational issues.
+Once incorporating branch specific $\Ne$, the original goal was then to add polymorphism data in the context of this improved mutation-selection codon model.
+As it turns out, however, there are other issues that needed to be addressed, before achieving this integration, in particular, the fact that the range of $\Ne$ inferred by the model turns out to be too narrow (see section~\ref{chap:MutSelDrift}), as well as computational issues.
 Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the \acrshort{MCMC} became prohibitive.
 
 Retrospectively, even though site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating empirical data about polymorphism, as I have started to do in \texttt{BayesCode}, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
 Before doing this, I believe phylogenetic codon models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
 The impact of epistasis should also be better understood and characterized.
 Only in a second step, subsequently to this confrontation, could phylogenetic models in principle accommodate extant polymorphism.
-However, this will probably require another approach of inference, more computationally reasonable that the one that I have explored in my work (in chapter~\ref{chap:MutSelDrift}).
+However, this will probably require another approach of inference, more computationally reasonable than the one that I have explored in my work (in chapter~\ref{chap:MutSelDrift}).
 
 
 \section{Mechanistic and phenomenological models}
@@ -239,10 +238,9 @@ By doing this, they relate structural, population genetics and ecological parame
 As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and varying effective population size across lineages.
 
 Once such models have been fitted to empirical data, the estimated parameters can then be confronted with independent estimations, which allow one to robustly test the model since independent estimates of biological and ecological parameters should of course be congruent~\citep{Dasmeh2014}.
-However mechanistic models are computationally very intensive, to a point where they can reach the current limits in available computing power.
-Apart from this physical limit of resource available, the use of computing resources bears ecological consequences on environmental degradation and $C0_2$.
+However mechanistic models are computationally very intensive, to a point where they can reach the current limits in available computing power (personal computers or clusters)\footnote{Apart from the physical limit of resource available, the use of computing resources bears ecological consequences on environmental degradation and $C0_2$ emissions.}.
 Moreover, increased complexity of the models bears another consequence: the liability of the code and software decreases, compromising the reproducibility of the results obtained with such models.
-For these reasons (and primarily the computational limitations), mechanistic models tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter~\ref{chap:MutSelDrift}).
+For these reasons, mechanistic models tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter~\ref{chap:MutSelDrift}).
 
 In contrast, phenomenological models are formulated in terms of aggregate parameters, capturing the average rate of synonymous or non-synonymous substitutions, or their ratio.
 Their aim is to determine the statistical distribution of these aggregate quantities across the tree, across genes, or across sites, but without deriving them from first principles.
@@ -250,10 +248,9 @@ Compared to mechanistic models, they are computationally much more efficient.
 On the other hand, they do not give direct access to the population-genetic parameters.
 
 This raises the question of how to benefit from the advantages of the two approaches.
-Observations and experiments done throughout this thesis led me to crystallize the conception that models of inference should be mechanistic in essence, in the sense that they should be parameterized by variables that are derived from first principles.
-But should be phenomenological in practice, in the sense that these variables should nevertheless be aggregate parameters.
+Observations and experiments done throughout this thesis led me to crystallize the conception that models of inference should be mechanistic in essence, in the sense that they should be parameterized by variables that are derived from first principles, but should be phenomenological in practice, in the sense that these variables should nevertheless be aggregate parameters.
 
-The first manuscript presented in this thesis (chapter~\ref{chap:NucleotideBias}) gives some preliminary directions to accomplish this project.
+The first manuscript presented in this thesis (chapter~\ref{chap:NucleotideBias}) gives some preliminary directions in this regard.
 A mean-field argument was used to derive a phenomenological model based on an underlying mechanistic site-specific model.
 As a result, the mean-field parameters of the phenomenological model capture aggregate quantities that are averages across sites.
 The phenomenological model that was obtained using this approach is easier to fit to the data.
@@ -263,13 +260,12 @@ Altogether, hybrid models based on mechanistic first principles but obtained by 
 Such hybrid models can be developed with the following procedure:
 \begin{enumerate}
     \item Define a mechanistic microscopic model from molecular first principles (see chapter~\ref{chap:GenoPhenoFit}).
-    This model can be potentially complex, modelling all kinds of variations, such as for example incorporating site interdependence or polymorphism within species.
+    This model can be potentially complex, modelling all kinds of variations, for example, incorporating site interdependence or polymorphism within species.
     Such model is meant to be implemented in simulations, but never in inference.
     \item Use a mean-field argument and calculate aggregate quantities emerging from the microscopic model, leveraging population genetics first principles.
     Possibly, use theoretical developments such as presented in chapter~\ref{chap:GenoPhenoFit} to approximate the response of the aggregate quantities to changes in the underlying mechanistic parameters.
     \item Implement the inference phenomenological model whose parameters correspond to the mean-field aggregates.
-    Such phenomenological model is meant to be confronted with simulation under the mechanistic model.
-    And subsequently applied to empirical data to estimate the parameters of interest, and their covariation with variables that might change across species or across genes.
+    Such phenomenological models are meant to be confronted with simulations under the mechanistic model and subsequently applied to empirical data in order to estimate the parameters of interest and their covariation with variables that might change across species or across genes.
 \end{enumerate}
 Such endeavour, however, requires mathematical work to derive the relationship between parameters of interest (such as $\EmpiricalDeltaDeltaG, \Ne, $ expression level, \ldots) and aggregate parameters of evolution that are extractable from the data ($\avgpfix$).
 Chapter~\ref{chap:GenoPhenoFit} represents one such mathematical development.
@@ -285,22 +281,22 @@ However, this assumes we are confident enough to write reproducible programs.
 In this direction, the next section is dedicated to my experience in reproducing results.
 
 First, I stand firmly on the ground that data, codes and scripts should be rendered open access for any published and peer reviewed paper.
-Practically, the availability of the data and source code should simply be enforced upon submission to journal, which is currently not the case for all journals, even the fields of bioinformatics and genomics.
+Practically, the availability of the data and source code should simply be enforced upon submission to any journal, which is currently not the case for all journals even within the fields of bioinformatics and genomics.
 It is true that such enforcement imposes a heavier burden on scientists upon publishing.
 However, it avoids the bloating of the technical debt, or research debt resulting from building theories on the ground of a dangerous and possibly shaky basement.
-It encourages peer collaboration, both helping the team or person(s) who made the code available, and the community as a whole.
-A straightforward approach is to provide a \texttt{git} versioned repository, with the advantage that collaboration is facilitated through web hosted repositories such as \texttt{GitLab} (hosted by institutions) or \texttt{GitHub} (hosted by private company, here Microsoft).
+It also encourages peer collaboration, both helping the team or person(s) who made the code available, and the community as a whole.
+A straightforward approach is to provide a \texttt{git} versioned repository, with the advantage that collaboration is facilitated through web hosted repositories such as \texttt{GitLab} (hosted by institutions) or \texttt{GitHub} (hosted by a private company, Microsoft, at the moment of writing).
 
 Nonetheless, code availability is a necessary condition, but not the sole requirement of reproducible research.
-Specific instructions to reproduce the results should also be made available, where many tools are available to this aim~\citep{Wilson2014,Darriba2018}.
+Specific instructions to reproduce the results should also be made available~\citep{Wilson2014,Darriba2018}.
 The first step to reproduce a code is to have the required environment, meaning the necessary libraries and dependencies for the code and scripts.
 For script and code written in \texttt{Python}, the package manager \texttt{Anaconda} (or \texttt{Conda}) provides a readily available environment to configure the necessary libraries with their versions.
-More complex environment requiring code compilation or system-level packages can leverage containerization technology such as \texttt{Docker} or \texttt{Singularity} for example, but any other containers implementing system-level virtualization is very helpful to provide the necessary libraries.
+More complex environments requiring code compilation or system-level packages can leverage containerization technology such as \texttt{Docker} or \texttt{Singularity} for example, but any other containers implementing system-level virtualization is very helpful to provide the necessary libraries.
 Once the environment is specified, the documentation can be made available as a README with the necessary instructions.
 
-More generally, notebooks such as \texttt{Jupyter Notebook}, \texttt{RMarkdown} or \texttt{Org-mode} to name a few also provide an environment knitting together code and instructions, allowing anyone to follow step-by-step experiments, analysis and results, in a similar fashion as laboratory notebook required in wet labs.
+More generally, notebooks such as \texttt{Jupyter Notebook}, \texttt{RMarkdown} or \texttt{Org-mode} to name a few also provide an environment for knitting together code and instructions, allowing anyone to follow step-by-step experiments, analysis and results, in a similar fashion as laboratory notebooks are required in wet labs.
 It is important to note that notebooks can run code from a variety of languages (\texttt{C++}, \texttt{Haskell}, \texttt{Java}, \texttt{Julia}, \texttt{Python}, \texttt{Wolfram Language}, \texttt{Matlab}, \texttt{Ruby}, \ldots).
-These tools are emerging in the community, as well as workflow management system (\texttt{Nexflow}, \texttt{Snakemake}, \ldots) allowing one to create reproducible and scalable data analyses running on computing clusters.
+These tools are emerging in the community, as well as workflow management system (\texttt{Nextflow}, \texttt{Snakemake}, \ldots) allowing one to create reproducible and scalable data analyses running on computing clusters.
 
 Using this range of tools helps other scientists who might want to understand, test or build upon published work.
 Moreover, they are also very helpful for the person or team implementing them, since a more rigorous and reproducible environment makes it possible to more easily track down bugs and test programs under different conditions or datasets\footnote{Notebooks are very useful to present work and data analysis, but should not be used during development since they often offer poor integration with debugger and code inspection tools, enforce awkward software design patterns, and often result in bloated versioned repository.}.
@@ -308,25 +304,25 @@ During the development period, continuous integration pipelines are valuable to 
 
 Collaborative coding practices such as peer-coding sessions are really useful to implement critical code at the core of the program under development.
 I argue that efficient peer-coding sessions can be organized by dividing the tasks into a group focused in the detailed implementation while the others are free to focus on edge cases and on the overall implications of different implementations.
-Moreover, peer-coding sessions provides a convenient and structured place for learning good practices, for expanding its technical knowledge while correcting bad habits.
+Moreover, peer-coding sessions provide a convenient and structured place for learning good practices, for expanding technical knowledge while correcting bad habits.
 
 Another remarkable practice is to write two independent versions of the program, using if possible different algorithms and languages but with the same functionality, but most importantly, by a different person.
-Then testing the programs against each other under the same conditions and datasets should result in the same outcomes\footnote{An extreme version is adversarial coding (or chaos engineering), where the goal is to find conditions on which the adversary program fails.}.
+Subsequent testing of the programs against each other under the same conditions and datasets should result in the same outcomes\footnote{An extreme version is adversarial coding (or chaos engineering), where the goal is to find conditions on which the program written by someone else fails.}.
 Such a model of reproducible computing experiments and analyses is laborious and demanding, but I argue this is the definition of reproducibility we collectively should aim for, namely where one can independently reproduce the same experiment.
-If reproducibility fails, one can run the code with different conditions to pinpoint the failing code (which might actually be in both versions).
-Personally, having practised this method, I strongly believe it pervasively reduces our research debt that we might inadvertently burden others with whenever not realizing the program is bugged, and that is also ultimately save us time on debugging and conducting research.
+If the two (or more) programs result in different outcome, one can run the code with different conditions to pinpoint which one is the failing code (which might actually be both versions).
+Personally, having practised this method, I strongly believe it pervasively reduces our research debt that we might inadvertently burden others with whenever not realizing the program is bugged, and that it also ultimately saves us time on debugging and conducting research.
 Finally, explaining to others our choices of algorithms, implementation and data structure forces us to express intelligibly our ideas and, therefore, to better understand them, while gaining from others insights and new algorithmic expertise.
 
 
 \section{Concluding remarks}
 \label{sec:concluding-remarks}
 
-To conclude, this work is an encouraging, although still far from complete attempt to build integrated models of the evolution of protein-coding \acrshort{DNA} sequences.
-I think my work contributed to consolidating the idea that the patterns of substitutions inform us on the long-term fluctuations in genetic drift along branches and selection along sequences.
-This thesis also further emphasizes that the assumptions made on the structure of the fitness landscape have a critical importance on the sensitivity of changes in substitution rates to changes in ecological ($\Ne$) or molecular variables (protein expression level).
+To conclude, this work is an encouraging, although still far from complete, attempt to build integrated models of the evolution of protein-coding \acrshort{DNA} sequences.
+I think my work has contributed to consolidating the idea that the patterns of substitutions inform us on the long-term fluctuations in genetic drift along branches and selection along sequences.
+This thesis also further emphasizes that the assumptions made on the structure of the fitness landscape have a critical importance in the sensitivity of changes in substitution rates to changes in ecological ($\Ne$) or molecular variables (protein expression level).
 Conversely, empirical observations of the patterns of substitutions in response to changes in molecular or ecological variables inform us about the underlying structure of the fitness landscape.
 
-Altogether, this work can be seen as a building block, toward bridging phylogeny and population genetics.
+Altogether, this work can be seen as a building block toward bridging phylogeny and population genetics.
 Constructing an integrated framework is theoretically possible but with a still limited scope so far.
 However, confronting the estimation of phylogenetic codon models and population-genetics approaches, for example, on the question of the rate of adaptive substitution, is a path forward toward an integrated view of protein-coding DNA sequence evolution.
 Finally, I believe this thesis is not providing disruptive results, but instead is consolidating theoretical models on which molecular evolution is based, and points out some of the pitfalls to avoid.
