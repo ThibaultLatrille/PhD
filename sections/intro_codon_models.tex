@@ -460,8 +460,9 @@ In this context, if a specific codon site is responsible for the phenotypic conv
 \subsection{Mutation-selection and codon usage}
 \label{subsec:model-codon-usage}
 
-Another example of a mutation-selection mechanistic codon model is one in which codon usage bias is modelled, in particular, a model in which each synonymous codon of the same amino acids have different fitness~\citep{Yang2008}.
+Another example of a mutation-selection mechanistic codon model is one in which codon usage bias is modelled, in particular, a model in which each synonymous codon of the same amino acids have different fitness (i.e.~$\Fitci$ for all 61 codons) as in \citet{Yang2008}.
 It is important to note that contrarily to the Halpern \& Bruno formalism, codon preferences are not site-specific but instead are estimated gene-wide.
+In this model, substitution rates are defined as:
 \begin{equation}
     \begin{dcases}
         \submatrix_{\itoj} & = 0 \text{ if codons $\ci$ and $\cj$ are more than one mutation away,} \\

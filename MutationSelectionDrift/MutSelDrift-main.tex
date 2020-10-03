@@ -43,7 +43,7 @@ Conversely, the category assigned to each site is chosen such that the sites agg
 Site-specific amino-acid preferences are typically estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context, using an infinite mixture based on a Dirichlet process prior~\citep{Rodrigue2010,Rodrigue2014}.
 This second approach is further considered below.
 
-Moreover, this formalism induces an equilibrium $\dnds$, theoretically lower than $1$ and modelling explicitly purifying selection model~\citep{Spielman2015, DosReis2015} .
+Moreover, this formalism induces an equilibrium $\dnds$, theoretically lower than $1$ and modelling explicitly purifying selection model~\citep{Spielman2015, DosReis2015}.
 This $\dnds$ induced by the mutation-selection codon models proved to be a valuable null (nearly-neutral) model, against which to compare the observed $\dnds$ by classical codon models, such as to test for the presence of adaptation~\citep{Rodrigue2016}.
 
 However, these mutation-selection methods have so far assumed the strength of genetic drift, or equivalently $\Ne$, to be constant across the phylogeny.
@@ -215,7 +215,6 @@ We next applied our inference framework to a series of 4 empirical datasets span
 As a first empirical case, we considered a dataset of 77 placental mammals, for which complete genome sequences and information about life-history traits is available.
 Placental mammals offer an interesting example, for which effective population size is likely to show substantial variation across lineages.
 This variation in $\Ne$ is expected to covary with life-history traits (LHTs), such that large-bodied species are expected to have smaller effective population sizes, compared to small-bodied species.
-Placental mammals thus offer an interesting case study on which to apply our model.
 
 For computational reasons, we restricted our analyses to small concatenates made of 18 randomly sampled alignments of orthologous genes.
 To assess the reproducibility of our inference and check that the signal about variation in $\Ne$ is not driven by particular genes, we analysed 4 concatenated random samples of 18 genes.
@@ -272,7 +271,7 @@ Again, the total range of the inferred variation in $\Ne$ across the entire tree
 This results contrasts with the finding of \citet{Brevet2019} on the same dataset based on $\dnds$-based codon models, where the estimated $\Ne$ was found to span several orders of magnitude, and correlated positively with $\ps$.
 
 Finally, our empirical framework was applied to concatenated alignments in Drosophila.
-Reconstructed $\Ne$ and $\mu$ are also related to genome size, under the expectation that low $\Ne$ would result in higher genome size due to weaker purifying selection against transposable elements (higher drift), resulting in bloated genomes~\citep{Kidwell2002}.
+Reconstructed $\Ne$ and $\mu$ are also related to genome size, under the expectation that low $\Ne$ would result in larger genome size due to weaker purifying selection against transposable elements (higher drift), resulting in bloated genomes~\citep{Kidwell2002}.
 In our analysis across 4 concatenated random samples of 18 genes, we observe a reproducible slight negative correlation between $\Ne$ and genome size ($\rho=-0.16$ at most), although not statistically significant (section~\ref{sec:empirical-data-in-Drosophila} in supplementary).
 Finally, the total range of the inferred variation in $\Ne$ across the entire tree is also narrow, with ratio of $28.5$ at most between high and low $\Ne$ (see table~\ref{tab:Ne-estimated-drosophila} in supplementary).
 
@@ -330,7 +329,7 @@ Third, the DNA sequences could also be misaligned at some sites.
 However we observe the same magnitude of inferred $\Ne$ for different set of genes indicating this might not be the primary reason.
 
 Fourth, the genes selected in our alignments could be under adaptive evolution, or their function could have changed.
-However, at least in mammals, the impact of this potential problem was minimized by the use of genes for no positive selection was detected using standard phylogenetic codon site models.
+However, at least in mammals, the impact of this potential problem was minimized by the use of genes for which no positive selection was detected using standard phylogenetic codon site models.
 
 Finally, one key assumption of the mutation-selection model that is likely to be violated in practice is the assumption of site-independence.
 In reality, epistasis might be prevalent in protein coding sequence evolution~\citep{Pollock2014,Shah2015}.
@@ -385,7 +384,7 @@ Profiling of the program (not shown) shows that the number of components of the 
 Yet, a larger number of components might be required, in order to achieve more accurate inference of the site-specific profiles.
 One possible development, leading to statistically more stable genome-wide estimates of $\Ne$, would be to develop a multi-gene parallelized version of the model, in which each coding sequence would have its own mixture model, and would run on a separate thread, while the history of $\Ne$ would be shared by all computing processes.
 
-Finally, estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\ne$ and the relative strength of drift, in a context where, ultimately, the signal about the intensity of drift comes from the relative rate of non-synonymous substitutions.
+Finally, estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\Ne$ and the relative strength of drift, in a context where, ultimately, the signal about the intensity of drift comes from the relative rate of non-synonymous substitutions.
 However, this purely phylogenetic approach does not leverage a second aspect of $\Ne$ at the population level, namely, the fact that $\Ne$ also determines the levels of neutral genetic diversity that can be maintained ~($\pi=4\Ne u$, where $u$ is the mutation rate per generation).
 Hence, neutral diversity yields an independent empirical estimate of $\Ne$.
 In principle, our mechanistic model could be extended so as to incorporate polymorphism data within species at the tips of the phylogeny.

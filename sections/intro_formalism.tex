@@ -493,13 +493,6 @@ This section is an attempt to describe analogous processes and their emerging pr
 This effort is made in the aim of giving another view of the mutation-selection process, such as to better appreciate and conceptualize its assumptions, its limits, and the respective role of the different components.
 Such attempts require to boil down the mutation-selection mechanism into its core components, while at the same time rephrasing the description using lexicography outside of population genetics such as to open new perceiving angles.
 
-At the bottom, mutation is a process creating diversity, changing and moving the current viable state to a novel and unknown position, fundamentally allowing exploration of the state space.
-On the other hand, selection is the criteria on which a new state is deemed a disrupting innovation or a nonviable alteration, and allows to determine which changes to exploit and which to filter out and discard based on its fitness.
-Fundamentally, mutation creates diversity and selection reduces this diversity by selecting the fittest mutants.
-Finally, drift arbitrates between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
-
-I argue that this creation and reduction processes are found at the core of several research disciplines, while the link between them is scarcely made~\citep{Baeck1994, Eiben1998}.
-
 \subsection{Metropolis-Hastings sampling}
 Obtaining a sequence of random samples from a probability distribution can be difficult, especially when the number of dimensions is high.
 However, the Metropolis-Hastings procedure based on a Markov chain Monte Carlo can sample from any probability distribution, provided that we know how to compute the probability density, or even less restrictively any function proportional to the density~\citep{Hastings1970}.
@@ -530,6 +523,11 @@ However, it is more scarcely mentioned that the AlphaGo neural network is combin
 In practice, the convolutional neural network is used as a criterion to measure the advantage of a board configuration\footnote{Convolutional neural networks also use a stochastic gradient descent to reach convergence, inherently leveraging the stochastic exploration and exploitation procedure to optimize the parameters of the neural network.}, but the different moves and paths probed and trimmed are done via an exploration-exploitation procedure.
 
 \subsection{Interaction between analogies}
+
+At the bottom, mutation is a process creating diversity, changing and moving the current viable state to a novel and unknown position, fundamentally allowing exploration of the state space.
+On the other hand, selection is the criteria on which a new state is deemed a disrupting innovation or a nonviable alteration, and allows to determine which changes to exploit and which to filter out and discard based on its fitness.
+Fundamentally, mutation creates diversity and selection reduces this diversity by selecting the fittest mutants.
+Finally, drift arbitrates between the creation and reduction of the two processes, it dictates how much exploration of novelty is permitted, and conversely how much exploitation of only the fittest states is granted.
 
 Exploration and exploitation, creation and reduction, mutation and selection, are different names (see table~\ref{table:intro-mutsel-analogy}) that ultimately encompass the inherently same process: efficiently sampling and optimizing whenever the state space is too large to be traversed in a finite amount of time.
 

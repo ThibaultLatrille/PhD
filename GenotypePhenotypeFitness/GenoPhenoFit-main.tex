@@ -225,7 +225,7 @@ Combined together, these analytical approximations yield the susceptibility (equ
 \begin{gather}
     \chi = \frac{ \der \omega}{\der \ln (\Ne)} \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{\NbrSites}{4 \Ne} \frac{\partial \ln [ (1 - x\eq) / x\eq ]}{\partial x\eq } + \frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}.
 \end{gather}
-The two terms of the denominator correspond to the derivative of respectively the mutational bias and the scaled selection coefficient, respectively.
+The two terms of the denominator correspond to the derivative of the mutational bias and the scaled selection coefficient, respectively.
 However, the mutational bias decreases weakly with $x$ (blue curve on figure~\ref{fig:NeChangeInfluence}) while the strength of selection increases sharply with $x$ (red and green curves).
 As a consequence, the derivative of the mutational bias is much lower than the derivative of the selection coefficient around the equilibrium point (i.e.~the phenotype is \textit{nearly} equimutable).
 The second term can therefore be ignored, which leads to a very compact equation for susceptibility $\chi$ in the general case:
@@ -254,7 +254,7 @@ Effective population size is not the sole predictor of $\omega$, and expression 
 However, our previous model, which assumes that fitness is proportional to the folded fraction, and is thus independent of protein abundance, does not express the fact that selection is typically stronger for proteins characterized by higher levels of expression.
 An alternative biophysical model is to assume that each misfolded protein molecule has the same relative effect on fitness, caused by its toxicity for the cell~\citep{Drummond2005a, Wilke2006, Drummond2008, Serohijos2012}.
 
-Ou general derivation can be directly applied to this case.
+Our general derivation can be directly applied to this case.
 For a given protein with expression level $y$ and a cost $c$ representing the selective cost per misfolded molecule (positive constant), the fitness and selection coefficient can be defined as follows:
 \begin{gather}
     \logfit (x) \simeq - c y e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)} \\
@@ -365,12 +365,12 @@ To note, an increase in $\Ne$ can theoretically and possibly lead to an $\omega$
 % Goal and theoretical results
 
 We provide a compact analytical result for the equilibrium response (which, by analogy with thermodynamics, we call the susceptibility) of $\omega$ to changes in $\Ne$, and we relate this response to the parameterization of the genotype-phenotype-fitness map.
-An application to a model of selection against protein misfolding shows that the susceptibility of $\omega$ to variation in $\Ne$ (in log space) is linear with a negative slope.
+An application to a model of selection against protein misfolding shows that the response of $\omega$ to variation in $\Ne$ (in log space) is linear, with a negative slope.
 Furthermore, this application demonstrates that effective population size and protein expression level are interchangeable with respect to their impact on the response of $\omega$.
 Our compact theoretical results, which were obtained by making several simplifying assumptions, are supported by more complex simulations of protein evolution relaxing these assumptions.
 In particular, our theoretical predictions are verified under a numerical model of protein evolution in which the free energy is computed based on the 3D structure.
 
-Overall, the susceptibility ($\chi$) is a function of the structural parameters of the protein and takes a very simple analytical form, being is inversely proportional to the product of three terms;
+Overall, the susceptibility ($\chi$) is a function of the structural parameters of the protein and takes a very simple analytical form, being inversely proportional to the product of three terms;
 namely the sequence size, the inverse temperature ($\beta$), and the average change in conformational energy of destabilizing mutations ($\EmpiricalDeltaDeltaG$).
 Quantitatively, this product can be several orders of magnitude greater than $1$ in practice, such that the susceptibility of $\omega$, which is its inverse, is typically small.
 Previous studies using this model presented an apparent lack of response of $\omega$ to changes in $\Ne$~\citep{Goldstein2013}.

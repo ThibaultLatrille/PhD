@@ -36,231 +36,244 @@
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
-\pagenumbering{gobble}
-\hypersetup{pageanchor=false}
-\input{sections/frontpage}
+    \pagenumbering{gobble}
+    \hypersetup{pageanchor=false}
+    \input{sections/frontpage}
 %%%%% CHOOSE YOUR LINE SPACING HERE
-\setlength{\textbaselineskip}{1em}
+    \setlength{\textbaselineskip}{1em}
 % You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
-\setlength{\frontmatterbaselineskip}{1em}
+    \setlength{\frontmatterbaselineskip}{1em}
 % Leave this line alone; it gets things started for the real document.
-\setlength{\baselineskip}{\textbaselineskip}
+    \setlength{\baselineskip}{\textbaselineskip}
 
 %%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
 % The level that gets a number:
-\setcounter{secnumdepth}{2}
+    \setcounter{secnumdepth}{2}
 % The level that shows up in the ToC:
-\setcounter{tocdepth}{2}
+    \setcounter{tocdepth}{2}
 
 %%%% EPIGRAPH
-\begin{alwayssingle}
-	\thispagestyle{empty}
-	\vspace*{\fill}
-	\makebox[\textwidth][r] {
-		\begin{minipage}[t]{8cm}
-			\emph{}\\
-			\hfill \slshape{L'humanité est constamment aux prises avec deux processus contradictoires dont l'un tend à instaurer l'unification, tandis que l'autre vise à maintenir ou à rétablir la diversification.}\\
-			\hfill \qauthor{Claude Lévi-Strauss.}
-		\end{minipage}
-	}
-	\vspace*{\fill}
-	\vspace*{\fill}
-\end{alwayssingle}
+    \begin{alwayssingle}
+        \thispagestyle{empty}
+        \vspace*{\fill}
+        \makebox[\textwidth][r] {
+        \begin{minipage}[t]{8cm}
+            \emph{}\\
+            \hfill \slshape{L'humanité est constamment aux prises avec deux processus contradictoires dont l'un tend à instaurer l'unification, tandis que l'autre vise à maintenir ou à rétablir la diversification.}\\
+            \hfill \qauthor{Claude Lévi-Strauss.}
+        \end{minipage}
+        }
+        \vspace*{\fill}
+        \vspace*{\fill}
+    \end{alwayssingle}
 
 
 %%%%% DEDICATION
-\begin{alwayssingle}
-	\thispagestyle{empty}
-	\newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
-	\begin{center}
-		\includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface}
-	\end{center}
-	\restoregeometry
-\end{alwayssingle}
+    \begin{alwayssingle}
+        \thispagestyle{empty}
+        \newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
+        \begin{center}
+            \includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface}
+        \end{center}
+        \restoregeometry
+    \end{alwayssingle}
 
 %%%%% ABSTRACT FRENCH
-\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
 
-\begin{alwayssingle}
-	\input{sections/abstract_fr}
-\end{alwayssingle}
+    \begin{alwayssingle}
+        \input{sections/abstract_fr}
+    \end{alwayssingle}
 
 %%%%% ACKNOWLEDGEMENTS
-\input{sections/acknowledgement}
+    \input{sections/acknowledgement}
 
 %%%%% ABSTRACT ENGLISH
 
-\hypersetup{pageanchor=true}
-\begin{romanpages}
+    \hypersetup{pageanchor=true}
+    \begin{romanpages}
 
-\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
-\begin{alwayssingle}
-	\input{sections/abstract}
-\end{alwayssingle}
+        \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+        \begin{alwayssingle}
+            \input{sections/abstract}
+        \end{alwayssingle}
 
-\setlength{\baselineskip}{\frontmatterbaselineskip}
+        \setlength{\baselineskip}{\frontmatterbaselineskip}
 %%%%% MINI TABLES
-\dominitoc % include a mini table of contents
+        \dominitoc % include a mini table of contents
 %\dominilof  % include a mini list of figures
 %\dominilot  % include a mini list of tables
 % This aligns the bottom of the text of each page.  It generally makes things look better.
-\flushbottom
+        \flushbottom
 % This is where the whole-document ToC appears:
-{
-	\setlength{\baselineskip}{1.2\frontmatterbaselineskip}
-	\hypersetup{linkcolor=GREYDARK}
-	\tableofcontents
-	\listoffigures
-	\mtcaddchapter
-	\listoftables
-	\mtcaddchapter
-}
-{
-	\setlength{\baselineskip}{1.2\frontmatterbaselineskip}
-	\input{sections/glossary}
-}
+        {
+        \setlength{\baselineskip}{1.2\frontmatterbaselineskip}
+        \hypersetup{linkcolor=GREYDARK}
+        \tableofcontents
+        \listoffigures
+        \mtcaddchapter
+        \listoftables
+        \mtcaddchapter
+        }
+        {
+        \setlength{\baselineskip}{1.2\frontmatterbaselineskip}
+        \input{sections/glossary}
+        }
 
-\end{romanpages}
+    \end{romanpages}
 
 %%%% CHAPTERS
-\setlength{\baselineskip}{1.5\frontmatterbaselineskip}
-\pagenumbering{arabic}
-\flushbottom
-\input{sections/preamble}
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \pagenumbering{arabic}
+    \flushbottom
+    \input{sections/preamble}
 
-\pagestyle{fancybook}
+    \pagestyle{fancybook}
 
-\part{Introduction}
 
-\label{part:intro}
-\input{sections/intro_historical}
-\input{sections/intro_formalism}
-\input{sections/intro_codon_models}
-\input{sections/intro_inference}
-\input{sections/intro_thermodynamic}
-\input{sections/intro_goal}
+    \part{Introduction}
 
-\part{Studies}
-\label{part:studies}
+    \label{part:intro}
+    \input{sections/intro_historical}
+    \input{sections/intro_formalism}
+    \input{sections/intro_codon_models}
+    \input{sections/intro_inference}
+    \input{sections/intro_thermodynamic}
+    \input{sections/intro_goal}
 
-\thispagestyle{empty}
-\chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias}
-\label{chap:NucleotideBias}
 
-\begin{center}
-	\Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
-	\vspace{0.5cm}
-	\normalsize
-	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
-	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
-\end{center}
+    \part{Studies}
+    \label{part:studies}
 
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\input{NucleotideBias/Nucleotide-Bias-main}
+    \thispagestyle{empty}
+    \chapter[Robustness of codon models to mutational bias]{Robustness of codon models to mutational bias}
+    \label{chap:NucleotideBias}
 
-\section{Author contributions}
-TL developed the simulator \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
-TL and NL both contributed to the writing of the manuscript.
+    \begin{center}
+        \Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
+        \vspace{0.5cm}
+        \normalsize
+        $^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+        $^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+    \end{center}
 
-\section{Acknowledgements}
-We gratefully acknowledge the help of Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their input and comments on this work.
+    {\hypersetup{linkcolor=GREYDARK}\minitoc}
+    \input{NucleotideBias/Nucleotide-Bias-main}
 
-\thispagestyle{empty}
-\chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models}
-\label{chap:MutSelDrift}
 
-\begin{center}
-	\Large Thibault Latrille$^{\text{1, 2}}$, Vincent Lanore$^{\text{1}}$, Nicolas Lartillot$^{\text{1}}$\\
-	\vspace{0.5cm}
-	\normalsize
-	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
-	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
-\end{center}
+    \section{Author contributions}
+    TL developed the simulator \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
+    TL and NL both contributed to the writing of the manuscript.
 
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
 
-\input{MutationSelectionDrift/MutSelDrift-main}
+    \section{Acknowledgements}
+    We gratefully acknowledge the help of Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their input and comments on this work.
 
-\section{Reproducibility - Supplementary Materials}
-Supplementary materials and figures are available in appendix, chapter~\ref{chap:MutSelDrift-SuppMat}.
-The scripts and instructions necessary to reproduce the simulated and empirical experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+    \thispagestyle{empty}
+    \chapter[Inferring long-term population size] {Inferring long-term demographic history with Mutation-Selection models}
+    \label{chap:MutSelDrift}
 
-\section{Author contributions}
-TL gathered and formatted the data, developed the new models in \texttt{BayesCode} and \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
-VL restructured and refactored the code sustaining the branch and site heterogeneous Bayesian Monte Carlo in \texttt{BayesCode}.
-TL and NL both contributed to the writing of the manuscript.
+    \begin{center}
+        \Large Thibault Latrille$^{\text{1, 2}}$, Vincent Lanore$^{\text{1}}$, Nicolas Lartillot$^{\text{1}}$\\
+        \vspace{0.5cm}
+        \normalsize
+        $^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+        $^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+    \end{center}
 
-\section{Acknowledgements}
-We wish to thank Tristan Lefébure for sharing the isopods phylogeny, alignments and life-history traits, and Annabelle Haudry \& Théo Tricou for providing the Drosophila alignments, phylogeny and genome sizes.
-We thank Philippe Veber for insightful discussion on developping the models.
-We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
-This work was performed using the computing facilities of the CC LBBE/PRABI.
+    {\hypersetup{linkcolor=GREYDARK}\minitoc}
 
-\thispagestyle{empty}
-\chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level}
-\label{chap:GenoPhenoFit}
+    \input{MutationSelectionDrift/MutSelDrift-main}
 
-\begin{center}
-	\Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
-	\vspace{0.5cm}
-	\normalsize
-	$^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
-	$^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
-\end{center}
 
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
+    \section{Reproducibility - Supplementary Materials}
+    Supplementary materials and figures are available in appendix, chapter~\ref{chap:MutSelDrift-SuppMat}.
+    The scripts and instructions necessary to reproduce the simulated and empirical experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
 
-\input{GenotypePhenotypeFitness/GenoPhenoFit-main}
 
-\section{Reproducibility - Supplementary Materials}
-The mathematical developments under the general case of an arbitrary additive trait and an arbitrary log-concave fitness function, as well as the supplementary figures, are available in appendix, chapter~\ref{chap:GenoPhenoFit-SuppMat}.
-The scripts and instructions necessary to reproduce this study are available at \url{https://github.com/ThibaultLatrille/GenotypePhenotypeFitness}.
+    \section{Author contributions}
+    TL gathered and formatted the data, developed the new models in \texttt{BayesCode} and \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
+    VL restructured and refactored the code sustaining the branch and site heterogeneous Bayesian Monte Carlo in \texttt{BayesCode}.
+    TL and NL both contributed to the writing of the manuscript.
 
-\section{Author contributions}
-TL gathered and formatted the data, developed the new models in \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
-TL and NL both contributed to the writing of the manuscript.
 
-\section{Acknowledgements}
-We wish to thank Julien Joseph for whiteboard mathematical sessions.
-We gratefully acknowledge the help of Nicolas Rodrigue and Laurent Duret for their input on this work and their comments on the manuscript.
-This work was performed using the computing facilities of the CC LBBE/PRABI.
+    \section{Acknowledgements}
+    We wish to thank Tristan Lefébure for sharing the isopods phylogeny, alignments and life-history traits, and Annabelle Haudry \& Théo Tricou for providing the Drosophila alignments, phylogeny and genome sizes.
+    We thank Philippe Veber for insightful discussion on mutation-selection models and software development.
+    We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
+    This work was performed using the computing facilities of the CC LBBE/PRABI.
 
-\part{Conclusion}
-\label{part:conclusion}
-\input{sections/conclusion}
+    \thispagestyle{empty}
+    \chapter[Substitution rate susceptibility]{Substitution rate response to changes in effective population size and protein expression level}
+    \label{chap:GenoPhenoFit}
+
+    \begin{center}
+        \Large Thibault Latrille$^{\text{1, 2}}$, Nicolas Lartillot$^{\text{1}}$\\
+        \vspace{0.5cm}
+        \normalsize
+        $^{\text{1}}$Université de Lyon, Université Lyon 1, UMR CNRS 5558 Laboratoire de Biométrie et Biologie Évolutive, 69622 Villeurbanne, France\\
+        $^{\text{2}}$École Normale Supérieure de Lyon, Universite de Lyon, 69007 Lyon, France\\
+    \end{center}
+
+    {\hypersetup{linkcolor=GREYDARK}\minitoc}
+
+    \input{GenotypePhenotypeFitness/GenoPhenoFit-main}
+
+
+    \section{Reproducibility - Supplementary Materials}
+    The mathematical developments under the general case of an arbitrary additive trait and an arbitrary log-concave fitness function, as well as the supplementary figures, are available in appendix, chapter~\ref{chap:GenoPhenoFit-SuppMat}.
+    The scripts and instructions necessary to reproduce this study are available at \url{https://github.com/ThibaultLatrille/GenotypePhenotypeFitness}.
+
+
+    \section{Author contributions}
+    TL gathered and formatted the data, developed the new models in \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
+    TL and NL both contributed to the writing of the manuscript.
+
+
+    \section{Acknowledgements}
+    We wish to thank Julien Joseph for whiteboard mathematical sessions.
+    We gratefully acknowledge the help of Nicolas Rodrigue and Laurent Duret for their input on this work and their comments on the manuscript.
+    This work was performed using the computing facilities of the CC LBBE/PRABI.
+
+
+    \part{Conclusion}
+    \label{part:conclusion}
+    \input{sections/conclusion}
 
 %% APPENDICES %% 
-\part{Appendices}
 
-\thispagestyle{empty}
-\chapter{Inferring long-term population size - Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\label{chap:MutSelDrift-SuppMat}
-\input{MutationSelectionDrift/MutSelDrift-supp-mat}
 
-\thispagestyle{empty}
-\chapter{Substitution rate susceptibility - Supplementary Materials}
-{\hypersetup{linkcolor=GREYDARK}\minitoc}
-\label{chap:GenoPhenoFit-SuppMat}
-\input{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+    \part{Appendices}
 
-\chapter*{Mutation-selection-drift as bridge between phylogeny and population-genetics}
-\addcontentsline{toc}{part}{Poisson random fields}
-\phantomsection
-\label{sec-appendix:PRF}
-\input{sections/appendix_PRF}
-\newpage
+    \thispagestyle{empty}
+    \chapter{Inferring long-term population size - Supplementary Materials}
+    {\hypersetup{linkcolor=GREYDARK}\minitoc}
+    \label{chap:MutSelDrift-SuppMat}
+    \input{MutationSelectionDrift/MutSelDrift-supp-mat}
 
-\thispagestyle{empty}
+    \thispagestyle{empty}
+    \chapter{Substitution rate susceptibility - Supplementary Materials}
+    {\hypersetup{linkcolor=GREYDARK}\minitoc}
+    \label{chap:GenoPhenoFit-SuppMat}
+    \input{GenotypePhenotypeFitness/GenoPhenoFit-supp-mat}
+
+    \chapter*{Mutation-selection-drift as bridge between phylogeny and population-genetics}
+    \addcontentsline{toc}{part}{Poisson random fields}
+    \phantomsection
+    \label{sec-appendix:PRF}
+    \input{sections/appendix_PRF}
+    \newpage
+
+    \thispagestyle{empty}
 %\chapter*{Detecting site-specific adaptation with mutation-selection models}
-\addcontentsline{toc}{part}{Detecting site-specific adaptation with mutation-selection models}
-\phantomsection
-\label{sec-appendix:MutSelM3starMBE}
-\includepdf[pages=1-]{sections/MutSelM3starMBE.pdf}
+    \addcontentsline{toc}{part}{Detecting site-specific adaptation with mutation-selection models}
+    \phantomsection
+    \label{sec-appendix:MutSelM3starMBE}
+    \includepdf[pages=1-]{sections/MutSelM3starMBE.pdf}
 
 %%%%% REFERENCES
-\thispagestyle{empty}
-\bibliographystyle{natbib}
-\bibliography{references/references, references/introduction}
+    \thispagestyle{empty}
+    \bibliographystyle{natbib}
+    \bibliography{references/references, references/introduction}
 \end{document}
 

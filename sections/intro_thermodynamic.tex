@@ -60,7 +60,7 @@ Thus, in order for a protein to fold into its native state with high probability
 In this context, mutations of the proteins stabilize the protein only if they decrease the free energy of the folded conformations more than they decrease the free energy of unfolded conformations.
 For example, a transition to an amino acid that decreases by the same amount the free energy of both folded and unfolded conformations will have no impact on the stability of the protein.
 As a result, protein stability can be increased by stabilizing the folded conformation (positive design) or destabilizing the competing unfolded conformations (negative design).
-We can thus characterize the destabilizing effect of a mutation by its:
+We can thus characterize the destabilizing effect of a mutation by its effect on $\DeltaG$, denoted $\EmpiricalDeltaDeltaG$:
 \begin{equation}
     \EmpiricalDeltaDeltaG = \DeltaG \left( \text{Mutant} \right) - \DeltaG  \left( \text{Wild type} \right),
 \end{equation}
@@ -152,8 +152,7 @@ The rationale is that for the same fraction of misfolded proteins, a strongly ex
 As a result, selection against protein misfolding induces abundant proteins to evolve to greater stability, where the protein is more constrained and evolves more slowly~\citep{Serohijos2012}.
 
 However, even for those proteins of comparable expression levels, their $\dnds$ still spans several orders of magnitude~\citep{Drummond2008}.
-Likewise, abundance cannot account for the quasi log-normal distribution of $\dnds$ among genes in a genome, a fact observed in bacteria, yeast, worm, fly, mouse, and humans.
-These observations suggest that protein abundance, although a major determinant of $\dnds$, is not its only causal variable.
+This observation suggest that protein abundance, although a major determinant of $\dnds$, is not its only causal variable.
 As an example, some topologies are more robust (depending on the density of contacts, in particular), and therefore evolve faster, which may be one of the contributing factors of the residual variance~\citep{Echave2017}.
 
 \subsection{Variation across sites}
@@ -178,9 +177,9 @@ This observation has been explained by the equimutability of the free energy of 
 In reality, however, the distribution of $\EmpiricalDeltaDeltaG$ is expected to at least weakly depend on $\DeltaG$ due to combinatorial considerations.
 For example, if a protein sequence is already maximally stable, only destabilizing (or neutral) mutations can occur, which has been empirically observed~\citep{Serohijos2012}.
 
-\subsection{Summary}
+\subsection{Integrating several levels}
 
-Ultimately, studies presented in this chapter focus on the scaling of $\dnds$ to either protein abundance, or to effective population size, and also to relative solvent accessibility.
+Ultimately, studies presented in this section focus on the scaling of $\dnds$ to either protein abundance, or to effective population size, and also to relative solvent accessibility.
 However, these various factors susceptible to modulate the $\dnds$ have been rarely investigated simultaneously.
 Why is $\dnds$ supposedly independent of $\Ne$ but depend on protein abundance?
 For example, is the relationship between $\dnds$ and either protein abundance or population size expected to be different?
@@ -202,19 +201,18 @@ In an experimental context, it is possible to mutate the \acrshort{DNA} of an or
 In the case of free-living unicellular organisms, such process can be automated to estimate selection coefficients of a wide variety of mutants, an experiment called deep mutational scanning.
 Technically, for each site of the protein, the fitness of the 20 amino acids can be experimentally determined and the resulting fitness landscape (also named preferences or fitness profile) can be estimated, as shown in figure~\ref{fig:intro-deep-mut-profile}.
 Such experimentally determined fitness landscapes are directly comparable to statistical estimates by phylogenetic codon models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
-\citet{Bloom2014,Bloom2014a} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed non site-specific alternatives in fitting phylogenies of proteins, from humans, swine, equine, and avian influenza~\citep{Doud2015} .
+\citet{Bloom2014,Bloom2014a} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed non site-specific alternatives in fitting phylogenies of proteins, from humans, swine, equine, and avian influenza~\citep{Doud2015}.
 Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth, page=1] {prefs_plots_lactamase_stiffler.pdf}
     \caption[Deep mutational scanning profile]{
-    Site-specific deep mutational scanning data on beta-lactamase of \citet{Stiffler2015}.
+    Site-specific deep mutational scanning data on $\beta$-lactamase (bacteria) of \citet{Stiffler2015}.
     For each site, preferences of the 20 amino acids are represented by the height of the corresponding amino-acid letter.
     The analysis is performed using phydms~\citep{Hilton2017}.}
     \label{fig:intro-deep-mut-profile}
 \end{figure}
-Even though it is possible to compare estimated fitness profiles under phylogenetic codon models with predicted profiles under biophysical modelling, I argue that this congruence and confrontation are scarcely made.
 
 \subsection{Structurally constrained site-interdependent codon models}
 \label{subsec:structurally-constrained-site-interdependent-codon-models}
