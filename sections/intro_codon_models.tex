@@ -504,7 +504,7 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015}, 
         $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
         \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in the \citet{Muse1994} formalism. \\
         & Also, $\avgpfix_{\text{\acrshort{MG}}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
-        $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
+        $\omega_0$ & Induced $\avgpfix_{\text{\acrshort{HB}}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
         $\omega_*$ & Scaling factor for all non-synonymous substitutions in the \citet{Halpern1998} formalism. \\ \hline
     \end{tabu}}
     \caption[Parameters of classical and mechanistic codon models]{Relationship between classical and mechanistic codon models}
@@ -529,16 +529,16 @@ This rate of non-synonymous substitutions over mutations ($\avgpfix$) can be int
 
 On the other hand, the mechanistic codon models in the Halpern \& Bruno (\acrshort{HB}) formalism return estimates of mutation rates and fitness profiles of amino acids (see subsection~\ref{subsec:HB-formalism}).
 From there, one can also compute the fixation probability individually for each codon substitution.
-Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{HB}}$) at stationarity:
+Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations gives ($\avgpfix_{\text{\acrshort{HB}}}$) at stationarity:
 \begin{align}
-    \avgpfix_{\text{HB}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{\acrshort{HB}}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
-Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{HB}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
+Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{\acrshort{HB}}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical codon model indeed showed agreement between the induced and estimated $\dnds$.
 To note, inference under the Muse \& Gaut formalism showed the best agreement compared to other formalisms of classical codon models.
 
-Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a time-independent fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{HB}}$ induced by the model will always be lower than $1$.
+Moreover, \citet{Spielman2015} showed mathematically that, if the underlying process is at equilibrium under a time-independent fitness landscape (nearly-neutral regime), then the mean scaled fixation probability $\avgpfix_{\text{\acrshort{HB}}}$ induced by the model will always be lower than $1$.
 In other words, they showed that mechanistic mutation-selection codon models display the important feature of genuinely accounting for purifying selection.
 From a dynamic perspective, a non-synonymous mutation from a codon with high fitness to another codon will have a low probability of fixation, since the mutated codon will have a lower fitness.
 At equilibrium, this low probability of fixation of the other codon results in a high frequency of the codon with higher fitness.
@@ -546,7 +546,7 @@ Essentially, at equilibrium the codon frequencies only fluctuate at the mutation
 This justifies the interpretation of the Halpern \& Bruno mechanistic codon models as an implementation of the nearly-neutral regime.
 
 Altogether, classical codon substitution models will interpret a mechanistic mutation-selection model as purifying selection ($\omega < 1$).
-Accordingly, the mean scaled probability of fixation $\avgpfix_{\text{HB}}$ has also been denoted $\omega_0$~\citep{Rodrigue2016}.
+Accordingly, the mean scaled probability of fixation $\avgpfix_{\text{\acrshort{HB}}}$ has also been denoted $\omega_0$~\citep{Rodrigue2016}.
 
 \subsection{The Halpern \& Bruno mechanistic codon model as a nearly-neutral null model}
 \label{subsec:HB-formalism-nearly-neutral-null-model}
