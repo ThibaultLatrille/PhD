@@ -28,7 +28,6 @@ if __name__ == '__main__':
                 glossary[glos.replace("name={", "")] = key.replace("\\newglossaryentry{", "")
 
     print(glossary)
-    glossary = {}
     print(acronym)
     context_list = [" {0} ", " {0}.", " {0},", " {0}:", " {0};", "({0})"]
     for file in args.input:

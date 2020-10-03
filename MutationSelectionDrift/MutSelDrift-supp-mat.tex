@@ -21,7 +21,7 @@ For a category $\cat$, the Shannon's entropy ($\entropy$) of the fitness profile
 \begin{equation}
     \entropy\catexp = - \sum\limits\sumSetAa \profile\catexp_{\aminoacid} \ln \left( \profile\catexp_{\aminoacid} \right)
 \end{equation}
-The Shannon's entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a neutral landscape, where each amino acid has the same fitness.
+The Shannon's entropy measures the flatness of the fitness profile, with a value of $0$ corresponding to a single peak fitness landscape (only one amino acid is present), and a value of $log(20)\simeq3$ corresponding to a \gls{neutral} landscape, where each amino acid has the same fitness.
 
 The Shannon's entropy can be averaged over all sites as:
 \begin{equation}
@@ -35,8 +35,8 @@ The Shannon's entropy can be averaged over all sites as:
 \subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
 For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
-In this model, each codon site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
-Since $\Seqi[ \site ]$ is the codon at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
+In this model, each \gls{codon} site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
+Since $\Seqi[ \site ]$ is the \gls{codon} at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
     s \left( \Seqi,\Seqj\right) = \sum\limits\sumSetsite \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
@@ -47,12 +47,12 @@ They were experimentally determined by deep mutational scanning.
     \includegraphics[width=\textwidth] {ModelSimuDiv}
 \end{center}
 
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of \gls{substitution} between \glspl{codon}:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
-where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
+where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \gls{synonymous} \glspl{substitution}.
 
 
 \begin{figure}[H]
@@ -113,7 +113,7 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 \label{subsec:wright-fisher-with-polymorphism}
 
 The evolutionary dynamics was formalized as a Wright-Fisher model with mutation, selection and drift
-The population is assumed to be panmictic, with effective population size $\Ne$ and with non-overlapping generations.
+The population is assumed to be panmictic, with \gls{effective population size} $\Ne$ and with non-overlapping generations.
 
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuPoly}
@@ -174,19 +174,19 @@ The population is assumed to be panmictic, with effective population size $\Ne$ 
 \subsection{Fisher geometric landscape (\texttt{SimuGeo})}
 \label{subsec:fisher-geometric-landscape}
 
-We simulated substitutions in a protein using an adaptation of Fisher's geometric landscape~\citep{Tenaillon2014,Blanquart2016}.
-In the original context, the phenotype is a vector ($\phenoGeo$) in a multidimensional space, where the number of dimensions is often termed complexity.
-From a phenotype, the fitness is a monotonously decreasing function of the phenotype distance to $0$.
+We simulated \glspl{substitution} in a protein using an adaptation of Fisher's geometric landscape~\citep{Tenaillon2014,Blanquart2016}.
+In the original context, the \gls{phenotype} is a vector ($\phenoGeo$) in a multidimensional space, where the number of dimensions is often termed complexity.
+From a \gls{phenotype}, the fitness is a monotonously decreasing function of the \gls{phenotype} distance to $0$.
 The exact functional phenotype-fitness map depends on $2$ external parameters controlling for strength ($\alpha$) and epistasis ($\beta$).
 If the phenotype-fitness map is explicit, the genotype-phenotype map is more pervasive.
-Mutations are seen has displacement of the phenotype in the multidimensional space.
-Beneficial mutations are moving the phenotype closer to $0$, whereas deleterious mutations are moving the phenotype further away.
+Mutations are seen has displacement of the \gls{phenotype} in the multidimensional space.
+Beneficial mutations are moving the \gls{phenotype} closer to $0$, whereas deleterious mutations are moving the \gls{phenotype} further away.
 In such original context, the distribution of mutational effects is not dependent on the current genotype, but this can be relaxed using a genotype-phenotype map.\\
 
 In a protein context, the genotype-phenotype map can be defined by assigning to each of the $20$ amino acid a vector in the multidimensional space.
 Since different sites of the protein do not have the same physico-chimical properties, we can define a specific genotype-phenotype map for each position of the sequence.
-Overall, the protein phenotype is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino acid present at each site of the protein.
-From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, the protein's phenotype is given by:
+Overall, the protein \gls{phenotype} is computed as the sum of site-specific multidimensional vectors, obtained by accessing the amino acid present at each site of the protein.
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ \glspl{substitution}, the protein's \gls{phenotype} is given by:
 \begin{equation}
     \phenoGeo\left(\Seqi^{t}\right) = \sum\limits\sumSetsite \phenoGeo_{\site} \left(\Seqi^t(\site) \right),
 \end{equation}
@@ -204,12 +204,12 @@ For each possible mutant (at time $t+1$ substitutions), we compute $\phenoGeo\le
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoGeo\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoGeo\left(\Seqi^{t}\right) \right)}.
 \end{equation}
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of \gls{substitution} between \glspl{codon}:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
-where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
+where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \gls{synonymous} \glspl{substitution}.
 
 \begin{figure}[H]
     \centering
@@ -254,8 +254,8 @@ where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutio
 \subsection{Protein folding probability (\texttt{SimuFold})}
 \label{subsec:protein-folding-probability}
 
-We simulated substitutions in the protein phosphatase ($\Nsite=300$ codon sites) as in \citet{Goldstein2017}.
-From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ substitutions, we compute the free energy of the folded state $ \GFold \left(\Seqi^{t}\right)$, using the 3-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
+We simulated \glspl{substitution} in the protein phosphatase ($\Nsite=300$ \gls{codon} sites) as in \citet{Goldstein2017}.
+From a \acrshort{DNA} sequence $\Seqi^t$ after $t$ \glspl{substitution}, we compute the free energy of the folded state $ \GFold \left(\Seqi^{t}\right)$, using the 3-dimensional structure of the folded state and pair-wise contact energies between neighboring amino-acid residues:
 \begin{equation}
     \GFold \left(\Seqi^{t}\right) = \sum\limits\sumSetsite \sum\limits_{r \in \mathcal{V}(\site)} I \left(\Seqi^t(\site), \Seqi^t(r) \right),
 \end{equation}
@@ -284,12 +284,12 @@ For each possible mutant (at time $t+1$ substitutions), we compute $\phenoFold^{
 \begin{equation}
     s \left( \Seqi^{t},\Seqi^{t+1}\right) = \dfrac{\wrightfit\left( \phenoFold\left(\Seqi^{t+1}\right) \right) -\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}{\wrightfit\left( \phenoFold\left(\Seqi^{t}\right) \right)}.
 \end{equation}
-The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of substitution between codons:
+The next change in the protein coding \acrshort{DNA} and the time to next the event is chosen using Gillespie's algorithm~\citep{Gillespie1977}, according to the rates of \gls{substitution} between \glspl{codon}:
 \begin{equation}
 {\submatrix_{\itoj}}
     = \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 \end{equation}
-where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of synonymous substitutions.
+where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of \gls{synonymous} \glspl{substitution}.
 
 \begin{figure}[H]
     \centering
@@ -403,7 +403,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 $4$ independent inferences were performed on a randomly chosen set of $18$ coding sequences (\acrshort{CDS}) out of $226$.
 Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.
 Each plot is a correlation between a pair of experiments for a given parameter.
-For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+For each node (or branch) of the tree, the mean \gls{posterior} of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
 Solid red line is the regression line between replicates.
 
 \begin{figure}[H]
@@ -524,7 +524,7 @@ Solid red line is the regression line between replicates.
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative \gls{non-synonymous} \gls{substitution} rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
@@ -535,21 +535,21 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
     \caption[Correlation coefficient matrix in mammals ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsCovariance.tex}
     \caption[Covariance matrix in mammals ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{mammals/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
     \caption[Partial correlation coefficient matrix in mammals ($\omega$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
+    Partial correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in placental mammals.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -577,7 +577,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 $6$ independent inferences were performed on a randomly chosen set of $12$ coding sequences (\acrshort{CDS}) out of $135$.
 Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$.
 Each plot is a correlation between a pair of experiments for a given parameter.
-For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+For each node (or branch) of the tree, the mean \gls{posterior} of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
 Solid red line is the regression line between replicates.
 
 \begin{figure}[H]
@@ -807,7 +807,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (chain~1)}
-Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative \gls{non-synonymous} \gls{substitution} rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
@@ -824,21 +824,21 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCorrelation.tex}
     \caption[Correlation coefficient matrix in primates ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsCovariance.tex}
     \caption[Covariance matrix in primates ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{primates/BranchOmega_TraitsPartialCorrelation.tex}
     \caption[Partial correlation coefficient matrix in primates ($\omega$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
+    Partial correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in primates.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -892,7 +892,7 @@ Obtained with the mechanistic inference model developed in this paper of site-sp
 $4$ independent inferences were performed on a randomly chosen set of $18$ coding sequences (\acrshort{CDS}) out of $368$.
 Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and genome size.
 Each plot is a correlation between a pair of experiments for a given parameter.
-For each node (or branch) of the tree, the mean posterior of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
+For each node (or branch) of the tree, the mean \gls{posterior} of the parameter over the \acrshort{MCMC} (after burn-in) is represented in blue dots, green solid lines are the $90\%$ confidence interval of the \acrshort{MCMC}.
 Solid red line is the regression line between replicates.
 
 \begin{figure}[H]
@@ -977,7 +977,7 @@ Solid red line is the regression line between replicates.
 \end{table}
 
 \subsection{Traits estimation with branch \texorpdfstring{$\omega$}{ω} (replicate~1, chain~1)}
-Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative non-synonymous substitution rate ($\omega$), as in \citet{Lartillot2011}.
+Obtained with the phenomenological inference model of log-Brownian process for the $\mu$ and the relative \gls{non-synonymous} \gls{substitution} rate ($\omega$), as in \citet{Lartillot2011}.
 
 \begin{figure}[H]
     \centering
@@ -995,21 +995,21 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCorrelation.tex}
     \caption[Correlation coefficient matrix in Drosophila ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsCovariance.tex}
     \caption[Covariance matrix in Drosophila ($\omega$)]{
-    Correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
+    Correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
 \begin{table}[H]
     \input{drosophila/18CDS_BranchOmega_R1_TraitsPartialCorrelation.tex}
     \caption[Partial correlation coefficient matrix in Drosophila ($\omega$)]{
-    Partial correlation coefficient between non-synonymous substitution rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
+    Partial correlation coefficient between \gls{non-synonymous} \gls{substitution} rate~($\omega$), mutation rate per site per unit of time~($\mu$), and life-history traits (maximum longevity, adult weight and female maturity) were computed in Drosophila.
     Asterisks indicate strength of support ($\smash{^{*}} pp > 0.95$, $\smash{^{**}} pp > 0.975$).}
 \end{table}
 
@@ -1017,13 +1017,13 @@ Obtained with the phenomenological inference model of log-Brownian process for t
 \section{Sufficient statistics}
 \label{sec:sufficient-statistics-mutselne}
 
-A sequence of length $\Nsite$ evolves by point substitutions, according to a random process defined by the substitution matrices $\Submatrix\branchsiteexp$, over a phylogenetic tree.
-A realization of the random process along a branch $\branch$, and at a particular site $\site$ results in a detailed substitution history, which will be denoted by $\subhistory\branchsiteexp$.
+A sequence of length $\Nsite$ evolves by point \glspl{substitution}, according to a random process defined by the \gls{substitution} matrices $\Submatrix\branchsiteexp$, over a phylogenetic tree.
+A realization of the random process along a branch $\branch$, and at a particular site $\site$ results in a detailed \gls{substitution} history, which will be denoted by $\subhistory\branchsiteexp$.
 
 \subsection{Path sufficient statistics}
-All sites owning to the same category of fitness profile share the same substitution rate matrix.
+All sites owning to the same category of fitness profile share the same \gls{substitution} rate matrix.
 Hence, $\subhistory\branchsiteexp$ can be gathered across all sites owing to a specific category $\cat$, denoted $\subhistory\branchexp$.
-If we express the probability of the substitution mapping ($\subhistory\branchcatexp$) as a function of the codon substitution process for this category $\cat$, we get the following expression:
+If we express the probability of the \gls{substitution} mapping ($\subhistory\branchcatexp$) as a function of the \gls{codon} \gls{substitution} process for this category $\cat$, we get the following expression:
 \begin{equation}
     \label{eq:PathSuffStat}
     \proba (\subhistory\branchcatexp | \branchlength\branchexp, \Submatrix\branchcatexp) \propto \left[  \prod\limits\sumOverCodons \left[\subequi_{\ci}\branchcatexp\right]^{n_{\ci}\branchcatexp} \right] \cdot \left[ \prod\limits_{ \ijSetCodon} \left[\submatrix\branchcatexp_{\itoj}\right]^{m_{\ci, \cj}\branchcatexp} \right] \cdot \left[ \prod\limits\sumOverCodons \e^{- \left| \submatrix\branchcatexp_{\ci, \ci}\right| a_{\ci}\branchcatexp}\right],
@@ -1031,16 +1031,16 @@ If we express the probability of the substitution mapping ($\subhistory\branchca
 where we define the sufficient statistics:
 \begin{itemize}
     \setlength\itemsep{-0.25em}
-    \item $m_{\ci, \cj}\branchcatexp$ is the total number of substitutions from codon $\ci$ to codon $\cj$
-    \item $n_{\ci}\branchcatexp$ is the number of sites starting with codon $\ci$ at the tip of the branch.
-    \item $a_{\ci}\branchcatexp$ is the total waiting time in codon $\ci$.
+    \item $m_{\ci, \cj}\branchcatexp$ is the total number of \glspl{substitution} from \gls{codon} $\ci$ to \gls{codon} $\cj$
+    \item $n_{\ci}\branchcatexp$ is the number of sites starting with \gls{codon} $\ci$ at the tip of the branch.
+    \item $a_{\ci}\branchcatexp$ is the total waiting time in \gls{codon} $\ci$.
 \end{itemize}
-Once these sufficient statistics have been computed, the parameters of the substitution matrix $\Submatrix\branchcatexp$ can be resampled conditional on $\subhistory\branchcatexp$,
-using equation~\ref{eq:PathSuffStat} each time the likelihood needs to be recomputed. This leads to relatively fast \acrshort{MCMC} strategy.
+Once these sufficient statistics have been computed, the parameters of the \gls{substitution} matrix $\Submatrix\branchcatexp$ can be resampled conditional on $\subhistory\branchcatexp$,
+using equation~\ref{eq:PathSuffStat} each time the \gls{likelihood} needs to be recomputed. This leads to relatively fast \acrshort{MCMC} strategy.
 
 \subsection{Length sufficient statistics}
 $\subhistory\branchsiteexp$ can also be gathered across all sites along a specific branch, giving $\subhistory\branchexp$.
-Then the probability of the substitution history given the branch lengths ($\branchlength\branchexp = \mu\branchexp \branchtime\branchexp$), takes a very simple form:
+Then the probability of the \gls{substitution} history given the branch lengths ($\branchlength\branchexp = \mu\branchexp \branchtime\branchexp$), takes a very simple form:
 \begin{equation}
     \label{eq:LengthSuffStat}
     \proba (\subhistory\branchexp | L\branchexp) \propto \left[ L\branchexp\right]^{u\branchexp} \e^{- r\branchexp L\branchexp},
@@ -1048,17 +1048,17 @@ Then the probability of the substitution history given the branch lengths ($\bra
 where we define the sufficient statistics:
 \begin{itemize}
     \setlength\itemsep{-0.25em}
-    \item $u\branchexp$ is the total number of substitutions over branch $\branch$, summed over all sites.
-    \item $r\branchexp$ is the mean rate away from current codon state (averaged over the entire substitution history).
+    \item $u\branchexp$ is the total number of \glspl{substitution} over branch $\branch$, summed over all sites.
+    \item $r\branchexp$ is the mean rate away from current \gls{codon} state (averaged over the entire \gls{substitution} history).
 \end{itemize}
-Thus, formally, the probability of the substitution mapping can be summarized by saying that the total number of substitutions along a given branch over all sites, $u\branchexp$, is Poisson distributed, of mean $r\branchexp L\branchexp$.
+Thus, formally, the probability of the \gls{substitution} mapping can be summarized by saying that the total number of \glspl{substitution} along a given branch over all sites, $u\branchexp$, is Poisson distributed, of mean $r\branchexp L\branchexp$.
 
 \subsection{Scatter sufficient statistics}
 From the independent contrast $\contrast\branchexp$ of the Brownian process $\Brownian\nodeexp$, we can define the $2 \times 2$ scatter sufficient statistic matrix, $\Scattermatrix$ as:
 \begin{equation}
     \Scattermatrix = \sum\limits_{b=1}^{\Nbranch} \contrast\branchexp \cdot \left[\contrast\branchexp\right]^{\text{T}}
 \end{equation}
-By Bayes theorem, the posterior on $\CovarianceMatrix$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
+By Bayes theorem, the \gls{posterior} on $\CovarianceMatrix$, conditional on a particular realization of $\brownian$ (and thus of $\contrast$) is an invert Wishart distribution, of parameter $\covariancekappa \Identitymatrix + \Scattermatrix$ and with $\Nbranch + 3$ degrees of freedom.
 \begin{equation}
     \CovarianceMatrix \sim \text{Wishart}^{-1}\left( \covariancekappa \Identitymatrix + \Scattermatrix, \Nbranch + 3\right)
 \end{equation}

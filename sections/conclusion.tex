@@ -2,12 +2,12 @@
 \label{ch:discussion-perspectives}
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 
-As a legacy of the nearly-neutral theory, the evolution of molecular sequences is seen as a stochastic process.
+As a legacy of the \gls{nearly-neutral} theory, the evolution of molecular sequences is seen as a stochastic process.
 One component of this process is creating diversity through mutation, while an antagonistic component is filtering out this diversity through selection, and finally the balance between these components is arbitrated by drift.
-In the long term, this stochastic process results in a history of substitution events along species trees, inducing complex patterns of molecular divergence between species.
-By analysing them, phylogenetic codon models aim at capturing the intrinsic parameters of evolution.
+In the long term, this stochastic process results in a history of \gls{substitution} events along species trees, inducing complex patterns of molecular divergence between species.
+By analysing them, phylogenetic \gls{codon} models aim at capturing the intrinsic parameters of evolution.
 
-The focus of this thesis has been the development of new phylogenetic codon models and the modelling of the interplay between mutation, selection and drift in the evolutionary processes followed by protein-coding \acrshort{DNA} sequences.
+The focus of this thesis has been the development of new phylogenetic \gls{codon} models and the modelling of the interplay between mutation, selection and drift in the evolutionary processes followed by protein-coding \acrshort{DNA} sequences.
 In this conclusive chapter, I first recall the main results of this thesis in section~\ref{sec:summary-of-main-results}.
 Subsequently, I attempt to discuss the limitations of my work.
 One main limitation concerns the problem of modelling site interdependence, which is discussed in section~\ref{sec:epistasis-and-entrenchment}.
@@ -19,15 +19,15 @@ Finally, before some concluding remarks, I discuss the question and the issue of
 \section{Summary of main results}
 \label{sec:summary-of-main-results}
 
-In chapter~\ref{chap:NucleotideBias}, I developed a phenomenological codon model in which $\omega$ is seen not as a single parameter but as a tensor (95 free parameters).
+In chapter~\ref{chap:NucleotideBias}, I developed a phenomenological \gls{codon} model in which $\omega$ is seen not as a single parameter but as a tensor (95 free parameters).
 This sensor captures the small differences in fixation rate (or $\omega$) in different directions, which gives an accurate representation of how mutation and selection oppose each other at equilibrium.
 This parameterization is the simplest one, in a phenomenological context, capable of correctly teasing apart mutation and selection.
 Thanks to this, this modelling approach yields a reliable estimate of the mutational process, while disentangling fixation probabilities in different directions.
 
-In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscapes, long-term trends in effective population size and in the mutation rate along the phylogeny, from an alignment of \acrshort{DNA} coding sequences.
-Simultaneously, the approach estimates the correlation between life-history traits, mutation rate and effective population size, intrinsically accounting for phylogenetic inertia.
+In chapter~\ref{chap:MutSelDrift}, I developed an extended mechanistic mutation-selection model reconstructing site-specific fitness landscapes, long-term trends in \gls{effective population size} and in the mutation rate along the phylogeny, from an alignment of \acrshort{DNA} coding sequences.
+Simultaneously, the approach estimates the correlation between life-history traits, mutation rate and \gls{effective population size}, intrinsically accounting for phylogenetic inertia.
 Our framework was tested against simulated data and then applied to empirical data in mammals, isopods, primates and Drosophila.
-Simulated and empirical evidence suggest that there is a persistent signal in substitution patterns that relates to the past history of $\Ne$, whose trends correspond to the expected direction of correlation with life-history traits or ecological variables.
+Simulated and empirical evidence suggest that there is a persistent signal in \gls{substitution} patterns that relates to the past history of $\Ne$, whose trends correspond to the expected direction of correlation with life-history traits or ecological variables.
 However, the magnitude of inferred variation in $\Ne$ across the phylogeny is narrower than expected, which is probably a bias of the approach caused by the assumptions made on the structure of the fitness landscape.
 
 As a way to further investigate this last question, the third manuscript in chapter~\ref{chap:GenoPhenoFit} revisits the question of how the exact structure of the fitness landscape determines the quantitative response of the molecular evolutionary process, and in particular of $\dnds$, to changes in $\Ne$ and in protein expression levels.
@@ -43,12 +43,12 @@ More globally, there is a remaining gap between quantitative predictions of biop
 \section{Site interdependence and epistasis}
 \label{sec:epistasis-and-entrenchment}
 
-One of the blind spots of the mechanistic codon model developed in chapter~\ref{chap:MutSelDrift}, and more generally of current mechanistic models of the Halpern-Bruno family (see section~\ref{subsec:HB-formalism}), is the assumption of site independence.
+One of the blind spots of the mechanistic \gls{codon} model developed in chapter~\ref{chap:MutSelDrift}, and more generally of current mechanistic models of the Halpern-Bruno family (see section~\ref{subsec:HB-formalism}), is the assumption of site independence.
 This assumption is convenient, both computationally and statistically.
 Computationally, each site can be considered as an independent Markov process (see sections~\ref{subsec:mutation-limited-assumption} and~\ref{sec-intro:likelihood}).
-Statistically, one can rely on mixture models to estimate site-specific amino-acid fitness profiles (see section~\ref{subsec:empirical-calibration-HB})
+Statistically, one can rely on \glspl{mixture model} to estimate site-specific amino-acid fitness profiles (see section~\ref{subsec:empirical-calibration-HB})
 In contrast, from a modelling and inference perspective, accounting for epistasis is challenging both in terms of parametrization and in terms of computational complexity (see section~\ref{subsec:structurally-constrained-site-interdependent-codon-models})
-This complexity is the main reason why epistasis is generally ignored in phylogenetic models, and more particularly in codon models.
+This complexity is the main reason why epistasis is generally ignored in phylogenetic models, and more particularly in \gls{codon} models.
 Empirically, however, evolutionary biologists have many reasons to believe that this hypothesis of site independence is not adequate, especially given our knowledge about protein biophysics (see section~\ref{subsec:conformational-stability-and-epistatis}).
 This approximation is therefore problematic, and raises multiple questions.
 What are the consequences of ignoring epistasis in the context of phylogenetic inference?
@@ -59,7 +59,7 @@ Based on our analysis presented in chapter~\ref{chap:GenoPhenoFit}, we argue tha
 This is a conceptual point that, to my knowledge, had never been really identified until now.
 
 More precisely, one key result of chapter~\ref{chap:GenoPhenoFit} is that any model without (or ignoring) epistasis implies slow dynamics and a strong sensitivity of the mean fixation probability to changes in $\Ne$.
-Intuitively, a model without epistasis exhibits a slow return to equilibrium upon a change in $\Ne$ due to the waiting time until the next substitution.
+Intuitively, a model without epistasis exhibits a slow return to equilibrium upon a change in $\Ne$ due to the waiting time until the next \gls{substitution}.
 Indeed, the evolutionary process is mainly mutation limited (see section~\ref{subsec:molecular-evolution-is-mutation-limited})
 In addition, the mutation rate per site is very low, from $10^{-8}$ to $10^{-9}$ in mammals.
 As a result, for each site, the expected waiting time until the next mutation is between $100$ to $1000$ million years.
@@ -69,9 +69,9 @@ In contrast, in the presence of epistasis, the burden of adapting to changes in 
 As a result, adding epistasis to the model implies faster dynamics and a weaker response of the mean fixation probability to changes in $\Ne$.
 
 These observations have several implications for empirical analyses.
-First, if epistasis implies a weak response of the $\dnds$ to changes in $\Ne$, such as observed in chapter~\ref{chap:GenoPhenoFit}, for similar reasons, it may also explain the low magnitude of $\Ne$ variation estimated with site-specific mechanistic codon models in chapter~\ref{chap:MutSelDrift}.
-Empirically, it appears that the susceptibility of $\dnds$ to changes in $\Ne$ is between these two extremes, namely that of site-specific fitness landscapes, and the other extreme of a single univariate phenotype controlled by all sites.
-More probably, the ternary relation from sequence to phenotype to fitness implies several sites, but not all sites of the sequences, in a given phenotypic trait.
+First, if epistasis implies a weak response of the $\dnds$ to changes in $\Ne$, such as observed in chapter~\ref{chap:GenoPhenoFit}, for similar reasons, it may also explain the low magnitude of $\Ne$ variation estimated with site-specific mechanistic \gls{codon} models in chapter~\ref{chap:MutSelDrift}.
+Empirically, it appears that the susceptibility of $\dnds$ to changes in $\Ne$ is between these two extremes, namely that of site-specific fitness landscapes, and the other extreme of a single univariate \gls{phenotype} controlled by all sites.
+More probably, the ternary relation from sequence to \gls{phenotype} to fitness implies several sites, but not all sites of the sequences, in a given phenotypic trait.
 
 Second, the very long relaxation time implied by site-specific models are of the order of the depth of phylogeny ($100$ to $1000$ My).
 As such, in the absence of epistasis, we should not even see $\dnds$ correlations with either \acrshort{LHT}s or $\Ne$ because of it.
@@ -83,12 +83,12 @@ Paths for statistical methods that can account for it are developed in section~\
 \section{Adaptive landscape and positive selection}
 \label{sec:adaptative-landscape}
 
-Another blind spot the mechanistic phylogenetic codon model is the absence of adaptive evolution (see section~\ref{subsec:where-is-adaptation?}).
-Indeed, the mutation-selection equilibrium is essentially a nearly-neutral regime.
+Another blind spot the mechanistic phylogenetic \gls{codon} model is the absence of adaptive evolution (see section~\ref{subsec:where-is-adaptation?}).
+Indeed, the mutation-selection equilibrium is essentially a \gls{nearly-neutral} regime.
 As a result, at mutation-selection equilibrium, the sequence is close to the fitness optimum and therefore, most mutations are deleterious or compensate for previous deleterious mutations that reached fixation.
 Adaptation, on the other hand, can be seen as a process where the underlying fitness landscape is not fixed (i.e.~time-independent) but is instead dynamic (i.e.~time-dependent).
 In other words, it is not so much a fitness landscape than fitness seascapes~\citep{Mustonen2009}.
-Under a fitness seascape, the sequence is constantly running after a moving target, and as a result, there is net flux of adaptive substitutions (see section~\ref{subsec:adaptive-evolution}).
+Under a fitness seascape, the sequence is constantly running after a moving target, and as a result, there is net flux of adaptive \glspl{substitution} (see section~\ref{subsec:adaptive-evolution}).
 
 \subsection{Mechanistic mutation-selection models under fitness seascapes}
 \label{subsec:mechanistic-fluctuating-selection}
@@ -102,17 +102,17 @@ However, such an endeavour would be statistically and computationally challengin
 \subsection{Hybrid mechanistic and phenomenological mutation-selection models}
 \label{subsec:hybrid-mechanistic-and-phenomenological-mutation-selection-models}
 
-As an alternative to explicit models of adaptation through fitness seascapes, the current nearly-neutral mutation-selection framework can be leveraged as a null model.
+As an alternative to explicit models of adaptation through fitness seascapes, the current \gls{nearly-neutral} mutation-selection framework can be leveraged as a null model.
 Deviation from this null model can be seen as a signal of adaptation (see section~\ref{subsec:adaptive-evolution}).
-In particular, if the sequences are under recurrent positive selection, the mean fixation probability ($\avgpfix$) of non-synonymous mutations will tend to be higher than predicted by the purely nearly-neutral model.
-This discrepancy between the mean fixation probability and the nearly-neutral expectation can be captured by a deviation parameter $\omega_*$, as in \citet{Rodrigue2016}.
+In particular, if the sequences are under recurrent positive selection, the mean fixation probability ($\avgpfix$) of \gls{non-synonymous} mutations will tend to be higher than predicted by the purely \gls{nearly-neutral} model.
+This discrepancy between the mean fixation probability and the \gls{nearly-neutral} expectation can be captured by a deviation parameter $\omega_*$, as in \citet{Rodrigue2016}.
 
 Thus far, however, this idea has been implemented only at the gene level (i.e.~invoking a single $\omega_*$ for the whole gene).
 Yet, adaptation often occurs more locally, in specific domains of the protein.
 Accordingly, this gene-wide deviation parameter $\omega_*$ could be refined at the site-level.
-In this direction, in a work led by Nicolas Rodrigue, we developed a method to detect site-specific adaptation as a deviation from a null nearly-neutral model of evolution.
+In this direction, in a work led by Nicolas Rodrigue, we developed a method to detect site-specific adaptation as a deviation from a null \gls{nearly-neutral} model of evolution.
 This method has been developed in the generic programming environment provided by \texttt{BayesCode} (see section~\ref{subsec:implementation}), and the manuscript accepted in the journal \textit{Molecular Biology \& Evolution} is available in the Appendix (page~\pageref{sec-appendix:MutSelM3starMBE}).
-These methods are relatively new, and must still be validated, more broadly applied to empirical data, and their predictions more extensively compared with those obtained from with classical codon models.
+These methods are relatively new, and must still be validated, more broadly applied to empirical data, and their predictions more extensively compared with those obtained from with classical \gls{codon} models.
 
 However, in its current form, phylogenetic models seeking adaptation as a deviation from near-neutrality assume a constant $\Ne$ across the tree.
 As already discussed, this assumption is of course not reasonable.
@@ -124,26 +124,26 @@ This could have useful applications.
 For instance, bats are known to be reservoirs of pathogens.
 Recent results suggest they have a more efficient immune system~\citep{Baker2013,Pavlovich2018}, such that proteins involved in host-pathogen interactions are under positive selection~\citep{Hawkins2019,Vandewege2020}.
 But also, bats have large population sizes, compared to other mammals, and thus more efficient purifying selection.
-These two factors have opposing effects on $\dnds$, and teasing them out might therefore be difficult using classical codon models.
+These two factors have opposing effects on $\dnds$, and teasing them out might therefore be difficult using classical \gls{codon} models.
 In contrast, the mutation-selection model with both $\Ne$ and $\omega_*$ varying across lineages could offer a way to estimate them separately, which would allow to address the problems mentioned above.
 In particular, this would allow us to answer if bats, compared to other mammals, have both stronger purifying selection (lower $\dnds$) due to large $\Ne$ and stronger positive selection (larger $\omega_*$).
 
 \subsection{Detecting adaptation with polymorphism}
 \label{subsec:detecting-adaptation-with-polymorphism}
 
-Phylogenetic codon models are only one of the methods currently available to detect adaptation.
+Phylogenetic \gls{codon} models are only one of the methods currently available to detect adaptation.
 There are other approaches that are widely used in population genetics, and that make use of the signal contained in polymorphism data, such as originally pioneered by \citet{McDonald1991}.
-The idea behind the McDonald \& Kreitman (\acrshort{MK}) approach is to decompose the rate of selected substitutions ($\omega_{\text{Tot}}$), as a mixture of both advantageous substitutions and non-adaptive (nearly-neutral) substitutions:
+The idea behind the McDonald \& Kreitman (\acrshort{MK}) approach is to decompose the rate of selected \glspl{substitution} ($\omega_{\text{Tot}}$), as a mixture of both advantageous \glspl{substitution} and non-adaptive (\gls{nearly-neutral}) \glspl{substitution}:
 \begin{align}
     \omega_{\text{Tot}} & = \omega_{\text{A}} + \omega_{\text{NA}}, \\
     \iff \omega_{\text{A}} & = \omega_{\text{Tot}} - \omega_{\text{NA}},
 \end{align}
-where $\omega_{\text{NA}}$ is the rate of substitutions contributed by non-adaptive nearly-neutral evolution and $\omega_{\text{A}}$ is the total rate of substitutions contributed by adaptive evolution.
-In this context, under the assumption that adaptive mutations are rare, the ratio of non-synonymous over synonymous polymorphisms ($\pnps$) mostly contains non-adaptive polymorphisms and is a measure of $\omega_{\text{NA}}$:
+where $\omega_{\text{NA}}$ is the rate of \glspl{substitution} contributed by non-adaptive \gls{nearly-neutral} evolution and $\omega_{\text{A}}$ is the total rate of \glspl{substitution} contributed by adaptive evolution.
+In this context, under the assumption that adaptive mutations are rare, the ratio of \gls{non-synonymous} over \gls{synonymous} polymorphisms ($\pnps$) mostly contains non-adaptive polymorphisms and is a measure of $\omega_{\text{NA}}$:
 \begin{equation}
     \omega_{\text{NA}} \simeq \pnps.
 \end{equation}
-Moreover, the total ratio of non-synonymous over synonymous substitutions ($\dnds$), estimated from divergence data, is a measure of $\omega_{\text{Tot}}$:
+Moreover, the total ratio of \gls{non-synonymous} over \gls{synonymous} \glspl{substitution} ($\dnds$), estimated from divergence data, is a measure of $\omega_{\text{Tot}}$:
 \begin{equation}
     \omega_{\text{Tot}} \simeq \dnds.
 \end{equation}
@@ -153,22 +153,22 @@ Altogether, the rate of adaptive evolution, which contributes disproportionately
 \end{equation}
 
 However, estimation of the non-adaptive rate through $\pnps$ can be biased by moderately deleterious mutations and by the change in population size through time~\citep{eyre-walker_changing_2002}.
-To overcome these biases, a method initially proposed by \citet{eyre-walker_estimating_2009, Galtier2016} relies on the synonymous and non-synonymous site-frequency spectra (\acrshort{SFS}) to correct for demography and to estimate the distribution of fitness effects of mutations (\acrshort{DFE}), modelled as a continuous distribution.
+To overcome these biases, a method initially proposed by \citet{eyre-walker_estimating_2009, Galtier2016} relies on the \gls{synonymous} and \gls{non-synonymous} site-frequency spectra (\acrshort{SFS}) to correct for demography and to estimate the distribution of fitness effects of mutations (\acrshort{DFE}), modelled as a continuous distribution.
 This method, and subsequent developments which are reviewed in \citet{Moutinho2019a}, provide more reliable estimates of $\omega_{\text{NA}}$ and, as a result, a better estimate of $\omega_{\text{A}}$.
 
 \subsection{Confronting methods for detecting adaptation}
 \label{subsec:confronting-methods-for-detecting-adaptation}
 
-The availability of independent phylogenetic methods (based on either phenomenological and mechanistic codon models) and population genetics approaches (using the McDonald \& Kreitman ideas) for detecting adaptation raises the question whether they detect congruent signals of adaptation.
+The availability of independent phylogenetic methods (based on either phenomenological and mechanistic \gls{codon} models) and population genetics approaches (using the McDonald \& Kreitman ideas) for detecting adaptation raises the question whether they detect congruent signals of adaptation.
 
-Empirically, phenomenological and mechanistic codon methods should be confronted to McDonald \& Kreitman (\acrshort{MK}) methods.
-In the case of the overlap between positively selected genes detected with phenomenological codon models and with \acrshort{MK} methods, the set of genes detected does not seem to overlap beyond random expectations~\citep{He2020}.
-In contrast, at the site level, classical codon models are congruent with \acrshort{MK} methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
+Empirically, phenomenological and mechanistic \gls{codon} methods should be confronted to McDonald \& Kreitman (\acrshort{MK}) methods.
+In the case of the overlap between positively selected genes detected with phenomenological \gls{codon} models and with \acrshort{MK} methods, the set of genes detected does not seem to overlap beyond random expectations~\citep{He2020}.
+In contrast, at the site level, classical \gls{codon} models are congruent with \acrshort{MK} methods, with most adaptive mutations occurring at the surface of proteins in both methods~\citep{Moutinho2019}.
 These results still need to be refined across clades and genes, and the availability of polymorphism and divergence \acrshort{DNA} sequences that are aligned will make this comparison possible.
 
-However, positively selected genes or sites detected by classical codon models and \acrshort{MK} methods can theoretically be different, since the non-adaptive part of substitutions ($\omega_{\text{NA}}$) is subtracted in the \acrshort{MK} test while classical codon models do not account for it.
-Interestingly, another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic codon models is what was referred to as $\omega_0$ in the context of the mutation-selection null model (see section~\ref{subsec:HB-formalism-nearly-neutral-model}).
-As a result, mechanistic mutation-selection codon models ($\omega_0$) and the \acrshort{MK} test ($\pnps$) should theoretically be more directly comparable.
+However, positively selected genes or sites detected by classical \gls{codon} models and \acrshort{MK} methods can theoretically be different, since the non-adaptive part of \glspl{substitution} ($\omega_{\text{NA}}$) is subtracted in the \acrshort{MK} test while classical \gls{codon} models do not account for it.
+Interestingly, another estimate of $\omega_{\text{NA}}$ in the context of phylogenetic \gls{codon} models is what was referred to as $\omega_0$ in the context of the mutation-selection null model (see section~\ref{subsec:HB-formalism-nearly-neutral-model}).
+As a result, mechanistic mutation-selection \gls{codon} models ($\omega_0$) and the \acrshort{MK} test ($\pnps$) should theoretically be more directly comparable.
 From the availability of divergence and polymorphism data, it is now possible to ask whether the rate of non-adaptive evolution measured by phylogenetic mutation-selection models and \acrshort{MK} methods are congruent, and if not the reason for such discrepancy should be understood.
 
 \begin{figure}[htbp]
@@ -181,48 +181,48 @@ From the availability of divergence and polymorphism data, it is now possible to
 \section{Unifying phylogenetic and population-genetics models}
 \label{sec:unifying-phylogenetic-and-population-genetics-model}
 
-Throughout this manuscript, the phylogenetic codon models that have been presented have ignored genetic diversity within species.
-As a result, all differences observed in the alignment are assumed to be substitutions.
+Throughout this manuscript, the phylogenetic \gls{codon} models that have been presented have ignored genetic diversity within species.
+As a result, all differences observed in the alignment are assumed to be \glspl{substitution}.
 However some of the differences observed in the alignment might in fact be polymorphisms segregating in the population.
-Moreover, substitutions are not instantaneous and ancestral polymorphisms can result in shared polymorphisms across species due to incomplete lineage sorting~\citep{Charlesworth2010}.
+Moreover, \glspl{substitution} are not instantaneous and ancestral polymorphisms can result in shared polymorphisms across species due to incomplete lineage sorting~\citep{Charlesworth2010}.
 
-Mistaking polymorphisms for substitutions is problematic, since both are not sensitive to mutation, selection and drift to the same extent~\citep{Mugal2014}.
-For example, the neutral diversity increases with $\Ne$, while the rate of neutral substitutions is insensitive to $\Ne$.
-Also, polymorphisms involving mildly deleterious mutations are very common but are normally filtered out by selection and thus, are not often seen as substitutions.
+Mistaking polymorphisms for \glspl{substitution} is problematic, since both are not sensitive to mutation, selection and drift to the same extent~\citep{Mugal2014}.
+For example, the \gls{neutral} diversity increases with $\Ne$, while the rate of \gls{neutral} \glspl{substitution} is insensitive to $\Ne$.
+Also, polymorphisms involving mildly deleterious mutations are very common but are normally filtered out by selection and thus, are not often seen as \glspl{substitution}.
 
-More generally, substitution rates are much more strongly influenced by fixation biases (such as gBGC) than polymorphisms, which are primarily reflecting mutation biases.
+More generally, \gls{substitution} rates are much more strongly influenced by fixation biases (such as gBGC) than polymorphisms, which are primarily reflecting mutation biases.
 
 Interestingly, this suggests that polymorphism and divergence could be leveraged together to help disentangle mutation, selection and drift.
 In other words, phylogenetic and population-genetic approaches could be unified, in the context of a single modelling framework~\citep{Thorne2012}.
 
 Such an integration between phylogenetic and population genetics has already been attempted in several studies.
-For example, \citet{Wilson2011} modelled codon evolution in a joint framework with $3$ species, which allowed them to analyse the variation in selection pressure spatially along the genome and temporally between lineages.
+For example, \citet{Wilson2011} modelled \gls{codon} evolution in a joint framework with $3$ species, which allowed them to analyse the variation in selection pressure spatially along the genome and temporally between lineages.
 However, this methodology proved to be computationally intensive and does not scale well with the number of extant species.
-Alternatively, modelling substitutions as mutational events followed by a gradual fixation, using an explicit Wright-Fisher or Moran process along the phylogeny, makes it possible to estimate nucleotide mutation rates and mean fixation probabilities from genetic variation within and between species, while accounting for shared ancestral polymorphisms and incomplete lineage sorting~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019}.
+Alternatively, modelling \glspl{substitution} as mutational events followed by a gradual fixation, using an explicit Wright-Fisher or Moran process along the phylogeny, makes it possible to estimate nucleotide mutation rates and mean fixation probabilities from genetic variation within and between species, while accounting for shared ancestral polymorphisms and incomplete lineage sorting~\citep{DeMaio2013, Schrempf2016, Bergman2018, Schrempf2019}.
 In particular, this methodology was used to disentangle \acrshort{gBGC} and the mutational bias~\citep{Borges2019, Borges2020}.
 However, this methodology does not scale well with the number of states of the models.
-For that reason, it would be particularly difficult to translate the approach from nucleotides (4 states) to codons (61 states).
+For that reason, it would be particularly difficult to translate the approach from nucleotides (4 states) to \glspl{codon} (61 states).
 
-Because mechanistic codon models are based on population-genetic first principles, they can theoretically be extended to account for within species diversity.
+Because mechanistic \gls{codon} models are based on population-genetic first principles, they can theoretically be extended to account for within species diversity.
 One strategy would be to augment molecular divergence data between species with information about molecular polymorphism within species.
 Such an approach was attempted during the first year of my PhD training.
 The formalism that was used is based on Poisson Random fields (details can be found in appendices page~\pageref{sec-appendix:PRF}).
-This extension was rather straightforward to implement in \texttt{BayesCode}, in the context of site-specific mechanistic codon models.
-% This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
+This extension was rather straightforward to implement in \texttt{BayesCode}, in the context of site-specific mechanistic \gls{codon} models.
+% This was historically the reason why I decided to extend phylogenetic site-specific mutation-selection \gls{codon} models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
 A first implementation was tested against simulations under a Wright-Fisher model of evolution along the phylogeny.
 It yielded an accurate estimation of diversity ($\theta = 4 \Ne u$) in extant species, and was able to better tease out mutation and selection by leveraging both divergence and polymorphism signals.
 However, it was found to be computationally intensive, even with the use of sufficient statistics to accelerate the computation (see section~\ref{subsec:suffstats-data-augmentation}).
-Moreover, the assumption of a constant $\Ne$ along the phylogeny in mutation-selection codon models was arguably the strongest restriction to relax in this context~\citep{Rousselle2018}.
+Moreover, the assumption of a constant $\Ne$ along the phylogeny in mutation-selection \gls{codon} models was arguably the strongest restriction to relax in this context~\citep{Rousselle2018}.
 Indeed, it makes limited sense to integrate empirical data about genetic diversity in extant species that generally have quite different levels of diversity if $\Ne$ is considered constant along the phylogeny.
-This was historically the reason why I decided to first extend phylogenetic site-specific mutation-selection codon models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
+This was historically the reason why I decided to first extend phylogenetic site-specific mutation-selection \gls{codon} models by incorporating branch-specific $\Ne$, such as presented in chapter~\ref{chap:MutSelDrift}.
 
-Once incorporating branch specific $\Ne$, the original goal was then to add polymorphism data in the context of this improved mutation-selection codon model.
+Once incorporating branch specific $\Ne$, the original goal was then to add polymorphism data in the context of this improved mutation-selection \gls{codon} model.
 As it turns out, however, there are other issues that needed to be addressed, before achieving this integration, in particular, the fact that the range of $\Ne$ inferred by the model turns out to be too narrow (see section~\ref{chap:MutSelDrift}), as well as computational issues.
 Indeed, with branch-specific $\Ne$ and extant polymorphism, the computing time to reach convergence of the \acrshort{MCMC} became prohibitive.
 
-Retrospectively, even though site- and branch-specific mutation-selection phylogenetic codon models can be extended by incorporating empirical data about polymorphism, as I have started to do in \texttt{BayesCode}, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
-Before doing this, I believe phylogenetic codon models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
+Retrospectively, even though site- and branch-specific mutation-selection phylogenetic \gls{codon} models can be extended by incorporating empirical data about polymorphism, as I have started to do in \texttt{BayesCode}, I believe it is not yet the path forward to build a unified phylogenetic and population-genetic model.
+Before doing this, I believe phylogenetic \gls{codon} models and population-genetics method should first be confronted, and the discrepancy should be understood, such as presented in the previous section.
 The impact of epistasis should also be better understood and characterized.
 Only in a second step, subsequently to this confrontation, could phylogenetic models in principle accommodate extant polymorphism.
 However, this will probably require another approach of inference, more computationally reasonable than the one that I have explored in my work (in chapter~\ref{chap:MutSelDrift}).
@@ -233,16 +233,16 @@ However, this will probably require another approach of inference, more computat
 
 % Categories of models
 Models of inference are classified broadly into phenomenological and mechanistic~\citep{Rodrigue2010a}.
-Mechanistic models dissect the detailed causal chain of events responsible for each substitution event and then use this to construct a detailed model from first principles.
-By doing this, they relate structural, population genetics and ecological parameters to the likelihood function (see chapter~\ref{chap:MutSelDrift}).
-As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and varying effective population size across lineages.
+Mechanistic models dissect the detailed causal chain of events responsible for each \gls{substitution} event and then use this to construct a detailed model from first principles.
+By doing this, they relate structural, population genetics and ecological parameters to the \gls{likelihood} function (see chapter~\ref{chap:MutSelDrift}).
+As such, mechanistic inference models are suitable to construct an integrative framework, for example relating the signal available in molecular sequences to structural parameters, expression level across genes and varying \gls{effective population size} across lineages.
 
 Once such models have been fitted to empirical data, the estimated parameters can then be confronted with independent estimations, which allow one to robustly test the model since independent estimates of biological and ecological parameters should of course be congruent~\citep{Dasmeh2014}.
 However mechanistic models are computationally very intensive, to a point where they can reach the current limits in available computing power (personal computers or clusters)\footnote{Apart from the physical limit of resource available, the use of computing resources bears ecological consequences on environmental degradation and $C0_2$ emissions.}.
 Moreover, increased complexity of the models bears another consequence: the liability of the code and software decreases, compromising the reproducibility of the results obtained with such models.
 For these reasons, mechanistic models tend to make a number of strong simplifying assumptions (such as no epistasis), which can have detrimental effects on the robustness of the inference (see chapter~\ref{chap:MutSelDrift}).
 
-In contrast, phenomenological models are formulated in terms of aggregate parameters, capturing the average rate of synonymous or non-synonymous substitutions, or their ratio.
+In contrast, phenomenological models are formulated in terms of aggregate parameters, capturing the average rate of \gls{synonymous} or \gls{non-synonymous} \glspl{substitution}, or their ratio.
 Their aim is to determine the statistical distribution of these aggregate quantities across the tree, across genes, or across sites, but without deriving them from first principles.
 Compared to mechanistic models, they are computationally much more efficient.
 On the other hand, they do not give direct access to the population-genetic parameters.
@@ -318,11 +318,11 @@ Finally, explaining to others our choices of algorithms, implementation and data
 \label{sec:concluding-remarks}
 
 To conclude, this work is an encouraging, although still far from complete, attempt to build integrated models of the evolution of protein-coding \acrshort{DNA} sequences.
-I think my work has contributed to consolidating the idea that the patterns of substitutions inform us on the long-term fluctuations in genetic drift along branches and selection along sequences.
-This thesis also further emphasizes that the assumptions made on the structure of the fitness landscape have a critical importance in the sensitivity of changes in substitution rates to changes in ecological ($\Ne$) or molecular variables (protein expression level).
-Conversely, empirical observations of the patterns of substitutions in response to changes in molecular or ecological variables inform us about the underlying structure of the fitness landscape.
+I think my work has contributed to consolidating the idea that the patterns of \glspl{substitution} inform us on the long-term fluctuations in \gls{genetic drift} along branches and selection along sequences.
+This thesis also further emphasizes that the assumptions made on the structure of the fitness landscape have a critical importance in the sensitivity of changes in \gls{substitution} rates to changes in ecological ($\Ne$) or molecular variables (protein expression level).
+Conversely, empirical observations of the patterns of \glspl{substitution} in response to changes in molecular or ecological variables inform us about the underlying structure of the fitness landscape.
 
 Altogether, this work can be seen as a building block toward bridging phylogeny and population genetics.
 Constructing an integrated framework is theoretically possible but with a still limited scope so far.
-However, confronting the estimation of phylogenetic codon models and population-genetics approaches, for example, on the question of the rate of adaptive substitution, is a path forward toward an integrated view of protein-coding \acrshort{DNA} sequence evolution.
+However, confronting the estimation of phylogenetic \gls{codon} models and population-genetics approaches, for example, on the question of the rate of adaptive \gls{substitution}, is a path forward toward an integrated view of protein-coding \acrshort{DNA} sequence evolution.
 Finally, I believe this thesis is not providing disruptive results, but instead is consolidating theoretical models on which molecular evolution is based, and points out some of the pitfalls to avoid.

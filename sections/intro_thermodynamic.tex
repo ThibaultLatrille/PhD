@@ -2,18 +2,18 @@
 {\hypersetup{linkcolor=GREYDARK}\minitoc}
 \label{chap:intro-physic-proteins}
 
-The previous chapters introduced codon models and methodology for estimating parameters of mutation, selection and drift from empirical data, but remained elusive on the nature of the fitness landscape underlying proteins and did not question the causal determining factor for the strength of selection.
-This chapter will seek to clarify the relationship between phylogenetic codon models and biophysics of protein, such as to uncover the underlying properties of the selective pressures shaping protein-coding \acrshort{DNA} sequences.
-Consequently, this chapter will present works at the interface between phylogenetic codon models and protein biophysics, where both fields are corroborated and consolidated by the other.
+The previous chapters introduced \gls{codon} models and methodology for estimating parameters of mutation, selection and drift from empirical data, but remained elusive on the nature of the fitness landscape underlying proteins and did not question the causal determining factor for the strength of selection.
+This chapter will seek to clarify the relationship between phylogenetic \gls{codon} models and biophysics of protein, such as to uncover the underlying properties of the selective pressures shaping protein-coding \acrshort{DNA} sequences.
+Consequently, this chapter will present works at the interface between phylogenetic \gls{codon} models and protein biophysics, where both fields are corroborated and consolidated by the other.
 Within this interface, many questions arise regarding the compatibility and feedback between these fields.
-Are the predictions of biophysical models of protein evolution compatible and confirmed by the application of phylogenetic codon models on empirical data?
-Or the other way around, can phylogenetic codon models be informed by the underlying biophysics of proteins?
+Are the predictions of biophysical models of protein evolution compatible and confirmed by the application of phylogenetic \gls{codon} models on empirical data?
+Or the other way around, can phylogenetic \gls{codon} models be informed by the underlying biophysics of proteins?
 To answer such questions, the first section of this chapter will present the theoretical foundations of protein biophysics, focusing on protein stability imposed by structural constraints.
-Subsequently, the second section will present how these models can explain in part the observed variation of selective constraints across genes, across sites and across branches observed with classical codon models.
-Thirdly, moving from classical to mechanistic codon model, the next section will discuss how fitness landscapes estimated by mechanistic codon models can also be related to the underlying protein biophysics.
+Subsequently, the second section will present how these models can explain in part the observed variation of selective constraints across genes, across sites and across branches observed with classical \gls{codon} models.
+Thirdly, moving from classical to mechanistic \gls{codon} model, the next section will discuss how fitness landscapes estimated by mechanistic \gls{codon} models can also be related to the underlying protein biophysics.
 Finally, phylogenetic models augmented and incorporating the underlying biophysics are presented and the implication of such models is discussed.
 
-Several authors have adequately reviewed the interface between both fields from a broad perspective~\citep{Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}. This chapter, being aimed at evolutionary biologists familiar with phylogenetic codon models (already presented in chapter~\ref{chap:intro-codon-models}), addresses more specifically how such models fit within the prediction of protein biophysics.
+Several authors have adequately reviewed the interface between both fields from a broad perspective~\citep{Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}. This chapter, being aimed at evolutionary biologists familiar with phylogenetic \gls{codon} models (already presented in chapter~\ref{chap:intro-codon-models}), addresses more specifically how such models fit within the prediction of protein biophysics.
 
 % Also Sikosek T, Chan HS. 2014. Biophysics of protein evolution and evolutionary protein biophysics. J. R. Soc. Interface 11:20140419
 \section{The link between protein biophysics and molecular evolution}
@@ -97,7 +97,7 @@ Secondly, and more fundamentally, that it is an expectation of the mutation-sele
 These two explanations are not mutually incompatible, and can both explain the observed marginal stability of proteins.
 
 Furthermore, translation errors act like point mutations, with a fairly high translation error rate.
-They have measurable destabilizing effects in terms of $\EmpiricalDeltaDeltaG$, just like non-synonymous mutations.
+They have measurable destabilizing effects in terms of $\EmpiricalDeltaDeltaG$, just like \gls{non-synonymous} mutations.
 The fitness associated with a sequence variant at the \acrshort{DNA} level thus integrates the average effect of these destabilizing mutations induced at the translation level.
 For this reason, at mutation-selection equilibrium, the protein encoded at the \acrshort{DNA} level tends to have a more negative $\DeltaG$ than without error, as if to anticipate these additional destabilizing effects.
 
@@ -111,17 +111,17 @@ Moreover, even if $\DeltaG$ would be an additive trait, in the sense that each p
 The reason is that even if $\DeltaG$ is an additive trait, the log-fitness is still not a linear function of $\DeltaG$.
 The former case of site interdependence due to interacting terms is called specific epistasis, while the latter case of non-linearity of the fitness function is called by contrast non-specific epistasis.
 
-Formally, the relation between sequence ($\Seqi$) and log-fitness ($f$) is complex, and can be abstracted by an intermediate phenotype.
-In the specific case of conformational stability, the phenotype is the free energy gap, and the ternary relationship develops as:
+Formally, the relation between sequence ($\Seqi$) and log-fitness ($f$) is complex, and can be abstracted by an intermediate \gls{phenotype}.
+In the specific case of conformational stability, the \gls{phenotype} is the free energy gap, and the ternary relationship develops as:
 \begin{equation}
     \Seqi \rightarrow \DeltaG (\Seqi) \rightarrow f \left( \DeltaG \right).
 \end{equation}
-Withing this ternary relationship, the fitness effect of a mutation is site-specific in only one specific case, namely that the phenotype is additive and that the log-fitness is linear with the phenotype.
+Withing this ternary relationship, the fitness effect of a mutation is site-specific in only one specific case, namely that the \gls{phenotype} is additive and that the log-fitness is linear with the \gls{phenotype}.
 Whenever one of these two assumptions is not valid, the fitness effect of a mutation at a specific site depends on the overall sequence.
-This site interdependence represents a challenge for phylogenetic codons, generally not modelled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics}).
+This site interdependence represents a challenge for phylogenetic \glspl{codon}, generally not modelled explicitly with some exceptions (see section~\ref{sec:mechanistic-codon-biophysics}).
 
 Site interdependence has important consequences on molecular evolution  of protein sequences, and results in entrenchment and Stokes shifts~\citep{Pollock2012, Shah2015}
-Briefly speaking, even if a mutation is nearly-neutral upon fixation, subsequently fixed mutations on other sites make the original substitution more and more deleterious to revert over time~\citep{Lunzer2010, Naumenko2012, Mccandlish2013}.
+Briefly speaking, even if a mutation is \gls{nearly-neutral} upon fixation, subsequently fixed mutations on other sites make the original \gls{substitution} more and more deleterious to revert over time~\citep{Lunzer2010, Naumenko2012, Mccandlish2013}.
 
 \subsection{Aggregation avoidance}
 
@@ -132,13 +132,13 @@ The misinteraction avoidance hypothesis predicts that, compared with lowly expre
 \section{Confronting classical codon models with protein biophysics}
 \label{sec:classical-codon-biophysics}
 
-Application of phylogenetic codon models to empirical data has made it possible to infer the variation in the overall strength of the selective constraints across genes, sites, and branches.
+Application of phylogenetic \gls{codon} models to empirical data has made it possible to infer the variation in the overall strength of the selective constraints across genes, sites, and branches.
 These results have been interpreted in the light of the underlying biophysics.
 
 \subsection{Variation across genes}
 \label{subsec:thermo-variation-across-genes}
 
-Phylogenetic codon models can readily be applied to independent single-gene multiple-sequence alignments.
+Phylogenetic \gls{codon} models can readily be applied to independent single-gene multiple-sequence alignments.
 The $\dnds$ estimated for each gene can then be related to the selective constraints acting on the gene.
 As a result, increased availability of genomic data together with the advancement of computing resources and algorithms prompted an extensive search for the major determining factor of a gene's $\dnds$.
 Surprisingly, the functional importance of a protein, widely thought to approximate the level of functional constraint, has only a minor role, whereas protein expression level (mRNA concentration) is found to be a major determinant~\citep{Zhang2015}.
@@ -162,7 +162,7 @@ Similarly to the search for determining factors of $\dnds$ at the gene level, an
 The major determinant of site-specific $\dnds$ proved to be relative solvent accessibility (RSA), where sites with higher RSA display a lower $\dnds$~\citep{Ramsey2011}.
 It was later shown that the number of native inter-residue contacts formed by a protein site, which is negatively correlated with the RSA, is a stronger predictor of site-specific $\dnds$~\citep{Yeh2013}.
 
-The observations that surface residues of globular proteins undergo substitution more rapidly than those in the core is generally attributed to the fact that natural selection imposes stronger constraints on buried sites.
+The observations that surface residues of globular proteins undergo \gls{substitution} more rapidly than those in the core is generally attributed to the fact that natural selection imposes stronger constraints on buried sites.
 In fact, selection for protein stability induces stronger constraints on amino-acid residues located inside a protein structure (that is, core residues), which indeed have more central roles than surface residues in the protein's Gibbs free energy of folding.
 
 Altogether, $\dnds$ changes dramatically between exposed and buried sites in such a way that buried sites tend to evolve more slowly than exposed sites, compatible with models of selection for protein stability~\citep{Echave2016}.
@@ -170,7 +170,7 @@ Altogether, $\dnds$ changes dramatically between exposed and buried sites in suc
 \subsection{Variation across branches}
 \label{subsec:thermo-variation-across-branches}
 
-As already mentioned in chapter~\ref{chap:intro-historical}, the nearly-neutral theory predicts a lower $\dnds$ in species with a higher $\Ne$, due to a better purification of weakly deleterious mutants.
+As already mentioned in chapter~\ref{chap:intro-historical}, the \gls{nearly-neutral} theory predicts a lower $\dnds$ in species with a higher $\Ne$, due to a better purification of weakly deleterious mutants.
 Biophysical knowledge can be useful here to get more insight about the magnitude of the response of $\dnds$ to changes in $\Ne$.
 Surprisingly, under simple biophysically inspired models assuming that proteins are under selection for their thermodynamic stability, with fitness being proportional to the folded fraction, computational experiments have led to the observation that $\dnds$ is essentially independent of $\Ne$~\citep{Goldstein2013}.
 This observation has been explained by the equimutability of the free energy of folding, namely, that the distribution of changes in free energy of folding ($\EmpiricalDeltaDeltaG$) due to mutations is approximately independent of the current free energy ($\DeltaG$), a necessary and sufficient condition (under the condition that fitness is log-concave) to obtain independence between $\dnds$ and $\Ne$~\citep{Cherry1998}.
@@ -179,7 +179,7 @@ For example, if a protein sequence is already maximally stable, only destabilizi
 
 \subsection{Integrating several levels}
 
-Ultimately, studies presented in this section focus on the scaling of $\dnds$ to either protein abundance, or to effective population size, and also to relative solvent accessibility.
+Ultimately, studies presented in this section focus on the scaling of $\dnds$ to either protein abundance, or to \gls{effective population size}, and also to relative solvent accessibility.
 However, these various factors susceptible to modulate the $\dnds$ have been rarely investigated simultaneously.
 Why is $\dnds$ supposedly independent of $\Ne$ but depend on protein abundance?
 For example, is the relationship between $\dnds$ and either protein abundance or population size expected to be different?
@@ -193,14 +193,14 @@ I argue that some work is still needed toward a better integration and unificati
 \label{sec:mechanistic-codon-biophysics}
 
 In section~\ref{sec:classical-codon-biophysics}, I reviewed how the selective patterns inferred using classical models could then be confronted with insights from biophysics.
-In the case of mutation-selection codon models, on the other hand, knowledge obtained from biophysics can be more directly introduced into the model.
+In the case of mutation-selection \gls{codon} models, on the other hand, knowledge obtained from biophysics can be more directly introduced into the model.
 
 \subsection{Experimentally informed site-specific codon models}
 
 In an experimental context, it is possible to mutate the \acrshort{DNA} of an organism and establish an experiment where the mutant competes with the resident in a specific medium, and the difference in growth of the two variants allows to determine the fitness impact of the mutation.
 In the case of free-living unicellular organisms, such process can be automated to estimate selection coefficients of a wide variety of mutants, an experiment called deep mutational scanning.
 Technically, for each site of the protein, the fitness of the 20 amino acids can be experimentally determined and the resulting fitness landscape (also named preferences or fitness profile) can be estimated, as shown in figure~\ref{fig:intro-deep-mut-profile}.
-Such experimentally determined fitness landscapes are directly comparable to statistical estimates by phylogenetic codon models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
+Such experimentally determined fitness landscapes are directly comparable to statistical estimates by phylogenetic \gls{codon} models, under the assumption that the site-specific fitness landscape is kept constant along the phylogeny.
 \citet{Bloom2014,Bloom2014a} found that site-specific evolutionary models informed by experimentally determined profiles greatly outperformed non site-specific alternatives in fitting phylogenies of proteins, from humans, swine, equine, and avian influenza~\citep{Doud2015}.
 Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles to determine which site of the protein are sufficiently different from their phylogenetic counterpart to be considered under adaptation.
 
@@ -219,8 +219,8 @@ Moreover, \citet{Bloom2017} recruited experimentally determined fitness profiles
 
 It has long been realized that inter-residue interactions within proteins leads to amino-acid fixation probabilities that are dependent upon amino acids present at other sites.
 More generally, site-specific fixation probabilities may change along an evolutionary trajectory because the selection coefficient of a given mutation may depend on the specific sequence background in which it occurs~\citep{Goldstein2016}.
-However, both classical codon models and mechanistic codon models rely on the assumption of site independence, where each site of the protein is modelled as an independent Markov process.
-Accordingly, each site is considered separately, and defines an independent Markov substitution process along the branches of a tree.
+However, both classical \gls{codon} models and mechanistic \gls{codon} models rely on the assumption of site independence, where each site of the protein is modelled as an independent Markov process.
+Accordingly, each site is considered separately, and defines an independent Markov \gls{substitution} process along the branches of a tree.
 
 From a modelling and inference perspective, accounting for epistasis is challenging both in terms of parametrization and computational complexity~\citep{Manhart2014}.
 Means of relaxing this assumption have been pursued, usually with dependence introduced between a limited number of sites~\citep{Felsenstein1996}.
@@ -228,12 +228,12 @@ In particular, models explicitly treating protein structure and site interdepend
 
 Subsequently, methods to assess the statistical fit of such computationally complex models had been developed~\citep{Rodrigue2009}, as well as refinement of statistical potentials~\citep{Kleinman2010}.
 These structurally constrained models have been shown to fit data better than the corresponding models that ignore protein structure.
-However, some of the available site-specific phylogenetic codon models still better fit the data than structurally constrained models, possibly indicating that alternative models should be explored in order to better incorporate structural constraints and protein biophysics.
+However, some of the available site-specific phylogenetic \gls{codon} models still better fit the data than structurally constrained models, possibly indicating that alternative models should be explored in order to better incorporate structural constraints and protein biophysics.
 
-Alternatively, the assumption of site independence can be understood as considering that substitution processes at the level of sites are averaged over time, where the dependencies to other sites are integrated over the course of the process.
+Alternatively, the assumption of site independence can be understood as considering that \gls{substitution} processes at the level of sites are averaged over time, where the dependencies to other sites are integrated over the course of the process.
 As a result, statistical methods relying on site-specific processes while accounting for epistasis consist in obtaining the marginal process for a specific site, derived analytically from the joint process integrated over the other sites.
 Projecting a joint process of several sites into a single site process leverages mean-field theory developed in statistical physics, and has been used to develop phylogenetic models accounting for protein structure~\citep{Chi2018} and protein stability~\citep{Arenas2015a, Arenas2017}.
-Unfortunately, these methods are not parameterized directly in terms of parameters of evolution, namely mutation and effective population size, and the estimated fitness parameters cannot be related to empirically determined parameters.
+Unfortunately, these methods are not parameterized directly in terms of parameters of evolution, namely mutation and \gls{effective population size}, and the estimated fitness parameters cannot be related to empirically determined parameters.
 
 \section{General conclusions}
 
