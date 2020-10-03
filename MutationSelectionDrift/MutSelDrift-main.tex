@@ -2,7 +2,7 @@
 \label{sec:Introduction}
 
 Since the realization, by \citet{Zuckerkandl1965} that genetic sequences are informative about the evolutionary history of the species, molecular phylogenetics has developed into a mature and very active field.
-A broad array of models and inference methods have been developed, using DNA sequences for reconstructing the phylogenetic relationships among species~\citep{Felsenstein1981}, for estimating divergence times~\citep{Thorne2002}, or for reconstructing the genetic sequences of remote ancestors~\citep{Liberles2007}.
+A broad array of models and inference methods have been developed, using \acrshort{DNA} sequences for reconstructing the phylogenetic relationships among species~\citep{Felsenstein1981}, for estimating divergence times~\citep{Thorne2002}, or for reconstructing the genetic sequences of remote ancestors~\citep{Liberles2007}.
 However, genetic sequences might contain information about other aspects of the evolutionary history and, in particular, about past population-genetic regimes.
 
 Interspecific divergence is the long-term outcome of population-genetic processes, in which point mutations at the level of individuals are then subjected to selection and genetic drift, leading to substitutions at the level of the population.
@@ -98,7 +98,7 @@ In the case of non-synonymous mutations, the probability of fixation depends on 
 \end{equation}
 where $\Fit$ is a $20$-dimensional vector specifying the log-fitness for each amino acid, and $\aai$ is the amino acid encoded by codon $i$.
 
-In the model introduced here, $\Ne$ and $\mu$ are allowed to vary between species (across branches) as a multivariate log-Brownian process, but are assumed constant along the DNA sequence.
+In the model introduced here, $\Ne$ and $\mu$ are allowed to vary between species (across branches) as a multivariate log-Brownian process, but are assumed constant along the \acrshort{DNA} sequence.
 Conversely, amino-acid fitness profiles $\Fit$ are considered constant along the tree but are assumed to vary across sites, being modelled as iid random-effects from an unknown distribution estimated using a Dirichlet process prior.
 
 This model was implemented in a Markov chain Monte Carlo framework, allowing for joint inference of site-specific selection profiles and reconstruction of life-history traits and population-genetic regimes along the phylogeny.
@@ -214,7 +214,7 @@ On the other hand, and very importantly, epistasis, which is ignored by the infe
 We next applied our inference framework to a series of 4 empirical datasets spanning different taxnonomic groups within metazoans.
 As a first empirical case, we considered a dataset of 77 placental mammals, for which complete genome sequences and information about life-history traits is available.
 Placental mammals offer an interesting example, for which effective population size is likely to show substantial variation across lineages.
-This variation in $\Ne$ is expected to covary with life-history traits (LHTs), such that large-bodied species are expected to have smaller effective population sizes, compared to small-bodied species.
+This variation in $\Ne$ is expected to covary with life-history traits (\acrshort{LHT}s), such that large-bodied species are expected to have smaller effective population sizes, compared to small-bodied species.
 
 For computational reasons, we restricted our analyses to small concatenates made of 18 randomly sampled alignments of orthologous genes.
 To assess the reproducibility of our inference and check that the signal about variation in $\Ne$ is not driven by particular genes, we analysed 4 concatenated random samples of 18 genes.
@@ -238,15 +238,15 @@ In some cases, a decrease in $\Ne$ can be observed along an isolated branch of t
     \label{tab:mammals_correlation}
 \end{table}
 
-The estimated covariance matrix (table~\ref{tab:mammals_correlation}) gives a global synthetic picture about the patterns of covariation between the mutation rate per unit of time mu, the effective population size $\Ne$ and the three LHTs.
+The estimated covariance matrix (table~\ref{tab:mammals_correlation}) gives a global synthetic picture about the patterns of covariation between the mutation rate per unit of time mu, the effective population size $\Ne$ and the three \acrshort{LHT}s.
 First, the variation in $\mu$ across species is negatively correlated with variation in body mass, age at sexual maturity and longevity ($\rho=[-0.84, -0.83]$, table~\ref{tab:mammals_correlation}).
 These correlations, which were previously reported~\citep{Lartillot2012,Nabholz2013} probably reflect generation time effects~\citep{Amster2016}.
-Similarly, and more interestingly in the present context, the variation in $\Ne$ between species is also negatively correlated with LHTs ($\rho=[-0.54, -0.47]$, table~\ref{tab:mammals_correlation})
+Similarly, and more interestingly in the present context, the variation in $\Ne$ between species is also negatively correlated with \acrshort{LHT}s ($\rho=[-0.54, -0.47]$, table~\ref{tab:mammals_correlation})
 This is consistent with the expectation that small-sized and short-lived species tend to be characterized by larger effective population sizes~\citep{Romiguier2014}.
-Of note, these results mirror previous findings, based on classical codon models, showing that $\dnds$ tends to be positively correlated with LHTs~\citep{Lartillot2012,Nabholz2013,Figuet2017}.
-Finally, $\Ne$ and $\mu$ are positively correlated in their variation ($\rho = 0.44$), which might simply reflect the fact that both negatively correlate with LHTs.
-The partial-correlation coefficients (see definition section~\ref{subsec:partial-correlation-coefficient} and table~\ref{tab:table-partcor-mammals} in supplementary) between $\Ne$ and LHTs are not significantly different from 0.
-However, this might simply be due to the very strong correlation between the three LHTs considered here ($\rho=[0.81, 0.85]$), such that controlling for any one of them removes most of the signal contributed by the available empirical variation between species.
+Of note, these results mirror previous findings, based on classical codon models, showing that $\dnds$ tends to be positively correlated with \acrshort{LHT}s~\citep{Lartillot2012,Nabholz2013,Figuet2017}.
+Finally, $\Ne$ and $\mu$ are positively correlated in their variation ($\rho = 0.44$), which might simply reflect the fact that both negatively correlate with \acrshort{LHT}s.
+The partial-correlation coefficients (see definition section~\ref{subsec:partial-correlation-coefficient} and table~\ref{tab:table-partcor-mammals} in supplementary) between $\Ne$ and \acrshort{LHT}s are not significantly different from 0.
+However, this might simply be due to the very strong correlation between the three \acrshort{LHT}s considered here ($\rho=[0.81, 0.85]$), such that controlling for any one of them removes most of the signal contributed by the available empirical variation between species.
 
 Thus, altogether, the inferred trends in $\Ne$ across species appear to be as expected, based on considerations about life-history evolution.
 On the other hand, the total range of the inferred variation in $\Ne$ across the entire extant taxa is surprisingly narrow, with one order of magnitude ($9.2$) at most between high and low $\Ne$ (see table~\ref{tab:Ne-estimated-mammals} in supplementary).
@@ -254,7 +254,7 @@ This almost certainly represents an underestimate of the true range of variation
 
 As another case study, we analysed a group of isopod species that have made multiple independent transitions to subterranean environments.
 The transition from a terrestrial to a subterranean lifestyle is typically associated with a global life-history and ecological syndrome characterized by a loss of vision, longer generation times and, most interestingly, smaller population sizes, due to a lower carrying capacity of the subterranean environment~\citep{Capderrey2013}.
-Protein coding DNA sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphthalmia, or ocular) are available for these species~\citep{Eme2013,Saclier2018}.
+Protein coding \acrshort{DNA} sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphthalmia, or ocular) are available for these species~\citep{Eme2013,Saclier2018}.
 The assumption of a Brownian auto-correlated process for describing the changes in $\Ne$ along the tree may not be so well adapted to the present case, since the changes in $\Ne$ associated with the transition to a subterranean environment are likely to correspond to relatively sudden shifts, rather than continuous variation, and the ecological correlate (subterranean versus terrestrial) is not a quantitative trait.
 However, the dataset considered here contains independent transitions to a subterranean lifestyle, thus offering an opportunity to test for a potential correlation between inferred $\Ne$ variation and terrestrial versus subterranean lifestyles over the terminal branches.
 In our analysis across 4 concatenated random samples of 12 genes, we observe a reproducible (section~\ref{subsec:repeatability-of-experiments-isopods} in supplementary) and statistically significant reduction in $\Ne$ for underground or depigmented species, or for species with visual impairment (see figure~\ref{fig:isopods_correlation})
@@ -264,9 +264,9 @@ Again, the total range of the inferred variation in $\Ne$ across the entire exta
 % redonner ici une evaluation du range de variation à travers la phylogénie.
 
 Next, our empirical framework was also applied on a primate concatenate of genes~\citep{Brevet2019}.
-Reconstructed $\Ne$ and $\mu$ are also related to LHTs (mass, female maturity, generation time and longevity), and to synonymous diversity ($\ps$) and non-synonymous over synonymous diversity ($\pnps$).
+Reconstructed $\Ne$ and $\mu$ are also related to \acrshort{LHT}s (mass, female maturity, generation time and longevity), and to synonymous diversity ($\ps$) and non-synonymous over synonymous diversity ($\pnps$).
 These diversity estimates, obtained with polymorhism, are available for 10 species across the dataset, are expected to directly correlate with $\Ne$ according to population genetics~\citep{Eyre-walker2007, Galtier2016}.
-However, the correlation coefficient between $\Ne$ and $\ps$ or $\pnps$ are not statistically significant, nor with LHTs (section~\ref{sec:empirical-data-in-primates} in supplementary).
+However, the correlation coefficient between $\Ne$ and $\ps$ or $\pnps$ are not statistically significant, nor with \acrshort{LHT}s (section~\ref{sec:empirical-data-in-primates} in supplementary).
 Again, the total range of the inferred variation in $\Ne$ across the entire tree is narrow, with ratio of $6.4$ at most between high and low $\Ne$.
 This results contrasts with the finding of \citet{Brevet2019} on the same dataset based on $\dnds$-based codon models, where the estimated $\Ne$ was found to span several orders of magnitude, and correlated positively with $\ps$.
 
@@ -298,7 +298,7 @@ Finally, the total range of the inferred variation in $\Ne$ across the entire tr
 \label{sec:Discussion}
 % Summary 
 Mechanistic phylogenetic codon models explicitly model the substitution rates between codons as function of the mutation rates at the nucleotide level, selection over amino-acid sequences and effective population size.
-Thus far, the development of mutation-selection models of the HB family~\citep{Rodrigue2010, Tamuri2012} has mostly focussed on the question of fully accounting for the fine-scale modulations of selection between amino-acids and across sites~\citep{Rodrigue2010, Tamuri2012}.
+Thus far, the development of mutation-selection models of the \acrshort{HB} family~\citep{Rodrigue2010, Tamuri2012} has mostly focussed on the question of fully accounting for the fine-scale modulations of selection between amino-acids and across sites~\citep{Rodrigue2010, Tamuri2012}.
 However, the issue of the variation in the global population-genetic regime between species has received much less attention.
 In particular, effective population size ($\Ne$) is expected to vary substantially over the species of a given clade, yet current mutation-selection models all invariably assume $\Ne$ to be constant across the phylogeny.
 
@@ -325,7 +325,7 @@ However, inference conducted on alignments simulated under a Wright-Fisher model
 Second, $\mu$ and $\Ne$ could also be fluctuating along the genome~\citep{Gossmann2011,Ellegren2003,Eyre-Walker2014}.
 This assumption needs to be tested, though we expect that relaxing this assumption would not change drastically the magnitude of inferred $\Ne$ since some of this fluctuation should be absorbed by site-specific fitness profiles.
 
-Third, the DNA sequences could also be misaligned at some sites.
+Third, the \acrshort{DNA} sequences could also be misaligned at some sites.
 However we observe the same magnitude of inferred $\Ne$ for different set of genes indicating this might not be the primary reason.
 
 Fourth, the genes selected in our alignments could be under adaptive evolution, or their function could have changed.
@@ -345,7 +345,7 @@ Of note, these results do not necessarily imply that models based on biophysics 
 Instead, they might just betray that the response of the substitution process to changes in $\Ne$ may be sensitive to the exact quantitative details of the underlying fitness landscape.
 More work is probably needed here to characterize these exact conditions.
 Nevertheless, our simulation experiments suggest a global pattern: epistatic interactions induce a buffering of the response of the substitution process to changes in $\Ne$.
-The meaningful correlation patterns observed with LHTs in the case of placental mammals suggest that this buffering is not complete.
+The meaningful correlation patterns observed with \acrshort{LHT}s in the case of placental mammals suggest that this buffering is not complete.
 Nevertheless, ignoring epistatic interactions at the inference level appears to result in a substantial underestimation of the range over which $\Ne$ varies across species.
 
 Interestingly, the magnitude of the inferred range of $\Ne$ variation is similar for the placental than the primate datasets (x$9$ in mammals and x$6$ in primates), whereas we would have expected a much larger range of variation over the broader phylogenetic scale of placental mammals, compared to primates.
@@ -506,7 +506,7 @@ The duration of the branch~($\branchtime\branchexp$), for each branch $\Setbranc
 
 \subsection{Branch dependent traits}
 The effective population size $\Ne$ and mutation rate per unit of time $\mu$ are assumed to evolve along the phylogeny, and to be correlated.
-If quantitative life-history traits (\acrshort{LHT}) are also available for some nodes of the tree (leaves and/or internal nodes), they are also assumed to evolve along the phylogeny and to be correlated between them, and with $\Ne$ and $\mu$.
+If quantitative life-history traits (\acrshort{LHT}s) are also available for some nodes of the tree (leaves and/or internal nodes), they are also assumed to evolve along the phylogeny and to be correlated between them, and with $\Ne$ and $\mu$.
 The total number of traits (counting $\Ne$, $\mu$ and all user-defined LHT) is denoted $\Ntrait$.
 Their fluctuations are modelled by a $\Ntrait$-dimensional log-Brownian process $\Brownian\nodeexp$ at each node $\Setnode$ of the tree, including the root and leaves.
 The first dimension (indexed by $0$) of the log-Brownian contain $\Ne$, and the second dimension (indexed by $1$) contains $\mu$.
@@ -518,7 +518,7 @@ The log-Brownian process and variables of interest~($\mu$ and $\Ne$) are linked 
     \end{dcases}
 \end{equation}
 where the effective population size at the root is set to $1$ for identifiability of the fitness profiles.
-It is important to note that inferred correlation between $\Ne$, $\mu$ and other \acrshort{LHT} is thus in the log space, and that quantitative \acrshort{LHT} must be inputted in log scale.
+It is important to note that inferred correlation between $\Ne$, $\mu$ and other \acrshort{LHT}s is thus in the log space, and that quantitative \acrshort{LHT}s must be inputted in log scale.
 
 Along a branch $\Setbranch$ of the tree, a log-Brownian process starts at the oldest node at the tip of the branch~($\nodeUp$), and ends at the youngest node~($\nodeDown$).
 However we are interested in the average over the branch to define the codon substitution matrices along the branch.
@@ -703,6 +703,6 @@ The simulators written in \texttt{C++} are publicly available under MIT license 
 
 \subsection{Empirical data}
 In placental mammals, alignments are extracted from OrthoMam database~\citep{Ranwez2007,Scornavacca2019}.
-Only highly conserved coding sequences are kept for the analysis, representing 226 CDS with $\leq 1\%$ of gaps in the alignment.
-Life-history traits (\acrshort{LHT}) for longevity, age at maturity and weight were obtained from AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
+Only highly conserved coding sequences are kept for the analysis, representing 226 \acrshort{CDS} with $\leq 1\%$ of gaps in the alignment.
+Life-history traits (\acrshort{LHT}s) for longevity, age at maturity and weight were obtained from AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
 We focused our analysis on 77 taxa for which information is available for at least one \acrshort{LHT}.

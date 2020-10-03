@@ -247,12 +247,12 @@ Altogether, the substitution rates between codons $\submatrix_{\itoj}$, formaliz
 The model can be fitted by maximum likelihood.
 Then, from the estimate of $\widehat{\Mutmatrix}$, one can derive a nucleotide bias toward AT as:
 \begin{equation}
-    \widehat{\lambda}_{\text{MG}} = (\widehat{\mutequi_A} +\widehat{\mutequi_T}) /(\widehat{\mutequi_G} +\widehat{\mutequi_C}).\label{eq:lambda-R}
+    \widehat{\lambda}_{\text{\acrshort{MG}}} = (\widehat{\mutequi_A} +\widehat{\mutequi_T}) /(\widehat{\mutequi_G} +\widehat{\mutequi_C}).\label{eq:lambda-R}
 \end{equation}
-As for the mean strength of selection $\widehat{\avgpfix}_{\text{MG}}$, a direct estimate is given by $\widehat{\omega}$.
+As for the mean strength of selection $\widehat{\avgpfix}_{\text{\acrshort{MG}}}$, a direct estimate is given by $\widehat{\omega}$.
 
 As shown in the left panel of figure~\ref{fig:mut-bias-inference}, estimate of the mutational bias is halfway between the nucleotide bias observed in the alignment and the true mutational bias used during the simulation.
-Thus, the MG model cannot reliably infer the mutational bias.
+Thus, the \acrshort{MG} model cannot reliably infer the mutational bias.
 On the other hand, $\widehat{\omega}$ is close to the underlying mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 98.2\% (not shown).
 Thus, the failure to correctly estimate the mutation process does not seem to have a strong impact on the inference of selection, at least in the present case.
 
@@ -304,15 +304,15 @@ Altogether, the substitution rates between codons $\submatrix_{\itoj}$ are defin
 \end{equation}
 where $\aai$ is the amino acid encoded by codon $\ci$ and $\omega_{\aaSource, \aaTarget}$ is given by equation~\ref{eq:omega-reversible}.
 
-This mean-field (MF) model is fitted by maximum likelihood, giving an estimate for its parameters, $\widehat{\Mutmatrix}$, $\widehat{\AAExchan}$ and $\widehat{\AAEqui}$.
-Then, from the estimate of the GTR nucleotide matrix ($\widehat{\Mutmatrix}$), a mutation bias $\widehat{\lambda}_{\text{MF}}$ can be estimated as previously (equation~\ref{eq:lambda-R} above).
+This mean-field (\acrshort{MF}) model is fitted by maximum likelihood, giving an estimate for its parameters, $\widehat{\Mutmatrix}$, $\widehat{\AAExchan}$ and $\widehat{\AAEqui}$.
+Then, from the estimate of the \acrshort{GTR} nucleotide matrix ($\widehat{\Mutmatrix}$), a mutation bias $\widehat{\lambda}_{\text{\acrshort{MF}}}$ can be estimated as previously (equation~\ref{eq:lambda-R} above).
 
-As shown in the right panel of figure~\ref{fig:mut-bias-inference}, $\widehat{\lambda}_{\text{MF}}$ under the MF model provides an accurate estimate of the true mutational.
-In other words, the MF model can tease out the observed $\atgc$ bias of the alignment and the underlying mutational bias.
+As shown in the right panel of figure~\ref{fig:mut-bias-inference}, $\widehat{\lambda}_{\text{\acrshort{MF}}}$ under the \acrshort{MF} model provides an accurate estimate of the true mutational.
+In other words, the \acrshort{MF} model can tease out the observed $\atgc$ bias of the alignment and the underlying mutational bias.
 
-The mean scaled fixation probability of non-synonymous mutations $\widehat{\avgpfix}_{\text{MF}}$ can also be computed.
+The mean scaled fixation probability of non-synonymous mutations $\widehat{\avgpfix}_{\text{\acrshort{MF}}}$ can also be computed.
 It is now a compound parameter, expressed as a function of $\widehat{\Mutmatrix}$, $\widehat{\AAExchan}$ and $\widehat{\AAEqui}$ (see section~\ref{sec:mut-bias-mean-field-omega}).
-Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the true mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 97.0\% (not shown).
+Under this model, $\widehat{\avgpfix}_{\text{\acrshort{MF}}}$ is close to the true mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 97.0\% (not shown).
 
 \begin{figure}[htbp]
     \centering
@@ -321,12 +321,12 @@ Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the true mean sca
     Different estimates of the mutational bias in the vertical axis are represented as a function of the underlying true mutational bias ($\lambda$) of the simulation in the horizontal axis.
     Mutational bias can be estimated directly from the observed nucleotide frequencies in the alignment ($\atgc$ in blue solid line), similarly to figure~\ref{fig:mut-bias-AT-GC-obs}, which is skewed by selection and always less extreme than the underlying mutational bias.
     The robustness of mutational bias estimation of two different inference models are shown.
-    Selection is modelled as a single $\omega$ parameter in the Muse \& Gaut formalism (MG) in the left panel, while selection is modelled as a tensor of $\omega$ parameters in different directions using a mean-field (MF) approximation in the right panel.
+    Selection is modelled as a single $\omega$ parameter in the Muse \& Gaut formalism (\acrshort{MG}) in the left panel, while selection is modelled as a tensor of $\omega$ parameters in different directions using a mean-field (\acrshort{MF}) approximation in the right panel.
     In both panels, the true value of the mutational bias is represented in black solid line.
-    The estimated mutational bias $\widehat{\lambda}_{\text{MG}}$ (in yellow dotted line) in the MG formalism is between the true value and the observed $\atgc$.
-    Conversely, estimated mutational bias $\widehat{\lambda}_{\text{MG}}$ (in yellow dotted line) in the MF approximation equal to the underlying value.
-    Moreover, the expected $\widehat{\atgc}$ from the parameter of the model fits the observed value in the MF approximation, while being skewed in the MG formalism.
-    Altogether, the MF approximation can tease apart mutation and selection, while the MG formalism has to reach a compromise between observed $\atgc$ and underlying mutational bias.
+    The estimated mutational bias $\widehat{\lambda}_{\text{\acrshort{MG}}}$ (in yellow dotted line) in the \acrshort{MG} formalism is between the true value and the observed $\atgc$.
+    Conversely, estimated mutational bias $\widehat{\lambda}_{\text{\acrshort{MG}}}$ (in yellow dotted line) in the \acrshort{MF} approximation equal to the underlying value.
+    Moreover, the expected $\widehat{\atgc}$ from the parameter of the model fits the observed value in the \acrshort{MF} approximation, while being skewed in the \acrshort{MG} formalism.
+    Altogether, the \acrshort{MF} approximation can tease apart mutation and selection, while the \acrshort{MG} formalism has to reach a compromise between observed $\atgc$ and underlying mutational bias.
     }
     \label{fig:mut-bias-inference}
 \end{figure}
@@ -334,27 +334,27 @@ Under this model, $\widehat{\avgpfix}_{\text{MF}}$ is close to the true mean sca
 \subsection{Estimation of empirical sequence data}
 \label{subsec:estimation-of-empirical-sequence-data}
 
-The two alternative models of inference just considered, namely the classical Muse \& Gaut (MG) and the mean-field (MF) codon models, were then applied to empirical protein-coding sequence alignments.
+The two alternative models of inference just considered, namely the classical Muse \& Gaut (\acrshort{MG}) and the mean-field (\acrshort{MF}) codon models, were then applied to empirical protein-coding sequence alignments.
 Two examples were analysed: the nucleoprotein in \textit{Influenza Virus} assembled in \citet{Bloom2017}, and the $\beta$-lactamase in \textit{bacteria} gathered in \citet{Bloom2014}, as shown in table~\ref{tab:mut-bias-estimation}.
 
 The nucleoprotein alignment of 498 amino acids is available for 180 virus strains (as human host), and is globally biased toward AT.
 Similarly to what was observed in the simulation experiments presented above, the mutational bias estimates under the two codon models are greater than the observed nucleotide bias (i.e.~$1 < \atgc < \widehat{\lambda}$).
 This effect is, as previously, probably due to selection at the level of amino acids, partially opposing the mutational bias.
-More importantly, the mutational bias estimated by the MF model is more extreme than the MG estimate (i.e.~$1 < \widehat{\lambda}_{\text{MG}} < \widehat{\lambda}_{\text{MF}}$).
-This example behaves identically to the observations made with simulated alignments, where, compared to MG, the MF model estimates a stronger mutational bias, which was also closer to the real value.
-Thus, a reasonable interpretation is that MG is also underestimating the underlying mutational bias in the present case, and that the estimate of the MF model is more accurate.
+More importantly, the mutational bias estimated by the \acrshort{MF} model is more extreme than the \acrshort{MG} estimate (i.e.~$1 < \widehat{\lambda}_{\text{\acrshort{MG}}} < \widehat{\lambda}_{\text{\acrshort{MF}}}$).
+This example behaves identically to the observations made with simulated alignments, where, compared to \acrshort{MG}, the \acrshort{MF} model estimates a stronger mutational bias, which was also closer to the real value.
+Thus, a reasonable interpretation is that \acrshort{MG} is also underestimating the underlying mutational bias in the present case, and that the estimate of the \acrshort{MF} model is more accurate.
 
-Concerning selection, the estimated mean scaled fixation probability of non-synonymous mutations, denoted $\widehat{\avgpfix}$, is similarly estimated in the MG and MF models ($\widehat{\avgpfix}_{\text{MG}} \simeq \widehat{\avgpfix}_{\text{MF}}$).
-Additionally, in the MF model, $\widehat{\avgpfix}_{\text{MF}}$ can be restricted to mutations from weak nucleotides (AT) to strong (GC), or vice versa (see section~\ref{sec:mut-bias-mean-field-omega}).
+Concerning selection, the estimated mean scaled fixation probability of non-synonymous mutations, denoted $\widehat{\avgpfix}$, is similarly estimated in the \acrshort{MG} and \acrshort{MF} models ($\widehat{\avgpfix}_{\text{\acrshort{MG}}} \simeq \widehat{\avgpfix}_{\text{\acrshort{MF}}}$).
+Additionally, in the \acrshort{MF} model, $\widehat{\avgpfix}_{\text{\acrshort{MF}}}$ can be restricted to mutations from weak nucleotides (AT) to strong (GC), or vice versa (see section~\ref{sec:mut-bias-mean-field-omega}).
 We observe that under a mutational bias favouring AT (i.e.~$\lambda > 1$), the mean fixation probability of non-synonymous mutations is higher toward GC than toward AT (i.e.~$\widehat{\avgpfix}_{MF,\ATtoGC} > \widehat{\avgpfix}_{MF,\GCtoAT}$), as expected if the mutational bias is toward AT.
 
 Reciprocally, for the $\beta$-lactamase, the alignment of 263 amino acids available for 85 species is globally biased toward GC.
-Expectedly, the mean-field estimate is even more strongly biased toward GC (i.e.~$\widehat{\lambda}_{\text{MF}} < \atgc < 1$).
-Curiously, the MG model estimates a weaker underlying mutational bias than the observed bias (i.e.~$ \atgc < \widehat{\lambda}_{\text{MG}} < 1$).
+Expectedly, the mean-field estimate is even more strongly biased toward GC (i.e.~$\widehat{\lambda}_{\text{\acrshort{MF}}} < \atgc < 1$).
+Curiously, the \acrshort{MG} model estimates a weaker underlying mutational bias than the observed bias (i.e.~$ \atgc < \widehat{\lambda}_{\text{\acrshort{MG}}} < 1$).
 Concerning selection, we observe that the fixation probability of non-synonymous mutations is higher on average toward AT than toward GC (i.e.~$\widehat{\avgpfix}_{MF,\GCtoAT} > \widehat{\avgpfix}_{MF,\ATtoGC}$), again, as expected under a GC-biased mutation process.
 
 Altogether, the results obtained on empirical data are globally in agreement with the observations gathered from the simulation experiments, namely that the presence of a mutational bias results in a selection differential, taking the form of a slightly higher mean fixation probability of non-synonymous mutations opposing the mutational bias.
-Our MF model detects this effect and simultaneously estimates more extreme (and probably more accurate) mutational biases compared to the MG model.
+Our \acrshort{MF} model detects this effect and simultaneously estimates more extreme (and probably more accurate) mutational biases compared to the \acrshort{MG} model.
 
 \begin{table}[htbp]
     \centering
@@ -368,23 +368,23 @@ Our MF model detects this effect and simultaneously estimates more extreme (and 
         \hline \textbf{$\atgc$ at first coding position} & 1.06 & 0.58 \\
         \hline \textbf{$\atgc$ at second coding position} & 1.22 & 1.18 \\
         \hline \textbf{$\atgc$ at third coding position} & 1.19 & 0.71 \\
-        \hline \textbf{Muse \& Gaut mutational bias ($\widehat{\lambda}_{\text{MG}}$)} & 1.39 & 0.85 \\
-        \hline \textbf{Mean-field mutational bias ($\widehat{\lambda}_{\text{MF}}$)} & 1.64 & 0.68 \\
+        \hline \textbf{Muse \& Gaut mutational bias ($\widehat{\lambda}_{\text{\acrshort{MG}}}$)} & 1.39 & 0.85 \\
+        \hline \textbf{Mean-field mutational bias ($\widehat{\lambda}_{\text{\acrshort{MF}}}$)} & 1.64 & 0.68 \\
         \hline \textbf{Site diversity} & 1.10 & 1.37 \\
-        \hline \textbf{Muse \& Gaut scaled fixation probability ($\widehat{\avgpfix}_{\text{MG}}$)} & 0.085 & 0.29 \\
-        \hline \textbf{Mean-field scaled fixation probability ($\widehat{\avgpfix}_{\text{MF}}$)} & 0.086 & 0.30 \\
+        \hline \textbf{Muse \& Gaut scaled fixation probability ($\widehat{\avgpfix}_{\text{\acrshort{MG}}}$)} & 0.085 & 0.29 \\
+        \hline \textbf{Mean-field scaled fixation probability ($\widehat{\avgpfix}_{\text{\acrshort{MF}}}$)} & 0.086 & 0.30 \\
         \hline \textbf{Mean-field scaled fixation probability} & \multirow{2}{*}{0.14} & \multirow{2}{*}{0.31} \\
-        \textbf{from AT to GC ($\widehat{\avgpfix}_{\text{MF},\ATtoGC}$)} & & \\
+        \textbf{from AT to GC ($\widehat{\avgpfix}_{\text{\acrshort{MF}},\ATtoGC}$)} & & \\
         \hline \textbf{Mean-field scaled fixation probability} & \multirow{2}{*}{0.10} & \multirow{2}{*}{0.44} \\
-        \textbf{from GC to AT ($\widehat{\avgpfix}_{\text{MF},\GCtoAT}$)} & & \\
-        \hline \textbf{$\widehat{\avgpfix}_{\text{MF},\ATtoGC} / \widehat{\avgpfix}_{\text{MF},\GCtoAT}$ } & 1.36 & 0.71 \\
+        \textbf{from GC to AT ($\widehat{\avgpfix}_{\text{\acrshort{MF}},\GCtoAT}$)} & & \\
+        \hline \textbf{$\widehat{\avgpfix}_{\text{\acrshort{MF}},\ATtoGC} / \widehat{\avgpfix}_{\text{\acrshort{MF}},\GCtoAT}$ } & 1.36 & 0.71 \\
         \hline
     \end{tabu}}
     \caption[Estimated parameters]{
-    Estimated parameters of mutational bias ($\widehat{\lambda}$) from two models of inference, namely classical Muse \& Gaut (MG) and mean-field (MF).
-    These models are applied to two distinct datasets of protein-coding DNA alignment, nucleoprotein in the left column and $\beta$-lactamase in the right column.
-    By taking into account selection in multiple direction, MG models estimates a stronger mutational bias than the MG model.
-    For the MG model the mean scaled fixation probability of non-synonymous mutations ($\widehat{\avgpfix}_{MF}$) can be obtained either from weak (AT) to strong nucleotides (GC), or vice versa.
+    Estimated parameters of mutational bias ($\widehat{\lambda}$) from two models of inference, namely classical Muse \& Gaut (\acrshort{MG}) and mean-field (\acrshort{MF}).
+    These models are applied to two distinct datasets of protein-coding \acrshort{DNA} alignment, nucleoprotein in the left column and $\beta$-lactamase in the right column.
+    By taking into account selection in multiple direction, \acrshort{MG} models estimates a stronger mutational bias than the \acrshort{MG} model.
+    For the \acrshort{MG} model the mean scaled fixation probability of non-synonymous mutations ($\widehat{\avgpfix}_{MF}$) can be obtained either from weak (AT) to strong nucleotides (GC), or vice versa.
     The fixation probability of non-synonymous mutations is opposed to the underlying mutational bias, such that a skewed mutational process results in a skewed selection, justifying that they must be articulated together.
     }
     \label{tab:mut-bias-estimation}
@@ -393,7 +393,7 @@ Our MF model detects this effect and simultaneously estimates more extreme (and 
 
 \section{Discussion}\label{sec:discussion}
 
-In protein-coding DNA sequences, the nucleic composition results from a subtle interplay between mutation at the nucleic level and selection at the protein level.
+In protein-coding \acrshort{DNA} sequences, the nucleic composition results from a subtle interplay between mutation at the nucleic level and selection at the protein level.
 As a result, the observed nucleotide bias in the alignment is different from the underlying mutational bias.
 
 However, current parametric codon models are inherently misspecified and, for that reason, are unable to tease apart these opposing effects of mutation and selection correctly.
@@ -412,13 +412,13 @@ This work first points to a fundamental property of natural genetic sequences, n
 In the specific case highlighted in this work, mutational bias at the nucleotide-level results in suboptimal amino-acid being overrepresented in the sequence.
 This was pointed out previous~\citep{Singer2000}, although never directly formalized in the context of a phylogenetic codon model.
 
-One important consequence of this tradeoff between mutation and selection at equilibrium is that the observed higher mean fixation probability toward GC is mimicking the effect of biased gene conversion toward GC (gBGC), although unlike gBGC, the phenomenon described here corresponds to a genuine selective effect.
+One important consequence of this tradeoff between mutation and selection at equilibrium is that the observed higher mean fixation probability toward GC is mimicking the effect of biased gene conversion toward GC (\acrshort{gBGC}), although unlike \acrshort{gBGC}, the phenomenon described here corresponds to a genuine selective effect.
 Although we did not explore the consequences of this at the level of intra-specific polymorphism, the selection differential uncovered here also implies that the distribution of fitness effects is not the same in the two directions, either toward AT or toward GC.
 Specifically, in the presence of an AT-biased mutation process, the non-synonymous GC polymorphisms are expected to segregate at higher frequencies, compared to non-synonymous AT polymorphisms.
 
 These observations have some practical implications: for instance, experiments observing a fixation (or segregation) bias toward GC at the non-synonymous level must also rule out that this fixation bias is not the simple consequence of the mutation-selection balance.
-More generally, our observations and modelling principles offer a useful preliminary basis to better understand how mutation and selection will work together with biased gene conversion (gBGC), and therefore will help better understand of how gBGC will impact both nucleotide composition and the $\dnds$.
-It worth mentioning that in our result, we focused on the fixation probability from AT to GC ($\avgpfix_{\ATtoGC}$) because of the relationship to gBGC.
+More generally, our observations and modelling principles offer a useful preliminary basis to better understand how mutation and selection will work together with biased gene conversion (\acrshort{gBGC}), and therefore will help better understand of how \acrshort{gBGC} will impact both nucleotide composition and the $\dnds$.
+It worth mentioning that in our result, we focused on the fixation probability from AT to GC ($\avgpfix_{\ATtoGC}$) because of the relationship to \acrshort{gBGC}.
 However, in practice, the same analysis and methods can be applied to any subset of nucleotides or codons.
 
 Our mean-field parametric model uses gene-level parameters (in the form of a tensor) that is meant to capture the mean scaled fixation probabilities.
@@ -432,7 +432,7 @@ Altogether, we believe that the approach used here could be applied more general
 Finally, this work is still preliminary, and the mean-field model should be tested against a more diverse range of empirical data, in terms of phylogenetic depth, strength of selection, codon usage bias to assert for the validity of our empirical results.
 Also, the empirical fit to the data between the models (e.g.~using AIC) should be more carefully examined.
 Indeed, by setting $\AAEqui = \vecOne$ and $\AAExchan = \omega \times \vecOne$ in our mean-field models, we retrieve the nested Muse \& Gaut model, hence both models are directly comparable.
-In addition, several other codon models~\citep{Rodrigue2008a,KosakovskyPond2020} should be included in a broader comparison of the accuracy of the estimation of the underlying mutational bias and strength of selection on protein-coding DNA sequences.
+In addition, several other codon models~\citep{Rodrigue2008a,KosakovskyPond2020} should be included in a broader comparison of the accuracy of the estimation of the underlying mutational bias and strength of selection on protein-coding \acrshort{DNA} sequences.
 
 
 \section{Materials \& Methods}
@@ -598,10 +598,10 @@ As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the sour
 
 \subsection{Mean scaled fixation probability (\texorpdfstring{$\avgpfix$}{ν}) under the mean-field model}
 \label{sec:mut-bias-mean-field-omega}
-The mean-field model is parameterized by a GTR mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\UniDimArray{\omega}(\AAExchan, \AAEqui)$.
+The mean-field model is parameterized by a \acrshort{GTR} mutation matrix $\Mutmatrix(\Mutequi, \Exchan)$ and the selection coefficient $\UniDimArray{\omega}(\AAExchan, \AAEqui)$.
 As a result, the mean scaled fixation probability of non-synonymous mutations is:
 \begin{align}
-    \avgpfix_{\text{MF}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
+    \avgpfix_{\text{\acrshort{MF}}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} Q_{\itoj}}{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \setNonSynNeighbors} \mu_{\itoj}}, \\
     & = \dfrac{ \sum\limits\sumOverCodons \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj} \AAequi_{\aaj} \AAexchan_{\aai, \aaj} }{\sum\limits\sumOverCodons \left[\prod\limits_{k \in \{ 1, 2, 3 \}} \mutequi_{\ci[k]}\right] \AAequi_{\aai} \sum\limits_{\cj \in \setNonSynNeighbors} \mutmatrix_{\nucitoj}},
 \end{align}
 where $\ci[k]$ denotes the nucleotide at position $k \in \{ 1, 2, 3 \}$ of codon $i$.

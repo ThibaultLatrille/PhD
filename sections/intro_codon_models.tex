@@ -503,7 +503,7 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015}, 
         $\dnds$ & Ratio of non-synonymous over synonymous substitution rate. \\ \hline
         $\avgpfix$ & Mean scaled fixation probability of non-synonymous mutations. \\ \hline
         \multirow{2}{*}{$\omega$} & Scaling factor for all non-synonymous substitutions in the \citet{Muse1994} formalism. \\
-        & Also, $\avgpfix_{\text{MG}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
+        & Also, $\avgpfix_{\text{\acrshort{MG}}}=\omega$ in the Muse \& Gaut formalism. \\ \hline
         $\omega_0$ & Induced $\avgpfix_{\text{HB}}$ in the \citet{Halpern1998} mechanistic formalism. \\ \hline
         $\omega_*$ & Scaling factor for all non-synonymous substitutions in the \citet{Halpern1998} formalism. \\ \hline
     \end{tabu}}
@@ -516,9 +516,9 @@ This point was explored in detail by \citet{Spielman2015}, \citet{DosReis2015}, 
 
 Once fitted to the data, the classical Muse \& Gaut (\acrshort{MG}) formalism returns estimates of mutation rates and $\omega$ (see subsection~\ref{subsec:MG-formalism}).
 From there, one can compute the substitution and mutation rates of each codon substitution.
-Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{MG}}$ at stationarity:
+Using equation~\ref{eq:relative-sub-rate} on the subset of non-synonymous mutations thus gives $\avgpfix_{\text{\acrshort{MG}}}$ at stationarity:
 \begin{align}
-    \avgpfix_{\text{MG}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
+    \avgpfix_{\text{\acrshort{MG}}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \omega \mu_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
     & = \omega,
 \end{align}
