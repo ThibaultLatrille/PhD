@@ -84,7 +84,7 @@ Thus, ultimately, the stringency of selection increase with decreasing $\alpha$.
 Altogether, the two parameters of the model tune the mutation bias ($\lambda$) and the stringency of selection ($\alpha$), respectively, as depicted in figure~\ref{fig:mut-bias-parameters}.
 All simulations are obtained using the same underlying topology of 180 species and 498 \gls{codon} sites.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth] {parameters}
     \caption[Parameters of the mutation-selection model]{
@@ -102,7 +102,7 @@ This observed nucleotide bias can be computed separately for each coding positio
 As can be seen from figure~\ref{fig:mut-bias-AT-GC-obs}, the third position of \glspl{codon} reflects the underlying mutational bias quite faithfully, while the first and second positions are impacted by the strength of selection and display nucleotide biases that are less extreme than the one implied by the mutational process.
 This differential effect across the three coding positions is explained by nucleotide mutations at the third \gls{codon} position being more often \gls{synonymous}, while mutations at the first and second positions are more often changing the amino-acid and are thus more often under purifying selection.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{at_over_gc_1}
@@ -141,7 +141,7 @@ Imposing a stronger mutational bias (either toward AT or toward GC) greatly redu
 This shows that the composition in amino acids is highly dependent on the underlying mutational bias, but also, that a more extreme mutational bias results in a more constrained \gls{substitution} process: in effect, under a strong mutational bias, only those amino-acids that have both a high fitness and \glspl{codon} enriched in the nucleotides favored by the mutational process are eventually observed.
 This effect is less visible whenever selection is more stringent (i.e.~with decreasing $\alpha$), but can still be observed even for stringent selection.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \begin{minipage}{0.49\linewidth}
         \includegraphics[width=\linewidth, page=1]{site_diversity_aa}
@@ -180,7 +180,7 @@ As a result, the ratio ratio between $\avgpfix_{\ATtoGC}$ and $\avgpfix_{\ATtoGC
 It is monotonously increasing with the mutational bias toward AT (i.e.~with increasing $\lambda$, figure~\ref{fig:mut-bias-omega-WS}, panel C).
 Altogether, fixation probabilities are opposed to mutational bias, and the realized equilibrium frequencies are thus at an equilibrium point between these two opposing forces.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{omega}
@@ -216,7 +216,7 @@ To address this question, here we consider two \gls{codon} models for inference,
 Both are homogeneous along the sequence (i.e.~not site-specific).
 The first is based on \citet{Muse1994} formalism and uses a scalar $\omega$ parameter, while the second is based on a tensor representation of $\omega$.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth, page=1] {pipeline}
     \caption[Inferred value compared to known value]{
@@ -314,7 +314,7 @@ The mean scaled fixation probability of \gls{non-synonymous} mutations $\widehat
 It is now a compound parameter, expressed as a function of $\widehat{\Mutmatrix}$, $\widehat{\AAExchan}$ and $\widehat{\AAEqui}$ (see section~\ref{sec:mut-bias-mean-field-omega}).
 Under this model, $\widehat{\avgpfix}_{\text{\acrshort{MF}}}$ is close to the true mean scaled fixation probability $\avgpfix$ computed during the simulation, with a precision of 97.0\% (not shown).
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth] {Simulation-vs-Inference}
     \caption[Estimation of mutational bias]{
@@ -356,7 +356,7 @@ Concerning selection, we observe that the fixation probability of \gls{non-synon
 Altogether, the results obtained on empirical data are globally in agreement with the observations gathered from the simulation experiments, namely that the presence of a mutational bias results in a selection differential, taking the form of a slightly higher mean fixation probability of \gls{non-synonymous} mutations opposing the mutational bias.
 Our \acrshort{MF} model detects this effect and simultaneously estimates more extreme (and probably more accurate) mutational biases compared to the \acrshort{MG} model.
 
-\begin{table}[htbp]
+\begin{table}[h]
     \centering
     \noindent\adjustbox{max width=\textwidth}{%
     \begin{tabu}{|c||c|c|}
