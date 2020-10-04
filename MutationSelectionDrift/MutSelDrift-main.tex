@@ -13,37 +13,37 @@ Combined together, genetic and phenotypic ancestral reconstructions can then be 
 
 Practically, in order to disentangle mutation, selection and \gls{genetic drift}, we need to classify individual \glspl{substitution} into different categories, differing in the strength of mutation, selection or \gls{genetic drift}.
 In protein-coding \acrshort{DNA} sequences, the mutational process occurs at the nucleotide level.
-Assuming that \gls{synonymous} mutations are selectively \gls{neutral} and that selection mostly acts at the protein level, \gls{synonymous} \glspl{substitution} can be used to infer the pattern of mutationS, without any interference contributed by selection.
+Assuming that \gls{synonymous} mutations are selectively \gls{neutral} and that selection mostly acts at the protein level, \gls{synonymous} \glspl{substitution} can be used to infer the patterns of mutation, without any interference contributed by selection.
 Then, by comparing the \gls{non-synonymous} \gls{substitution} rate relative to the \gls{synonymous} \gls{substitution} rate (the ratio $\dnds$), one can estimate the global strength of selection acting on proteins.
 This idea was formalized using phylogenetic \gls{codon} models~\citep{Muse1994,Goldman1994}.
 This led to a broad range of applications, either to detect proteins under adaptive selection~\citep{Kosiol2008}, or to measure the modulations of the strength of purifying selection between sites~\citep{Echave2016}, genes~\citep{Zhang2015}, or lineages~\citep{Lartillot2011}.
 
 Concerning variation in $\dnds$ between lineages, and in a context mostly characterized by purifying selection, the \gls{nearly-neutral} theory predicts that changes in the global strength of selection (measured as $\dnds$) is related to changes in the relative strength of \gls{genetic drift}, which is in turn mediated by changes in \gls{effective population size} ($\Ne$)~\citep{Ohta1992}.
-Mechanistically, population with high $\Ne$ are characterized by more efficient purifying selection against mildly deleterious mutations, resulting in lower $\dnds$~\citep{Kimura1979, Welch2008}.
+Mechanistically, populations with high $\Ne$ are characterized by more efficient purifying selection against mildly deleterious mutations, resulting in lower $\dnds$~\citep{Kimura1979, Welch2008}.
 
-Codon models have been used to empirically measure such changes in the efficacy of purifying selection along phylogenies, either by allowing for different $\dnds$ values in different parts of the tree~\citep{Dutheil2012}, or by estimating a $\dnds$ independently for every branch of the tree~\citep{Popadin2007}.
-Alternatively, the $\dnds$ can be modelled as a continuous trait, varying along the phylogeny as a stochastic process, splitting at each node of the tree into independent processes~\citep{Seo2004}.
+Codon models have been used to empirically measure such changes in the efficacy of purifying selection along phylogenies, either by allowing for different $\dnds$ values in different parts of the tree~\citep{Dutheil2012}, or by estimating $\dnds$ independently for every branch of the tree~\citep{Popadin2007}.
+Alternatively, $\dnds$ can be modelled as a continuous trait, varying along the phylogeny as a stochastic process, splitting at each node of the tree into independent processes~\citep{Seo2004}.
 Once empirical estimates of the variation in $\dnds$ between lineages or groups has been obtained, these can be compared to changes in $\Ne$ across lineages, so as to test the validity of the predictions of the \gls{nearly-neutral} theory.
-Independent empirical estimation of $\Ne$ is usually done vie proxies, such as \gls{neutral} diversity within species~\citep{Galtier2016}, or such as life-history traits.
+Independent empirical estimation of $\Ne$ is usually done vie proxies, such as the \gls{neutral} diversity within species~\citep{Galtier2016}, or as life-history traits.
 For instance, animal species characterized by a large body size or an extended longevity are typically expected to also have a low $\Ne$~\citep{Romiguier2014}.
-Alternatively, a Bayesian integrative framework has been proposed~\citep{Lartillot2011}, in which the joint variation in $\dnds$ and in life-history traits or other proxies of $\Ne$ is modelled as a multivariate Brownian process, with a variance-covariance matrix capturing the signal about their correlated evolution.
+Alternatively, a Bayesian integrative framework has been proposed~\citep{Lartillot2011}, in which the joint variation in $\dnds$ and in life-history traits or other proxies of $\Ne$ is modelled as a multivariate Brownian process, with a variance-covariance matrix capturing the signal of their correlated evolution.
 
 Analyses using these approaches and these proxies of $\Ne$ have suggested a negative correlation between $\dnds$ and $\Ne$~\citep{Popadin2007, Lanfear2010, Lartillot2011, Lartillot2012, Romiguier2014, Figuet2017}, thus confirming the theoretical prediction of the \gls{nearly-neutral} theory.
-However, the universality and robustness of these correlations is still debated~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}, and further investigation might be required.
+However, the universality and robustness of the correlation between $\dnds$ and $\Ne$ is still debated~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}, and further investigation might be required.
 Moreover, these analyses do not explicitly formalize the quantitative relationship between $\Ne$ and $\dnds$.
-This relation is in principle dependent on the underlying fitness landscape~\citep{Welch2008}, and can show complicated behaviors due to non-equilibrium properties~\citep{Jones2016}.
-These questions could be addressed in the context of a mechanistic modeling approach.
+This relation is in principle dependent on the underlying fitness landscape~\citep{Welch2008}, and can show complicated behavior due to non-equilibrium properties~\citep{Jones2016}.
+These questions could be addressed in the context of a mechanistic modelling approach.
 
 As an alternative to classical $\dnds$-based \gls{codon} models, mechanistic \gls{codon} models explicitly introduce population genetic equations into the \gls{codon} \gls{substitution} process~\citep{Halpern1998}.
-Specifically, these so-called mutation-selection \gls{codon} models explicitly assign a fitness parameter to each amino-acid.
+Specifically, these so-called mutation-selection \gls{codon} models explicitly assign a fitness parameter to each amino acid.
 As a result, the \gls{substitution} rate between each pair of \glspl{codon} can be predicted, as the product of the mutation rate and the fixation probability of the new \gls{codon}, which is in turn dependent on the fitness of the initial and the final \glspl{codon}.
-Since the strength of selection is typically not homogeneous along the protein sequence, and depends on the local physicochemical requirements~\citep{Echave2016, Goldstein2016,Goldstein2017}, local changes in selective strength is usually taken into account by allowing for site-specific amino-acid fitness profiles.
+Since the strength of selection is typically not homogeneous along the protein sequence, and depends on the local physicochemical requirements~\citep{Echave2016, Goldstein2016,Goldstein2017}, local changes in selective strength are usually taken into account by allowing for site-specific amino-acid fitness profiles.
 The sparsity of signal per \gls{codon} site, however, requires to aggregate sites in categories, such as to gather enough signal for each amino-acid fitness profile.
 Conversely, the category assigned to each site is chosen such that the sites aggregated into the same category share patterns of selection and hopefully the same physicochemical properties.
 Site-specific amino-acid preferences are typically estimated either by penalized maximum likelihood~\citep{Tamuri2012,Tamuri2014}, or in a Bayesian context, using an infinite mixture based on a \gls{Dirichlet process} prior~\citep{Rodrigue2010,Rodrigue2014}.
 This second approach is further considered below.
 
-Moreover, this formalism induces an equilibrium $\dnds$, theoretically lower than $1$ and modelling explicitly purifying selection model~\citep{Spielman2015, DosReis2015}.
+Moreover, this formalism induces an equilibrium $\dnds$, theoretically lower than $1$, explicitly modelling purifying selection~\citep{Spielman2015, DosReis2015}.
 This $\dnds$ induced by the mutation-selection \gls{codon} models proved to be a valuable null (\gls{nearly-neutral}) model, against which to compare the observed $\dnds$ by classical \gls{codon} models, such as to test for the presence of adaptation~\citep{Rodrigue2016}.
 
 However, these mutation-selection methods have so far assumed the strength of \gls{genetic drift}, or equivalently $\Ne$, to be constant across the phylogeny.
@@ -55,39 +55,40 @@ Conversely, since the mutation-selection formalism explicitly incorporates $\Ne$
 Doing this would then provide an occasion to address several important questions: do we have enough signal in empirical sequence alignments, to estimate the evolutionary history of $\Ne$ along a phylogeny?
 Can we more generally revisit the question of the empirical correlations between $\Ne$ and ecological life-history traits (longevity, maturity, weight, size, $\hdots$), previously explored using classical $\dnds$ based models, but now in the context of this mechanistic framework?
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth] {model_summary.pdf}
+	\caption[Model summary]{
+		Model summary.
+		Panel A.
+		Our method requires a given rooted topology, and an alignment of protein-coding \acrshort{DNA} for the extant species.
+		Optionally, the method can use quantitative life-history traits at the leaves of the tree, and dated estimation for the internal nodes of the tree.
+		Panel B.
+		Our Bayesian inference model estimates selection coefficients, mutation rate, intensity of \gls{genetic drift} and the age of the internal nodes.
+		Effective population since~($\Ne$) and mutation rate per unit of time~($\mu$) are considered fluctuating branch-wise, but assumed constant across all sites of the \acrshort{DNA} sequence.
+		Conversely, the selection coefficient of amino acids are considered changing for sites along the \acrshort{DNA} sequence, but are considered constant across the tree.
+		Branch heterogeneity is modelled as an auto-correlated log-Brownian process, meaning our model estimates correlation coefficients between quantitative traits (as input), $\Ne$, and $\mu$, where phylogenetic inertia is accounted for.
+		\Gls{synonymous} \glspl{substitution} are leveraged to estimates branch-wise mutation rate~($\mu$).
+		Site-specific rates of \gls{non-synonymous} \glspl{substitution} across the tree is leveraged to estimate site-wise selection coefficient~($\Fit$).
+		Branch-specific rates of \gls{non-synonymous} \glspl{substitution} across the sequence is leveraged to estimate branch-wise genetic drift~($\Ne$).
+	}
+	\label{fig:modelSummary}
+\end{figure}
+
 
 \section{New approaches}
 \label{sec:NewApproaches}
 
-To address these questions, here we introduce a variant of the mutation-selection \gls{codon} models, in which selection is modulated along the sequence (using site-specific amino-acid profiles), while the mutation rate ($\mu$), the \gls{effective population size} ($\Ne$) and life-history traits are allowed to vary along the phylogeny (figure~\ref{fig:modelSummary}).
-Methodologically, our model is fundamentally an integration between the bayesian non-parametric version of the \citet{Halpern1998} mutation-selection model~\citep{Rodrigue2014}, and the molecular comparative framework modelling the joint evolution of life-history and molecular traits~\citep{Lartillot2011}.
+To address these questions, here we introduce a variant of the mutation-selection \gls{codon} model, in which selection is modulated along the sequence (using site-specific amino-acid profiles), while the mutation rate ($\mu$), the \gls{effective population size} ($\Ne$) and life-history traits are allowed to vary along the phylogeny (figure~\ref{fig:modelSummary}).
+Methodologically, our model is fundamentally an integration between the Bayesian non-parametric version of the \citet{Halpern1998} mutation-selection model~\citep{Rodrigue2014}, and the molecular comparative framework modelling the joint evolution of life-history and molecular traits~\citep{Lartillot2011}.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth] {model_summary.pdf}
-    \caption[Model summary]{
-    Model summary.
-    Panel A.
-    Our method requires a given rooted topology, and an alignment of protein-coding \acrshort{DNA} for the extant species.
-    Optionally, the method can use quantitative life-history traits at the leaves of the tree, and dated estimation for the internal nodes of the tree.
-    Panel B.
-    Our Bayesian inference model estimates selection coefficients, mutation rate, intensity of \gls{genetic drift} and the age of the internal nodes.
-    Effective population since~($\Ne$) and mutation rate per unit of time~($\mu$) are considered fluctuating branch-wise, but assumed constant across all sites of the \acrshort{DNA} sequence.
-    Conversely, the selection coefficient of amino acids are considered changing for sites along the \acrshort{DNA} sequence, but are considered constant across the tree.
-    Branch heterogeneity is modelled as an auto-correlated log-Brownian process, meaning our model estimates correlation coefficients between quantitative traits (as input), $\Ne$, and $\mu$, where phylogenetic inertia is accounted for.
-    \Gls{synonymous} \glspl{substitution} are leveraged to estimates branch-wise mutation rate~($\mu$).
-    Site-specific rates of \gls{non-synonymous} \glspl{substitution} across the tree is leveraged to estimate site-wise selection coefficient~($\Fit$).
-    Branch-specific rates of \gls{non-synonymous} \glspl{substitution} across the sequence is leveraged to estimate branch-wise genetic drift~($\Ne$).
-    }
-    \label{fig:modelSummary}
-\end{figure}
 
 Formally, the \gls{substitution} rate (per unit of time) from \gls{codon} $\ci$ to $\cj$, denoted $\submatrix_{\itoj}$, is equal to the total rate of mutation (per unit of time) at the level of the population~($2\Ne\mu_{\itoj}$) multiplied by the probability of fixation of the mutation $\pfix(\itoj)$:
 \begin{equation}
 {\submatrix_{\itoj}}
     = 2 \Ne \mu_{\itoj} \pfix(\itoj)
 \end{equation}
-In the case of \gls{synonymous} mutations, which we assumed are \gls{neutral}, the probability of fixation is independent of the original and target \gls{codon}, and equal $1/2 \Ne$, such that ${\submatrix_{\itoj}}$ simplifies to:
+In the case of \gls{synonymous} mutations, which we assumed are \gls{neutral}, the probability of fixation is independent of the original and target \gls{codon}, and equals $1/2 \Ne$, such that ${\submatrix_{\itoj}}$ simplifies to:
 \begin{equation}
     \submatrix_{\itoj} = \mu_{\itoj}
 \end{equation}
@@ -99,7 +100,7 @@ In the case of \gls{non-synonymous} mutations, the probability of fixation depen
 where $\Fit$ is a $20$-dimensional vector specifying the log-fitness for each amino acid, and $\aai$ is the amino acid encoded by \gls{codon} $i$.
 
 In the model introduced here, $\Ne$ and $\mu$ are allowed to vary between species (across branches) as a multivariate log-Brownian process, but are assumed constant along the \acrshort{DNA} sequence.
-Conversely, amino-acid fitness profiles $\Fit$ are considered constant along the tree but are assumed to vary across sites, being modelled as iid random-effects from an unknown distribution estimated using a \gls{Dirichlet process} \gls{prior}.
+Conversely, amino-acid fitness profiles $\Fit$ are considered constant along the tree but are assumed to vary across sites, being modelled as independent and identically distributed random-effects from an unknown distribution estimated using a \gls{Dirichlet process} \gls{prior}.
 
 This model was implemented in a \gls{Markov chain Monte Carlo} framework, allowing for joint inference of site-specific selection profiles and reconstruction of life-history traits and population-genetic regimes along the phylogeny.
 After validating our model and our inference framework against simulated data, we apply it to several cases of interest across metazoans (placental mammals, primates, Drosophila and isopods), for which some proxies of $\Ne$ are available.
@@ -108,7 +109,7 @@ After validating our model and our inference framework against simulated data, w
 \section{Results}
 \label{sec:Results}
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \begin{minipage}{0.32\linewidth}
         \includegraphics[width=\linewidth, page=1]{simulations/BranchWise_SimuDiv_SiteMutSelBranchNe_BranchCorrelation_Log10BranchLength}
@@ -195,7 +196,7 @@ On the other hand, and very importantly, epistasis, which is ignored by the infe
 
 \subsection{Empirical experiments}
 \label{sec:ResultsEmpirical}
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth, page=1]{mammals_mirrors_low.pdf}
     \caption[Example of inferred $\Ne$ and $\mu$ on placental mammals dataset]{
@@ -296,13 +297,13 @@ Finally, the total range of the inferred variation in $\Ne$ across the entire tr
 
 \section{Discussion}
 \label{sec:Discussion}
-% Summary 
-Mechanistic phylogenetic \gls{codon} models explicitly model the \gls{substitution} rates between \glspl{codon} as function of the mutation rates at the nucleotide level, selection over amino-acid sequences and \gls{effective population size}.
-Thus far, the development of mutation-selection models of the \acrshort{HB} family~\citep{Rodrigue2010, Tamuri2012} has mostly focussed on the question of fully accounting for the fine-scale modulations of selection between amino-acids and across sites~\citep{Rodrigue2010, Tamuri2012}.
+% Summary
+Mechanistic phylogenetic \gls{codon} models explicitly model the \gls{substitution} rates between \glspl{codon} as a function of the mutation rates at the nucleotide level, selection over amino-acid sequences and \gls{effective population size}.
+Thus far, the development of mutation-selection models of the \acrshort{HB} family~\citep{Rodrigue2010, Tamuri2012} has mostly focused on the question of fully accounting for the fine-scale modulations of selection between amino-acids and across sites~\citep{Rodrigue2010, Tamuri2012}.
 However, the issue of the variation in the global population-genetic regime between species has received much less attention.
 In particular, \gls{effective population size} ($\Ne$) is expected to vary substantially over the species of a given clade, yet current mutation-selection models all invariably assume $\Ne$ to be constant across the phylogeny.
 
-Here, we introduce an extension of the mutation-selection model that accounts for this variation.
+Here, we have introduced an extension of the mutation-selection model that accounts for this variation.
 When applied to an alignment of protein coding sequences, this mechanistic model returns an estimate of the modulations of amino-acid preferences across sites.
 Simultaneously, it reconstructs the joint evolution of life-history traits and molecular and population-genetic parameters (mutation rate $\mu$ and \gls{effective population size} $\Ne$) along the phylogeny, while estimating the correlation matrix between these variables, intrinsically accounting for phylogenetic inertia.
 
@@ -315,7 +316,7 @@ Similarly, in isopods, smaller \glspl{effective population size} are inferred in
 However, if the trends are in right direction, the magnitude of the changes inferred across the phylogeny is greatly inferior to the expected variation.
 In particular, in mammals, \gls{synonymous} diversity varies by a factor at least 10 between species~\citep{Galtier2016}.
 In animals, the \gls{synonymous} diversity roughly spans two orders of magnitude, whereas $\Ne$ varies considerably more across species, by a factor of $10^3$~\citep{Galtier2019}.
-For instance, \glspl{effective population size} estimated based on population genomic data are of the order of 10~000 in Humans~\citep{Li2011}, and 100~000 in the mouse~\citep{Geraldes2008}.
+For instance, \glspl{effective population size} estimated based on population genomic data are of the order of 10~000 in humans~\citep{Li2011}, and 100~000 in mice~\citep{Geraldes2008}.
 Thus, clearly, our approach underestimates the true variation.
 Different mechanisms not accounted for by the model could explain such a low variation in the phylogenetic history of $\Ne$ reconstructed by our method.
 
@@ -326,7 +327,7 @@ Second, $\mu$ and $\Ne$ could also be fluctuating along the genome~\citep{Gossma
 This assumption needs to be tested, though we expect that relaxing this assumption would not change drastically the magnitude of inferred $\Ne$ since some of this fluctuation should be absorbed by site-specific fitness profiles.
 
 Third, the \acrshort{DNA} sequences could also be misaligned at some sites.
-However we observe the same magnitude of inferred $\Ne$ for different set of genes indicating this might not be the primary reason.
+However we observe the same magnitude of inferred $\Ne$ for different sets of genes indicating this might not be the primary reason.
 
 Fourth, the genes selected in our alignments could be under adaptive evolution, or their function could have changed.
 However, at least in mammals, the impact of this potential problem was minimized by the use of genes for which no positive selection was detected using standard phylogenetic \gls{codon} site models.
@@ -336,10 +337,10 @@ In reality, epistasis might be prevalent in protein coding sequence evolution~\c
 Our simulations under an epistatic landscape point to epistasis being a major factor to be investigated.
 Indeed, $\Ne$ could not be appropriately estimated under these simulation settings, although the outcome more specifically depends on the exact model for the fitness landscape.
 An extreme case is obtained using a biophysically-inspired model, assuming purifying selection for conformational stability.
-This model was previously explored using simulations and theoretical developments \citet{Goldstein2013}, and it was shown that, under this model, the $\dnds$ and more generally the \gls{substitution} process is virtually insensitive to Ne.
+This model was previously explored using simulations and theoretical developments \citet{Goldstein2013}, and it was shown that, under this model, $\dnds$ and more generally the \gls{substitution} process is virtually insensitive to $\Ne$.
 This is confirmed by our experiments, showing that the mutation-selection approach explored here cannot infer the true variation in $\Ne$ under this model.
 
-A less extreme outcome is obtained under an alternative model also implementing epistatic interactions between sites, Fisher’s geometric model~\citep{Tenaillon2014,Blanquart2016}.
+A less extreme outcome is obtained under an alternative model also implementing epistatic interactions between sites via Fisher’s geometric model~\citep{Tenaillon2014,Blanquart2016}.
 Interestingly, under this model, our inference framework is able to infer the correct trends of $\Ne$, although with a substantially underestimated range of inferred variation, thus mirroring the results obtained on placental mammals.
 Of note, these results do not necessarily imply that models based on biophysics are empirically less relevant than Fisher’s geometric model.
 Instead, they might just betray that the response of the \gls{substitution} process to changes in $\Ne$ may be sensitive to the exact quantitative details of the underlying fitness landscape.
@@ -348,11 +349,11 @@ Nevertheless, our simulation experiments suggest a global pattern: epistatic int
 The meaningful correlation patterns observed with \acrshort{LHT}s in the case of placental mammals suggest that this buffering is not complete.
 Nevertheless, ignoring epistatic interactions at the inference level appears to result in a substantial underestimation of the range over which $\Ne$ varies across species.
 
-Interestingly, the magnitude of the inferred range of $\Ne$ variation is similar for the placental than the primate datasets (x$9$ in mammals and x$6$ in primates), whereas we would have expected a much larger range of variation over the broader phylogenetic scale of placental mammals, compared to primates.
-An explanation could be that epistasis is more prevalent at longer time-scale.
+Interestingly, the magnitude of the inferred range of $\Ne$ variation is similar for the placental and the primate datasets (x$9$ in mammals and x$6$ in primates), whereas we would have expected a much larger range of variation over the broader phylogenetic scale of placental mammals, compared to primates.
+An explanation could be that epistasis is more prevalent at longer time-scales.
 Indeed, the total number of \glspl{substitution} from root to leaves is greater, and as a result, the local environment, and therefore the fitness landscape at the level of each site, has been less stable across the phylogeny.
 
-Although modelling epistasis in an inference framework is a complex biological, mathematical and computational problem, our work points to a potential signal of epistasis that could be retrieved in phylogenetic context.
+Although modelling epistasis in an inference framework is a complex biological, mathematical and computational problem, our work points to a potential signal of epistasis that could be retrieved in a phylogenetic context.
 More specifically, since the slope of the response of the \gls{substitution} process to changes in $\Ne$ appears to be informative about the epistatic regime, then, conversely, by relying on independent estimates of $\Ne$ (e.g. using polymorphism), this effect could be used to leverage a quantitative estimate of the statistical distribution of epistatic effects.
 
 Other methods have recently been developed to reconstruct phylogenetic changes in $\Ne$.
@@ -369,20 +370,20 @@ Apart from reconstructing the phylogenetic history of $\Ne$ and investigating it
 In this direction, mutation-selection models represent a useful null \gls{nearly-neutral} model, explicitly modelling the background of purifying selection acting over protein coding genes.
 Adaptation can then be detected by measuring the deviation from this null model~\citep{Rodrigue2016, Bloom2017}.
 
-However, by assuming constant $\Ne$ along a phylogeny, the statistical power of this approach to detect sites under adaptive evolution may not be optimal.
-In particular, the site-specific fitness profiles inferred by the model are averaged along the phylogeny and are seemingly more diffuse than those estimated profiles under our present framework (see section~\ref{subsec:fitness-profile-entropy} and table~\ref{tab:table-entropy-aa-mutselne} in supplementary).
+However, by assuming a constant $\Ne$ along a phylogeny, the statistical power of this approach to detect sites under adaptive evolution may not be optimal.
+In particular, the site-specific fitness profiles inferred by the model are averaged along the phylogeny and are seemingly more diffuse than those estimated profiles under our present framework (see section~\ref{subsec:fitness-profile-entropy} and table~\ref{tab:table-entropy-aa-mutselne} in the supplementary materials).
 Thus, even though our method requires more computing resources, it should provide a better null model of purifying selection against which to test for the presence of adaptive evolution.
 
-The approach can be further extended in other directions.
+This approach can be further extended in other directions.
 First, currently, our model also assumes no selection on \gls{codon} usage.
 In the case of primates or placental mammals, this assumption is probably reasonable~\citep{Yang2008}, although it is more questionable for other groups, in particular Drosophila~\citep{Duret1999,Plotkin2011}.
 In principle, this assumption can be relaxed by implementing selective \gls{codon} preferences that are shared across all sites.
 Such an implementation would provide the advantage of estimating \gls{codon} usage biases, while simultaneously accounting for its confounding effect when estimating selection on amino-acids and inter-specific variation in $\Ne$.
 
-Second, the bayesian analysis conducted here was based on relatively small alignments (20,000 sites at most), and with strong limits on the parametrization of the underlying \gls{mixture model} (allowing for at most 50 distinct profile categories).
+Second, the Bayesian analysis conducted here was based on relatively small alignments (20~000 sites at most), and with strong limits on the parametrization of the underlying mixture model (allowing for at most 50 distinct profile categories).
 Profiling of the program (not shown) shows that the number of components of the profile mixture is the limiting step of the computation.
 Yet, a larger number of components might be required, in order to achieve more accurate inference of the site-specific profiles.
-One possible development, leading to statistically more stable genome-wide estimates of $\Ne$, would be to develop a multi-gene parallelized version of the model, in which each coding sequence would have its own \gls{mixture model}, and would run on a separate thread, while the history of $\Ne$ would be shared by all computing processes.
+One possible development, leading to statistically more stable genome-wide estimates of $\Ne$, would be to develop a multi-gene parallelized version of the model, in which each coding sequence would have its own mixture model, and would run on a separate thread, while the history of $\Ne$ would be shared by all computing processes.
 
 Finally, estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\Ne$ and the relative strength of drift, in a context where, ultimately, the signal about the intensity of drift comes from the relative rate of \gls{non-synonymous} \glspl{substitution}.
 However, this purely phylogenetic approach does not leverage a second aspect of $\Ne$ at the population level, namely, the fact that $\Ne$ also determines the levels of \gls{neutral} genetic diversity that can be maintained ~($\pi=4\Ne u$, where $u$ is the mutation rate per generation).
@@ -390,9 +391,9 @@ Hence, \gls{neutral} diversity yields an independent empirical estimate of $\Ne$
 In principle, our mechanistic model could be extended so as to incorporate polymorphism data within species at the tips of the phylogeny.
 A similar method has been previously pioneered in the case of 3 species and using a distribution of fitness effect\citep{Wilson2011}.
 More generally, the \gls{nearly-neutral} theory of evolution defines a long-term $\Ne$, which might be different from the short-term definition of $\Ne$~\citep{Platt2018}.
-Thus we could ask if empirical independent estimations of $\Ne$ from within species (based on genetic diversity) and between species (based on the \gls{substitution} process) are congruent, and if not what are the mechanisms responsible for this discrepancy.
+Thus we could ask if empirical independent estimations of $\Ne$ from within species (based on genetic diversity) and between species (based on the \gls{substitution} process) are congruent, and if not, what are the mechanisms responsible for this discrepancy.
 
-Notwithstanding theoretical considerations on the \gls{nearly-neutral} theory of evolution, empirical clues about the long-term trends in the modulations of the intensity of \gls{genetic drift} opens towards a large diversity of ecological and evolutionary questions.
+Notwithstanding theoretical considerations on the \gls{nearly-neutral} theory of evolution, empirical clues about the long-term trends in the modulations of the intensity of \gls{genetic drift} opens up a large diversity of ecological and evolutionary questions.
 Spatial and temporal changes of \gls{genetic drift} along ecological niches and events can now be investigated, so as to disentangle the underlying evolutionary and ecological pressures.
 
 
@@ -699,7 +700,7 @@ In \texttt{SimuDiv} and \texttt{SimuPoly} each \gls{codon} site contribute indep
 However, in \texttt{SimuFold} the fitness of a sequence is computed as the probability of the protein to be in the folded state.
 \texttt{SimuFold} is in practice a \texttt{C++} adaptation of a Java code previously published~\citep{Goldstein2016, Goldstein2017}, where we allow for changes in $\Ne$ and $\mu$ along a phylogenetic tree.
 Section~\ref{sec:supp-mat-simulations} in supplementary describes the models in more details, as well as performance of the inference model against them.
-The simulators written in \texttt{C++} are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}
+The simulators written in \texttt{C++} are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}.
 
 \subsection{Empirical data}
 In placental mammals, alignments are extracted from OrthoMam database~\citep{Ranwez2007,Scornavacca2019}.

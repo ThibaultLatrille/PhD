@@ -83,8 +83,7 @@ As an example, and for better readability, a simple illustrative tree given in f
     \end{tikzpicture}
     \caption[Illustrative phylogenetic tree]{
     Illustrative phylogenetic tree.
-    Internal nodes ($\state_0$ and $\state_5$) are represented in yellow, while extant nodes ($\state_1$ to $\state_4$) for which the state is known from the observed data is represented in blue.
-    The node $0$ is considered the root of the tree, although defining it is not strictly required since the process is reversible.}
+    Internal states of nodes ($\state_0$ and $\state_5$) are represented in yellow, while states of extant nodes ($\state_1$ to $\state_4$) for which the state is known from the observed data is represented in blue.}
     \label{fig:tree}%
 \end{figure}
 
@@ -141,7 +140,7 @@ The \gls{likelihood} at a specific column of a multiple sequence alignment given
 \begin{align}
     \proba \left(\Data\siteexp \mid \Submatrix\siteexp, \branchlength\branchexp \right) & = \sum\limits_{\ci=1}^{61} \subequi\siteexp_{\ci} \pruning\siteexp_{0} \left( \ci \right),
 \end{align}
-where $\pruning_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$:
+where $\pruning\siteexp_{\node} \left( \ci \right)$ is computed recursively from the $2$ descendant children $\node_{1}$ and $\node_{2}$ of an internal node $\node$, as:
 \begin{align}
     \pruning\siteexp_{\node} \left( \ci \right) =
     \left[ \sum\limits_{\cj=1}^{61}\Probmatrix\siteexp_{\itoj}(\branchlength^{(\node \to \node_{1})}) \pruning\siteexp_{\node_{1}} \left( \cj \right) \right]
@@ -207,7 +206,7 @@ In the worst possible case of over-parametrization, namely that of confounded pa
 However, over-parameterized models are still a misappropriate use of computing resources, which results in a greater environmental cost.
 
 Second, and most importantly, Bayesian inference gives a natural language to combine multiple levels of random variables, in the form of hierarchical models.
-Thus, for instance, in Bayesian molecular dating, the \gls{substitution} process depends on divergence times and \gls{substitution} rate variation across the tree.
+Thus, for instance, in Bayesian molecular dating, the \gls{substitution} process depends on divergence times and \gls{substitution} rate variations across the tree.
 In turn, divergence times, such as specified by the phylogeny, are the result of a birth-death process, while variation in the \gls{substitution} rate across branches is naturally expressed by modelling the rate itself as a log-Brownian process.
 Finally, the parameters of the birth-death and log-Brownian processes are endowed with a \gls{prior}.
 The model is thus hierarchical, with four levels.
@@ -219,7 +218,7 @@ The relationship between the random variables defining a hierarchical model can 
 In the example of the \gls{prior} distribution for the rate \gls{substitution} matrix in the case of the mutation-selection model, the \gls{prior} is defined as the joint distribution of the \gls{prior} over the selection coefficient over amino acids and the mutation rate matrix, which itself is a deterministic function of the equilibrium frequencies of nucleotides and the exchangeability rates for the general-time-reversible (\acrshort{GTR}) mutation matrix (see figure~\ref{fig:DAG}).
 Seeing the DAG the other way around (following the arrows), simple \gls{prior} distributions are combined together to form more complex joint \gls{prior} distribution which ultimately defines the \gls{prior} distribution over the model parameter vector ($\theta$).
 This hierarchy can naturally be extended across sites, across branches or across genes, and include the data, which are themselves a random variable produced by the \gls{substitution} process.
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.6cm and 1.2cm,semithick]
         \tikzstyle{every state}=[]
@@ -290,7 +289,7 @@ Starting from a state $X_t$ at step $t$:
     \item Generate a random candidate state $X'$ according to $g(X'\mid X_t)$.
     \item Calculate the acceptance ratio $\displaystyle r=\min \left(1,{\frac {\proba (X')}{\proba (X_{t})}}{\frac {g(X_{t}\mid X')}{g(X'\mid X_{t})}}\right)$.
     \item Generate a uniform random number $u\in [0,1]$.
-    If $u\leq A(X',X_{t})$, then accept the new state and set $X_{t+1}=X'$.
+    If $u\leq r$, then accept the new state and set $X_{t+1}=X'$.
     Otherwise reject the new state and set $X_{t+1}=X$
 \end{itemize}
 

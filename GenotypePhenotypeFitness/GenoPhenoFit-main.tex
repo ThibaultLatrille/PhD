@@ -4,31 +4,31 @@ Molecular sequences differ across species due to the particular history of nucle
 These \glspl{substitution} in turn are the result of the interplay between evolutionary forces such as mutation and selection, whose relative forces are determined by the amount of random \gls{genetic drift}.
 These forces have effects at different levels: mutations are carried by molecular sequences, selection is mediated at the level of individuals, while random \gls{genetic drift} is a population sampling effect.
 Yet, they jointly contribute to the long-term molecular evolutionary process.
-Thus, the challenge of molecular evolution is to tease out their respective contributions, based on comparative analyses.
+Thus, the challenge of the study of molecular evolution is to tease out their respective contributions, based on comparative analyses.
 
 One main aspect of this challenge is to correctly evaluate the role of random drift in the long term evolutionary process.
-Population genetics theory implies that the strength of drift, due to the stochastic sampling of mutations, is less pronounced in lineage with large \gls{effective population size} ($\Ne$), and as a consequence, the purification by selection of weakly deleterious mutations is more effective.
+Population genetics theory implies that the strength of drift, due to the stochastic sampling of mutations, is less pronounced in lineages with large \gls{effective population size} ($\Ne$), and as a consequence, the purification by selection of weakly deleterious mutations is more effective.
 This fundamental idea is at the core of the \gls{nearly-neutral} theory of evolution.
-This theory posits that a substantial fraction of mutations are deleterious or weakly deleterious, and as result predicts that the \gls{substitution} rate (relative to the \gls{neutral} expectation), called $\omega$, decreases along lineages with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
+This theory posits that a substantial fraction of mutations are deleterious or weakly deleterious, and as a result, predicts that the \gls{substitution} rate (relative to the \gls{neutral} expectation), called $\omega$, decreases along lineages with higher $\Ne$~\citep{Ohta1972, Ohta1992}.
 
 This prediction has been more quantitatively examined under the assumption that the selective effects of mutations are drawn from a fixed distribution of fitness effects (\acrshort{DFE})~\citep{Kimura1979, Welch2008}.
-Assuming a gamma \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (i.e.~$\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
+Assuming a gamma distribution for the \acrshort{DFE}, a key result obtained in this context is an approximate allometric scaling of $\omega$ as a function of $\Ne$ (i.e.~$\omega \sim \Ne^{-k}$), where $k$ is the shape parameter of the \acrshort{DFE}.
 In practice, DFEs are strongly leptokurtic, which thus predicts a weak negative relation between $\omega$ and $\Ne$.
 
 The quantity $\omega$ is an observable of the molecular evolutionary process, at least if we can separately estimate the rate of \gls{neutral} and selected \glspl{substitution} in a phylogenetic or comparative context.
 Practically, in the case of protein-coding \acrshort{DNA} sequences, and assuming that \gls{synonymous} mutations are \gls{neutral}, while \gls{non-synonymous} changes affecting the amino-acid sequence are under selection, $\omega$ can be identified with the ratio of \gls{non-synonymous} over \gls{synonymous} \gls{substitution} rates , called $\dnds$.
 Thus the \gls{nearly-neutral} argument translates into a predicted decrease in $\dnds$ as a function of long-term changes in $\Ne$.
 
-The context of protein-coding sequences fostered another modelling approach, based on genotype-fitness maps instead of distribution of fitness effects.
+The study of protein-coding sequences evolution fostered another modelling approach, based on genotype-fitness maps instead of distribution of fitness effects.
 In this alternative approach, the selective effect of a mutation depends on the fitness of both the source and the target amino acids involved in the mutation event~\citep{Halpern1998, Rodrigue2010, Tamuri2012}.
-More fundamentally, the fitness depends solely on the current genotype, not on the trajectory of mutations leading to this sequence.
+More fundamentally, fitness depends solely on the current genotype, not on the trajectory of mutations leading to this sequence.
 For example, if the target amino acid has a higher fitness than the current amino acid, the selective effect of the mutation is positive, and reciprocally negative for a lower fitness.
-Such a modelling approach predicts higher \gls{substitution} rates between amino acid with similar biochemical properties.
+Such a modelling approach predicts higher \gls{substitution} rates between amino acids with similar biochemical properties.
 Even though this modelling approach differs substantially from the one assuming a fixed \acrshort{DFE}, it also predicts a negative correlation between $\omega$ and $\Ne$, at least when the process is at equilibrium~\citep{Spielman2015, DosReis2015}.
 
-Conversely, one striking theoretical result was the proof that $\omega$ is in fact predicted to be independent of $\Ne$ under relatively very general circumstances, namely, whenever (i) the fitness is a log-concave function of a \gls{phenotype} and (ii) the \gls{phenotype} itself is equimutable.
-Equimutability states that the distribution of phenotypic changes due to mutations is independent the current \gls{phenotype} of individuals~\citep{Cherry1998}.
-This general theoretical argument has been invoked in the context of \textit{in silico} experiments of protein sequence evolution, assuming that proteins are under selection for their thermodynamic stability, with fitness being proportional to folding probability of the protein~\citep{Goldstein2013}.
+Conversely, one striking theoretical result was the proof that $\omega$ is in fact predicted to be independent of $\Ne$ under relatively general circumstances, namely, whenever (i) the fitness is a log-concave function of a \gls{phenotype} and (ii) the \gls{phenotype} itself is equimutable.
+Equimutability states that the distribution of phenotypic changes due to mutation is independent of the current \gls{phenotype} of individuals~\citep{Cherry1998}.
+This general theoretical argument has been invoked in the context of \textit{in silico} experiments of protein sequence evolution, assuming that proteins are under selection for their thermodynamic stability, with fitness being proportional to the folding probability of the protein~\citep{Goldstein2013}.
 Thermodynamic stability is itself computed using a 3D structural model of the protein.
 These computational experiments have led to the observation that $\omega$ is essentially independent of $\Ne$.
 An explanation proposed for this result is that the distribution of changes in free energy of folding ($\EmpiricalDeltaDeltaG$) due to mutations is approximately independent of the current free energy ($\DeltaG$), thus making the free energy of folding essentially equimutable.
@@ -42,9 +42,9 @@ Altogether, depending on the theoretical model mapping sequence to fitness, $\om
 Empirically, variation in $\omega$ between lineages has been inferred using phylogenetic \gls{codon} models applied to empirical sequences~\citep{Yang1998,Zhang2004}.
 Confronting branch-specific $\omega$ estimates to life-history traits such as body mass or generation time uncovered a positive correlation~\citep{Popadin2007, Nikolaev2007}.
 Subsequently, integrative inference methods combining molecular sequences and life-history traits have also found that $\omega$ correlates positively with traits such as longevity and body mass~\citep{Lartillot2011, Figuet2017}.
-Since lineage with a large body size and extended longevity typically correspond to species with low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\omega$ and $\Ne$, thus confirming the theoretical prediction of the \gls{nearly-neutral} theory of evolution.
+Since lineages with a large body size and extended longevity typically correspond to species with low $\Ne$~\citep{Romiguier2014}, these empirical correlations suggest a negative correlation between $\omega$ and $\Ne$, thus confirming the theoretical prediction of the \gls{nearly-neutral} theory of evolution.
 However, the universality and robustness of the correlation between $\omega$ and life-history traits is still debated.
-Results have not been entirely consistent across independent studies, the correlation was found to be either not statistically significant~\citep{Lartillot2012}, or even in the opposite direction depending on the specific clade under study or the potential biases taken into account~\citep{Lanfear2010, Nabholz2013, Lanfear2014, Figuet2016}.
+Results have not been entirely consistent across independent studies. The correlation was found to be either not statistically significant~\citep{Lartillot2012}, or even in the opposite direction depending on the specific clade under study or the potential biases taken into account~\citep{Lanfear2010, Nabholz2013, Lanfear2014, Figuet2016}.
 
 If empirical evidence for a negative correlation of $\omega$ with $\Ne$ is still not totally convincing, another empirical correlation is known to be much more robust.
 Indeed, expression level or protein abundance is one of the best predictors of $\omega$, with highly expressed proteins typically having lower $\omega$ values, a correlation clearly significant although relatively weak~\citep{Duret2000, Rocha2004, Drummond2005a, Zhang2015, Song2017}.
@@ -53,7 +53,7 @@ According to this argument, selection against protein misfolding due to toxicity
 
 The possibility that expression level and $\Ne$ might play similar roles in the evolution of proteins has already been noticed.
 More precisely, under models of selection against protein misfolding, the free energy of folding $\DeltaG$ is predicted to vary similarly along a gradient of either $\Ne$ or expression level~\citep{Serohijos2013}.
-As a corollary, under strict equimutability of $\DeltaG$, these computational models imply that $\omega$ should also be independent of expression level~\citep{Serohijos2012}, thus like what is predicted with regards to changes in $\Ne$.
+As a corollary, under strict equimutability of $\DeltaG$, these computational models imply that $\omega$ should also be independent of expression level~\citep{Serohijos2012}, akin to what is predicted with regards to changes in $\Ne$.
 
 Altogether, both theoretical results and empirical analyses are not yet conclusive about the question of how $\omega$ depends on $\Ne$ and expression level.
 In particular, the theoretical response of $\omega$ to changes in both $\Ne$ and expression level has not been quantified and, most importantly, has not been related to the specific map between genotype, \gls{phenotype} and fitness.
@@ -63,12 +63,12 @@ Ultimately, relating proteins structural parameters to the response of $\omega$ 
 Lastly, the theoretical results discussed so far are valid only at the mutation-selection-drift balance.
 In a non-equilibrium regime, however, and at least under a model assuming a site-independent genotype-fitness map, an increase in $\Ne$ first leads to an increase in $\omega$ caused by adaptive \glspl{substitution}, and subsequently a decrease in $\omega$ due to stronger purifying selection in the long term~\citep{Jones2016}.
 Studying only equilibrium properties can thus be misleading.
-For that reason, the dynamic response of $\omega$ to changes in $\Ne$ must also be addressed, quantified, and its connection with the underlying selective landscape better characterized.
+For this reason, the dynamic response of $\omega$ to changes in $\Ne$ must also be addressed, quantified, and its connection with the underlying selective landscape better characterized.
 Dynamic properties of $\omega$ to changes in $\Ne$ are of theoretical interest but are also empirically relevant, such that, if overlooked they could thwart the relation between theoretical expectations and empirical estimates.
 
-In this context, the aim of the present study is to characterize the dynamic and equilibrium response of $\omega$ to changes in $\Ne$ and expression level, and to relate this response to structural parameters of the model.
+In this context, the aim of the present study is to characterize the dynamics and equilibrium response of $\omega$ to changes in $\Ne$ and expression level, and to relate this response to structural parameters of the model.
 To this effect, we develop a general mathematical approach to derive a quantitative approximation of the response of $\omega$ to changes in $\Ne$ and expression level, in the context of a given genotype-phenotype-fitness map, as depicted in figure~\ref{fig:Summary}.
-In the light of previously published empirical estimates from protein thermodynamic and comparative genomics, we discuss the articulation between empirical data and our mechanistic model.
+In the light of previously published empirical estimates from protein thermodynamics and comparative genomics, we discuss the articulation between empirical data and our mechanistic model.
 We also discuss some of the alternative biophysical mechanisms that could determine the selective landscape on protein-coding sequences, and how they would modulate the response of $\omega$ to changes in $\Ne$ and expression level.
 
 
@@ -171,7 +171,7 @@ Destabilizing mutations are selected against with a negative selection coefficie
     s & \simeq \frac{1}{\NbrSites}\frac{ \partial \logfit (x) }{\partial x} \label{eq:s} \\
     \Rightarrow s & \simeq - \beta \DeltaDeltaG e^{\beta (\DeltaGmin + \NbrSites \DeltaDeltaG x)}, \label{eq:s-unfolded}
 \end{align}
-where $ \logfit = \ln (\wrightfit)$ is the log-fitness (or malthusian fitness).
+where $ \logfit = \ln (\wrightfit)$ is the log-fitness (or Malthusian fitness).
 Conversely, stabilizing mutations will be under positive selection with opposite sign but same absolute value.
 It is important to realize that the selective effect is dependent on $x$.
 Furthermore, because the fitness function is log-concave, the absolute value of $s$ increases with $x$.
@@ -278,6 +278,24 @@ Altogether, we theoretically obtain the same linear decrease of $\omega$ with re
 
 \subsection{Simulation experiments}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth] {elasticity-low.pdf}
+	
+	\caption[Scaling of equilibrium $\omega$ as a function of $\Ne$]
+	{Scaling of equilibrium $\omega$ as a function of log-$Ne$, under the additive \gls{phenotype} model using Grantham distances (A,B,D) or the explicit biophysical model using a statistical potential (C), with $\NbrSites=300$ and $\beta=1.686$.
+		200 replicates per $\Ne$ value are shown (dots). Solid lines are average over replicates, and shaded areas are 90\% confidence interval.
+		The slope (or susceptibility ($\hat{\chi}$), is estimated by linear regression (dashed lines).
+		(A): $\DeltaDeltaG$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
+		The estimated susceptibility ($\hat{\chi}$) decreases proportionally to the inverse of $\DeltaDeltaG$, as predicted by our theoretical model.
+		(B): $\DeltaDeltaG=1$ and $\DeltaGmin$ are given in the legend.
+		Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but does not impact the slope.
+		(C): Stability of the folded native state is computed using 3D structural conformations and pairwise contact potentials.
+		(D): Additive model with $\DeltaGmin = -118$ kcal/mol and $\DeltaDeltaG = 1$ kcal/mol matches structural model shown in C (although with less variance).
+		\label{fig:GoldsteinVsToy}
+	}
+\end{figure}
+
 Our theoretical derivation of the susceptibility of $\omega$ to changes in $\Ne$ (and expression level) is based on several simplifying assumptions about the evolutionary model and makes multiple approximations.
 In order to test the robustness of our main result, we therefore conducted systematic simulation experiments, relaxing several of these assumptions.
 In each case, simulations were conducted under a broad range of values of $\Ne$, monitoring the average $\omega$ observed at equilibrium and plotting the scaling of these measured equilibrium $\omega$ as a function of $\Ne$.
@@ -303,25 +321,29 @@ The original works showed that under this model, $\omega$ is approximately indep
 Using extensive simulations in order to obtain sufficient resolution, we observe that $\omega$ is in fact weakly dependent on $\Ne$, being again approximately linear with log-$\Ne$ (figure~\ref{fig:GoldsteinVsToy}C).
 Moreover, the observed slope ($\widehat{\chi}=-0.00117$) matches the slope obtained under the model of additive $\DeltaG$ ($\widehat{\chi}=-0.00125$, figure~\ref{fig:GoldsteinVsToy}D), considering $\EmpiricalDeltaDeltaG = 1.0$ kcal/mol for destabilizing mutations and $\NbrSites=300$.
 In this experiment (figure~\ref{fig:GoldsteinVsToy}D), $\DeltaGmin$ was set to $-118$ kcal/mol, which is the $\DeltaG$ of the optimal (maximally stable) sequence of $300$ sites~\citep{Goldstein2011}.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth] {elasticity-low.pdf}
 
-    \caption[Scaling of equilibrium $\omega$ as a function of $\Ne$]
-    {Scaling of equilibrium $\omega$ as a function of log-$Ne$, under the additive \gls{phenotype} model using Grantham distances (A,B,D) or the explicit biophysical model using a statistical potential (C), with $\NbrSites=300$ and $\beta=1.686$.
-    200 replicates per $\Ne$ value are shown (dots). Solid lines are average over replicates, and shaded areas are 90\% confidence interval.
-    The slope (or susceptibility ($\hat{\chi}$), is estimated by linear regression (dashed lines).
-    (A): $\DeltaDeltaG$ is increased and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
-    The estimated susceptibility ($\hat{\chi}$) decreases proportionally to the inverse of $\DeltaDeltaG$, as predicted by our theoretical model.
-    (B): $\DeltaDeltaG=1$ and $\DeltaGmin$ are given in the legend.
-    Decreasing $\DeltaGmin$ (to more negative values) increases $\omega$ but does not impact the slope.
-    (C): Stability of the folded native state is computed using 3D structural conformations and pairwise contact potentials.
-    (D): Additive model with $\DeltaGmin = -118$ kcal/mol and $\DeltaDeltaG = 1$ kcal/mol matches structural model shown in C (although with less variance).
-    \label{fig:GoldsteinVsToy}
-    }
-\end{figure}
 
 \subsection{Time to relaxation}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth] {Relaxation.pdf}
+	\caption[ Relaxation of $\omega$  after a change in $\Ne$]{
+		Relaxation of $\omega$ after a change in $\Ne$
+		Solid line corresponds to the average over $1000$ replicates and the shaded area corresponds to the $90\%$ interval among replicates.
+		The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total evolutionary period is 700 million years.
+		(A): $\beta=1.686$ for all simulations.
+		The \acrshort{DNA} sequence of $500$ sites is divided into exons of equal size.
+		However the number of sites per exon changes between simulations from $\NbrSites=5$ to $\NbrSites=500$.
+		Moreover, $\DeltaDeltaG$ is changed according to the exon size such that $\NbrSites \DeltaDeltaG$ (and as a result, the susceptibility) are kept constant, and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
+		Thus, regardless of exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
+		We observe that increasing the number of sites leads to a reduced time to reach the new equilibrium.
+		(B): In the context of a time-independent fitness landscape (yellow curve), where each amino acid has different fitness (site-specific profiles), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long.
+		In the context of a fixed distribution of fitness effects (blue curve), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
+	}
+	\label{fig:relaxStability}
+\end{figure}
+
 
 Although the equilibrium value of $\omega$ after changes in $\Ne$ is an important feature of the $\omega$-$\Ne$ relationship, another characteristic that is scarcely studied is the dynamic aspect~\citep{Jones2016}, particularly the relaxation time to reach the new equilibrium $\omega$.
 We observed in our simulations that the determining factor of the relaxation time is the number of sites $\NbrSites$ (figure~\ref{fig:relaxStability}A), such that the return to equilibrium is faster for longer sequences.
@@ -341,24 +363,6 @@ A sudden increase in $\Ne$ results first in a short traction toward a more optim
 Conversely, under high $\Ne$ the \gls{phenotype} is closer to optimal and the purification of deleterious mutations is stronger.
 The reaction to a decrease in $\Ne$ is a relaxation of the purification and thus an $\omega$ closer to the \gls{neutral} case, which results into higher $\omega$ until reaching the point of marginal stability.
 To note, an increase in $\Ne$ can theoretically and possibly lead to an $\omega$ that is temporarily greater than 1 due to adaptive evolution~\citep{Jones2016}, while a decrease in $\Ne$ always imply an $\omega < 1$, as it gives at most a \gls{neutral} regime of relaxed selection.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth] {Relaxation.pdf}
-    \caption[ Relaxation of $\omega$  after a change in $\Ne$]{
-    Relaxation of $\omega$ after a change in $\Ne$
-    Solid line corresponds to the average over $1000$ replicates and the shaded area corresponds to the $90\%$ interval among replicates.
-    The mutation rate ($\mu$) is $1e{-8}$ per year per site, and the total evolutionary period is 700 million years.
-    (A): $\beta=1.686$ for all simulations.
-    The \acrshort{DNA} sequence of $500$ sites is divided into exons of equal size.
-    However the number of sites per exon changes between simulations from $\NbrSites=5$ to $\NbrSites=500$.
-    Moreover, $\DeltaDeltaG$ is changed according to the exon size such that $\NbrSites \DeltaDeltaG$ (and as a result, the susceptibility) are kept constant, and $\DeltaGmin$ is changed accordingly such that the equilibrium value $\smash{x\eq}$ is kept constant, by solving numerically equation~\ref{eq:equilibrium}.
-    Thus, regardless of exon size, $\smash{x\eq}$ and $\chi$ are kept constant and thus the observed effect is due to the number of sites in the exon.
-    We observe that increasing the number of sites leads to a reduced time to reach the new equilibrium.
-    (B): In the context of a time-independent fitness landscape (yellow curve), where each amino acid has different fitness (site-specific profiles), the time taken to reach the new equilibrium value of $\omega$ after a change in $\Ne$ is long.
-    In the context of a fixed distribution of fitness effects (blue curve), the relaxation time is non-existent and the new equilibrium value of $\omega$ is reached instantaneously.
-    }
-    \label{fig:relaxStability}
-\end{figure}
 
 
 \section{Discussion}
@@ -370,25 +374,24 @@ Furthermore, this application demonstrates that \gls{effective population size} 
 Our compact theoretical results, which were obtained by making several simplifying assumptions, are supported by more complex simulations of protein evolution relaxing these assumptions.
 In particular, our theoretical predictions are verified under a numerical model of protein evolution in which the free energy is computed based on the 3D structure.
 
-Overall, the susceptibility ($\chi$) is a function of the structural parameters of the protein and takes a very simple analytical form, being inversely proportional to the product of three terms;
-namely the sequence size, the inverse temperature ($\beta$), and the average change in conformational energy of destabilizing mutations ($\EmpiricalDeltaDeltaG$).
+Overall, the susceptibility ($\chi$) is a function of the structural parameters of the protein and takes a very simple analytical form, being inversely proportional to the product of three terms: the sequence size, the inverse temperature ($\beta$), and the average change in conformational energy of destabilizing mutations ($\EmpiricalDeltaDeltaG$).
 Quantitatively, this product can be several orders of magnitude greater than $1$ in practice, such that the susceptibility of $\omega$, which is its inverse, is typically small.
 Previous studies using this model presented an apparent lack of response of $\omega$ to changes in $\Ne$~\citep{Goldstein2013}.
 We refine this result, by observing that there is in fact a very subtle and weak relation, which requires extensive computation to be detected, but which is well predicted by our theoretical derivation.
 Based on empirical estimates of the structural parameters $\beta = 1.686$, $\NbrSites=300$ sites and $\EmpiricalDeltaDeltaG = 1.0$ kcal/mol~\citep{Zeldovich2007}, the estimated susceptibility is $\hat{\chi} \simeq -0.002$.
-In other words, for a relative increase in $\Ne$ or expression level of $6$ orders of magnitude, a factor approximately equal $0.01$ is subtracted to $\omega$, a subtle relationship that requires laborious effort to be detected in simulated data.
+In other words, for a relative increase in $\Ne$ or expression level of $6$ orders of magnitude, a factor approximately equal to $0.01$ is subtracted from $\omega$, a subtle relationship that requires laborious effort to be detected in simulated data.
 
 \subsection{Adequacy to empirical data}
 Empirically, variation in $\omega$ along the branches of phylogenetic trees has been inferred and correlated to proxies of $\Ne$, such as body size or other life-history traits.
 These analyses showed mitigated support for a negative relation between $\omega$ and $\Ne$~\citep{Lanfear2014}.
 More recently, phylogenetic integrative methods refined the estimate of covariation between $\omega$ and $\Ne$ along lineages by leveraging polymorphism data~\citep{Brevet2019}.
 This approach gives an estimate of $\hat{\chi} \simeq 0.02$ in primates (section~\ref{sec:empirical-estimation-of-susceptibility} in supplementary materials) at least one order of magnitude greater than the quantitative estimate obtained above from the biophysical model.
-More empirical data across different clades would be required to robustly consolidate such empirical estimates, but as of yet, these are challenging the idea of a very weak response.
+More empirical data across different clades would be required to robustly consolidate such empirical estimates, but as of yet, these results are challenging the idea of a very weak response.
 
 % Stress the importance that susceptibility is valid for Ne and protein abondance
 The relation between $\omega$ and expression level provides an independent, and potentially more robust, source of empirical observation.
 Our theoretical results suggest that, under relatively general conditions, the response of $\omega$ to expression level should be of the same magnitude than the response to $\Ne$.
-Empirically, protein expression level is one of the best predictors of $\omega$ and the empirical estimation of $\chi$ in fungi, archaea and bacteria varies in the range $[-0.046;-0.021]$ (table~\ref{tab:table-susceptibility} in supplementary materials) extracted from \citet{Zhang2015}.
+Empirically, the protein expression level is one of the best predictors of $\omega$ and the empirical estimation of $\chi$ in fungi, archaea and bacteria varies in the range $[-0.046;-0.021]$ (table~\ref{tab:table-susceptibility} in supplementary materials) extracted from \citet{Zhang2015}.
 Estimation in animals and plants gives somewhat lower estimates, in the range of $[-0.026;-0.004]$, although still higher (in absolute value) than $-0.002$.
 
 Additionally, another empirical observation is the negative relation between the mean destabilizing effect of mutations (mean $\EmpiricalDeltaDeltaG$) and the $\DeltaG$ of the protein.
@@ -408,7 +411,7 @@ In practice, the number of sites susceptible to compensate each other is probabl
 
 Alternatively, the biophysical model considered here might be too restrictive.
 Recent empirical studies have provided evidence against the hypothesis that the rate of sequence evolution is driven solely by the toxicity effect of unfolded proteins~\citep{Plata2017,Razban2019,Biesiadecka2020}.
-Notably, the response of $\omega$ to changes in expression level has also theoretically been found to arise as a consequence of protein-protein interactions, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
+Notably, the response of $\omega$ to changes in expression level has also been found theoretically to arise as a consequence of protein-protein interactions, where protein may either be in free form or engaged in non-specific interactions~\citep{Yang2012, Zhang2013}.
 In non-specific interactions at the protein surface, stabilizing amino acids are hydrophilic and destabilizing amino acids are hydrophobic, sticking to hydrophobic residues at the surface of other proteins~\citep{Dixit2013,Manhart2015}.
 
 Our theoretical results can be applied more broadly to protein-protein interactions using a mean-field argument (section~\ref{sec:model-of-protein-protein-interactions} in supplementary materials).
@@ -422,8 +425,8 @@ The net response of $\omega$ to changes in $\Ne$ or expression level could have 
 % Analogy to physics
 This study describes the signature imprinted on \acrshort{DNA} sequences by an evolutionary process by merging equations from population genetics and from structural physicochemical first principles.
 Hence, physicochemical vocabulary and theory are recruited to describe the molecular details.
-More widely, our modelling is imprinted with vocabulary and analogy to physical systems, with wording in the likes of forces, susceptibility and dynamic.
-We argue that the analogy between evolutionary and physical systems is not restricted to wording, but allows one to visualize and intuit the causality chain and which approximation can be made in order to derive analytically tractable results~\citep{Sella2005, Mustonen2009, Bastolla2012, Bastolla2017}.
+More widely, our modelling is imprinted with vocabulary and analogy to physical systems, with wording in the likes of forces, susceptibility and dynamics.
+We argue that the analogy between evolutionary and physical systems is not restricted to wording, but allows one to visualize and sense the causality chain and which approximation can be made in order to derive analytically tractable results~\citep{Sella2005, Mustonen2009, Bastolla2012, Bastolla2017}.
 The robustness of results can be assessed by computational implementations and simulations.
 Computational models offer a means to test the validity and robustness, while mathematical models offer an intuitive mechanistic mental analogy.
 
@@ -431,7 +434,7 @@ Computational models offer a means to test the validity and robustness, while ma
 % Analogy to Clapeyron formula ? TdP/dT = d²H/d²V, where T is analogous to Ne
 A first analogy between evolutionary biology and physics comes from statistical mechanics, describing how observable macroscopic properties are emerging from microscopic states.
 As an example, in the Ising model, the magnetization is a macroscopic outcome of all microscopic atomic spins that can be in one of two states~\citep{Brush1967}.
-At equilibrium when the system reaches minimum potential energy, the observable magnetization is controlled by variables such as temperature, and by external forces such as the magnetic field forcing the system.
+At equilibrium, when the system reaches minimum potential energy, the observable magnetization is controlled by variables such as temperature, and by external forces such as the magnetic field forcing the system.
 By analogy, our atoms are sites of the sequence which can be in stabilizing or destabilizing state, and the macroscopic emerging observable is the relative \gls{substitution} rate of selected mutation ($\omega$), which is controlled by \gls{effective population size} ($\Ne$) analogous to temperature~\citep{Sella2005}.
 Ultimately, the susceptibility of macroscopic observable ($\omega$) to a control variable ($\Ne$) can be tied to the microscopic parameters.
 Another example of observable macroscopic properties, though not considered in this manuscript, could be for example site entropy, i.e.~the effective number of observed amino acids per site at equilibrium~\citep{Goldstein2016, Jimenez2018, Jiang2018}.
@@ -444,11 +447,11 @@ The phenotypic space is analogous to a spatial coordinate of the system, which i
 These evolutionary forces are analogous to springs attached and stretching the \gls{phenotype} in various directions and with various stiffness, resulting in an equilibrium point.
 Once the equilibrium point is determined, an elastic (or reversible) deformation of the \gls{phenotype} can be studied whenever applying a differential stress to the system.
 In this analogy, changing the free energy of the reference \gls{phenotype} ($\EmpiricalDeltaGmin$) leads in first approximation to changes of reference and equilibrium points but not a change in the stiffness of the springs, meaning the elastic coefficient (analog to susceptibility) is approximately conserved.
-Conversely, stiffness ot the springs increases with regards to $\EmpiricalDeltaDeltaG$, meaning a that change in the stress applied to the system ($\Ne$) result in a weak deformation at the new equilibrium.
+Conversely, stiffness of the springs increases with regards to $\EmpiricalDeltaDeltaG$, meaning that a change in the stress applied to the system ($\Ne$) results in a weak deformation at the new equilibrium.
 
 % Fundation to integrate other forces
 Altogether, these analogies could be further formalized and used as a framework in which to integrate other external evolutionary forces.
-Additional molecular processes could be included, for instance mutational bias, or \gls{GC-biased gene conversion} inducing a bias in nucleic composition of genomes.
+Additional molecular processes could be included, for instance mutational bias, or GC-biased gene conversion inducing a bias in nucleic composition of genomes.
 The change in equilibrium composition due to GC bias, and the magnitude of the response, could be investigated, such as to describe their signatures observable on molecular sequence, factoring the effects of mutation, selection and drift.
 Finally, we hope that the results presented in this work, and more broadly the framework outlined here, could foster a better understanding of observable signatures of the long-term evolutionary process emerging from ecological parameters and molecular physicochemical first principles.
 

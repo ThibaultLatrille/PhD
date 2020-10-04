@@ -364,6 +364,7 @@
 {\color{GREYDARK}\normalfont\bfseries}
 {\color{GREYDARK}\thesubsubsection}{1em}{}
 
+\PassOptionsToPackage{hyphens}{url}
 \usepackage[colorlinks=false,pagebackref=true]{hyperref} 
 % for linking between references, figures, TOC, etc in the pdf document
 \hypersetup{colorlinks,

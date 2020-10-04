@@ -22,18 +22,18 @@ Such an effort is meant to clearly define the models, their assumptions and thei
 
 \subsection{The Wright-Fisher model}
 
-The Wright-Fisher model describes the change in frequency of a \gls{polymorphic} gene with two \glspl{allele} in a \gls{diploid} population over time.
-The population is assumed to consist of fixed number of \gls{diploid} individuals $N \gg 1$.
+The Wright-Fisher model describes the change in frequency of a \gls{polymorphic} gene with two \glspl{allele} in a diploid population over time.
+The population is assumed to consist of fixed number of diploid individuals $N \gg 1$.
 It is also assumed to be panmictic (i.e.~non-preferential random mating), with non-overlapping generations.
 The number of copies of the derived \gls{allele} $B$ present at the current generation is denoted $i$ and the frequency of this mutant \gls{allele} $B$ is denoted $p = i/2N$, while the frequency of the resident $A$ \glspl{allele} is $1 - p$.
 
-The ability to survive and produce offspring differs between the three \gls{diploid} genotypes ($AA$, $AB$, $BB$).
+The ability to survive and produce offspring differs between the three diploid genotypes ($AA$, $AB$, $BB$).
 Here, selection is assumed to occur between the zygotic and the adult stage, called post-zygotic selection.
-Quantitatively, selection is captured by a measure called Wrightian fitness ($\wrightfit$), which, for a given \gls{diploid} genotype, is defined as the expected number of offspring produced by an individual having this genotype.
+Quantitatively, selection is captured by a measure called Wrightian fitness ($\wrightfit$), which, for a given diploid genotype, is defined as the expected number of offspring produced by an individual having this genotype.
 Since the population is regulated in size, only the relative fitness matters, which is usually set to $1$ for the reference (wild-type) genotype.
 It is convenient to define the fitness of the other two genotypes, relative to the wild-type, in terms of a selection coefficient.
 Furthermore, in the following, we will assume additive effects (co-dominance), such that the heterozygote has an intermediate fitness between the two homozygotes.
-Altogether, fitness of the three \gls{diploid} genotypes are defined as:
+Altogether, fitness of the three diploid genotypes are defined as:
 \begin{equation}
     \begin{dcases}
         \wrightfit_{AA} & = 1 \\
@@ -54,7 +54,7 @@ where $f = \ln(\wrightfit)$ is often referred to as the Malthusian fitness, rela
 
 \subsection{Frequency changes across successive generations}
 
-Under the Hardy-Weinberg equilibrium of the population, the \gls{diploid} genotype frequencies in the current generation are distributed as given in table~\ref{table:fitnesses}.
+Under the Hardy-Weinberg equilibrium of the population, the diploid genotype frequencies in the current generation are distributed as given in table~\ref{table:fitnesses}.
 
 As a result, the mean fitness in the population is a function of the selection coefficient and the frequency of two \glspl{allele} as:
 \begin{align}
@@ -79,8 +79,8 @@ And the relative fitness of the three different genotypes are also shown in tabl
 \end{table}
 
 Reproduction proceeds in two steps.
-In a first step, a very large pool of \glspl{gamete} is produced, in which adults contribute proportionally to the fitness of their genotype.
-Altogether, the frequency $p'$ of \glspl{gamete} bearing the $B$ \gls{allele} is a function of $p$ and $s$, as shown in figure~\ref{fig:frequency-derived-allele}, and formally derived as:
+In a first step, a very large pool of gametes is produced, in which adults contribute proportionally to the fitness of their genotype.
+Altogether, the frequency $p'$ of gametes bearing the $B$ \gls{allele} is a function of $p$ and $s$, as shown in figure~\ref{fig:frequency-derived-allele}, and formally derived as:
 \begin{align}
     p' & = p^2 \dfrac{1+2s}{1+2ps} + p (1-p)\dfrac{1+s}{1+2ps}\\
     & = p\dfrac{1+s(1+p)}{1 + 2ps}
@@ -98,8 +98,8 @@ Altogether, the frequency $p'$ of \glspl{gamete} bearing the $B$ \gls{allele} is
 \end{figure}
 
 
-In a second step, the $N$ individuals of the next generation are obtained by randomly sampling from the pool of \glspl{gamete}.
-As a result, the probability $\proba_{ij}$, that there are $j$ copies of the derived \gls{allele} $B$ present at the next generation, given that there were $i$ copies in the current generation is given by the binomial distribution, with a proportion $p'$ of $B$ \glspl{allele} in \glspl{gamete}:
+In a second step, the $N$ individuals of the next generation are obtained by randomly sampling from the pool of gametes.
+As a result, the probability $\proba_{ij}$, that there are $j$ copies of the derived \gls{allele} $B$ present at the next generation, given that there were $i$ copies in the current generation is given by the binomial distribution, with a proportion $p'$ of $B$ \glspl{allele} in gametes:
 \begin{align}
     \proba_{ij} & = \binom{2 N}{j} \left( p' \right)^j \left(1 - p' \right)^{2 N -j} \\
     & = \binom{2 N}{j} \left( p\dfrac{1+s(1+p)}{1 + 2ps} \right)^j \left(1 - p\dfrac{1+s(1+p)}{1 + 2ps} \right)^{2 N -j} \label{eq:binomial-WF}
