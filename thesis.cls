@@ -136,16 +136,6 @@
 {\if@restonecol\twocolumn
 	\else\newpage\thispagestyle{plain}\fi}
 
-% DEDICATION
-%
-% The dedication environment makes sure the dedication gets its
-% own page and is set out in verse format.
-\newenvironment{dedication}
-{\begin{alwayssingle}
-		\thispagestyle{plain}
-		\vspace*{\fill} \begin{center}}
-		{\end{center}\vspace*{\fill}\vspace*{\fill} \end{alwayssingle}}
-
 %ROMANPAGES
 %
 % The romanpages environment set the page numbering to lowercase roman one
