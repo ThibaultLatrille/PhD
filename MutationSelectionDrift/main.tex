@@ -67,17 +67,17 @@
 % \editor{}
 
 	\abstract{
-	Mutation-selection phylogenetic {codon} models are grounded on population genetics first principles, and represent a principled approach for investigating the intricate interplay between mutation, selection and drift.
+	Mutation-selection phylogenetic {codon} models are grounded on population genetics first principles and represent a principled approach for investigating the intricate interplay between mutation, selection and drift.
 	In their current form, mutation-selection codon models are entirely characterized by the collection of site-specific amino-acid fitness profiles.
 	However, thus far, they have relied on the assumption of a constant genetic drift, translating into a unique {effective population size} ($\Ne$) across the phylogeny, clearly an unreasonable hypothesis.
-	This assumption can be aleviated by introducing variation of $\Ne$  between lineages.
-	In addition to $\Ne$, the mutation rate ($\mu$) is susceptible to vary between lineages, were both should co-vary with life-history traits ({LHT}s).
+	This assumption can be alleviated by introducing variation in $\Ne$  between lineages.
+	In addition to $\Ne$, the mutation rate ($\mu$) is susceptible to vary between lineages, and both should co-vary with life-history traits ({LHT}s).
 	This suggests that the model should more globally account for the joint evolutionary process followed by all of these lineage-specific variables ($\Ne$, $\mu$, and {LHT}s).
 	In this direction, we introduce an extended mutation-selection model jointly reconstructing in a Bayesian Monte Carlo framework the fitness landscape across sites and long-term trends in $\Ne$, $\mu$ and {LHT}s along the phylogeny, from an alignment of {DNA} coding sequences and a matrix of observed {LHT}s in extant species.
-	It was tested against simulated data, and finally applied to empirical data in mammals, isopods, primates.
+	The model was tested against simulated data and applied to empirical data in mammals, isopods and primates.
 	The reconstructed history of $\Ne$ in these groups appears to correlate with {LHT}s or ecological variables in a way that suggests that the reconstruction is reasonable, at least in its global trends.
 	On the other hand, the range of variation in $\Ne$ inferred across species is surprisingly narrow.
-	This last point suggests that some of the assumptions of the model, in particular concerning the structure of the assumed fitness landscape, are potentially problematic.
+	This last point suggests that some of the assumptions of the model, in particular concerning the structure of the assumed fitness landscape, in particular concerning the assumed absence of epistatic interactions between sites, are potentially problematic.
 	}
 	
 	\keyword{Phylogenetic, codon models, mutation-selection models, population genetic, population size, mutation rate, life history traits.}
@@ -104,19 +104,20 @@
 	This idea was formalized using phylogenetic {codon} models~\citep{Muse1994,Goldman1994}.
 	This led to a broad range of applications, either to detect proteins under adaptive selection~\citep{Kosiol2008}, or to measure the modulations of the strength of purifying selection between sites~\citep{Echave2016}, genes~\citep{Zhang2015}, or lineages~\citep{Lartillot2011}.
 
-	Concerning variation in $\dnds$ between lineages, and in a continst mildly deleterious mutations, resulting in lower $\dnds$~\citep{Kimura1979, Welch2008}.
+	Concerning variation in $\dnds$ between lineages, and in a context mostly characterized by purifying selection, the {nearly-neutral} theory predicts that changes in the global strength of selection (measured as $\dnds$) is related to changes in the relative strength of {genetic drift}, which is in turn mediated by changes in {effective population size} ($\Ne$)~\citep{Ohta1992}.
+	Mechanistically, populations with high $\Ne$ are characterized by more efficient purifying selection against mildly deleterious mutations, resulting in lower $\dnds$~\citep{Kimura1979, Welch2008}.
 
 	Codon models have been used to empirically measure such changes in the efficacy of purifying selection along phylogenies, either by allowing for different $\dnds$ values in different parts of the tree~\citep{Dutheil2012}, or by estimating $\dnds$ independently for every branch of the tree~\citep{Popadin2007}.
 	Alternatively, $\dnds$ can be modelled as a continuous trait, varying along the phylogeny as a stochastic process, splitting at each node of the tree into independent processes~\citep{Seo2004}.
 	Once empirical estimates of the variation in $\dnds$ between lineages or groups has been obtained, these can be compared to changes in $\Ne$ across lineages, so as to test the validity of the predictions of the {nearly-neutral} theory.
-	Independent empirical estimation of $\Ne$ is usually done vie proxies, such as the {neutral} diversity within species~\citep{Galtier2016}, or as life-history traits.
+	Independent empirical estimation of $\Ne$ is usually done vie proxies, such as the {neutral} diversity within species~\citep{Galtier2016}, or life-history traits.
 	For instance, animal species characterized by a large body size or an extended longevity are typically expected to also have a low $\Ne$~\citep{Romiguier2014}.
-	Alternatively, a Bayesian integrative framework has been proposed~\citep{Lartillot2011}, extending the approach of \citet{Seo2004}, in which the joint variation in $\dnds$ and in life-history traits or other proxies of $\Ne$ is modelled as a multivariate Brownian process, with a variance-covariance matrix capturing the signal of their correlated evolution.
+	Alternatively, a Bayesian integrative framework has been proposed~\citep{Lartillot2011}, extending the approach of \citet{Seo2004}, in which the joint variation in $\ds$, $\dnds$ and in life-history traits or other proxies of $\Ne$ is modelled as a multivariate Brownian process, with a variance-covariance matrix capturing the signal of their correlated evolution.
 
 	Analyses using these approaches and these proxies of $\Ne$ have suggested a negative correlation between $\dnds$ and $\Ne$~\citep{Popadin2007, Lanfear2010, Lartillot2011, Lartillot2012, Romiguier2014, Figuet2017}, thus confirming the theoretical prediction of the {nearly-neutral} theory.
 	However, the universality and robustness of the correlation between $\dnds$ and $\Ne$ is still debated~\citep{Nabholz2013,Lanfear2014,Figuet2016, Bolivar2019}, and further investigation might be required.
 	Moreover, these analyses do not explicitly formalize the quantitative relationship between $\Ne$ and $\dnds$.
-	This relation is in principle dependent on the underlying fitness landscape~\citep{Welch2008, Cherry1998}, and can show complicated behavior due to non-equilibrium properties~\citep{Jones2016}.
+	This relation is in principle dependent on the underlying fitness landscape~\citep{Welch2008, Cherry1998, Goldstein2011}, and can show complicated behavior due to non-equilibrium properties~\citep{Jones2016}.
 	These questions could be addressed in the context of a mechanistic modelling approach.
 
 	As an alternative to classical $\dnds$-based {codon} models, mechanistic {codon} models explicitly introduce population genetic equations into the {codon} {substitution} process~\citep{Halpern1998}.
@@ -127,11 +128,11 @@
 	This second approach is further considered below.
 
 	Although not directly expressed in terms of this variable, the mutation-selection formalism induces an equilibrium $\dnds$, which is theoretically lower than $1$, thus explicitly modelling purifying selection~\citep{Spielman2015, DosReis2015}.
-	As a result, the mutation-selection codon framework proved to be a valuable null (nearly-neutral) model, against which to compare the observed $\dnds$ by classical {codon} models, so as to test for the presence of adaptation~\citep{Rodrigue2016}.
+	As a result, the mutation-selection codon framework proved to be a valuable null (nearly-neutral) model, against which to compare the observed $\dnds$ by classical {codon} models, so as to test for the presence of adaptation~\citep{Rodrigue2016, Bloom2017}.
 
 	However, these mutation-selection methods have so far assumed the strength of {genetic drift}, or equivalently $\Ne$, to be constant across the phylogeny.
 	This assumption is clearly not realistic, as attested by the empirically measured variation in $\dnds$ between lineages using classical {codon} models or, more directly, by the broad range of {synonymous} {neutral} diversity observed across species~\citep{Galtier2016}.
-	The impact of this assumption on the estimation of the fitness landscape across sites~\citep{Tamuri2014, Rodrigue2014}, or on the tests for the presence of adaptation~\citep{Rodrigue2016} is totally unknown.
+	The impact of this assumption on the estimation of the fitness landscape across sites~\citep{Tamuri2014, Rodrigue2014}, or on the tests for the presence of adaptation~\citep{Rodrigue2016, Bloom2017} is totally unknown.
 	Relaxing this assumption of a constant $\Ne$ is thus necessary.
 
 	Conversely, since the mutation-selection formalism explicitly incorporates $\Ne$ as a parameter of the model, extending the model so as to let $\Ne$ vary across lineages is relatively straightforward, at least conceptually.
@@ -222,7 +223,7 @@
 	\subsection{Validation using simulations}
 	\label{sec:ResultsSimulated}
 	The inference framework was first tested on independently simulated multiple sequence alignments (see methods).
-	With the aim of applying the inference method to empirical dataset, the simulation parameters were chosen so as to match an empirically relevant empirical regime.
+	With the aim of applying the inference method to empirical datasets, the simulation parameters were chosen so as to match an empirically relevant empirical regime.
 	Thus, the tree topology and the branch lengths were chosen based on a tree estimated on the mammalian dataset further considered below.
 	The other aspects of the simulation model (fitness landscape, variation in $\Ne$) were then varied along a gradient of increasing complexity, so as to test the inference framework under increasingly challenging conditions.
 
@@ -234,14 +235,14 @@
 	However, the assumptions made for this first round of simulations are almost certainly violated in practice.
 	First, $\Ne$ is expected to undergo continuous changes along the lineages of the phylogeny.
 	Second, the diffusion approximation for the probability of fixation (equation~\ref{eq:mutationSelection}) may not hold in small finite populations.
-	Third, assuming a separate {substitution} process for each site is equivalent to assuming no linkage between sites (free recombination)
+	Third, assuming a separate {substitution} process for each site is equivalent to assuming no linkage between sites (free recombination).
 	In practice, however, there is limited {recombination}, at least within exons, and this could induce deviations from the mutation-selection approximation, due to Hill-Robertson effects.
 
 	The finite population was now modelled explicitly, using a Wright-Fisher simulator, tracking the frequency of each {allele} at the gene level and at each generation along the phylogeny.
 	No {recombination} was implemented within genes.
 	These more complex simulation settings account for small population size effects, for hitchhiking of weakly deleterious mutations during selective sweep and for background selection due to linkage disequilibrium.
 	In addition, the {effective population size} $\Ne$ and the mutation rate were allowed to fluctuate continuously along the branches of the tree (changing by a small amount after each generation of the underlying Wright-Fisher process).
-	Finally, short-term fluctuations of $\Ne$, of the order of 20\% per generation, were accounted for by adding a random noise to the brownian process describing the long-term evolution of $\Ne$.
+	Finally, short-term fluctuations of $\Ne$, of the order of 20\% per generation, were accounted for by adding a random noise to the Brownian process describing the long-term evolution of $\Ne$.
 	In spite of these deviations between the simulation and the inference models, branch lengths and branch-specific {effective population sizes} could again be robustly recovered by the inference framework (slope of $0.868$, $r^2=0.919$, figure~\ref{fig:simulations}, panel B \& E).
 
 	These results are encouraging.
@@ -293,17 +294,17 @@
 
 	The reconstructed long-term changes in {effective population size} ($\Ne$) is displayed in figure~\ref{fig:mammals_popsize_and_mutrate}.
 	We visually observe a global trend of increasing $\Ne$ throughout the tree around 90 and 60 My.
-	We also observe $\Ne$ to be lower in some clades, such as Cetacea and Ccamelidae, while being higher in other clades, such as Rodentia and Pecora.
+	We also observe $\Ne$ to be lower in some clades, such as Cetacea and Camelidae, while being higher in other clades, such as Rodentia and Pecora.
 	In some cases, a decrease in $\Ne$ can be observed along an isolated branch of the tree, for example on the branches leading to the Alpaca (\textit{Vicugna pacos}) or the cheetah \textit{Acinonyx jubatus}.
 
-	The estimated covariance matrix (table~\ref{tab:mammals_correlation}) gives a global synthetic picture about the patterns of covariation between the mutation rate per unit of time mu, the {effective population size} $\Ne$ and the three {LHT}s.
+	The estimated covariance matrix (table~\ref{tab:mammals_correlation}) gives a global synthetic picture about the patterns of covariation between the mutation rate per unit of time $\mu$, the {effective population size} $\Ne$ and the three {LHT}s.
 	First, the variation in $\mu$ across species is negatively correlated with variation in body mass, age at sexual maturity and longevity ($\rho=[-0.84, -0.83]$, table~\ref{tab:mammals_correlation}).
 	These correlations, which were previously reported~\citep{Lartillot2012,Nabholz2013} probably reflect generation time effects~\citep{Lanfear2010, Gao2016}.
-	Similarly, and more interestingly in the present context, the variation in $\Ne$ between species is also negatively correlated with {LHT}s ($\rho=[-0.54, -0.47]$, table~\ref{tab:mammals_correlation})
+	Similarly, and more interestingly in the present context, the variation in $\Ne$ between species is also negatively correlated with {LHT}s ($\rho=[-0.54, -0.47]$, table~\ref{tab:mammals_correlation}).
 	This is consistent with the expectation that small-sized and short-lived species tend to be characterized by larger effective population sizes~\citep{Romiguier2014}.
 	Of note, these results mirror previous findings, based on classical {codon} models, showing that $\dnds$ tends to be positively correlated with {LHT}s~\citep{Lartillot2012,Nabholz2013,Figuet2017}.
 	Result which was also recovered on the present dataset, using a classical $\dnds$ based codon model (supplementary materials).
-	Interestingly, the correlation of $\dnds$ with LHTs is weaker than that of our inferred $\Ne$ with LHTs, as expected if variation in $\dnds$ indirectly (and imperfectly) reflects the underlying variation in Ne.
+	Interestingly, the correlation of $\dnds$ with LHTs is weaker than that of our inferred $\Ne$ with LHTs, as expected if the variation in $\dnds$ indirectly (and imperfectly) reflects the underlying variation in Ne.
 	Finally, $\Ne$ and $\mu$ are positively correlated in their variation ($\rho = 0.44$), which might simply reflect the fact that both negatively correlate with {LHT}s.
 	The partial-correlation coefficients (see supplementary) between $\Ne$ and {LHT}s are not significantly different from 0.
 	However, this might simply be due to the very strong correlation between the three {LHT}s considered here ($\rho=[0.81, 0.85]$), such that controlling for any one of them removes most of the signal contributed by the available empirical variation between species.
@@ -325,10 +326,10 @@
 
 	As another case study, we analysed a group of isopod species that have made multiple independent transitions to subterranean environments.
 	The transition from a terrestrial to a subterranean lifestyle is typically associated with a global life-history and ecological syndrome characterized by a loss of vision, longer generation times and, most interestingly, smaller population sizes, due to a lower carrying capacity of the subterranean environment~\citep{Capderrey2013}.
-	Protein coding {DNA} sequences alignment and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphthalmia, or ocular) are available for these species~\citep{Eme2013,Saclier2018}.
+	Protein coding {DNA} sequence alignments and qualitative life-history traits such as habitat (surface or underground), pigmentation (depigmented, partially depigmented or pigmented) and ocular structure (anophthalmia, microphthalmia, or ocular) are available for these species~\citep{Eme2013,Saclier2018}.
 	The assumption of a Brownian auto-correlated process for describing the changes in $\Ne$ along the tree may not be so well adapted to the present case, since the changes in $\Ne$ associated with the transition to a subterranean environment are likely to correspond to relatively sudden shifts, rather than continuous variation, and the ecological correlate (subterranean versus terrestrial) is not a quantitative trait.
 	However, the dataset considered here contains independent transitions to a subterranean lifestyle, thus offering an opportunity to test for a potential correlation between inferred $\Ne$ variation and terrestrial versus subterranean lifestyles over the terminal branches.
-	In our analysis across 4 concatenated random samples of 12 genes, we observe a reproducible (see supplementary) and statistically significant reduction in $\Ne$ for underground or depigmented species, or for species with visual impairment (see figure~\ref{fig:isopods_correlation})
+	In our analysis across 4 concatenated random samples of 12 genes, we observe a reproducible (see supplementary) and statistically significant reduction in $\Ne$ for underground or depigmented species, or for species with visual impairment (see figure~\ref{fig:isopods_correlation}).
 	Of note, the species that dit not undergo a transition to subterranean environments feature a relative $\Ne$ close to $1$, meaning that $\Ne$ has not changed much along the lineages (since the root of the tree).
 	Again, the total range of the inferred variation in $\Ne$ across the entire extant taxa is surprisingly narrow, with ratio of $3.3$ at most between high and low $\Ne$ (see supplementary).
 
@@ -412,7 +413,7 @@
 	Nevertheless, ignoring epistatic interactions at the inference level appears to result in a substantial underestimation of the range over which $\Ne$ varies across species.
 
 	Interestingly, the magnitude of the inferred range of $\Ne$ variation is similar for the placental and the primate datasets (with a 9-fold and 6-fold variation in mammals and primates, respectively), whereas one would have expected a much larger range of variation over the broader phylogenetic scale of placental mammals, compared to primates.
-	An explanation could be that epistasis the effects of epistasis are more apparent at longer time-scales.
+	An explanation could be that the effects of epistasis are more apparent at longer time-scales.
 	Indeed, the total number of substitutions from root to leaves is greater, and as a result, the local environment, and therefore the fitness landscape at the level of each site, has been less stable across the phylogeny.
 
 	Although modelling epistasis in an inference framework is a complex biological, mathematical and computational problem, our work points to a potential signal of epistasis that could be retrieved in a phylogenetic context.
@@ -649,7 +650,7 @@
 		\label{eq:DistribBrownian}
 		\Brownian^{(\nodeDown)} \sim \mathcal{N}\left(\Brownian^{(\nodeUp)}, \branchtime\branchexp \CovarianceMatrix \right),\ \Setbranch
 	\end{equation}
-	The {prior} on the covariance matrix is an invert Wishart distribution, parameterized by $\covariancekappa=1$ and with $\covariancedf=\Ntrait + 1$ degrees of freedom:
+	The {prior} on the covariance matrix is an inverse Wishart distribution, parameterized by $\covariancekappa=1$ and with $\covariancedf=\Ntrait + 1$ degrees of freedom:
 	\begin{equation}
 		\label{eq:Distribcovariance}
 		\CovarianceMatrix \sim \text{Wishart}^{-1} (\covariancekappa \Identitymatrix, \covariancedf)
@@ -774,6 +775,7 @@
 	We thank Philippe Veber for insightful discussion on mutation-selection models and software development.
 	We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
 	This work was performed using the computing facilities of the CC LBBE/PRABI.
+	Funding: French National Research Agency, Grant ANR-15-CE12-0010-01 / DASIRE.
 
 	\bibliographystyle{natbib}%%%%Bibliography style file
 	\bibliography{references,introduction}
