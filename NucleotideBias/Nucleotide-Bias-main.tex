@@ -282,7 +282,7 @@ At equilibrium of the process, averaging over sites gives the mean-field gene-le
 However, because selection between \glspl{codon} reduces to selection between pairs of amino-acids, $\left\langle \Pfix (\itoj) \right\rangle$ only depends on the amino-acids encoded by $\ci$ and $\cj$ (section~\ref{subsec:mean-field-derivation} in methods).
 Thus, by identification, the inference model should be parameterized by a set of $\omega$ values for all pairs of amino acids, denoted $\omega_{\aaSource, \aaTarget}$.
 For $20$ amino acids, the total number of pairs of amino acids is $190$, hence $380$ parameters by counting in both directions.
-However, because of the structure of the genetic code, they are $75$ pairs that are one nucleotide away, since some amino acids are not directly accessible through a single \gls{non-synonymous} mutation.
+However, because of the structure of the genetic code, there are $75$ pairs that are one nucleotide away, since some amino acids are not directly accessible through a single \gls{non-synonymous} mutation.
 As a result, the number of parameters necessary to determine all non-zero entries of the tenser ($\omega_{\aaSource, \aaTarget}$) in both directions is $150$.
 Finally, under the assumption of a reversible process, the number of parameters can be reduced to $75$ symmetric exchangeabilities ($\AAexchan_{\aaSource, \aaTarget}$) and $20$ stationary effects ($\AAequi_{\aaSource}$):
 \begin{equation}
@@ -406,7 +406,7 @@ Applied to empirical alignments, we also observe that there is a selection diffe
 
 This work first points to a fundamental property of natural genetic sequences, namely that they are not optimized but are the result of an equilibrium between forces.
 In the specific case highlighted in this work, mutational bias at the nucleotide-level results in suboptimal amino-acid being overrepresented in the sequence.
-This was pointed out previous~\citep{Singer2000}, although never directly formalized in the context of a phylogenetic \gls{codon} model.
+This was pointed out previously~\citep{Singer2000}, although never directly formalized in the context of a phylogenetic \gls{codon} model.
 
 One important consequence of this tradeoff between mutation and selection at equilibrium is that the observed higher mean fixation probability toward GC is mimicking the effect of biased gene conversion toward GC (\acrshort{gBGC}), although unlike \acrshort{gBGC}, the phenomenon described here corresponds to a genuine selective effect.
 Although we did not explore the consequences of this at the level of intra-specific polymorphism, the selection differential uncovered here also implies that the distribution of fitness effects is not the same in the two directions, either toward AT or toward GC.

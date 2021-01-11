@@ -100,7 +100,7 @@ In the general case of an arbitrary topology with $B$ branches, $\state_{\nodeUp
 \begin{align}
     \proba \left(\Data\siteexp \mid \state_{I}, \Submatrix\siteexp, \branchlength\branchexp \right) & = \prod\limits_{\branch=1}^{B} \Probmatrix\siteexp_{\state_{\nodeDown}, \state_{\nodeUp}}(\branchlength^{(\branch)}),
 \end{align}
-where $I$ runs over all the internal nodes, and they are $B$ branches.
+where $I$ runs over all the internal nodes, and there are $B$ branches.
 
 Because the states of the internal nodes are actually unknown, the \gls{likelihood} must be summed over all possible configurations for them, including at the root.
 At the root, the states are produced according to equilibrium frequencies of the process ($\pi\siteexp$).

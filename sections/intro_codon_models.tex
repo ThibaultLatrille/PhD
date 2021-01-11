@@ -32,7 +32,7 @@ Instead, amino acids are encoded by \glspl{codon}, a consecutive sequence of 3 n
 Moreover, three stop \glspl{codon} (TGA, TAA and TAG) signal the termination of the protein, such that 61 of the 64 \glspl{codon} are used to encode amino acids.
 Since there are 61 coding \glspl{codon} and only 20 amino acids, there is a necessary redundancy in the code.
 Thus, amino acids are encoded by \gls{synonymous} \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe \gls{codon}.
-Altogether, the \acrshort{DNA} genetic code translates \gls{codon} to amino acids, which is used almost universally by all organisms is given in table~\ref{table:genetic_code}.
+Altogether, the \acrshort{DNA} genetic code, which is used almost universally by all organisms, translates \gls{codon} to amino acids as given in table~\ref{table:genetic_code}.
 
 \begin{table}[htbp]
     \centering
@@ -135,12 +135,12 @@ Selection for proteins will be framed at the amino-acid level in a first approxi
         \hline
     \end{tabu}}
     \caption[Amino acids adjacency matrix]{
-    Number of possible one nucleotide \gls{non-synonymous} transitions between amino acids, integrating over the underlying \glspl{codon}, represented as an adjacency matrix..
+    Number of possible one nucleotide \gls{non-synonymous} transitions between amino acids, integrating over the underlying \glspl{codon}, represented as an adjacency matrix.
     For all the possible $190$ pairs of amino acids, only $75$ pairs contain at least one \gls{non-synonymous} transition.
     }
     \label{table:adjacency}
 \end{table}
-Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible transitions to another \glspl{codon} as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
+Because mutations are at the nucleotide level and affect only one base, any \gls{codon} can have at most $9$ possible transitions to another \gls{codon} as illustrated in the left panel of figure~\ref{fig:graph-codons-aa} as a graph.
 Moreover, it is possible that some pairs of amino acids are not accessible through a single \gls{non-synonymous} transition between the underlying \glspl{codon}.
 In fact, most pairs of amino acids require at least two \gls{non-synonymous} transitions ($114$ pairs), in comparison to pairs of amino acids that are accessible through a single \gls{non-synonymous} transition ($75$ pairs).
 More precisely, the number of possible transitions between the underlying \glspl{codon} for a pair of amino acids is determined by the adjacency matrix shown table~\ref{table:adjacency}, which is illustrated in the right panel of figure~\ref{fig:graph-codons-aa} as a graph.
@@ -589,7 +589,7 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 The Halpern \& Bruno formalism assumes that fitness landscapes are not dependent on time.
 Alternatively, time-dependent fitness landscapes are known as seascape~\citep{Mustonen2009}.
 Because of the movement of the fitness landscape, similarly to Red-Queen dynamics, the current sequence is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
-In other words, because the current sequence is at mutation-selection-drift balance, they are more ways to move downward than upward in the fitness landscape.
+In other words, because the current sequence is at mutation-selection-drift balance, there are more ways to move downward than upward in the fitness landscape.
 As a result, changes of the landscape results in lower fitness of the current sequence on average.
 The resulting dynamics is that selection pushes the sequence to climb up the time-dependent fitness landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
 
