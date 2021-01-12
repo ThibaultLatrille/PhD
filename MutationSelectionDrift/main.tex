@@ -67,9 +67,18 @@
 % \editor{}
 
 	\abstract{
-	Molecular sequences are shaped by selection, where the strength of selection relative to drift is arbitrated by effective population size (Ne).
-	Populations with high Ne are expected to undergo stronger purifying selection, and consequently a decrease in substitution rate of selected mutations relative to the substitution rate of neutral mutation (ω=dN/dS). However, computational models based on biophysics of protein stability have suggested that ω can also be independent of Ne, proven under general conditions. Together, the response of ω to changes in Ne depends on the specific mapping from sequence to fitness. Importantly,  increase in protein expression level has been found empirically to result in decrease of ω, predicted by theoretical results recruiting the selection for protein stability. In this present work we derive a theoretical approximation for the response of ω to changes in Ne and expression level, under an explicit genotype-phenotype-fitness map. The method is generally valid for additive traits and log-concave fitness functions. We applied the results to protein undergoing selection for their conformational stability,  corroborated by simulations under more complex models. We predict a weak response of ω to changes in either Ne or expression level, which are interchangeable. Based on empirical data, we propose that fitness based on the conformational stability is not a sufficient mechanism to explain the amplitude of ω variations observed.
-	However, other aspects of protein biophysics might be explored such as protein-protein interactions, which can lead to stronger response of ω to changes in Ne.}
+		Mutation-selection phylogenetic codon models are grounded on population genetics first principles and represent a principled approach for investigating the intricate interplay between mutation, selection and drift.
+		In their current form, mutation-selection codon models are entirely characterized by the collection of site-specific amino-acid fitness profiles.
+		However, thus far, they have relied on the assumption of a constant genetic drift, translating into a unique effective population size ($\Ne$) across the phylogeny, clearly an unreasonable hypothesis.
+		This assumption can be alleviated by introducing variation in $\Ne$ between lineages.
+		In addition to $\Ne$, the mutation rate ($\mu$) is susceptible to vary between lineages, and both should co-vary with life-history traits (LHTs).
+		This suggests that the model should more globally account for the joint evolutionary process followed by all of these lineage-specific variables ($\Ne$, $\mu$, and LHTs).
+		In this direction, we introduce an extended mutation-selection model jointly reconstructing in a Bayesian Monte Carlo framework the fitness landscape across sites and long-term trends in $\Ne$, $\mu$ and LHTs along the phylogeny, from an alignment of DNA coding sequences and a matrix of observed LHTs in extant species.
+		The model was tested against simulated data and applied to empirical data in mammals, isopods and primates.
+		The reconstructed history of $\Ne$ in these groups appears to correlate with LHTs or ecological variables in a way that suggests that the reconstruction is reasonable, at least in its global trends.
+		On the other hand, the range of variation in Ne inferred across species is surprisingly narrow.
+		This last point suggests that some of the assumptions of the model, in particular concerning the assumed absence of epistatic interactions between sites, are potentially problematic.
+	}
 	
 	\keyword{Phylogenetic, codon models, mutation-selection models, population genetic, population size, mutation rate, life history traits.}
 
