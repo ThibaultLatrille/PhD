@@ -87,17 +87,17 @@ urlcolor=BLUELINK
 \maketitle
 
 \begin{abstract}
-    Molecular sequences are shaped by selection, where the strength of selection relative to drift is arbitrated by effective population size ($\Ne$).
-    Populations with high $\Ne$ are expected to undergo stronger purifying selection, and consequently a decrease in substitution rate of selected mutations relative to the substitution rate of neutral mutation ($\omega$=dN/dS).
-    However, computational models based on biophysics of protein stability have suggested that $\omega$ can also be independent of $\Ne$, proven under general conditions.
-    Together, the response of $\omega$ to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
-    Importantly, increase in protein expression level has been found empirically to result in decrease of $\omega$, predicted by theoretical results recruiting the selection for protein stability.
-    In this present work we derive a theoretical approximation for the response of $\omega$ to changes in $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
-    The method is generally valid for additive traits and log-concave fitness functions.
-    We applied the results to protein undergoing selection for their conformational stability, corroborated by simulations under more complex models.
-    We predict a weak response of $\omega$ to changes in either $\Ne$ or expression level, which are interchangeable.
-    Based on empirical data, we propose that fitness based on the conformational stability is not a sufficient mechanism to explain the amplitude of $\omega$ variations observed.
-    However, other aspects of protein biophysics might be explored such as protein-protein interactions, which can lead to stronger response of $\omega$ to changes in $\Ne$.
+Molecular sequences are shaped by selection, where the strength of selection relative to drift is determined by effective population size ($\Ne$).
+Populations with high $\Ne$ are expected to undergo stronger purifying selection, and consequently to show a lower substitution rate for selected mutations relative to the substitution rate for neutral mutations ($\omega$).
+However, computational models based on biophysics of protein stability have suggested that $\omega$ can also be independent of $\Ne$, a result proven under general conditions.
+Together, the response of $\omega$ to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
+Importantly, an increase in protein expression level has been found empirically to result in decrease of $\omega$, an observation predicted by theoretical models assuming selection for protein stability.
+Here, we derive a theoretical approximation for the response of $\omega$ to changes in $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
+The method is generally valid for additive traits and log-concave fitness functions.
+We applied these results to protein undergoing selection for their conformational stability and corroborate out findings with simulations under more complex models.
+We predict a weak response of $\omega$ to changes in either $\Ne$ or expression level, which are interchangeable.
+Based on empirical data, we propose that fitness based on the conformational stability may not be a sufficient mechanism to explain the empirically observed variation in $\omega$ across species.
+Other aspects of protein biophysics might be explored, such as protein-protein interactions, which can lead to a stronger response of $\omega$ to changes in $\Ne$.
 \end{abstract}
 
 % keywords can be removed
@@ -296,10 +296,10 @@ The leftward shift is smaller for selective strengths characterized by a steeper
 
     \caption[Response of the equilibrium phenotype after a change in $\Ne$]{
         Response of the equilibrium {phenotype} after a change in $\Ne$.
-        The equilibrium {phenotype} $x\eq$ is obtained when the selective pressure equals to the mutational pressure.
-        The selective pressure increases exponentially with $x$ where $\NbrSites \EmpiricalDeltaDeltaG$ is the exponential growth rate ({\color{YELLOW}yellow} and {\color{GREEN}green} curves).
-        When $\NbrSites \EmpiricalDeltaDeltaG$ is large, increasing $\Ne$ by an order of magnitude ({\color{YELLOW}yellow} dotted curves) very moderately impacts the equilibrium {phenotype} (small $\smash{\color{YELLOW}\Delta x\eq}$).
-        In contrast, for small $\NbrSites \EmpiricalDeltaDeltaG$ ({\color{GREEN}green} curves), the equilibrium {phenotype} is more strongly impacted by a change in $\Ne$ (large $\smash{\color{GREEN}\Delta x\eq}$).
+        The equilibrium {phenotype} $x\eq$ is obtained when the selective pressure equals to the mutational pressure (equation~\ref{eq:equilibrium}).
+        The selective pressure (right-hand side of eq.~\ref{eq:equilibrium}) increases exponentially with $x$ where $\beta \NbrSites \EmpiricalDeltaDeltaG$ is the exponential growth rate ({\color{YELLOW}yellow} and {\color{GREEN}green} curves).
+        When $\beta \NbrSites \EmpiricalDeltaDeltaG$ is large, increasing $\Ne$ by an order of magnitude ({\color{YELLOW}yellow} dotted curves) very moderately impacts the equilibrium {phenotype} (small $\smash{\color{YELLOW}\Delta x\eq}$).
+        In contrast, for small $\beta \NbrSites \EmpiricalDeltaDeltaG$ ({\color{GREEN}green} curves), the equilibrium {phenotype} is more strongly impacted by a change in $\Ne$ (large $\smash{\color{GREEN}\Delta x\eq}$).
         Finally, response of $\smash{x\eq}$ to changes in $\Ne$ reflects the response of $\omega$ since both are approximately equal (equation~\ref{eq:dnds}).
     }
     \label{fig:NeChangeInfluence}
@@ -562,7 +562,7 @@ The Wrightian fitness is defined as the probability of our protein to be in the 
 \end{equation}
 where $\beta$ is the inverse of the temperature ($\beta=1/kT$).
 
-For simulations under a 3D model of protein conformations, we adapted the model developed in \citet{Goldstein2017} to our C++ simulator (see~\ref{sec:simulation-using-the-3d-structure-of-protein} in supplementary).
+For simulations under a 3D model of protein conformations, we adapted the model developed in \citet{Goldstein2017} to our C++ simulator (see  supplementary materials).
 
 For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
 In this model, each {codon} site $i$ has its own fitness profile, denoted $\Profile^{(i)} = \{ \profile^{(i)}_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.

@@ -23,6 +23,7 @@ urlcolor=BLUELINK
 
 \usepackage{url}
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{bbm}
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{cancel}
@@ -563,7 +564,8 @@ These fitness profiles are i.i.d. from a Dirichlet of center $\centerProfile$ an
 Site allocations to the mixture components $\catsite \in \catInterval $, for $\Setsite$ running over the $\Nsite$ sites of the alignment, are i.i.d. multinomial of parameter $\StickBreaking$:
 \begin{align}
     \label{eq:DistribMultinomial}
-    \catMultiVar \sim \text{Multinomial}\left( \StickBreaking \right).
+    \catMultiVar \sim \text{Multinomial}\left( \StickBreaking \right), \\
+    \text{ where } \catmultivar_{\cat} = \sum_{\Setsite} \mathbbm{1}_{\catsite = \cat}
 \end{align}
 
 For a given parameter configuration for the mixture, the Malthusian fitness selection coefficients $\Fit\siteexp$ at site $\site$, are obtained by taking the logarithm of the fitness profile assigned to this site:
