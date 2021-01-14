@@ -290,9 +290,9 @@
 % JEM: adjust start-of-chapter spacing
 \renewcommand{\chapterheadstartvskip}{
 	\thispagestyle{plain}
-	\vspace*{20pt}
+	\vspace*{10pt}
 }
-\renewcommand{\chapterheadendvskip}{\vspace*{20pt}}
+\renewcommand{\chapterheadendvskip}{\vspace*{10pt}}
 
 \newcommand\titlepagedecoration{%
 	\thispagestyle{plain}

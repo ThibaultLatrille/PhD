@@ -251,7 +251,7 @@ The other aspects of the simulation model (fitness landscape, variation in $\Ne$
 A first series of simulations was meant to test the soundness of our inference framework, by simulating essentially under the model used for inference, although with an independently developed software.
 Thus, the mutation-selection approximation was assumed to be valid, and sites were simulated under different fitness profiles empirically determined~\citep{Bloom2017}, and finally, $\Ne$ was assumed to undergo discrete shifts at the tree nodes but otherwise to remain constant along each branch.
 In this context, branch lengths and branch-specific values of $\Ne$ were accurately estimated by our inference method (figure~\ref{fig:simulations}, panel A \& D).
-Concerning $\Ne$, the slope of the linear regression between true and estimated branch-specific $\Ne$ is $0.794$ ($r^2=0.915$)
+Concerning $\Ne$, the slope of the linear regression between true and estimated branch-specific $\Ne$ is $0.794$ ($r^2=0.915$).
 
 However, the assumptions made for this first round of simulations are almost certainly violated in practice.
 First, $\Ne$ is expected to undergo continuous changes along the lineages of the phylogeny.
@@ -271,7 +271,7 @@ However, they still rely on the assumption of a site-independent fitness landsca
 Yet this assumption is almost certainly violated in practice~\citep{Pollock2014,Shah2015}.
 Accordingly, we implemented a more complex, site-dependent fitness landscape accounting for the selective interactions between sites induced by the 3-dimensional structure of protein.
 In this model, the conformational stability of the protein determines its probability of being in the folded state, which is in turn taken as a proxy for fitness~\citep{Williams2006, Goldstein2011, Pollock2012}.
-Under this evolutionary model, and at any gven time, the fitness landscape at a particular {codon} site is dependent on the amino acids that are currently present at those sites that are in the vicinity of the focal site in 3D space (see supplementary).
+Under this evolutionary model, and at any given time, the fitness landscape at a particular {codon} site is dependent on the amino acids that are currently present at those sites that are in the vicinity of the focal site in 3D space (see supplementary).
 When applied to data simulated using this model, our inference framework could accurately recover the simulated branch lengths (figure~\ref{fig:simulations}, panel D).
 On the other hand, the distribution of $\Ne$ across the tree could not be accurately recovered (slope of $0.0196$, $r^2 = 0.0122$, figure~\ref{fig:simulations}, panel F).
 In fact, no meaningful variation in $\Ne$ is detected, and the little variation in $\Ne$ that is inferred shows no correlation with the true branch-specific mean $\Ne$ values.
@@ -360,7 +360,7 @@ Next, our empirical framework was also applied on a set of genes sampled across 
 In addition to LHTs (mass, female maturity, generation time and longevity), information about nuclear {synonymous} diversity ($\ps$) and {non-synonymous} over {synonymous} diversity ($\pnps$), are available for 10 species across the dataset and are expected to correlate with $\Ne$ according to population genetics~\citep{Eyre-walker2007, Galtier2016}.
 However, the correlation coefficient between our inferred $\Ne$ and $\ps$ or $\pnps$ and LHTs are not statistically significant, nor with {LHT}s (see supplementary).
 Again, the total range of the inferred variation in $\Ne$ across the entire tree is narrow, with ratio of $6.4$ at most between high and low $\Ne$.
-This results contrasts with the finding of \citet{Brevet2019} on the same dataset based on $\dnds$-based {codon} models, where the estimated $\Ne$ was found to span several orders of magnitude, and correlated positively with $\ps$.
+This results contrast with the finding of \citet{Brevet2019} on the same dataset based on $\dnds$-based {codon} models, where the estimated $\Ne$ was found to span several orders of magnitude, and correlated positively with $\ps$.
 
 
 \begin{figure*}[t]
@@ -379,7 +379,7 @@ This results contrasts with the finding of \citet{Brevet2019} on the same datase
 	\llap{\raisebox{-1.2cm}{$p_{\text{value}}< 10^{-16}$, $r^2=0.20$\hspace{0.63cm}}}\hfill
     \caption[$\Ne$ as a function of traits in isopods]{
         $\Ne$ estimation for extant isopods species, sorted according to their habitat (left), pigmentation (middle), and ocular structure (right).
-        All three qualitative trait statistically correlates with changes in $\Ne$.
+        All three qualitative trait statistically correlate with changes in $\Ne$.
         Underground, or depigmented species, or species with visual impairment are characteristic of low $\Ne$ species.}
     \label{fig:isopods_correlation}
 \end{figure*}
