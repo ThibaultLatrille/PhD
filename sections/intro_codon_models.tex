@@ -32,7 +32,8 @@ Instead, amino acids are encoded by \glspl{codon}, a consecutive sequence of 3 n
 Moreover, three stop \glspl{codon} (TGA, TAA and TAG) signal the termination of the protein, such that 61 of the 64 \glspl{codon} are used to encode amino acids.
 Since there are 61 coding \glspl{codon} and only 20 amino acids, there is a necessary redundancy in the code.
 Thus, amino acids are encoded by \gls{synonymous} \glspl{codon}, which are interchangeable in the sense of producing the same amino acid, with the notable exception of methionine and tryptophan, which are only encoded by a singe \gls{codon}.
-Altogether, the \acrshort{DNA} genetic code, which is used almost universally by all organisms, translates \gls{codon} to amino acids as given in table~\ref{table:genetic_code}.
+Altogether, the standard \acrshort{DNA} genetic code, which is used by many organisms, translates \gls{codon} to amino acids as given in table~\ref{table:genetic_code}.
+To note, there are organisms that use other genetic codes, and in addition many of our genes are mitochondrial, which also use a different genetic code.
 
 \begin{table}[htbp]
     \centering
@@ -272,7 +273,8 @@ More globally, given how its parameterization carefully distinguishes between \g
 
 All \gls{non-synonymous} mutations are considered equivalent, and $\omega$ encompasses the average strength of selection exercised on them.
 Most importantly, $\omega>1$ is due to an excess in the rate of \gls{non-synonymous} \glspl{substitution}, indicating that the protein is under adaptive evolution.
-Conversely, a default of \gls{non-synonymous} \glspl{substitution}, leading to $\omega<1$, mean the protein is globally under purifying selection.
+Conversely, a default of \gls{non-synonymous} \glspl{substitution}, leading to $\omega<1$, means the protein is on average under purifying selection.
+It is worth noting that the protein can be on average under purifying selection ($\omega<1$), but can have specific regions undergoing positive selection ($\omega>1$).
 
 \subsection{Equilibrium properties}
 \label{subsec:equilibrium-properties}
@@ -327,7 +329,7 @@ Moreover, these \gls{codon} models have also proved to be valuable to quantify a
 \label{subsec:variation-across-sites}
 
 The strength of selection is not typically homogeneous along the protein sequence, and it has been rapidly recognized that it could be useful to estimate the $\dnds$ for each site individually, as opposed to globally over the entire sequence.
-This turns out to be particularly important for detecting recurrent positive selection.
+This turns out to be particularly important for detecting recurrent diversifying selection.
 Indeed, recurrent positive selection might often be concentrated in a small region of the protein (e.g.~domain or site of the protein that is more directly interacting with a pathogen), the rest of the protein being under a regime of purifying selection.
 Estimating $\dnds$ at the site level will make it possible to detect such regions under positive selection.
 In contrast, the gene-level $\dnds$ will generally be below $1$.
@@ -588,13 +590,13 @@ Moreover, the deviation of $\omega_*$ can bend upward or downward, where differe
 
 The Halpern \& Bruno formalism assumes that fitness landscapes are not dependent on time.
 Alternatively, time-dependent fitness landscapes are known as seascape~\citep{Mustonen2009}.
-Because of the movement of the fitness landscape, similarly to Red-Queen dynamics, the current sequence is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
-In other words, because the current sequence is at mutation-selection-drift balance, there are more ways to move downward than upward in the fitness landscape.
-As a result, changes of the landscape results in lower fitness of the current sequence on average.
+Because of the external movement of the fitness landscape, similarly to Red-Queen dynamics, the current sequence is more likely to slide into a fitness valley rather than on top of a peak when the landscape is moving.
+In other words, because the current sequence is at mutation-selection-drift balance and the movement of the landscape is external, the fitness of the sequence is not likely to increase in the new fitness landscape.
+As a result, external changes of the landscape results in lower fitness of the current sequence on average.
 The resulting dynamics is that selection pushes the sequence to climb up the time-dependent fitness landscape constantly, and the protein sequence is tracking a constantly moving fitness optimum.
 
 Since the protein sequence is always lagging behind the moving target defined by the amino acid preferences, and since \glspl{substitution} are accepted preferentially if they are in the direction of this target, \glspl{substitution} are on average adaptive.
-In other words, at the moment of a \gls{substitution} the target amino acid has a high relative fitness, which can only then decrease through time.
+In other words, the sequence would become increasingly maladaptive in the absence of such positively selected substitutions.
 Thus, breaking the assumption of time independence of amino-acid preferences leads to the estimation of an induced $\omega_0$ lower than the realized $\omega$:
 \begin{equation}
     \omega \geq \omega_0 \\
@@ -606,8 +608,8 @@ Thus, breaking the assumption of time independence of amino-acid preferences lea
 
 The \gls{nearly-neutral} assumption of the Halpern \& Bruno formalism can also be broken if there is no independence between sites, known as epistasis between sites.
 Unfortunately, one consequence of epistatic interactions is that even if a mutation is \gls{nearly-neutral} upon fixation, subsequently fixed mutations on other sites make the original \gls{substitution} more and more deleterious to revert over time~\citep{Gong2014, Lunzer2010, Mccandlish2013}.
-This effect called entrenchment results in the current amino acids reinforcing their relative fitness with time, in opposition to constantly lagging behind a moving target.
-In other words, at the moment of a \gls{substitution}, the target amino acid has a nearly equal relative fitness, which can only increase with time~\citep{Goldstein2016, Goldstein2017}.
+This effect called entrenchment results in the current amino acids reinforcing their relative fitness with time, in opposition to constantly lagging behind a moving target~\citep{Pollock2012}.
+In other words, at the moment of a \gls{substitution}, the target amino acid has a nearly equal relative fitness, which on average then increases with time~\citep{Goldstein2016, Goldstein2017}.
 Contradictory to what happens during adaptation, breaking the assumption of independence between sites leads to entrenchment and the realized $\omega$ being lower than the induced $\omega_0$~\citep{Rodrigue2016}:
 \begin{equation}
     \omega \leq \omega_0 \\

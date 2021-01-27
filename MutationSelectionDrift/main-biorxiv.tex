@@ -97,9 +97,8 @@ urlcolor=BLUELINK
     In this direction, we introduce an extended mutation-selection model jointly reconstructing in a Bayesian Monte Carlo framework the fitness landscape across sites and long-term trends in $\Ne$, $\mu$ and LHTs along the phylogeny, from an alignment of DNA coding sequences and a matrix of observed LHTs in extant species.
     The model was tested against simulated data and applied to empirical data in mammals, isopods and primates.
     The reconstructed history of $\Ne$ in these groups appears to correlate with LHTs or ecological variables in a way that suggests that the reconstruction is reasonable, at least in its global trends.
-    On the other hand, the range of variation in Ne inferred across species is surprisingly narrow.
+    On the other hand, the range of variation in $\Ne$ inferred across species is surprisingly narrow.
     This last point suggests that some of the assumptions of the model, in particular concerning the assumed absence of epistatic interactions between sites, are potentially problematic.
-
 \end{abstract}
 
 % keywords can be removed
@@ -284,7 +283,7 @@ On the other hand, the slope of the correlation is substantially less than 1 ($0
 In other words, the trends in $\Ne$ across the tree are correctly recovered, but the range of the variation in {effective population size} over the tree is substantially under-estimated.
 As for the branch lengths, they are again correctly estimated.
 In summary, our simulation experiments show that our inference framework is reliable in the absence of model mis-specification and is robust to violations concerning short-versus long-term variation in $\Ne$ or to the presence of empirically reasonable levels of Hill-Robertson interference.
-On the other hand, and very importantly, epistasis, which is ignored by the inference model, appears to lead to a general underestimation of the true variation in Ne, to an extent that depends on the exact epistatic model but can go as far as completely obliterating any signal about the true variation in $\Ne$ across the tree in the most extreme situations.
+On the other hand, and very importantly, epistasis, which is ignored by the inference model, appears to lead to a general underestimation of the true variation in $\Ne$, to an extent that depends on the exact epistatic model but can go as far as completely obliterating any signal about the true variation in $\Ne$ across the tree in the most extreme situations.
 
 \subsection{Empirical experiments}
 \label{sec:ResultsEmpirical}
@@ -292,8 +291,8 @@ On the other hand, and very importantly, epistasis, which is ignored by the infe
     \centering
     \includegraphics[width=\linewidth, page=1]{mammals_mirrors_low.pdf}
     \caption[Example of inferred $\Ne$ and $\mu$ on placental mammals dataset]{
-        Inferred phylogenetic history of $\Ne$ (left) and $\mu$  (right) across placental mammals.
-        Inference was conducted on a randomly chosen set of 18 out of 226 highly conserved CDS (< 1\% of gaps).
+        Inferred phylogenetic history of $\Ne$ (left) and $\mu$ (right) across placental mammals.
+        Inference was conducted on a randomly chosen set of 18 out of 226 highly conserved CDS ($< 1\%$ of gaps).
         Only highly conserved CDS were retained such that the assumption of constant fitness landscape is not incautiously broken by protein with changing function and/or adaptive selection.
         $\Ne$ values are relative to the root, which is arbitrarily set to one.
         Mean values of {MCMC} (after burn-in) are obtained at each node of the tree, hence a gradient can be extrapolated along each branch.
@@ -473,10 +472,10 @@ Yet, a larger number of components might be required, in order to achieve more a
 One possible development, leading to statistically more stable genome-wide estimates of $\Ne$, would be to develop a multi-gene parallelized version of the model, in which each coding sequence would have its own mixture model, and would run on a separate thread, while the history of $\Ne$ would be shared by all computing processes.
 
 Finally, estimating $\Ne$ in a mutation-selection phylogenetic model relies on the relation between $\Ne$ and the relative strength of drift, in a context where, ultimately, the signal about the intensity of drift comes from the relative rate of {non-synonymous} substitutions.
-However, this purely phylogenetic approach does not leverage a second aspect of $\Ne$ at the population level, namely, the fact that $\Ne$ also determines the levels of {neutral} genetic diversity that can be maintained ~($\pi=4\Ne u$, where $u$ is the mutation rate per generation).
+However, this purely phylogenetic approach does not leverage a second aspect of $\Ne$ at the population level, namely, the fact that $\Ne$ also determines the levels of {neutral} genetic diversity that can be maintained~($\pi=4\Ne u$, where $u$ is the mutation rate per generation).
 Hence, {neutral} diversity yields an independent empirical estimate of $\Ne$.
 In principle, our mechanistic model could be extended so as to incorporate polymorphism data within species at the tips of the phylogeny.
-A similar method has been previously pioneered in the case of 3 species and using a distribution of fitness effect\citep{Wilson2011}.
+A similar method has been previously pioneered in the case of 3 species and using a distribution of fitness effect~\citep{Wilson2011}.
 More generally, the {nearly-neutral} theory of evolution defines a long-term $\Ne$, which might be different from the short-term definition of $\Ne$~\citep{Platt2018}.
 Thus we could ask if empirical independent estimations of $\Ne$ from within species (based on genetic diversity) and between species (based on the {substitution} process) are congruent, and if not, what are the mechanisms responsible for this discrepancy.
 
@@ -487,7 +486,7 @@ Spatial and temporal changes of {genetic drift} along ecological niches and even
 \section{Materials and Methods}
 \label{sec:MatMet}
 
-In the model presented here, $\Ne$ and $\mu$ (and quantitative traits) are allowed to vary between species (across branches) as a multivariate log-Brownian process, but assumed constant along the DNA sequence.
+In the model presented here, $\Ne$ and $\mu$ and quantitative traits are allowed to vary between species across branches as a multivariate log-Brownian process, but assumed constant along the DNA sequence.
 Conversely, amino-acid fitness profiles are assumed to vary across sites, but are considered constant along the tree.
 The model makes several assumptions about the evolutionary process generating the observed alignment.
 First, the species tree topology is supposed to be known, and each gene should match the species tree, meaning genes are strict orthologs (no paralogs and no horizontal transfers).
@@ -783,11 +782,11 @@ Only highly conserved coding sequences are kept for the analysis, representing 2
 Life-history traits ({LHT}s) for longevity, age at maturity and weight were obtained from AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
 We focused our analysis on 77 taxa for which information is available for at least one {LHT}.
 
-\section{Reproducibility - Supplementary Materials}
-The simulators written in \texttt{C++} are publicly available under MIT license at \url{https://github.com/ThibaultLatrille/SimuEvol}.
-The Bayesian inference model, written in \texttt{C++} in the component based~\citep{Lanore2019} software \texttt{BayesCode}, is publicly available at \url{https://github.com/ThibaultLatrille/bayescode}.
-Supplementary materials and figures are available in appendix supplementary materials.
-The scripts and instructions necessary to reproduce the simulated and empirical experiments are available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+\section{Data availability}
+The data underlying this article are available in Github, at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}, as well as scripts and instructions necessary to reproduce the simulated and empirical experiments.
+The Bayesian inference model, written in \texttt{C++} in the component based~\citep{Lanore2019} software \texttt{BayesCode}, is available at \url{https://github.com/ThibaultLatrille/bayescode}.
+The simulators written in \texttt{C++} are available at \url{https://github.com/ThibaultLatrille/SimuEvol}.
+Supplementary materials describing additional analysis are available online.
 
 \section{Author contributions}
 TL gathered and formatted the data, developed the new models in \texttt{BayesCode} and \texttt{SimuEvol} and conducted all analyses, in the context of a PhD work (Ecole Normale Superieure de Lyon).
@@ -795,11 +794,11 @@ VL restructured and refactored the code sustaining the branch and site heterogen
 TL and NL both contributed to the writing of the manuscript.
 
 \section{Acknowledgements}
+This work was supported by French National Research Agency, Grant ANR-15-CE12-0010-01 / DASIRE.
 We wish to thank Tristan Lefébure for sharing the isopods phylogeny, alignments and life-history traits.
 We thank Philippe Veber for insightful discussion on mutation-selection models and software development.
-We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz and Laurent Duret for their advice and review concerning this manuscript.
+We gratefully also acknowledge the help of Nicolas Rodrigue, Laurent Gueguen, Benoit Nahbolz, Laurent Duret, Richard Goldstein, Carina Farah Mugal and Julien Yann Dutheil for their advice and review concerning this manuscript.
 This work was performed using the computing facilities of the CC LBBE/PRABI.
-Funding: French National Research Agency, Grant ANR-15-CE12-0010-01 / DASIRE.
 
 \bibliographystyle{natbib}%%%%Bibliography style file
 \bibliography{references,introduction}

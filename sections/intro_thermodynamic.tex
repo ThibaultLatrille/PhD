@@ -8,19 +8,20 @@ Consequently, this chapter will present work at the interface between phylogenet
 Within this interface, many questions arise regarding the compatibility and feedback between these fields.
 Are the predictions of biophysical models of protein evolution compatible and confirmed by the application of phylogenetic \gls{codon} models on empirical data?
 Or the other way around, can phylogenetic \gls{codon} models be informed by the underlying biophysics of proteins?
-To answer such questions, the first section of this chapter will present the theoretical foundations of protein biophysics, focusing on protein stability imposed by structural constraints.
+To answer such questions, the first section of this chapter will present the theoretical foundations of protein biophysics, focusing on globular protein stability imposed by structural constraints.
 Subsequently, the second section will present how these models can explain in part the observed variation of selective constraints across genes, across sites and across branches observed with classical \gls{codon} models.
 Thirdly, moving from classical to mechanistic \gls{codon} model, the next section will discuss how fitness landscapes estimated by mechanistic \gls{codon} models can also be related to the underlying protein biophysics.
 Finally, phylogenetic models augmented and incorporating the underlying biophysics are presented and the implications of such models is discussed.
 
-Several authors have adequately reviewed the interface between both fields from a broad perspective~\citep{Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}. This chapter, being aimed at evolutionary biologists familiar with phylogenetic \gls{codon} models (already presented in chapter~\ref{chap:intro-codon-models}), addresses more specifically how such models fit within the prediction of protein biophysics.
+Several authors have adequately reviewed the interface between both fields from a broad perspective~\citep{Tokuriki2009a,Liberles2012,Serohijos2014,Sikosek2014,Arenas2015,Echave2017,Bastolla2017}.
+This chapter, being aimed at evolutionary biologists familiar with phylogenetic \gls{codon} models (already presented in chapter~\ref{chap:intro-codon-models}), addresses more specifically how such models fit within the prediction of protein biophysics of globular proteins.
 
 % Also Sikosek T, Chan HS. 2014. Biophysics of protein evolution and evolutionary protein biophysics. J. R. Soc. Interface 11:20140419
 \section{The link between protein biophysics and molecular evolution}
 \label{sec:intro-protein-biophysics}
 
 The ability of a protein to perform its function depends on the stability of its 3-dimensional folding structure, but also on its ability to bind ligands and/or interact with other proteins, both in terms of kinetics and stability.
-Theoretically, thermodynamics and kinetics of proteins are expected to be related to their function, and hence to selective constraints~\citep{Bastolla2017}.
+Theoretically, thermodynamics and kinetics of proteins are expected to be related to their function, and hence to selective constraints~\citep{Tokuriki2009, Bastolla2017}.
 
 \subsection{Conformational stability of proteins}
 
@@ -67,7 +68,8 @@ We can thus characterize the destabilizing effect of a mutation by its effect on
 where by definition $\EmpiricalDeltaDeltaG <0 $ for stabilizing mutations, and conversely $\EmpiricalDeltaDeltaG > 0 $ for destabilizing mutations.
 
 Free energy gaps $\DeltaG$ can be experimentally measured, and fall within the range of $-25$ to $-5$ kcal/mol~\citep{Kumar2006, Gromiha2016}.
-Moreover, empirical measurements of folding stability changes due to single point mutations can also be obtained experimentally. This process is costly and has to be done for each single mutation~\citep{Rocklin2017}.
+Moreover, empirical measurements of folding stability changes due to single point mutations can also be obtained experimentally.
+This process is costly and has to be done for each single mutation~\citep{Rocklin2017}.
 
 Alternatively, the free energy gap of a protein can be computed with a biophysical model of the protein, by modelling the atomic structure and the potential energy of contact between residues at the atomic level in a 3-dimensional structure.
 Computing the free energy gap for a given protein sequence is challenging for any given conformation of the backbone, since it also depends on the conformation of the side chains as well as the solvent.
@@ -90,7 +92,7 @@ It is known that protein stability is related to fitness, as demonstrated by a s
 However, it is not clear whether protein stability increases fitness by being more efficient, or whether it is the deleterious cytotoxic effect of unfolded proteins that results in purifying selection for destabilizing mutations.
 Additionally, the ability to bind other proteins may interfere with stability against misfolding, and large functional movements may imply a stability cost.
 
-The relationship between stability and fitness raises the more general question of why proteins are marginally stable.
+The relationship between stability and fitness raises the more general question of why globular proteins are marginally stable.
 Indeed, the optimal stability is never achieved, and two types of explanation have been proposed.
 Firstly, that it could be the consequence of the stability-activity trade-off such that proteins are selected for an intermediate stability.
 Secondly, and more fundamentally, that it is an expectation of the mutation-selection equilibrium even under directional selection for stability~\citep{Taverna2002}.
@@ -99,12 +101,13 @@ These two explanations are not mutually incompatible, and can both explain the o
 Furthermore, translation errors act like point mutations, with a fairly high translation error rate.
 They have measurable destabilizing effects in terms of $\EmpiricalDeltaDeltaG$, just like \gls{non-synonymous} mutations.
 The fitness associated with a sequence variant at the \acrshort{DNA} level thus integrates the average effect of these destabilizing mutations induced at the translation level.
-For this reason, at mutation-selection equilibrium, the protein encoded at the \acrshort{DNA} level tends to have a more negative $\DeltaG$ than without error, as if to anticipate these additional destabilizing effects.
+For this reason, at mutation-selection equilibrium, the protein encoded at the \acrshort{DNA} level tends to have a more negative $\DeltaG$ than without error, as if to anticipate these additional destabilizing effects~\citep{Wilke2006}.
 
-\subsection{Conformational stability and epistatis}
+\subsection{Conformational stability and epistasis}
 \label{subsec:conformational-stability-and-epistatis}
 
 Computing the free energy gap $\DeltaG$ requires knowledge of interacting energy contact between amino acids in close proximity.
+It is important to remember that proximity can exist even between amino acids far apart in the folded structure, inasmuch as they may be in contact in unfolded structures.
 As a result, the $\DeltaG$ impact of a mutation at a specific position of the protein depends on the context and the amino acids at other positions.
 Specifically, amino-acid changes can be stabilizing or destabilizing depending on the amino acids present at other positions.
 Moreover, even if $\DeltaG$ would be an additive trait, in the sense that each position contributes independently to $\DeltaG$ without pairwise interaction terms, the selective effect of a mutation would still depend on the amino acids at other positions.

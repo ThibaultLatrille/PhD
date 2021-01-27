@@ -3,7 +3,7 @@ Analysis of Variance Table
 Response: PopulationSize
               Df Sum Sq Mean Sq F value    Pr(>F)    
 Pigmentation   2 1.9442 0.97210 53.6917 < 2.2e-16 ***
-rep            5 0.4226 0.08452  4.6681 0.0003764 ***
+Rep            5 0.4226 0.08452  4.6681 0.0003764 ***
 Residuals    388 7.0248 0.01811                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
