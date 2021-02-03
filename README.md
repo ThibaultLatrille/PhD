@@ -9,7 +9,7 @@ sh compile.sh
 ````
 To clean the unnecessary template files, use:
 ```bash
-sh compile.sh 
+sh clean.sh 
 ````
 
 ## Glossary
