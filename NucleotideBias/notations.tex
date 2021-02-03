@@ -1,0 +1,213 @@
+\definecolor{RED}{HTML}{EB6231}
+\definecolor{YELLOW}{HTML}{E29D26}
+\definecolor{BLUE}{HTML}{5D80B4}
+\definecolor{LIGHTGREEN}{HTML}{6ABD9B}
+\definecolor{GREEN}{HTML}{8FB03E}
+\definecolor{PURPLE}{HTML}{BE1E2D}
+\definecolor{BROWN}{HTML}{A97C50}
+\definecolor{PINK}{HTML}{DA1C5C}
+
+\newcommand{\specialcell}[2][c]{%
+\begin{tabular}[#1]{@{}c@{}}
+    #2
+\end{tabular}}
+
+\newcommand{\UniDimArray}[1]{\bm{#1}}
+\newcommand{\BiDimArray}[1]{\bm{#1}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\text{Var}}
+\newcommand{\der}{\mathrm{d}}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+\newcommand{\e}{\text{e}}
+\newcommand{\Ne}{N_{\text{e}}}
+\newcommand{\dn}{d_N}
+\newcommand{\ds}{d_S}
+\newcommand{\dnds}{\dn / \ds}
+\newcommand{\pn}{\pi_N}
+\newcommand{\ps}{\pi_S}
+\newcommand{\pnps}{\pn / \ps}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\pfix}{\proba_{\text{fix}}}
+\newcommand{\Pfix}{2 \Ne \proba_{\text{fix}}}
+\newcommand{\indice}{a}
+\newcommand{\indiceexp}{^{(\indice)}}
+
+\newcommand{\vecZero}{\UniDimArray{0}}
+\newcommand{\vecOne}{\UniDimArray{1}}
+\newcommand{\freq}{\psi}
+\newcommand{\Freq}{\UniDimArray{\freq}}
+% \acrshort{DNA}
+\newcommand{\atgc}{\text{AT/GC}}
+\newcommand{\ATtoGC}{\text{AT} \rightarrow \text{GC}}
+\newcommand{\GCtoAT}{\text{GC} \rightarrow \text{AT}}
+\newcommand{\mutmatrix}{R}
+\newcommand{\Mutmatrix}{\BiDimArray{\mutmatrix}}
+\newcommand{\exchan}{\rho}
+\newcommand{\Exchan}{\UniDimArray{\exchan}}
+\newcommand{\mutequi}{\sigma}
+\newcommand{\Mutequi}{\UniDimArray{\mutequi}}
+% Codons
+\newcommand{\ci}{{i}}
+\newcommand{\cj}{{j}}
+\newcommand{\ck}{{k}}
+\newcommand{\sumOverCodons}{_{\ci=1}^{61}}
+\newcommand{\jSetCodon}{1 \leq \cj \leq 61}
+\newcommand{\ijSetCodon}{1 \leq \ci, \cj \leq 61}
+\newcommand{\itoj}{\ci, \cj}
+\newcommand{\jtoi}{\cj, \ci}
+\newcommand{\nuc}{\mathcal{M}}
+\newcommand{\nucitoj}{\nuc(\itoj)}
+\newcommand{\nbrWeak}{{z}}
+\newcommand{\submatrix}{Q}
+\newcommand{\Submatrix}{\BiDimArray{\submatrix}}
+\newcommand{\subequi}{\pi}
+\newcommand{\Subequi}{\UniDimArray{\subequi}}
+\newcommand{\probmatrix}{P}
+\newcommand{\Probmatrix}{\BiDimArray{\probmatrix}}
+% Amino acids
+\newcommand{\aminoacid}{\text{a}}
+\newcommand{\SetAa}{\aminoacid \in \{1, \hdots, 20\} }
+\newcommand{\sumSetAa}{_{\aminoacid=1}^{20}}
+\newcommand{\Neighbor}{\mathcal{V}}
+\newcommand{\NonSyn}{\mathcal{N}}
+\newcommand{\Syn}{\mathcal{S}}
+\newcommand{\aaSource}{x}
+\newcommand{\aaTarget}{y}
+\newcommand{\aaMap}{\mathcal{A}}
+\newcommand{\aai}{\aaMap(\ci)}
+\newcommand{\aaj}{\aaMap(\cj)}
+\newcommand{\wrightfit}{W}
+\newcommand{\logfit}{f}
+\newcommand{\avgpfix}{\nu}
+\newcommand{\fit}{f}
+\newcommand{\Fit}{\UniDimArray{\fit}}
+\newcommand{\fiti}{\fit_{\aai}}
+\newcommand{\fitj}{\fit_{\aaj}}
+\newcommand{\scaledfit}{F}
+\newcommand{\Fiti}{\scaledfit_{\aai}}
+\newcommand{\Fitj}{\scaledfit_{\aaj}}
+\newcommand{\Fitci}{\scaledfit_{\ci}}
+\newcommand{\Fitcj}{\scaledfit_{\cj}}
+\newcommand{\ScaledFit}{\UniDimArray{\scaledfit}}
+\newcommand{\scaledfiti}{\scaledfit_{\aai}}
+\newcommand{\scaledfitj}{\scaledfit_{\aaj}}
+\newcommand{\scaledselcoef}{S}
+\newcommand{\entropy}{{\Omega}}
+\newcommand{\AAexchan}{\beta}
+\newcommand{\AAExchan}{\UniDimArray{\AAexchan}}
+\newcommand{\AAequi}{\epsilon}
+\newcommand{\AAEqui}{\UniDimArray{\AAequi}}
+% Tree
+\newcommand{\Tree}{\mathcal{T}}
+\newcommand{\state}{\mathcal{S}}
+\newcommand{\node}{\text{n}}
+\newcommand{\taxon}{\node}
+\newcommand{\Settaxon}{\taxon \in \{1, \hdots, \Ntaxa \}}
+\newcommand{\Ntaxa}{P}
+\newcommand{\treeroot}{0}
+\newcommand{\treerootexp}{^{(\treeroot)}}
+\newcommand{\branch}{\text{b}}
+\newcommand{\branchexp}{^{(\branch)}}
+\newcommand{\Nbranch}{2 \Ntaxa - 2}
+\newcommand{\Setbranch}{\branch \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\nodeUp}{\branch^{\uparrow}}
+\newcommand{\nodeDown}{\branch^{\downarrow}}
+\newcommand{\nodeexp}{^{(\node)}}
+\newcommand{\Nnode}{2 \Ntaxa - 2}
+\newcommand{\Ninternal}{\Ntaxa - 2}
+\newcommand{\Setnode}{\node \in \{\treeroot, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setnodenoroot}{\node \in \{1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\Setinternal}{\node \in \{\Ntaxa + 1, \hdots, 2 \Ntaxa - 2\}}
+\newcommand{\branchnode}{\mathcal{W}}
+\newcommand{\uniform}{0, 1}
+\newcommand{\age}{T}
+\newcommand{\branchtime}{\Delta \age}
+\newcommand{\branchlength}{l}
+% Alignment
+\newcommand{\data}{D}
+\newcommand{\Data}{\BiDimArray{\data}}
+\newcommand{\site}{\text{z}}
+\newcommand{\Nsite}{\text{Z}}
+\newcommand{\siteexp}{^{(\site)}}
+\newcommand{\Nstate}{\text{K}}
+\newcommand{\Setsite}{\site \in \{1, \hdots, \Nsite\} }
+\newcommand{\sumSetsite}{_{\site=1}^{\Nsite} }
+\newcommand{\branchsiteexp}{^{(\branch, \site)}}
+\newcommand{\treerootsiteexp}{^{(\treeroot, \site)}}
+\newcommand{\taxonsiteexp}{^{(\taxon, \site)}}
+% Categories
+\newcommand{\cat}{\text{k}}
+\newcommand{\Ncat}{\text{K}}
+\newcommand{\catexp}{^{(\cat)}}
+\newcommand{\catInterval}{\{1, \hdots, \Ncat\}}
+\newcommand{\Setcat}{\cat \in \catInterval }
+\newcommand{\branchcatexp}{^{(\branch, \cat)}}
+\newcommand{\treerootcatexp}{^{(\treeroot, \cat)}}
+\newcommand{\profile}{\phi}
+\newcommand{\Profile}{\UniDimArray{\profile}}
+\newcommand{\concentrationProfile}{\alpha}
+\newcommand{\centerProfile}{\UniDimArray{\gamma}}
+\newcommand{\catVar}{\kappa}
+\newcommand{\catsite}{\catVar\left(\site\right)}
+\newcommand{\catmultivar}{m}
+\newcommand{\catMultiVar}{\UniDimArray{\catmultivar}}
+\newcommand{\stickbreaking}{\theta}
+\newcommand{\StickBreaking}{\UniDimArray{\stickbreaking}}
+\newcommand{\stick}{\psi}
+\newcommand{\stickbreakinghyper}{\beta}
+% Traits
+\newcommand{\traiti}{a}
+\newcommand{\traitj}{b}
+\newcommand{\trait}{X}
+\newcommand{\Trait}{\UniDimArray{\trait}}
+\newcommand{\Ntrait}{L}
+\newcommand{\traitInterval}{\{1, \hdots, \Ntrait\}}
+\newcommand{\lhtInterval}{\{3, \hdots, \Ntrait\}}
+\newcommand{\Settrait}{\traiti \in \traitInterval}
+\newcommand{\contrast}{\UniDimArray{C}}
+\newcommand{\Covariancematrix}{\Sigma}
+\newcommand{\CovarianceMatrix}{\BiDimArray{\Covariancematrix}}
+\newcommand{\Precisionmatrix}{\Omega}
+\newcommand{\PrecisionMatrix}{\BiDimArray{\Precisionmatrix}}
+\newcommand{\Identitymatrix}{\BiDimArray{I}}
+\newcommand{\brownian}{B}
+\newcommand{\Brownian}{\UniDimArray{\brownian}}
+\newcommand{\covariancedf}{q}
+\newcommand{\covariancekappa}{\kappa}
+\newcommand{\Scattermatrix}{\BiDimArray{A}}
+% Random variables
+\newcommand{\pruning}{\psi}
+\newcommand{\Multivariate}{\UniDimArray{Z}}
+\newcommand{\subhistory}{\mathcal{H}}
+
+% Genotype-Phenotype-Fitness
+\newcommand{\phenoGeo}{\UniDimArray{P}}
+\newcommand{\phenoFold}{\Delta G}
+\newcommand{\eq}{^{*}}
+\newcommand{\NbrSites}{n}
+\newcommand{\dx}{\delta x}
+\newcommand{\Fold}{\text{F}}
+\newcommand{\Unfold}{\text{U}}
+\newcommand{\probaFold}{\proba_{\Fold}}
+\newcommand{\probaUnfold}{\proba_{\Unfold}}
+\newcommand{\G}{G}
+\newcommand{\GFold}{\G_{\Fold}}
+\newcommand{\GUnfold}{\G_{\Unfold}}
+\newcommand{\DeltaG}{\Delta \G}
+\newcommand{\DeltaGmin}{\alpha}
+\newcommand{\DeltaDeltaG}{\gamma}
+\newcommand{\EmpiricalDeltaDeltaG}{\Delta \DeltaG}
+\newcommand{\EmpiricalDeltaGmin}{\DeltaG_{\text{min}}}
+\newcommand{\Seqi}{\mathbb{S}}
+\newcommand{\Seqj}{\mathbb{S}'}
+\newcommand{\Seqitoj}{\Seqi, \Seqj}
+\newcommand{\Neighbors}{\mathcal{M}}
+\newcommand{\setNeighbors}{\Neighbors\left(\ci\right)}
+\newcommand{\setSeqNeighbors}{\Neighbors\left(\Seqi\right)}
+\newcommand{\NonSynNeighbors}{\mathcal{N}}
+\newcommand{\setNonSynNeighbors}{\NonSynNeighbors\left(\ci\right)}
+\newcommand{\setSeqNonSynNeighbors}{\NonSynNeighbors\left(\Seqi\right)}
+\newcommand{\SynNeighbors}{\mathcal{S}}
+\newcommand{\setSynNeighbors}{\SynNeighbors\left(\ci\right)}
+\newcommand{\setSeqSynNeighbors}{\SynNeighbors\left(\Seqi\right)}
