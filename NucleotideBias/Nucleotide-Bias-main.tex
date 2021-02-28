@@ -589,7 +589,7 @@ Otherwise, if \gls{codon} $\ci$ and \gls{codon} $\cj$ are \gls{non-synonymous}, 
 \end{align}
 As a result, $\left\langle \Pfix (\itoj) \right\rangle$ is dependent on the source and target \gls{codon} solely through the source amino acid ($\aai$) and target amino acid ($\aaj$), hence the parameter $\omega_{\aai, \aaj}$ identifies with the average fixation probability:
 \begin{equation}
-    \omega_{\aai, \aaj} = \dfrac{ \sum\limits\sumSetsite \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits\sumSetsite \mathcal{Z}\siteexp  }.
+    \omega_{\aai, \aaj} = \dfrac{ \sum\limits\sumSetsite \mathcal{Z}\siteexp  \dfrac{\Fitj\siteexp - \Fiti\siteexp}{ \e^{-\Fiti\siteexp} - \e^{ - \Fitj\siteexp}} }{  \sum\limits\sumSetsite \mathcal{Z}\siteexp  \e^{\Fiti\siteexp} }.
 \end{equation}
 
 \subsection{Mean scaled fixation probability (\texorpdfstring{$\avgpfix$}{ν}) under the mean-field model}
