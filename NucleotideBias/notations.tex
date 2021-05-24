@@ -40,8 +40,6 @@
 \newcommand{\Freq}{\UniDimArray{\freq}}
 % \acrshort{DNA}
 \newcommand{\atgc}{\text{AT/GC}}
-\newcommand{\ATtoGC}{\text{AT} \rightarrow \text{GC}}
-\newcommand{\GCtoAT}{\text{GC} \rightarrow \text{AT}}
 \newcommand{\mutmatrix}{R}
 \newcommand{\Mutmatrix}{\BiDimArray{\mutmatrix}}
 \newcommand{\exchan}{\rho}
@@ -80,16 +78,24 @@
 \newcommand{\aaj}{\aaMap(\cj)}
 \newcommand{\wrightfit}{W}
 \newcommand{\logfit}{f}
-\newcommand{\avgpfix}{\phi}
+\newcommand{\avgpfix}{\left\langle \Pfix \right\rangle }
+\newcommand{\avgpfixATtoGC}{\left\langle \Pfix^{\text{WS}} \right\rangle }
+\newcommand{\avgpfixGCtoAT}{\left\langle \Pfix^{\text{SW}} \right\rangle }
+\newcommand{\avgpfixAA}{\left\langle \Pfix \left( \aaSource \to \aaTarget \right) \right\rangle }
+\newcommand{\avgpfixtime}{\left\langle \Pfix (t) \right\rangle }
 \newcommand{\fit}{f}
 \newcommand{\Fit}{\UniDimArray{\fit}}
 \newcommand{\fiti}{\fit_{\aai}}
 \newcommand{\fitj}{\fit_{\aaj}}
 \newcommand{\scaledfit}{F}
+\newcommand{\FitaaSource}{\scaledfit_{\aaSource}}
+\newcommand{\FitaaTarget}{\scaledfit_{\aaTarget}}
 \newcommand{\Fiti}{\scaledfit_{\aai}}
 \newcommand{\Fitj}{\scaledfit_{\aaj}}
 \newcommand{\Fitci}{\scaledfit_{\ci}}
 \newcommand{\Fitcj}{\scaledfit_{\cj}}
+\newcommand{\Fitaai}{\scaledfit_{\aaSource}}
+\newcommand{\Fitaaj}{\scaledfit_{\aaTarget}}
 \newcommand{\ScaledFit}{\UniDimArray{\scaledfit}}
 \newcommand{\scaledfiti}{\scaledfit_{\aai}}
 \newcommand{\scaledfitj}{\scaledfit_{\aaj}}
