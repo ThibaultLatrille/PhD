@@ -547,7 +547,7 @@ From there, one can also compute the fixation probability individually for each 
 Likewise, using equation~\ref{eq:relative-sub-rate} on the subset of \gls{non-synonymous} mutations gives ($\avgpfix_{\text{\acrshort{HB}}}$) at stationarity:
 \begin{align}
     \avgpfix_{\text{\acrshort{HB}}} & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} Q_{\itoj}}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj}} \\
-    & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci} } \mu_{\itoj}}.
+    & = \dfrac{ \sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci}} \mu_{\itoj} \dfrac{\Fitj - \Fiti}{1 - \e^{\Fiti - \Fitj} }}{\sum\limits\sumOverCodons \subequi_{\ci} \sum\limits_{\cj \in \NonSyn_{\ci} } \mu_{\itoj}}.
 \end{align}
 Hence, for the mutation-selection mechanistic model, $\avgpfix_{\text{\acrshort{HB}}}$ can be interpreted as the resulting $\dnds$ induced by the model~\citep{Spielman2015,DosReis2015}.
 Indeed, simulation experiments conducted by \citet{Spielman2015} under a mutation-selection model then analysed using a classical \gls{codon} model indeed showed agreement between the induced and estimated $\dnds$.
