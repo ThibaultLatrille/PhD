@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{pdfpages}    % To import the PDF document
 \usepackage{xcolor}
 \definecolor{BLUELINK}{HTML}{0645AD}
 \definecolor{DARKBLUELINK}{HTML}{0B0080}
@@ -20,12 +21,19 @@ urlcolor=BLUELINK
 
 \usepackage[margin=60pt]{geometry}
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{blkarray}
 \usepackage{lmodern}
 \usepackage{bm,bbold}
 \usepackage{verbatim}
 \usepackage{float}
 \usepackage{bm}
 \usepackage{listings, enumerate, enumitem}
+\lstset{%
+	backgroundcolor=\color{gray!25},
+	basicstyle=\ttfamily,
+	breaklines=true,
+	columns=fullflexible
+}
 \usepackage[export]{adjustbox}
 \usepackage{tabu}
 \tabulinesep=0.6mm
@@ -90,6 +98,13 @@ urlcolor=BLUELINK
 	\section{Simulations}
 	\label{sec:supp-mat-simulations}
 
+	\subsection{Mammal tree used for simulations}
+
+	\lstinputlisting[breaklines]{placnr.lht.rootedtree.nhx}
+	The tree has been extracted from OrthoMam database~\citep{Ranwez2007,Scornavacca2019}.
+	This is a subset of 77 species for which information is available for at least one life-history traits in the AnAge database~\citep{DEMAGALHAES2009,Tacutu2012}.
+	The longest distance between root to leaf is used to set the root age, since this tree is not ultrametric.
+	
 	\subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 	\label{subsec:independent-fitness-profiles}
 	For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
@@ -101,7 +116,7 @@ urlcolor=BLUELINK
 	\end{equation}
 	The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}, which were experimentally determined by deep mutational scanning for 498 codon sites of the nucleoprotein in \textit{Influenza Virus} strains (as human host).
 	Although the \textit{Influenza Virus} is phylogenetically far away from vertebrates, the experimentally determined profiles in these strains capture the structural constrains exerted on proteins.
-	For each {codon} site $\site$ of our simulation, we assign randomly one the 498 fitness profile (sampling with replacement) experimentally determined, which altogether determines the selection coefficient for any non-synonymous mutation.
+	We subsampled randomly 30 fitness profiles out of the 498 profiles experimentally determined, then for each {codon} site $\site$ of our simulation, we assign randomly one the 30 fitness profile (sampling with replacement), which altogether determines the selection coefficient for any non-synonymous mutation.
 	\begin{center}
 		\includegraphics[width=\textwidth] {ModelSimuDiv}
 	\end{center}
@@ -111,8 +126,61 @@ urlcolor=BLUELINK
 	{\submatrix_{\itoj}}
 		= \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 	\end{equation}
-	where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of {synonymous} substitutions.
+	where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of {synonymous} substitutions. \\
 
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|}
+				\hline
+				\textbf{Parameter} & Value \\ \hline
+				\hline
+				Mutation rate (at the root) & $u=1.0 \times 10^{-8}$ per site per generation\\ \hline
+				Root age & $150$ Million years \\ \hline
+				Generation time (at the root) & $\tau=10$ years \\ \hline
+				Effective population size (at the root) & $\Ne=1.0$ (for identifiability of fitness profiles) \\ \hline
+				Number of codon sites & $5,000$\\ \hline
+				Exon size (number of codon sites) & $300$\\ \hline
+				Random seed & $65489$\\ \hline
+				Branch-wise correlation & True \\ \hline
+			\end{tabu}}
+		\caption[Parameters used for \texttt{SimuDiv}]{
+			Parameters used for \texttt{SimuDiv}. 
+			The configuration files and scripts to produce simulations are available as \texttt{config.yaml} at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+		}
+	\end{table}
+
+	The input nucleotide mutation matrix ($\Mutmatrix$) is a symmetric time-reversible matrix, which is automatically normalized by the simulator:
+	\begin{equation}
+		\Mutmatrix =
+		\begin{blockarray}{ccccc}
+			& A & C & G & T \\
+			\begin{block}{c(cccc)}
+				A & - & 1 & 1 & 1 \\
+				C & 1 & - & 1 & 1 \\
+				G & 1 & 1 & - & 1 \\
+				T & 1 & 1 & 1 & - \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+	The input precision matrix ($\PrecisionMatrix = \CovarianceMatrix^{-1}$) of the multivariate geometric Brownian is composed of three process, namely the effective population size ($\Ne$), mutation rate per generation per site ($u$) and generation time ($\tau$).
+	The covariance matrix ($\CovarianceMatrix$) is computed from the input precision matrix ($\PrecisionMatrix$) by the simulator, and represents the covariances of traits along the tree (from root to leaves).
+	\begin{equation}
+		\PrecisionMatrix =
+		\begin{blockarray}{cccc}
+			& \Ne & u & \tau \\
+			\begin{block}{c(ccc)}
+				\Ne  & 0.5 & 0 & 0 \\
+				u    & 0 & 2.0 & 0 \\
+				\tau & 0 & 0 & 1.0 \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+
+	Site-specific fitness profiles used as input of the simulator are shown as logo plot:
+	% 340 × 1021 mm
+	\includepdf[pages=1,trim=0mm 510.5mm 0mm 0mm, clip, width=\textwidth]{simulations/Profiles_SimuDiv}
+	\includepdf[pages=1,trim=0mm 0mm 0mm 510.5mm, clip, width=\textwidth]{simulations/Profiles_SimuDiv}
 
 	\begin{figure}[H]
 		\centering
@@ -137,6 +205,25 @@ urlcolor=BLUELINK
 		}
 	\end{figure}
 
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|c|}
+				\hline
+				\textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
+				\hline
+				\texttt{SimuDiv}, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
+				\texttt{SimuDiv}, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
+			\end{tabu}}
+		\caption[Inferred amino-acids entropy for \texttt{SimuDiv}]{
+			Estimated amino-acid entropy under simulations accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
+			Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
+		}
+	\end{table}
+
+	Site-specific estimated fitness profiles (chain 1) are shown as logo plot:
+	\includepdf[pages=1,trim=0mm 510.5mm 0mm 0mm, clip, width=\textwidth]{simulations/Profiles_SimuDiv_Estimated}
+	\includepdf[pages=1,trim=0mm 0mm 0mm 510.5mm, clip, width=\textwidth]{simulations/Profiles_SimuDiv_Estimated}
 
 	\begin{figure}[H]
 		\centering
@@ -152,21 +239,7 @@ urlcolor=BLUELINK
 		}
 	\end{figure}
 
-	\begin{table}[H]
-		\centering
-		\noindent\adjustbox{max width=\textwidth}{%
-		\begin{tabu}{|c|c|c|}
-			\hline
-			\textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
-			\hline
-			\texttt{SimuDiv}, chain~1 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
-			\texttt{SimuDiv}, chain 2 & $2.30 \pm 0.04$ & $2.45 \pm 0.02$\\ \hline
-		\end{tabu}}
-		\caption[Inferred amino-acids entropy for \texttt{SimuDiv}]{
-		Estimated amino-acid entropy under simulations accounting for long term fluctuation of $\Ne$, mutation rate per generation and generation time.
-		Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).
-		}
-	\end{table}
+
 
 	\subsection{Wright-Fisher with polymorphism (\texttt{SimuPoly})}
 	\label{subsec:wright-fisher-with-polymorphism}
@@ -177,6 +250,74 @@ urlcolor=BLUELINK
 	\begin{center}
 		\includegraphics[width=\textwidth] {ModelSimuPoly}
 	\end{center}
+
+	For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
+	In this model, for each {codon} site $\site$, we assign a fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
+	Since $\Seqi[ \site ]$ is the {codon} at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
+	Altogether, the selection coefficient of the mutant $\Seqj$ is:
+	\begin{equation}
+		s \left( \Seqi,\Seqj\right) = \sum\limits\sumSetsite \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
+	\end{equation}
+	The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}, which were experimentally determined by deep mutational scanning for 498 codon sites of the nucleoprotein in \textit{Influenza Virus} strains (as human host).
+	Although the \textit{Influenza Virus} is phylogenetically far away from vertebrates, the experimentally determined profiles in these strains capture the structural constrains exerted on proteins.
+	For each {codon} site $\site$ of our simulation, we assign randomly one the 498 fitness profile (sampling with replacement) experimentally determined, which altogether determines the selection coefficient for any non-synonymous mutation.
+
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|}
+				\hline
+				\textbf{Parameter} & Value \\ \hline
+				\hline
+				Mutation rate (at the root) & $u=1.0 \times 10^{-8}$ per site per generation\\ \hline
+				Root age & $150$ Million years \\ \hline
+				Generation time (at the root) & $\tau=10$ years \\ \hline
+				Number of codon sites & $5,000$\\ \hline
+				Exon size (number of codon sites) & $300$\\ \hline
+				Random seed & $65489$\\ \hline
+				Effective population size (at the root) & $\Ne = 5,000$ \\ \hline
+				$\sigma$ parameter for Ornstein-Uhlenbeck process & $0.2$ \\ \hline
+				$\theta$ parameter for Ornstein-Uhlenbeck process & $0.2$ \\ \hline
+			\end{tabu}}
+		\caption[Parameters used for \texttt{SimuPoly}]{
+			Parameters used for \texttt{SimuPoly}.
+			The configuration files and scripts to produce simulations are available as \texttt{config.yaml} at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+		}
+	\end{table}
+
+	The input nucleotide mutation matrix ($\Mutmatrix$) is a symmetric time-reversible matrix, which is automatically normalized by the simulator:
+	\begin{equation}
+		\Mutmatrix =
+		\begin{blockarray}{ccccc}
+			& A & C & G & T \\
+			\begin{block}{c(cccc)}
+				A & - & 1 & 1 & 1 \\
+				C & 1 & - & 1 & 1 \\
+				G & 1 & 1 & - & 1 \\
+				T & 1 & 1 & 1 & - \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+	The input precision matrix ($\PrecisionMatrix = \CovarianceMatrix^{-1}$) of the multivariate geometric Brownian is composed of three process, namely the effective population size ($\Ne$), mutation rate per generation per site ($u$) and generation time ($\tau$).
+	The covariance matrix ($\CovarianceMatrix$) is computed from the input precision matrix ($\PrecisionMatrix$) by the simulator, and represents the covariances of traits along the tree (from root to leaves).
+	\begin{equation}
+		\PrecisionMatrix =
+		\begin{blockarray}{cccc}
+			& \Ne & u & \tau \\
+			\begin{block}{c(ccc)}
+				\Ne  & 0.5 & 0 & 0 \\
+				u    & 0 & 2.0 & 0 \\
+				\tau & 0 & 0 & 1.0 \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+
+	Site-specific fitness profiles used as input of the simulator are shown as logo plot:
+
+	% 340 × 1021 mm
+	\includepdf[pages=1,trim=0mm 510.5mm 0mm 0mm, clip, width=\textwidth]{simulations/Profiles_SimuPoly}
+	\includepdf[pages=1,trim=0mm 0mm 0mm 510.5mm, clip, width=\textwidth]{simulations/Profiles_SimuPoly}
+
 
 	\begin{figure}[H]
 		\centering
@@ -201,6 +342,26 @@ urlcolor=BLUELINK
 		}
 	\end{figure}
 
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|c|}
+				\hline
+				\textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
+				\hline
+				\texttt{SimuPoly}, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
+				\texttt{SimuPoly}, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
+			\end{tabu}}
+		\caption[Inferred amino-acid entropy for \texttt{SimuPoly}]{
+			Estimated amino-acid entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
+			Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
+	\end{table}
+
+
+	Site-specific estimated fitness profiles (chain 1) are shown as logo plot:
+
+	\includepdf[pages=1,trim=0mm 510.5mm 0mm 0mm, clip, width=\textwidth]{simulations/Profiles_SimuPoly_Estimated}
+	\includepdf[pages=1,trim=0mm 0mm 0mm 510.5mm, clip, width=\textwidth]{simulations/Profiles_SimuPoly_Estimated}
 
 	\begin{figure}[H]
 		\centering
@@ -214,21 +375,6 @@ urlcolor=BLUELINK
 		Inferred and simulated site-specific amino-acid profiles under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
 		Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left panel), or under the assumption of constant $\Ne$ (in the right panel).}
 	\end{figure}
-
-	\begin{table}[H]
-		\centering
-		\noindent\adjustbox{max width=\textwidth}{%
-		\begin{tabu}{|c|c|c|}
-			\hline
-			\textbf{Experiment} & $\left\langle \entropy \right\rangle$ (\textbf{branch} $\Ne$) & $\left\langle \entropy \right\rangle$ (\textbf{constant} $\Ne$) \\ \hline
-			\hline
-			\texttt{SimuPoly}, chain~1 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
-			\texttt{SimuPoly}, chain 2 & $2.47 \pm 0.03$ & $2.37 \pm 0.02$\\ \hline
-		\end{tabu}}
-		\caption[Inferred amino-acid entropy for \texttt{SimuPoly}]{
-		Estimated amino-acid entropy under simulation accounting for finite population effects, site linkage and short term fluctuation of $\Ne$.
-		Estimation is obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits (in the left column), or under the assumption of constant $\Ne$ (in the right column).}
-	\end{table}
 
 	\subsection{Fisher geometric landscape (\texttt{SimuGeo})}
 	\label{subsec:fisher-geometric-landscape}
@@ -269,6 +415,58 @@ urlcolor=BLUELINK
 		= \mu_{\itoj} \dfrac{4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)}{{1 - \e^{-4 \Ne s \left( \Seqi^{t},\Seqi^{t+1}\right)} }},
 	\end{equation}
 	where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of {synonymous} substitutions.
+
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|}
+				\hline
+				\textbf{Parameter} & Value \\ \hline
+				\hline
+				Mutation rate (at the root) & $u=1.0 \times 10^{-8}$ per site per generation\\ \hline
+				Root age & $150$ Million years \\ \hline
+				Generation time (at the root) & $\tau=10$ years \\ \hline
+				Exon size & $300$\\ \hline
+				Number of exons & $16$\\ \hline
+				Number of codon sites & $4,800$\\ \hline
+				Population size (at the root) & $200$ \\ \hline
+				Complexity (number of dimensions) & $3$ \\ \hline
+				Discretization of the geometric Brownian process & $100$ step per branch \\ \hline
+			\end{tabu}}
+		\caption[Parameters used for \texttt{SimuGeo}]{
+			Parameters used for \texttt{SimuGeo}.
+			The configuration files and scripts to produce simulations are available as \texttt{config.yaml} at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+		}
+	\end{table}
+
+	The input nucleotide mutation matrix ($\Mutmatrix$) is a symmetric time-reversible matrix, which is automatically normalized by the simulator:
+	\begin{equation}
+		\Mutmatrix =
+		\begin{blockarray}{ccccc}
+			& A & C & G & T \\
+			\begin{block}{c(cccc)}
+				A & - & 1 & 1 & 1 \\
+				C & 1 & - & 1 & 1 \\
+				G & 1 & 1 & - & 1 \\
+				T & 1 & 1 & 1 & - \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+	The input precision matrix ($\PrecisionMatrix = \CovarianceMatrix^{-1}$) of the multivariate geometric Brownian is composed of three process, namely the effective population size ($\Ne$), mutation rate per generation per site ($u$) and generation time ($\tau$).
+	The covariance matrix ($\CovarianceMatrix$) is computed from the input precision matrix ($\PrecisionMatrix$) by the simulator, and represents the covariances of traits along the tree (from root to leaves).
+	\begin{equation}
+		\PrecisionMatrix =
+		\begin{blockarray}{cccc}
+			& \Ne & u & \tau \\
+			\begin{block}{c(ccc)}
+				\Ne  & 0.5 & 0 & 0 \\
+				u    & 0 & 2.0 & 0 \\
+				\tau & 0 & 0 & 1.0 \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+
+
 
 	\begin{figure}[H]
 		\centering
@@ -350,6 +548,55 @@ urlcolor=BLUELINK
 	\end{equation}
 	where ${\submatrix_{\itoj}} = \mu_{\itoj}$ in the case of {synonymous} substitutions.
 
+	\begin{table}[H]
+		\centering
+		\noindent\adjustbox{max width=\textwidth}{%
+			\begin{tabu}{|c|c|}
+				\hline
+				\textbf{Parameter} & Value \\ \hline
+				\hline
+				Mutation rate (at the root) & $u=1.0 \times 10^{-8}$ per site per generation\\ \hline
+				Root age & $150$ Million years \\ \hline
+				Generation time (at the root) & $\tau=10$ years \\ \hline
+				Protein & Protein phosphatase \citep{Goldstein2017} \\ \hline
+				Exon size & $300$\\ \hline
+				Number of exons & $16$\\ \hline
+				Number of codon sites & $4,800$\\ \hline
+				Population size (at the root) & $100,000$ \\ \hline
+				Discretization of the geometric Brownian process & $100$ step per branch \\ \hline
+			\end{tabu}}
+		\caption[Parameters used for \texttt{SimuGeo}]{
+			Parameters used for \texttt{SimuGeo}.
+			The configuration files and scripts to produce simulations are available as \texttt{config.yaml} at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift}.
+		}
+	\end{table}
+ 	The input nucleotide mutation matrix ($\Mutmatrix$) is a symmetric time-reversible matrix, which is automatically normalized by the simulator:
+	\begin{equation}
+		\Mutmatrix =
+		\begin{blockarray}{ccccc}
+			& A & C & G & T \\
+			\begin{block}{c(cccc)}
+				A & - & 1 & 1 & 1 \\
+				C & 1 & - & 1 & 1 \\
+				G & 1 & 1 & - & 1 \\
+				T & 1 & 1 & 1 & - \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+	The input precision matrix ($\PrecisionMatrix = \CovarianceMatrix^{-1}$) of the multivariate geometric Brownian is composed of three process, namely the effective population size ($\Ne$), mutation rate per generation per site ($u$) and generation time ($\tau$).
+	The covariance matrix ($\CovarianceMatrix$) is computed from the input precision matrix ($\PrecisionMatrix$) by the simulator, and represents the covariances of traits along the tree (from root to leaves).
+	\begin{equation}
+		\PrecisionMatrix =
+		\begin{blockarray}{cccc}
+			& \Ne & u & \tau \\
+			\begin{block}{c(ccc)}
+				\Ne  & 0.5 & 0 & 0 \\
+				u    & 0 & 2.0 & 0 \\
+				\tau & 0 & 0 & 1.0 \\
+			\end{block}
+		\end{blockarray}
+	\end{equation}
+
 	\begin{figure}[H]
 		\centering
 		\begin{minipage}{0.32\linewidth}
@@ -402,9 +649,27 @@ urlcolor=BLUELINK
 			The distribution of $r^2$ is relatively low, below 0.01 on average, providing confidence that $\Ne$ and $\mu$ are indeed identifiable.}
 	\end{figure}
 
-
 	\section{Empirical data in mammals}
 	\label{sec:empirical-data-in-mammals}
+
+	Only highly conserved coding sequences are kept for the analysis, representing 226 {genes} with $\leq 1\%$ of gaps in the alignment.
+	We verified that they do not display a signature of positive selection using a site codon model. The results of site codon models are available in a tabulated file at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift/blob/master/DataEmpirical/OrthoMam/orthomam.tsv}
+	The list of genes included in the analysis is (also available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift/blob/master/DataEmpirical/OrthoMam/cds.highcoverage.list}):\\
+	\input{cds.highcoverage.orthomam.list} \\
+
+	$4$ independent inferences were performed on a randomly chosen set of $18$ coding sequences ({CDS}) out of the $226$.
+
+	The replicate 1 is composed of :\\
+	\input{orthomam.rep1.list}
+
+	The replicate 2 is composed of :\\
+	\input{orthomam.rep2.list}
+
+	The replicate 3 is composed of :\\
+	\input{orthomam.rep3.list}
+
+	The replicate 4 is composed of :\\
+	\input{orthomam.rep4.list}
 
 	\subsection{Chain convergence}
 	\label{subsec:chain-convergence}
@@ -643,6 +908,30 @@ urlcolor=BLUELINK
 
 	\section{Empirical data in Isopods}
 	\label{sec:empirical-data-in-isopods}
+
+	Only highly conserved coding sequences are kept for the analysis, representing 135 {genes} with $\leq 1\%$ of gaps in the alignment.
+	The list of genes included in the analysis is (also available at \url{https://github.com/ThibaultLatrille/MutationSelectionDrift/blob/master/DataEmpirical/Isopods/cds.highcoverage.list}):\\
+	\input{cds.highcoverage.isopods.list} \\
+
+	$6$ independent inferences were performed on a randomly chosen set of $12$ coding sequences ({CDS}) out of the $135$.\\
+
+	The replicate 1 is composed of :\\
+	\input{isopods.rep1.list}\\
+
+	The replicate 2 is composed of :\\
+	\input{isopods.rep2.list} \\
+
+	The replicate 3 is composed of :\\
+	\input{isopods.rep3.list}\\
+
+	The replicate 4 is composed of :\\
+	\input{isopods.rep4.list}\\
+
+	The replicate 5 is composed of :\\
+	\input{isopods.rep5.list}\\
+
+	The replicate 6 is composed of :\\
+	\input{isopods.rep6.list}
 
 	\subsection{Traits estimation (replicate~1, chain~1)}
 	Obtained with the mechanistic inference model developed in this paper of site-specific amino-acid fitness profiles and log-Brownian process for $\Ne$, $\mu$ and life-history traits.

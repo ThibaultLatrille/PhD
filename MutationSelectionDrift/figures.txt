@@ -1,0 +1,33 @@
+figure-1.pdf
+Model summary.
+Panel A. Our method requires a (given) rooted tree topology, an alignment of protein-coding DNA and (optionally) quantitative life-history trait for the extant species.
+Panel B. Relying on a codon model based on the mutation-selection formalism, assuming an auto-correlated geometric Brownian process for the variation through time in effective population size (<i>N<sub>e</sub></i>), mutation rate (<i>μ</i>) and life-history traits, our Bayesian inference method estimates amino-acid fitness profiles across sites, variation in mutation rate and effective population size along the tree, as well as the node ages and the nucleotide mutation rates.
+
+figure-2.pdf
+A-C: branch lengths in expected number of substitutions per site.
+D-F: <i>N<sub>e</sub></i> values across nodes (including the leaves) relative to <i>N<sub>e</sub></i> at the root.
+From left to right: simulation under the mutation-selection approximation (A,D), under a Wright-Fisher model accounting for small population size effects (5000 individuals at the root), site linkage and short term fluctuation of <i>N<sub>e</sub></i> (B,E), and finally accounting for site epistasis in the context of selection for protein stability (C,F).
+The tree root is 150 million years old, where the initial population starts with a mutation rate of 10<sup>-8</sup> per site per generation and generation time of 10 years. These experiments confirm that signal in the placental mammalian tree can allow to reliably infer the direction of change in <i>N<sub>e</sub></i>, even if linkage disequilibrium, short term fluctuation of <i>N<sub>e</sub></i> and finite population size effects are not accounted for in the inference framework.
+However, the presence of epistasis between sites is a serious threat to the inference of <i>N<sub>e</sub></i>.
+
+figure-3.pdf
+Inferred phylogenetic history of <i>N<sub>e</sub></i> (left) and <i>μ</i> (right) across placental mammals (posterior mean estimate), based on an analysis of a concatenation of 18 genes randomly chosen among single-copy orthologs putatively under an exclusively purifying selection regime.
+<i>N<sub>e</sub></i> estimates are relative to the value of <i>N<sub>e</sub></i> at the root.
+The scale for <i>μ</i> is per nucleotide site and per total tree depth (i.e. total time from the most recent common ancestor to the present).
+If we assume the root to be 105My old, the rescaled mutation rate per site per year in extant species is between 1.1×10<sup>-10</sup> and 7.8×10<sup>-9</sup>.
+Icons are adapted from <a href="http://phylopic.org">http://phylopic.org</a>.
+
+
+figure-4.pdf
+<i>N<sub>e</sub></i> estimation for extant isopods species sorted according to their habitat (left), pigmentation (middle), and ocular structure (right).
+Estimated <i>N<sub>e</sub></i> are pooled across 6 different multiple sequence alignments (MSA) each containing 12 randomly sampled genes in isopods species.
+All three qualitative traits statistically correlate with changes in <i>N<sub>e</sub></i> in the terminal branches.
+
+figure-5.pdf
+Directed acyclic graph (DAG) of dependencies between variables.
+Nodes of the directed acyclic graph are the variables, and edges are the functions.
+Hyper-parameters are depicted in red circles, random variables in blue circles, and transformed variables in black.
+Blue dashed line denotes a drawing from a random distribution, and black solid lines denote a function.
+All the nodes pointing toward a given node (upstream) are its dependencies which determines its distribution.
+The other way around, following the arrows in the DAG (downstream), simple prior distributions are combined together to form more complex joint prior distribution which ultimately defines the prior distribution of the model.
+

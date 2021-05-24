@@ -35,14 +35,15 @@ The Shannon's entropy can be averaged over all sites as:
 \subsection{Site-specific fitness profiles (\texttt{SimuDiv})}
 \label{subsec:independent-fitness-profiles}
 For simulations under a site-independent fitness landscape, with site-specific fitness profiles, the protein log-fitness is computed as the sum of amino-acid log-fitness coefficients along the sequence.
-In this model, each {codon} site $\site$ has its own fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
+In this model, for each {codon} site $\site$, we assign a fitness profile, denoted $\Profile\siteexp = \{ \profile\siteexp_{\aminoacid},\ 1 \leq \aminoacid \leq 20 \}$, a vector of 20 amino-acid scaled (Wrightian) fitness coefficients.
 Since $\Seqi[ \site ]$ is the {codon} at site $\site$, the encoded amino acid is $\aaMap \left( \Seqi[ \site ] \right)$, hence the fitness at site $\site$ is $\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}$.
 Altogether, the selection coefficient of the mutant $\Seqj$ is:
 \begin{equation}
     s \left( \Seqi,\Seqj\right) = \sum\limits\sumSetsite \ln \left( \dfrac{\Profile\siteexp_{\aaMap \left( \Seqj[ \site ] \right)}}{\Profile\siteexp_{\aaMap \left( \Seqi[ \site ] \right)}} \right),
 \end{equation}
-The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}.
-They were experimentally determined by deep mutational scanning.
+The fitness vectors $\Profile\siteexp$ used in this study are extracted from \citet{Bloom2017}, which were experimentally determined by deep mutational scanning for 498 codon sites of the nucleoprotein in \textit{Influenza Virus} strains (as human host).
+Although the \textit{Influenza Virus} is phylogenetically far away from vertebrates, the experimentally determined profiles in these strains capture the structural constrains exerted on proteins.
+For each {codon} site $\site$ of our simulation, we assign randomly one the 498 fitness profile (sampling with replacement) experimentally determined, which altogether determines the selection coefficient for any non-synonymous mutation.
 \begin{center}
     \includegraphics[width=\textwidth] {ModelSimuDiv}
 \end{center}
