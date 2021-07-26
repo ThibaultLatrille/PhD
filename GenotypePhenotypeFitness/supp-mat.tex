@@ -68,6 +68,9 @@ $\EmpiricalDeltaDeltaG$ and $\EmpiricalDeltaGmin$ are kept here to refer to the 
 Define $\NbrSites$ as the number of sites in the genotype sequence.
 Each site can be in one of $\Nstate \geq 2$ states, where only $1$ state is defined the stable state, and $\Nstate - 1$ states are unstable.
 For a given genotype sequence, define {phenotype} $0 \leq x \leq 1$ as the current proportion of sites in the unstable state.
+
+\subsection{Mutational probabilities}
+\label{subsec:mut-probabilities}
 After a mutation, given that only one site can change at a time, the absolute change of $x$ is either $0$ or $\dx=1/\NbrSites$.
 Define $\rho_{x}(\dx)$ as the probability to get a change of {phenotype} equal to $\dx$, if the current {phenotype} is $x$:
 \begin{gather}
@@ -77,6 +80,54 @@ Define $\rho_{x}(\dx)$ as the probability to get a change of {phenotype} equal t
         -\dx &\text{ with probability } \rho_{x}(-\dx) = \frac{x}{\Nstate - 1}.\\
     \end{cases} \label{eq:proba-pheno}
 \end{gather}
+
+\subsection{Mutational equilibrium}
+\label{subsec:mut-equilibrium}
+At the mutational equilibrium, the distribution of phenotype $x$ is denoted $\sigma (x)$.
+\begin{center}
+    \includegraphics[width=0.6\linewidth, page=1]{equilibrium-distribution.pdf}
+\end{center}
+As pictured above, the flow in ({\color{RED}red} arrows) and out ({\color{BLUE}blue} arrows) of phenotype $x$ compensate at equilibrium, leading to equation:
+\begin{align}
+    & \sigma (x) \left( 1 - x + \frac{x}{\Nstate - 1} \right) = \sigma (x + \dx) \left( \frac{x + \dx}{\Nstate - 1} \right) + \sigma (x - \dx) (1 - x + \dx), \\
+   \Rightarrow & \sigma (x) \left( 1 - x + \frac{x}{\Nstate - 1} \right) \simeq \left[ \sigma (x) + \sigma ' (x) \dx + \sigma '' (x) \frac{\dx^2}{2} \right] \left( \frac{x + \dx}{\Nstate - 1} \right) + \left[ \sigma (x) - \sigma ' (x) \dx + \sigma '' (x) \frac{\dx^2}{2} \right] (1 - x + \dx), \\
+   \iff & 0 \simeq \sigma (x) \dx  \left[ \frac{\Nstate}{\Nstate - 1} \right] + \sigma ' (x) \dx \left[ x \frac{\Nstate}{\Nstate - 1} - \dx \frac{\Nstate - 2}{\Nstate - 1} - 1 \right] + \sigma '' (x) \frac{\dx^2}{2} \left[ 1 + \dx \frac{\Nstate}{\Nstate - 1} - x \frac{\Nstate - 2}{\Nstate - 1} \right], \\
+    \iff & 0 \simeq \sigma (x)  \left[ \frac{\Nstate}{\Nstate - 1} \right] + \sigma ' (x) \left[ x \frac{\Nstate}{\Nstate - 1} - \dx \frac{\Nstate - 2}{\Nstate - 1} - 1 \right] + \sigma '' (x) \frac{\dx}{2} \left[ 1 + \dx \frac{\Nstate}{\Nstate - 1} - x \frac{\Nstate - 2}{\Nstate - 1} \right], \label{eq:diff-mutequi}
+\end{align}
+For $\Nstate = 2$, equation~\ref{eq:diff-mutequi} reduces to:
+\begin{align}
+    0 &\simeq 2 \sigma (x) + \sigma ' (x) \left[ 2 x - 1 \right] + \sigma '' (x) \frac{\dx}{2} \left[ 1 + 2 \dx \right], \\
+    \Rightarrow ~ 0 &\simeq 2 \sigma (x) + \sigma ' (x) \left[ 2 x - 1 \right] + \sigma '' (x) \frac{\dx}{2} .
+\end{align}
+A particular solution to this differential equation is:
+\begin{gather}
+    \sigma (x) = C \e^{\frac{2(1-x)x}{\dx}}, \\
+    \text{ where } \int_{0}^{1} \e^{\frac{2(1-x)x}{\dx}} \der x = C^{-1}. \label{eq:mutequi-K2}
+\end{gather}
+We verified the analytical approximations of equation~\ref{eq:mutequi-K2} with simulations in the case $\Nstate = 2$:
+\begin{center}
+    \includegraphics[width=0.6\linewidth, page=1]{mutational-equilibrium-K_2}
+\end{center}
+
+From which the expectation and variance of the phenotype at equilibrium can be derived as:
+\begin{align}
+    \E \left[ \sigma (x) \right] &= \int_{0}^{1} x \sigma (x) \der x = \frac{1}{2} , \\
+    \Var \left[ \sigma (x) \right] &= \int_{0}^{1} \left( x - \frac{1}{2}  \right)^{2} \sigma (x) \der x \simeq \frac{\dx}{4} = \frac{1}{4 \NbrSites}.
+\end{align}
+
+In the case of large $\Nstate$, equation~\ref{eq:diff-mutequi} reduces to:
+\begin{align}
+    0 &= \sigma (x) + \sigma ' (x) \left[ x + \dx - 1 \right] + \sigma '' (x) \frac{\dx}{2} \left[ 1 + \dx - x \right], \\
+    0 &\simeq \sigma (x) + \sigma ' (x) \left[ x - 1 \right] + \sigma '' (x) \frac{\dx}{2} \left[ 1 - x \right] \label{eq:diff-mutequi-largeK}.
+\end{align}
+We could not find a general analytical solution to equation~\ref{eq:diff-mutequi}, nor a tractable solution to equation~\ref{eq:diff-mutequi-largeK}.
+
+However, simulations (shown below) provides the insight that as $\Nstate \geq 2$ increases, $\Var \left[ \sigma (x) \right]$ decreases and is lower than for the case $\Nstate = 2$ (figure above, right panel), hence $\Var \left[ \sigma (x) \right] \leq  \dx / 4$.
+\begin{center}
+    \includegraphics[width=0.6\linewidth, page=1]{mutational-variance}
+\end{center}
+
+As a result,  $\Var \left[ \sigma (x) \right]$ decreases with the number of sites ($n = 1/\dx$).
 
 \subsection{Selection coefficient}
 \label{subsec:selection-coefficient}
@@ -115,9 +166,39 @@ And the ratio of probability of fixation between selected and {neutral} mutation
     & = \frac{S(x, \dx)}{1 - \e^{-S(x, \dx)}} \label{eq:pfixratio}.
 \end{align}
 
+\subsection{Equilibrium distribution of phenotype}
+\label{subsec:equilibrium-distribution-phenotype}
+At the mutation-selection equilibrium, the distribution of phenotype $x$ is denoted $\psi (x)$.
+From mutational equilibrium distribution of phenotype $\sigma (x) $ and the Malthusian fitness $\logfit (x)$, the mutation-selection equilibrium distribution is given by \citep{Sella2005, Mustonen2009}:
+\begin{gather}
+\psi (x) = \mathcal{Z} \sigma (x) \e^{4 \Ne \logfit (x)}, \\
+\text{ where } \int_{0}^{1} \sigma (x) \e^{4 \logfit (x)} \der x = \mathcal{Z}^{-1}. \label{eq:mutsel-equi}
+\end{gather}
+
+For $\Nstate = 2$, equation~\ref{eq:mutsel-equi} reduces to:
+\begin{gather}
+    \psi (x) = \mathcal{Z} \e^{\frac{2(1-x)x}{\dx}} \e^{4 \Ne \logfit (x)} \label{eq:mutselequi-K2}
+\end{gather}
+We verified the analytical approximations of equation~\ref{eq:mutselequi-K2} with simulations in the case $\Nstate = 2$ and for a fitness fitness equal to folded fraction (see \ref{subsec:fitness-equal-to-folded-fraction}):
+\begin{gather}
+    \logfit (x) = \ln \left(  \frac{1}{1 + \e^{\beta(\DeltaGmin + \NbrSites \DeltaDeltaG x)}}\right)
+\end{gather}
+Using $\Ne=10^4$, $\beta=1.686$, $\DeltaGmin = \EmpiricalDeltaGmin = -118$, $\NbrSites=300$, $\DeltaDeltaG=\EmpiricalDeltaDeltaG=1$, the analytical and simulated distributions of equilibrium phenotype are:
+\begin{center}
+    \includegraphics[width=0.6\linewidth, page=1]{selection-equilibrium-K_2}
+\end{center}
+
+In the case $\Nstate = 2$ or for the general case, we could not find a tractable analytical solution for the expectation $\E \left[ \psi (x) \right]$ and variance $\Var \left[ \psi (x) \right]$.
+
+However, simulations (shown below) provides the insight that as $\Nstate \geq 2$ increases, $\Var \left[ \psi (x) \right]$ decreases and is lower than the variance at the mutational equilibrium $\Var \left[ \psi (x) \right] \leq \Var \left[ \sigma (x) \right] \leq  \dx / 4$.
+\begin{center}
+    \includegraphics[width=0.6\linewidth, page=1]{selection-variance}
+\end{center}
+As a result, $\Var \left[ \psi (x) \right]$ is vanishingly small and decreases with the number of sites ($n = 1 / \dx$).
+
 \subsection{Equilibrium phenotype}
 \label{subsec:equilibrium-phenotype}
-
+Under the assumption that fluctuation around the equilibrium value are small, as seen in the previous section, the equilibrium distribution of trait can be approximated by an equilibrium trait value.
 At equilibrium {phenotype} $x\eq$, the expected selection coefficient of mutation that reached fixation must be $0$:
 \begin{gather}
     0 = \E_{\dx} \left[ s(x\eq, \dx) \pfix(x\eq, \dx) \right], \\
@@ -197,7 +278,6 @@ Together, these approximations leads to the following response in equilibrium $\
     \frac{ \der \omega\eq}{\der \ln (\Ne)} & \simeq - \frac{\frac{ \partial \logfit (x\eq) }{\partial {x\eq}}}{\frac{ \partial^2 \logfit (x\eq) }{\partial {x\eq}^2}}
     \label{eq:approx_dw_dlnNe}
 \end{align}
-
 
 \section{Models for the log-fitness function}
 \label{sec:models-for-the-log-fitness-function}
