@@ -1,7 +1,7 @@
 %DIF 1c1
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL main-elsevier.tex   Wed Jan 27 12:33:59 2021
-%DIF ADD main-revision.tex   Tue Jul 20 11:32:25 2021
+%DIF ADD main-revision.tex   Mon Sep  6 16:48:45 2021
 %DIF < \documentclass{elsarticle}
 %DIF -------
 \documentclass[authoryear]{elsarticle} %DIF > 
@@ -51,7 +51,224 @@ urlcolor=BLUELINK
 
 \renewcommand{\baselinestretch}{1.5}
 
-\include{notations}
+%DIF 47c47-260
+%DIF < \include{notations}
+%DIF -------
+\definecolor{RED}{HTML}{EB6231} %DIF > 
+\definecolor{YELLOW}{HTML}{E29D26} %DIF > 
+\definecolor{BLUE}{HTML}{5D80B4} %DIF > 
+\definecolor{LIGHTGREEN}{HTML}{6ABD9B} %DIF > 
+\definecolor{GREEN}{HTML}{8FB03E} %DIF > 
+\definecolor{PURPLE}{HTML}{BE1E2D} %DIF > 
+\definecolor{BROWN}{HTML}{A97C50} %DIF > 
+\definecolor{PINK}{HTML}{DA1C5C} %DIF > 
+ %DIF > 
+\newcommand{\specialcell}[2][c]{% %DIF > 
+	\begin{tabular}[#1]{@{}c@{}} %DIF > 
+		#2 %DIF > 
+\end{tabular}} %DIF > 
+ %DIF > 
+\newcommand{\UniDimArray}[1]{\bm{#1}} %DIF > 
+\newcommand{\BiDimArray}[1]{\bm{#1}} %DIF > 
+ %DIF > 
+\DeclareMathOperator{\E}{\mathbb{E}} %DIF > 
+\DeclareMathOperator{\Var}{\text{Var}} %DIF > 
+\newcommand{\der}{\mathrm{d}} %DIF > 
+\newcommand{\angstrom}{\text{\normalfont\AA}} %DIF > 
+\newcommand{\e}{\text{e}} %DIF > 
+\newcommand{\Ne}{N_{\text{e}}} %DIF > 
+\newcommand{\dn}{d_N} %DIF > 
+\newcommand{\ds}{d_S} %DIF > 
+\newcommand{\dnds}{\dn / \ds} %DIF > 
+\newcommand{\pn}{\pi_N} %DIF > 
+\newcommand{\ps}{\pi_S} %DIF > 
+\newcommand{\pnps}{\pn / \ps} %DIF > 
+\newcommand{\proba}{\mathbb{P}} %DIF > 
+\newcommand{\pfix}{\proba_{\text{fix}}} %DIF > 
+\newcommand{\Pfix}{2 \Ne \proba_{\text{fix}}} %DIF > 
+\newcommand{\indice}{a} %DIF > 
+\newcommand{\indiceexp}{^{(\indice)}} %DIF > 
+ %DIF > 
+\newcommand{\vecZero}{\UniDimArray{0}} %DIF > 
+\newcommand{\vecOne}{\UniDimArray{1}} %DIF > 
+\newcommand{\freq}{\psi} %DIF > 
+\newcommand{\Freq}{\UniDimArray{\freq}} %DIF > 
+% \acrshort{DNA} %DIF > 
+\newcommand{\atgc}{\text{AT/GC}} %DIF > 
+\newcommand{\ATtoGC}{\text{AT} \rightarrow \text{GC}} %DIF > 
+\newcommand{\GCtoAT}{\text{GC} \rightarrow \text{AT}} %DIF > 
+\newcommand{\mutmatrix}{R} %DIF > 
+\newcommand{\Mutmatrix}{\BiDimArray{\mutmatrix}} %DIF > 
+\newcommand{\exchan}{\rho} %DIF > 
+\newcommand{\Exchan}{\UniDimArray{\exchan}} %DIF > 
+\newcommand{\mutequi}{\sigma} %DIF > 
+\newcommand{\Mutequi}{\UniDimArray{\mutequi}} %DIF > 
+% Codons %DIF > 
+\newcommand{\ci}{{i}} %DIF > 
+\newcommand{\cj}{{j}} %DIF > 
+\newcommand{\ck}{{k}} %DIF > 
+\newcommand{\sumOverCodons}{_{\ci=1}^{61}} %DIF > 
+\newcommand{\jSetCodon}{1 \leq \cj \leq 61} %DIF > 
+\newcommand{\ijSetCodon}{1 \leq \ci, \cj \leq 61} %DIF > 
+\newcommand{\itoj}{\ci, \cj} %DIF > 
+\newcommand{\jtoi}{\cj, \ci} %DIF > 
+\newcommand{\nuc}{\mathcal{M}} %DIF > 
+\newcommand{\nucitoj}{\nuc(\itoj)} %DIF > 
+\newcommand{\nbrWeak}{{z}} %DIF > 
+\newcommand{\submatrix}{Q} %DIF > 
+\newcommand{\Submatrix}{\BiDimArray{\submatrix}} %DIF > 
+\newcommand{\subequi}{\pi} %DIF > 
+\newcommand{\Subequi}{\UniDimArray{\subequi}} %DIF > 
+\newcommand{\probmatrix}{P} %DIF > 
+\newcommand{\Probmatrix}{\BiDimArray{\probmatrix}} %DIF > 
+% Amino acids %DIF > 
+\newcommand{\aminoacid}{\text{a}} %DIF > 
+\newcommand{\SetAa}{\aminoacid \in \{1, \hdots, 20\} } %DIF > 
+\newcommand{\sumSetAa}{_{\aminoacid=1}^{20}} %DIF > 
+\newcommand{\Neighbor}{\mathcal{V}} %DIF > 
+\newcommand{\NonSyn}{\mathcal{N}} %DIF > 
+\newcommand{\Syn}{\mathcal{S}} %DIF > 
+\newcommand{\aaSource}{x} %DIF > 
+\newcommand{\aaTarget}{y} %DIF > 
+\newcommand{\aaMap}{\mathcal{A}} %DIF > 
+\newcommand{\aai}{\aaMap(\ci)} %DIF > 
+\newcommand{\aaj}{\aaMap(\cj)} %DIF > 
+\newcommand{\wrightfit}{W} %DIF > 
+\newcommand{\logfit}{f} %DIF > 
+\newcommand{\avgpfix}{\nu} %DIF > 
+\newcommand{\fit}{f} %DIF > 
+\newcommand{\Fit}{\UniDimArray{\fit}} %DIF > 
+\newcommand{\fiti}{\fit_{\aai}} %DIF > 
+\newcommand{\fitj}{\fit_{\aaj}} %DIF > 
+\newcommand{\scaledfit}{F} %DIF > 
+\newcommand{\Fiti}{\scaledfit_{\aai}} %DIF > 
+\newcommand{\Fitj}{\scaledfit_{\aaj}} %DIF > 
+\newcommand{\Fitci}{\scaledfit_{\ci}} %DIF > 
+\newcommand{\Fitcj}{\scaledfit_{\cj}} %DIF > 
+\newcommand{\ScaledFit}{\UniDimArray{\scaledfit}} %DIF > 
+\newcommand{\scaledfiti}{\scaledfit_{\aai}} %DIF > 
+\newcommand{\scaledfitj}{\scaledfit_{\aaj}} %DIF > 
+\newcommand{\scaledselcoef}{S} %DIF > 
+\newcommand{\entropy}{{\Omega}} %DIF > 
+\newcommand{\AAexchan}{\beta} %DIF > 
+\newcommand{\AAExchan}{\UniDimArray{\AAexchan}} %DIF > 
+\newcommand{\AAequi}{\epsilon} %DIF > 
+\newcommand{\AAEqui}{\UniDimArray{\AAequi}} %DIF > 
+% Tree %DIF > 
+\newcommand{\Tree}{\mathcal{T}} %DIF > 
+\newcommand{\state}{\mathcal{S}} %DIF > 
+\newcommand{\node}{\text{n}} %DIF > 
+\newcommand{\taxon}{\node} %DIF > 
+\newcommand{\Settaxon}{\taxon \in \{1, \hdots, \Ntaxa \}} %DIF > 
+\newcommand{\Ntaxa}{P} %DIF > 
+\newcommand{\treeroot}{0} %DIF > 
+\newcommand{\treerootexp}{^{(\treeroot)}} %DIF > 
+\newcommand{\branch}{\text{b}} %DIF > 
+\newcommand{\branchexp}{^{(\branch)}} %DIF > 
+\newcommand{\Nbranch}{2 \Ntaxa - 2} %DIF > 
+\newcommand{\Setbranch}{\branch \in \{1, \hdots, 2 \Ntaxa - 2\}} %DIF > 
+\newcommand{\nodeUp}{\branch^{\uparrow}} %DIF > 
+\newcommand{\nodeDown}{\branch^{\downarrow}} %DIF > 
+\newcommand{\nodeexp}{^{(\node)}} %DIF > 
+\newcommand{\Nnode}{2 \Ntaxa - 2} %DIF > 
+\newcommand{\Ninternal}{\Ntaxa - 2} %DIF > 
+\newcommand{\Setnode}{\node \in \{\treeroot, \hdots, 2 \Ntaxa - 2\}} %DIF > 
+\newcommand{\Setnodenoroot}{\node \in \{1, \hdots, 2 \Ntaxa - 2\}} %DIF > 
+\newcommand{\Setinternal}{\node \in \{\Ntaxa + 1, \hdots, 2 \Ntaxa - 2\}} %DIF > 
+\newcommand{\branchnode}{\mathcal{W}} %DIF > 
+\newcommand{\uniform}{0, 1} %DIF > 
+\newcommand{\age}{T} %DIF > 
+\newcommand{\branchtime}{\Delta \age} %DIF > 
+\newcommand{\branchlength}{l} %DIF > 
+% Alignment %DIF > 
+\newcommand{\data}{D} %DIF > 
+\newcommand{\Data}{\BiDimArray{\data}} %DIF > 
+\newcommand{\site}{\text{z}} %DIF > 
+\newcommand{\Nsite}{\text{Z}} %DIF > 
+\newcommand{\siteexp}{^{(\site)}} %DIF > 
+\newcommand{\Nstate}{\text{K}} %DIF > 
+\newcommand{\Setsite}{\site \in \{1, \hdots, \Nsite\} } %DIF > 
+\newcommand{\sumSetsite}{_{\site=1}^{\Nsite} } %DIF > 
+\newcommand{\branchsiteexp}{^{(\branch, \site)}} %DIF > 
+\newcommand{\treerootsiteexp}{^{(\treeroot, \site)}} %DIF > 
+\newcommand{\taxonsiteexp}{^{(\taxon, \site)}} %DIF > 
+% Categories %DIF > 
+\newcommand{\cat}{\text{k}} %DIF > 
+\newcommand{\Ncat}{\text{K}} %DIF > 
+\newcommand{\catexp}{^{(\cat)}} %DIF > 
+\newcommand{\catInterval}{\{1, \hdots, \Ncat\}} %DIF > 
+\newcommand{\Setcat}{\cat \in \catInterval } %DIF > 
+\newcommand{\branchcatexp}{^{(\branch, \cat)}} %DIF > 
+\newcommand{\treerootcatexp}{^{(\treeroot, \cat)}} %DIF > 
+\newcommand{\profile}{\phi} %DIF > 
+\newcommand{\Profile}{\UniDimArray{\profile}} %DIF > 
+\newcommand{\concentrationProfile}{\alpha} %DIF > 
+\newcommand{\centerProfile}{\UniDimArray{\gamma}} %DIF > 
+\newcommand{\catVar}{\kappa} %DIF > 
+\newcommand{\catsite}{\catVar\left(\site\right)} %DIF > 
+\newcommand{\catmultivar}{m} %DIF > 
+\newcommand{\catMultiVar}{\UniDimArray{\catmultivar}} %DIF > 
+\newcommand{\stickbreaking}{\theta} %DIF > 
+\newcommand{\StickBreaking}{\UniDimArray{\stickbreaking}} %DIF > 
+\newcommand{\stick}{\psi} %DIF > 
+\newcommand{\stickbreakinghyper}{\beta} %DIF > 
+% Traits %DIF > 
+\newcommand{\traiti}{a} %DIF > 
+\newcommand{\traitj}{b} %DIF > 
+\newcommand{\trait}{X} %DIF > 
+\newcommand{\Trait}{\UniDimArray{\trait}} %DIF > 
+\newcommand{\Ntrait}{L} %DIF > 
+\newcommand{\traitInterval}{\{1, \hdots, \Ntrait\}} %DIF > 
+\newcommand{\lhtInterval}{\{3, \hdots, \Ntrait\}} %DIF > 
+\newcommand{\Settrait}{\traiti \in \traitInterval} %DIF > 
+\newcommand{\contrast}{\UniDimArray{C}} %DIF > 
+\newcommand{\Covariancematrix}{\Sigma} %DIF > 
+\newcommand{\CovarianceMatrix}{\BiDimArray{\Covariancematrix}} %DIF > 
+\newcommand{\Precisionmatrix}{\Omega} %DIF > 
+\newcommand{\PrecisionMatrix}{\BiDimArray{\Precisionmatrix}} %DIF > 
+\newcommand{\Identitymatrix}{\BiDimArray{I}} %DIF > 
+\newcommand{\brownian}{B} %DIF > 
+\newcommand{\Brownian}{\UniDimArray{\brownian}} %DIF > 
+\newcommand{\covariancedf}{q} %DIF > 
+\newcommand{\covariancekappa}{\kappa} %DIF > 
+\newcommand{\Scattermatrix}{\BiDimArray{A}} %DIF > 
+% Random variables %DIF > 
+\newcommand{\pruning}{\psi} %DIF > 
+\newcommand{\Multivariate}{\UniDimArray{Z}} %DIF > 
+\newcommand{\subhistory}{\mathcal{H}} %DIF > 
+ %DIF > 
+% Genotype-Phenotype-Fitness %DIF > 
+\newcommand{\phenoGeo}{\UniDimArray{P}} %DIF > 
+\newcommand{\phenoFold}{\Delta G} %DIF > 
+\newcommand{\eq}{^{*}} %DIF > 
+\newcommand{\NbrSites}{n} %DIF > 
+\newcommand{\dx}{\delta x} %DIF > 
+\newcommand{\Fold}{\text{F}} %DIF > 
+\newcommand{\Unfold}{\text{U}} %DIF > 
+\newcommand{\probaFold}{\proba_{\Fold}} %DIF > 
+\newcommand{\probaUnfold}{\proba_{\Unfold}} %DIF > 
+\newcommand{\G}{G} %DIF > 
+\newcommand{\GFold}{\G_{\Fold}} %DIF > 
+\newcommand{\GUnfold}{\G_{\Unfold}} %DIF > 
+\newcommand{\DeltaG}{\Delta \G} %DIF > 
+\newcommand{\DeltaGmin}{\alpha} %DIF > 
+\newcommand{\DeltaDeltaG}{\gamma} %DIF > 
+\newcommand{\EmpiricalDeltaDeltaG}{\Delta \DeltaG} %DIF > 
+\newcommand{\EmpiricalDeltaGmin}{\DeltaG_{\text{min}}} %DIF > 
+\newcommand{\Seqi}{\mathbb{S}} %DIF > 
+\newcommand{\Seqj}{\mathbb{S}'} %DIF > 
+\newcommand{\Seqitoj}{\Seqi, \Seqj} %DIF > 
+\newcommand{\Neighbors}{\mathcal{M}} %DIF > 
+\newcommand{\setNeighbors}{\Neighbors\left(\ci\right)} %DIF > 
+\newcommand{\setSeqNeighbors}{\Neighbors\left(\Seqi\right)} %DIF > 
+\newcommand{\NonSynNeighbors}{\mathcal{N}} %DIF > 
+\newcommand{\setNonSynNeighbors}{\NonSynNeighbors\left(\ci\right)} %DIF > 
+\newcommand{\setSeqNonSynNeighbors}{\NonSynNeighbors\left(\Seqi\right)} %DIF > 
+\newcommand{\SynNeighbors}{\mathcal{S}} %DIF > 
+\newcommand{\setSynNeighbors}{\SynNeighbors\left(\ci\right)} %DIF > 
+\newcommand{\setSeqSynNeighbors}{\SynNeighbors\left(\Seqi\right)} %DIF > 
+ %DIF > 
+%DIF -------
 
 \linenumbers
 
@@ -119,7 +336,7 @@ urlcolor=BLUELINK
 \begin{abstract}
 Molecular sequences are shaped by selection, where the strength of selection relative to drift is determined by effective population size ($\Ne$).
 Populations with high $\Ne$ are expected to undergo stronger purifying selection, and consequently to show a lower substitution rate for selected mutations relative to the substitution rate for neutral mutations ($\omega$).
-However, computational models based on biophysics of protein stability have suggested that $\omega$ can also be independent of $\Ne$, a result proven under general conditions.
+However, computational models based on biophysics of protein stability have suggested that $\omega$ can also be independent of $\Ne$\DIFdelbegin \DIFdel{, a result proven under general conditions}\DIFdelend .
 Together, the response of $\omega$ to changes in $\Ne$ depends on the specific mapping from sequence to fitness.
 Importantly, an increase in protein expression level has been found empirically to result in decrease of $\omega$, an observation predicted by theoretical models assuming selection for protein stability.
 Here, we derive a theoretical approximation for the response of $\omega$ to changes in $\Ne$ and expression level, under an explicit genotype-phenotype-fitness map.
@@ -225,7 +442,7 @@ This model is inspired from previous work~\citep{Williams2006, Goldstein2011, Po
 
 \begin{figure*}[h]
     \centering
-    \includegraphics[width=\textwidth, page=1] {summary.pdf}
+    \includegraphics[width=\textwidth, page=1] {figure-1.pdf}
     \caption[Outline of the theoretical results]{
         Outline of the theoretical results.
         The genotype to fitness relationship is depicted in the left panel.
@@ -352,7 +569,7 @@ The leftward shift is smaller for selective strengths characterized by a steeper
 
 \begin{figure*}[h]
     \centering
-    \includegraphics[width=\textwidth, page=1] {theoretical-cartoons.pdf}
+    \includegraphics[width=\textwidth, page=1] {figure-2.pdf}
 
     \DIFdelbeginFL %DIFDELCMD < \caption[Response of the equilibrium phenotype after a change in $\Ne$]{%%%
 \DIFdelendFL \DIFaddbeginFL \caption[Response of the equilibrium phenotype after a change ineffective population size]{\DIFaddendFL 
@@ -420,8 +637,7 @@ For a given protein with expression level $y$ and a cost $A$ representing the se
 Under this model, the total selective cost of a destabilizing mutation is now directly proportional to the total amount of misfolded proteins.
 This fitness function leads to the following expression for the mutation-selection-drift equilibrium:
 \begin{equation}
-    \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (19) = 4\Ne y A \beta \EmpiricalDeltaDeltaG \DIFdelbegin %DIFDELCMD < \NbrSites %%%
-\DIFdelend e\DIFdelbegin \DIFdel{^{\beta(\EmpiricalDeltaGmin + \EmpiricalDeltaDeltaG \NbrSites x\eq)}}\DIFdelend \DIFaddbegin \DIFadd{^{\beta(\EmpiricalDeltaGmin + \NbrSites \EmpiricalDeltaDeltaG x\eq)}}\DIFaddend .
+    \ln \left( \frac{1 - x\eq}{x\eq} \right) + \ln (19) = 4\Ne y A \beta \EmpiricalDeltaDeltaG \DIFdelbegin \DIFdel{\NbrSites }\DIFdelend e\DIFdelbegin \DIFdel{^{\beta(\EmpiricalDeltaGmin + \EmpiricalDeltaDeltaG \NbrSites x\eq)}}\DIFdelend \DIFaddbegin \DIFadd{^{\beta(\EmpiricalDeltaGmin + \NbrSites \EmpiricalDeltaDeltaG x\eq)}}\DIFaddend .
 \end{equation}
 Importantly, in this equation, $\Ne$ and $y$ are confounded factors appearing only as a product.
 This means that increasing either $\Ne$ or $y$ leads to same change in equilibrium {phenotype}, and hence the same change in $\omega$.
@@ -439,7 +655,7 @@ Alternatively if the protein is assumed to be regulated such as to reach a speci
 
 \begin{figure*}[h]
     \centering
-    \includegraphics[width=\textwidth] {elasticity-low.pdf}
+    \includegraphics[width=\textwidth, page=1] {figure-3.pdf}
 
     \caption[Scaling of equilibrium $\omega$ as a function of $\Ne$]
     {Scaling of equilibrium \DIFaddbeginFL \DIFaddFL{substitution rate (}\DIFaddendFL $\omega$\DIFaddbeginFL \DIFaddFL{) }\DIFaddendFL as a function of \DIFdelbeginFL \DIFdelFL{log-$Ne$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{effective population size ($\Ne$) in log scale}\DIFaddendFL , under the additive {phenotype} model using Grantham distances (A,B,D) or the explicit biophysical model using a statistical potential (C), with $\NbrSites=300$ and $\beta=1.686$.
@@ -486,7 +702,7 @@ In this experiment (figure~\ref{fig:GoldsteinVsToy}D), $\EmpiricalDeltaGmin$ was
 
 \begin{figure*}[h]
     \centering
-    \includegraphics[width=\textwidth] {Relaxation.pdf}
+    \includegraphics[width=\textwidth, page=1] {figure-4.pdf}
     \caption[ Relaxation of $\omega$  after a change in $\Ne$]{
         Relaxation of \DIFaddbeginFL \DIFaddFL{the substitution rate (}\DIFaddendFL $\omega$\DIFaddbeginFL \DIFaddFL{) }\DIFaddendFL after a change in \DIFaddbeginFL \DIFaddFL{effective population size (}\DIFaddendFL $\Ne$\DIFaddbeginFL \DIFaddFL{).
         }\DIFaddendFL Solid line corresponds to the average over $1000$ replicates and the shaded area corresponds to the $90\%$ \DIFdelbeginFL \DIFdelFL{interval }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{inter-quantile range }\DIFaddendFL among replicates.
