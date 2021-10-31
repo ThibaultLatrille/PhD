@@ -38,9 +38,6 @@ urlcolor=BLUELINK
 
 \usepackage{graphicx}
 \graphicspath{{artworks/}}
-\makeatletter
-\def\input@path{{artworks/}}
-\makeatother
 \pdfstringdefDisableCommands{%
 \renewcommand*{\bm}[1]{#1}%
 % any other necessary redefinitions
@@ -53,37 +50,118 @@ urlcolor=BLUELINK
 \begin{document}
 \part*{Supplementary materials}
 \tableofcontents
- 
-\vspace*{1cm}
 
 \section{Simulated alignments}
+\label{sec:simulated-alignments}
 
-\subsection{Mammalian phylogeny - 4980 codons}
+\subsection{Primate phylogeny - 4980 codons}
 
-\begin{figure}[!htb]
-    \centering
+\begin{center}
     \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_MG.pdf}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_1_MG.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
     \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_MF.pdf}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_2_MG.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
     \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_GTR.pdf}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_3_MG.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
-    \caption[Estimation of mutational bias]{
-        Simulations for 90 mammalian taxa and 4980 codon sites.
-        Estimated versus true mutational bias (bottom), using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
-    }
-\end{figure}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_1_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize D\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_2_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/obs_atgc_3_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize G\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_simulations/omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize H\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa and 9960 codon sites, for 32 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value (simulations shown in the main manuscript).
+Observed $\atgc$ from the alignment and predicted $\atgc$ by the models at the first (panels A \& D), second (panels B \& E) and third (panels C \& F) codon positions as a function of mutational bias for Muse \& Gaut (panels A, B \& C) and our tensor model (panel C, D \& E).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel G) and our tensor model (panel H).
+
+
+\subsection{Primate phylogeny - 498 codons}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa and 498 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons1Mu1.0_omega_pair_MF.pdf}
+True versus estimated values of $\omega$ between pairs of amino-acids.
+Vertical bars are the 95\% confidence intervals for the mean value.
+
+\subsection{Primate phylogeny - 996 codons}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa and 996 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons2Mu1.0_omega_pair_MF.pdf}
+True versus estimated values of $\omega$ between pairs of amino-acids.
+Vertical bars are the 95\% confidence intervals for the mean value.
 
 \subsection{Primate phylogeny - 2490 codons}
 
-\begin{figure}[!htb]
-    \centering
+\begin{center}
     \begin{minipage}{0.325\linewidth}
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons5Mu1.0_lambda_MG.pdf}
     \end{minipage}
@@ -96,16 +174,26 @@ urlcolor=BLUELINK
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons5Mu1.0_lambda_GTR.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
-    \caption[Estimation of mutational bias]{
-        Simulations for 61 primate taxa and 2490 codon sites.
-        Estimated versus true mutational bias (bottom), using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
-    }
-\end{figure}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons5Mu1.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons5Mu1.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa and 2490 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons5Mu1.0_omega_pair_MF.pdf}
+True versus estimated values of $\omega$ between pairs of amino-acids.
+Vertical bars are the 95\% confidence intervals for the mean value.
 
 \subsection{Primate phylogeny - 9960 codons}
 
-\begin{figure}[!htb]
-    \centering
+\begin{center}
     \begin{minipage}{0.325\linewidth}
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons20Mu1.0_lambda_MG.pdf}
     \end{minipage}
@@ -118,38 +206,26 @@ urlcolor=BLUELINK
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons20Mu1.0_lambda_GTR.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
-    \caption[Estimation of mutational bias]{
-        Simulations for 61 primate taxa and 9960 codon sites.
-        Estimated versus true mutational bias (bottom), using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
-    }
-\end{figure}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons20Mu1.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons20Mu1.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa and 9960 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
 
-\subsection{Primate phylogeny - 4980 codons - branch length x2}
-
-\begin{figure}[!htb]
-    \centering
-    \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_MG.pdf}
-    \end{minipage}
-    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
-    \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_MF.pdf}
-    \end{minipage}
-    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
-    \begin{minipage}{0.325\linewidth}
-        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_GTR.pdf}
-    \end{minipage}
-    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
-    \caption[Estimation of mutational bias]{
-        Simulations for 61 primate taxa with increased branch lenght by a factor 2 and 4980 codon sites.
-        Estimated versus true mutational bias (bottom), using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
-    }
-\end{figure}
+\includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons20Mu1.0_omega_pair_MF.pdf}
+True versus estimated values of $\omega$ between pairs of amino-acids.
+Vertical bars are the 95\% confidence intervals for the mean value.
 
 \subsection{Primate phylogeny - 4980 codons - branch length \%2}
 
-\begin{figure}[!htb]
-    \centering
+\begin{center}
     \begin{minipage}{0.325\linewidth}
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu0.5_lambda_MG.pdf}
     \end{minipage}
@@ -162,10 +238,128 @@ urlcolor=BLUELINK
         \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu0.5_lambda_GTR.pdf}
     \end{minipage}
     \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
-    \caption[Estimation of mutational bias]{
-        Simulations for 61 primate taxa with decreased branch lenght by a factor 2 and 4980 codon sites.
-        Estimated versus true mutational bias (bottom), using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
-    }
-\end{figure}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu0.5_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu0.5_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa with decreased branch lenght by a factor 2 and 4980 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\subsection{Primate phylogeny - 4980 codons - branch length x2}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu2.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa with increased branch lenght by a factor 2 and 4980 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\subsection{Primate phylogeny - 4980 codons - branch length x4}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu4.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu4.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu4.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu4.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu4.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa with increased branch lenght by a factor 4 and 4980 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\subsection{Primate phylogeny - 4980 codons - branch length x8}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu8.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu8.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu8.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu8.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/PrimatesExons10Mu8.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 61 primate taxa with increased branch lenght by a factor 8 and 4980 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
+Estimated $\hat{\omega}$ and simulated $\omega$ across replicates as a function of mutational bias ($\lambda$) for Muse \& Gaut (panel D) and our tensor model (panel E).
+
+\subsection{Mammalian phylogeny - 4980 codons}
+
+\begin{center}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize A\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize B\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_lambda_GTR.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize C\hspace{4.35cm}}}\hfill
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_omega_MG.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize E\hspace{4.35cm}}}
+    \begin{minipage}{0.325\linewidth}
+        \includegraphics[width=\linewidth, page=1]{inference_supp_mat/MammalsExons10Mu1.0_omega_MF.pdf}
+    \end{minipage}
+    \llap{\raisebox{1.25cm}{\scriptsize F\hspace{4.35cm}}}
+\end{center}
+Simulations for 90 mammalian taxa and 4980 codon sites, for 8 different values of mutational bias ($\lambda$) from 0.2 to 5.0 with 5 replicates per value.
+Estimated versus true mutational bias, using a codon model in which $\omega$ is modeled as a scalar (Muse \& Gaut formalism, MG, panel A) or as a tensor (mean-field approach, panel B), or by applying a GTR nucleotide model to the 4-fold degenerate third-coding positions only (panel C).
 
 \end{document}
